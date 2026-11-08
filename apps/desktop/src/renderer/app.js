@@ -221,27 +221,45 @@
         none.className = 'hint';
         none.textContent = '沒有找到確實引用此法規的判決。';
         block.appendChild(none);
-      } else {
-        var wrap = document.createElement('div');
-        wrap.className = 'table-wrap';
-        var table = document.createElement('table');
-        table.className = 'table';
-        table.innerHTML = '<thead><tr><th>序號</th><th>裁判字號</th><th>法院</th><th>裁判日期</th><th>案由</th><th>主文（結果）</th><th>引用條文</th></tr></thead>';
-        var tbody = document.createElement('tbody');
-        sh.rows.forEach(function (r, i) {
-          var tr = document.createElement('tr');
-          [String(i + 1), r.title, r.court || '', r.dateIso || '', r.cause, r.result, r.citedArticles.join('；')].forEach(function (text, j) {
-            var td = document.createElement('td');
-            if (j === 0) td.className = 'num';
-            td.textContent = text;
-            tr.appendChild(td);
-          });
-          tbody.appendChild(tr);
-        });
-        table.appendChild(tbody);
-        wrap.appendChild(table);
-        block.appendChild(wrap);
+        box.appendChild(block);
+        return;
       }
+      if (sh.synthesis) {
+        var syn = document.createElement('div');
+        syn.className = 'synthesis';
+        var parts = [['綜合概述', sh.synthesis.overview], ['趨勢與分歧', sh.synthesis.trends], ['研究結論', sh.synthesis.conclusion]];
+        parts.forEach(function (p) {
+          var t = document.createElement('p');
+          var strong = document.createElement('strong');
+          strong.textContent = p[0] + '：';
+          t.appendChild(strong);
+          t.appendChild(document.createTextNode(p[1] || ''));
+          syn.appendChild(t);
+        });
+        block.appendChild(syn);
+      }
+      var wrap = document.createElement('div');
+      wrap.className = 'table-wrap';
+      var table = document.createElement('table');
+      table.className = 'table';
+      table.innerHTML = '<thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>類型</th><th>爭點</th><th>法院見解</th><th>結論</th><th>引用條文</th></tr></thead>';
+      var tbody = document.createElement('tbody');
+      var byId = {};
+      (sh.analyses || []).forEach(function (a) { byId[a.id] = a; });
+      sh.rows.forEach(function (r, i) {
+        var a = byId[r.id] || {};
+        var tr = document.createElement('tr');
+        [String(i + 1), r.title, r.dateIso || '', a.group || '', a.issue || '', a.holding || '', a.outcome || '', r.citedArticles.join('；')].forEach(function (text, j) {
+          var td = document.createElement('td');
+          if (j === 0) td.className = 'num';
+          td.textContent = text;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      wrap.appendChild(table);
+      block.appendChild(wrap);
       box.appendChild(block);
     });
   }
@@ -261,7 +279,7 @@
     $('scopeDocx').disabled = true;
     $('scopeResult').innerHTML = '';
     $('scopeProgress').hidden = false;
-    setStatus($('scopeStatus'), '整理中，請稍候…');
+    setStatus($('scopeStatus'), '整理中，請稍候…（每則判決都會交由 AI 分析）');
     try {
       var r = await api.scope.run({ statutes: statutes, yearFrom: from, yearTo: to, maxItems: max });
       state.scopeSheets = r.sheets;
@@ -281,7 +299,7 @@
   });
   api.scope.onProgress(function (p) {
     $('scopeProgress').querySelector('.bar').style.width = Math.round((p.done / Math.max(p.total, 1)) * 100) + '%';
-    setStatus($('scopeStatus'), '正在整理「' + p.statute + '」：' + p.done + ' / ' + p.total);
+    setStatus($('scopeStatus'), '「' + p.statute + '」' + p.phase + '：' + p.done + ' / ' + p.total);
   });
   async function exportScope(format) {
     if (!state.scopeSheets) return;
@@ -298,32 +316,34 @@
   // ---- 單一判決精讀 ----
   function renderBrief(view) {
     var d = view.detail;
+    var doc = view.doc;
     var box = $('briefView');
     box.innerHTML = '';
     var h = document.createElement('h2');
-    h.textContent = d.meta.title || d.meta.id;
+    h.textContent = doc.title || d.meta.title || d.meta.id;
     box.appendChild(h);
     var meta = document.createElement('p');
     meta.textContent = '法院：' + (d.meta.court || '—') + '　日期：' + (d.meta.dateIso || d.meta.dateMinguo || '—') + '　案由：' + (d.meta.cause || '—');
     box.appendChild(meta);
-    if (view.summary) {
-      var sh = document.createElement('h3'); sh.textContent = '摘要'; box.appendChild(sh);
-      view.summary.split(/\n+/).forEach(function (line) {
-        var p = document.createElement('p'); p.textContent = line; box.appendChild(p);
-      });
-    }
-    var oh = document.createElement('h3'); oh.textContent = '原文'; box.appendChild(oh);
-    Object.keys(d.sections).forEach(function (name) {
-      var nh = document.createElement('h3'); nh.textContent = name; box.appendChild(nh);
-      (d.sections[name] || '').split(/\n+/).filter(Boolean).forEach(function (line) {
+    doc.sections.forEach(function (sec) {
+      var sh = document.createElement('h3');
+      sh.textContent = sec.heading;
+      box.appendChild(sh);
+      sec.paragraphs.forEach(function (text) {
         var p = document.createElement('p');
-        if (name === '主文') {
-          var m = document.createElement('mark'); m.textContent = line; p.appendChild(m);
-        } else {
-          p.textContent = line;
-        }
+        p.textContent = text;
         box.appendChild(p);
       });
+    });
+    var oh = document.createElement('h3');
+    oh.textContent = '原判決主文';
+    box.appendChild(oh);
+    (d.sections['主文'] || '').split(/\n+/).filter(Boolean).forEach(function (line) {
+      var p = document.createElement('p');
+      var m = document.createElement('mark');
+      m.textContent = line;
+      p.appendChild(m);
+      box.appendChild(p);
     });
     box.hidden = false;
   }
@@ -336,13 +356,11 @@
       var r = await api.brief.run({
         judgmentId: $('briefId').value.trim(),
         focus: $('briefFocus').value.trim(),
-        lengthHint: $('briefLength').value,
-        useAi: $('briefAi').checked
+        lengthHint: $('briefLength').value
       });
       state.brief = r;
       renderBrief(r);
-      if (r.aiError) setStatus($('briefStatus'), 'AI 摘要未產生：' + r.aiError, 'error');
-      else setStatus($('briefStatus'), '已讀取。', 'ok');
+      setStatus($('briefStatus'), '已完成 AI 整理。', 'ok');
       $('briefExport').disabled = false;
     } catch (err) {
       setStatus($('briefStatus'), '讀取失敗：' + errText(err), 'error');
@@ -353,7 +371,7 @@
   $('briefExport').addEventListener('click', async function () {
     if (!state.brief) return;
     try {
-      var r = await api.brief.export({ detail: state.brief.detail, summary: state.brief.summary });
+      var r = await api.brief.export({ detail: state.brief.detail, doc: state.brief.doc });
       if (!r.canceled) setStatus($('briefStatus'), '已匯出：' + r.filePath, 'ok');
     } catch (err) {
       setStatus($('briefStatus'), '匯出失敗：' + errText(err), 'error');

@@ -1,7 +1,7 @@
-// 匯出：列表 Excel（沿用轉型正義判決表的欄位順序）與單一判決 Word（摘要＋原文主文高亮）。
+// 匯出：列表 Excel（沿用轉型正義判決表的欄位順序）與單一判決精讀 Word（全部段落由 AI 整理，原判決主文以螢光標示）。
 import ExcelJS from 'exceljs';
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ShadingType } from 'docx';
-import type { JudgmentDetail, JudgmentSummary } from '@judge/core';
+import type { JudgmentDetail, JudgmentSummary, BriefDocument } from '@judge/core';
 
 interface ListArgs {
   keyword: string;
@@ -28,7 +28,7 @@ export async function buildListWorkbook(args: ListArgs): Promise<Buffer> {
 
   const header = ws.getRow(1);
   header.font = { bold: true, color: { argb: 'FFFFFFFF' } };
-  header.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2B5FD9' } };
+  header.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB9472B' } };
   header.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
   header.height = 22;
 
@@ -48,7 +48,6 @@ export async function buildListWorkbook(args: ListArgs): Promise<Buffer> {
     }
     const r = ws.addRow(row);
     r.alignment = { vertical: 'top', wrapText: true };
-    if (i % 2 === 1) r.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF4F6FB' } };
   });
   ws.views = [{ state: 'frozen', ySplit: 1 }];
   ws.autoFilter = { from: 'A1', to: { row: 1, column: columns.length } };
@@ -64,6 +63,7 @@ export async function buildListWorkbook(args: ListArgs): Promise<Buffer> {
   return Buffer.from(await wb.xlsx.writeBuffer());
 }
 
+const font = 'Microsoft JhengHei';
 const para = (text: string, opts: { bold?: boolean; size?: number; highlight?: boolean } = {}) =>
   new Paragraph({
     spacing: { after: 120, line: 360 },
@@ -72,37 +72,32 @@ const para = (text: string, opts: { bold?: boolean; size?: number; highlight?: b
         text,
         bold: opts.bold,
         size: opts.size ?? 24,
-        font: 'Microsoft JhengHei',
-        ...(opts.highlight ? { shading: { type: ShadingType.CLEAR, fill: 'FFF3B0', color: 'auto' } } : {}),
+        font,
+        ...(opts.highlight ? { shading: { type: ShadingType.CLEAR, fill: 'F3D9CC', color: 'auto' } } : {}),
       }),
     ],
   });
 
-export async function buildBriefDocx(d: JudgmentDetail, summary: string | null): Promise<Buffer> {
+/** 單一判決精讀：標題與基本資料之後，依 AI 整理的段落輸出；最後附原判決主文（螢光標示）。 */
+export async function buildBriefDocx(d: JudgmentDetail, doc: BriefDocument): Promise<Buffer> {
   const children: Paragraph[] = [
     new Paragraph({
       heading: HeadingLevel.HEADING_1,
       alignment: AlignmentType.CENTER,
-      children: [new TextRun({ text: d.meta.title || d.meta.id, bold: true, size: 32, font: 'Microsoft JhengHei' })],
+      children: [new TextRun({ text: doc.title || d.meta.title || d.meta.id, bold: true, size: 32, font })],
     }),
     para(`法院：${d.meta.court ?? '—'}　日期：${d.meta.dateIso ?? d.meta.dateMinguo}`),
     para(`案由：${d.meta.cause || '—'}`),
     para(`來源：${d.meta.sourceUrl}`, { size: 20 }),
-    new Paragraph({ children: [new TextRun({ text: '' })] }),
-    new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: '一、摘要', bold: true, font: 'Microsoft JhengHei' })] }),
+    para('以下內容由 AI 依判決原文整理，請對照原文確認。', { size: 20 }),
   ];
-  if (summary) {
-    summary.split(/\n+/).forEach((line) => children.push(para(line)));
-  } else {
-    children.push(para('（未產生 AI 摘要。可在設定中輸入 AI 金鑰後重新產生。）'));
+  for (const sec of doc.sections) {
+    children.push(new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: sec.heading, bold: true, font })] }));
+    for (const p of sec.paragraphs) children.push(para(p));
   }
-  children.push(new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: '二、原文', bold: true, font: 'Microsoft JhengHei' })] }));
-  for (const [name, body] of Object.entries(d.sections)) {
-    children.push(para(name, { bold: true }));
-    // 主文以黃色螢光標示，其餘段落為一般文字
-    const highlight = name === '主文';
-    body.split(/\n+/).filter(Boolean).forEach((line) => children.push(para(line, { highlight })));
-  }
-  const doc = new Document({ sections: [{ children }] });
-  return Buffer.from(await Packer.toBuffer(doc));
+  children.push(new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: '原判決主文', bold: true, font })] }));
+  const main = d.sections['主文'] ?? '';
+  main.split(/\n+/).filter(Boolean).forEach((line) => children.push(para(line, { highlight: true })));
+  const document = new Document({ sections: [{ children }] });
+  return Buffer.from(await Packer.toBuffer(document));
 }

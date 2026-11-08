@@ -8,7 +8,9 @@ import { spawn } from 'node:child_process';
 import AdmZip from 'adm-zip';
 import {
   searchJudgments, getJudgmentDetail, buildScopeTable, CourtClient,
-  type JudgmentDetail, type JudgmentSummary, type ScopeRow,
+  analyzeCase, synthesizeScope, briefJudgment,
+  type JudgmentDetail, type JudgmentSummary, type ScopeRow, type AiComplete,
+  type CaseAnalysis, type ScopeSynthesis, type BriefDocument,
 } from '@judge/core';
 import { buildListWorkbook, buildBriefDocx } from './exporters';
 import { buildScopeWorkbook, buildScopeDocx, type ScopeSheet } from './scopeExporters';
@@ -62,6 +64,12 @@ function decryptKey(enc: string | null): string | null {
 function encryptKey(key: string): string {
   if (!safeStorage.isEncryptionAvailable()) throw new Error('這台電腦無法加密保存金鑰，請改用其他方式。');
   return safeStorage.encryptString(key).toString('base64');
+}
+
+/** 所有 AI 產出都必須經過這裡；沒有金鑰時直接報錯，不會退回規則式的文字切割。 */
+async function requireAi(): Promise<AiComplete> {
+  const cfg = await aiConfigOrThrow();
+  return (system, user, maxTokens) => callAi(cfg, { system, user, maxTokens });
 }
 
 async function aiConfigOrThrow(): Promise<AiConfig> {
@@ -285,6 +293,7 @@ function registerIpc() {
 
   // 範圍整理表
   ipcMain.handle('scope:run', async (e, args: { statutes: string[]; yearFrom?: number; yearTo?: number; maxItems: number }) => {
+    const ai = await requireAi();
     const sheets: ScopeSheet[] = [];
     const client = new CourtClient();
     for (const statute of args.statutes) {
@@ -294,9 +303,19 @@ function registerIpc() {
         yearTo: args.yearTo,
         maxItems: args.maxItems,
         client,
-        onProgress: (done, total) => e.sender.send('scope:progress', { statute, done, total }),
+        onProgress: (done, total) => e.sender.send('scope:progress', { statute, done, total, phase: '篩選判決' }),
       });
-      sheets.push({ statute, rows });
+      const analyses: CaseAnalysis[] = [];
+      for (let i = 0; i < rows.length; i++) {
+        e.sender.send('scope:progress', { statute, done: i + 1, total: rows.length, phase: 'AI 逐案分析' });
+        const d = await cachedDetail(rows[i].id, client);
+        analyses.push(await analyzeCase(ai, statute, rows[i], d));
+      }
+      e.sender.send('scope:progress', { statute, done: 1, total: 1, phase: 'AI 綜合分析' });
+      const synthesis: ScopeSynthesis | null = rows.length
+        ? await synthesizeScope(ai, statute, analyses)
+        : null;
+      sheets.push({ statute, rows, analyses, synthesis });
     }
     return { sheets };
   });
@@ -317,33 +336,20 @@ function registerIpc() {
   });
 
   // 單一判決精讀
-  ipcMain.handle('brief:run', async (_e, args: { judgmentId: string; focus: string; lengthHint: string; useAi: boolean }) => {
+  ipcMain.handle('brief:run', async (_e, args: { judgmentId: string; focus: string; lengthHint: string }) => {
+    const ai = await requireAi();
     const d = await cachedDetail(args.judgmentId);
-    let summary: string | null = null;
-    let aiError: string | null = null;
-    if (args.useAi) {
-      try {
-        const cfg = await aiConfigOrThrow();
-        const body = Object.entries(d.sections).map(([k, v]) => `【${k}】\n${v}`).join('\n\n') || d.fullText;
-        summary = await callAi(cfg, {
-          system: '你是台灣法律研究助理。依使用者指定的重點與長度，以繁體中文整理判決摘要。只根據提供的判決內容，不得編造。',
-          user: `請整理以下判決。\n重點：${args.focus || '由你判斷最重要的爭點、事實、理由與主文'}\n長度：${args.lengthHint || '約 1 頁'}\n\n${body.slice(0, 60000)}`,
-          maxTokens: 2048,
-        });
-      } catch (err) {
-        aiError = err instanceof Error ? err.message : String(err);
-      }
-    }
-    return { detail: d, summary, aiError };
+    const doc: BriefDocument = await briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint });
+    return { detail: d, doc };
   });
-  ipcMain.handle('export:brief', async (_e, args: { detail: JudgmentDetail; summary: string | null }) => {
+  ipcMain.handle('export:brief', async (_e, args: { detail: JudgmentDetail; doc: BriefDocument }) => {
     const save = await dialog.showSaveDialog(win!, {
       title: '儲存判決精讀',
       defaultPath: path.join(app.getPath('documents'), `判決精讀_${args.detail.meta.caseNo ?? args.detail.meta.id}.docx`),
       filters: [{ name: 'Word', extensions: ['docx'] }],
     });
     if (save.canceled || !save.filePath) return { canceled: true };
-    await fs.writeFile(save.filePath, await buildBriefDocx(args.detail, args.summary));
+    await fs.writeFile(save.filePath, await buildBriefDocx(args.detail, args.doc));
     return { canceled: false, filePath: save.filePath };
   });
 }

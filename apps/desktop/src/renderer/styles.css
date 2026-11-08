@@ -175,3 +175,5 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
   .entry { grid-template-columns: 1fr; gap: 4px; }
   h1 { font-size: 1.3rem; }
 }
+.synthesis { margin: 10px 0 14px; padding: 12px 14px; background: var(--paper-2); border-left: 3px solid var(--shu); }
+.synthesis p { margin: 0 0 6px; }
