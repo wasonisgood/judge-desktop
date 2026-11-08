@@ -4,7 +4,17 @@ export interface AiConfig {
   provider: 'anthropic' | 'openai-compatible';
   baseUrl: string;
   model: string;
+  /** API 金鑰；使用工作負載身分聯合時，這裡放的是換得的短期權杖。 */
   apiKey: string;
+  /** 'apiKey' 以 x-api-key 送出；'bearer' 以 Authorization: Bearer 送出（工作負載身分聯合）。 */
+  authMode?: 'apiKey' | 'bearer';
+}
+
+/** Anthropic 原生 API 的認證標頭。 */
+export function anthropicAuthHeaders(cfg: AiConfig): Record<string, string> {
+  const base: Record<string, string> = { 'content-type': 'application/json', 'anthropic-version': '2023-06-01' };
+  if (cfg.authMode === 'bearer') return { ...base, authorization: `Bearer ${cfg.apiKey}` };
+  return { ...base, 'x-api-key': cfg.apiKey };
 }
 
 export interface AiCall {
@@ -20,7 +30,7 @@ export async function callAi(cfg: AiConfig, call: AiCall): Promise<string> {
     const res = await fetch(`${base}/v1/messages`, {
       method: 'POST',
       signal,
-      headers: { 'content-type': 'application/json', 'x-api-key': cfg.apiKey, 'anthropic-version': '2023-06-01' },
+      headers: anthropicAuthHeaders(cfg),
       body: JSON.stringify({
         model: cfg.model,
         max_tokens: call.maxTokens,

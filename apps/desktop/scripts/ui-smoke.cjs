@@ -95,6 +95,24 @@ app.whenReady().then(async () => {
     check('深色模式可切換', dark === 'dark', dark);
     await js(w, "document.getElementById('themeToggle').click()");
 
+    // 9. 設定：切到工作負載身分聯合，圖解步驟與欄位出現，金鑰欄位隱藏
+    await js(w, "document.querySelector('.rail-item[data-page=\"settings\"]').click()");
+    await wait(200);
+    await js(w, "document.getElementById('setAuthMode').value='federation'; document.getElementById('setAuthMode').dispatchEvent(new Event('change'))");
+    await wait(120);
+    const fedShown = await js(w, "!document.getElementById('fedFields').hidden");
+    const steps = await js(w, "document.querySelectorAll('.wif-step').length");
+    const keyHidden = await js(w, "document.getElementById('keyField').hidden");
+    check('身分聯合：顯示欄位與四步圖解', fedShown === true && steps === 4, String(steps));
+    check('身分聯合：隱藏金鑰欄位', keyHidden === true);
+    const svgCount = await js(w, "document.querySelectorAll('.wif-art').length");
+    check('身分聯合：每一步都有 SVG 圖示', svgCount === 4, String(svgCount));
+    await js(w, "document.getElementById('setAuthMode').value='apiKey'; document.getElementById('setAuthMode').dispatchEvent(new Event('change'))");
+    await wait(80);
+    const keyBack = await js(w, "!document.getElementById('keyField').hidden");
+    check('切回 API 金鑰時金鑰欄位恢復', keyBack === true);
+    await js(w, "document.getElementById('setAuthMode').value='federation'; document.getElementById('setAuthMode').dispatchEvent(new Event('change'))");
+
     // 截圖（首頁、範圍整理、助理面板）
     fs.mkdirSync(shotDir, { recursive: true });
     const shot = async (name) => {
@@ -103,6 +121,12 @@ app.whenReady().then(async () => {
       fs.writeFileSync(file, img.toPNG());
       return file;
     };
+    await js(w, "document.querySelector('.rail-item[data-page=\"settings\"]').click()");
+    await wait(200);
+    await wait(300);
+    await js(w, "if (!document.getElementById('assistPanel').hidden) document.getElementById('assistClose').click(); document.getElementById('setAuthMode').value='federation'; document.getElementById('setAuthMode').dispatchEvent(new Event('change'))");
+    await wait(200);
+    const sSet = await shot('settings-federation.png');
     await js(w, "document.querySelector('.rail-item[data-page=\"home\"]').click()");
     await wait(200);
     const s1 = await shot('home.png');

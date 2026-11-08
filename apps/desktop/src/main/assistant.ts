@@ -4,7 +4,7 @@
 // 2. 會花費 AI 額度或會改動資料的操作（範圍整理、單一判決精讀、封存、刪除），一律先列為「待確認」，
 //    由使用者在畫面上按同意後才執行；模型本身不能直接執行這些操作。
 // 3. 金鑰只在主程序使用，不會傳給畫面。
-import type { AiConfig } from './ai';
+import { anthropicAuthHeaders, type AiConfig } from './ai';
 
 export type AssistantPage = 'home' | 'list' | 'scope' | 'brief' | 'files' | 'settings';
 
@@ -151,7 +151,7 @@ async function askModel(cfg: AiConfig, items: Item[]): Promise<ModelReply> {
     const res = await fetch(`${base}/v1/messages`, {
       method: 'POST',
       signal,
-      headers: { 'content-type': 'application/json', 'x-api-key': cfg.apiKey, 'anthropic-version': '2023-06-01' },
+      headers: anthropicAuthHeaders(cfg),
       body: JSON.stringify({
         model: cfg.model,
         max_tokens: 1500,

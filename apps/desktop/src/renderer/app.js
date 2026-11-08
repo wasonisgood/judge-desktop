@@ -71,8 +71,24 @@
     anthropic: { baseUrl: 'https://api.anthropic.com', model: 'claude-haiku-5-5' },
     'openai-compatible': { baseUrl: 'https://api.openai.com/v1', model: 'gpt-4o-mini' }
   };
+  function applyAuthMode() {
+    var fed = $('setAuthMode').value === 'federation';
+    $('fedFields').hidden = !fed;
+    $('keyField').hidden = fed;
+    $('setProvider').disabled = fed;
+    if (fed) $('setProvider').value = 'anthropic';
+  }
+  $('setAuthMode').addEventListener('change', applyAuthMode);
   async function loadSettings() {
     var s = await api.settings.get();
+    $('setAuthMode').value = s.aiAuthMode || 'apiKey';
+    var f = s.federation || {};
+    $('setFedOrg').value = f.organizationId || '';
+    $('setFedRule').value = f.federationRuleId || '';
+    $('setFedSvc').value = f.serviceAccountId || '';
+    $('setFedWorkspace').value = f.workspaceId || '';
+    $('setFedFile').value = f.identityTokenFile || '';
+    applyAuthMode();
     $('setProvider').value = s.aiProvider;
     $('setBaseUrl').value = s.aiBaseUrl;
     $('setModel').value = s.aiModel;
@@ -89,6 +105,14 @@
     ev.preventDefault();
     var patch = {
       aiProvider: $('setProvider').value,
+      aiAuthMode: $('setAuthMode').value,
+      federation: {
+        organizationId: $('setFedOrg').value.trim(),
+        federationRuleId: $('setFedRule').value.trim(),
+        serviceAccountId: $('setFedSvc').value.trim(),
+        workspaceId: $('setFedWorkspace').value.trim(),
+        identityTokenFile: $('setFedFile').value.trim()
+      },
       aiBaseUrl: $('setBaseUrl').value.trim(),
       aiModel: $('setModel').value.trim(),
       cacheDays: Number($('setCacheDays').value) || 7

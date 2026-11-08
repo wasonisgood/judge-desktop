@@ -9,6 +9,7 @@ import {
   searchJudgments, getJudgmentDetail, buildScopeTable, CourtClient,
   analyzeCase, synthesizeScope, briefJudgment,
   LawClient, createCurlFetch, parseSingleCitation, parseCitations, judgmentQueries,
+  FederatedTokenProvider, type FederationConfig,
   type JudgmentDetail, type JudgmentSummary, type ScopeRow, type AiComplete,
   type CaseAnalysis, type ScopeSynthesis, type BriefDocument, type CitationRef,
   type HistoryArticle, type CurrentLaw,
@@ -25,17 +26,34 @@ let win: BrowserWindow | null = null;
 // ---------------------------------------------------------------------------
 // 設定
 // ---------------------------------------------------------------------------
+export interface FederationSettings {
+  organizationId: string;
+  federationRuleId: string;
+  serviceAccountId: string;
+  workspaceId: string;
+  /** 使用者提供的身分憑證（OIDC JWT）檔案路徑；每次換取時重新讀取。 */
+  identityTokenFile: string;
+}
+
 interface StoredSettings {
   aiProvider: 'anthropic' | 'openai-compatible';
+  aiAuthMode: 'apiKey' | 'federation';
   aiBaseUrl: string;
   aiModel: string;
   aiKeyEnc: string | null;
+  federation: FederationSettings;
   defaultMaxItems: number;
   cacheDays: number;
 }
 
+const EMPTY_FEDERATION: FederationSettings = {
+  organizationId: '', federationRuleId: '', serviceAccountId: '', workspaceId: '', identityTokenFile: '',
+};
+
 const DEFAULTS: StoredSettings = {
   aiProvider: 'anthropic',
+  aiAuthMode: 'apiKey',
+  federation: { ...EMPTY_FEDERATION },
   aiBaseUrl: 'https://api.anthropic.com',
   aiModel: 'claude-haiku-5-5',
   aiKeyEnc: null,
@@ -74,11 +92,35 @@ async function requireAi(): Promise<AiComplete> {
   return (system, user, maxTokens) => callAi(cfg, { system, user, maxTokens });
 }
 
+const federationProviders = new Map<string, FederatedTokenProvider>();
+
 async function aiConfigOrThrow(): Promise<AiConfig> {
   const s = await readSettings();
+  if (s.aiAuthMode === 'federation') {
+    const f = s.federation;
+    if (s.aiProvider !== 'anthropic') throw new Error('工作負載身分聯合目前只支援 Anthropic 服務，請到「設定」改用 API 金鑰。');
+    if (!f.organizationId || !f.federationRuleId || !f.serviceAccountId || !f.identityTokenFile) {
+      throw new Error('尚未完成工作負載身分聯合設定（組織 ID、聯合規則 ID、服務帳號 ID、身分憑證檔）。');
+    }
+    const cacheKey = JSON.stringify([s.aiBaseUrl, f]);
+    let provider = federationProviders.get(cacheKey);
+    if (!provider) {
+      const cfg: FederationConfig = {
+        baseUrl: s.aiBaseUrl,
+        organizationId: f.organizationId,
+        federationRuleId: f.federationRuleId,
+        serviceAccountId: f.serviceAccountId,
+        workspaceId: f.workspaceId || undefined,
+      };
+      provider = new FederatedTokenProvider(cfg, async () => (await fs.readFile(f.identityTokenFile, 'utf8')).trim());
+      federationProviders.set(cacheKey, provider);
+    }
+    const token = await provider.get();
+    return { provider: 'anthropic', baseUrl: s.aiBaseUrl, model: s.aiModel, apiKey: token, authMode: 'bearer' };
+  }
   const key = decryptKey(s.aiKeyEnc);
   if (!key) throw new Error('尚未設定 AI 金鑰，請到「設定」輸入。');
-  return { provider: s.aiProvider, baseUrl: s.aiBaseUrl, model: s.aiModel, apiKey: key };
+  return { provider: s.aiProvider, baseUrl: s.aiBaseUrl, model: s.aiModel, apiKey: key, authMode: 'apiKey' };
 }
 
 // ---------------------------------------------------------------------------
@@ -296,6 +338,8 @@ function registerIpc() {
     const s = await readSettings();
     return {
       aiProvider: s.aiProvider,
+      aiAuthMode: s.aiAuthMode,
+      federation: s.federation,
       aiBaseUrl: s.aiBaseUrl,
       aiModel: s.aiModel,
       hasKey: !!decryptKey(s.aiKeyEnc),
@@ -305,9 +349,13 @@ function registerIpc() {
   });
   ipcMain.handle('settings:set', async (_e, patch: Partial<StoredSettings> & { apiKey?: string; clearKey?: boolean }) => {
     const next: StoredSettings = { ...(await readSettings()) };
-    for (const k of ['aiProvider', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays'] as const) {
+    for (const k of ['aiProvider', 'aiAuthMode', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays'] as const) {
       if (patch[k] !== undefined) (next as any)[k] = patch[k];
     }
+    if (patch.federation) {
+      next.federation = { ...EMPTY_FEDERATION, ...next.federation, ...patch.federation };
+    }
+    if (next.aiAuthMode === 'federation') next.aiProvider = 'anthropic';
     if (patch.clearKey) next.aiKeyEnc = null;
     if (patch.apiKey) next.aiKeyEnc = encryptKey(patch.apiKey.trim());
     await writeSettings(next);

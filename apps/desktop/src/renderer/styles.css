@@ -235,3 +235,20 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
   .assist-fab { bottom: 70px; }
   .assist-panel { bottom: 136px; }
 }
+
+/* 工作負載身分聯合的圖解步驟（線條式，只用本站的墨色與朱色） */
+.wif-guide { margin: 6px 0 18px; padding: 16px 18px; background: var(--paper-2); border: 1px solid var(--rule); }
+.wif-guide h2 { margin-top: 0; }
+.wif-steps { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 12px; }
+.wif-step {
+  display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center;
+  padding: 12px; background: var(--paper); border: 1px solid var(--rule);
+}
+.wif-art { width: 150px; height: 79px; color: var(--ink-2); }
+.wif-art text { font-family: Consolas, monospace; }
+.wif-text p { margin: 0 0 4px; }
+.wif-no { font-family: var(--serif); font-size: 1.25rem; line-height: 1.2; color: var(--shu-ink); font-weight: 700; margin-bottom: 2px !important; }
+@media (max-width: 860px) {
+  .wif-step { grid-template-columns: 1fr; }
+  .wif-art { width: 120px; height: 63px; }
+}
