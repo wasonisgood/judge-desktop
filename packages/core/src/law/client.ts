@@ -46,8 +46,8 @@ export class LawClient {
     }
   }
 
-  /** 所有請求的唯一入口：限速、帶 cookie、設定逾時。 */
-  async request(url: string, init: RequestInit = {}): Promise<string> {
+  /** 單次請求：限速、帶 cookie、設定逾時；不自動跟隨轉址（由呼叫端決定）。 */
+  async requestRaw(url: string, init: RequestInit = {}): Promise<Response> {
     const wait = this.lastAt + this.minInterval - Date.now();
     if (wait > 0) await new Promise((r) => setTimeout(r, wait));
     this.lastAt = Date.now();
@@ -55,10 +55,33 @@ export class LawClient {
     const headers = new Headers(init.headers);
     headers.set('user-agent', USER_AGENT);
     if (this.cookieHeader()) headers.set('cookie', this.cookieHeader());
-    const res = await this.fetchImpl(url, { ...init, headers, signal: AbortSignal.timeout(this.timeout) });
+    const res = await this.fetchImpl(url, {
+      ...init,
+      headers,
+      redirect: 'manual',
+      signal: AbortSignal.timeout(this.timeout),
+    });
     this.absorb(res);
-    if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
-    return res.text();
+    return res;
+  }
+
+  /** 取得文字內容；遇到轉址會手動跟隨（最多五次，並保留 cookie）。 */
+  async request(url: string, init: RequestInit = {}): Promise<string> {
+    let current = url;
+    let opts = init;
+    for (let hop = 0; hop < 5; hop++) {
+      const res = await this.requestRaw(current, opts);
+      if (res.status >= 300 && res.status < 400) {
+        const loc = res.headers.get('location');
+        if (!loc) throw new Error(`HTTP ${res.status} 沒有轉址位置：${current}`);
+        current = new URL(loc, current).toString();
+        opts = { method: 'GET' }; // 轉址一律改為 GET
+        continue;
+      }
+      if (!res.ok) throw new Error(`HTTP ${res.status} ${current}`);
+      return res.text();
+    }
+    throw new Error(`轉址次數過多：${url}`);
   }
 
   // -------------------------------------------------------------------------
@@ -99,7 +122,7 @@ export class LawClient {
     const $r = cheerio.load(html);
     const rows: LawNameMatch[] = [];
     $r('a#hlkLawLink').each((_, a) => {
-      const text = $r(a).text().trim();
+      const text = ($r(a).attr('title') || $r(a).text()).trim();
       const href = $r(a).attr('href') ?? '';
       const pcode = new URL(href, MOJ_BASE).searchParams.get('pcode');
       if (pcode) rows.push({ name: text, pcode });
