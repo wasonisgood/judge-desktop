@@ -9,7 +9,7 @@ import {
   searchJudgments, getJudgmentDetail, buildScopeTable, CourtClient,
   analyzeCase, synthesizeScope, briefJudgment,
   LawClient, createCurlFetch, parseSingleCitation, parseCitations, judgmentQueries,
-  FederatedTokenProvider, type FederationConfig, resolveLawName, DEFAULT_BRIEF_FIELDS, normalizeBriefFields, type BriefField,
+  FederatedTokenProvider, type FederationConfig, type LocalPlan, LocalCloudRouter, resolveLawName, DEFAULT_BRIEF_FIELDS, normalizeBriefFields, type BriefField,
   screenRelevance, type RelevanceItem, openPdf, pagesNeedingOcr, renderPageWithHighlights,
   type JudgmentDetail, type JudgmentSummary, type ScopeRow, type AiComplete,
   type CaseAnalysis, type ScopeSynthesis, type BriefDocument, type CitationRef,
@@ -21,6 +21,11 @@ import { buildScopeWorkbook, buildScopeDocx, type ScopeSheet } from './scopeExpo
 import { callAi, type AiConfig } from './ai';
 import { runAssistantTurn, mergeSearchHits, type ToolCall, type ToolOutcome, type AssistantTurn, type SearchHit } from './assistant';
 import { LibraryStore, newId, type LibraryStatus } from './library';
+import {
+  readModuleStatus, planForUi, installAiEngineModule, installCrawlerModuleForApp,
+  runRepair, localBackendIfReady, setSkipAi, type PlanChoice,
+} from './localAi';
+import type { RepairActionId } from '@judge/core';
 
 const isDev = !app.isPackaged;
 let win: BrowserWindow | null = null;
@@ -94,7 +99,13 @@ function encryptKey(key: string): string {
 /** 所有 AI 產出都必須經過這裡；沒有金鑰時直接報錯，不會退回規則式的文字切割。 */
 async function requireAi(): Promise<AiComplete> {
   const cfg = await aiConfigOrThrow();
-  return (system, user, maxTokens) => callAi(cfg, { system, user, maxTokens });
+  // 本地 AI 已安裝並註冊時先走本地（Ollama），失敗或冷卻中則自動回退雲端。沒有安裝時行為與以前相同。
+  const local = await localBackendIfReady();
+  const cloud = { kind: 'cloud' as const, run: async <T>(_t: unknown, payload: unknown) => callAi(cfg, payload as { system: string; user: string; maxTokens: number }) as unknown as T };
+  const router = new LocalCloudRouter(local, cloud);
+  if (local) router.registerLocalReady();
+  // 本地後端讀 prompt、雲端讀 user，因此兩者都放入同一份內容。
+  return async (system, user, maxTokens) => (await router.route<string>('judgment', { system, user, prompt: user, maxTokens })).value;
 }
 
 const federationProviders = new Map<string, FederatedTokenProvider>();
@@ -247,6 +258,39 @@ export function rowCites(row: ScopeRow, cit: CitationRef): boolean {
 // ---------------------------------------------------------------------------
 // 視窗
 // ---------------------------------------------------------------------------
+// 本地模組安裝精靈：獨立視窗（與更新程式一樣獨立），不影響主視窗的操作。
+let wizardWin: BrowserWindow | null = null;
+function openWizardWindow(): void {
+  if (wizardWin) {
+    wizardWin.focus();
+    return;
+  }
+  wizardWin = new BrowserWindow({
+    width: 820,
+    height: 760,
+    minWidth: 640,
+    minHeight: 520,
+    show: false,
+    backgroundColor: '#F1ECE2',
+    title: '本地模組安裝精靈',
+    parent: win ?? undefined,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: true,
+    },
+  });
+  wizardWin.once('ready-to-show', () => wizardWin?.show());
+  void wizardWin.loadFile(path.join(__dirname, '..', 'renderer', 'wizard.html'));
+  wizardWin.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+  wizardWin.on('closed', () => {
+    wizardWin = null;
+    // 關閉精靈（含中途關閉）後，主視窗也要重新讀取狀態。
+    win?.webContents.send('local:changed');
+  });
+}
+
 function createWindow() {
   win = new BrowserWindow({
     width: 1180,
@@ -396,6 +440,31 @@ function registerIpc() {
   ipcMain.handle('win:close', () => win?.close());
   ipcMain.handle('app:info', () => ({ version: app.getVersion(), packaged: app.isPackaged }));
   ipcMain.handle('update:openUpdater', () => openUpdater(true));
+
+  // 本地模組：檢查與方案（唯讀）、安裝（使用者選擇後才執行）、修復、爬取模組安裝。
+  // 進度事件以 local:progress 推送；方案一律由主程序重新計算，不信任畫面傳來的內容。
+  ipcMain.handle('local:modules', () => readModuleStatus());
+  ipcMain.handle('local:plan', () => planForUi());
+  ipcMain.handle('local:installAi', async (e, args: { choice: PlanChoice }) => {
+    const { options } = await planForUi();
+    const opt = options.find((o) => o.id === args?.choice);
+    if (!opt) throw new Error('找不到所選方案');
+    if (opt.id === 'skip') return setSkipAi();
+    return installAiEngineModule(opt.plan, (ev) => e.sender.send('local:progress', ev));
+  });
+  ipcMain.handle('local:installCrawler', (e) => installCrawlerModuleForApp((ev) => e.sender.send('local:progress', ev)));
+  ipcMain.handle('local:openWizard', () => {
+    openWizardWindow();
+    return { ok: true };
+  });
+  ipcMain.handle('local:wizardDone', () => {
+    // 註冊完成後才回到主畫面：通知主視窗重新讀取狀態，並關閉精靈視窗。
+    win?.webContents.send('local:changed');
+    wizardWin?.close();
+    return { ok: true };
+  });
+  ipcMain.handle('local:repair', (e, args: { action: RepairActionId }) =>
+    runRepair(args.action, (ev) => e.sender.send('local:progress', ev)));
 
   ipcMain.handle('settings:get', async () => {
     const s = await readSettings();

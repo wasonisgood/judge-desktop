@@ -36,6 +36,21 @@ contextBridge.exposeInMainWorld('api', {
     export: (args: unknown) => invoke('export:brief', args),
   },
   update: { openUpdater: () => invoke('update:openUpdater') },
+  localAi: {
+    modules: () => invoke('local:modules'),
+    plan: () => invoke('local:plan'),
+    installAi: (args: { choice: string }) => invoke('local:installAi', args),
+    installCrawler: () => invoke('local:installCrawler'),
+    repair: (args: { action: string }) => invoke('local:repair', args),
+    onProgress: (cb: (p: unknown) => void) => {
+      ipcRenderer.on('local:progress', (_e, p) => cb(p));
+    },
+    openWizard: () => invoke('local:openWizard'),
+    wizardDone: () => invoke('local:wizardDone'),
+    onChanged: (cb: () => void) => {
+      ipcRenderer.on('local:changed', () => cb());
+    },
+  },
   law: {
     resolve: (args: unknown) => invoke('law:resolve', args),
     current: (args: unknown) => invoke('law:current', args),

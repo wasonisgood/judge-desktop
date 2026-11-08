@@ -802,3 +802,23 @@
   });
   loadSettings();
 })();
+
+// 設定頁的本地模組摘要：只顯示狀態，安裝一律在獨立的精靈視窗進行。
+(function () {
+  if (!window.api || !api.localAi) return;
+  var STATUS = { 'not-installed': '尚未安裝', installing: '安裝中', ready: '已安裝並啟用', failed: '安裝失敗（請開啟精靈修復）', disabled: '已選擇不安裝（只用雲端）' };
+  function refresh() {
+    api.localAi.modules().then(function (reg) {
+      var ai = reg['ai-engine'], cr = reg.crawler;
+      var a = document.getElementById('localAiSummary');
+      var c = document.getElementById('localCrawlSummary');
+      a.textContent = 'AI 引擎：' + (STATUS[ai.status] || ai.status);
+      a.className = 'status' + (ai.status === 'failed' ? ' error' : ai.status === 'ready' ? ' ok' : '');
+      c.textContent = '爬取模組：' + (STATUS[cr.status] || cr.status);
+      c.className = 'status' + (cr.status === 'failed' ? ' error' : cr.status === 'ready' ? ' ok' : '');
+    });
+  }
+  document.getElementById('openWizard').addEventListener('click', function () { api.localAi.openWizard(); });
+  api.localAi.onChanged(refresh);
+  refresh();
+})();

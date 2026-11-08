@@ -8,7 +8,7 @@
   "minimumVersion": "1.0.0",
   "mandatory": false,
   "notes": {
-    "zh": "・精讀判決可產生原版判決標示 Word：每 4 頁一份，AI 引用的原文以螢光標示，第一份最前面附 AI 摘要。\n・判決列表可用 AI 依主題篩選相關判決，相關的排前面並附理由。\n・判決搜尋查無結果時改為顯示說明，不再跳出錯誤。\n・包含 2.1 的全部功能。",
-    "en": "・Annotated original judgment Word files: 4 pages per file, quotes used by the AI highlighted, AI summary at the front of the first file.\n・AI screening of judgment lists by topic: relevant results first, with reasons.\n・No-result judgment searches show a message instead of an error.\n・Includes all 2.1 features."
+    "zh": "・新增「本地 AI（可選）」：設定頁可檢查這台電腦是否適合，同意後才會安裝本地 AI 服務與模型。精讀與範圍整理會優先使用本地模型，本地失敗時自動改用雲端。\n・安裝失敗時只在本機保存去敏後的摘要，不會上傳。\n・包含 0.2.2 的全部功能。",
+    "en": "・Optional local AI: Settings can check whether this computer is suitable. Installation starts only after you agree. Brief and scope analysis prefer the local model; if it fails, the app falls back to the cloud automatically.\n・Installation failures are saved locally as sanitized summaries only; nothing is uploaded.\n・Includes all 0.2.2 features."
   }
 }

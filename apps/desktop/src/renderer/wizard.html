@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本地模組安裝精靈</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="content">
+  <section class="page active" aria-labelledby="wizTitle">
+    <h1 id="wizTitle">本地模組安裝精靈</h1>
+    <p class="lead">依序完成檢查、選擇方案、同意與安裝。安裝沒有完成前，主畫面的所有功能照常使用，不會被影響。</p>
+
+    <div class="tabs" id="wizTabs" aria-label="安裝步驟">
+      <span class="tab" data-s="check">1 檢查電腦</span>
+      <span class="tab" data-s="choose">2 選擇方案</span>
+      <span class="tab" data-s="agree">3 同意安裝</span>
+      <span class="tab" data-s="install">4 安裝與註冊</span>
+    </div>
+
+    <!-- 步驟 1：檢查 -->
+    <section id="s-check" class="wiz-screen">
+      <p class="hint">會讀取記憶體、磁碟與顯卡資訊，並檢查網路與司法院網站連線。此步驟只讀取資訊，不會安裝任何東西。</p>
+      <div class="actions"><button class="btn primary" type="button" id="btnCheck">開始檢查</button></div>
+      <p class="status" id="checkStatus" role="status"></p>
+    </section>
+
+    <!-- 步驟 2：選擇方案 -->
+    <section id="s-choose" class="wiz-screen" hidden>
+      <fieldset class="field">
+        <legend>請選擇方案</legend>
+        <div id="optList"></div>
+      </fieldset>
+      <p class="status" id="chooseStatus" role="status"></p>
+      <div class="actions">
+        <button class="btn" type="button" data-go="check">上一步</button>
+        <button class="btn primary" type="button" id="btnToAgree" disabled>下一步</button>
+      </div>
+    </section>
+
+    <!-- 步驟 3：同意 -->
+    <section id="s-agree" class="wiz-screen" hidden>
+      <div class="notice" id="agreeSummary"></div>
+      <label class="check"><input type="checkbox" id="agreeBox"> 我同意下載並安裝所選的本地 AI 服務與模型（約需數 GB，過程需要網路）。</label>
+      <div class="actions">
+        <button class="btn" type="button" data-go="choose">上一步</button>
+        <button class="btn primary" type="button" id="btnInstall" disabled>開始安裝</button>
+      </div>
+    </section>
+
+    <!-- 步驟 4：安裝與註冊 -->
+    <section id="s-install" class="wiz-screen" hidden>
+      <div class="progress" id="progressBar" hidden><div class="bar"></div></div>
+      <p class="status" id="installLog" aria-live="polite"></p>
+      <div id="repairBox" class="notice" hidden>
+        <p id="repairText"></p>
+        <div class="actions" id="repairActions"></div>
+      </div>
+      <div id="doneBox" hidden>
+        <p class="status ok" id="doneText"></p>
+        <div class="actions"><button class="btn primary" type="button" id="btnDone">完成並返回主畫面</button></div>
+      </div>
+    </section>
+
+    <section class="wif-guide" aria-labelledby="crawlTitle">
+      <h2 id="crawlTitle">爬取模組（司法院檢索）</h2>
+      <p class="status" id="crawlerStatus" role="status"></p>
+      <div class="actions"><button class="btn" type="button" id="crawlerInstall">檢查並安裝爬取模組</button></div>
+      <p class="status" id="crawlerLog" aria-live="polite"></p>
+    </section>
+  </section>
+</main>
+<script src="wizard.js"></script>
+</body>
+</html>
