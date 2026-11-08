@@ -155,21 +155,42 @@
 
   // ---- 判決列表 ----
   // 列表表頭另在 index.html 補上「操作」欄
+  // AI 篩選：依搜尋主題判斷相關性；相關的排前面並附理由，不相關的預設隱藏，可勾選查看。
+  var listVerdicts = null;
   function renderList(items) {
     var body = $('listBody');
     body.innerHTML = '';
-    items.forEach(function (it, i) {
+    var rows = items.map(function (it, i) { return { it: it, i: i }; });
+    var hiddenCount = 0;
+    if (listVerdicts) {
+      rows.sort(function (a, b) {
+        var va = listVerdicts[a.it.id] || { relevant: false }, vb = listVerdicts[b.it.id] || { relevant: false };
+        return (vb.relevant ? 1 : 0) - (va.relevant ? 1 : 0) || a.i - b.i;
+      });
+      hiddenCount = rows.filter(function (x) { return !((listVerdicts[x.it.id] || {}).relevant); }).length;
+      if (!$('listShowAll').checked) rows = rows.filter(function (x) { return (listVerdicts[x.it.id] || {}).relevant; });
+      $('listScreenStatus').textContent = '相關 ' + (items.length - hiddenCount) + ' 筆，不相關 ' + hiddenCount + ' 筆' + (hiddenCount && !$('listShowAll').checked ? '（已隱藏）' : '');
+    } else {
+      $('listScreenStatus').textContent = '';
+    }
+    $('listShowAllWrap').hidden = !listVerdicts;
+    rows.forEach(function (x, n) {
+      var it = x.it;
       var tr = document.createElement('tr');
-      [String(i + 1), it.title, it.dateIso || it.dateDisplay || '', it.cause || ''].forEach(function (text, j) {
+      [String(n + 1), it.title, it.dateIso || it.dateDisplay || '', it.cause || ''].forEach(function (text, j) {
         var td = document.createElement('td');
         if (j === 0) td.className = 'num';
         if (j === 2) td.className = 'nowrap';
         td.textContent = text;
         tr.appendChild(td);
       });
-      var bt = el('td');
-      var b = el('button', 'btn small', '精讀這則');
-      b.type = 'button';
+      var v = listVerdicts && listVerdicts[it.id];
+      var judge = document.createElement('td');
+      judge.textContent = v ? ((v.relevant ? '相關：' : '不相關：') + v.reason) : '';
+      tr.appendChild(judge);
+      var bt = document.createElement('td');
+      var b = document.createElement('button');
+      b.className = 'btn small'; b.type = 'button'; b.textContent = '精讀這則';
       b.addEventListener('click', function () { briefFor(it); });
       bt.appendChild(b);
       tr.appendChild(bt);
@@ -177,6 +198,27 @@
     });
     $('listResult').hidden = items.length === 0;
   }
+  $('listShowAll').addEventListener('change', function () { if (state.listItems) renderList(state.listItems); });
+  $('listScreen').addEventListener('click', async function () {
+    if (!state.listItems || state.listItems.length === 0) return;
+    var btn = $('listScreen');
+    btn.disabled = true;
+    setStatus($('listScreenStatus'), 'AI 篩選中…（只依字號、案由與日期判斷，不讀全文）');
+    try {
+      var topic = state.listKeyword || $('listKeyword').value.trim();
+      listVerdicts = await api.search.screen({
+        topic: topic,
+        items: state.listItems.map(function (it) { return { id: it.id, title: it.title, cause: it.cause || '', dateIso: it.dateIso || null }; })
+      });
+      $('listShowAll').checked = false;
+      renderList(state.listItems);
+      setStatus($('listScreenStatus'), $('listScreenStatus').textContent, 'ok');
+    } catch (err) {
+      setStatus($('listScreenStatus'), 'AI 篩選失敗：' + errText(err), 'error');
+    } finally {
+      btn.disabled = false;
+    }
+  });
   $('listForm').addEventListener('submit', async function (ev) {
     ev.preventDefault();
     var keyword = $('listKeyword').value.trim();
@@ -197,6 +239,8 @@
       state.listItems = r.items;
       state.listDetails = r.details;
       state.listKeyword = keyword;
+      listVerdicts = null;
+      $('listScreen').disabled = r.items.length === 0;
       renderList(r.items);
       setStatus($('listStatus'), r.items.length ? '找到 ' + r.items.length + ' 筆，已存入「檔案」。' : '沒有找到符合的判決，請換個關鍵字再試。', r.items.length ? 'ok' : '');
       $('listExport').disabled = r.items.length === 0;

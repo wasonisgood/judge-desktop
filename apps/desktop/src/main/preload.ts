@@ -18,6 +18,7 @@ contextBridge.exposeInMainWorld('api', {
   cache: { clear: () => invoke('cache:clear') },
   search: {
     run: (args: unknown) => invoke('search:run', args),
+    screen: (args: unknown) => invoke('search:screen', args),
     onProgress: (cb: (p: { done: number; total: number; id: string }) => void) => {
       ipcRenderer.on('search:progress', (_e, p) => cb(p));
     },

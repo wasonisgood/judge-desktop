@@ -10,6 +10,7 @@ import {
   analyzeCase, synthesizeScope, briefJudgment,
   LawClient, createCurlFetch, parseSingleCitation, parseCitations, judgmentQueries,
   FederatedTokenProvider, type FederationConfig, resolveLawName, DEFAULT_BRIEF_FIELDS, normalizeBriefFields, type BriefField,
+  screenRelevance, type RelevanceItem,
   type JudgmentDetail, type JudgmentSummary, type ScopeRow, type AiComplete,
   type CaseAnalysis, type ScopeSynthesis, type BriefDocument, type CitationRef,
   type HistoryArticle, type CurrentLaw,
@@ -306,7 +307,9 @@ async function executeAssistantTool(call: ToolCall): Promise<ToolOutcome> {
       case 'read_judgment': {
         const d = await cachedDetail(String(input.id ?? ''));
         const main = (d.sections['主文'] ?? '').slice(0, 800);
-        return { content: JSON.stringify({ title: d.meta.title, court: d.meta.court, date: d.meta.dateIso, cause: d.meta.cause, main }) };
+        const reasoningStart = d.fullText.search(/理\s*由/);
+        const reasoning = (reasoningStart >= 0 ? d.fullText.slice(reasoningStart) : d.fullText).slice(0, 6000);
+        return { content: JSON.stringify({ title: d.meta.title, court: d.meta.court, date: d.meta.dateIso, cause: d.meta.cause, main, reasoning, fullTextChars: d.fullText.length }) };
       }
       case 'open_page': {
         const page = String(input.page ?? 'home') as AssistantPageName;
@@ -405,6 +408,10 @@ function registerIpc() {
   });
 
   // 列表生成
+  ipcMain.handle('search:screen', async (_e, args: { topic: string; items: RelevanceItem[] }) => {
+    const ai = await requireAi();
+    return screenRelevance(ai, args.topic, args.items.slice(0, 40));
+  });
   ipcMain.handle('search:run', async (e, args: { keyword: string; courtCode?: string; maxItems: number; includeFullText: boolean }) => {
     const items = await cachedSearch(args.keyword, args.maxItems, args.courtCode);
     const details: Record<string, Pick<JudgmentDetail, 'meta' | 'sections' | 'fullText'> & { historyPosition: string }> = {};

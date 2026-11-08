@@ -167,3 +167,46 @@ export async function briefJudgment(
   if (!Array.isArray(r.sections) || r.sections.length === 0) throw new Error('AI 沒有產生任何段落');
   return { title: r.title || d.meta.title, sections: r.sections };
 }
+
+// ---------------------------------------------------------------------------
+// 判決列表：依主題由 AI 篩選相關判決（只根據字號、案由、日期判斷，成本低）
+// ---------------------------------------------------------------------------
+export interface RelevanceItem {
+  id: string;
+  title: string;
+  cause: string;
+  dateIso: string | null;
+}
+
+export interface RelevanceVerdict {
+  relevant: boolean;
+  reason: string;
+}
+
+/** 回傳每個 id 的判斷；AI 漏掉的 id 一律視為不相關（不猜）。 */
+export async function screenRelevance(
+  ai: AiComplete,
+  topic: string,
+  items: RelevanceItem[],
+): Promise<Record<string, RelevanceVerdict>> {
+  const system = '你是台灣法律研究助理。依使用者的研究主題，判斷每一筆判決是否與主題相關。只根據提供的字號與案由判斷，不得編造。以繁體中文回答，並且只輸出一個 JSON 物件。';
+  const user = [
+    `研究主題：${topic}`,
+    '',
+    '請對每一筆判決判斷是否與研究主題相關，輸出 JSON：',
+    '{"results":[{"id":"判決 id","relevant":true或false,"reason":"一句話理由（20 字以內）"}]}',
+    '必須包含下列每一個 id，一個都不能少。',
+    '',
+    '判決清單（id｜字號｜案由｜日期）：',
+    ...items.map((it) => `${it.id}｜${it.title}｜${it.cause || '（無案由）'}｜${it.dateIso ?? '—'}`),
+  ].join('\n');
+  const r = await askJson<{ results: { id: string; relevant: boolean; reason: string }[] }>(ai, system, user, 2000);
+  const out: Record<string, RelevanceVerdict> = {};
+  for (const it of items) out[it.id] = { relevant: false, reason: '未判定' };
+  for (const x of Array.isArray(r.results) ? r.results : []) {
+    if (x && typeof x.id === 'string' && out[x.id] !== undefined) {
+      out[x.id] = { relevant: x.relevant === true, reason: String(x.reason ?? '').slice(0, 60) || (x.relevant ? '相關' : '不相關') };
+    }
+  }
+  return out;
+}
