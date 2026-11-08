@@ -607,6 +607,17 @@
   }
   $('assistFab').addEventListener('click', function () { setPanel($('assistPanel').hidden); });
   $('assistClose').addEventListener('click', function () { setPanel(false); });
+  // 全螢幕：助理面板撐滿視窗，方便閱讀長篇討論；按 Esc 或再按一次即可還原。
+  function setFullscreen(on) {
+    $('assistPanel').classList.toggle('fullscreen', on);
+    $('assistFull').textContent = on ? '還原' : '全螢幕';
+    $('assistFull').setAttribute('aria-pressed', on ? 'true' : 'false');
+    if (on) $('assistText').focus();
+  }
+  $('assistFull').addEventListener('click', function () { setFullscreen(!$('assistPanel').classList.contains('fullscreen')); });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' && $('assistPanel').classList.contains('fullscreen')) setFullscreen(false);
+  });
   $('assistClear').addEventListener('click', function () {
     state.assistHistory = [];
     $('assistLog').innerHTML = '';

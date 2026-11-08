@@ -284,3 +284,9 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
 .brief-field-row { display: grid; grid-template-columns: 24px minmax(160px, 1fr) minmax(180px, 2fr) auto; gap: 8px; align-items: center; margin-bottom: 6px; }
 .brief-field-on { width: 16px; height: 16px; accent-color: var(--shu); }
 @media (max-width: 860px) { .brief-field-row { grid-template-columns: 24px 1fr auto; } .brief-field-desc { grid-column: 2 / 3; } }
+
+/* 助理全螢幕 */
+.assist-panel.fullscreen { inset: 16px; right: 16px; bottom: 16px; width: auto; max-height: none; border-radius: var(--radius); }
+.assist-panel.fullscreen .assist-log { min-height: 0; flex: 1; }
+.assist-panel.fullscreen .assist-msg { max-width: 920px; }
+.assist-panel.fullscreen .assist-input { padding: 14px 20px; }
