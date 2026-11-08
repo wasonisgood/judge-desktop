@@ -128,6 +128,7 @@
   });
 
   // ---- 判決列表 ----
+  // 列表表頭另在 index.html 補上「操作」欄
   function renderList(items) {
     var body = $('listBody');
     body.innerHTML = '';
@@ -139,6 +140,12 @@
         td.textContent = text;
         tr.appendChild(td);
       });
+      var bt = el('td');
+      var b = el('button', 'btn small', '精讀這則');
+      b.type = 'button';
+      b.addEventListener('click', function () { briefFor(it); });
+      bt.appendChild(b);
+      tr.appendChild(bt);
       body.appendChild(tr);
     });
     $('listResult').hidden = items.length === 0;
@@ -214,7 +221,7 @@
       }
       var wrap = el('div', 'table-wrap');
       var table = el('table', 'table');
-      table.innerHTML = '<thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>類型</th><th>爭點</th><th>法院見解</th><th>結論</th><th>引用條文</th><th>法條異動</th></tr></thead>';
+      table.innerHTML = '<thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>類型</th><th>爭點</th><th>法院見解</th><th>結論</th><th>引用條文</th><th>法條異動</th><th>操作</th></tr></thead>';
       var tbody = el('tbody');
       var byId = {};
       (sh.analyses || []).forEach(function (a) { byId[a.id] = a; });
@@ -226,6 +233,12 @@
           var td = el('td', j === 0 ? 'num' : '', text);
           tr.appendChild(td);
         });
+        var bt = el('td');
+        var b = el('button', 'btn small', '精讀這則');
+        b.type = 'button';
+        b.addEventListener('click', function () { briefFor(r); });
+        bt.appendChild(b);
+        tr.appendChild(bt);
         tbody.appendChild(tr);
       });
       table.appendChild(tbody);
@@ -285,6 +298,11 @@
   $('scopeDocx').addEventListener('click', function () { exportScope('docx'); });
 
   // ---- 單一判決：先找候選，再鎖定一則 ----
+  function briefFor(item) {
+    setPick({ id: item.id, title: item.title, dateIso: item.dateIso || item.dateDisplay || '' });
+    setStatus($('briefStatus'), '已從上一頁帶入這則判決，可以直接整理。', 'ok');
+    showPage('brief');
+  }
   function setPick(item) {
     state.briefPick = item;
     $('briefPicked').textContent = item ? (item.title + '（' + (item.dateIso || item.dateDisplay || '') + '）') : '尚未選定';
