@@ -8,6 +8,7 @@
     brief: null, briefPick: null,
     scopeSheets: null, scopeFrom: null, scopeTo: null,
     fileTab: 'active',
+    scopeRunning: false,
     assistHistory: []
   };
   var KIND_LABEL = { list: '判決列表', scope: '範圍整理', brief: '單一判決' };
@@ -288,6 +289,7 @@
     $('scopeDocx').disabled = true;
     $('scopeResult').innerHTML = '';
     $('scopeProgress').hidden = false;
+    state.scopeRunning = true;
     setStatus($('scopeStatus'), '確認法名中…（每則判決都會交由 AI 分析）');
     try {
       var r = await api.scope.run({ statutes: statutes, yearFrom: from, yearTo: to, maxItems: max });
@@ -302,11 +304,14 @@
     } catch (err) {
       setStatus($('scopeStatus'), '整理失敗：' + errText(err), 'error');
     } finally {
+      state.scopeRunning = false;
       $('scopeRun').disabled = false;
       $('scopeProgress').hidden = true;
     }
   });
   api.scope.onProgress(function (p) {
+    // 進度訊息與執行結果走不同通道，可能晚到；只在執行中才更新，避免蓋掉「完成」的狀態。
+    if (!state.scopeRunning) return;
     $('scopeProgress').querySelector('.bar').style.width = Math.round((p.done / Math.max(p.total, 1)) * 100) + '%';
     setStatus($('scopeStatus'), '「' + p.statute + '」' + p.phase + '：' + p.done + ' / ' + p.total);
   });
