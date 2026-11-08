@@ -55,6 +55,20 @@ export class CourtClient {
     return res.text();
   }
 
+  /** 下載二進位內容（例如原版判決 PDF）。與 request 相同的限速、cookie 與逾時。 */
+  async requestBytes(url: string, init: RequestInit = {}): Promise<Buffer> {
+    const wait = this.lastAt + this.minInterval - Date.now();
+    if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+    this.lastAt = Date.now();
+    const headers = new Headers(init.headers);
+    headers.set('user-agent', USER_AGENT);
+    if (this.jar.header()) headers.set('cookie', this.jar.header());
+    const res = await this.fetchImpl(url, { ...init, headers, signal: AbortSignal.timeout(this.timeout) });
+    this.jar.absorb(res);
+    if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
+    return Buffer.from(await res.arrayBuffer());
+  }
+
   /** 取得 WebForms 的隱藏欄位（ViewState 等）。 */
   async getViewState(): Promise<Record<string, string>> {
     const html = await this.request(`${BASE}default.aspx`);

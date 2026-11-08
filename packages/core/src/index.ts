@@ -17,3 +17,5 @@ export * from './court/aliases';
 export * from './ai/federation';
 export * from './court/history';
 export * from './law/resolveName';
+export * from './ai/evidence';
+export * from './pdf/judgmentPdf';

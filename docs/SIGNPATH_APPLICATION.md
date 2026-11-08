@@ -11,7 +11,7 @@
 - Privacy Policy URL：https://github.com/wasonisgood/judge-desktop/blob/master/docs/PRIVACY.md
 - Tagline、Description（英文，含 MIT 授權與 repo 網址）
 - Category：Productivity
-- Reputation：如實說明為新專案（v0.2.1 於 2026-11-09 發行），尚無下載數與媒體報導
+- Reputation：如實說明為新專案（v0.2.2 於 2026-11-09 發行），尚無下載數與媒體報導
 - Maintainer Type：Individual maintainer(s)
 - Build System：GitHub Actions
 - First Name：WEI XIANG；Last Name：PENG（依申請人指定的 PENG WEI XIANG 拆分，請確認順序）
@@ -38,7 +38,7 @@
 2. 確認 `LICENSE`（MIT）為 OSI 核准授權，且 repo 內沒有非開源元件。目前已符合。
 3. 在 `README.md` 的下載段落加上：「本專案的 Windows 安裝檔由 SignPath.io 提供免費簽章，憑證由 SignPath Foundation 核發。」（已在 `docs/CODE_SIGNING.md` 寫好文字）。
 4. 撰寫隱私說明 `docs/PRIVACY.md`。
-5. 確認 Releases 頁面可以公開下載，且產品版本與建置版本一致（目前 v0.2.1）。
+5. 確認 Releases 頁面可以公開下載，且產品版本與建置版本一致（目前 v0.2.2）。
 
 ## 申請表欄位（https://signpath.org/apply）
 

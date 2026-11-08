@@ -10,12 +10,13 @@ import {
   analyzeCase, synthesizeScope, briefJudgment,
   LawClient, createCurlFetch, parseSingleCitation, parseCitations, judgmentQueries,
   FederatedTokenProvider, type FederationConfig, resolveLawName, DEFAULT_BRIEF_FIELDS, normalizeBriefFields, type BriefField,
-  screenRelevance, type RelevanceItem,
+  screenRelevance, type RelevanceItem, openPdf, pagesNeedingOcr, renderPageWithHighlights,
   type JudgmentDetail, type JudgmentSummary, type ScopeRow, type AiComplete,
   type CaseAnalysis, type ScopeSynthesis, type BriefDocument, type CitationRef,
   type HistoryArticle, type CurrentLaw,
 } from '@judge/core';
 import { buildListWorkbook, buildBriefDocx } from './exporters';
+import { buildFourPerPageDocx, groupPages, type PageImage } from './pdfWord';
 import { buildScopeWorkbook, buildScopeDocx, type ScopeSheet } from './scopeExporters';
 import { callAi, type AiConfig } from './ai';
 import { runAssistantTurn, mergeSearchHits, type ToolCall, type ToolOutcome, type AssistantTurn, type SearchHit } from './assistant';
@@ -356,6 +357,36 @@ async function autoSaveExport(name: string, data: Buffer): Promise<{ canceled: f
   return { canceled: false, filePath: file };
 }
 
+/**
+ * 原版 PDF 標示：下載判決的原版 PDF，把精讀引用的原文以螢光色標示，
+ * 每 4 頁存成一份 Word（2×2 格）。沒有文字層的頁面會回報，不猜位置。
+ */
+async function annotateOriginalPdf(d: JudgmentDetail, doc: BriefDocument): Promise<{ files: string[]; pages: number; highlighted: number; ocrPages: number[]; quotes: number; error?: string }> {
+  if (!d.pdfUrl) return { files: [], pages: 0, highlighted: 0, ocrPages: [], quotes: 0, error: '此判決沒有原版 PDF 連結' };
+  const bytes = await new CourtClient().requestBytes(d.pdfUrl, { headers: { referer: d.meta.sourceUrl } });
+  const pdf = await openPdf(bytes);
+  const quotes = [...new Set(doc.sections.flatMap((sec) => sec.evidence ?? []))];
+  const ocrPages = await pagesNeedingOcr(pdf);
+  const pages: PageImage[] = [];
+  for (let n = 1; n <= pdf.numPages; n++) {
+    const r = await renderPageWithHighlights(pdf, n, quotes, 2.4);
+    pages.push({ pageNo: n, png: r.png, widthPx: r.widthPx, heightPx: r.heightPx, highlighted: r.highlighted });
+  }
+  const label = (d.meta.caseNo ?? d.meta.id).replace(/[\/:*?"<>|]/g, '_');
+  const dir = path.join(app.getPath('documents'), '司法院裁判研究', '原版標示');
+  await fs.mkdir(dir, { recursive: true });
+  const files: string[] = [];
+  const summary = { title: doc.title, sections: doc.sections.map((sec) => ({ heading: sec.heading, paragraphs: sec.paragraphs })) };
+  for (const [idx, group] of groupPages(pages, 4).entries()) {
+    const from = group[0].pageNo, to = group[group.length - 1].pageNo;
+    const file = path.join(dir, `原版標示_${label}_第${from}-${to}頁.docx`);
+    await fs.writeFile(file, await buildFourPerPageDocx(group, `${d.meta.title || label}（第 ${from}–${to} 頁）`, idx === 0 ? summary : undefined));
+    files.push(file);
+  }
+  if (files[0]) void shell.openPath(files[0]);
+  return { files, pages: pages.length, highlighted: pages.reduce((n, p) => n + p.highlighted, 0), ocrPages, quotes: quotes.length };
+}
+
 function registerIpc() {
   ipcMain.handle('win:minimize', () => win?.minimize());
   ipcMain.handle('win:toggleMaximize', () => {
@@ -517,10 +548,17 @@ function registerIpc() {
   // 單一判決：先搜尋、列出候選，再由使用者指定一則（鎖定單一判決）
   ipcMain.handle('judgment:find', async (_e, args: { query: string }) => {
     const seen = new Map<string, JudgmentSummary>();
+    let note = '';
     for (const q of judgmentQueries(args.query)) {
-      for (const it of await cachedSearch(q, 20)) if (!seen.has(it.id)) seen.set(it.id, it);
+      try {
+        for (const it of await cachedSearch(q, 20)) if (!seen.has(it.id)) seen.set(it.id, it);
+      } catch (err) {
+        // 查無結果或暫時被限制查詢：不中斷，回報說明即可
+        const msg = err instanceof Error ? err.message : String(err);
+        note = /查無|風控/.test(msg) ? '司法院網站沒有查到結果，或暫時限制查詢，請稍後再試或換關鍵字。' : msg;
+      }
     }
-    return { items: [...seen.values()].slice(0, 30) };
+    return { items: [...seen.values()].slice(0, 30), note };
   });
 
   // 單一判決精讀
@@ -535,7 +573,8 @@ function registerIpc() {
       summary: d.meta.court ?? '',
       payload: { detail: d, doc },
     });
-    return { detail: d, doc };
+    const annotated = await annotateOriginalPdf(d, doc).catch((err) => ({ error: err instanceof Error ? err.message : String(err), files: [] as string[] }));
+    return { detail: d, doc, annotated };
   });
   ipcMain.handle('export:brief', async (_e, args: { detail: JudgmentDetail; doc: BriefDocument }) => {
     return autoSaveExport(`判決精讀_${args.detail.meta.caseNo ?? args.detail.meta.id}.docx`, await buildBriefDocx(args.detail, args.doc));

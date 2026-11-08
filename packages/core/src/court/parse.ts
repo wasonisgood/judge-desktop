@@ -32,6 +32,8 @@ export interface JudgmentDetail {
   historyPosition: HistoryPosition | null;
   /** 列印歷審清單的網址（伺服器產生，需帶 Referer 取得）；沒有時為 null。 */
   printHistoryUrl: string | null;
+  /** 原版判決 PDF 的網址；沒有時為 null。 */
+  pdfUrl: string | null;
   relatedLaws: string[];
   fullText: string;
 }
@@ -182,6 +184,7 @@ export function parseDetailHtml(html: string, id: string, sourceUrl: string): Ju
     history: [],
     historyPosition: null,
     printHistoryUrl,
+    pdfUrl: (() => { const h = $('a[href$=".pdf"]').first().attr('href'); return h ? new URL(h, sourceUrl).toString() : null; })(),
     relatedLaws,
     fullText,
   };

@@ -17,6 +17,8 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "cheerio": "^1.2.0"
+    "@napi-rs/canvas": "^1.1.0",
+    "cheerio": "^1.2.0",
+    "pdfjs-dist": "^3.11.174"
   }
 }

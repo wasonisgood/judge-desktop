@@ -8,7 +8,7 @@
   "minimumVersion": "1.0.0",
   "mandatory": false,
   "notes": {
-    "zh": "・AI 助理面板可全螢幕（按鈕切換，Esc 還原）。\n・AI 助理搜尋判決時會一次用多組關鍵字（同義詞、案由、法名），結果合併去重，較完整。\n・包含 2.0 的全部功能。",
-    "en": "・AI assistant panel can go full screen (toggle button; Esc to restore).\n・The assistant searches judgments with several keyword groups at once and merges the results.\n・Includes all 2.0 features."
+    "zh": "・精讀判決可產生原版判決標示 Word：每 4 頁一份，AI 引用的原文以螢光標示，第一份最前面附 AI 摘要。\n・判決列表可用 AI 依主題篩選相關判決，相關的排前面並附理由。\n・判決搜尋查無結果時改為顯示說明，不再跳出錯誤。\n・包含 2.1 的全部功能。",
+    "en": "・Annotated original judgment Word files: 4 pages per file, quotes used by the AI highlighted, AI summary at the front of the first file.\n・AI screening of judgment lists by topic: relevant results first, with reasons.\n・No-result judgment searches show a message instead of an error.\n・Includes all 2.1 features."
   }
 }

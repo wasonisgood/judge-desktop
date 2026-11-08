@@ -521,7 +521,9 @@
       if (r.detail && r.detail.meta && r.detail.meta.title) $('briefPicked').textContent = r.detail.meta.title;
       renderBrief(r);
       state.assistHistory.push({ role: 'user', text: '[系統通知] 精讀已完成：' + (r.doc.title || '') + '。段落：' + r.doc.sections.map(function (sec) { return sec.heading + '：' + sec.paragraphs.join(' '); }).join(' ').slice(0, 3000) });
-      setStatus($('briefStatus'), '已完成 AI 整理，已存入「檔案」。', 'ok');
+      var an = r.annotated || {};
+      var annText = an.error ? ('原版標示未完成：' + an.error) : ('原版標示：已產生 ' + (an.files || []).length + ' 份 Word（每份 4 頁），標示 ' + (an.highlighted || 0) + ' 處' + ((an.ocrPages || []).length ? '；第 ' + an.ocrPages.join('、') + ' 頁沒有文字層，無法標示' : ''));
+      setStatus($('briefStatus'), '已完成 AI 整理，已存入「檔案」。' + annText, an.error ? 'error' : 'ok');
       $('briefExport').disabled = false;
     } catch (err) {
       setStatus($('briefStatus'), '讀取失敗：' + errText(err), 'error');

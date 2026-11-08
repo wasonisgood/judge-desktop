@@ -102,6 +102,8 @@ export async function synthesizeScope(ai: AiComplete, statute: string, analyses:
 export interface BriefSection {
   heading: string;
   paragraphs: string[];
+  /** 依據的判決原文（已驗證存在於原文中）。 */
+  evidence?: string[];
 }
 
 export interface BriefDocument {
@@ -114,6 +116,8 @@ export interface BriefField {
   name: string;
   description?: string;
 }
+
+import { keepVerifiedQuotes } from './evidence';
 
 /** 預設欄位（與原本的六段一致）。使用者可取消勾選，也可加入自訂欄位。 */
 export const DEFAULT_BRIEF_FIELDS: BriefField[] = [
@@ -155,7 +159,8 @@ export async function briefJudgment(
     `使用者想了解的重點：${focus}`,
     `輸出長度：${opts.length}`,
     '',
-    '請輸出 JSON，格式：{"title":"文書標題","sections":[{"heading":"段落標題","paragraphs":["段落一","段落二"]}]}',
+    '請輸出 JSON，格式：{"title":"文書標題","sections":[{"heading":"段落標題","paragraphs":["段落一"],"evidence":["依據的原文逐字引用"]}]}',
+    '每個段落的 evidence 必須是從判決原文逐字複製的句子（每段 1 到 3 句，每句 15 到 80 字），必須真的出現在下方的判決原文中；找不到依據就留空陣列，不可自行改寫。',
     '段落標題必須依序為下列欄位，一個都不能少、也不要多加其他段落：',
     ...fieldLines,
     '每個段落都要有實質內容，不能只寫「無」。若判決中找不到某項資訊，該段寫明「判決原文未載明」。每段限 200 字以內，段落數依篇幅調整，務必輸出完整的 JSON。',
@@ -165,7 +170,9 @@ export async function briefJudgment(
   ].join('\n');
   const r = await askJson<BriefDocument>(ai, system, user, 4500);
   if (!Array.isArray(r.sections) || r.sections.length === 0) throw new Error('AI 沒有產生任何段落');
-  return { title: r.title || d.meta.title, sections: r.sections };
+  // 只保留真的在原文中出現的引文
+  const sections = r.sections.map((sec) => ({ ...sec, evidence: keepVerifiedQuotes(d.fullText, (sec as { evidence?: unknown }).evidence) }));
+  return { title: r.title || d.meta.title, sections };
 }
 
 // ---------------------------------------------------------------------------
