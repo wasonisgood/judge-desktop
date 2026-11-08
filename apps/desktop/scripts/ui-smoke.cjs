@@ -66,15 +66,20 @@ app.whenReady().then(async () => {
     const closed = await js(w, "document.getElementById('assistPanel').hidden");
     check('助理面板可收起', closed === true);
 
-    // 6. 助理送出訊息（無金鑰）→ 顯示錯誤而不是卡住
-    await js(w, "document.getElementById('assistFab').click()");
-    await js(w, "document.getElementById('assistText').value = '你好'; document.getElementById('assistForm').dispatchEvent(new Event('submit',{cancelable:true}))");
-    await wait(1500);
-    const assistText = await js(w, "[...document.querySelectorAll('.assist-msg.assistant .assist-text')].map(x=>x.textContent).pop()");
-    check('無金鑰時助理顯示錯誤訊息', /金鑰|無法回應/.test(assistText || ''), (assistText || '').slice(0, 60));
-    const sendEnabled = await js(w, "!document.getElementById('assistSend').disabled");
-    check('助理送出後按鈕恢復可按', sendEnabled === true);
-    await js(w, "document.getElementById('assistClear').click()");
+    // 6. 助理送出訊息（無金鑰）→ 顯示錯誤而不是卡住。若應用程式已存有金鑰，這項檢查不適用，明確標示略過。
+    const hasKeyNow = await js(w, "window.api.settings.get().then(s => s.hasKey)");
+    if (hasKeyNow) {
+      check('無金鑰檢查略過（應用程式已設定金鑰）', true, 'hasKey=true');
+    } else {
+      await js(w, "document.getElementById('assistFab').click()");
+      await js(w, "document.getElementById('assistText').value = '你好'; document.getElementById('assistForm').dispatchEvent(new Event('submit',{cancelable:true}))");
+      await wait(1500);
+      const assistText = await js(w, "[...document.querySelectorAll('.assist-msg.assistant .assist-text')].map(x=>x.textContent).pop()");
+      check('無金鑰時助理顯示錯誤訊息', /金鑰|無法回應/.test(assistText || ''), (assistText || '').slice(0, 60));
+      const sendEnabled = await js(w, "!document.getElementById('assistSend').disabled");
+      check('助理送出後按鈕恢復可按', sendEnabled === true);
+      await js(w, "document.getElementById('assistClear').click()");
+    }
 
     // 7. 檔案頁：分頁切換不出錯
     await js(w, "document.querySelector('.rail-item[data-page=\"files\"]').click()");
@@ -112,6 +117,91 @@ app.whenReady().then(async () => {
     const keyBack = await js(w, "!document.getElementById('keyField').hidden");
     check('切回 API 金鑰時金鑰欄位恢復', keyBack === true);
     await js(w, "document.getElementById('setAuthMode').value='federation'; document.getElementById('setAuthMode').dispatchEvent(new Event('change'))");
+
+    // 9b. 判決列表與單一判決候選（只用法院搜尋，不耗 AI 額度）：檢查表格與截圖
+    await js(w, "document.querySelector('.rail-item[data-page=\"list\"]').click()");
+    await wait(150);
+    await js(w, "document.getElementById('listKeyword').value = '戒嚴'; document.getElementById('listForm').dispatchEvent(new Event('submit',{cancelable:true}))");
+    for (let i = 0; i < 60; i++) {
+      const n = await js(w, "document.querySelectorAll('#listBody tr').length");
+      if (n > 0 || i > 55) break;
+      await wait(1000);
+    }
+    const listRows = await js(w, "document.querySelectorAll('#listBody tr').length");
+    check('判決列表搜尋有結果列', listRows > 0, String(listRows));
+    const listDateCell = await js(w, "document.querySelector('#listBody tr td:nth-child(3)') ? document.querySelector('#listBody tr td:nth-child(3)').textContent : ''");
+    check('判決列表日期欄有值', /\d{4}-\d{2}-\d{2}/.test(listDateCell), listDateCell);
+    await wait(200);
+    fs.mkdirSync(shotDir, { recursive: true });
+    fs.writeFileSync(path.join(shotDir, 'list-results.png'), (await w.webContents.capturePage()).toPNG());
+
+    await js(w, "document.querySelector('.rail-item[data-page=\"brief\"]').click()");
+    await wait(150);
+    await js(w, "document.getElementById('briefQuery').value = '戒嚴'; document.getElementById('briefFindForm').dispatchEvent(new Event('submit',{cancelable:true}))");
+    for (let i = 0; i < 60; i++) {
+      const n = await js(w, "document.querySelectorAll('#briefCandidateBody tr').length");
+      if (n > 0 || i > 55) break;
+      await wait(1000);
+    }
+    await js(w, "document.querySelector('#briefCandidateBody tr button').click()");
+    await wait(200);
+    await js(w, "document.getElementById('briefCandidates').scrollIntoView()");
+    await wait(200);
+    fs.writeFileSync(path.join(shotDir, 'brief-candidates.png'), (await w.webContents.capturePage()).toPNG());
+    const btnWrap = await js(w, "[...document.querySelectorAll('#briefCandidateBody button')].map(b => b.getBoundingClientRect().height)[0]");
+    check('候選表「選定這則」按鈕單行（高度不超過 40px）', btnWrap <= 40, String(btnWrap));
+
+    // 10. 真實 AI 實測（僅在提供 JUDGE_TEST_AI_KEY 時執行）：金鑰填入應用程式設定，在畫面上實際操作
+    const aiKey = process.env.JUDGE_TEST_AI_KEY;
+    if (aiKey) {
+      const waitFor = (expr, ms) => w.webContents.executeJavaScript(
+        `new Promise((res) => { const t0 = Date.now(); const timer = setInterval(() => { let v = false; try { v = !!(${expr}); } catch (e) {} if (v || Date.now() - t0 > ${ms}) { clearInterval(timer); res(v); } }, 500); })`
+      );
+      await js(w, `window.api.settings.set({ aiProvider: 'anthropic', aiAuthMode: 'apiKey', aiBaseUrl: 'https://api.anthropic.com', aiModel: 'claude-haiku-5-5', apiKey: ${JSON.stringify(aiKey)} })`);
+      const test = await js(w, "window.api.settings.test().then(r => r.reply).catch(e => 'ERR:' + e.message)");
+      check('AI 連線測試（畫面設定）', /OK/.test(test), String(test).slice(0, 40));
+
+      // 範圍整理：實際輸入、送出、等待完成
+      await js(w, "document.querySelector('.rail-item[data-page=\"scope\"]').click()");
+      await wait(150);
+      await js(w, "document.getElementById('scopeLines').value = '二二八事件處理及賠償條例'; document.getElementById('scopeMax').value = '2'; document.getElementById('scopeForm').dispatchEvent(new Event('submit',{cancelable:true}))");
+      const scopeDone = await waitFor("/完成|失敗/.test(document.getElementById('scopeStatus').textContent)", 420000);
+      const scopeStatus = await js(w, "document.getElementById('scopeStatus').textContent");
+      check('範圍整理（真實 AI）完成', scopeDone && /完成/.test(scopeStatus), scopeStatus.slice(0, 60));
+      const scopeRows = await js(w, "document.querySelectorAll('#scopeResult tbody tr').length");
+      check('範圍整理表有判決列', scopeRows > 0, String(scopeRows));
+      await js(w, "document.getElementById('scopeResult').scrollIntoView()");
+      await wait(200);
+      fs.mkdirSync(shotDir, { recursive: true });
+      fs.writeFileSync(path.join(shotDir, 'live-scope.png'), (await w.webContents.capturePage()).toPNG());
+
+      // 單一判決：找候選 → 選定 → 精讀
+      await js(w, "document.querySelector('.rail-item[data-page=\"brief\"]').click()");
+      await wait(150);
+      await js(w, "document.getElementById('briefQuery').value = '戒嚴'; document.getElementById('briefFindForm').dispatchEvent(new Event('submit',{cancelable:true}))");
+      const found = await waitFor("document.querySelectorAll('#briefCandidateBody tr').length > 0", 120000);
+      check('單一判決：候選列出', found);
+      await js(w, "document.querySelector('#briefCandidateBody tr button').click()");
+      await wait(150);
+      const picked = await js(w, "document.getElementById('briefRun').disabled === false");
+      check('單一判決：選定後整理按鈕可按', picked === true);
+      await js(w, "document.getElementById('briefForm').dispatchEvent(new Event('submit',{cancelable:true}))");
+      const briefDone = await waitFor("!document.getElementById('briefView').hidden", 300000);
+      const briefStatus = await js(w, "document.getElementById('briefStatus').textContent");
+      check('單一判決精讀（真實 AI）完成', briefDone, briefStatus.slice(0, 120));
+      await js(w, "document.getElementById('briefView').scrollIntoView()");
+      await wait(200);
+      fs.writeFileSync(path.join(shotDir, 'live-brief.png'), (await w.webContents.capturePage()).toPNG());
+
+      // 助理：真實對話
+      await js(w, "document.getElementById('assistFab').click()");
+      await wait(150);
+      await js(w, "document.getElementById('assistText').value = '請用一句話說明你能幫我做什麼'; document.getElementById('assistForm').dispatchEvent(new Event('submit',{cancelable:true}))");
+      await waitFor("!document.getElementById('assistSend').disabled", 120000);
+      const lastReply = await js(w, "[...document.querySelectorAll('.assist-msg.assistant .assist-text')].map(x=>x.textContent).pop()");
+      check('助理（真實 AI）有回覆', !!lastReply && !/思考中|無法回應/.test(lastReply), (lastReply || '').slice(0, 50));
+      fs.writeFileSync(path.join(shotDir, 'live-assistant.png'), (await w.webContents.capturePage()).toPNG());
+    }
 
     // 截圖（首頁、範圍整理、助理面板）
     fs.mkdirSync(shotDir, { recursive: true });

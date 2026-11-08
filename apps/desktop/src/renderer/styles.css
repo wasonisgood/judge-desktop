@@ -137,6 +137,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
 .checks input { accent-color: var(--shu); }
 .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 4px; }
 .btn {
+  white-space: nowrap;
   padding: 8px 16px; border: 1px solid var(--ink-3); border-radius: var(--radius);
   background: transparent; cursor: pointer;
 }
@@ -226,8 +227,9 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
 .assist-msg.error .assist-text { color: var(--shu-ink); }
 .assist-who { font-size: 0.78rem; color: var(--ink-3); margin-bottom: 2px; }
 .assist-text { padding: 8px 10px; white-space: pre-wrap; font-size: 0.92rem; }
-.assist-input { display: flex; gap: 8px; align-items: flex-end; padding: 10px 12px; border-top: 1px solid var(--rule); }
-.assist-input textarea { flex: 1; resize: none; }
+.assist-input { display: flex; gap: 8px; align-items: stretch; padding: 10px 12px; border-top: 1px solid var(--rule); }
+.assist-input textarea { flex: 1; resize: none; min-height: 64px; line-height: 1.5; }
+.assist-input .btn { min-width: 84px; display: flex; align-items: center; justify-content: center; }
 .assist-confirm { margin: 0 0 12px; padding: 10px 12px; border: 1px solid var(--shu); background: var(--shu-wash); font-size: 0.9rem; }
 .assist-confirm p { margin: 0 0 6px; }
 .assist-hint { margin: 0; padding: 0 12px 10px; }
@@ -252,3 +254,13 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
   .wif-step { grid-template-columns: 1fr; }
   .wif-art { width: 120px; height: 63px; }
 }
+
+/* 表格：日期與按鈕不換行，表格可橫向捲動 */
+.table td.nowrap { white-space: nowrap; }
+.table td .btn { white-space: nowrap; }
+/* 內容區底部留白，避免懸浮助理按鈕蓋住最後一列 */
+.content { padding-bottom: 96px; }
+
+/* 候選表：已選定的那一列高亮 */
+.table tr.row-picked td { background: var(--shu-wash); }
+.table tr.row-picked td:first-child { box-shadow: inset 3px 0 0 var(--shu); }

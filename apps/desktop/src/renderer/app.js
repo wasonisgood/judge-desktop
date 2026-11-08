@@ -161,6 +161,7 @@
       [String(i + 1), it.title, it.dateIso || it.dateDisplay || '', it.cause || ''].forEach(function (text, j) {
         var td = document.createElement('td');
         if (j === 0) td.className = 'num';
+        if (j === 2) td.className = 'nowrap';
         td.textContent = text;
         tr.appendChild(td);
       });
@@ -338,13 +339,14 @@
     items.forEach(function (it, i) {
       var tr = el('tr');
       [String(i + 1), it.title, it.dateIso || it.dateDisplay || '', it.cause || ''].forEach(function (text, j) {
-        tr.appendChild(el('td', j === 0 ? 'num' : '', text));
+        tr.appendChild(el('td', j === 0 ? 'num' : (j === 2 ? 'nowrap' : ''), text));
       });
       var td = el('td');
       var pick = el('button', 'btn small', '選定這則');
       pick.type = 'button';
       pick.addEventListener('click', function () {
         setPick(it);
+        document.querySelectorAll('#briefCandidateBody tr').forEach(function (x) { x.classList.toggle('row-picked', x === tr); });
         setStatus($('briefStatus'), '已選定，可以整理這則判決。', 'ok');
       });
       td.appendChild(pick);

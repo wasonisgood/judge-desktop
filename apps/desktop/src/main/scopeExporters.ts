@@ -2,7 +2,7 @@
 //   Excel：每部法規一個工作表（逐案 AI 分析欄位）＋每部法規一個「綜合分析」工作表。
 //   Word：每部法規一段，先放 AI 綜合分析，再放逐案分析表。
 import ExcelJS from 'exceljs';
-import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, TableCell, WidthType, BorderStyle, AlignmentType } from 'docx';
+import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, TableCell, WidthType, BorderStyle, AlignmentType, PageOrientation, TableLayoutType } from 'docx';
 import type { ScopeRow, CaseAnalysis, ScopeSynthesis } from '@judge/core';
 
 export interface ScopeSheet {
@@ -16,6 +16,20 @@ const byId = (analyses: CaseAnalysis[]) => new Map(analyses.map((a) => [a.id, a]
 
 /** 逐案表的欄位（Excel 與 Word 共用順序）。 */
 const CASE_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由', '類型（AI）', '爭點（AI）', '法院見解（AI）', '法規適用（AI）', '結論（AI）', '引用條文', '法條異動（依沿革比對）', '判決連結'];
+
+/** Excel 欄寬（字元單位），與 CASE_HEADERS 一一對應。 */
+const CASE_WIDTHS = [6, 40, 16, 13, 28, 14, 36, 50, 40, 30, 30, 46, 30];
+
+/** Excel 工作表名稱：不得含 : \ / ? * [ ]，最長 31 字；同名時加上序號。 */
+function uniqueSheetName(raw: string, used: Set<string>): string {
+  const clean = raw.replace(/[:\\/?*\[\]]/g, '·').trim() || '工作表';
+  let base = clean.slice(0, 28);
+  let name = base;
+  let n = 2;
+  while (used.has(name.toLowerCase())) name = `${base.slice(0, 28 - String(n).length - 1)}_${n++}`;
+  used.add(name.toLowerCase());
+  return name;
+}
 
 function caseValues(i: number, r: ScopeRow, a: CaseAnalysis | undefined): string[] {
   return [
@@ -39,9 +53,10 @@ export async function buildScopeWorkbook(sheets: ScopeSheet[], meta: { yearFrom?
   const wb = new ExcelJS.Workbook();
   wb.creator = '司法院裁判研究';
   wb.created = new Date();
-  const widths = [6, 40, 16, 13, 28, 14, 36, 50, 40, 30, 30, 46];
+  const widths = CASE_WIDTHS;
+  const usedNames = new Set<string>();
   for (const sh of sheets) {
-    const ws = wb.addWorksheet(sh.statute.slice(0, 28));
+    const ws = wb.addWorksheet(uniqueSheetName(sh.statute, usedNames));
     const map = byId(sh.analyses);
     ws.columns = CASE_HEADERS.map((h, i) => ({ header: h, key: 'c' + i, width: widths[i] }));
     const head = ws.getRow(1);
@@ -57,7 +72,7 @@ export async function buildScopeWorkbook(sheets: ScopeSheet[], meta: { yearFrom?
     ws.autoFilter = { from: 'A1', to: { row: 1, column: CASE_HEADERS.length } };
 
     // 綜合分析工作表
-    const syn = wb.addWorksheet(('綜合分析_' + sh.statute).slice(0, 28));
+    const syn = wb.addWorksheet(uniqueSheetName('綜合分析_' + sh.statute, usedNames));
     syn.columns = [{ header: '項目', key: 'k', width: 16 }, { header: '內容（AI）', key: 'v', width: 110 }];
     syn.getRow(1).font = { bold: true };
     const s = sh.synthesis;
@@ -87,10 +102,24 @@ const font = 'Microsoft JhengHei';
 const para = (text: string, size = 22, bold = false) =>
   new Paragraph({ spacing: { after: 100, line: 340 }, children: [new TextRun({ text, size, bold, font })] });
 
-const cell = (text: string, bold = false) =>
+/** 橫式 A4、邊界 2 公分時的可用寬度（twips）。 */
+const LANDSCAPE_TEXT_WIDTH = 16838 - 2 * 1134;
+
+/** 依 Excel 欄寬比例換算成 twips，總和等於可用寬度，避免超出頁面。 */
+function docxColumnWidths(): number[] {
+  const total = CASE_WIDTHS.reduce((a, b) => a + b, 0);
+  const w = CASE_WIDTHS.map((x) => Math.floor((x / total) * LANDSCAPE_TEXT_WIDTH));
+  w[w.length - 1] += LANDSCAPE_TEXT_WIDTH - w.reduce((a, b) => a + b, 0);
+  return w;
+}
+
+/** 儲存格：每一行獨立成段（Word 的文字 run 不會把換行符號轉成換行）。 */
+const cell = (text: string, width: number, bold = false) =>
   new TableCell({
+    width: { size: width, type: WidthType.DXA },
     margins: { top: 40, bottom: 40, left: 60, right: 60 },
-    children: [new Paragraph({ children: [new TextRun({ text, bold, size: 16, font })] })],
+    children: (text || ' ').split('\n').map((line) =>
+      new Paragraph({ spacing: { after: 0 }, children: [new TextRun({ text: line, bold, size: 16, font })] })),
   });
 
 export async function buildScopeDocx(sheets: ScopeSheet[], meta: { yearFrom?: number; yearTo?: number }): Promise<Buffer> {
@@ -124,12 +153,16 @@ export async function buildScopeDocx(sheets: ScopeSheet[], meta: { yearFrom?: nu
     }
     children.push(para('逐案分析', 22, true));
     const map = byId(sh.analyses);
-    const header = new TableRow({ tableHeader: true, children: CASE_HEADERS.map((c) => cell(c, true)) });
+    const colW = docxColumnWidths();
+    const header = new TableRow({ tableHeader: true, children: CASE_HEADERS.map((c, j) => cell(c, colW[j], true)) });
     const body = sh.rows.map((r, i) => new TableRow({
-      children: caseValues(i, r, map.get(r.id)).map((v) => cell(v)),
+      cantSplit: false,
+      children: caseValues(i, r, map.get(r.id)).map((v, j) => cell(v, colW[j])),
     }));
     children.push(new Table({
-      width: { size: 100, type: WidthType.PERCENTAGE },
+      width: { size: LANDSCAPE_TEXT_WIDTH, type: WidthType.DXA },
+      layout: TableLayoutType.FIXED,
+      columnWidths: colW,
       borders: {
         top: { style: BorderStyle.SINGLE, size: 4, color: '999999' },
         bottom: { style: BorderStyle.SINGLE, size: 4, color: '999999' },
@@ -141,6 +174,11 @@ export async function buildScopeDocx(sheets: ScopeSheet[], meta: { yearFrom?: nu
       rows: [header, ...body],
     }));
   }
-  const doc = new Document({ sections: [{ children }] });
+  const doc = new Document({
+    sections: [{
+      properties: { page: { size: { width: 11906, height: 16838, orientation: PageOrientation.LANDSCAPE }, margin: { top: 1134, bottom: 1134, left: 1134, right: 1134 } } },
+      children,
+    }],
+  });
   return Buffer.from(await Packer.toBuffer(doc));
 }
