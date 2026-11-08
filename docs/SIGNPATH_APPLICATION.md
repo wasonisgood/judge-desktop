@@ -2,7 +2,31 @@
 
 狀態紀錄（2026-11-08）：repo 已改為公開；README 與隱私說明已補上（中英文）；申請表已用瀏覽器開啟並確認欄位，**尚未填寫、尚未送出**，待申請人本人填寫姓名與信箱後送出。
 
-## 為什麼還不能送出
+## 目前進度（2026-11-08，瀏覽器操作紀錄）
+
+已填入（依截圖與輸入紀錄）：
+- Project Name：司法院裁判研究
+- Repository URL / Homepage URL：https://github.com/wasonisgood/judge-desktop
+- Download URL：https://github.com/wasonisgood/judge-desktop/releases/latest
+- Privacy Policy URL：https://github.com/wasonisgood/judge-desktop/blob/master/docs/PRIVACY.md
+- Tagline、Description（英文，含 MIT 授權與 repo 網址）
+- Category：Productivity
+- Reputation：如實說明為新專案（v0.1.2 於 2026-11-08 發行），尚無下載數與媒體報導
+- Maintainer Type：Individual maintainer(s)
+- Build System：GitHub Actions
+- First Name：WEI XIANG；Last Name：PENG（依申請人指定的 PENG WEI XIANG 拆分，請確認順序）
+- Email：wasonisgood@gmail.com（曾誤重複輸入，已改為單一值）
+- Primary Discovery Channel：Organic search（點選後頁面凍結，尚未確認是否寫入）
+
+尚未完成：
+- Primary Discovery Channel 的確認、Exact source（選填，留空）
+- reCAPTCHA 驗證
+- 條款同意勾選（Code of Conduct）與隱私同意勾選
+- 送出（Submit）按鈕尚未點擊
+
+操作障礙：瀏覽器分頁在選完 Primary Discovery Channel 後無回應（截圖與捲動逾時），需重新整理或重開分頁後，從頭核對欄位再完成。
+
+## 為什麼還不能送出（已解除，保留紀錄）
 
 1. **Repo 仍是私有的。** SignPath 要驗證「二進位檔是由公開的開源 repo 建置」，私有 repo 無法通過驗證。
 2. **下載頁還沒提到 SignPath。** 表單的 Download URL 欄位要求下載頁必須說明「專案使用 SignPath Foundation 進行程式碼簽章」。目前 README 的下載頁說明還沒有這段。
