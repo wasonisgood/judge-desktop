@@ -12,3 +12,4 @@ export * from './law/history';
 export * from './law/period';
 export * from './law/client';
 export * from './law/curlFetch';
+export * from './law/citationNotes';

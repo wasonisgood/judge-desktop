@@ -3,6 +3,9 @@
 import { CourtClient } from './client';
 import { searchJudgments, getJudgmentDetail } from './search';
 import type { JudgmentDetail } from './parse';
+import { parseCitations } from '../law/citation';
+import type { HistoryArticle } from '../law/history';
+import { citationLawNotes, type CitationLawNote } from '../law/citationNotes';
 
 export interface ScopeOptions {
   statute: string;
@@ -14,6 +17,8 @@ export interface ScopeOptions {
   client?: CourtClient;
   /** 進度回報。 */
   onProgress?: (done: number, total: number) => void;
+  /** 法條沿革（來自立法院）；提供後，每列會標示引用條文在查詢期間內是否修法。 */
+  lawHistory?: HistoryArticle[];
 }
 
 export interface ScopeRow {
@@ -24,6 +29,8 @@ export interface ScopeRow {
   cause: string;
   result: string;
   citedArticles: string[];
+  /** 引用條文與期間內修法的對照（需提供 lawHistory）。 */
+  lawNotes: CitationLawNote[];
   /** 供 AI 分析用的原文摘錄：主文，以及法規被引用處前後的理由文字。 */
   excerpts: { main: string; citing: string };
   href: string;
@@ -49,7 +56,8 @@ function articlesCiting(detail: JudgmentDetail, statute: string): string[] {
   if (fromList.length) return fromList;
   const flat = squash(detail.fullText);
   if (!flat.includes(key)) return [];
-  const re = new RegExp(key + '第[0-9０-９\-之]+條', 'g');
+  const NUM = '[0-9０-９一二三四五六七八九十百千零〇兩]+';
+  const re = new RegExp(`${key}第${NUM}(?:\\s*-\\s*${NUM})*條(?:之${NUM})*(?:第${NUM}項)?(?:第${NUM}款)?`, 'g');
   const found = [...new Set(flat.match(re) ?? [])];
   return found.length ? found : [statute];
 }
@@ -88,6 +96,9 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
       cause: d.meta.cause || it.cause,
       result: resultOf(d.sections['主文'] ?? ''),
       citedArticles: cited,
+      lawNotes: opts.lawHistory
+        ? citationLawNotes(parseCitations(cited.join('；')), opts.lawHistory, { from: opts.yearFrom ? `${opts.yearFrom}-01-01` : undefined, to: opts.yearTo ? `${opts.yearTo}-12-31` : undefined })
+        : [],
       excerpts: { main: (d.sections['主文'] ?? '').slice(0, 1200), citing: citingExcerpt(d.fullText, opts.statute) },
       href: d.meta.sourceUrl,
     });
