@@ -14,6 +14,18 @@ export type NameResolution =
   | { status: 'candidates'; candidates: ScoredName[] }
   | { status: 'none' };
 
+/**
+ * 清理法名查詢字串：去掉括號內容、「第 N 條」之後的條文、以及符號（/ & ? 等）。
+ * 這些符號會讓查詢網址出錯（HTTP 400／404），AI 也常會把條文寫在法名後面。
+ */
+export function cleanLawQuery(input: string): string {
+  let t = input.replace(/[（(][^）)]*[）)]/g, '');
+  const cut = t.search(/第\s*[0-9０-９一二三四五六七八九十百千零〇兩]/);
+  if (cut >= 0) t = t.slice(0, cut);
+  t = t.replace(/[^\p{Script=Han}\p{L}\p{N}\s]/gu, '');
+  return t.replace(/\s+/g, '').trim();
+}
+
 /** 編輯距離（以字元為單位，支援中文）。 */
 export function editDistance(a: string, b: string): number {
   const x = [...a];
@@ -56,15 +68,28 @@ export function queryVariants(input: string): string[] {
  * - 其他有候選：candidates（由使用者選擇）。
  * - 查不到任何候選：none。
  */
-export async function resolveLawName(client: LawClient, input: string): Promise<NameResolution> {
-  const want = input.replace(/\s+/g, '');
+export async function resolveLawName(client: LawClient, rawInput: string): Promise<NameResolution> {
+  const input = cleanLawQuery(rawInput);
+  if (!input) return { status: 'none' };
+  const want = input;
   const pool = new Map<string, LawNameMatch>();
+  let lastError: unknown = null;
   for (const q of queryVariants(input)) {
-    const r = await client.searchMojByName(q);
+    // 單一變體查詢失敗（網路或網站錯誤）不中斷，改試下一個變體。
+    let r;
+    try {
+      r = await client.searchMojByName(q);
+    } catch (err) {
+      lastError = err;
+      continue;
+    }
     if (r.exact && r.exact.name.replace(/\s+/g, '') === want) return { status: 'exact', match: r.exact };
     for (const s of r.suggestions) if (!pool.has(s.pcode)) pool.set(s.pcode, s);
   }
-  if (pool.size === 0) return { status: 'none' };
+  if (pool.size === 0) {
+    if (lastError) throw lastError;
+    return { status: 'none' };
+  }
   const scored: ScoredName[] = [...pool.values()]
     .map((m) => ({ ...m, score: similarity(want, m.name) }))
     .sort((a, b) => b.score - a.score);

@@ -22,3 +22,12 @@ test('查詢變體：原字串、去「及」、前段關鍵詞，去重', () =>
   assert.ok(v.includes('證券投資信託'));
   assert.equal(new Set(v).size, v.length);
 });
+
+test('清理法名：去括號、去「第 N 條」之後的條文、去符號', async () => {
+  const { cleanLawQuery } = await import('../../dist/index.js');
+  assert.equal(cleanLawQuery('國家賠償法第2條'), '國家賠償法');
+  assert.equal(cleanLawQuery('國家賠償法（第2條）'), '國家賠償法');
+  assert.equal(cleanLawQuery('國家賠償法/施行細則'), '國家賠償法施行細則');
+  assert.equal(cleanLawQuery('國家賠償法&'), '國家賠償法');
+  assert.equal(cleanLawQuery(' 國家賠償法 '), '國家賠償法');
+});
