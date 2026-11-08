@@ -30,6 +30,7 @@
       <button class="rail-item" data-page="list"><span class="glyph">列</span><span class="label">判決列表</span></button>
       <button class="rail-item" data-page="scope"><span class="glyph">範</span><span class="label">範圍整理</span></button>
       <button class="rail-item" data-page="brief"><span class="glyph">判</span><span class="label">單一判決</span></button>
+      <button class="rail-item" data-page="files"><span class="glyph">檔</span><span class="label">檔案</span></button>
       <button class="rail-item" data-page="settings"><span class="glyph">設</span><span class="label">設定</span></button>
     </nav>
 
@@ -38,7 +39,7 @@
 
       <section class="page active" id="page-home">
         <h1>司法院裁判研究</h1>
-        <p class="lead">搜尋司法院公開的裁判書，整理成表格，或精讀單一判決。</p>
+        <p class="lead">搜尋司法院公開的裁判書，整理成表格，或精讀單一判決。三個頁面可以接續使用：前一頁的結果會保留在檔案中。</p>
         <ul class="entries">
           <li>
             <button class="entry" data-go="list">
@@ -49,13 +50,19 @@
           <li>
             <button class="entry" data-go="scope">
               <span class="entry-title">範圍整理表</span>
-              <span class="entry-desc">選擇一或多部法規，列出引用該法規的判決，整理成表格（Excel 或 Word）。</span>
+              <span class="entry-desc">輸入法規（可加條、項、款），列出引用該法規的判決，並標示該條文在查詢期間內是否修法。</span>
             </button>
           </li>
           <li>
             <button class="entry" data-go="brief">
               <span class="entry-title">單一判決精讀</span>
-              <span class="entry-desc">讀取一則判決的段落與原文，可用 AI 產生摘要，匯出 Word。</span>
+              <span class="entry-desc">輸入判決名稱或關鍵字，從候選中選定一則，由 AI 整理成文書，匯出 Word。</span>
+            </button>
+          </li>
+          <li>
+            <button class="entry" data-go="files">
+              <span class="entry-title">檔案</span>
+              <span class="entry-desc">保存過的結果。可加星號、封存、移入垃圾桶，或重新開啟。</span>
             </button>
           </li>
           <li>
@@ -105,16 +112,12 @@
 
       <section class="page" id="page-scope">
         <h1>範圍整理表</h1>
-        <p class="lead">選擇法規，列出確實引用該法規的判決；每則判決與每部法規的綜合分析都由 AI 整理。需要先在「設定」輸入 AI 金鑰。</p>
+        <p class="lead">輸入法規，每行一部。可以只寫法名，也可以寫到條、項、款，例如「民法第184條第1項」。法名需與全國法規資料庫的正式名稱相同。需要先在「設定」輸入 AI 金鑰。</p>
         <form class="form" id="scopeForm">
-          <fieldset class="field">
-            <legend>法規（可多選）</legend>
-            <div class="checks" id="scopePresets"></div>
-            <label class="field">
-              <span>自訂法規名稱（每行一個，選填）</span>
-              <textarea id="scopeCustom" rows="2" placeholder="例如：國家賠償法"></textarea>
-            </label>
-          </fieldset>
+          <label class="field">
+            <span>法規（每行一部）</span>
+            <textarea id="scopeLines" rows="4" placeholder="例如：&#10;國家賠償法&#10;民法第184條第1項"></textarea>
+          </label>
           <div class="row">
             <label class="field">
               <span>起始年（西元，選填）</span>
@@ -142,11 +145,25 @@
 
       <section class="page" id="page-brief">
         <h1>單一判決精讀</h1>
-        <form class="form" id="briefForm">
+        <p class="lead">可以輸入判決名稱、關鍵字或縮寫（例如「高院 戒嚴」）。先列出候選，再選定一則，系統只精讀這一則。</p>
+        <form class="form" id="briefFindForm">
           <label class="field">
-            <span>判決 ID</span>
-            <input id="briefId" required placeholder="例如：TPSV_103_2434_20141119" autocomplete="off">
+            <span>判決名稱、關鍵字或縮寫</span>
+            <input id="briefQuery" required placeholder="例如：高院 戒嚴、回復原狀" autocomplete="off">
           </label>
+          <div class="actions">
+            <button class="btn" type="submit" id="briefFind">查找候選</button>
+          </div>
+          <p class="status" id="briefFindStatus" role="status"></p>
+        </form>
+        <div class="table-wrap" id="briefCandidates" hidden>
+          <table class="table">
+            <thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>案由</th><th></th></tr></thead>
+            <tbody id="briefCandidateBody"></tbody>
+          </table>
+        </div>
+        <form class="form" id="briefForm">
+          <p class="picked">已選定：<strong id="briefPicked">尚未選定</strong></p>
           <label class="field">
             <span>想了解的重點（選填）</span>
             <input id="briefFocus" placeholder="例如：爭點、事實認定、回復原狀的要件" autocomplete="off">
@@ -162,12 +179,24 @@
           </label>
           <p class="hint">精讀內容全部由 AI 整理，請先在「設定」輸入 AI 金鑰。</p>
           <div class="actions">
-            <button class="btn primary" type="submit" id="briefRun">讀取判決</button>
+            <button class="btn primary" type="submit" id="briefRun" disabled>整理這則判決</button>
             <button class="btn" type="button" id="briefExport" disabled>匯出 Word</button>
           </div>
           <p class="status" id="briefStatus" role="status"></p>
         </form>
         <article class="reader" id="briefView" hidden></article>
+      </section>
+
+      <section class="page" id="page-files">
+        <h1>檔案</h1>
+        <p class="lead">保存過的判決列表、範圍整理表與精讀結果。垃圾桶中的項目可以還原，或永久刪除。</p>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="active" type="button">使用中</button>
+          <button class="tab" data-tab="archived" type="button">已封存</button>
+          <button class="tab" data-tab="trashed" type="button">垃圾桶</button>
+        </div>
+        <p class="status" id="filesStatus" role="status"></p>
+        <ul class="file-list" id="fileList"></ul>
       </section>
 
       <section class="page" id="page-settings">
@@ -202,9 +231,10 @@
 
           <h2>一般</h2>
           <label class="field">
-            <span>搜尋結果快取天數</span>
+            <span>判決搜尋結果快取天數</span>
             <input id="setCacheDays" type="number" min="1" max="90" value="7">
           </label>
+          <p class="hint">法條沿革與法名確認會永久保存；現行法規全文保存 30 天。判決內頁永久保存。</p>
           <div class="actions">
             <button class="btn" type="button" id="cacheClear">清除本機快取</button>
             <button class="btn" type="button" id="openUpdater">檢查更新</button>
@@ -216,6 +246,26 @@
     </main>
   </div>
 </div>
+
+<!-- 懸浮 AI 助理 -->
+<button class="assist-fab" id="assistFab" type="button" aria-label="開啟助理" aria-expanded="false" aria-controls="assistPanel">
+  <span class="glyph">助</span>
+</button>
+<section class="assist-panel" id="assistPanel" hidden aria-label="助理">
+  <header class="assist-head">
+    <span class="assist-title">助理</span>
+    <span class="spacer"></span>
+    <button class="btn small" type="button" id="assistClear">清除對話</button>
+    <button class="btn small" type="button" id="assistClose" aria-label="收起">收起</button>
+  </header>
+  <div class="assist-log" id="assistLog" role="log" aria-live="polite"></div>
+  <form class="assist-input" id="assistForm">
+    <textarea id="assistText" rows="2" placeholder="例如：幫我找戒嚴時期補償的判決，並整理國家賠償法第2條" autocomplete="off"></textarea>
+    <button class="btn primary" type="submit" id="assistSend">送出</button>
+  </form>
+  <p class="hint assist-hint">助理會先確認再執行會花費 AI 額度或改動資料的操作。</p>
+</section>
+
 <script src="app.js"></script>
 </body>
 </html>

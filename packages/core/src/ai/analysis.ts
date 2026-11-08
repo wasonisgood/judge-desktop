@@ -57,7 +57,7 @@ export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow
     `研究的法規：${statute}`,
     `判決字號：${d.meta.title}`,
     `引用條文：${row.citedArticles.join('；') || '（僅提及法規名稱）'}`,
-    ...(row.lawNotes.length ? ['法條異動提示（由法條沿革比對，請在分析中一併考慮）：', ...row.lawNotes.map((n) => `- ${n.summary}`)] : []),
+    ...((row.lawNotes ?? []).length ? ["法條異動提示（由法條沿革比對，請在分析中一併考慮）：", ...(row.lawNotes ?? []).map((n) => `- ${n.summary}`)] : []),
     '',
     '請輸出 JSON，欄位如下（每個值都是簡短的繁體中文句子）：',
     '{"issue":"本案爭點","holding":"法院見解（核心論證）","statuteApplication":"該法規如何被適用或排除","outcome":"結論（駁回、廢棄發回、准許等）","group":"依案件性質歸類的類型名稱（四字到十字）"}',

@@ -35,4 +35,19 @@ contextBridge.exposeInMainWorld('api', {
     export: (args: unknown) => invoke('export:brief', args),
   },
   update: { openUpdater: () => invoke('update:openUpdater') },
+  law: {
+    resolve: (args: unknown) => invoke('law:resolve', args),
+    current: (args: unknown) => invoke('law:current', args),
+  },
+  judgment: {
+    find: (args: unknown) => invoke('judgment:find', args),
+  },
+  assistant: {
+    chat: (args: unknown) => invoke('assistant:chat', args),
+  },
+  library: {
+    list: (args: unknown) => invoke('library:list', args),
+    update: (args: unknown) => invoke('library:update', args),
+    remove: (args: unknown) => invoke('library:remove', args),
+  },
 });

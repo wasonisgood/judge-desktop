@@ -1,0 +1,238 @@
+// 懸浮 AI 助理（主程序）：以工具呼叫（tool use）理解使用者的需求，並透過應用程式既有的流程操作。
+// 原則：
+// 1. 查詢類工具（搜尋判決、確認法名、讀取判決摘要）可直接執行，結果回給模型。
+// 2. 會花費 AI 額度或會改動資料的操作（範圍整理、單一判決精讀、封存、刪除），一律先列為「待確認」，
+//    由使用者在畫面上按同意後才執行；模型本身不能直接執行這些操作。
+// 3. 金鑰只在主程序使用，不會傳給畫面。
+import type { AiConfig } from './ai';
+
+export type AssistantPage = 'home' | 'list' | 'scope' | 'brief' | 'files' | 'settings';
+
+export interface PendingAction {
+  id: string;
+  label: string;
+  kind: 'run_scope' | 'run_brief';
+  args: Record<string, unknown>;
+}
+
+export interface AssistantTurn {
+  reply: string;
+  navigate: AssistantPage | null;
+  pending: PendingAction[];
+}
+
+/** 內部對話紀錄（與供應商無關），送出前再轉成各家的格式。 */
+type Item =
+  | { type: 'user'; text: string }
+  | { type: 'assistant'; text: string; calls: ToolCall[] }
+  | { type: 'tool'; id: string; name: string; content: string };
+
+export interface ToolCall {
+  id: string;
+  name: string;
+  input: Record<string, unknown>;
+}
+
+export interface ToolDef {
+  name: string;
+  description: string;
+  parameters: Record<string, unknown>;
+}
+
+/** 工具的執行結果：content 回給模型；pending 是要使用者確認的動作；navigate 是要切換的頁面。 */
+export interface ToolOutcome {
+  content: string;
+  pending?: PendingAction;
+  navigate?: AssistantPage;
+}
+
+export const ASSISTANT_TOOLS: ToolDef[] = [
+  {
+    name: 'search_judgments',
+    description: '依關鍵字搜尋司法院裁判書，回傳候選判決（字號、日期、案由）。只搜尋，不會改動資料。',
+    parameters: { type: 'object', properties: { query: { type: 'string', description: '關鍵字或判決名稱' } }, required: ['query'] },
+  },
+  {
+    name: 'resolve_statute',
+    description: '確認法規的正式名稱（全國法規資料庫）。使用者說的法名不完整或有錯字時使用。',
+    parameters: { type: 'object', properties: { name: { type: 'string' } }, required: ['name'] },
+  },
+  {
+    name: 'read_judgment',
+    description: '讀取一則判決的字號、法院、日期與主文摘要（不呼叫 AI）。',
+    parameters: { type: 'object', properties: { id: { type: 'string', description: '判決 id' } }, required: ['id'] },
+  },
+  {
+    name: 'open_page',
+    description: '切換到應用程式的某一頁。',
+    parameters: {
+      type: 'object',
+      properties: { page: { type: 'string', enum: ['home', 'list', 'scope', 'brief', 'files', 'settings'] } },
+      required: ['page'],
+    },
+  },
+  {
+    name: 'propose_scope',
+    description: '提議執行範圍整理表（會呼叫 AI，需使用者確認）。statutes 每行一部法規，可含條項款，例如「民法第184條第1項」。',
+    parameters: {
+      type: 'object',
+      properties: {
+        statutes: { type: 'array', items: { type: 'string' } },
+        yearFrom: { type: 'integer' },
+        yearTo: { type: 'integer' },
+      },
+      required: ['statutes'],
+    },
+  },
+  {
+    name: 'propose_brief',
+    description: '提議對一則判決做 AI 精讀（會呼叫 AI，需使用者確認）。',
+    parameters: {
+      type: 'object',
+      properties: { id: { type: 'string' }, focus: { type: 'string' } },
+      required: ['id'],
+    },
+  },
+];
+
+const SYSTEM_PROMPT = [
+  '你是「司法院裁判研究」桌面應用程式的助理。使用繁體中文（台灣用語），語氣簡潔平實，不使用表情符號。',
+  '你可以用工具查詢判決與法規，也可以提議操作應用程式的功能。',
+  '會呼叫 AI 或改動資料的操作，只能用 propose_ 開頭的工具提議，由使用者確認後才會執行。',
+  '不確定使用者要什麼時，先問清楚，不要猜。不得編造判決字號或法條內容；查不到就說查不到。',
+].join('\n');
+
+// ---------------------------------------------------------------------------
+// 供應商格式轉換
+// ---------------------------------------------------------------------------
+function toAnthropic(items: Item[]): unknown[] {
+  const out: any[] = [];
+  for (const it of items) {
+    if (it.type === 'user') out.push({ role: 'user', content: it.text });
+    else if (it.type === 'assistant') {
+      const content: any[] = [];
+      if (it.text) content.push({ type: 'text', text: it.text });
+      for (const c of it.calls) content.push({ type: 'tool_use', id: c.id, name: c.name, input: c.input });
+      out.push({ role: 'assistant', content: content.length ? content : [{ type: 'text', text: '（無）' }] });
+    } else {
+      const block = { type: 'tool_result', tool_use_id: it.id, content: it.content };
+      const last = out[out.length - 1];
+      if (last && last.role === 'user' && Array.isArray(last.content) && last.content[0]?.type === 'tool_result') last.content.push(block);
+      else out.push({ role: 'user', content: [block] });
+    }
+  }
+  return out;
+}
+
+function toOpenAi(items: Item[]): unknown[] {
+  const out: any[] = [];
+  for (const it of items) {
+    if (it.type === 'user') out.push({ role: 'user', content: it.text });
+    else if (it.type === 'assistant') {
+      const msg: any = { role: 'assistant', content: it.text || null };
+      if (it.calls.length) msg.tool_calls = it.calls.map((c) => ({ id: c.id, type: 'function', function: { name: c.name, arguments: JSON.stringify(c.input) } }));
+      out.push(msg);
+    } else {
+      out.push({ role: 'tool', tool_call_id: it.id, content: it.content });
+    }
+  }
+  return out;
+}
+
+interface ModelReply {
+  text: string;
+  calls: ToolCall[];
+}
+
+async function askModel(cfg: AiConfig, items: Item[]): Promise<ModelReply> {
+  const base = cfg.baseUrl.replace(/\/$/, '');
+  const signal = AbortSignal.timeout(120_000);
+  if (cfg.provider === 'anthropic') {
+    const res = await fetch(`${base}/v1/messages`, {
+      method: 'POST',
+      signal,
+      headers: { 'content-type': 'application/json', 'x-api-key': cfg.apiKey, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({
+        model: cfg.model,
+        max_tokens: 1500,
+        system: SYSTEM_PROMPT,
+        tools: ASSISTANT_TOOLS.map((t) => ({ name: t.name, description: t.description, input_schema: t.parameters })),
+        messages: toAnthropic(items),
+      }),
+    });
+    const json: any = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(`AI 服務回傳 ${res.status}：${json?.error?.message ?? '未知錯誤'}`);
+    const text = (json.content ?? []).filter((c: any) => c.type === 'text').map((c: any) => c.text).join('\n').trim();
+    const calls: ToolCall[] = (json.content ?? [])
+      .filter((c: any) => c.type === 'tool_use')
+      .map((c: any) => ({ id: c.id, name: c.name, input: c.input ?? {} }));
+    return { text, calls };
+  }
+  const res = await fetch(`${base}/chat/completions`, {
+    method: 'POST',
+    signal,
+    headers: { 'content-type': 'application/json', authorization: `Bearer ${cfg.apiKey}` },
+    body: JSON.stringify({
+      model: cfg.model,
+      max_tokens: 1500,
+      messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...toOpenAi(items)],
+      tools: ASSISTANT_TOOLS.map((t) => ({ type: 'function', function: { name: t.name, description: t.description, parameters: t.parameters } })),
+    }),
+  });
+  const json: any = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(`AI 服務回傳 ${res.status}：${json?.error?.message ?? '未知錯誤'}`);
+  const msg = json?.choices?.[0]?.message ?? {};
+  const calls: ToolCall[] = (msg.tool_calls ?? []).map((c: any) => {
+    let input: Record<string, unknown> = {};
+    try { input = JSON.parse(c.function?.arguments || '{}'); } catch { input = {}; }
+    return { id: c.id, name: c.function?.name ?? '', input };
+  });
+  return { text: String(msg.content ?? '').trim(), calls };
+}
+
+// ---------------------------------------------------------------------------
+// 對話迴圈
+// ---------------------------------------------------------------------------
+export interface AssistantDeps {
+  config: () => Promise<AiConfig>;
+  execute: (call: ToolCall) => Promise<ToolOutcome>;
+}
+
+/**
+ * 執行一輪對話。history 為前端保存的紀錄（只含 user／assistant 文字），本函式會在工具呼叫期間補上中間紀錄。
+ * 回傳最終文字、要切換的頁面與待確認的動作。
+ */
+export async function runAssistantTurn(
+  deps: AssistantDeps,
+  history: { role: 'user' | 'assistant'; text: string }[],
+  userText: string,
+): Promise<AssistantTurn> {
+  const cfg = await deps.config();
+  const items: Item[] = [
+    ...history.map((h): Item => (h.role === 'user' ? { type: 'user', text: h.text } : { type: 'assistant', text: h.text, calls: [] })),
+    { type: 'user', text: userText },
+  ];
+  const turn: AssistantTurn = { reply: '', navigate: null, pending: [] };
+
+  for (let round = 0; round < 6; round++) {
+    const r = await askModel(cfg, items);
+    items.push({ type: 'assistant', text: r.text, calls: r.calls });
+    if (r.calls.length === 0) {
+      turn.reply = r.text || '（沒有回覆）';
+      return turn;
+    }
+    for (const call of r.calls) {
+      const out = await deps.execute(call);
+      if (out.navigate) turn.navigate = out.navigate;
+      if (out.pending) turn.pending.push(out.pending);
+      items.push({ type: 'tool', id: call.id, name: call.name, content: out.content });
+    }
+  }
+  turn.reply = '這次對話的工具呼叫次數已達上限，請把需求說得更具體一點。';
+  return turn;
+}
+
+/** 只允許模型提議這兩種會花費 AI 額度的動作；其他名稱一律拒絕。 */
+export function isProposeTool(name: string): boolean {
+  return name === 'propose_scope' || name === 'propose_brief';
+}

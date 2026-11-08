@@ -15,7 +15,7 @@ export interface ScopeSheet {
 const byId = (analyses: CaseAnalysis[]) => new Map(analyses.map((a) => [a.id, a]));
 
 /** 逐案表的欄位（Excel 與 Word 共用順序）。 */
-const CASE_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由', '類型（AI）', '爭點（AI）', '法院見解（AI）', '法規適用（AI）', '結論（AI）', '引用條文', '判決連結'];
+const CASE_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由', '類型（AI）', '爭點（AI）', '法院見解（AI）', '法規適用（AI）', '結論（AI）', '引用條文', '法條異動（依沿革比對）', '判決連結'];
 
 function caseValues(i: number, r: ScopeRow, a: CaseAnalysis | undefined): string[] {
   return [
@@ -30,6 +30,7 @@ function caseValues(i: number, r: ScopeRow, a: CaseAnalysis | undefined): string
     a?.statuteApplication ?? '',
     a?.outcome ?? '',
     r.citedArticles.join('；'),
+    (r.lawNotes ?? []).map((n) => n.summary).join('\n'),
     r.href,
   ];
 }
