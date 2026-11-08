@@ -1,0 +1,16 @@
+appId: tw.judge.research
+productName: 司法院裁判研究
+copyright: Copyright (c) wasonisgood
+directories:
+  output: release
+  buildResources: build
+files:
+  - dist/**/*
+  - package.json
+asar: true
+win:
+  icon: app.ico
+  target:
+    - target: dir
+      arch:
+        - x64

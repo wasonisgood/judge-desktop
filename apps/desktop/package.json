@@ -1,0 +1,28 @@
+{
+  "name": "judge-desktop",
+  "productName": "司法院裁判研究",
+  "version": "0.1.0",
+  "description": "司法院裁判研究桌面端：判決列表、範圍整理表、單一判決精讀",
+  "main": "dist/main/main.js",
+  "private": true,
+  "author": "wasonisgood",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-renderer.mjs",
+    "start": "npm run build && electron .",
+    "dist": "npm run build && electron-builder --win --dir --publish never",
+    "installer": "powershell -ExecutionPolicy Bypass -File installer/build_installer.ps1 -RebuildPayload"
+  },
+  "dependencies": {
+    "@judge/core": "file:../../packages/core",
+    "adm-zip": "^0.5.18",
+    "docx": "^9",
+    "exceljs": "^4"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.8",
+    "@types/node": "^22",
+    "electron": "^38",
+    "electron-builder": "^26",
+    "typescript": "^5"
+  }
+}

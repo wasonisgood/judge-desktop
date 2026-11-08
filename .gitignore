@@ -4,3 +4,13 @@ release/
 out/
 *.log
 .env*
+apps/desktop/release/
+apps/desktop/installer/app-payload.zip
+apps/desktop/installer/BuildInfo.g.cs
+apps/desktop/installer/*.exe
+apps/desktop/installer/publish/
+apps/desktop/installer/*.json.bak
+apps/desktop/JudgeResearchSetup.exe
+apps/desktop/app-payload.zip
+hotfix.zip
+hotfix.json

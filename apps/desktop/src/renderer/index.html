@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>司法院裁判研究</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="frame">
+  <header class="titlebar">
+    <div class="app-name">司法院裁判研究</div>
+    <div class="spacer"></div>
+    <label class="theme" title="深色模式">
+      <span>深色</span>
+      <input type="checkbox" id="themeToggle">
+      <span class="switch"><span class="knob"></span></span>
+    </label>
+    <div class="win-controls">
+      <button type="button" data-win="minimize" aria-label="最小化">－</button>
+      <button type="button" data-win="toggleMaximize" aria-label="最大化">□</button>
+      <button type="button" data-win="close" class="close" aria-label="關閉">×</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="rail" aria-label="主要功能">
+      <button class="rail-item active" data-page="home"><span class="glyph">首</span><span class="label">首頁</span></button>
+      <button class="rail-item" data-page="list"><span class="glyph">列</span><span class="label">判決列表</span></button>
+      <button class="rail-item" data-page="scope"><span class="glyph">範</span><span class="label">範圍整理</span></button>
+      <button class="rail-item" data-page="brief"><span class="glyph">判</span><span class="label">單一判決</span></button>
+      <button class="rail-item" data-page="settings"><span class="glyph">設</span><span class="label">設定</span></button>
+    </nav>
+
+    <main class="content">
+      <div id="notice" class="notice" hidden></div>
+
+      <section class="page active" id="page-home">
+        <h1>司法院裁判研究</h1>
+        <p class="lead">搜尋司法院公開的裁判書，整理成表格，或精讀單一判決。</p>
+        <ul class="entries">
+          <li>
+            <button class="entry" data-go="list">
+              <span class="entry-title">判決列表</span>
+              <span class="entry-desc">輸入關鍵字，查出相關判決，可匯出 Excel。</span>
+            </button>
+          </li>
+          <li>
+            <button class="entry" data-go="scope">
+              <span class="entry-title">範圍整理表</span>
+              <span class="entry-desc">選擇一或多部法規，列出引用該法規的判決，整理成表格（Excel 或 Word）。</span>
+            </button>
+          </li>
+          <li>
+            <button class="entry" data-go="brief">
+              <span class="entry-title">單一判決精讀</span>
+              <span class="entry-desc">讀取一則判決的段落與原文，可用 AI 產生摘要，匯出 Word。</span>
+            </button>
+          </li>
+          <li>
+            <button class="entry" data-go="settings">
+              <span class="entry-title">AI 設定</span>
+              <span class="entry-desc">設定 AI 服務與金鑰。金鑰只保存在這台電腦。</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section class="page" id="page-list">
+        <h1>判決列表</h1>
+        <form class="form" id="listForm">
+          <label class="field">
+            <span>關鍵字</span>
+            <input id="listKeyword" required placeholder="例如：戒嚴、回復原狀" autocomplete="off">
+          </label>
+          <div class="row">
+            <label class="field">
+              <span>最多筆數</span>
+              <input id="listMax" type="number" min="1" max="100" value="20">
+            </label>
+            <label class="field">
+              <span>法院代碼（選填）</span>
+              <input id="listCourt" placeholder="留空表示全部法院" autocomplete="off">
+            </label>
+          </div>
+          <label class="check">
+            <input type="checkbox" id="listFull">
+            <span>逐筆讀取全文（較慢，匯出時會附上主文）</span>
+          </label>
+          <div class="actions">
+            <button class="btn primary" type="submit" id="listRun">搜尋</button>
+            <button class="btn" type="button" id="listExport" disabled>匯出 Excel</button>
+          </div>
+          <div class="progress" id="listProgress" hidden><div class="bar"></div></div>
+          <p class="status" id="listStatus" role="status"></p>
+        </form>
+        <div class="table-wrap" id="listResult" hidden>
+          <table class="table">
+            <thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>案由</th></tr></thead>
+            <tbody id="listBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="page" id="page-scope">
+        <h1>範圍整理表</h1>
+        <p class="lead">選擇法規，列出確實引用該法規的判決，並整理成表格。每部法規會分開列出。</p>
+        <form class="form" id="scopeForm">
+          <fieldset class="field">
+            <legend>法規（可多選）</legend>
+            <div class="checks" id="scopePresets"></div>
+            <label class="field">
+              <span>自訂法規名稱（每行一個，選填）</span>
+              <textarea id="scopeCustom" rows="2" placeholder="例如：國家賠償法"></textarea>
+            </label>
+          </fieldset>
+          <div class="row">
+            <label class="field">
+              <span>起始年（西元，選填）</span>
+              <input id="scopeFrom" type="number" min="1945" max="2100" placeholder="例如 2000">
+            </label>
+            <label class="field">
+              <span>結束年（西元，選填）</span>
+              <input id="scopeTo" type="number" min="1945" max="2100" placeholder="例如 2026">
+            </label>
+            <label class="field">
+              <span>每部法規最多筆數</span>
+              <input id="scopeMax" type="number" min="1" max="100" value="30">
+            </label>
+          </div>
+          <div class="actions">
+            <button class="btn primary" type="submit" id="scopeRun">開始整理</button>
+            <button class="btn" type="button" id="scopeXlsx" disabled>匯出 Excel</button>
+            <button class="btn" type="button" id="scopeDocx" disabled>匯出 Word</button>
+          </div>
+          <div class="progress" id="scopeProgress" hidden><div class="bar"></div></div>
+          <p class="status" id="scopeStatus" role="status"></p>
+        </form>
+        <div id="scopeResult"></div>
+      </section>
+
+      <section class="page" id="page-brief">
+        <h1>單一判決精讀</h1>
+        <form class="form" id="briefForm">
+          <label class="field">
+            <span>判決 ID</span>
+            <input id="briefId" required placeholder="例如：TPSV_103_2434_20141119" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>想了解的重點（選填）</span>
+            <input id="briefFocus" placeholder="例如：爭點、事實認定、回復原狀的要件" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>摘要長度</span>
+            <select id="briefLength">
+              <option value="半頁">半頁</option>
+              <option value="約 1 頁" selected>約 1 頁</option>
+              <option value="約 2 頁">約 2 頁</option>
+            </select>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="briefAi" checked>
+            <span>使用 AI 產生摘要（需要先在設定輸入 AI 金鑰）</span>
+          </label>
+          <div class="actions">
+            <button class="btn primary" type="submit" id="briefRun">讀取判決</button>
+            <button class="btn" type="button" id="briefExport" disabled>匯出 Word</button>
+          </div>
+          <p class="status" id="briefStatus" role="status"></p>
+        </form>
+        <article class="reader" id="briefView" hidden></article>
+      </section>
+
+      <section class="page" id="page-settings">
+        <h1>設定</h1>
+        <form class="form" id="settingsForm">
+          <h2>AI 服務</h2>
+          <label class="field">
+            <span>服務類型</span>
+            <select id="setProvider">
+              <option value="anthropic">Anthropic（Claude）</option>
+              <option value="openai-compatible">OpenAI 相容的服務</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>服務網址</span>
+            <input id="setBaseUrl" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>模型名稱</span>
+            <input id="setModel" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>API 金鑰 <small id="keyState"></small></span>
+            <input id="setKey" type="password" autocomplete="new-password" placeholder="要更換時再輸入；不輸入則保留原金鑰">
+          </label>
+          <div class="actions">
+            <button class="btn primary" type="submit">儲存</button>
+            <button class="btn" type="button" id="setTest">測試連線</button>
+            <button class="btn danger" type="button" id="setClear">清除金鑰</button>
+          </div>
+          <p class="status" id="setStatus" role="status"></p>
+
+          <h2>一般</h2>
+          <label class="field">
+            <span>搜尋結果快取天數</span>
+            <input id="setCacheDays" type="number" min="1" max="90" value="7">
+          </label>
+          <div class="actions">
+            <button class="btn" type="button" id="cacheClear">清除本機快取</button>
+            <button class="btn" type="button" id="openUpdater">檢查更新</button>
+          </div>
+        </form>
+        <p class="hint">金鑰只保存在這台電腦，並以系統的加密機制保護。本程式不會把金鑰傳給其他服務。</p>
+        <p class="hint" id="versionInfo"></p>
+      </section>
+    </main>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
