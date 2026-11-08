@@ -56,6 +56,7 @@ export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow
   const user = [
     `研究的法規：${statute}`,
     `判決字號：${d.meta.title}`,
+    `歷審位置：${d.historyPosition?.summary ?? '未取得歷審資料'}`,
     `引用條文：${row.citedArticles.join('；') || '（僅提及法規名稱）'}`,
     ...((row.lawNotes ?? []).length ? ["法條異動提示（由法條沿革比對，請在分析中一併考慮）：", ...(row.lawNotes ?? []).map((n) => `- ${n.summary}`)] : []),
     '',
@@ -117,6 +118,7 @@ export async function briefJudgment(
   const focus = opts.focus.trim() || '由你判斷最重要的爭點、事實、理由與主文';
   const user = [
     `判決字號：${d.meta.title}`,
+    `歷審位置：${d.historyPosition?.summary ?? '未取得歷審資料'}`,
     `法院：${d.meta.court ?? ''}　日期：${d.meta.dateIso ?? d.meta.dateMinguo}　案由：${d.meta.cause}`,
     `使用者想了解的重點：${focus}`,
     `輸出長度：${opts.length}`,

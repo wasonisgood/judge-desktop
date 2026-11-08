@@ -15,3 +15,4 @@ export * from './law/curlFetch';
 export * from './law/citationNotes';
 export * from './court/aliases';
 export * from './ai/federation';
+export * from './court/history';

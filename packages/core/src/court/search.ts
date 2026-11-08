@@ -1,6 +1,7 @@
 // 對外的檢索 API：關鍵字搜尋、法院選單、取得內頁。桌面端與遠端 MCP 都呼叫這裡。
 import { CourtClient, BASE } from './client';
 import { parseCourtMenu, parseDetailHtml, parseListHtml, type JudgmentDetail, type JudgmentSummary } from './parse';
+import { historyErrorPosition, locateInHistory, parsePrintHistory } from './history';
 
 export interface SearchOptions {
   maxItems?: number;
@@ -26,5 +27,18 @@ export async function getCourtMenu(keyword: string, client = new CourtClient()) 
 
 export async function getJudgmentDetail(id: string, client = new CourtClient()): Promise<JudgmentDetail> {
   const url = `${BASE}data.aspx?ty=JD&id=${encodeURIComponent(id)}&ot=in`;
-  return parseDetailHtml(await client.request(url), id, url);
+  const d = parseDetailHtml(await client.request(url), id, url);
+  // 歷審：同一個客戶端（同一個工作階段）取得列印歷審清單，再定位本案。失敗時只記錄原因，不影響判決內容。
+  if (d.printHistoryUrl) {
+    try {
+      const rows = parsePrintHistory(await client.request(d.printHistoryUrl, { headers: { referer: url } }));
+      d.history = rows;
+      d.historyPosition = locateInHistory(rows, { title: d.meta.title, dateIso: d.meta.dateIso });
+    } catch (err) {
+      d.historyPosition = historyErrorPosition(err instanceof Error ? err.message : String(err));
+    }
+  } else {
+    d.historyPosition = locateInHistory([], { title: d.meta.title, dateIso: d.meta.dateIso });
+  }
+  return d;
 }

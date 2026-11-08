@@ -374,14 +374,14 @@ function registerIpc() {
   // 列表生成
   ipcMain.handle('search:run', async (e, args: { keyword: string; courtCode?: string; maxItems: number; includeFullText: boolean }) => {
     const items = await cachedSearch(args.keyword, args.maxItems, args.courtCode);
-    const details: Record<string, Pick<JudgmentDetail, 'meta' | 'sections' | 'fullText'>> = {};
+    const details: Record<string, Pick<JudgmentDetail, 'meta' | 'sections' | 'fullText'> & { historyPosition: string }> = {};
     if (args.includeFullText) {
       let i = 0;
       for (const it of items) {
         i++;
         e.sender.send('search:progress', { done: i, total: items.length, id: it.id });
         const d = await cachedDetail(it.id);
-        details[it.id] = { meta: d.meta, sections: d.sections, fullText: d.fullText };
+        details[it.id] = { meta: d.meta, sections: d.sections, fullText: d.fullText, historyPosition: d.historyPosition?.summary ?? '' };
       }
     }
     await library().add({

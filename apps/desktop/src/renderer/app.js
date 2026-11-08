@@ -247,7 +247,7 @@
       }
       var wrap = el('div', 'table-wrap');
       var table = el('table', 'table');
-      table.innerHTML = '<thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>類型</th><th>爭點</th><th>法院見解</th><th>結論</th><th>引用條文</th><th>法條異動</th><th>操作</th></tr></thead>';
+      table.innerHTML = '<thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>類型</th><th>爭點</th><th>法院見解</th><th>結論</th><th>引用條文</th><th>法條異動</th><th>歷審位置</th><th>操作</th></tr></thead>';
       var tbody = el('tbody');
       var byId = {};
       (sh.analyses || []).forEach(function (a) { byId[a.id] = a; });
@@ -255,7 +255,7 @@
         var a = byId[r.id] || {};
         var notes = (r.lawNotes || []).map(function (n) { return n.summary; }).join('\n');
         var tr = el('tr');
-        [String(i + 1), r.title, r.dateIso || '', a.group || '', a.issue || '', a.holding || '', a.outcome || '', r.citedArticles.join('；'), notes].forEach(function (text, j) {
+        [String(i + 1), r.title, r.dateIso || '', a.group || '', a.issue || '', a.holding || '', a.outcome || '', r.citedArticles.join('；'), notes, r.historyPosition || ''].forEach(function (text, j) {
           var td = el('td', j === 0 ? 'num' : '', text);
           tr.appendChild(td);
         });
@@ -382,6 +382,7 @@
     box.innerHTML = '';
     box.appendChild(el('h2', '', doc.title || d.meta.title || d.meta.id));
     box.appendChild(el('p', '', '法院：' + (d.meta.court || '—') + '　日期：' + (d.meta.dateIso || d.meta.dateMinguo || '—') + '　案由：' + (d.meta.cause || '—')));
+    box.appendChild(el('p', '', '歷審：' + (d.historyPosition ? d.historyPosition.summary : '未取得')));
     doc.sections.forEach(function (sec) {
       box.appendChild(el('h3', '', sec.heading));
       sec.paragraphs.forEach(function (text) { box.appendChild(el('p', '', text)); });

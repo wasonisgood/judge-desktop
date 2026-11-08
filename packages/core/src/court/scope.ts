@@ -31,6 +31,8 @@ export interface ScopeRow {
   citedArticles: string[];
   /** 引用條文與期間內修法的對照（需提供 lawHistory）。 */
   lawNotes: CitationLawNote[];
+  /** 本案在司法院歷審清單中的位置（說明文字）。 */
+  historyPosition: string;
   /** 供 AI 分析用的原文摘錄：主文，以及法規被引用處前後的理由文字。 */
   excerpts: { main: string; citing: string };
   href: string;
@@ -96,6 +98,7 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
       cause: d.meta.cause || it.cause,
       result: resultOf(d.sections['主文'] ?? ''),
       citedArticles: cited,
+      historyPosition: d.historyPosition?.summary ?? '',
       lawNotes: opts.lawHistory
         ? citationLawNotes(parseCitations(cited.join('；')), opts.lawHistory, { from: opts.yearFrom ? `${opts.yearFrom}-01-01` : undefined, to: opts.yearTo ? `${opts.yearTo}-12-31` : undefined })
         : [],

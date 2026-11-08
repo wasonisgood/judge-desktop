@@ -15,10 +15,10 @@ export interface ScopeSheet {
 const byId = (analyses: CaseAnalysis[]) => new Map(analyses.map((a) => [a.id, a]));
 
 /** 逐案表的欄位（Excel 與 Word 共用順序）。 */
-const CASE_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由', '類型（AI）', '爭點（AI）', '法院見解（AI）', '法規適用（AI）', '結論（AI）', '引用條文', '法條異動（依沿革比對）', '判決連結'];
+const CASE_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由', '類型（AI）', '爭點（AI）', '法院見解（AI）', '法規適用（AI）', '結論（AI）', '引用條文', '法條異動（依沿革比對）', '歷審位置（司法院清單）', '判決連結'];
 
 /** Excel 欄寬（字元單位），與 CASE_HEADERS 一一對應。 */
-const CASE_WIDTHS = [6, 40, 16, 13, 28, 14, 36, 50, 40, 30, 30, 46, 30];
+const CASE_WIDTHS = [6, 40, 16, 13, 28, 14, 36, 50, 40, 30, 30, 46, 40, 30];
 
 /** Excel 工作表名稱：不得含 : \ / ? * [ ]，最長 31 字；同名時加上序號。 */
 function uniqueSheetName(raw: string, used: Set<string>): string {
@@ -45,6 +45,7 @@ function caseValues(i: number, r: ScopeRow, a: CaseAnalysis | undefined): string
     a?.outcome ?? '',
     r.citedArticles.join('；'),
     (r.lawNotes ?? []).map((n) => n.summary).join('\n'),
+    r.historyPosition ?? '',
     r.href,
   ];
 }
@@ -65,7 +66,7 @@ export async function buildScopeWorkbook(sheets: ScopeSheet[], meta: { yearFrom?
     head.height = 24;
     sh.rows.forEach((r, i) => {
       const values = caseValues(i, r, map.get(r.id));
-      const row = ws.addRow(Object.fromEntries(values.map((v, j) => ['c' + j, j === 11 ? { text: v, hyperlink: v } : v])));
+      const row = ws.addRow(Object.fromEntries(values.map((v, j) => ['c' + j, j === values.length - 1 ? { text: v, hyperlink: v } : v])));
       row.alignment = { vertical: 'top', wrapText: true };
     });
     ws.views = [{ state: 'frozen', ySplit: 1 }];
@@ -105,10 +106,14 @@ const para = (text: string, size = 22, bold = false) =>
 /** 橫式 A4、邊界 2 公分時的可用寬度（twips）。 */
 const LANDSCAPE_TEXT_WIDTH = 16838 - 2 * 1134;
 
-/** 依 Excel 欄寬比例換算成 twips，總和等於可用寬度，避免超出頁面。 */
+/** 每欄最小寬度（twips，約 0.9 公分），避免序號等窄欄的文字被擠成直排。 */
+const DOCX_MIN_COL = 510;
+
+/** 每欄先保留最小寬度，其餘寬度依 Excel 欄寬比例分配；總和等於版面可用寬度。 */
 function docxColumnWidths(): number[] {
   const total = CASE_WIDTHS.reduce((a, b) => a + b, 0);
-  const w = CASE_WIDTHS.map((x) => Math.floor((x / total) * LANDSCAPE_TEXT_WIDTH));
+  const free = LANDSCAPE_TEXT_WIDTH - DOCX_MIN_COL * CASE_WIDTHS.length;
+  const w = CASE_WIDTHS.map((x) => DOCX_MIN_COL + Math.floor((x / total) * free));
   w[w.length - 1] += LANDSCAPE_TEXT_WIDTH - w.reduce((a, b) => a + b, 0);
   return w;
 }

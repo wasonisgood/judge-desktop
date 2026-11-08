@@ -6,7 +6,7 @@ import type { JudgmentDetail, JudgmentSummary, BriefDocument } from '@judge/core
 interface ListArgs {
   keyword: string;
   items: JudgmentSummary[];
-  details: Record<string, { meta: JudgmentDetail['meta']; sections: Record<string, string>; fullText: string }>;
+  details: Record<string, { meta: JudgmentDetail['meta']; sections: Record<string, string>; fullText: string; historyPosition?: string }>;
 }
 
 export async function buildListWorkbook(args: ListArgs): Promise<Buffer> {
@@ -23,7 +23,7 @@ export async function buildListWorkbook(args: ListArgs): Promise<Buffer> {
     { header: '法院', key: 'court', width: 18 },
     { header: '判決連結', key: 'href', width: 50 },
   ];
-  if (hasFull) columns.push({ header: '主文', key: 'main', width: 60 }, { header: '全文字數', key: 'chars', width: 12 });
+  if (hasFull) columns.push({ header: '主文', key: 'main', width: 60 }, { header: '全文字數', key: 'chars', width: 12 }, { header: '歷審位置（司法院清單）', key: 'history', width: 48 });
   ws.columns = columns;
 
   const header = ws.getRow(1);
@@ -45,6 +45,7 @@ export async function buildListWorkbook(args: ListArgs): Promise<Buffer> {
     if (hasFull) {
       row.main = d ? (d.sections['主文'] ?? '') : '';
       row.chars = d ? d.fullText.length : 0;
+      row.history = d ? (d.historyPosition ?? '') : '';
     }
     const r = ws.addRow(row);
     r.alignment = { vertical: 'top', wrapText: true };
@@ -88,6 +89,7 @@ export async function buildBriefDocx(d: JudgmentDetail, doc: BriefDocument): Pro
     }),
     para(`法院：${d.meta.court ?? '—'}　日期：${d.meta.dateIso ?? d.meta.dateMinguo}`),
     para(`案由：${d.meta.cause || '—'}`),
+    para(`歷審：${d.historyPosition?.summary ?? '—'}`),
     para(`來源：${d.meta.sourceUrl}`, { size: 20 }),
     para('以下內容由 AI 依判決原文整理，請對照原文確認。', { size: 20 }),
   ];

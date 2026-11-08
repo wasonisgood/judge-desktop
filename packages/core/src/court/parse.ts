@@ -2,6 +2,7 @@
 import * as cheerio from 'cheerio';
 import { BASE } from './client';
 import { cleanText, isoFromMinguo, reflowText } from '../text/normalize';
+import type { HistoryPosition, HistoryRow } from './history';
 
 export interface JudgmentSummary {
   id: string;
@@ -25,7 +26,12 @@ export interface JudgmentDetail {
     sourceUrl: string;
   };
   sections: Record<string, string>;
-  history: { id: string | null; display: string; dateDisplay: string; href: string }[];
+  /** 歷審清單（需取得列印歷審清單後才有；未取得時為空陣列）。 */
+  history: HistoryRow[];
+  /** 目前這一則在歷審中的位置（未取得時為 null）。 */
+  historyPosition: HistoryPosition | null;
+  /** 列印歷審清單的網址（伺服器產生，需帶 Referer 取得）；沒有時為 null。 */
+  printHistoryUrl: string | null;
   relatedLaws: string[];
   fullText: string;
 }
@@ -153,14 +159,9 @@ export function parseDetailHtml(html: string, id: string, sourceUrl: string): Ju
   const cause = field('裁判案由');
   const m = /^(\S+法院)\s+(\d+)\s*年度\s*(\S+?)\s*字第\s*(\d+)\s*號\s*(判決|裁定)?/.exec(title);
 
-  const history: JudgmentDetail['history'] = [];
-  const hisLinks = $('#JudHis ul li a').length ? $('#JudHis ul li a') : $("a[href*='data.aspx?ty=JD']");
-  hisLinks.each((_, a) => {
-    const href = new URL($(a).attr('href') ?? '', BASE).toString();
-    const display = cleanText($(a).text());
-    const dm = /\((\d{2,3}\.\d{1,2}\.\d{1,2})\)$/.exec(display);
-    history.push({ id: idFromHref(href), display, dateDisplay: dm?.[1] ?? '', href });
-  });
+  // 歷審：內頁只放「列印歷審清單」的連結，清單本身由伺服器另外產生（見 search.ts 的 getJudgmentDetail）。
+  const printHref = $('a#hyPrintHistory').attr('href') ?? '';
+  const printHistoryUrl = printHref ? new URL(printHref, sourceUrl).toString() : null;
 
   const relatedLaws = $('#JudrelaLaw ul.rela-law li').map((_, li) => cleanText($(li).text())).get();
 
@@ -177,7 +178,9 @@ export function parseDetailHtml(html: string, id: string, sourceUrl: string): Ju
       sourceUrl,
     },
     sections: splitSections(fullText),
-    history,
+    history: [],
+    historyPosition: null,
+    printHistoryUrl,
     relatedLaws,
     fullText,
   };
