@@ -8,7 +8,7 @@
   "minimumVersion": "1.0.0",
   "mandatory": false,
   "notes": {
-    "zh": "・安裝精靈改為原生 C# 視窗，可自訂安裝位置、捷徑與解除安裝。\n・新增範圍整理表：依法規範圍列出引用的判決，可匯出 Excel 或 Word。\n・搜尋結果本機快取，判決內容不重複下載。\n・介面改為一般用語，並支援深色模式。",
-    "en": "・Native C# installer with custom install path, shortcuts and uninstall.\n・New scope tables: list judgments citing selected statutes, export to Excel or Word.\n・Local cache for search results and judgment text.\n・Plain wording and dark mode."
+    "zh": "・新增工作負載身分聯合：可由提供者代為連線，不需自行申請 API 金鑰，設定頁附四步圖解。\n・法條精確查詢：可輸入到條、項、款；法名不完全正確時自動找到正式法名。\n・範圍整理表標示引用條文在查詢期間內是否修法，並顯示判決在歷審中的位置。\n・單一判決可自訂 Word 欄位（勾選與自訂欄位名稱、說明）。\n・AI 助理可查詢判決、提議範圍整理與精讀，經同意後執行，並顯示即時進度。\n・匯出檔自動存到「文件／司法院裁判研究」並自動開啟。",
+    "en": "・Workload identity federation: the provider can connect for you, no personal API key needed; the settings page has a four-step guide.\n・Precise statute lookup to article, paragraph and item; inexact statute names resolve to the official name.\n・Scope tables flag whether cited articles changed during the period, and show a judgment's position in its appeal history.\n・Single-judgment brief with selectable and custom Word fields.\n・AI assistant can search, propose scope tables and briefs (run only after your approval), with live progress.\n・Exports save automatically to Documents\\司法院裁判研究 and open when done."
   }
 }
