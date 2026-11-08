@@ -17,7 +17,7 @@ import {
 import { buildListWorkbook, buildBriefDocx } from './exporters';
 import { buildScopeWorkbook, buildScopeDocx, type ScopeSheet } from './scopeExporters';
 import { callAi, type AiConfig } from './ai';
-import { runAssistantTurn, type ToolCall, type ToolOutcome, type AssistantTurn } from './assistant';
+import { runAssistantTurn, mergeSearchHits, type ToolCall, type ToolOutcome, type AssistantTurn, type SearchHit } from './assistant';
 import { LibraryStore, newId, type LibraryStatus } from './library';
 
 const isDev = !app.isPackaged;
@@ -287,9 +287,17 @@ async function executeAssistantTool(call: ToolCall): Promise<ToolOutcome> {
   try {
     switch (call.name) {
       case 'search_judgments': {
-        const items = await cachedSearch(String(input.query ?? ''), 10);
-        const brief = items.map((it) => ({ id: it.id, title: it.title, date: it.dateIso ?? null, cause: it.cause ?? '' }));
-        return { content: brief.length ? JSON.stringify(brief) : '查無符合的判決。' };
+        const list: string[] = Array.isArray(input.queries) ? input.queries.map(String) : [];
+        if (input.query) list.push(String(input.query));
+        const queries = [...new Set(list.map((q) => q.trim()).filter(Boolean))].slice(0, 4);
+        if (queries.length === 0) return { content: '沒有提供關鍵字。' };
+        const groups: SearchHit[][] = [];
+        for (const q of queries) {
+          const items = await cachedSearch(q, 10);
+          groups.push(items.map((it) => ({ id: it.id, title: it.title, date: it.dateIso ?? null, cause: it.cause ?? '' })));
+        }
+        const merged = mergeSearchHits(groups, 20);
+        return { content: merged.length ? JSON.stringify({ queries, hits: merged }) : '查無符合的判決。' };
       }
       case 'resolve_statute': {
         const r = await resolveStatute(String(input.name ?? ''));

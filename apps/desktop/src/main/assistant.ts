@@ -49,8 +49,14 @@ export interface ToolOutcome {
 export const ASSISTANT_TOOLS: ToolDef[] = [
   {
     name: 'search_judgments',
-    description: '依關鍵字搜尋司法院裁判書，回傳候選判決（字號、日期、案由）。只搜尋，不會改動資料。',
-    parameters: { type: 'object', properties: { query: { type: 'string', description: '關鍵字或判決名稱' } }, required: ['query'] },
+    description: '依關鍵字搜尋司法院裁判書，回傳候選判決（字號、日期、案由）。可一次給多組關鍵字（同義詞、案由、法名、相關條文），結果會合併去重。只搜尋，不會改動資料。',
+    parameters: {
+      type: 'object',
+      properties: {
+        queries: { type: 'array', items: { type: 'string' }, description: '多組關鍵字，建議 2 到 4 組，例如案由、同義詞、法名' },
+        query: { type: 'string', description: '單一關鍵字（與 queries 擇一即可）' },
+      },
+    },
   },
   {
     name: 'resolve_statute',
@@ -99,6 +105,7 @@ const SYSTEM_PROMPT = [
   '你是「司法院裁判研究」桌面應用程式的助理。使用繁體中文（台灣用語），語氣簡潔平實，不使用表情符號。',
   '你可以用工具查詢判決與法規，也可以提議操作應用程式的功能。',
   '會呼叫 AI 或改動資料的操作，只能用 propose_ 開頭的工具提議，由使用者確認後才會執行。',
+  '搜尋判決時，請把同義詞、案由、法名拆成 2 到 4 組關鍵字一起搜尋（用 queries），不要只用一個詞；查到的結果若不足以回答，再換關鍵字補搜。',
   '只在使用者明確要求時才呼叫工具；不要為了「順便」再搜尋或重複執行先前已完成的查詢。回覆只說明與使用者要求有關的內容，不要提及自己沒有被要求的動作。',
   '不確定使用者要什麼時，先問清楚，不要猜。不得編造判決字號或法條內容；查不到就說查不到。',
 ].join('\n');
@@ -236,4 +243,26 @@ export async function runAssistantTurn(
 /** 只允許模型提議這兩種會花費 AI 額度的動作；其他名稱一律拒絕。 */
 export function isProposeTool(name: string): boolean {
   return name === 'propose_scope' || name === 'propose_brief';
+}
+
+export interface SearchHit {
+  id: string;
+  title: string;
+  date: string | null;
+  cause: string;
+}
+
+/** 合併多組關鍵字的搜尋結果：依判決 id 去重，保留先出現的順序，最多回傳 limit 筆。 */
+export function mergeSearchHits(groups: SearchHit[][], limit = 20): SearchHit[] {
+  const seen = new Set<string>();
+  const out: SearchHit[] = [];
+  for (const g of groups) {
+    for (const h of g) {
+      if (seen.has(h.id)) continue;
+      seen.add(h.id);
+      out.push(h);
+      if (out.length >= limit) return out;
+    }
+  }
+  return out;
 }

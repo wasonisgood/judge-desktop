@@ -102,3 +102,12 @@ test('isProposeTool：只有兩種會花費額度的操作', () => {
   assert.equal(isProposeTool('propose_brief'), true);
   assert.equal(isProposeTool('delete_everything'), false);
 });
+
+test('多組關鍵字的結果合併：依字號去重、保留順序、限制筆數', () => {
+  const { mergeSearchHits } = require('../dist/main/assistant.js');
+  const a = [{ id: '1', title: 'A', date: null, cause: '' }, { id: '2', title: 'B', date: null, cause: '' }];
+  const b = [{ id: '2', title: 'B', date: null, cause: '' }, { id: '3', title: 'C', date: null, cause: '' }];
+  const merged = mergeSearchHits([a, b], 20);
+  assert.deepEqual(merged.map((h) => h.id), ['1', '2', '3']);
+  assert.equal(mergeSearchHits([a, b], 2).length, 2);
+});
