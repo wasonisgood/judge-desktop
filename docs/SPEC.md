@@ -76,7 +76,7 @@
 | 核心邏輯 | **TypeScript 套件 `packages/core`**（搜尋、解析、PDF、Word／Excel 產出、AI 提示詞） | 遠端 MCP（Firebase Functions）也是 TypeScript，核心可共用，避免兩份實作。舊的 Python 爬蟲在第一階段以 TypeScript 重寫，並以 `judge_mcp` 的測試案例對照結果 |
 | Word／Excel | `docx`、`exceljs` | 純 JS，不需要使用者另裝 Office |
 | PDF | `pdfjs-dist`（抽文字）、`pdf-lib` 或 `pdfium` 轉影像 | 新舊 PDF 雙路徑 |
-| AI | BYOK（使用者自行輸入 API 金鑰，存於 Windows 憑證管理員） | 公開散布時不由開發者承擔 AI 費用，也不把金鑰放進安裝檔 |
+| AI | BYOK：Anthropic 原生 API 為一等支援，另支援 OpenAI 相容端點（base_url＋金鑰），金鑰存於 Windows 憑證管理員，見 §10 | 公開散布時不由開發者承擔 AI 費用，也不把金鑰放進安裝檔 |
 | 資料儲存 | 本機 SQLite（快取、專案、策略）＋ JSON 設定檔 | 單機使用，不需要伺服器 |
 | 更新 | `electron-updater` + GitHub Releases；熱修復採「只更新 `app.asar` 內的前端資源」 | 與參考專案一致；熱修復只用於 UI／提示詞，核心變更仍需完整更新 |
 | 發版 | GitHub Actions：push tag → 建置 → 簽章（若有憑證）→ 建立 Release → 上傳安裝檔與 `latest.yml` | 自動化 |
@@ -113,3 +113,21 @@
 2. AI 服務：預設以 Claude API 為主，是否也要支援其他服務（例：Gemini）？
 3. 舊式 PDF 是否需要 OCR？OCR 會增加安裝大小與計算時間。
 4. Repo 目前為私有；公開散布前需確認授權條款（建議 MIT，與 `judge_mcp` 相同）。
+
+## 10. 決策紀錄
+
+### 2026-11-08：金鑰與爬取位置
+- **爬取在使用者電腦執行**，不放雲端。原因：(1) 雲端 IP 可能被司法院網站限制；(2) 全文回傳到雲端會產生下行流量費（GCP 網路出口），本地執行則沒有此費用；(3) 雲端長任務受 HTTP 逾時限制。
+- **AI 金鑰**：
+  - 一等支援 Anthropic 原生 Messages API（PDF、引用、思考、快取都需要原生介面；Anthropic 的 OpenAI 相容層只適合測試）。
+  - 通用支援「OpenAI 相容」設定：`base_url` + 金鑰 + 模型名稱。可用於 OpenAI、OpenRouter、Gemini 的 OpenAI 相容端點、DeepSeek、Ollama 等。需要 JSON 結構化輸出的功能，使用前要以各供應商實測。
+  - 金鑰只存 Windows 憑證管理員，設定一次後不需再輸入；設定時做一次測試呼叫確認可用。
+- **不採用的做法**：
+  - 不使用使用者的 Claude／ChatGPT 訂閱登入來代替 API 金鑰。Anthropic 的條款禁止第三方工具使用訂閱憑證（2026 年已有實際封鎖），不可作為預設方案。
+  - 若日後要「使用者不用自備金鑰」，只能採用「由專案方代持金鑰並向使用者收費」的代理服務模式，這會讓專案方成為轉售者（需要金流、條款、濫用防護與隱私揭露），屬於另一個獨立決策，暫不實作。
+
+## 11. 費用防護（遠端 MCP）
+
+- 遠端 MCP 專案 `judge-remote-mcp-2026` 已綁定 `Firebase Payment`（帳單帳戶 019B2E-750E04-9F8FB2）。
+- 已設定每月預算提醒 TWD 300，於 50%／90%／100% 通知（只提醒，不會自動停止服務）。
+- 雲端函式需設定最大實例數，避免流量暴增時費用失控（實作時套用）。
