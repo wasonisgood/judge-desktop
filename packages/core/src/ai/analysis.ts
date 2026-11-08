@@ -125,12 +125,12 @@ export async function briefJudgment(
     '',
     '請輸出 JSON，格式：{"title":"文書標題","sections":[{"heading":"段落標題","paragraphs":["段落一","段落二"]}]}',
     '段落標題依序包含：一、案件事實；二、爭點；三、當事人主張；四、法院見解；五、結論；六、與使用者重點相關的整理。',
-    '每個段落都要有實質內容，不能只寫「無」。若判決中找不到某項資訊，該段寫明「判決原文未載明」。',
+    '每個段落都要有實質內容，不能只寫「無」。若判決中找不到某項資訊，該段寫明「判決原文未載明」。每段限 200 字以內，段落數依篇幅調整，務必輸出完整的 JSON。',
     '',
     '判決原文：',
     bodyOf(d),
   ].join('\n');
-  const r = await askJson<BriefDocument>(ai, system, user, 3000);
+  const r = await askJson<BriefDocument>(ai, system, user, 4500);
   if (!Array.isArray(r.sections) || r.sections.length === 0) throw new Error('AI 沒有產生任何段落');
   return { title: r.title || d.meta.title, sections: r.sections };
 }

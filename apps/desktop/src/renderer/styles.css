@@ -269,3 +269,12 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
 .scope-block .table { min-width: 1240px; }
 .scope-block .table th, .scope-block .table td { min-width: 70px; }
 .scope-block .table td:nth-child(n+8) { min-width: 150px; }
+
+/* 助理面板的進度卡 */
+.assist-progress { margin: 0 0 12px; padding: 10px 12px; border: 1px solid var(--rule); border-left: 3px solid var(--shu); background: var(--paper-2); font-size: 0.9rem; }
+.assist-progress-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+.assist-progress-clock { margin-left: auto; color: var(--ink-3); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.assist-progress-text { margin: 0 0 6px; color: var(--ink-2); white-space: pre-wrap; }
+.assist-progress-track { margin-top: 0; }
+.assist-progress.done { border-left-color: var(--koke); }
+.assist-progress.error { border-left-color: var(--shu-ink); }

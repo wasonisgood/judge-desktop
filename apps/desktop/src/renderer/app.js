@@ -583,14 +583,60 @@
     $('assistLog').scrollTop = $('assistLog').scrollHeight;
   }
 
+  // 助理面板的進度卡：把範圍整理或精讀頁面上的狀態同步到這裡，讓使用者知道進度，不必切換頁面。
+  var progressWatchers = [];
+  function startProgressCard(label, statusId, barSelector) {
+    var card = el('div', 'assist-progress');
+    var head = el('div', 'assist-progress-head');
+    head.appendChild(el('strong', '', label));
+    var clock = el('span', 'assist-progress-clock', '0 秒');
+    head.appendChild(clock);
+    card.appendChild(head);
+    var text = el('p', 'assist-progress-text', '準備中…');
+    card.appendChild(text);
+    var track = el('div', 'progress assist-progress-track');
+    var bar = el('div', 'bar');
+    track.appendChild(bar);
+    card.appendChild(track);
+    $('assistLog').appendChild(card);
+    $('assistLog').scrollTop = $('assistLog').scrollHeight;
+
+    var started = Date.now();
+    var timer = setInterval(function () {
+      clock.textContent = Math.round((Date.now() - started) / 1000) + ' 秒';
+    }, 1000);
+    var src = $(statusId);
+    var barSrc = document.querySelector(barSelector);
+    function sync() {
+      var t = src.textContent || '';
+      text.textContent = t || '準備中…';
+      if (barSrc) bar.style.width = barSrc.style.width || '0%';
+      if (/完成|失敗|已完成|整理失敗|讀取失敗/.test(t)) {
+        card.classList.add(/失敗/.test(t) ? 'error' : 'done');
+        clearInterval(timer);
+        observer.disconnect();
+        clock.textContent = '共 ' + Math.round((Date.now() - started) / 1000) + ' 秒';
+        $('assistLog').scrollTop = $('assistLog').scrollHeight;
+      }
+    }
+    var observer = new MutationObserver(sync);
+    observer.observe(src, { childList: true, characterData: true, subtree: true });
+    if (barSrc) observer.observe(barSrc, { attributes: true, attributeFilter: ['style'] });
+    // 不做初次同步：頁面上可能還是上一次的「完成」狀態，等執行開始後的狀態變化才同步。
+    progressWatchers.push(observer);
+    return card;
+  }
+
   function runPending(p) {
     if (p.kind === 'run_scope') {
+      startProgressCard('範圍整理進行中', 'scopeStatus', '#scopeProgress .bar');
       showPage('scope');
       $('scopeLines').value = (p.args.statutes || []).join('\n');
       $('scopeFrom').value = p.args.yearFrom || '';
       $('scopeTo').value = p.args.yearTo || '';
       $('scopeForm').dispatchEvent(new Event('submit', { cancelable: true }));
     } else if (p.kind === 'run_brief') {
+      startProgressCard('AI 精讀進行中', 'briefStatus', '#briefView_no_bar');
       showPage('brief');
       setPick({ id: p.args.judgmentId, title: p.args.judgmentId, dateIso: '' });
       $('briefFocus').value = p.args.focus || '';
