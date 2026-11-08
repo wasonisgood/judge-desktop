@@ -59,13 +59,13 @@ export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow
     `引用條文：${row.citedArticles.join('；') || '（僅提及法規名稱）'}`,
     ...((row.lawNotes ?? []).length ? ["法條異動提示（由法條沿革比對，請在分析中一併考慮）：", ...(row.lawNotes ?? []).map((n) => `- ${n.summary}`)] : []),
     '',
-    '請輸出 JSON，欄位如下（每個值都是簡短的繁體中文句子）：',
+    '請輸出 JSON，欄位如下。每個欄位限 120 字以內的繁體中文，不要換行，不要加說明文字：',
     '{"issue":"本案爭點","holding":"法院見解（核心論證）","statuteApplication":"該法規如何被適用或排除","outcome":"結論（駁回、廢棄發回、准許等）","group":"依案件性質歸類的類型名稱（四字到十字）"}',
     '',
     '判決原文：',
     bodyOf(d),
   ].join('\n');
-  const r = await askJson<Omit<CaseAnalysis, 'id'>>(ai, system, user, 1200);
+  const r = await askJson<Omit<CaseAnalysis, 'id'>>(ai, system, user, 2000);
   return { id: row.id, issue: r.issue ?? '', holding: r.holding ?? '', statuteApplication: r.statuteApplication ?? '', outcome: r.outcome ?? '', group: r.group ?? '未分類' };
 }
 

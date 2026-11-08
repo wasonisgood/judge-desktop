@@ -12,7 +12,11 @@ const ExcelJS = require('exceljs');
 const AdmZip = require('adm-zip');
 
 const KEY = process.env.JUDGE_TEST_AI_KEY;
-const cfg = { provider: 'openai-compatible', baseUrl: 'https://api.openai.com/v1', model: process.env.JUDGE_TEST_AI_MODEL ?? 'gpt-4o-mini', apiKey: KEY };
+// 預設使用 OpenAI 相容服務；設定 JUDGE_TEST_AI_PROVIDER=anthropic 時改用 Anthropic 原生 API。
+const PROVIDER = process.env.JUDGE_TEST_AI_PROVIDER ?? 'openai-compatible';
+const cfg = PROVIDER === 'anthropic'
+  ? { provider: 'anthropic', baseUrl: 'https://api.anthropic.com', model: process.env.JUDGE_TEST_AI_MODEL ?? 'claude-haiku-5-5', apiKey: KEY }
+  : { provider: 'openai-compatible', baseUrl: 'https://api.openai.com/v1', model: process.env.JUDGE_TEST_AI_MODEL ?? 'gpt-4o-mini', apiKey: KEY };
 const ai = (system, user, maxTokens) => callAi(cfg, { system, user, maxTokens });
 
 test('AI 流程：篩選 → 逐案分析 → 綜合分析 → 匯出 Excel／Word', { skip: !KEY && '未設定 JUDGE_TEST_AI_KEY', timeout: 900000 }, async () => {
