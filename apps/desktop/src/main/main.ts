@@ -9,7 +9,7 @@ import {
   searchJudgments, getJudgmentDetail, buildScopeTable, CourtClient,
   analyzeCase, synthesizeScope, briefJudgment,
   LawClient, createCurlFetch, parseSingleCitation, parseCitations, judgmentQueries,
-  FederatedTokenProvider, type FederationConfig,
+  FederatedTokenProvider, type FederationConfig, resolveLawName,
   type JudgmentDetail, type JudgmentSummary, type ScopeRow, type AiComplete,
   type CaseAnalysis, type ScopeSynthesis, type BriefDocument, type CitationRef,
   type HistoryArticle, type CurrentLaw,
@@ -184,19 +184,27 @@ function lawClient(): LawClient {
   return new LawClient({ fetchImpl: createCurlFetch() });
 }
 
-/** 把使用者輸入的法名確認為全國法規資料庫的正式法名。找不到完全相同的法名時，列出建議。 */
-async function resolveStatute(name: string): Promise<{ name: string; pcode: string }> {
+/** 把使用者輸入的法名確認為全國法規資料庫的正式法名。完全相同或明顯相近時自動採用（會回報），否則列出候選讓使用者選。 */
+async function resolveStatute(name: string): Promise<{ name: string; pcode: string; note?: string }> {
   const key = name.trim();
-  const hit = await cacheGet<{ name: string; pcode: string }>('law-name', key, FOREVER);
+  const hit = await cacheGet<{ name: string; pcode: string; note?: string }>('law-name', key, FOREVER);
   if (hit) return hit;
-  const r = await lawClient().searchMojByName(key);
-  if (!r.exact) {
-    const hint = r.suggestions.slice(0, 5).map((x) => x.name).join('、');
-    throw new Error(`法規名稱「${key}」找不到完全相同的法規。${hint ? '您是不是要找：' + hint : '請輸入完整法名，例如「國家賠償法」。'}`);
+  const r = await resolveLawName(lawClient(), key);
+  if (r.status === 'exact') {
+    const out = { name: r.match.name, pcode: r.match.pcode };
+    await cachePut('law-name', key, out);
+    return out;
   }
-  const out = { name: r.exact.name, pcode: r.exact.pcode };
-  await cachePut('law-name', key, out);
-  return out;
+  if (r.status === 'auto') {
+    const out = { name: r.match.name, pcode: r.match.pcode, note: `「${key}」不是完整的正式法名，已採用最接近的「${r.match.name}」。` };
+    await cachePut('law-name', key, out);
+    return out;
+  }
+  if (r.status === 'candidates') {
+    const hint = r.candidates.map((x) => x.name).join('、');
+    throw new Error(`法規名稱「${key}」找不到完全相同的法規，請選擇：${hint}`);
+  }
+  throw new Error(`法規名稱「${key}」在全國法規資料庫中查無結果。請確認法名，例如「國家賠償法」。`);
 }
 
 async function lawHistoryFor(lawName: string): Promise<HistoryArticle[]> {
@@ -413,11 +421,13 @@ function registerIpc() {
   ipcMain.handle('scope:run', async (e, args: { statutes: string[]; yearFrom?: number; yearTo?: number; maxItems: number }) => {
     const ai = await requireAi();
     const sheets: ScopeSheet[] = [];
+    const notes: string[] = [];
     const client = new CourtClient();
     for (const line of args.statutes) {
       const { name, citation } = splitStatuteLine(line);
       e.sender.send('scope:progress', { statute: name, done: 0, total: 1, phase: '確認法名與法條沿革' });
       const statute = await resolveStatute(name);
+      if (statute.note) notes.push(statute.note);
       const lawHistory = await lawHistoryFor(statute.name);
       let rows: ScopeRow[] = await buildScopeTable({
         statute: statute.name,
@@ -448,7 +458,7 @@ function registerIpc() {
       summary: `${sheets.length} 部法規，共 ${total} 筆`,
       payload: { sheets, yearFrom: args.yearFrom, yearTo: args.yearTo },
     });
-    return { sheets };
+    return { sheets, notes };
   });
   ipcMain.handle('export:scope', async (_e, args: { sheets: ScopeSheet[]; yearFrom?: number; yearTo?: number; format: 'xlsx' | 'docx' }) => {
     const ext = args.format;

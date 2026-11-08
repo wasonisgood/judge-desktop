@@ -298,7 +298,8 @@
       state.scopeTo = to;
       renderScope(r.sheets);
       var total = r.sheets.reduce(function (n, s) { return n + s.rows.length; }, 0);
-      setStatus($('scopeStatus'), '完成，共 ' + total + ' 筆，已存入「檔案」。', 'ok');
+      var noteText = (r.notes && r.notes.length) ? ' ' + r.notes.join(' ') : '';
+      setStatus($('scopeStatus'), '完成，共 ' + total + ' 筆，已存入「檔案」。' + noteText, 'ok');
       $('scopeXlsx').disabled = false;
       $('scopeDocx').disabled = false;
     } catch (err) {
