@@ -9,7 +9,7 @@ import {
   searchJudgments, getJudgmentDetail, buildScopeTable, CourtClient,
   analyzeCase, synthesizeScope, briefJudgment,
   LawClient, createCurlFetch, parseSingleCitation, parseCitations, judgmentQueries,
-  FederatedTokenProvider, type FederationConfig, resolveLawName,
+  FederatedTokenProvider, type FederationConfig, resolveLawName, DEFAULT_BRIEF_FIELDS, normalizeBriefFields, type BriefField,
   type JudgmentDetail, type JudgmentSummary, type ScopeRow, type AiComplete,
   type CaseAnalysis, type ScopeSynthesis, type BriefDocument, type CitationRef,
   type HistoryArticle, type CurrentLaw,
@@ -44,6 +44,8 @@ interface StoredSettings {
   federation: FederationSettings;
   defaultMaxItems: number;
   cacheDays: number;
+  /** 精讀欄位設定：enabled 表示是否勾選；自訂欄位也保存在這裡。 */
+  briefFields: (BriefField & { enabled: boolean })[];
 }
 
 const EMPTY_FEDERATION: FederationSettings = {
@@ -59,6 +61,7 @@ const DEFAULTS: StoredSettings = {
   aiKeyEnc: null,
   defaultMaxItems: 20,
   cacheDays: 7,
+  briefFields: DEFAULT_BRIEF_FIELDS.map((f) => ({ ...f, enabled: true })),
 };
 
 const userPath = (...p: string[]) => path.join(app.getPath('userData'), ...p);
@@ -332,6 +335,16 @@ async function executeAssistantTool(call: ToolCall): Promise<ToolOutcome> {
 
 type AssistantPageName = 'home' | 'list' | 'scope' | 'brief' | 'files' | 'settings';
 
+/** 匯出一律自動存到「文件／司法院裁判研究」資料夾，跑完後自動開啟，不再跳出存檔對話框。 */
+async function autoSaveExport(name: string, data: Buffer): Promise<{ canceled: false; filePath: string }> {
+  const dir = path.join(app.getPath('documents'), '司法院裁判研究');
+  await fs.mkdir(dir, { recursive: true });
+  const file = path.join(dir, name.replace(/[\/:*?"<>|]/g, '_'));
+  await fs.writeFile(file, data);
+  void shell.openPath(file);
+  return { canceled: false, filePath: file };
+}
+
 function registerIpc() {
   ipcMain.handle('win:minimize', () => win?.minimize());
   ipcMain.handle('win:toggleMaximize', () => {
@@ -353,12 +366,16 @@ function registerIpc() {
       hasKey: !!decryptKey(s.aiKeyEnc),
       defaultMaxItems: s.defaultMaxItems,
       cacheDays: s.cacheDays,
+      briefFields: s.briefFields,
     };
   });
   ipcMain.handle('settings:set', async (_e, patch: Partial<StoredSettings> & { apiKey?: string; clearKey?: boolean }) => {
     const next: StoredSettings = { ...(await readSettings()) };
     for (const k of ['aiProvider', 'aiAuthMode', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays'] as const) {
       if (patch[k] !== undefined) (next as any)[k] = patch[k];
+    }
+    if (patch.briefFields) {
+      next.briefFields = (patch.briefFields as StoredSettings['briefFields']).filter((f) => f && typeof f.name === 'string');
     }
     if (patch.federation) {
       next.federation = { ...EMPTY_FEDERATION, ...next.federation, ...patch.federation };
@@ -401,14 +418,7 @@ function registerIpc() {
     return { items, details };
   });
   ipcMain.handle('export:list', async (_e, args: { keyword: string; items: JudgmentSummary[]; details: Record<string, any> }) => {
-    const save = await dialog.showSaveDialog(win!, {
-      title: '儲存判決列表',
-      defaultPath: path.join(app.getPath('documents'), `判決列表_${args.keyword}_${stamp()}.xlsx`),
-      filters: [{ name: 'Excel', extensions: ['xlsx'] }],
-    });
-    if (save.canceled || !save.filePath) return { canceled: true };
-    await fs.writeFile(save.filePath, await buildListWorkbook({ keyword: args.keyword, items: args.items, details: args.details }));
-    return { canceled: false, filePath: save.filePath };
+    return autoSaveExport(`判決列表_${args.keyword}_${stamp()}.xlsx`, await buildListWorkbook({ keyword: args.keyword, items: args.items, details: args.details }));
   });
 
   // 範圍整理表
@@ -462,18 +472,11 @@ function registerIpc() {
   });
   ipcMain.handle('export:scope', async (_e, args: { sheets: ScopeSheet[]; yearFrom?: number; yearTo?: number; format: 'xlsx' | 'docx' }) => {
     const ext = args.format;
-    const save = await dialog.showSaveDialog(win!, {
-      title: '儲存範圍整理表',
-      defaultPath: path.join(app.getPath('documents'), `範圍整理表_${stamp()}.${ext}`),
-      filters: [{ name: ext === 'xlsx' ? 'Excel' : 'Word', extensions: [ext] }],
-    });
-    if (save.canceled || !save.filePath) return { canceled: true };
     const meta = { yearFrom: args.yearFrom, yearTo: args.yearTo };
     const buf = ext === 'xlsx'
       ? await buildScopeWorkbook(args.sheets, meta)
       : await buildScopeDocx(args.sheets, meta);
-    await fs.writeFile(save.filePath, buf);
-    return { canceled: false, filePath: save.filePath };
+    return autoSaveExport(`範圍整理表_${stamp()}.${ext}`, buf);
   });
 
   // 檔案管理
@@ -506,10 +509,11 @@ function registerIpc() {
   });
 
   // 單一判決精讀
-  ipcMain.handle('brief:run', async (_e, args: { judgmentId: string; focus: string; lengthHint: string }) => {
+  ipcMain.handle('brief:run', async (_e, args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[] }) => {
     const ai = await requireAi();
     const d = await cachedDetail(args.judgmentId);
-    const doc: BriefDocument = await briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint });
+    const fields = normalizeBriefFields(args.fields ?? []);
+    const doc: BriefDocument = await briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined });
     await library().add({
       kind: 'brief',
       title: `精讀：${d.meta.title || args.judgmentId}`,
@@ -519,14 +523,7 @@ function registerIpc() {
     return { detail: d, doc };
   });
   ipcMain.handle('export:brief', async (_e, args: { detail: JudgmentDetail; doc: BriefDocument }) => {
-    const save = await dialog.showSaveDialog(win!, {
-      title: '儲存判決精讀',
-      defaultPath: path.join(app.getPath('documents'), `判決精讀_${args.detail.meta.caseNo ?? args.detail.meta.id}.docx`),
-      filters: [{ name: 'Word', extensions: ['docx'] }],
-    });
-    if (save.canceled || !save.filePath) return { canceled: true };
-    await fs.writeFile(save.filePath, await buildBriefDocx(args.detail, args.doc));
-    return { canceled: false, filePath: save.filePath };
+    return autoSaveExport(`判決精讀_${args.detail.meta.caseNo ?? args.detail.meta.id}.docx`, await buildBriefDocx(args.detail, args.doc));
   });
 }
 

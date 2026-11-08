@@ -82,6 +82,7 @@
   $('setAuthMode').addEventListener('change', applyAuthMode);
   async function loadSettings() {
     var s = await api.settings.get();
+    renderBriefFields(s.briefFields || []);
     $('setAuthMode').value = s.aiAuthMode || 'apiKey';
     var f = s.federation || {};
     $('setFedOrg').value = f.organizationId || '';
@@ -383,6 +384,51 @@
     }
   });
 
+  // ---- 精讀欄位：勾選、自訂、保存（同一份設定也保存在設定檔） ----
+  function briefFieldRow(f) {
+    var row = el('div', 'brief-field-row');
+    var cb = el('input');
+    cb.type = 'checkbox';
+    cb.checked = f.enabled !== false;
+    cb.className = 'brief-field-on';
+    var name = el('input', 'brief-field-name');
+    name.type = 'text';
+    name.placeholder = '欄位名稱，例如：原告請求的金額';
+    name.value = f.name || '';
+    var desc = el('input', 'brief-field-desc');
+    desc.type = 'text';
+    desc.placeholder = '說明（選填）：AI 會依此整理這個欄位';
+    desc.value = f.description || '';
+    var del = el('button', 'btn small', '移除');
+    del.type = 'button';
+    del.addEventListener('click', function () { row.remove(); });
+    row.appendChild(cb);
+    row.appendChild(name);
+    row.appendChild(desc);
+    row.appendChild(del);
+    return row;
+  }
+  function renderBriefFields(list) {
+    var box = $('briefFieldList');
+    box.innerHTML = '';
+    (list || []).forEach(function (f) { box.appendChild(briefFieldRow(f)); });
+  }
+  function collectBriefFields() {
+    var out = [];
+    document.querySelectorAll('#briefFieldList .brief-field-row').forEach(function (row) {
+      out.push({
+        name: row.querySelector('.brief-field-name').value.trim(),
+        description: row.querySelector('.brief-field-desc').value.trim(),
+        enabled: row.querySelector('.brief-field-on').checked
+      });
+    });
+    return out;
+  }
+  $('briefFieldAdd').addEventListener('click', function () {
+    $('briefFieldList').appendChild(briefFieldRow({ name: '', description: '', enabled: true }));
+    $('briefFieldList').lastChild.querySelector('.brief-field-name').focus();
+  });
+
   function renderBrief(view) {
     var d = view.detail;
     var doc = view.doc;
@@ -410,6 +456,13 @@
       setStatus($('briefStatus'), '請先在候選中選定一則判決。', 'error');
       return;
     }
+    var fieldRows = collectBriefFields();
+    var fields = fieldRows.filter(function (f) { return f.enabled && f.name; }).map(function (f) { return { name: f.name, description: f.description }; });
+    if (fields.length === 0) {
+      setStatus($('briefStatus'), '請至少勾選一個要整理的欄位。', 'error');
+      return;
+    }
+    api.settings.set({ briefFields: fieldRows.filter(function (f) { return f.name; }) });
     $('briefRun').disabled = true;
     $('briefExport').disabled = true;
     setStatus($('briefStatus'), '讀取判決中…');
@@ -417,7 +470,8 @@
       var r = await api.brief.run({
         judgmentId: state.briefPick.id,
         focus: $('briefFocus').value.trim(),
-        lengthHint: $('briefLength').value
+        lengthHint: $('briefLength').value,
+        fields: fields
       });
       state.brief = r;
       if (r.detail && r.detail.meta && r.detail.meta.title) $('briefPicked').textContent = r.detail.meta.title;

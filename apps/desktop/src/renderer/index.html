@@ -164,6 +164,14 @@
           </table>
         </div>
         <form class="form" id="briefForm">
+          <fieldset class="field brief-fields">
+            <legend>要整理的欄位（勾選；可加入自訂欄位並寫說明）</legend>
+            <div id="briefFieldList"></div>
+            <div class="actions">
+              <button class="btn small" type="button" id="briefFieldAdd">加入自訂欄位</button>
+            </div>
+            <p class="hint">只會整理勾選的欄位，並依列表順序排列。AI 不會整理未勾選的欄位。</p>
+          </fieldset>
           <label class="field">
             <span>想了解的重點（選填）</span>
             <input id="briefFocus" placeholder="例如：爭點、事實認定、回復原狀的要件" autocomplete="off">
