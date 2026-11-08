@@ -261,19 +261,20 @@ export function rowCites(row: ScopeRow, cit: CitationRef): boolean {
 // ---------------------------------------------------------------------------
 // 本地模組安裝精靈：獨立視窗（與更新程式一樣獨立），不影響主視窗的操作。
 let wizardWin: BrowserWindow | null = null;
-function openWizardWindow(): void {
+function openWizardWindow(view: 'install' | 'diag' = 'install'): void {
   if (wizardWin) {
     wizardWin.focus();
     return;
   }
   wizardWin = new BrowserWindow({
-    width: 820,
-    height: 760,
-    minWidth: 640,
-    minHeight: 520,
+    width: 980,
+    height: 720,
+    minWidth: 760,
+    minHeight: 560,
+    frame: false,
     show: false,
     backgroundColor: '#F1ECE2',
-    title: '本地模組安裝精靈',
+    title: '本地模組',
     parent: win ?? undefined,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -283,7 +284,7 @@ function openWizardWindow(): void {
     },
   });
   wizardWin.once('ready-to-show', () => wizardWin?.show());
-  void wizardWin.loadFile(path.join(__dirname, '..', 'renderer', 'wizard.html'));
+  void wizardWin.loadFile(path.join(__dirname, '..', 'renderer', 'wizard.html'), { query: { view } });
   wizardWin.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
   wizardWin.on('closed', () => {
     wizardWin = null;
@@ -433,12 +434,15 @@ async function annotateOriginalPdf(d: JudgmentDetail, doc: BriefDocument): Promi
 }
 
 function registerIpc() {
-  ipcMain.handle('win:minimize', () => win?.minimize());
-  ipcMain.handle('win:toggleMaximize', () => {
-    if (!win) return;
-    if (win.isMaximized()) win.unmaximize(); else win.maximize();
+  // 視窗控制一律作用在「發出請求的那個視窗」（主視窗或本地模組精靈視窗）。
+  const senderWin = (e: Electron.IpcMainInvokeEvent) => BrowserWindow.fromWebContents(e.sender);
+  ipcMain.handle('win:minimize', (e) => senderWin(e)?.minimize());
+  ipcMain.handle('win:toggleMaximize', (e) => {
+    const w = senderWin(e);
+    if (!w) return;
+    if (w.isMaximized()) w.unmaximize(); else w.maximize();
   });
-  ipcMain.handle('win:close', () => win?.close());
+  ipcMain.handle('win:close', (e) => senderWin(e)?.close());
   ipcMain.handle('app:info', () => ({ version: app.getVersion(), packaged: app.isPackaged }));
   ipcMain.handle('update:openUpdater', () => openUpdater(true));
 
@@ -454,8 +458,8 @@ function registerIpc() {
     return installAiEngineModule(opt.plan, (ev) => e.sender.send('local:progress', ev));
   });
   ipcMain.handle('local:installCrawler', (e) => installCrawlerModuleForApp((ev) => e.sender.send('local:progress', ev)));
-  ipcMain.handle('local:openWizard', () => {
-    openWizardWindow();
+  ipcMain.handle('local:openWizard', (_e, args?: { view?: 'install' | 'diag' }) => {
+    openWizardWindow(args?.view === 'diag' ? 'diag' : 'install');
     return { ok: true };
   });
   ipcMain.handle('local:wizardDone', () => {

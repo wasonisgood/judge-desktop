@@ -65,7 +65,7 @@ async function shot(w, name) {
   fs.writeFileSync(path.join(outDir, name), (await w.webContents.capturePage()).toPNG());
 }
 
-const findWizard = () => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().endsWith('wizard.html'));
+const findWizard = () => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().includes('wizard.html'));
 const findMain = () => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().endsWith('index.html'));
 const js = (w, code) => w.webContents.executeJavaScript(code);
 

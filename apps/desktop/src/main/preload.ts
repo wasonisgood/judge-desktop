@@ -49,7 +49,7 @@ contextBridge.exposeInMainWorld('api', {
     exportReport: () => invoke('local:exportReport'),
     checkUpdates: () => invoke('local:checkUpdates'),
     applyUpdates: () => invoke('local:applyUpdates'),
-    openWizard: () => invoke('local:openWizard'),
+    openWizard: (args?: { view?: 'install' | 'diag' }) => invoke('local:openWizard', args),
     wizardDone: () => invoke('local:wizardDone'),
     onChanged: (cb: () => void) => {
       ipcRenderer.on('local:changed', () => cb());

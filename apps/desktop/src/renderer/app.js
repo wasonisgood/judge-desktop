@@ -819,6 +819,7 @@
     });
   }
   document.getElementById('openWizard').addEventListener('click', function () { api.localAi.openWizard(); });
+  document.getElementById('openDiag').addEventListener('click', function () { api.localAi.openWizard({ view: 'diag' }); });
   api.localAi.onChanged(refresh);
   refresh();
 })();

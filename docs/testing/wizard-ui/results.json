@@ -1,0 +1,52 @@
+[
+  {
+    "name": "檢查後進入選擇方案",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "方案卡片至少 2 張",
+    "ok": true,
+    "detail": "2"
+  },
+  {
+    "name": "排除問題頁完成檢查",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "版面無水平溢出：check",
+    "ok": true,
+    "detail": "0"
+  },
+  {
+    "name": "版面無水平溢出：choose",
+    "ok": true,
+    "detail": "0"
+  },
+  {
+    "name": "版面無水平溢出：agree",
+    "ok": true,
+    "detail": "0"
+  },
+  {
+    "name": "版面無水平溢出：install",
+    "ok": true,
+    "detail": "0"
+  },
+  {
+    "name": "版面無水平溢出：diag",
+    "ok": true,
+    "detail": "0"
+  },
+  {
+    "name": "版面無水平溢出：modules",
+    "ok": true,
+    "detail": "0"
+  },
+  {
+    "name": "精靈使用與主畫面相同的自訂標題列",
+    "ok": true,
+    "detail": ""
+  }
+]

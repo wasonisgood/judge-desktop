@@ -38,7 +38,7 @@ async function shot(w, name) {
   await wait(400);
   fs.writeFileSync(path.join(outDir, name), (await w.webContents.capturePage()).toPNG());
 }
-const findWizard = () => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().endsWith('wizard.html'));
+const findWizard = () => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().includes('wizard.html'));
 const findMain = () => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().endsWith('index.html'));
 const js = (w, code) => w.webContents.executeJavaScript(code);
 
@@ -87,16 +87,15 @@ async function openWizard(main) {
 
 /** 在排除問題頁執行檢查，等待「這一次」的結果（先清空，避免讀到舊結果）。 */
 async function runDiagnoseUi(wz) {
-  await js(wz, `document.getElementById('diagSummary').textContent = ''`);
-  await js(wz, `document.querySelector('#wizTabs .tab[data-s="diag"]').click()`);
+  await js(wz, `document.querySelector('.wiz-nav[data-view="diag"]').click()`);
   await waitFor(wz, `(() => { const t = document.getElementById('diagSummary').textContent; return t && !/檢查中/.test(t); })()`, 180_000);
   await wait(300);
-  return js(wz, `({ summary: document.getElementById('diagSummary').textContent, items: [...document.querySelectorAll('#diagList .file-item')].map(li => ({ title: li.querySelector('.file-title').textContent, status: li.querySelector('.file-kind').textContent, detail: li.querySelector('.file-meta').textContent, fix: li.querySelector('.file-actions button') ? li.querySelector('.file-actions button').textContent : null })) })`);
+  return js(wz, `({ summary: document.getElementById('diagSummary').textContent, items: [...document.querySelectorAll('#diagGroups .wiz-row')].map(li => ({ title: li.querySelector('.wiz-row-title').textContent, status: li.querySelector('.wiz-pill').textContent, detail: li.querySelector('.wiz-row-detail').textContent, fix: li.querySelector('.wiz-row-side button') ? li.querySelector('.wiz-row-side button').textContent : null })) })`);
 }
 
 /** 點擊排除問題中某一項的修復按鈕（真的 UI 操作），等待修復與重新檢查結束。 */
 async function clickFixFor(wz, title) {
-  const found = await js(wz, `(() => { const li = [...document.querySelectorAll('#diagList .file-item')].find(x => x.querySelector('.file-title').textContent === ${JSON.stringify(title)}); const b = li && li.querySelector('.file-actions button'); if (!b) return false; b.click(); return true; })()`);
+  const found = await js(wz, `(() => { const li = [...document.querySelectorAll('#diagGroups .wiz-row')].find(x => x.querySelector('.wiz-row-title').textContent === ${JSON.stringify(title)}); const b = li && li.querySelector('.wiz-row-side button'); if (!b) return false; b.click(); return true; })()`);
   if (!found) return false;
   await wait(300);
   await waitFor(wz, `!/執行修復|檢查中/.test(document.getElementById('diagSummary').textContent)`, 60 * 60_000);
@@ -105,13 +104,13 @@ async function clickFixFor(wz, title) {
 
 async function installFromWizard(wz) {
   await js(wz, `document.getElementById('btnCheck').click()`);
-  await waitFor(wz, `!document.getElementById('s-choose').hidden`, 180_000);
+  await waitFor(wz, `!document.querySelector('.wiz-view[data-view="choose"]').hidden`, 180_000);
   await js(wz, `(() => { const i = [...document.querySelectorAll('input[name="aiChoice"]')].find(x => x.value === 'recommended') || document.querySelector('input[name="aiChoice"]'); i.click(); })()`);
   await js(wz, `document.getElementById('btnToAgree').click()`);
-  await waitFor(wz, `!document.getElementById('s-agree').hidden`, 5000);
+  await waitFor(wz, `!document.querySelector('.wiz-view[data-view="agree"]').hidden`, 5000);
   await js(wz, `document.getElementById('agreeBox').click()`);
   await js(wz, `document.getElementById('btnInstall').click()`);
-  return waitFor(wz, `!document.getElementById('doneBox').hidden || !document.getElementById('repairBox').hidden`, 60 * 60_000);
+  return waitFor(wz, `!document.getElementById('btnToDone').disabled || !document.getElementById('failBox').hidden`, 60 * 60_000);
 }
 
 async function main() {
@@ -129,9 +128,9 @@ async function main() {
   await shot(wz, '01-精靈-檢查前.png');
   const finished = await installFromWizard(wz);
   await shot(wz, '02-安裝結束.png');
-  const done = await js(wz, `!document.getElementById('doneBox').hidden`);
-  const installLog = await js(wz, `document.getElementById('installLog').textContent`);
-  const repairMsg = await js(wz, `document.getElementById('repairText') ? document.getElementById('repairText').textContent : ''`);
+  const done = await js(wz, `!document.getElementById('btnToDone').disabled`);
+  const installLog = await js(wz, `document.getElementById('stageList').textContent`);
+  const repairMsg = await js(wz, `document.getElementById('failTech').textContent`);
   check('A1 真實安裝流程結束', finished, installLog.slice(0, 400));
   check('A2 真實安裝完成並註冊', done, repairMsg);
   const ver = await ownVersion();
@@ -219,16 +218,16 @@ async function main() {
   check('E3 未變動的模組顯示已是最新', crawlPlan && crawlPlan.upToDate, JSON.stringify(crawlPlan));
 
   // 以 UI 操作：排除問題頁的模組更新區
-  await js(wz, `document.querySelector('#wizTabs .tab[data-s="diag"]').click()`);
-  await js(wz, `document.getElementById('updCheck').click()`);
-  await waitFor(wz, `!/檢查中/.test(document.getElementById('updStatus').textContent)`, 60_000);
-  const updTxt = await js(wz, `document.getElementById('updStatus').textContent`);
+  await js(wz, `document.querySelector('.wiz-nav[data-view="modules"]').click()`);
+  await js(wz, `document.getElementById('btnUpdCheck').click()`);
+  await waitFor(wz, `!/檢查中/.test(document.getElementById('updSummary').textContent)`, 60_000);
+  const updTxt = await js(wz, `document.getElementById('updRows').textContent`);
   await shot(wz, '10-模組更新-檢查結果.png');
   check('E4 UI 顯示更新計畫（1.0.0 → 1.1.0）', /ai-engine：1\.0\.0 → 1\.1\.0/.test(updTxt), updTxt);
-  await js(wz, `document.getElementById('updApply').click()`);
-  await waitFor(wz, `!document.getElementById('updApply').disabled`, 120_000);
+  await js(wz, `document.getElementById('btnUpdApply').click()`);
+  await waitFor(wz, `!document.getElementById('btnUpdApply').disabled`, 120_000);
   await wait(800);
-  const updDone = await js(wz, `document.getElementById('updStatus').textContent`);
+  const updDone = await js(wz, `document.getElementById('updRows').textContent + ' ' + document.getElementById('updSummary').textContent`);
   await shot(wz, '11-模組更新-完成.png');
   const rulesNow = JSON.parse(fs.readFileSync(path.join(modDir, 'rules.json'), 'utf8'));
   check('E5 套用後 rules.json 為新版、模組版本 1.1.0', rulesNow.rulesVersion === 2 && /已更新到 1\.1\.0/.test(updDone), updDone);
@@ -271,8 +270,8 @@ async function main() {
 
   // ===== G. 爬取模組（實際連線司法院一次） =====
   await js(wz, `document.getElementById('crawlerInstall').click()`);
-  await waitFor(wz, `/已安裝並啟用|安裝失敗/.test(document.getElementById('crawlerStatus').textContent)`, 180_000);
-  const crawl = await js(wz, `document.getElementById('crawlerStatus').textContent`);
+  await waitFor(wz, `/已啟用|安裝失敗/.test(document.getElementById('modCrPill').textContent)`, 180_000);
+  const crawl = await js(wz, `document.getElementById('modCrPill').textContent`);
   await shot(wz, '12-爬取模組.png');
   check('G1 爬取模組安裝完成（實際連線司法院）', /已安裝並啟用/.test(crawl), crawl);
 

@@ -4,98 +4,158 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>本地模組安裝精靈</title>
+<title>本地模組</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<main class="content">
-  <section class="page active" aria-labelledby="wizTitle">
-    <h1 id="wizTitle">本地模組安裝精靈</h1>
-    <p class="lead">依序完成檢查、選擇方案、同意與安裝。安裝沒有完成前，主畫面的所有功能照常使用，不會被影響。</p>
-
-    <div class="tabs" id="wizTabs" aria-label="安裝步驟">
-      <span class="tab" data-s="check">1 檢查電腦</span>
-      <span class="tab" data-s="choose">2 選擇方案</span>
-      <span class="tab" data-s="agree">3 同意安裝</span>
-      <span class="tab" data-s="install">4 安裝與註冊</span>
-      <span class="tab" data-s="diag">5 排除問題與更新</span>
+<div class="frame wiz-frame">
+  <header class="titlebar">
+    <div class="app-name">本地模組</div>
+    <div class="spacer"></div>
+    <div class="win-controls">
+      <button type="button" data-win="minimize" aria-label="最小化">－</button>
+      <button type="button" data-win="toggleMaximize" aria-label="最大化">□</button>
+      <button type="button" data-win="close" class="close" aria-label="關閉">×</button>
     </div>
+  </header>
 
-    <!-- 步驟 1：檢查 -->
-    <section id="s-check" class="wiz-screen">
-      <p class="hint">會讀取記憶體、磁碟、顯卡與 CPU 架構，並檢查網路與司法院網站連線。此步驟只讀取資訊，不會安裝任何東西。</p>
-      <div class="actions"><button class="btn primary" type="button" id="btnCheck">開始檢查</button></div>
-      <p class="status" id="checkStatus" role="status"></p>
-    </section>
+  <div class="wiz">
+    <!-- 左側：流程與維護 -->
+    <nav class="wiz-side" aria-label="本地模組">
+      <p class="wiz-side-title">安裝</p>
+      <ol class="wiz-track">
+        <li><button type="button" class="wiz-nav" data-view="check"><span class="wiz-num">一</span><span class="wiz-nav-text"><span class="wiz-nav-label">檢查電腦</span><span class="wiz-state" data-state-for="check"></span></span></button></li>
+        <li><button type="button" class="wiz-nav" data-view="choose"><span class="wiz-num">二</span><span class="wiz-nav-text"><span class="wiz-nav-label">選擇方案</span><span class="wiz-state" data-state-for="choose"></span></span></button></li>
+        <li><button type="button" class="wiz-nav" data-view="agree"><span class="wiz-num">三</span><span class="wiz-nav-text"><span class="wiz-nav-label">同意安裝</span><span class="wiz-state" data-state-for="agree"></span></span></button></li>
+        <li><button type="button" class="wiz-nav" data-view="install"><span class="wiz-num">四</span><span class="wiz-nav-text"><span class="wiz-nav-label">安裝與註冊</span><span class="wiz-state" data-state-for="install"></span></span></button></li>
+        <li><button type="button" class="wiz-nav" data-view="done"><span class="wiz-num">五</span><span class="wiz-nav-text"><span class="wiz-nav-label">完成</span><span class="wiz-state" data-state-for="done"></span></span></button></li>
+      </ol>
+      <p class="wiz-side-title">維護</p>
+      <ul class="wiz-maint">
+        <li><button type="button" class="wiz-nav" data-view="diag"><span class="wiz-nav-label">排除問題</span></button></li>
+        <li><button type="button" class="wiz-nav" data-view="modules"><span class="wiz-nav-label">模組與更新</span></button></li>
+      </ul>
+      <p class="wiz-side-foot">安裝沒有完成前，主畫面的所有功能照常使用。</p>
+    </nav>
 
-    <!-- 步驟 2：選擇方案 -->
-    <section id="s-choose" class="wiz-screen" hidden>
-      <fieldset class="field">
-        <legend>請選擇方案</legend>
-        <div id="optList"></div>
-      </fieldset>
-      <p class="status" id="chooseStatus" role="status"></p>
-      <div class="actions">
-        <button class="btn" type="button" data-go="check">上一步</button>
-        <button class="btn primary" type="button" id="btnToAgree" disabled>下一步</button>
-      </div>
-    </section>
+    <main class="wiz-main">
+      <!-- 1 檢查電腦 -->
+      <section class="wiz-view" data-view="check">
+        <p class="wiz-kicker">步驟一</p>
+        <h1>檢查這台電腦</h1>
+        <p class="lead">讀取處理器架構、記憶體、磁碟與顯卡，並確認網路與司法院網站可以連線。這一步只讀取資訊，不會安裝任何東西。</p>
+        <dl class="wiz-facts" id="checkFacts"></dl>
+        <h2 class="wiz-h2">網路</h2>
+        <ul class="wiz-rows" id="checkNet"></ul>
+        <p class="status" id="checkMsg" role="status"></p>
+        <div class="wiz-bar">
+          <button class="btn primary" type="button" id="btnCheck">開始檢查</button>
+        </div>
+      </section>
 
-    <!-- 步驟 3：同意 -->
-    <section id="s-agree" class="wiz-screen" hidden>
-      <div class="notice" id="agreeSummary"></div>
-      <label class="check"><input type="checkbox" id="agreeBox"> 我同意下載並安裝所選的本地 AI 服務與模型（約需數 GB，過程需要網路）。</label>
-      <div class="actions">
-        <button class="btn" type="button" data-go="choose">上一步</button>
-        <button class="btn primary" type="button" id="btnInstall" disabled>開始安裝</button>
-      </div>
-    </section>
+      <!-- 2 選擇方案 -->
+      <section class="wiz-view" data-view="choose" hidden>
+        <p class="wiz-kicker">步驟二</p>
+        <h1>選擇方案</h1>
+        <p class="lead">依這台電腦的記憶體與磁碟，建議的方案如下。也可以選較輕的方案，或完全不安裝、只使用雲端。</p>
+        <div class="wiz-options" id="optList" role="radiogroup" aria-label="方案"></div>
+        <p class="status" id="chooseMsg" role="status"></p>
+        <div class="wiz-bar">
+          <button class="btn" type="button" data-go="check">上一步</button>
+          <button class="btn primary" type="button" id="btnToAgree" disabled>下一步</button>
+        </div>
+      </section>
 
-    <!-- 步驟 4：安裝與註冊 -->
-    <section id="s-install" class="wiz-screen" hidden>
-      <div class="progress" id="progressBar" hidden><div class="bar"></div></div>
-      <p class="status" id="installLog" aria-live="polite"></p>
-      <div id="repairBox" class="notice" hidden>
-        <p id="repairText"></p>
-        <div class="actions" id="repairActions"></div>
-        <div class="actions"><button class="btn" type="button" data-go="diag">開啟排除問題</button></div>
-      </div>
-      <div id="doneBox" hidden>
-        <p class="status ok" id="doneText"></p>
-        <div class="actions"><button class="btn primary" type="button" id="btnDone">完成並返回主畫面</button></div>
-      </div>
-    </section>
+      <!-- 3 同意 -->
+      <section class="wiz-view" data-view="agree" hidden>
+        <p class="wiz-kicker">步驟三</p>
+        <h1>同意安裝</h1>
+        <p class="lead">確認以下內容。若電腦上已有可用的引擎與模型，會直接沿用，只補缺少的部分。</p>
+        <dl class="wiz-facts" id="agreeFacts"></dl>
+        <label class="check wiz-agree"><input type="checkbox" id="agreeBox"> 我同意下載並安裝所列的本地 AI 引擎與模型，過程需要網路連線。</label>
+        <div class="wiz-bar">
+          <button class="btn" type="button" data-go="choose">上一步</button>
+          <button class="btn primary" type="button" id="btnInstall" disabled>開始安裝</button>
+        </div>
+      </section>
 
-    <!-- 步驟 5：排除問題與模組更新 -->
-    <section id="s-diag" class="wiz-screen" hidden>
-      <h2>排除問題</h2>
-      <p class="hint">逐項檢查引擎、服務、模型、磁碟與網路。失敗的項目會附上可自動執行的修復按鈕，也可以匯出報告給開發者。</p>
-      <div class="actions">
-        <button class="btn primary" type="button" id="diagRun">執行檢查</button>
-        <button class="btn" type="button" id="diagExport">匯出診斷報告</button>
-      </div>
-      <p class="status" id="diagSummary" role="status"></p>
-      <ul class="file-list" id="diagList"></ul>
-      <p class="status" id="diagExportPath"></p>
+      <!-- 4 安裝與註冊 -->
+      <section class="wiz-view" data-view="install" hidden>
+        <p class="wiz-kicker">步驟四</p>
+        <h1>安裝與註冊</h1>
+        <p class="lead" id="installLead">尚未開始。</p>
+        <div class="progress wiz-progress" id="installProgress" hidden><div class="bar"></div></div>
+        <ol class="wiz-stages" id="stageList"></ol>
+        <div class="notice wiz-fail" id="failBox" hidden>
+          <p class="wiz-fail-title" id="failTitle"></p>
+          <p class="hint" id="failTech"></p>
+          <ul class="wiz-fail-steps" id="failSteps"></ul>
+          <div class="actions">
+            <button class="btn primary" type="button" id="btnRetry">重試（從中斷處續傳）</button>
+            <button class="btn" type="button" id="btnFailDiag">排除問題</button>
+          </div>
+        </div>
+        <div class="wiz-bar">
+          <button class="btn" type="button" data-go="agree" id="btnBackInstall">上一步</button>
+          <button class="btn primary" type="button" data-go="done" id="btnToDone" disabled>下一步</button>
+        </div>
+      </section>
 
-      <h2>模組更新</h2>
-      <p class="hint">模組（規則表與端點設定）可獨立更新，不必重新安裝程式。只下載有變動的檔案；驗證失敗會自動回到原版本。</p>
-      <div class="actions">
-        <button class="btn" type="button" id="updCheck">檢查更新</button>
-        <button class="btn primary" type="button" id="updApply" disabled>套用更新</button>
-      </div>
-      <p class="status" id="updStatus" role="status"></p>
-      <p class="status" id="updLog" aria-live="polite"></p>
-    </section>
+      <!-- 5 完成 -->
+      <section class="wiz-view" data-view="done" hidden>
+        <p class="wiz-kicker">步驟五</p>
+        <h1 id="doneTitle">完成</h1>
+        <p class="lead" id="doneLead"></p>
+        <dl class="wiz-facts" id="doneFacts"></dl>
+        <div class="wiz-bar">
+          <button class="btn primary" type="button" id="btnFinish">返回主畫面</button>
+        </div>
+      </section>
 
-    <section class="wif-guide" aria-labelledby="crawlTitle">
-      <h2 id="crawlTitle">爬取模組（司法院檢索）</h2>
-      <p class="status" id="crawlerStatus" role="status"></p>
-      <div class="actions"><button class="btn" type="button" id="crawlerInstall">檢查並安裝爬取模組</button></div>
-      <p class="status" id="crawlerLog" aria-live="polite"></p>
-    </section>
-  </section>
-</main>
+      <!-- 排除問題 -->
+      <section class="wiz-view" data-view="diag" hidden>
+        <p class="wiz-kicker">維護</p>
+        <h1>排除問題</h1>
+        <p class="lead">逐項檢查引擎、服務、模型、磁碟與網路。每一項都會說明結果；失敗的項目可以直接按修復。</p>
+        <div class="wiz-summary" id="diagSummary" role="status"></div>
+        <div id="diagGroups"></div>
+        <p class="status" id="diagMsg" role="status"></p>
+        <div class="wiz-bar">
+          <button class="btn" type="button" id="btnDiagExport">匯出診斷報告</button>
+          <button class="btn primary" type="button" id="btnDiagRun">重新檢查</button>
+        </div>
+      </section>
+
+      <!-- 模組與更新 -->
+      <section class="wiz-view" data-view="modules" hidden>
+        <p class="wiz-kicker">維護</p>
+        <h1>模組與更新</h1>
+        <p class="lead">模組包含分級規則與網路端點設定，可以獨立更新，不必重新安裝程式。更新只下載有變動的檔案；驗證失敗會自動回到原本的版本。</p>
+        <div class="wiz-mods">
+          <section class="wiz-mod" id="modAi">
+            <div class="wiz-mod-head"><h2>AI 引擎模組</h2><span class="wiz-pill" id="modAiPill"></span></div>
+            <p class="hint">規則表與引擎的最低版本要求。</p>
+            <dl class="wiz-facts" id="modAiFacts"></dl>
+          </section>
+          <section class="wiz-mod" id="modCr">
+            <div class="wiz-mod-head"><h2>爬取模組</h2><span class="wiz-pill" id="modCrPill"></span></div>
+            <p class="hint">司法院網站的連線端點與檢索煙霧測試。</p>
+            <dl class="wiz-facts" id="modCrFacts"></dl>
+            <div class="actions"><button class="btn" type="button" id="crawlerInstall">安裝或修復爬取模組</button></div>
+          </section>
+        </div>
+        <h2 class="wiz-h2">模組目錄</h2>
+        <div class="wiz-summary" id="updSummary" role="status">尚未檢查。按「檢查更新」比對目前的模組版本。</div>
+        <ul class="wiz-rows" id="updRows"></ul>
+        <p class="status" id="updMsg" role="status"></p>
+        <div class="wiz-bar">
+          <button class="btn" type="button" id="btnUpdCheck">檢查更新</button>
+          <button class="btn primary" type="button" id="btnUpdApply" disabled>套用更新</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
 <script src="wizard.js"></script>
 </body>
 </html>

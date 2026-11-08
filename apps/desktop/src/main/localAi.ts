@@ -75,7 +75,9 @@ const userData = () => app.getPath('userData');
 const modulesRoot = () => path.join(userData(), 'modules');
 const moduleCurrent = (id: ModuleId) => path.join(modulesRoot(), id, 'current');
 const engineRoot = () => path.join(userData(), 'engine');
-const bundledModuleDir = (id: ModuleId) => path.join(app.getAppPath(), 'modules', id);
+// 內建模組位置以編譯後的檔案為準（dist/main → ../../modules）。不可用 app.getAppPath()：
+// 在 electron 以腳本啟動時它會指向腳本所在資料夾。打包後 modules/** 也會一起進入應用程式。
+const bundledModuleDir = (id: ModuleId) => path.join(__dirname, '..', '..', 'modules', id);
 
 // ---------------------------------------------------------------------------
 // 系統與 PowerShell（唯讀）
