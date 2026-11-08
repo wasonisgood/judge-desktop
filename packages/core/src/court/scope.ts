@@ -24,6 +24,8 @@ export interface ScopeRow {
   cause: string;
   result: string;
   citedArticles: string[];
+  /** 供 AI 分析用的原文摘錄：主文，以及法規被引用處前後的理由文字。 */
+  excerpts: { main: string; citing: string };
   href: string;
 }
 
@@ -52,6 +54,16 @@ function articlesCiting(detail: JudgmentDetail, statute: string): string[] {
   return found.length ? found : [statute];
 }
 
+/** 法規被引用處前後各 400 字（找不到法規名稱時回傳理由段的開頭）。 */
+export function citingExcerpt(fullText: string, statute: string): string {
+  const i = fullText.indexOf(statute);
+  if (i >= 0) return fullText.slice(Math.max(0, i - 400), i + statute.length + 400);
+  const squashed = fullText.replace(/\s+/g, '');
+  const j = squashed.indexOf(statute.replace(/\s+/g, ''));
+  if (j >= 0) return squashed.slice(Math.max(0, j - 400), j + statute.length + 400);
+  return fullText.slice(0, 800);
+}
+
 export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
   const client = opts.client ?? new CourtClient();
   const max = Math.min(Math.max(opts.maxItems ?? 30, 1), 200);
@@ -76,6 +88,7 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
       cause: d.meta.cause || it.cause,
       result: resultOf(d.sections['主文'] ?? ''),
       citedArticles: cited,
+      excerpts: { main: (d.sections['主文'] ?? '').slice(0, 1200), citing: citingExcerpt(d.fullText, opts.statute) },
       href: d.meta.sourceUrl,
     });
   }
