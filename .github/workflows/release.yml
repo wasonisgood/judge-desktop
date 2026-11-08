@@ -90,5 +90,12 @@ jobs:
             apps/desktop/JudgeResearchSetup.exe
             apps/desktop/installer/publish/latest.json
           generate_release_notes: true
+          body: |
+            **程式碼簽章 / Code signing**：本專案的 Windows 安裝檔由 [SignPath.io](https://signpath.io) 提供免費簽章，憑證由 SignPath Foundation 核發。
+            Free code signing provided by SignPath.io, certificate by SignPath Foundation.
+
+            **隱私 / Privacy**：本程式不收集個人資料。詳見 [隱私說明](https://github.com/wasonisgood/judge-desktop/blob/master/docs/PRIVACY.md)。 The App does not collect personal data. See the [privacy statement](https://github.com/wasonisgood/judge-desktop/blob/master/docs/PRIVACY.md).
+
+            **安裝 / Installation**：下載 JudgeResearchSetup.exe 並執行。若出現 SmartScreen 警告，點「其他資訊」再點「仍要執行」。 Run JudgeResearchSetup.exe. If SmartScreen appears, click "More info", then "Run anyway".
           draft: false
           prerelease: false

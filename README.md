@@ -15,17 +15,63 @@ Windows 桌面應用程式，用來檢索司法院公開的裁判書，並整理
 3. 第一次執行時，Windows 可能顯示 SmartScreen 警告，點「其他資訊」再點「仍要執行」。
 4. 程式會在每次啟動時檢查新版本，有新版時自動下載並啟動安裝器。
 
+**程式碼簽章**：本專案的 Windows 安裝檔由 [SignPath.io](https://signpath.io) 提供免費簽章，憑證由 SignPath Foundation 核發。（Free code signing provided by SignPath.io, certificate by SignPath Foundation.）
+
 ## 使用 AI
 
 範圍整理表與單一判決精讀需要 AI 服務。在「設定」輸入 API 金鑰即可。金鑰只保存在使用者自己的電腦，並以 Windows 加密機制保護。支援 Anthropic 與 OpenAI 相容的服務。
+
+## 隱私
+
+本程式不收集個人資料。檢索結果、AI 金鑰與判決內容都只保存在使用者電腦上。詳見 [隱私說明](docs/PRIVACY.md)。
 
 ## 目錄結構
 
 - `packages/core`：司法院檢索、解析、範圍整理、AI 分析（TypeScript）
 - `apps/desktop`：Electron 桌面應用程式與介面
 - `apps/desktop/installer`：C# 原生安裝器、解除安裝程式與更新程式
-- `docs/`：規格與設計文件、程式碼簽章政策
+- `docs/`：規格、設計文件、程式碼簽章政策、隱私說明
 
 ## 授權
 
 MIT License，見 [LICENSE](LICENSE)。
+
+---
+
+# Judge Research Desk (English)
+
+A Windows desktop application for searching public judgments from the Judicial Yuan of Taiwan, and organizing them into tables or reading briefs.
+
+## Features
+
+- **Judgment list**: search by keyword and export to Excel. Full text can be fetched per judgment.
+- **Scope tables**: list judgments that actually cite a chosen statute. AI produces per-case analysis and a cross-case synthesis per statute; export to Excel or Word.
+- **Single-judgment brief**: AI produces a structured brief; the original main text is highlighted; export to Word.
+
+## Download and installation
+
+1. Download `JudgeResearchSetup.exe` from [Releases](https://github.com/wasonisgood/judge-desktop/releases/latest).
+2. Run the installer and choose the install location and shortcuts.
+3. On first run, Windows may show a SmartScreen warning. Click "More info", then "Run anyway".
+4. The app checks for updates at every launch. When a newer version is available, it downloads and starts the installer automatically.
+
+**Code signing**: The Windows installer is signed for free by [SignPath.io](https://signpath.io), with the certificate issued by the SignPath Foundation. (Free code signing provided by SignPath.io, certificate by SignPath Foundation.)
+
+## Using AI
+
+Scope tables and single-judgment briefs require an AI service. Enter an API key in Settings. The key is stored only on the user's computer, protected by Windows encryption. Anthropic and OpenAI-compatible services are supported.
+
+## Privacy
+
+The app does not collect personal data. Search results, AI keys and judgment text stay on the user's computer. See the [privacy statement](docs/PRIVACY.md).
+
+## Repository layout
+
+- `packages/core`: Judicial Yuan search, parsing, scope tables and AI analysis (TypeScript)
+- `apps/desktop`: Electron desktop application and UI
+- `apps/desktop/installer`: native C# installer, uninstaller and updater
+- `docs/`: specifications, design notes, code signing policy, privacy statement
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
