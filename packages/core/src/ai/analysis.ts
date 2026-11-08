@@ -109,13 +109,45 @@ export interface BriefDocument {
   sections: BriefSection[];
 }
 
+/** 精讀的欄位：名稱必填；說明選填，AI 會依說明整理該欄位。 */
+export interface BriefField {
+  name: string;
+  description?: string;
+}
+
+/** 預設欄位（與原本的六段一致）。使用者可取消勾選，也可加入自訂欄位。 */
+export const DEFAULT_BRIEF_FIELDS: BriefField[] = [
+  { name: '一、案件事實' },
+  { name: '二、爭點' },
+  { name: '三、當事人主張' },
+  { name: '四、法院見解' },
+  { name: '五、結論' },
+  { name: '六、與使用者重點相關的整理' },
+];
+
+/** 清理欄位：去除空白名稱與重複名稱，保留順序。 */
+export function normalizeBriefFields(fields: BriefField[]): BriefField[] {
+  const seen = new Set<string>();
+  const out: BriefField[] = [];
+  for (const f of fields) {
+    const name = (f.name ?? '').trim();
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    out.push({ name, description: (f.description ?? '').trim() || undefined });
+  }
+  return out;
+}
+
 export async function briefJudgment(
   ai: AiComplete,
   d: JudgmentDetail,
-  opts: { focus: string; length: string },
+  opts: { focus: string; length: string; fields?: BriefField[] },
 ): Promise<BriefDocument> {
-  const system = '你是台灣法律研究助理。依使用者指定的重點與長度，只根據提供的判決原文整理，不得編造。以繁體中文回答，並且只輸出一個 JSON 物件。';
+  const system = '你是台灣法律研究助理。依使用者指定的重點、長度與欄位，只根據提供的判決原文整理，不得編造。以繁體中文回答，並且只輸出一個 JSON 物件。';
   const focus = opts.focus.trim() || '由你判斷最重要的爭點、事實、理由與主文';
+  const fields = normalizeBriefFields(opts.fields && opts.fields.length ? opts.fields : DEFAULT_BRIEF_FIELDS);
+  if (fields.length === 0) throw new Error('請至少勾選一個要整理的欄位');
+  const fieldLines = fields.map((f, i) => `${i + 1}. ${f.name}${f.description ? `：${f.description}` : ''}`);
   const user = [
     `判決字號：${d.meta.title}`,
     `歷審位置：${d.historyPosition?.summary ?? '未取得歷審資料'}`,
@@ -124,7 +156,8 @@ export async function briefJudgment(
     `輸出長度：${opts.length}`,
     '',
     '請輸出 JSON，格式：{"title":"文書標題","sections":[{"heading":"段落標題","paragraphs":["段落一","段落二"]}]}',
-    '段落標題依序包含：一、案件事實；二、爭點；三、當事人主張；四、法院見解；五、結論；六、與使用者重點相關的整理。',
+    '段落標題必須依序為下列欄位，一個都不能少、也不要多加其他段落：',
+    ...fieldLines,
     '每個段落都要有實質內容，不能只寫「無」。若判決中找不到某項資訊，該段寫明「判決原文未載明」。每段限 200 字以內，段落數依篇幅調整，務必輸出完整的 JSON。',
     '',
     '判決原文：',
