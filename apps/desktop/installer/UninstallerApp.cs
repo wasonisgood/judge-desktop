@@ -707,9 +707,8 @@ namespace JudgeResearchUninstaller {
             txtProgressTitle.Text = en ? "Removing app files and registrations…" : "正在移除程式登錄與安裝檔案...";
             txtFarewellTitle.Text = en ? "Uninstallation Succeeded" : "程式已順利解除安裝";
             txtFarewellDesc.Text = en
-                ? "Judge Research has been completely removed from your computer.\nThank you for practicing with us. Wishing you persuasive oral arguments and victory in court!"
-                : "「司法院裁判研究」已從您的電腦中完整解除安裝。
-感謝您使用本程式。";
+                ? "Judge Research has been completely removed from your computer.\nThank you for using the app."
+                : "「司法院裁判研究」已從您的電腦中完整解除安裝。\n感謝您使用本程式。";
             btnFarewellClose.Content = en ? "［ Close ］" : "［ 關閉 ］";
         }
 
