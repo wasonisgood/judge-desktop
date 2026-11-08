@@ -336,7 +336,7 @@
   }
   function setPick(item) {
     state.briefPick = item;
-    $('briefPicked').textContent = item ? (item.title + '（' + (item.dateIso || item.dateDisplay || '') + '）') : '尚未選定';
+    $('briefPicked').textContent = item ? (item.title + (item.dateIso || item.dateDisplay ? '（' + (item.dateIso || item.dateDisplay) + '）' : '')) : '尚未選定';
     $('briefRun').disabled = !item;
   }
   function renderCandidates(items) {
@@ -413,6 +413,7 @@
         lengthHint: $('briefLength').value
       });
       state.brief = r;
+      if (r.detail && r.detail.meta && r.detail.meta.title) $('briefPicked').textContent = r.detail.meta.title;
       renderBrief(r);
       setStatus($('briefStatus'), '已完成 AI 整理，已存入「檔案」。', 'ok');
       $('briefExport').disabled = false;
@@ -586,6 +587,7 @@
   // 助理面板的進度卡：把範圍整理或精讀頁面上的狀態同步到這裡，讓使用者知道進度，不必切換頁面。
   var progressWatchers = [];
   function startProgressCard(label, statusId, barSelector) {
+    var label = label;
     var card = el('div', 'assist-progress');
     var head = el('div', 'assist-progress-head');
     head.appendChild(el('strong', '', label));
@@ -612,7 +614,10 @@
       text.textContent = t || '準備中…';
       if (barSrc) bar.style.width = barSrc.style.width || '0%';
       if (/完成|失敗|已完成|整理失敗|讀取失敗/.test(t)) {
-        card.classList.add(/失敗/.test(t) ? 'error' : 'done');
+        var failed = /失敗/.test(t);
+        card.classList.add(failed ? 'error' : 'done');
+        var head = card.querySelector('strong');
+        if (head) head.textContent = label.replace(/進行中$/, failed ? '失敗' : '完成');
         clearInterval(timer);
         observer.disconnect();
         clock.textContent = '共 ' + Math.round((Date.now() - started) / 1000) + ' 秒';

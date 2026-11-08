@@ -81,3 +81,10 @@ test('紅色圖示（上訴至最高法院審理中）：列前的「*」標記�
   assert.equal(pos.supremeAppeal, true);
   assert.match(pos.summary, /最高法院審理中/);
 });
+
+test('法院欄位：含分庭的法院名稱（臺中高等行政法院 高等庭）要正確取出', () => {
+  const d = parseDetailHtml(fx('judicial_detail_tcba_quan17.html'), 'TCBA,115,全,17,20261106,1', 'https://judgment.judicial.gov.tw/FJUD/data.aspx?x=1');
+  assert.match(d.meta.court ?? '', /^臺中高等行政法院/, '法院欄位不得為空');
+  assert.equal(d.meta.caseNo, '115年度全字第17號');
+  assert.equal(d.meta.judgmentType, '裁定');
+});

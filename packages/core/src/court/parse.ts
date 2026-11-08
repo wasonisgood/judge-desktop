@@ -157,7 +157,8 @@ export function parseDetailHtml(html: string, id: string, sourceUrl: string): Ju
   const title = field('裁判字號');
   const dateMinguo = field('裁判日期');
   const cause = field('裁判案由');
-  const m = /^(\S+法院)\s+(\d+)\s*年度\s*(\S+?)\s*字第\s*(\d+)\s*號\s*(判決|裁定)?/.exec(title);
+  // 法院名稱可能含分庭或分院（例如「臺中高等行政法院 高等庭」），所以取到「N 年度」之前為止。
+  const m = /^(.+?)\s+(\d+)\s*年度\s*(\S+?)\s*字第\s*(\d+)\s*號\s*(判決|裁定)?/.exec(title);
 
   // 歷審：內頁只放「列印歷審清單」的連結，清單本身由伺服器另外產生（見 search.ts 的 getJudgmentDetail）。
   const printHref = $('a#hyPrintHistory').attr('href') ?? '';
