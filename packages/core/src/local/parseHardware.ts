@@ -17,13 +17,22 @@ function toGB(v: number | string | null | undefined): number {
   return Number.isFinite(n) && n > 0 ? Math.floor((n / GB) * 10) / 10 : 0;
 }
 
-/** 由 GPU 名稱判斷廠商；無法判斷時視為 none。 */
+/** 由 GPU 名稱判斷廠商。沒有名稱為 none；有名稱但不認識為 other（仍是一張顯卡，只是不被 Ollama 加速）。 */
 export function detectGpuVendor(name: string | null | undefined): HardwareInfo['gpuVendor'] {
-  const s = (name ?? '').toLowerCase();
+  const raw = (name ?? '').trim();
+  if (!raw) return 'none';
+  const s = raw.toLowerCase();
   if (s.includes('nvidia') || s.includes('geforce') || s.includes('rtx') || s.includes('gtx') || s.includes('quadro')) return 'nvidia';
   if (s.includes('amd') || s.includes('radeon')) return 'amd';
   if (s.includes('intel')) return 'intel';
-  return 'none';
+  if (s.includes('qualcomm') || s.includes('adreno')) return 'qualcomm';
+  if (s.includes('apple')) return 'apple';
+  return 'other';
+}
+
+/** Ollama 在 Windows 上會用來加速的獨立顯卡廠商（其餘即使存在也以 CPU 執行）。 */
+export function isAcceleratorVendor(v: HardwareInfo['gpuVendor']): boolean {
+  return v === 'nvidia' || v === 'amd';
 }
 
 /**
@@ -33,16 +42,21 @@ export function detectGpuVendor(name: string | null | undefined): HardwareInfo['
  */
 export function parseHardware(raw: RawHardwareJson): HardwareInfo {
   const gpus = Array.isArray(raw.gpus) ? raw.gpus : raw.gpus ? [raw.gpus] : [];
-  let best: { vendor: HardwareInfo['gpuVendor']; vram: number } = { vendor: 'none', vram: 0 };
+  let best: { vendor: HardwareInfo['gpuVendor']; vram: number; name: string | null } = { vendor: 'none', vram: 0, name: null };
   for (const g of gpus) {
     const vendor = detectGpuVendor(g.name);
+    if (vendor === 'none') continue;
     const vram = toGB(g.adapterRamBytes);
-    if (vram > best.vram || (best.vendor === 'none' && vendor !== 'none')) best = { vendor, vram };
+    // 優先選擇有獨立顯存的顯卡；都沒有時取第一張有名稱的顯卡（集成顯卡）。
+    if (best.vendor === 'none' || vram > best.vram) best = { vendor, vram, name: (g.name ?? '').trim() || null };
   }
   return {
     ramGB: toGB(raw.totalMemoryBytes),
     freeDiskGB: toGB(raw.freeDiskBytes),
     vramGB: best.vram,
     gpuVendor: best.vendor,
+    gpuName: best.name,
+    // 注意：AdapterRAM 為 0 通常代表共用系統記憶體（集成顯卡），不代表沒有顯卡。
+    gpuMemoryShared: best.vendor !== 'none' && best.vram === 0,
   };
 }

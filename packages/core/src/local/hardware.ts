@@ -8,8 +8,12 @@ export interface HardwareInfo {
   freeDiskGB: number;
   /** 獨立顯示卡顯示記憶體（GB）；沒有獨立顯卡為 0。 */
   vramGB: number;
-  /** 顯卡廠商。 */
-  gpuVendor: 'nvidia' | 'amd' | 'intel' | 'none';
+  /** 顯卡廠商：none 表示沒有顯卡資訊；other 表示有顯卡但不認識；qualcomm／apple 為 ARM 與 Mac 常見的集成顯卡。 */
+  gpuVendor: 'nvidia' | 'amd' | 'intel' | 'qualcomm' | 'apple' | 'other' | 'none';
+  /** 顯卡名稱（給使用者看）。 */
+  gpuName?: string | null;
+  /** 顯存為 0 且有顯卡：代表共用系統記憶體（集成顯卡）。 */
+  gpuMemoryShared?: boolean;
 }
 
 export type LocalTier = 'none' | 'light' | 'standard' | 'heavy';
@@ -108,8 +112,13 @@ export function planLocalAI(hw: HardwareInfo, rules: EngineRules = BUILTIN_RULES
   }
 
   const m = rules.tiers[tier];
-  const installBoth = tier === 'heavy' && hw.vramGB >= rules.dualModelMinVramGB && hw.gpuVendor !== 'none';
-  if (tier === 'heavy' && !installBoth) reasons.push(`沒有足夠顯存（需 ${rules.dualModelMinVramGB} GB 以上獨立顯卡），只安裝精讀模型`);
+  // 雙模型只有在 NVIDIA／AMD 獨立顯卡且顯存足夠時才啟用（Ollama 在 Windows 上只用這類顯卡加速）。
+  const accelerated = (hw.gpuVendor === 'nvidia' || hw.gpuVendor === 'amd') && hw.vramGB >= rules.dualModelMinVramGB;
+  const installBoth = tier === 'heavy' && accelerated;
+  if (tier === 'heavy' && !installBoth) {
+    const gpu = hw.gpuName ? `（偵測到 ${hw.gpuName}）` : '';
+    reasons.push(`沒有足夠的 NVIDIA 或 AMD 獨立顯存（需 ${rules.dualModelMinVramGB} GB 以上）${gpu}，只安裝精讀模型，並以 CPU 執行`);
+  }
   // 雙模型：回答模型用 heavy 分級的 chat 模型（較輕），精讀用 heavy 的 judgment 模型。
   const chatModel = installBoth ? rules.tiers.heavy.chat : m.judgment;
   // 兩個模型時，精讀模型（heavy）與回答模型（standard）的磁碟需求相加。

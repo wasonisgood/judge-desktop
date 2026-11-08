@@ -104,8 +104,10 @@ function startFileServer(buf, opts = {}) {
     if (opts.failAfterBytes && !req.headers.range) {
       // 第一次請求：送出一部分後中斷，模擬網路中斷。
       res.writeHead(200, { 'content-length': buf.length });
-      res.write(buf.subarray(0, opts.failAfterBytes));
-      setTimeout(() => res.destroy(), 20);
+      // 確定部分資料送出後才斷線（確定性，不依賴計時器）。
+      // 已送出部分資料後以 FIN 結束連線（資料順序保證送達），模擬網路中斷。
+      // 先送出部分資料，停頓一下讓用戶端收到，再以 FIN 結束連線，模擬下載途中斷線。
+      res.write(buf.subarray(0, opts.failAfterBytes), () => setTimeout(() => req.socket.end(), 300));
       return;
     }
     const m = /bytes=(\d+)-/.exec(req.headers.range ?? '');

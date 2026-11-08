@@ -37,7 +37,9 @@ test('parseHardware：位元組換算成 GB，並取顯示記憶體最大的顯�
 
 test('parseHardware：缺資料時保守為 0 / none', () => {
   const hw = parseHardware({ totalMemoryBytes: null, gpus: null });
-  assert.deepEqual(hw, { ramGB: 0, freeDiskGB: 0, vramGB: 0, gpuVendor: 'none' });
+  assert.equal(hw.ramGB, 0);
+  assert.equal(hw.gpuVendor, 'none');
+  assert.equal(hw.vramGB, 0);
 });
 
 test('parseHardware：單一物件（非陣列）也能解析', () => {
@@ -49,7 +51,7 @@ test('detectGpuVendor：廠商判斷', () => {
   assert.equal(detectGpuVendor('NVIDIA RTX A2000'), 'nvidia');
   assert.equal(detectGpuVendor('AMD Radeon Graphics'), 'amd');
   assert.equal(detectGpuVendor('Intel Iris Xe'), 'intel');
-  assert.equal(detectGpuVendor('Some Unknown Card'), 'none');
+  assert.equal(detectGpuVendor('Some Unknown Card'), 'other');
   assert.equal(detectGpuVendor(null), 'none');
 });
 

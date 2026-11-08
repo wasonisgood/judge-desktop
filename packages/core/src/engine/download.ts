@@ -62,6 +62,8 @@ export async function downloadWithResume(opts: DownloadOptions): Promise<Downloa
   const total = res.headers.get('content-length');
   const totalBytes = total ? Number(total) + resumedFrom : null;
 
+  // 先建立（或保留）部分檔：即使連線在任何資料送達前中斷，下次仍能以同一路徑續傳。
+  if (resumedFrom === 0) await fsp.writeFile(part, Buffer.alloc(0));
   const out = fs.createWriteStream(part, { flags: resumedFrom > 0 ? 'a' : 'w' });
   let downloaded = resumedFrom;
   const reader = res.body.getReader();
@@ -77,8 +79,9 @@ export async function downloadWithResume(opts: DownloadOptions): Promise<Downloa
       out.end((err?: Error | null) => (err ? reject(err) : resolve()));
     });
   } catch (e) {
-    out.destroy();
-    throw e; // 保留 .part，下次可續傳
+    // 連線中斷：先把已收到的資料寫入磁碟（不可丟棄），下次才能從這個位置續傳。
+    await new Promise<void>((r) => out.end(() => r()));
+    throw e;
   }
 
   if (totalBytes !== null && downloaded !== totalBytes) {
