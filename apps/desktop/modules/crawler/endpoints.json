@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "probes": [
+    {
+      "name": "一般網路",
+      "url": "https://www.google.com/generate_204",
+      "required": false
+    },
+    {
+      "name": "司法院裁判書網站",
+      "url": "https://judgment.judicial.gov.tw/",
+      "required": true
+    }
+  ],
+  "smokeKeyword": "損害賠償"
+}

@@ -45,6 +45,10 @@ contextBridge.exposeInMainWorld('api', {
     onProgress: (cb: (p: unknown) => void) => {
       ipcRenderer.on('local:progress', (_e, p) => cb(p));
     },
+    diagnose: () => invoke('local:diagnose'),
+    exportReport: () => invoke('local:exportReport'),
+    checkUpdates: () => invoke('local:checkUpdates'),
+    applyUpdates: () => invoke('local:applyUpdates'),
     openWizard: () => invoke('local:openWizard'),
     wizardDone: () => invoke('local:wizardDone'),
     onChanged: (cb: () => void) => {

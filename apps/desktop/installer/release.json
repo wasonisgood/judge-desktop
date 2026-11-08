@@ -8,7 +8,7 @@
   "minimumVersion": "1.0.0",
   "mandatory": false,
   "notes": {
-    "zh": "・新增「本地 AI（可選）」：設定頁可檢查這台電腦是否適合，同意後才會安裝本地 AI 服務與模型。精讀與範圍整理會優先使用本地模型，本地失敗時自動改用雲端。\n・安裝失敗時只在本機保存去敏後的摘要，不會上傳。\n・包含 0.2.2 的全部功能。",
-    "en": "・Optional local AI: Settings can check whether this computer is suitable. Installation starts only after you agree. Brief and scope analysis prefer the local model; if it fails, the app falls back to the cloud automatically.\n・Installation failures are saved locally as sanitized summaries only; nothing is uploaded.\n・Includes all 0.2.2 features."
+    "zh": "・本地模組改為獨立的「本地模組安裝精靈」視窗：檢查、選擇方案、同意、安裝與註冊，完成後才回到主畫面。\n・新增「排除問題」：逐項檢查引擎、服務、模型、磁碟與網路，失敗項目附修復按鈕，可匯出診斷報告。\n・引擎改用 Ollama 官方 zip 並以 GitHub 提供的 SHA-256 校驗；支援 ARM64 與 x64。\n・既有的 Ollama 版本太舊時不沿用，改用本程式自己的新版引擎，原服務不受影響。\n・模組（分級規則與端點設定）可獨立更新，只下載變動檔案，驗證失敗自動回滾。\n・包含 3.0 的全部功能。",
+    "en": "・The local module now uses its own setup wizard window: check, choose, agree, install and register. The main window returns only after registration.\n・New troubleshooting: checks engine, service, models, disk and network step by step, with repair buttons; diagnostic reports can be exported.\n・The engine now uses the official Ollama zip, verified against the SHA-256 from GitHub; ARM64 and x64 are supported.\n・An outdated existing Ollama is not reused; the app installs its own newer engine, leaving the original service untouched.\n・Modules (tier rules and endpoints) update independently, downloading only changed files and rolling back on verification failure.\n・Includes all 3.0 features."
   }
 }

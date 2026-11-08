@@ -7,6 +7,7 @@ directories:
 files:
   - dist/**/*
   - package.json
+  - modules/**/*
 asar: true
 win:
   icon: app.ico

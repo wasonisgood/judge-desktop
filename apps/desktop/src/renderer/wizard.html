@@ -18,11 +18,12 @@
       <span class="tab" data-s="choose">2 選擇方案</span>
       <span class="tab" data-s="agree">3 同意安裝</span>
       <span class="tab" data-s="install">4 安裝與註冊</span>
+      <span class="tab" data-s="diag">5 排除問題與更新</span>
     </div>
 
     <!-- 步驟 1：檢查 -->
     <section id="s-check" class="wiz-screen">
-      <p class="hint">會讀取記憶體、磁碟與顯卡資訊，並檢查網路與司法院網站連線。此步驟只讀取資訊，不會安裝任何東西。</p>
+      <p class="hint">會讀取記憶體、磁碟、顯卡與 CPU 架構，並檢查網路與司法院網站連線。此步驟只讀取資訊，不會安裝任何東西。</p>
       <div class="actions"><button class="btn primary" type="button" id="btnCheck">開始檢查</button></div>
       <p class="status" id="checkStatus" role="status"></p>
     </section>
@@ -57,11 +58,34 @@
       <div id="repairBox" class="notice" hidden>
         <p id="repairText"></p>
         <div class="actions" id="repairActions"></div>
+        <div class="actions"><button class="btn" type="button" data-go="diag">開啟排除問題</button></div>
       </div>
       <div id="doneBox" hidden>
         <p class="status ok" id="doneText"></p>
         <div class="actions"><button class="btn primary" type="button" id="btnDone">完成並返回主畫面</button></div>
       </div>
+    </section>
+
+    <!-- 步驟 5：排除問題與模組更新 -->
+    <section id="s-diag" class="wiz-screen" hidden>
+      <h2>排除問題</h2>
+      <p class="hint">逐項檢查引擎、服務、模型、磁碟與網路。失敗的項目會附上可自動執行的修復按鈕，也可以匯出報告給開發者。</p>
+      <div class="actions">
+        <button class="btn primary" type="button" id="diagRun">執行檢查</button>
+        <button class="btn" type="button" id="diagExport">匯出診斷報告</button>
+      </div>
+      <p class="status" id="diagSummary" role="status"></p>
+      <ul class="file-list" id="diagList"></ul>
+      <p class="status" id="diagExportPath"></p>
+
+      <h2>模組更新</h2>
+      <p class="hint">模組（規則表與端點設定）可獨立更新，不必重新安裝程式。只下載有變動的檔案；驗證失敗會自動回到原版本。</p>
+      <div class="actions">
+        <button class="btn" type="button" id="updCheck">檢查更新</button>
+        <button class="btn primary" type="button" id="updApply" disabled>套用更新</button>
+      </div>
+      <p class="status" id="updStatus" role="status"></p>
+      <p class="status" id="updLog" aria-live="polite"></p>
     </section>
 
     <section class="wif-guide" aria-labelledby="crawlTitle">

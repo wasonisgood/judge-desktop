@@ -53,7 +53,9 @@ export function runDiagnostics(f: DiagFacts): DiagCheck[] {
     add({ id: 'engine-installed', title: '本地服務引擎', status: 'warn', detail: '尚未安裝本地服務引擎。', fix: 'reinstall-engine' });
   } else {
     const m = archMatches(f.engineArch, f.nativeArch);
-    if (m === false) {
+    if (f.engineArch === 'unknown') {
+      add({ id: 'engine-arch', title: '引擎架構', status: 'warn', detail: '沿用的是使用者既有的服務，無法判定其架構。若速度明顯偏慢，可讓本程式安裝自己的引擎。', fix: null });
+    } else if (m === false) {
       add({
         id: 'engine-arch', title: '引擎架構', status: 'warn',
         detail: `引擎為 ${f.engineArch}，但系統為 ${f.nativeArch}，會以模擬方式執行，速度明顯較慢。請重新安裝對應架構的引擎。`,

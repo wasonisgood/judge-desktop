@@ -62,6 +62,12 @@ jobs:
         working-directory: apps/desktop
         run: node installer/generate_manifest.js
 
+      - name: 產生模組目錄 modules.json（規則表與端點，可獨立更新）
+        working-directory: apps/desktop
+        shell: bash
+        run: |
+          v=$(node -p "require('./package.json').version")
+          node scripts/make-catalog.mjs "v$v" installer/publish
       - name: 檢查安裝器完整性
         shell: bash
         run: |
@@ -89,6 +95,8 @@ jobs:
           files: |
             apps/desktop/JudgeResearchSetup.exe
             apps/desktop/installer/publish/latest.json
+            apps/desktop/installer/publish/modules.json
+            apps/desktop/installer/publish/module-*
           generate_release_notes: true
           body: |
             **程式碼簽章 / Code signing**：本專案的 Windows 安裝檔由 [SignPath.io](https://signpath.io) 提供免費簽章，憑證由 SignPath Foundation 核發。
