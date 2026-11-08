@@ -22,6 +22,9 @@ app.whenReady().then(async () => {
   let step = 0;
   const js = (code) => w.webContents.executeJavaScript(code);
   const shot = async (label) => {
+    await wait(1500);
+    w.webContents.invalidate();
+    await wait(400);
     step++;
     const file = path.join(outDir, `${String(step).padStart(2, '0')}-${label}.png`);
     fs.writeFileSync(file, (await w.webContents.capturePage()).toPNG());

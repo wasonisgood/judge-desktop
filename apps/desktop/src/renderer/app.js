@@ -298,6 +298,13 @@
       state.scopeTo = to;
       renderScope(r.sheets);
       var total = r.sheets.reduce(function (n, s) { return n + s.rows.length; }, 0);
+      // 把結果摘要交給助理，讓它能接著討論（助理只看得到對話紀錄，看不到畫面）。
+      state.assistHistory.push({ role: 'user', text: '[系統通知] 範圍整理已完成。' + r.sheets.map(function (sh) {
+        return sh.statute + '共 ' + sh.rows.length + ' 筆：' + sh.rows.slice(0, 10).map(function (x, i) {
+          var a = (sh.analyses || []).filter(function (y) { return y.id === x.id; })[0] || {};
+          return (i + 1) + '. ' + x.title + '（' + (x.dateIso || '') + '）爭點：' + (a.issue || '') + '；引用：' + x.citedArticles.join('、');
+        }).join(' ');
+      }).join(' ') });
       var noteText = (r.notes && r.notes.length) ? ' ' + r.notes.join(' ') : '';
       setStatus($('scopeStatus'), '完成，共 ' + total + ' 筆，已存入「檔案」。' + noteText, 'ok');
       $('scopeXlsx').disabled = false;
@@ -415,6 +422,7 @@
       state.brief = r;
       if (r.detail && r.detail.meta && r.detail.meta.title) $('briefPicked').textContent = r.detail.meta.title;
       renderBrief(r);
+      state.assistHistory.push({ role: 'user', text: '[系統通知] 精讀已完成：' + (r.doc.title || '') + '。段落：' + r.doc.sections.map(function (sec) { return sec.heading + '：' + sec.paragraphs.join(' '); }).join(' ').slice(0, 3000) });
       setStatus($('briefStatus'), '已完成 AI 整理，已存入「檔案」。', 'ok');
       $('briefExport').disabled = false;
     } catch (err) {
