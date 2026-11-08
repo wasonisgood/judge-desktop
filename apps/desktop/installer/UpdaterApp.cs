@@ -98,6 +98,10 @@ namespace JudgeResearchUpdater {
             }
             Render();
             ContentRendered += (s, e) => { Topmost = false; Activate(); };
+            // 自動更新：啟動時發現新版即自動下載、驗證並啟動安裝器（不需按鈕）；強制更新同樣自動。
+            ContentRendered += (s, e) => {
+                if (!manual && state == UpState.Available && UpdateState.Load().AutoInstall) OnPrimary();
+            };
             Closing += (s, e) => OnClosingWindow(e);
         }
 

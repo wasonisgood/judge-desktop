@@ -5,7 +5,6 @@ import * as fs from 'node:fs/promises';
 import * as fsSync from 'node:fs';
 import { createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
-import AdmZip from 'adm-zip';
 import {
   searchJudgments, getJudgmentDetail, buildScopeTable, CourtClient,
   analyzeCase, synthesizeScope, briefJudgment,
@@ -17,7 +16,6 @@ import { buildScopeWorkbook, buildScopeDocx, type ScopeSheet } from './scopeExpo
 import { callAi, type AiConfig } from './ai';
 
 const isDev = !app.isPackaged;
-const RELEASE_BASE = 'https://github.com/wasonisgood/judge-desktop/releases/latest/download';
 let win: BrowserWindow | null = null;
 
 // ---------------------------------------------------------------------------
@@ -124,67 +122,6 @@ async function cachedDetail(id: string, client?: CourtClient): Promise<JudgmentD
 }
 
 // ---------------------------------------------------------------------------
-// 熱修復（只更新前端資源，例如畫面與文字；主程序程式碼的修正仍需完整更新）
-// 清單：hotfix.json＝{ baseVersion, hotfixVersion, sha256, url }；修補包為 hotfix.zip，內含 renderer/ 資料夾。
-// ---------------------------------------------------------------------------
-interface HotfixState {
-  baseVersion: string;
-  hotfixVersion: string;
-  dir: string;
-}
-
-const hotfixStatePath = () => userPath('hotfix', 'state.json');
-
-async function readHotfixState(): Promise<HotfixState | null> {
-  try {
-    const st = JSON.parse(await fs.readFile(hotfixStatePath(), 'utf8')) as HotfixState;
-    if (st.baseVersion !== app.getVersion()) return null; // 完整更新後舊的熱修復失效
-    if (!fsSync.existsSync(path.join(st.dir, 'renderer', 'index.html'))) return null;
-    return st;
-  } catch {
-    return null;
-  }
-}
-
-async function checkHotfix(): Promise<{ applied: boolean; version?: string }> {
-  if (isDev) return { applied: false };
-  const res = await fetch(`${RELEASE_BASE}/hotfix.json`, { signal: AbortSignal.timeout(15_000) });
-  if (!res.ok) return { applied: false };
-  const manifest = (await res.json()) as { baseVersion: string; hotfixVersion: string; sha256: string; url?: string };
-  if (manifest.baseVersion !== app.getVersion()) return { applied: false };
-  const current = await readHotfixState();
-  if (current && current.hotfixVersion === manifest.hotfixVersion) return { applied: false };
-
-  const zipRes = await fetch(manifest.url ?? `${RELEASE_BASE}/hotfix.zip`, { signal: AbortSignal.timeout(120_000) });
-  if (!zipRes.ok) throw new Error('下載熱修復失敗');
-  const buf = Buffer.from(await zipRes.arrayBuffer());
-  if (createHash('sha256').update(buf).digest('hex') !== manifest.sha256) throw new Error('熱修復檔案驗證失敗，已放棄套用。');
-
-  const dir = userPath('hotfix', manifest.hotfixVersion);
-  await fs.rm(dir, { recursive: true, force: true });
-  await fs.mkdir(dir, { recursive: true });
-  new AdmZip(buf).extractAllTo(dir, true);
-  await fs.writeFile(hotfixStatePath(), JSON.stringify({ baseVersion: manifest.baseVersion, hotfixVersion: manifest.hotfixVersion, dir }), 'utf8');
-  return { applied: true, version: manifest.hotfixVersion };
-}
-
-function rendererEntry(): string {
-  const hf = isDev ? null : hotfixStateSync();
-  if (hf) return path.join(hf.dir, 'renderer', 'index.html');
-  return path.join(__dirname, '..', 'renderer', 'index.html');
-}
-
-function hotfixStateSync(): HotfixState | null {
-  try {
-    const st = JSON.parse(fsSync.readFileSync(hotfixStatePath(), 'utf8')) as HotfixState;
-    if (st.baseVersion !== app.getVersion()) return null;
-    return fsSync.existsSync(path.join(st.dir, 'renderer', 'index.html')) ? st : null;
-  } catch {
-    return null;
-  }
-}
-
-// ---------------------------------------------------------------------------
 // 視窗
 // ---------------------------------------------------------------------------
 function createWindow() {
@@ -206,7 +143,7 @@ function createWindow() {
   });
   Menu.setApplicationMenu(null);
   win.once('ready-to-show', () => win?.show());
-  void win.loadFile(rendererEntry());
+  void win.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'));
   win.webContents.setWindowOpenHandler(({ url }) => {
     void shell.openExternal(url);
     return { action: 'deny' };
@@ -376,7 +313,6 @@ app.whenReady().then(() => {
   createWindow();
   if (!isDev) {
     openUpdater(false);
-    checkHotfix().catch((err) => console.warn('hotfix', err));
   }
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

@@ -249,6 +249,8 @@ namespace JudgeResearch {
     public class UpdateState {
         public long SnoozeUntilTicks;
         public string Lang;
+        // 有新版時自動下載並啟動安裝（預設開啟；可在 update-state.json 將 autoInstall 設為 false 關閉）
+        public bool AutoInstall = true;
 
         static string FilePath { get { return Path.Combine(UpdateCommon.StateDir, "update-state.json"); } }
 
@@ -266,6 +268,7 @@ namespace JudgeResearch {
                                 s.SnoozeUntilTicks = dt.Ticks;
                         }
                         if (d.TryGetValue("lang", out v) && v != null) s.Lang = v.ToString();
+                        if (d.TryGetValue("autoInstall", out v) && v is bool) s.AutoInstall = (bool)v;
                     }
                 }
             } catch (Exception ex) { UpdateCommon.Log("State load failed: " + ex.Message); }
@@ -277,6 +280,7 @@ namespace JudgeResearch {
                 var d = new Dictionary<string, object>();
                 if (SnoozeUntilTicks > 0) d["snoozeUntil"] = new DateTime(SnoozeUntilTicks, DateTimeKind.Utc).ToString("o");
                 if (!string.IsNullOrEmpty(Lang)) d["lang"] = Lang;
+                d["autoInstall"] = AutoInstall;
                 File.WriteAllText(FilePath, new JavaScriptSerializer().Serialize(d), new UTF8Encoding(false));
             } catch (Exception ex) { UpdateCommon.Log("State save failed: " + ex.Message); }
         }

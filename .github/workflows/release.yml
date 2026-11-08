@@ -7,20 +7,18 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'release＝完整發版；hotfix＝只發布前端熱修復包到最新版本'
+        description: '完整發版（建置安裝器與 latest.json）'
         required: true
         default: release
         type: choice
         options:
           - release
-          - hotfix
 
 permissions:
   contents: write
 
 jobs:
   release:
-    if: github.event.inputs.mode != 'hotfix'
     runs-on: windows-latest
     steps:
       - name: 取得程式碼
@@ -94,46 +92,3 @@ jobs:
           generate_release_notes: true
           draft: false
           prerelease: false
-
-  hotfix:
-    if: github.event.inputs.mode == 'hotfix'
-    runs-on: windows-latest
-    steps:
-      - name: 取得程式碼
-        uses: actions/checkout@v4
-
-      - name: 安裝 Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: 建置前端
-        working-directory: packages/core
-        run: |
-          npm ci
-          npm run build
-      - working-directory: apps/desktop
-        run: |
-          npm ci
-          npm run build
-
-      - name: 製作熱修復包（只含前端資源）
-        shell: bash
-        run: |
-          base=$(node -p "require('./apps/desktop/package.json').version")
-          hf="${base}-hf${GITHUB_RUN_NUMBER}"
-          cd apps/desktop/dist
-          powershell -Command "Compress-Archive -Path renderer -DestinationPath ../../../hotfix.zip -Force"
-          cd ../../..
-          sha=$(sha256sum hotfix.zip | cut -d' ' -f1)
-          printf '{"baseVersion":"%s","hotfixVersion":"%s","sha256":"%s"}\n' "$base" "$hf" "$sha" > hotfix.json
-          cat hotfix.json
-
-      - name: 上傳到最新版本
-        shell: bash
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          latest=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName)
-          gh release upload "$latest" hotfix.zip hotfix.json --clobber --repo "$GITHUB_REPOSITORY"
-          echo "已上傳熱修復到 $latest"
