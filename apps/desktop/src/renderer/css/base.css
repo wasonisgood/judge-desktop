@@ -168,3 +168,6 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
 .reader p { margin: 0 0 6px; }
 .reader mark { background: var(--shu-wash); color: var(--ink); padding: 0 2px; }
 
+
+/* 全域：hidden 屬性一律隱藏（避免 display 規則蓋過，v3.6.1） */
+[hidden] { display: none !important; }
