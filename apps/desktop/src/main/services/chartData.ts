@@ -4,14 +4,15 @@ import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import ExcelJS from 'exceljs';
 import {
-  AMOUNT_BRACKETS, BLANK_LABEL, barChartSvg, columnKinds, courtTileOf, crosstab, crosstabHtml, escapeXml,
-  filterRows, groupCount, inferColumnKind, isBlank, sourceNote, stackedBarSvg, tileMapSvg, toNumber, violinSvg,
-  withAmountBracket, type Cell, type ChartRow, type ColumnKind, type Crosstab, type CountOptions, type CountUnit, type TileValue,
+  AMOUNT_BRACKETS, BLANK_LABEL, barChartSvg, canonicalCourt, columnKinds, COURT_JURISDICTIONS, countyMapSvg, crosstab, crosstabHtml,
+  escapeXml, filterRows, groupCount, inferColumnKind, isBlank, sourceNote, stackedBarSvg, toNumber, violinSvg,
+  withAmountBracket, type Cell, type ChartRow, type ColumnKind, type Crosstab, type CountOptions, type CountUnit,
+  type GeoData, type MapCourtValue,
 } from '@judge/core';
 
-export type ChartType = 'bar' | 'stacked' | 'violin' | 'crosstab' | 'tiles';
+export type ChartType = 'bar' | 'stacked' | 'violin' | 'crosstab' | 'map';
 
-export const CHART_TYPES: ChartType[] = ['bar', 'stacked', 'violin', 'crosstab', 'tiles'];
+export const CHART_TYPES: ChartType[] = ['bar', 'stacked', 'violin', 'crosstab', 'map'];
 const KINDS: ColumnKind[] = ['number', 'date', 'category', 'empty'];
 
 const AMOUNT_COLUMN = '標的金額級距';
@@ -248,7 +249,8 @@ function valueKindError(col: string): Error {
 }
 
 /** 依設定組出圖表：篩選 → 計數 → 繪圖。所有錯誤以使用者可讀的中文訊息拋出。 */
-export function buildChartResult(input: { sheet: ChartSheet; fileName: string; config: ChartConfig; inferredKinds: Record<string, ColumnKind> }): ChartResult {
+export function buildChartResult(input: { sheet: ChartSheet; fileName: string; config: ChartConfig; inferredKinds: Record<string, ColumnKind>; geo?: GeoData | null }): ChartResult {
+  const geo = input.geo ?? null;
   const { sheet, fileName, config: cfg } = input;
   const kinds = effectiveKinds(input.inferredKinds, cfg.kindOverrides);
   const need = (col: string | null, label: string): string => {
@@ -266,7 +268,7 @@ export function buildChartResult(input: { sheet: ChartSheet; fileName: string; c
   const judgmentCount = cfg.idColumn ? countUnits(rows, 'judgments', cfg.idColumn) : null;
   const unitShort = UNIT_SHORT[cfg.unit];
   const defaults: Record<ChartType, string> = {
-    bar: '案由分布', stacked: '堆疊圖', violin: '刑期分布', crosstab: '交叉表', tiles: '各法院律師代理率',
+    bar: '案由分布', stacked: '堆疊圖', violin: '刑期分布', crosstab: '交叉表', map: '各地方法院律師代理率（縣市界）',
   };
   const title = `${cfg.title.trim() || defaults[cfg.type]}（${unitShort}）`;
   const uLabel = unitLabel(cfg.unit);
@@ -348,25 +350,31 @@ export function buildChartResult(input: { sheet: ChartSheet; fileName: string; c
   } else {
     const court = need(cfg.category, '法院欄');
     const law = need(cfg.value, '律師代理欄');
+    if (!geo) throw new Error('地圖的縣市界線資料缺失，請重新安裝量化圖表模組');
     const byCourt = new Map<string, { all: ChartRow[]; rep: ChartRow[] }>();
+    let unmapped = 0;
     for (const r of rows) {
-      const k = isBlank(r[court]) ? BLANK_LABEL : String(r[court]).trim();
-      const b = byCourt.get(k) ?? { all: [], rep: [] };
+      const canon = canonicalCourt(isBlank(r[court]) ? null : String(r[court]));
+      if (!canon) { unmapped++; continue; }
+      const b = byCourt.get(canon) ?? { all: [], rep: [] };
       b.all.push(r);
       if (isRepresented(r[law])) b.rep.push(r);
-      byCourt.set(k, b);
+      byCourt.set(canon, b);
     }
-    const values: TileValue[] = [];
-    let unmapped = 0;
-    for (const [name, b] of byCourt) {
-      if (!courtTileOf(name)) { unmapped++; continue; }
-      const total = countUnits(b.all, cfg.unit, cfg.idColumn);
-      const rep = countUnits(b.rep, cfg.unit, cfg.idColumn);
-      values.push({ court: name, value: total ? (rep / total) * 100 : null, n: total });
-    }
-    if (unmapped) warnings.push(`有 ${unmapped} 個法院無法對應格狀地圖（僅地方法院），已略過。`);
+    const values: MapCourtValue[] = COURT_JURISDICTIONS.map((c) => {
+      const b = byCourt.get(c.court);
+      const total = b ? countUnits(b.all, cfg.unit, cfg.idColumn) : 0;
+      const rep = b ? countUnits(b.rep, cfg.unit, cfg.idColumn) : 0;
+      return { court: c.court, value: total ? (rep / total) * 100 : null, n: total };
+    });
+    if (unmapped) warnings.push(`有 ${unmapped} 列的法院不在對照表內（例如高等法院、智慧財產法院），已略過。`);
     if (rows.some((r) => isBlank(r[law]))) warnings.push('律師代理欄有空白，空白視為無律師代理。');
-    svg = tileMapSvg({ title, subtitle: '示意格狀地圖：每格為一個地方法院，非比例地圖', values, valueLabel: '律師代理率' });
+    const mapped = countyMapSvg({
+      title, subtitle: '縣市界線（OpenStreetMap）；分區管轄不著色；無資料為灰色', geo, courts: values, valueLabel: '律師代理率',
+    });
+    svg = mapped.svg;
+    if (mapped.split.length) warnings.push(`分區管轄（未著色）：${mapped.split.join('、')}。`);
+    if (mapped.unknown.length) warnings.push(`未知（無對照，未著色）：${mapped.unknown.join('、')}。`);
   }
 
   const note = sourceNote({ fileName, filters: cfg.filters, rowCount: rows.length, judgmentCount, unit: cfg.unit });
@@ -471,3 +479,31 @@ export async function loadChartSheet(filePath: string, sheetName: string): Promi
   return { fileName: wb.fileName, sheet, inferredKinds };
 }
 
+
+// ---------- 地圖資料（縣市界線，內附於模組；讀取後驗證形狀，有快取） ----------
+
+const geoCache = new Map<string, GeoData>();
+
+/** 讀取內附的縣市界線檔（tw-counties.json）。形狀不符時拋錯，避免畫出錯誤的地圖。 */
+export async function loadGeoData(file: string): Promise<GeoData> {
+  const hit = geoCache.get(file);
+  if (hit) return hit;
+  const raw = JSON.parse(await fs.readFile(file, 'utf8')) as Partial<GeoData>;
+  const vb = raw.viewBox;
+  if (!Array.isArray(vb) || vb.length !== 4 || !vb.every((n) => typeof n === 'number' && Number.isFinite(n))) {
+    throw new Error('地圖界線檔的 viewBox 格式錯誤');
+  }
+  if (!Array.isArray(raw.counties) || raw.counties.length === 0) throw new Error('地圖界線檔沒有縣市資料');
+  for (const c of raw.counties) {
+    if (typeof c?.name !== 'string' || typeof c.d !== 'string' || !c.d.startsWith('M')
+      || typeof c.cx !== 'number' || typeof c.cy !== 'number') {
+      throw new Error('地圖界線檔的縣市資料格式錯誤');
+    }
+  }
+  if (typeof raw.attribution !== 'string' || !raw.attribution.includes('OpenStreetMap')) {
+    throw new Error('地圖界線檔缺少 OpenStreetMap 標示');
+  }
+  const geo: GeoData = { viewBox: vb as [number, number, number, number], attribution: raw.attribution, counties: raw.counties };
+  geoCache.set(file, geo);
+  return geo;
+}

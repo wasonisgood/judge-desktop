@@ -15,7 +15,7 @@
     stacked: { show: ['category', 'series', 'percent'], category: '列欄（例如律師代理）', series: '分段欄（例如終結情形）' },
     violin: { show: ['category', 'value'], category: '分組欄（例如罪名）', value: '數值欄（例如刑期）' },
     crosstab: { show: ['amount', 'category', 'series'], category: '列欄（未選金額欄時使用）', series: '行欄（例如律師代理）' },
-    tiles: { show: ['category', 'value'], category: '法院欄', value: '律師代理欄' }
+    map: { show: ['category', 'value'], category: '法院欄', value: '律師代理欄' }
   };
 
   JR.views.chartTypeFields = function (type) {
@@ -102,7 +102,7 @@
       stacked: { chartCategory: s.lawyer, chartSeries: s.outcome },
       violin: { chartCategory: s.charge, chartValue: s.term },
       crosstab: { chartAmount: s.amount, chartSeries: s.lawyer },
-      tiles: { chartCategory: s.court, chartValue: s.lawyer }
+      map: { chartCategory: s.court, chartValue: s.lawyer }
     }[type] || {};
     // 其餘欄位一律清空，避免切換類型時殘留上一類型的選擇（例如堆疊圖的分段欄留在長條圖）。
     ['chartCategory', 'chartSeries', 'chartValue', 'chartAmount'].forEach(function (id) {

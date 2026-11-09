@@ -11,6 +11,10 @@ import { setModule } from './moduleState';
 import { buildChartResult, sanitizeChartConfig } from './chartData';
 
 async function bundleVersion(): Promise<string> {
+  // 地圖界線與授權聲明必須內附（ODbL 要求標示來源）。
+  for (const f of ['tw-counties.json', 'LICENSE-OSM.txt']) {
+    await fs.access(path.join(bundledModuleDir('chart'), f)).catch(() => { throw new Error(`內建的量化圖表模組缺少 ${f}`); });
+  }
   const meta = await readJson<{ version?: string }>(path.join(bundledModuleDir('chart'), 'module.json'), {});
   if (!meta.version) throw new Error('內建的量化圖表模組缺少版本資訊');
   return meta.version;

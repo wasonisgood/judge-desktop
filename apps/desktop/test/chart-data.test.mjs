@@ -11,6 +11,7 @@ const core = require('@judge/core');
 const chart = require('../dist/main/services/chartData.js');
 const ExcelJS = require('exceljs');
 
+const GEO = require('../modules/chart/tw-counties.json');
 const { buildChartResult, normalizeCell, uniqueHeaders, effectiveKinds, suggestColumns, isRepresented, countUnits,
   sanitizeChartConfig, withSourceNote, crosstabSvg, orderCrosstabRows, inspectChartWorkbook, loadChartSheet } = chart;
 
@@ -28,7 +29,7 @@ function makeSheet(headers, rows) {
 function run(headers, rows, config) {
   const sheet = makeSheet(headers, rows);
   return buildChartResult({
-    sheet, fileName: 'test.xlsx', config: makeConfig(config), inferredKinds: core.columnKinds(rows, headers),
+    sheet, fileName: 'test.xlsx', config: makeConfig(config), inferredKinds: core.columnKinds(rows, headers), geo: GEO,
   });
 }
 
@@ -158,7 +159,7 @@ test('交叉表：金額級距邊界正確（10 萬、100 萬、1000 萬），�
   assert.ok(res.svg.startsWith('<svg'));
 });
 
-test('格狀地圖：律師代理率依法院計算，無法對應的法院列入警示', () => {
+test('地圖：整縣市法院著色、分區管轄不著色；律師代理率在圖例與來源', () => {
   const headers = ['ID', '法院', '律師'];
   const rows = [
     { ID: '1', 法院: '臺北地方法院', 律師: '雙方有律師' },
@@ -166,11 +167,27 @@ test('格狀地圖：律師代理率依法院計算，無法對應的法院列�
     { ID: '3', 法院: '臺中地方法院', 律師: '雙方無律師' },
     { ID: '4', 法院: '智慧財產法院', 律師: '雙方有律師' },
   ];
-  const res = run(headers, rows, { type: 'tiles', category: '法院', value: '律師' });
-  assert.ok(res.svg.includes('：50.0%（2 件）'), '臺北應為 50.0%（2 件）');
-  assert.ok(res.svg.includes('0.0%'), '臺中應為 0.0%');
-  assert.ok(res.warnings.some((w) => w.includes('1 個法院')));
-  assert.ok(res.svg.includes('示意格狀地圖'));
+  const res = run(headers, rows, { type: 'map', category: '法院', value: '律師' });
+  // 圖例：臺北地院 50%（2 件）、臺中地院 0%（1 件）
+  assert.ok(res.svg.includes('臺灣臺北地方法院：50.0%（2 件）'));
+  assert.ok(res.svg.includes('臺灣臺中地方法院：0.0%（1 件）'));
+  // 臺中市整縣市由臺中地院涵蓋，依 0% 著色（最淺色）
+  assert.match(res.svg, /data-county="臺中市" data-status="court"[\s\S]*?fill="rgb\(222,235,247\)"/);
+  // 臺北市為臺北、士林分區：不著色
+  assert.match(res.svg, /data-county="臺北市" data-status="split"/);
+  assert.ok(res.warnings.some((w) => w.includes('分區管轄（未著色）') && w.includes('臺北市')));
+  assert.ok(res.warnings.some((w) => w.includes('不在對照表內')), '智慧財產法院不在對照表');
+  assert.ok(res.svg.includes('© OpenStreetMap contributors'));
+  assert.ok(res.svg.includes('縣市界線'));
+});
+
+test('地圖：沒有界線資料時拋出中文錯誤，不畫出空白地圖', () => {
+  const headers = ['ID', '法院', '律師'];
+  const sheet = makeSheet(headers, [{ ID: '1', 法院: '臺中地方法院', 律師: '雙方有律師' }]);
+  assert.throws(() => buildChartResult({
+    sheet, fileName: 'x.xlsx', config: makeConfig({ type: 'map', category: '法院', value: '律師' }),
+    inferredKinds: core.columnKinds(sheet.rows, headers), geo: null,
+  }), /界線資料缺失/);
 });
 
 test('堆疊條圖：百分比模式於單位說明標示；分段超過上限時合併為「其他」', () => {
@@ -256,7 +273,7 @@ test('讀取 xlsx：工作表、表頭、列數與欄位型態；不存在的工
 
     const loaded = await loadChartSheet(file, '判決');
     assert.equal(loaded.sheet.rows[0]['日期'], '2024-01-02');
-    const res = buildChartResult({ sheet: loaded.sheet, fileName: loaded.fileName, inferredKinds: loaded.inferredKinds, config: makeConfig({ category: '法院' }) });
+    const res = buildChartResult({ sheet: loaded.sheet, fileName: loaded.fileName, inferredKinds: loaded.inferredKinds, config: makeConfig({ category: '法院' }), geo: GEO });
     assert.equal(res.judgmentCount, 2);
 
     await assert.rejects(() => loadChartSheet(file, '不存在'), /找不到工作表/);

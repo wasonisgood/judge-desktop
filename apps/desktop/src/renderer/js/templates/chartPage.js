@@ -38,7 +38,7 @@
                     <option value="stacked">堆疊條圖（律師代理 × 終結情形、量刑結構）</option>
                     <option value="violin">小提琴圖（刑期分布，依罪名，含箱形圖）</option>
                     <option value="crosstab">交叉表（標的金額級距 × 律師代理）</option>
-                    <option value="tiles">示意格狀地圖（各法院律師代理率）</option>
+                    <option value="map">地圖（各地方法院律師代理率，縣市界）</option>
                   </select>
                 </label>
                 <label class="field">

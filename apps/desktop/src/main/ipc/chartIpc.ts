@@ -8,7 +8,8 @@ import { getMainWindow } from '../windows/windowState';
 import { autoSaveExport } from '../services/exportService';
 import { toUserError } from '../services/userError';
 import { installChartModuleForApp, disableChartModule, removeChartModule } from '../services/chartModule';
-import { buildChartResult, inspectChartWorkbook, loadChartSheet, sanitizeChartConfig } from '../services/chartData';
+import { buildChartResult, inspectChartWorkbook, loadChartSheet, loadGeoData, sanitizeChartConfig } from '../services/chartData';
+import { bundledModuleDir } from '../data/local/localPaths';
 import { buildChartDocx, pngSize, sanitizeTable } from '../chartExporters';
 
 const MAX_EXPORT_BYTES = 50 * 1024 * 1024;
@@ -67,7 +68,10 @@ export function registerChartIpc(): void {
     await requireChartModule();
     try {
       const { fileName, sheet, inferredKinds } = await loadChartSheet(checkXlsxPath(args?.filePath), String(args?.sheet ?? ''));
-      return buildChartResult({ sheet, fileName, inferredKinds, config: sanitizeChartConfig(args?.config) });
+      const config = sanitizeChartConfig(args?.config);
+      // 地圖才需要縣市界線資料（內附於模組，OpenStreetMap，ODbL）。
+      const geo = config.type === 'map' ? await loadGeoData(path.join(bundledModuleDir('chart'), 'tw-counties.json')) : null;
+      return buildChartResult({ sheet, fileName, inferredKinds, config, geo });
     } catch (err) {
       throw toUserError(err);
     }

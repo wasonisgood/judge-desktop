@@ -62,7 +62,7 @@
   /** 把 SVG 畫到 canvas（兩倍解析度）後輸出 PNG 的 base64（不含 data: 前綴）。 */
   function svgToPngBase64(svg) {
     return new Promise(function (resolve, reject) {
-      var m = /width="(\d+)" height="(\d+)"/.exec(svg);
+      var m = /<svg[^>]* width="(\d+)" height="(\d+)"/.exec(svg);
       if (!m) { reject(new Error('圖表尺寸無法判讀')); return; }
       var w = Number(m[1]);
       var h = Number(m[2]);
