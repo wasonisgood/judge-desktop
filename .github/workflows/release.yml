@@ -281,6 +281,13 @@ jobs:
           path: dist-all
           merge-multiple: true
 
+      - name: 攤平更新清單到產物根目錄
+        shell: bash
+        run: |
+          # Windows 產物的 latest.json 位於 installer/publish/（上傳時保留相對路徑），這裡複製到 dist-all/ 根目錄。
+          src=$(find dist-all -name latest.json | head -1)
+          if [ -n "$src" ] && [ "$src" != "dist-all/latest.json" ]; then cp "$src" dist-all/latest.json; fi
+
       - name: 檢查必要檔案
         shell: bash
         run: |
