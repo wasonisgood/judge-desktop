@@ -15,6 +15,7 @@ import { registerDesignIpc } from './designIpc';
 import { registerCriteriaIpc } from './criteriaIpc';
 import { registerChartIpc } from './chartIpc';
 import { registerAnnotationIpc } from './annotationIpc';
+import { registerWorkerIpc } from './workerIpc';
 
 export function registerIpc(): void {
   registerAuthIpc();
@@ -33,4 +34,5 @@ export function registerIpc(): void {
   registerCriteriaIpc();
   registerChartIpc();
   registerAnnotationIpc();
+  registerWorkerIpc();
 }

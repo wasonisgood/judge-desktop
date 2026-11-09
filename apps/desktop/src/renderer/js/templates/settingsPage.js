@@ -116,6 +116,26 @@
             <div class="set-ctl"><input id="setMaxItems" type="number" min="1" max="100" value="20"></div>
           </div>
           <div class="set-row">
+            <div class="set-label"><strong>背景工作通知</strong><span class="set-desc">工作在背景完成、失敗或需要你確認時通知；點擊通知開啟對應頁面</span></div>
+            <div class="set-ctl">
+              <label class="set-switch" title="關閉後，背景工作完成不再通知">
+                <input type="checkbox" id="setWorkerNotify">
+                <span class="switch"><span class="knob"></span></span>
+                <span class="set-switch-text">顯示通知</span>
+              </label>
+            </div>
+          </div>
+          <div class="set-row">
+            <div class="set-label"><strong>通知樣式</strong><span class="set-desc">自訂樣式與應用程式配色一致；系統通知使用作業系統的通知中心（Linux 一律使用自訂樣式）</span></div>
+            <div class="set-ctl">
+              <select id="setWorkerStyle">
+                <option value="custom">自訂（應用程式樣式）</option>
+                <option value="system">系統通知</option>
+              </select>
+              <button class="btn small" type="button" id="workerTest">發送測試通知</button>
+            </div>
+          </div>
+          <div class="set-row">
             <div class="set-label"><strong>搜尋結果快取天數</strong><span class="set-desc">法條沿革與法名確認永久保存；判決內頁永久保存</span></div>
             <div class="set-ctl">
               <input id="setCacheDays" type="number" min="1" max="90" value="7">
