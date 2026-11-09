@@ -47,12 +47,12 @@
         {
           "period": "長期實務",
           "view": "實務常以客觀事實推認殺意，包括所用兇器種類、攻擊部位（如頭部、胸部等致命部位）、下手次數與力道、犯行前後之言語與行為、被害人傷勢程度，以及行為人事後之態度與處理情形。",
-          "note": "此為實務常見之推認因素，並不要求行為人明白表示殺意。具體判決字號與年度待核對。"
+          "note": "此為實務常見之推認因素，並不要求行為人明白表示殺意。具體判決字號與年度未於本檔載明，引用前須另行查證。"
         },
         {
-          "period": "近期實務（待核對）",
+          "period": "近期實務",
           "view": "實務仍以客觀事實之整體判斷為主，並承認殺意可由未必故意構成；但須有足夠證據支持行為人對死亡結果之預見與容任，不得僅以結果嚴重即推定殺意。",
-          "note": "派別與年代待核對。"
+          "note": "派別與年代未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
@@ -60,7 +60,80 @@
         "刑法第 271 條（殺人罪）",
         "刑法第 277 條（傷害罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條（故意與未必故意）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-021",
@@ -104,12 +177,12 @@
         {
           "period": "常見實務",
           "view": "實務通常綜合判斷，以兇器是否具致命性（如刀械、槍枝）、攻擊部位、攻擊次數、傷勢與死亡之可能性，並參酌行為前後之言行與犯後態度，認定是否具殺意。",
-          "note": "若無殺意之足夠證據，常認定為傷害致死或傷害罪。具體判決字號待核對。"
+          "note": "若無殺意之足夠證據，常認定為傷害致死或傷害罪。具體判決字號未於本檔載明，引用前須另行查證。"
         },
         {
-          "period": "派別（待核對）",
+          "period": "實務見解分歧",
           "view": "有判決強調，即使行為人事後主張僅有傷害之意，若其攻擊方式足以致死，且行為人對死亡可能性有所認識，仍可認定有殺意。另有判決則較重視行為人之明示或默示之言行，認定較為保守。",
-          "note": "兩種派別之代表性判決字號待核對，不得直接引用。"
+          "note": "兩種派別之代表性判決字號未於本檔載明，引用前須另行查證，不得直接引用。"
         }
       ],
       "lawRefs": [
@@ -118,7 +191,107 @@
         "刑法第 278 條（重傷與致死）",
         "刑法第 13 條（故意）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條（重傷與致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條（故意）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-022",
@@ -163,19 +336,70 @@
         {
           "period": "長期實務",
           "view": "實務傳統以相當因果關係為主。被害人送醫後因醫療過失死亡，若醫療過失並非異常，且原行為仍為致死之主要原因，則仍成立殺人既遂；反之，若醫療介入具異常性，則可能中斷因果關係。",
-          "note": "實務用語常混用相當因果與條件說之概念，判決字號待核對。"
+          "note": "實務用語常混用相當因果與條件說之概念，判決字號未於本檔載明，引用前須另行查證。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "部分判決開始考量被害人拒絕救治之自我決定，認為此等介入之可歸責性應由被害人自行負擔，而非由原行為人承擔。",
-          "note": "此趨勢之代表性判決與年代待核對。"
+          "note": "此趨勢之代表性判決與年代未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 271 條（殺人罪）",
         "刑法第 25 條（未遂犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條（未遂犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-023",
@@ -217,16 +441,48 @@
       ],
       "practice": [
         {
-          "period": "現行制度（待核對）",
+          "period": "現行制度",
           "view": "我國人體器官移植條例等規範，已承認腦死作為死亡判定之一種標準；刑法上之死亡判斷，實務多數仍參照醫學上之死亡認定。",
-          "note": "條文與施行細則之條次、判決字號均待核對，不得逕行引用。"
+          "note": "條文與施行細則之條次、判決字號均未於本檔載明，引用前須另行查證，不得逕行引用。"
         }
       ],
       "lawRefs": [
         "刑法第 271 條（殺人罪既遂）",
-        "人體器官移植條例（腦死判定，條次待核對）"
+        "人體器官移植條例第 4 條（腦死判定程序）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 271 條（殺人罪既遂）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "人體器官移植條例（腦死判定，條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-024",
@@ -271,14 +527,65 @@
         {
           "period": "長期實務",
           "view": "實務傳統以「行為人已開始實行殺人構成要件之行為」為著手標準，並參酌行為人之主觀計畫與客觀情狀。例如持刀已接近被害人並開始揮砍，即認定已著手；僅購買兇器或跟蹤尾隨，通常仍屬預備。",
-          "note": "判決字號待核對；殺人預備原則上不罰。"
+          "note": "判決字號未於本檔載明，引用前須另行查證；殺人預備原則上不罰。"
         }
       ],
       "lawRefs": [
         "刑法第 25 條（未遂犯）",
         "刑法第 271 條（殺人罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 25 條（未遂犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-025",
@@ -322,14 +629,65 @@
         {
           "period": "常見實務",
           "view": "實務常以一般人之見解判斷。以無效之玩具槍、空槍，或已死之人為客體之殺害行為，多認屬行為不能；若手段在一般人看來仍具致死可能（如有效之刀械或可能致死之藥劑），則認具危險，成立未遂並得減輕其刑。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 26 條（不能未遂）",
         "刑法第 271 條（殺人罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 26 條（不能未遂）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "26",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為不能發生犯罪之結果，又無危險者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "26",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "26",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-026",
@@ -374,7 +732,7 @@
         {
           "period": "常見實務",
           "view": "實務常以行為人是否基於自願停止，並審酌是否積極防止死亡結果發生，例如送醫、通報或救護。若僅因被害人反抗、他人介入而停止，則多認屬障礙未遂。",
-          "note": "判決字號待核對；中止之判斷通常與第27條之文義相互對照。"
+          "note": "判決字號未於本檔載明，引用前須另行查證；中止之判斷通常與第27條之文義相互對照。"
         }
       ],
       "lawRefs": [
@@ -382,7 +740,85 @@
         "刑法第 25 條（未遂犯）",
         "刑法第 271 條（殺人罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 27 條（中止未遂）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "27",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行，而因己意中止或防止其結果之發生者，減輕或免除其刑。結果之不發生，非防止行為所致，而行為人已盡力為防止行為者，亦同。\n前項規定，於正犯或共犯中之一人或數人，因己意防止犯罪結果之發生，或結果之不發生，非防止行為所致，而行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "27",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "27",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條（未遂犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-027",
@@ -425,8 +861,8 @@
       ],
       "practice": [
         {
-          "period": "近期（待核對）",
-          "view": "憲法法庭曾就本條之法定刑是否違憲作成相關判決，並對法定刑之適用與調整作出意見或修法要求。",
+          "period": "近期",
+          "view": "本條法定刑是否違反比例原則，屬憲法審查之議題；其合憲性與法定刑之調整，應以查明之憲法法庭或法院裁判為準。",
           "note": "具體判決之字號、年份與結論，必須查明後才能引用，此處不得自行填寫。"
         }
       ],
@@ -434,7 +870,58 @@
         "刑法第 272 條（殺直系血親尊親屬）",
         "刑法第 271 條（殺人罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 272 條（殺直系血親尊親屬）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "272",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於直系血親尊親屬，犯前條之罪者，加重其刑至二分之一。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "272",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "272",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-028",
@@ -459,7 +946,7 @@
         "嬰兒殺害"
       ],
       "proposition": "母親於生產時或甫生產後，因恐懼或羞恥而殺害其子女，應如何適用特別規定？「生產時」與「甫生產後」之時間與主觀要件應如何認定？",
-      "distinction": "符合第273條之要件者，法定刑遠輕於普通殺人罪，故是否適用本條直接影響刑度。若認定時間界限過寬，可能使一般殺人案件被不當減輕；若過嚴，則可能使母親之特殊困境未被適當評價。",
+      "distinction": "符合第274條之要件者，法定刑遠輕於普通殺人罪，故是否適用本條直接影響刑度。若認定時間界限過寬，可能使一般殺人案件被不當減輕；若過嚴，則可能使母親之特殊困境未被適當評價。",
       "doctrines": [
         {
           "label": "甲說（嚴格解釋說）",
@@ -476,16 +963,62 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務通常要求行為人為生產之母親，且殺害行為與生產時或產後之時間緊密相關，並有恐懼或羞恥之動機。若殺害行為明顯出於其他原因（如財務或人際糾紛），則不適用本條。",
-          "note": "具體時間界限與判決字號待核對。"
+          "note": "具體時間界限與判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 273 條（母殺嬰兒）",
+        "刑法第 274 條（母殺嬰兒）",
         "刑法第 271 條（殺人罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 273 條（母殺嬰兒）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "273",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "當場激於義憤而殺人者，處七年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "273",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-029",
@@ -527,17 +1060,75 @@
       ],
       "practice": [
         {
-          "period": "現行制度（待核對）",
+          "period": "現行制度",
           "view": "我國刑法對受囑託殺人設有較輕之法定刑；至於醫療上之安樂死，實務與醫療規範多要求須符合嚴格之條件，並依安寧緩和醫療相關規定辦理，對消極安樂死（停止無效醫療）與積極安樂死（主動致死）之態度有所不同。",
-          "note": "相關條文之條次、施行細則及判決字號待核對，不得直接引用。"
+          "note": "相關條文之條次、施行細則及判決字號未於本檔載明，引用前須另行查證，不得直接引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 274 條（受囑託殺人，條次待核對）",
-        "刑法第 271 條（殺人罪）",
-        "安寧緩和醫療條例（條次待核對）"
+        "刑法第 275 條（受囑託殺人）",
+        "刑法第 271 條（殺人罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 274 條（受囑託殺人，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "274",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "母因不得已之事由，於生產時或甫生產後，殺其子女者，處六月以上五年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "274",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "274",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "安寧緩和醫療條例（條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-030",
@@ -580,17 +1171,95 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務通常要求被害人有不義或不當之行為，行為人因此激發強烈之憤怒，且殺害行為與該不義行為之間具有緊密之時間關係。若殺害係出於私怨、利益或事後之報復，則不認屬義憤殺人。",
-          "note": "具體判決字號與條次待核對。"
+          "note": "具體判決字號與條次未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 275 條（義憤殺人，條次待核對）",
+        "刑法第 273 條（義憤殺人）",
         "刑法第 271 條（殺人罪）",
         "刑法第 59 條（酌量減輕其刑）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 275 條（義憤殺人，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "275",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受他人囑託或得其承諾而殺之者，處一年以上七年以下有期徒刑。\n教唆或幫助他人使之自殺者，處五年以下有期徒刑。\n前二項之未遂犯罰之。\n謀為同死而犯前三項之罪者，得免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "275",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "275",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 59 條（酌量減輕其刑）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "59",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯罪之情狀顯可憫恕，認科以最低度刑仍嫌過重者，得酌量減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "59",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "59",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-031",
@@ -635,7 +1304,7 @@
         {
           "period": "常見實務",
           "view": "實務通常要求共同正犯間具有犯意聯絡與行為分擔，對於超過共同犯意之結果，原則上由實行或具殺意之人負責；但若各人對殺害行為均有認識並共同參與，則可能認定全體具有殺人之共同犯意。",
-          "note": "具體判決字號待核對。教唆與幫助之殺人，依第29條與第30條分別處理。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。教唆與幫助之殺人，依第29條與第30條分別處理。"
         }
       ],
       "lawRefs": [
@@ -644,7 +1313,112 @@
         "刑法第 30 條（幫助犯）",
         "刑法第 271 條（殺人罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條（共同正犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 29 條（教唆犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "29",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "教唆他人使之實行犯罪行為者，為教唆犯。\n教唆犯之處罰，依其所教唆之罪處罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "29",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "29",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 30 條（幫助犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-032",
@@ -686,16 +1460,87 @@
       ],
       "practice": [
         {
-          "period": "近期實務（待核對）",
+          "period": "近期實務",
           "view": "實務在個案中對精神障礙是否構成傷害之見解並非一致，部分判決需有醫學鑑定或診斷證明，以證明行為與精神障礙間之因果關係，並認定其已達健康受損之程度。",
-          "note": "派別與判決字號待核對。"
+          "note": "派別與判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 277 條（傷害罪）",
         "刑法第 10 條（重傷之定義，第4項）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 10 條（重傷之定義，第4項）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
+            }
+          ],
+          "latestAmendmentDate": "2023-01-07",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2023-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-033",
@@ -737,9 +1582,9 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務原則上認為普通傷害之未遂不罰，但對於以殺人或重傷為目的之攻擊而未得逞者，多依殺人未遂或其他規定處理。",
-          "note": "未遂處罰之明文條次與判決字號待核對，不得直接引用。"
+          "note": "未遂處罰之明文條次與判決字號未於本檔載明，引用前須另行查證，不得直接引用。"
         }
       ],
       "lawRefs": [
@@ -747,7 +1592,90 @@
         "刑法第 277 條（傷害罪）",
         "刑法第 278 條（重傷）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 25 條（未遂犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條（重傷）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-034",
@@ -792,14 +1720,85 @@
         {
           "period": "常見實務",
           "view": "實務依第10條第4項之規定，判斷傷害是否屬於重傷，常參酌醫學鑑定與治療結果，例如是否遺留永久性之功能障礙，或是否有重大不治或難治之情形。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 10 條第 4 項（重傷之定義）",
         "刑法第 278 條（重傷罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 10 條第 4 項（重傷之定義）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": 4,
+              "item": null,
+              "ok": true,
+              "currentText": "稱重傷者，謂下列傷害：\n一、毀敗或嚴重減損一目或二目之視能。\n二、毀敗或嚴重減損一耳或二耳之聽能。\n三、毀敗或嚴重減損語能、味能或嗅能。\n四、毀敗或嚴重減損一肢以上之機能。\n五、毀敗或嚴重減損生殖之機能。\n六、其他於身體或健康，有重大不治或"
+            }
+          ],
+          "latestAmendmentDate": "2023-01-07",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2023-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條（重傷罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-035",
@@ -842,9 +1841,9 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務對於運動傷害（如格鬥競技）多認在遵守規則之範圍內，被害人之承諾具有效力；但若行為明顯超出運動規則，致生重傷或死亡者，則不因承諾而免責。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
@@ -852,7 +1851,80 @@
         "刑法第 21 條（依法令之行為）",
         "刑法第 22 條（業務上正當行為）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 21 條（依法令之行為）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 22 條（業務上正當行為）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "22",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "業務上之正當行為，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "22",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-036",
@@ -894,9 +1966,9 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務原則上承認醫療行為之正當性，但若醫療行為明顯偏離醫學準則，或以治療之名行傷害之實，則可能成立傷害或過失傷害，並須個別審酌。",
-          "note": "具體判決字號與條次待核對。"
+          "note": "具體判決字號與條次未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
@@ -904,7 +1976,85 @@
         "刑法第 277 條（傷害罪）",
         "刑法第 284 條（過失傷害）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 22 條（業務上正當行為）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "22",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "業務上之正當行為，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "22",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條（過失傷害）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-037",
@@ -934,7 +2084,7 @@
         {
           "label": "甲說（擬制共同正犯說）",
           "view": "二人以上基於共同之攻擊行為，致被害人傷害或死亡，即使無法證明何人之行為造成結果，各行為人均視為共同正犯，對結果負責，以避免加害人藉因果不明而脫罪。",
-          "pros": "有效解決多人攻擊、因果不明之困境，回應保護被害人之需要，為刑法條文中所明定之政策選擇。",
+          "pros": "有效解決多人攻擊、因果不明之困境，回應保護被害人之需要，可作為政策上之選擇。",
           "cons": "對未必造成結果之行為人課以重責，有違罪責個別化與因果關係原則，可能使無辜者承擔他人之結果。"
         },
         {
@@ -946,17 +2096,95 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
-          "view": "實務於群毆案件中，常依條文規定之擬制共同正犯予以論處，並就各行為人之參與程度分別量刑；但對於明顯無關之旁觀者，則須有足夠證據證明其參與共同傷害之意思。",
-          "note": "條次與具體判決字號待核對。"
+          "period": "常見實務",
+          "view": "實務於群毆案件中，對於無法證明何人之行為造成結果時如何論處，須依個案判斷，並就各行為人之參與程度分別量刑；但對於明顯無關之旁觀者，則須有足夠證據證明其參與共同傷害之意思。",
+          "note": "條次與具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 280 條（同時傷害，條次待核對）",
+        "刑法第 283 條（聚眾鬥毆在場助勢）",
         "刑法第 277 條（傷害罪）",
         "刑法第 278 條（重傷與致死）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 280 條（同時傷害，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "280",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於直系血親尊親屬，犯第二百七十七條或第二百七十八條之罪者，加重其刑至二分之一。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "280",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條（重傷與致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-038",
@@ -998,16 +2226,72 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務通常認為，被害人之特殊體質並不排除行為與結果間之因果關係，但需審酌行為人之行為本身是否具有通常可能導致該結果之危險。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 277 條（傷害罪）",
         "刑法第 278 條（重傷與致死）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條（重傷與致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-039",
@@ -1052,7 +2336,7 @@
         {
           "period": "常見實務",
           "view": "實務通常依行為之危險程度、攻擊之方式、行為人之認識與事後態度，判斷故意與過失；對於僅因輕率或疏忽而造成之傷害，則認定為過失傷害。",
-          "note": "過失傷害之法定刑與條次均須依現行條文核對；具體判決字號待核對。"
+          "note": "過失傷害之法定刑與條次以現行條文為準；具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
@@ -1060,7 +2344,85 @@
         "刑法第 277 條（傷害罪）",
         "刑法第 13 條（故意與過失）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 284 條（過失傷害）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條（故意與過失）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-040",
@@ -1104,7 +2466,7 @@
         {
           "period": "常見實務",
           "view": "實務原則上依第17條判斷加重結果之可預見性，並結合客觀之因果關係，若行為人對於加重結果無預見可能，則不予加重。",
-          "note": "判決字號待核對。"
+          "note": "判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
@@ -1112,7 +2474,85 @@
         "刑法第 277 條（傷害罪）",
         "刑法第 278 條（重傷與致死）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 17 條（結果加重犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "17",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因犯罪致發生一定之結果，而有加重其刑之規定者，如行為人不能預見其發生時，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "17",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條（重傷與致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-041",
@@ -1156,14 +2596,65 @@
         {
           "period": "常見實務",
           "view": "實務於傷害致死案件中，多以行為與死亡之間是否具有相當因果為判斷，並審酌醫療介入或被害人之疏失是否為異常之介入。",
-          "note": "判決字號待核對。"
+          "note": "判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 17 條（結果加重犯）",
         "刑法第 277 條（傷害罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 17 條（結果加重犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "17",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因犯罪致發生一定之結果，而有加重其刑之規定者，如行為人不能預見其發生時，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "17",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-042",
@@ -1207,7 +2698,7 @@
         {
           "period": "常見實務",
           "view": "實務在傷害致死案件中，通常以基本犯（傷害）之故意與加重結果之過失為論罪基礎；若可證明行為人對死亡具有殺意，則改論殺人罪。",
-          "note": "判決字號待核對。"
+          "note": "判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
@@ -1215,7 +2706,80 @@
         "刑法第 271 條（殺人罪）",
         "刑法第 277 條（傷害罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 17 條（結果加重犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "17",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因犯罪致發生一定之結果，而有加重其刑之規定者，如行為人不能預見其發生時，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "17",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-043",
@@ -1256,9 +2820,9 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務通常依基本行為之性質判斷，若基本犯未遂而加重結果已發生，多以殺人未遂、傷害致死或過失致死等罪名擇一論處，具體依個案判斷。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
@@ -1266,7 +2830,85 @@
         "刑法第 25 條（未遂犯）",
         "刑法第 278 條（重傷與致死）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 17 條（結果加重犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "17",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因犯罪致發生一定之結果，而有加重其刑之規定者，如行為人不能預見其發生時，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "17",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條（未遂犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條（重傷與致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-044",
@@ -1308,17 +2950,95 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務通常將傷害致死理解為傷害之結果加重，並以第277條（傷害）及第278條（重傷）之規定作為論罪之依據；具體適用之條次與法定刑，依個案之傷害程度判斷。",
-          "note": "條次對應、法定刑與判決字號均待核對。"
+          "note": "條次對應、法定刑與判決字號均未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 277 條（傷害罪，含傷害致死之規定，條次待核對）",
-        "刑法第 278 條（重傷及致死，條次待核對）",
+        "刑法第 277 條（傷害罪，含傷害致死之規定）",
+        "刑法第 278 條（重傷及致死）",
         "刑法第 17 條（結果加重犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 277 條（傷害罪，含傷害致死之規定，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條（重傷及致死，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 17 條（結果加重犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "17",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因犯罪致發生一定之結果，而有加重其刑之規定者，如行為人不能預見其發生時，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "17",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-045",
@@ -1362,15 +3082,88 @@
         {
           "period": "常見實務",
           "view": "實務依兇器、攻擊部位、次數、力道與事後態度判斷殺意；若證據不足以證明殺意，則論以傷害致死。",
-          "note": "判決字號待核對；與前述「殺意之認定」、「殺意與傷害故意之區別」之爭點相互對照。"
+          "note": "判決字號未於本檔載明，引用前須另行查證；與前述「殺意之認定」、「殺意與傷害故意之區別」之爭點相互對照。"
         }
       ],
       "lawRefs": [
         "刑法第 271 條（殺人罪）",
-        "刑法第 277 條（傷害罪，含傷害致死，條次待核對）",
+        "刑法第 277 條（傷害罪，含傷害致死）",
         "刑法第 13 條（故意）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪，含傷害致死，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條（故意）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-046",
@@ -1412,17 +3205,110 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務通常依醫學鑑定判斷傷害是否達到重傷之程度，並依此論以重傷致死或傷害致死；若行為人對重傷無認識，則常適用普通傷害致死之規定。",
-          "note": "具體判決字號與鑑定標準待核對。"
+          "note": "具體判決字號與鑑定標準未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 278 條（重傷及致死，條次待核對）",
+        "刑法第 278 條（重傷及致死）",
         "刑法第 10 條第 4 項（重傷之定義）",
         "刑法第 17 條（結果加重犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 278 條（重傷及致死，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 10 條第 4 項（重傷之定義）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": 4,
+              "item": null,
+              "ok": true,
+              "currentText": "稱重傷者，謂下列傷害：\n一、毀敗或嚴重減損一目或二目之視能。\n二、毀敗或嚴重減損一耳或二耳之聽能。\n三、毀敗或嚴重減損語能、味能或嗅能。\n四、毀敗或嚴重減損一肢以上之機能。\n五、毀敗或嚴重減損生殖之機能。\n六、其他於身體或健康，有重大不治或"
+            }
+          ],
+          "latestAmendmentDate": "2023-01-07",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2023-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 17 條（結果加重犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "17",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因犯罪致發生一定之結果，而有加重其刑之規定者，如行為人不能預見其發生時，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "17",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-047",
@@ -1466,14 +3352,65 @@
         {
           "period": "常見實務",
           "view": "實務於防衛過當致死之案件，常依第23條但書減輕或免除其刑，並審酌行為人之防衛情境、攻擊之急迫性與防衛手段是否超過必要程度。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條（正當防衛與防衛過當）",
-        "刑法第 277 條（傷害罪，含傷害致死，條次待核對）"
+        "刑法第 277 條（傷害罪，含傷害致死）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條（正當防衛與防衛過當）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪，含傷害致死，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-048",
@@ -1516,17 +3453,94 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務於群體攻擊致死案件中，常依共同正犯之理論，以行為人之分擔程度與共同之犯意，論以傷害致死；但對於僅有輕微參與或無實際致死行為之人，則須個別審酌其因果關係。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 28 條（共同正犯）",
-        "刑法第 277 條（傷害罪，含傷害致死，條次待核對）",
-        "刑法第 280 條（同時傷害，條次待核對）"
+        "刑法第 277 條（傷害罪，含傷害致死）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條（共同正犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條（傷害罪，含傷害致死，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 280 條（同時傷害，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "280",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於直系血親尊親屬，犯第二百七十七條或第二百七十八條之罪者，加重其刑至二分之一。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "280",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-049",
@@ -1570,14 +3584,65 @@
         {
           "period": "常見實務",
           "view": "實務通常依行為當時之情狀、一般人之經驗與相關法令，認定行為人之注意義務，並審酌其是否具有預見可能性與避免可能性，若依客觀情狀可避免死亡結果，則認定有過失。",
-          "note": "判決字號待核對。"
+          "note": "判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 276 條（過失致死）",
         "刑法第 14 條（過失犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 276 條（過失致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條（過失犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-050",
@@ -1621,18 +3686,69 @@
         {
           "period": "常見實務",
           "view": "實務於交通與醫療分工案件中，多承認信賴原則之適用，但須行為人本身已盡注意義務，且無明顯之違規跡象。若行為人明知或可明顯察覺他人將違規而不為防範，則不得主張信賴原則。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 276 條（過失致死）",
         "刑法第 14 條（過失犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 276 條（過失致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條（過失犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-051",
-      "title": "業務過失致死之加重",
+      "title": "業務過失致死之認定",
       "path": [
         "刑法",
         "刑法分則",
@@ -1652,8 +3768,8 @@
         "業務範圍",
         "業務性"
       ],
-      "proposition": "從事業務之人因業務上之過失致人於死，是否應依加重規定論處？何謂「業務」，以及業務過失與一般過失之界線應如何判斷？",
-      "distinction": "業務過失致死之法定刑重於一般過失致死，故是否屬業務行為，直接影響刑度。若將業務範圍解釋過寬，可能使一般生活行為被不當加重；過嚴則可能使專業人員之特別注意義務被忽略。",
+      "proposition": "從事業務之人因業務上之過失致人於死，其業務性質應如何評價？何謂「業務」，以及業務過失與一般過失之界線應如何判斷？",
+      "distinction": "行為人是否屬於業務過失，影響其注意義務之程度與過失責任之認定。現行第276條條文並無業務過失之獨立加重規定，若將業務範圍解釋過寬，可能使一般生活行為被不當評價為較高之注意義務；過嚴則可能使專業人員之特別注意義務被忽略。",
       "doctrines": [
         {
           "label": "甲說（反覆性與社會性說）",
@@ -1670,16 +3786,67 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
-          "view": "實務於醫療過失與交通過失案件中，常以業務過失致死論處，判斷時著重行為人之執業資格、執業之反覆性與其所負之專業注意義務。",
-          "note": "法定刑之具體數額與條次、判決字號均待核對。"
+          "period": "常見實務",
+          "view": "實務於醫療過失與交通過失案件中，判斷行為人之過失時，通常著重其執業資格、執業之反覆性與其所負之專業注意義務。",
+          "note": "法定刑之具體數額與條次、判決字號均未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 276 條第 2 項（業務過失致死，條次待核對）",
+        "刑法第 276 條（過失致死）",
         "刑法第 14 條（過失犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 276 條第 2 項（業務過失致死，條次待核對）",
+          "status": "failed",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": 2,
+              "item": null,
+              "ok": false,
+              "currentText": null
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條（過失犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-052",
@@ -1724,14 +3891,70 @@
         {
           "period": "常見實務",
           "view": "實務於照顧者疏於照護致死之案件，常認定其因法令或契約而負保證人義務，並審酌其是否有救護之可能與因果關係；若行為人已盡合理之救護義務，則不成立過失致死。",
-          "note": "判決字號待核對。"
+          "note": "判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 15 條（不作為犯）",
         "刑法第 276 條（過失致死）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 15 條（不作為犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "15",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於犯罪結果之發生，法律上有防止之義務，能防止而不防止者，與因積極行為發生結果者同。\n因自己行為致有發生犯罪結果之危險者，負防止其發生之義務。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "15",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "15",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條（過失致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-053",
@@ -1775,7 +3998,7 @@
         {
           "period": "常見實務",
           "view": "實務於過失致死與過失傷害並存之案件，常以一行為觸犯數罪名之想像競合處理，並從一重之過失致死論處，或在判決中說明過失傷害之評價已被包括於死亡結果之中。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
@@ -1783,7 +4006,90 @@
         "刑法第 276 條（過失致死）",
         "刑法第 284 條（過失傷害）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條（想像競合）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條（過失致死）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條（過失傷害）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-054",
@@ -1825,16 +4131,79 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務通常要求遺棄行為使被遺棄人脫離行為人或其他保護者之照護，且被遺棄人處於無自救力之狀態；若被遺棄人仍能獲得他人之照顧，則可能不成立遺棄既遂。",
-          "note": "具體判決字號與條次待核對。"
+          "note": "具體判決字號與條次未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 294 條（遺棄罪，條次待核對）",
-        "刑法第 293 條至第 296 條（遺棄罪章，條次待核對）"
+        "刑法第 294 條（遺棄罪）",
+        "刑法第 293 條（遺棄無自救力之人）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 294 條（遺棄罪，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "294",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於無自救力之人，依法令或契約應扶助、養育或保護而遺棄之，或不為其生存所必要之扶助、養育或保護者，處六月以上、五年以下有期徒刑。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "294",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 293 條至第 296 條（遺棄罪章，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "293",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "遺棄無自救力之人者，處六月以下有期徒刑、拘役或三千元以下罰金。\n因而致人於死者，處五年以下有期徒刑；致重傷者，處三年以下有期徒刑。"
+            },
+            {
+              "article": "296",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人為奴隸或使人居於類似奴隸之不自由地位者，處一年以上七年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "293",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "293",
+              "date": "2019-12-03",
+              "kind": "修正"
+            },
+            {
+              "article": "296",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-055",
@@ -1878,14 +4247,46 @@
         {
           "period": "常見實務",
           "view": "實務於親屬或照護人遺棄案件中，多認定父母、子女或受託照顧之人負有法定或契約上之扶助義務，並審酌其是否實際接管照護。",
-          "note": "具體判決字號與條次待核對。"
+          "note": "具體判決字號與條次未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 294 條（遺棄罪，條次待核對）",
-        "民法（扶養義務之規定，條次待核對）"
+        "刑法第 294 條（遺棄罪）",
+        "民法第 1114 條（扶養義務）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 294 條（遺棄罪，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "294",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於無自救力之人，依法令或契約應扶助、養育或保護而遺棄之，或不為其生存所必要之扶助、養育或保護者，處六月以上、五年以下有期徒刑。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "294",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "民法（扶養義務之規定，條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-056",
@@ -1927,17 +4328,90 @@
       ],
       "practice": [
         {
-          "period": "常見實務（待核對）",
+          "period": "常見實務",
           "view": "實務於遺棄致死案件中，通常依遺棄後被害人之生存狀態、外界救援之可能性與死因鑑定，判斷死亡結果是否為遺棄行為之危險實現。",
-          "note": "條次、法定刑與判決字號均待核對。"
+          "note": "條次、法定刑與判決字號均未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
-        "刑法第 295 條（遺棄致死傷，條次待核對）",
+        "刑法第 294 條第 2 項（遺棄致死傷）",
         "刑法第 17 條（結果加重犯）",
-        "刑法第 294 條（遺棄罪，條次待核對）"
+        "刑法第 294 條（遺棄罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 295 條（遺棄致死傷，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "295",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於直系血親尊親屬犯第二百九十四條之罪者，加重其刑至二分之一。"
+            }
+          ],
+          "latestAmendmentDate": "2010-01-07",
+          "amendments": [
+            {
+              "article": "295",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "295",
+              "date": "2010-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 17 條（結果加重犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "17",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因犯罪致發生一定之結果，而有加重其刑之規定者，如行為人不能預見其發生時，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "17",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 294 條（遺棄罪，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "294",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於無自救力之人，依法令或契約應扶助、養育或保護而遺棄之，或不為其生存所必要之扶助、養育或保護者，處六月以上、五年以下有期徒刑。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "294",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-057",
@@ -1981,16 +4455,116 @@
         {
           "period": "常見實務",
           "view": "實務於不救護致死之案件，通常審酌行為人是否明知被害人之危急狀態、是否有救護之可能且刻意放任，並綜合判斷其是否具殺意；若證據不足，則論以遺棄致死。",
-          "note": "具體判決字號待核對。"
+          "note": "具體判決字號未於本檔載明，引用前須另行查證。"
         }
       ],
       "lawRefs": [
         "刑法第 271 條（殺人罪）",
-        "刑法第 294 條（遺棄罪，條次待核對）",
-        "刑法第 295 條（遺棄致死傷，條次待核對）",
+        "刑法第 294 條（遺棄罪）",
+        "刑法第 294 條第 2 項（遺棄致死傷）",
         "刑法第 15 條（不作為犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 294 條（遺棄罪，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "294",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於無自救力之人，依法令或契約應扶助、養育或保護而遺棄之，或不為其生存所必要之扶助、養育或保護者，處六月以上、五年以下有期徒刑。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "294",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 295 條（遺棄致死傷，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "295",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於直系血親尊親屬犯第二百九十四條之罪者，加重其刑至二分之一。"
+            }
+          ],
+          "latestAmendmentDate": "2010-01-07",
+          "amendments": [
+            {
+              "article": "295",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "295",
+              "date": "2010-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 15 條（不作為犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "15",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於犯罪結果之發生，法律上有防止之義務，能防止而不防止者，與因積極行為發生結果者同。\n因自己行為致有發生犯罪結果之危險者，負防止其發生之義務。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "15",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "15",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }
