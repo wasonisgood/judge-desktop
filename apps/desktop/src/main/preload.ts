@@ -67,6 +67,7 @@ contextBridge.exposeInMainWorld('api', {
     install: () => invoke('chart:install'),
     disable: () => invoke('chart:disable'),
     remove: () => invoke('chart:remove'),
+  },
   worker: {
     list: () => invoke('worker:list'),
     enqueue: (args: unknown) => invoke('worker:enqueue', args),
@@ -139,6 +140,7 @@ contextBridge.exposeInMainWorld('api', {
     skip: (args: unknown) => invoke('design:skip', args),
     remove: (args: unknown) => invoke('design:remove', args),
     export: (args: unknown) => invoke('design:export', args),
+  },
   crawl: {
     pickFile: () => invoke('crawl:pickFile'),
     run: (args: unknown) => invoke('crawl:run', args),
@@ -162,6 +164,7 @@ contextBridge.exposeInMainWorld('api', {
     onProgress: (cb: (p: { phase: 'fetch' | 'run'; done: number; total: number }) => void) => {
       ipcRenderer.on('criteria:progress', (_e, p) => cb(p));
     },
+  },
   annotation: {
     load: (args: unknown) => invoke('annotation:load', args),
     add: (args: unknown) => invoke('annotation:add', args),
