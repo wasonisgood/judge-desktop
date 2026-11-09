@@ -1,0 +1,55 @@
+/* 個案研究筆記：全文標注區塊（沿用既有色票變數）。 */
+.annotate { position: relative; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.annotate h2 { font-family: var(--serif); font-size: 1.15rem; margin: 0 0 6px; }
+.annotate-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 4px; }
+.annotate-bar select { max-width: 320px; }
+.annotate-bar .check { display: inline-flex; gap: 4px; align-items: center; font-size: 0.9rem; }
+.ann-count { color: var(--ink-2); font-size: 0.9rem; }
+
+.annotate-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; margin-top: 10px; }
+.ann-reader { padding: 18px 22px; background: var(--paper-2); border: 1px solid var(--rule); line-height: 1.95; white-space: pre-wrap; user-select: text; }
+.ann-reader mark.ann { color: var(--ink); padding: 0 1px; cursor: pointer; border-radius: 2px; }
+.ann-reader mark.ann-yellow { background: #fff1a8; }
+.ann-reader mark.ann-green { background: #c9ebc4; }
+.ann-reader mark.ann-pink { background: #f7cfd9; }
+.ann-reader mark.ann-blue { background: #c4dcf7; }
+.ann-reader mark.ann-flash { outline: 2px solid var(--shu); }
+
+.ann-toolbar {
+  position: absolute; z-index: 20; display: flex; gap: 4px; align-items: center; flex-wrap: wrap;
+  padding: 6px; background: var(--paper, #fff); border: 1px solid var(--rule); box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+  max-width: 320px;
+}
+.ann-toolbar[hidden] { display: none; }
+.ann-toolbar .ann-sep { width: 1px; height: 22px; background: var(--rule); margin: 0 4px; }
+.ann-sw { border: 1px solid var(--rule); padding: 3px 9px; cursor: pointer; font-size: 0.85rem; color: var(--ink); background: #fff; }
+.ann-sw.ann-yellow { background: #fff1a8; }
+.ann-sw.ann-green { background: #c9ebc4; }
+.ann-sw.ann-pink { background: #f7cfd9; }
+.ann-sw.ann-blue { background: #c4dcf7; }
+
+.ann-side { position: sticky; top: 12px; max-height: calc(100vh - 40px); overflow: auto; }
+.ann-side h3 { font-family: var(--serif); font-size: 1rem; margin: 12px 0 6px; color: var(--ink-2); }
+.ann-notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ann-note-item { border: 1px solid var(--rule); border-left-width: 4px; padding: 6px 8px; background: var(--paper-2); font-size: 0.9rem; }
+.ann-note-item.ann-yellow { border-left-color: #e6c93a; }
+.ann-note-item.ann-green { border-left-color: #6fb36a; }
+.ann-note-item.ann-pink { border-left-color: #e08aa0; }
+.ann-note-item.ann-blue { border-left-color: #6a9fd8; }
+.ann-note-btn { display: grid; gap: 2px; width: 100%; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; color: var(--ink); font: inherit; }
+.ann-tag { font-size: 0.8rem; color: var(--ink-2); }
+.ann-quote { color: var(--ink-2); }
+.ann-note-text { white-space: pre-wrap; }
+.ann-note-item .btn { margin: 4px 4px 0 0; }
+
+.ann-editor { border: 1px solid var(--shu); padding: 10px 12px; background: var(--paper-2); display: grid; gap: 8px; margin-bottom: 8px; }
+.ann-editor[hidden] { display: none; }
+.ann-editor h3 { margin: 0; }
+.ann-quote-full { margin: 0; font-size: 0.9rem; color: var(--ink-2); max-height: 6em; overflow: auto; }
+.ann-modes { display: flex; gap: 6px; flex-wrap: wrap; }
+.ann-editor textarea { width: 100%; box-sizing: border-box; }
+
+@media (max-width: 900px) {
+  .annotate-layout { grid-template-columns: 1fr; }
+  .ann-side { position: static; max-height: none; }
+}

@@ -10,6 +10,8 @@
   function setPick(item) {
     state.briefPick = item;
     JR.views.renderPick(item);
+    // 個案研究筆記：選定案件後，全文標注區塊可直接使用（不需先精讀）。
+    JR.controllers.annotation.prepare(item ? { id: item.id, title: item.title, jurisdiction: $('briefJurisdiction').value } : null);
   }
 
   function collectBriefFields() {
@@ -41,6 +43,7 @@
       state.brief = view;
       JR.views.renderBrief(view);
       $('briefExport').disabled = false;
+      JR.controllers.annotation.open(view.detail.meta.id, $('briefJurisdiction').value, view.detail.meta.title);
     },
     setPick: setPick,
     bind: function () {
@@ -100,6 +103,7 @@
           state.brief = r;
           if (r.detail && r.detail.meta && r.detail.meta.title) $('briefPicked').textContent = r.detail.meta.title;
           JR.views.renderBrief(r);
+          JR.controllers.annotation.open(state.briefPick.id, $('briefJurisdiction').value, r.detail.meta.title);
           state.assistHistory.push({ role: 'user', text: '[系統通知] 精讀已完成：' + (r.doc.title || '') + '。段落：' + r.doc.sections.map(function (sec) { return sec.heading + '：' + sec.paragraphs.join(' '); }).join(' ').slice(0, 3000) });
           var an = r.annotated || {};
           var parts = ['已完成 AI 整理' + (r.saveError ? '。' : '，已存入「檔案」。')];

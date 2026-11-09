@@ -63,6 +63,42 @@
           <p class="status" id="briefStatus" role="status"></p>
         </form>
         <article class="reader" id="briefView" hidden></article>
+        <section class="annotate" id="annSection" hidden>
+          <h2>判決全文標注與註解</h2>
+          <p class="hint">在全文上拖曳選取文字，即出現顏色工具列。標注只存在本機；全文變動時會標示為「需重新對位」，不會錯位。</p>
+          <div class="annotate-bar">
+            <select id="annJudgment" aria-label="過去筆記"></select>
+            <label class="check"><input type="checkbox" id="annShowAi" checked> 顯示 AI 引文標注</label>
+            <button class="btn small" type="button" id="annLoad" disabled>載入全文</button>
+            <button class="btn small" type="button" id="annImportAi" disabled>加入 AI 引文標注</button>
+            <button class="btn small" type="button" id="annExport" disabled>下載判決筆記 Word</button>
+            <span class="ann-count" id="annCount"></span>
+          </div>
+          <p class="status" id="annStatus" role="status"></p>
+          <div class="annotate-layout">
+            <div class="ann-reader-wrap">
+              <div class="ann-toolbar" id="annToolbar" role="toolbar" hidden>
+                <button type="button" class="ann-sw ann-yellow" data-color="yellow">事實</button>
+                <button type="button" class="ann-sw ann-green" data-color="green">爭點</button>
+                <button type="button" class="ann-sw ann-pink" data-color="pink">主文</button>
+                <button type="button" class="ann-sw ann-blue" data-color="blue">理由</button>
+                <span class="ann-sep"></span>
+                <button type="button" class="btn small primary" data-mode="highlight" aria-pressed="true">只畫螢光</button>
+                <button type="button" class="btn small" data-mode="highlight_note" aria-pressed="false">螢光並做筆記</button>
+              </div>
+              <div class="ann-reader" id="annReader"></div>
+            </div>
+            <aside class="ann-side">
+              <div class="ann-editor" id="annEditor" hidden></div>
+              <h3>註解 <span id="annNoteCount"></span></h3>
+              <ul class="ann-notes" id="annNotes"></ul>
+              <div id="annReanchorBox" hidden>
+                <h3>需重新對位</h3>
+                <ul class="ann-notes" id="annReanchor"></ul>
+              </div>
+            </aside>
+          </div>
+        </section>
       </section>
 `;
 })(window.JR);
