@@ -43,20 +43,69 @@
       "practice": [
         {
           "period": "施行初期",
-          "view": "實務多依條文所列罪名判斷是否屬詐欺犯罪，對於列舉以外之附隨行為，傾向另以洗錢、幫助或其他罪名論處，而非直接擴張適用本條例。",
-          "note": "各法院寬嚴不一，待核對個別裁判。"
+          "view": "實務多依條文所列罪名判斷是否屬詐欺犯罪，對於列舉以外之附隨行為，傾向另以洗錢、幫助或其他罪名論處，而非直接擴張適用本條例。"
         },
         {
-          "period": "近年（2024 年修法後）",
-          "view": "修法後增訂與帳戶、人頭及詐欺相關之行為態樣，爭點重心轉向新增規定之適用範圍，列舉說仍為主流，但附隨行為之認定仍有分歧。",
-          "note": "條次與修正內容待核對最新條文。"
+          "period": "近年（2024 年詐欺犯罪危害防制條例制定後）",
+          "view": "該條例另規定與帳戶、人頭及詐欺相關之行為態樣，爭點重心轉向新增規定之適用範圍，列舉說仍為主流，但附隨行為之認定仍有分歧。"
         }
       ],
       "lawRefs": [
         "詐欺犯罪危害防制條例第 2 條",
         "刑法第 339 條之 4"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "詐欺犯罪危害防制條例第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本條例用詞，定義如下：\n一、詐欺犯罪：指下列各目之罪：\n（一）犯刑法第三百三十九條之四之罪。\n（二）犯第四十三條或第四十四條之罪。\n（三）犯與前二目有裁判上一罪關係之其他犯罪。\n二、金融機構：指洗錢防制法第五條第一項規定之機構。\n三、提供虛"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-12",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "2024-07-12",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 4",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第三百三十九條詐欺罪而有下列情形之一者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金：\n一、冒用政府機關或公務員名義犯之。\n二、三人以上共同犯之。\n三、以廣播電視、電子通訊、網際網路或其他媒體等傳播工具，對公眾散布而犯之。\n四、以電"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-173",
@@ -98,20 +147,74 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務於加重詐欺相關條文之適用上，多著重行為人是否獲取財物之客觀事實，對主觀認識之要求較為寬鬆。",
-          "note": "各案認定寬嚴不一，待核對裁判字號。"
+          "view": "實務於加重詐欺相關條文之適用上，多著重行為人是否獲取財物之客觀事實，對主觀認識之要求較為寬鬆。"
         },
         {
           "period": "近年",
-          "view": "部分裁判強調須證明行為人對獲利金額有認識或可得預見，始足以加重，否則應就基本犯論處，漸向甲說靠攏。",
-          "note": "是否已形成穩定見解，待核對最新大法庭或高院決議。"
+          "view": "部分裁判強調須證明行為人對獲利金額有認識或可得預見，始足以加重，否則應就基本犯論處，漸向甲說靠攏。"
         }
       ],
       "lawRefs": [
         "詐欺犯罪危害防制條例第 43 條",
         "刑法第 339 條之 4 第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "詐欺犯罪危害防制條例第 43 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "43",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯刑法第三百三十九條之四之罪，使人交付之財物或財產上利益達新臺幣一百萬元者，處三年以上十年以下有期徒刑，得併科新臺幣三千萬元以下罰金。使人交付之財物或財產上利益達新臺幣一千萬元者，處五年以上十二年以下有期徒刑，得併科新臺幣三億元以下罰金。使"
+            }
+          ],
+          "latestAmendmentDate": "2025-12-30",
+          "amendments": [
+            {
+              "article": "43",
+              "date": "2024-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "43",
+              "date": "2025-12-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 4 第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第三百三十九條詐欺罪而有下列情形之一者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金：\n一、冒用政府機關或公務員名義犯之。\n二、三人以上共同犯之。\n三、以廣播電視、電子通訊、網際網路或其他媒體等傳播工具，對公眾散布而犯之。\n四、以電"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-174",
@@ -153,20 +256,79 @@
       "practice": [
         {
           "period": "施行初期",
-          "view": "實務對「全部」之解釋尚不統一，部分裁判要求繳交全案所得，部分則以行為人個人所得為準。",
-          "note": "各法院見解分歧，待核對個別裁判。"
+          "view": "實務對「全部」之解釋尚不統一，部分裁判要求繳交全案所得，部分則以行為人個人所得為準。"
         },
         {
           "period": "近年",
-          "view": "裁判多傾向依行為人實際取得之部分認定，並要求其自動、及時繳交，強調自白之時點與是否積極協助追查，個人所得說漸為主流。",
-          "note": "是否已有統一見解，待核對。"
+          "view": "裁判多傾向依行為人實際取得之部分認定，並要求其自動、及時繳交，強調自白之時點與是否積極協助追查，個人所得說漸為主流。"
         }
       ],
       "lawRefs": [
         "詐欺犯罪危害防制條例第 47 條",
         "洗錢防制法第 23 條第 3 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "詐欺犯罪危害防制條例第 47 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯詐欺犯罪，在偵查及歷次審判中均自白，並於檢察官偵查中首次自白之日起六個月內，支付與被害人達成調解或和解之全部金額者，得減輕其刑。\n前項情形，並因而查獲發起、主持、操縱或指揮詐欺犯罪組織之人，或得以扣押該組織所取得全部被害人交付之所有財物或"
+            }
+          ],
+          "latestAmendmentDate": "2025-12-30",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "2024-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2025-12-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 23 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "犯前四條之罪，在偵查及歷次審判中均自白者，如有所得並自動繳交全部所得財物者，減輕其刑；並因而使司法警察機關或檢察官得以扣押全部洗錢之財物或財產上利益，或查獲其他正犯或共犯者，減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "23",
+              "date": "2018-11-02",
+              "kind": "修正"
+            },
+            {
+              "article": "23",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-175",
@@ -208,13 +370,11 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務於沒收與追徵上，多以行為人經手金額作為參考，並視其是否實際分得而調整，見解不甚一致。",
-          "note": "各案事實差異大，待核對。"
+          "view": "實務於沒收與追徵上，多以行為人經手金額作為參考，並視其是否實際分得而調整，見解不甚一致。"
         },
         {
           "period": "近年",
-          "view": "裁判漸重視行為人實際朝向之利益與報酬，對於已轉交上手之款項，多以其是否保有利益為判斷，並結合共同正犯之所得分擔原則。",
-          "note": "是否形成穩定見解，待核對最高法院相關判決。"
+          "view": "裁判漸重視行為人實際朝向之利益與報酬，對於已轉交上手之款項，多以其是否保有利益為判斷，並結合共同正犯之所得分擔原則。"
         }
       ],
       "lawRefs": [
@@ -222,7 +382,80 @@
         "詐欺犯罪危害防制條例第 47 條",
         "洗錢防制法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 38 條之 1",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "38-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "38-1",
+              "date": "2015-12-17",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "詐欺犯罪危害防制條例第 47 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯詐欺犯罪，在偵查及歷次審判中均自白，並於檢察官偵查中首次自白之日起六個月內，支付與被害人達成調解或和解之全部金額者，得減輕其刑。\n前項情形，並因而查獲發起、主持、操縱或指揮詐欺犯罪組織之人，或得以扣押該組織所取得全部被害人交付之所有財物或"
+            }
+          ],
+          "latestAmendmentDate": "2025-12-30",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "2024-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2025-12-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第十九條、第二十條之罪，洗錢之財物或財產上利益，不問屬於犯罪行為人與否，沒收之。\n犯第十九條或第二十條之罪，有事實足以證明行為人所得支配之前項規定以外之財物或財產上利益，係取自其他違法行為所得者，沒收之。\n對於外國政府、機構或國際組織依第"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-176",
@@ -264,21 +497,83 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以幫助犯論處提供帳戶者，認其未參與實際詐欺行為，並依可能預見與否認定其幫助故意。",
-          "note": "是否具幫助故意之證明，各案差異大，待核對。"
+          "view": "實務多以幫助犯論處提供帳戶者，認其未參與實際詐欺行為，並依可能預見與否認定其幫助故意。"
         },
         {
-          "period": "近年（2024 年修法後）",
-          "view": "修法增訂交付、提供帳戶之獨立處罰規定，實務轉向依新條文處罰，但仍須審查行為人是否具有主觀認識，避免過度擴張。",
-          "note": "條次與構成要件內容待核對最新條文。"
+          "period": "近年",
+          "view": "現行洗錢防制法第 22 條已設交付、提供帳戶之獨立處罰規定，實務轉向依該條處罰，但仍須審查行為人是否具有主觀認識，避免過度擴張。"
         }
       ],
       "lawRefs": [
-        "詐欺犯罪危害防制條例（交付、提供帳戶相關條文，條次待核對）",
+        "洗錢防制法第 22 條",
         "刑法第 30 條",
         "刑法第 339 條之 4"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "詐欺犯罪危害防制條例（交付、提供帳戶相關條文，條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        },
+        {
+          "ref": "刑法第 30 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 4",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第三百三十九條詐欺罪而有下列情形之一者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金：\n一、冒用政府機關或公務員名義犯之。\n二、三人以上共同犯之。\n三、以廣播電視、電子通訊、網際網路或其他媒體等傳播工具，對公眾散布而犯之。\n四、以電"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-177",
@@ -320,13 +615,11 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多認車手與集團成員有犯意聯絡，並具分工意義，常論以共同正犯，但對於僅受指示提領、未知詐欺全貌者，則視其認知程度降為幫助犯。",
-          "note": "分界點因個案而異，待核對裁判。"
+          "view": "實務多認車手與集團成員有犯意聯絡，並具分工意義，常論以共同正犯，但對於僅受指示提領、未知詐欺全貌者，則視其認知程度降為幫助犯。"
         },
         {
           "period": "近年",
-          "view": "裁判更重視行為人對詐欺集團之認知與分工地位，對於明知為詐騙所得仍提領者，多論共同正犯；對於僅有不確定認識者，則依幫助犯處理。",
-          "note": "待核對最高法院相關判決。"
+          "view": "裁判更重視行為人對詐欺集團之認知與分工地位，對於明知為詐騙所得仍提領者，多論共同正犯；對於僅有不確定認識者，則依幫助犯處理。"
         }
       ],
       "lawRefs": [
@@ -334,7 +627,90 @@
         "刑法第 30 條",
         "刑法第 339 條之 4 第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 30 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 4 第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第三百三十九條詐欺罪而有下列情形之一者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金：\n一、冒用政府機關或公務員名義犯之。\n二、三人以上共同犯之。\n三、以廣播電視、電子通訊、網際網路或其他媒體等傳播工具，對公眾散布而犯之。\n四、以電"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-178",
@@ -376,13 +752,11 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務於詐欺與洗錢之競合上，常視收取款項之後是否另有掩飾、移轉行為而分別判斷，有時論想像競合，有時採併罰。",
-          "note": "個案差異大，待核對。"
+          "view": "實務於詐欺與洗錢之競合上，常視收取款項之後是否另有掩飾、移轉行為而分別判斷，有時論想像競合，有時採併罰。"
         },
         {
           "period": "近年",
-          "view": "裁判傾向認定洗錢行為具有獨立之不法內涵，只要有另行之轉帳、提領或拆分等掩飾行為，多採數罪併罰，但仍會考量事件之單一性而調整。",
-          "note": "是否形成穩定見解，待核對最新判決。"
+          "view": "裁判傾向認定洗錢行為具有獨立之不法內涵，只要有另行之轉帳、提領或拆分等掩飾行為，多採數罪併罰，但仍會考量事件之單一性而調整。"
         }
       ],
       "lawRefs": [
@@ -390,7 +764,90 @@
         "刑法第 50 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 50 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-179",
@@ -432,20 +889,74 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多要求三人以上均須具有犯意聯絡，不知情之取款人或車手不計入人數，若人數不足則就基本犯論處。",
-          "note": "待核對個別裁判之人數認定。"
+          "view": "實務多要求三人以上均須具有犯意聯絡，不知情之取款人或車手不計入人數，若人數不足則就基本犯論處。"
         },
         {
           "period": "近年",
-          "view": "部分裁判對於明知或可能知悉詐騙性質之參與者，即使未必與其他人直接聯絡，仍計入人數，人數認定有放寬趨勢。",
-          "note": "是否已形成統一見解，待核對。"
+          "view": "部分裁判對於明知或可能知悉詐騙性質之參與者，即使未必與其他人直接聯絡，仍計入人數，人數認定有放寬趨勢。"
         }
       ],
       "lawRefs": [
         "刑法第 339 條之 4 第 1 項第 1 款",
         "刑法第 28 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條之 4 第 1 項第 1 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": 1,
+              "item": 1,
+              "ok": true,
+              "currentText": "一、冒用政府機關或公務員名義犯之。"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-180",
@@ -487,20 +998,89 @@
       "practice": [
         {
           "period": "施行初期",
-          "view": "實務多認為意圖要件須由事證證明，若僅有違規利用而無取得不法利益或損害他人之具體事證，多傾向不予論罪，而改以行政處分處理。",
-          "note": "各案見解不一，待核對。"
+          "view": "實務多認為意圖要件須由事證證明，若僅有違規利用而無取得不法利益或損害他人之具體事證，多傾向不予論罪，而改以行政處分處理。"
         },
         {
           "period": "近年",
-          "view": "部分裁判以行為人之營利或客戶資料交易、冒用身分等情節推認意圖存在，判斷標準逐漸具體化，但仍以主觀超過要素之證明為主要爭點。",
-          "note": "是否形成穩定見解，待核對最新判決。"
+          "view": "部分裁判以行為人之營利或客戶資料交易、冒用身分等情節推認意圖存在，判斷標準逐漸具體化，但仍以主觀超過要素之證明為主要爭點。"
         }
       ],
       "lawRefs": [
         "個人資料保護法第 41 條",
         "個人資料保護法第 20 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "個人資料保護法第 41 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之利益或損害他人之利益，而違反第六條第一項、第十五條、第十六條、第十九條、第二十條第一項規定，或依第二十一條限制國際傳輸之命令或處分，足生損害於他人者，處五年以下有期徒刑，得併科新臺幣一百萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2025-10-17",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1995-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "2010-04-27",
+              "kind": "全文修正"
+            },
+            {
+              "article": "41",
+              "date": "2015-12-15",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2025-10-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "個人資料保護法第 20 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "20",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "非公務機關對個人資料之利用，除第六條第一項所規定資料外，應於蒐集之特定目的必要範圍內為之。但有下列情形之一者，得為特定目的外之利用：\n一、法律明文規定。\n二、為增進公共利益所必要。\n三、為免除當事人之生命、身體、自由或財產上之危險。\n四、為"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-15",
+          "amendments": [
+            {
+              "article": "20",
+              "date": "1995-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "20",
+              "date": "2010-04-27",
+              "kind": "全文修正"
+            },
+            {
+              "article": "20",
+              "date": "2015-12-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-181",
@@ -542,20 +1122,84 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以是否有實際被害人及損害證明為重點，對於抽象之損害可能性，較少獨立論罪。",
-          "note": "各法院認定寬嚴不同，待核對。"
+          "view": "實務多以是否有實際被害人及損害證明為重點，對於抽象之損害可能性，較少獨立論罪。"
         },
         {
           "period": "近年",
-          "view": "部分裁判以個資之性質、數量與可能被濫用之情形，認定行為足生損害，漸採危險說之思維，但仍要求有一定程度之具體風險。",
-          "note": "是否形成統一見解，待核對。"
+          "view": "部分裁判以個資之性質、數量與可能被濫用之情形，認定行為足生損害，漸採危險說之思維，但仍要求有一定程度之具體風險。"
         }
       ],
       "lawRefs": [
         "個人資料保護法第 41 條",
         "個人資料保護法第 2 條第 1 款"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "個人資料保護法第 41 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之利益或損害他人之利益，而違反第六條第一項、第十五條、第十六條、第十九條、第二十條第一項規定，或依第二十一條限制國際傳輸之命令或處分，足生損害於他人者，處五年以下有期徒刑，得併科新臺幣一百萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2025-10-17",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1995-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "2010-04-27",
+              "kind": "全文修正"
+            },
+            {
+              "article": "41",
+              "date": "2015-12-15",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2025-10-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "個人資料保護法第 2 條第 1 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 1,
+              "ok": true,
+              "currentText": "本法用詞，定義如下：\n一、個人資料：指自然人之姓名、出生年月日、國民身分證統一編號、護照號碼、特徵、指紋、婚姻、家庭、教育、職業、病歷、醫療、基因、性生活、健康檢查、犯罪前科、聯絡方式、財務情況、社會活動及其他得以直接或間接方式識別該個人之"
+            }
+          ],
+          "latestAmendmentDate": "2010-04-27",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1995-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2010-04-27",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-182",
@@ -597,20 +1241,84 @@
       "practice": [
         {
           "period": "施行初期",
-          "view": "實務多以資料能否直接指向特定人作為判斷，對於需結合其他資訊方能識別之情況，論斷較為寬鬆，但個案認定不一。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以資料能否直接指向特定人作為判斷，對於需結合其他資訊方能識別之情況，論斷較為寬鬆，但個案認定不一。"
         },
         {
           "period": "近年",
-          "view": "裁判與主管機關見解趨向認為，IP位址、設備識別碼或可交叉比對之資料，只要在合理情況下可識別特定人，即屬個資，採客觀可識別之方向。",
-          "note": "是否已形成統一見解，待核對。"
+          "view": "裁判與主管機關見解趨向認為，IP位址、設備識別碼或可交叉比對之資料，只要在合理情況下可識別特定人，即屬個資，採客觀可識別之方向。"
         }
       ],
       "lawRefs": [
         "個人資料保護法第 2 條第 1 款",
         "個人資料保護法第 41 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "個人資料保護法第 2 條第 1 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 1,
+              "ok": true,
+              "currentText": "本法用詞，定義如下：\n一、個人資料：指自然人之姓名、出生年月日、國民身分證統一編號、護照號碼、特徵、指紋、婚姻、家庭、教育、職業、病歷、醫療、基因、性生活、健康檢查、犯罪前科、聯絡方式、財務情況、社會活動及其他得以直接或間接方式識別該個人之"
+            }
+          ],
+          "latestAmendmentDate": "2010-04-27",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1995-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2010-04-27",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "個人資料保護法第 41 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之利益或損害他人之利益，而違反第六條第一項、第十五條、第十六條、第十九條、第二十條第一項規定，或依第二十一條限制國際傳輸之命令或處分，足生損害於他人者，處五年以下有期徒刑，得併科新臺幣一百萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2025-10-17",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1995-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "2010-04-27",
+              "kind": "全文修正"
+            },
+            {
+              "article": "41",
+              "date": "2015-12-15",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2025-10-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-183",
@@ -652,13 +1360,11 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多依個案中之行為態樣判斷，若係以入侵系統方式取得個資，常併論刑法電腦犯罪；若僅為違規利用，則單論個資法。",
-          "note": "各案認定不一，待核對。"
+          "view": "實務多依個案中之行為態樣判斷，若係以入侵系統方式取得個資，常併論刑法電腦犯罪；若僅為違規利用，則單論個資法。"
         },
         {
           "period": "近年",
-          "view": "裁判傾向依行為之實質內容判斷競合，若入侵行為具有獨立不法內涵則認定想像競合，否則以特別法排除普通法，個案取捨明顯。",
-          "note": "待核對最新裁判。"
+          "view": "裁判傾向依行為之實質內容判斷競合，若入侵行為具有獨立不法內涵則認定想像競合，否則以特別法排除普通法，個案取捨明顯。"
         }
       ],
       "lawRefs": [
@@ -667,7 +1373,127 @@
         "刑法第 359 條",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "個人資料保護法第 41 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之利益或損害他人之利益，而違反第六條第一項、第十五條、第十六條、第十九條、第二十條第一項規定，或依第二十一條限制國際傳輸之命令或處分，足生損害於他人者，處五年以下有期徒刑，得併科新臺幣一百萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2025-10-17",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1995-07-12",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "2010-04-27",
+              "kind": "全文修正"
+            },
+            {
+              "article": "41",
+              "date": "2015-12-15",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2025-10-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 318 條之 1",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "318-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "無故洩漏因利用電腦或其他相關設備知悉或持有他人之秘密者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "318-1",
+              "date": "1997-09-25",
+              "kind": "增訂"
+            },
+            {
+              "article": "318-1",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 359 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "359",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "無故取得、刪除或變更他人電腦或其相關設備之電磁紀錄，致生損害於公眾或他人者，處五年以下有期徒刑、拘役或科或併科六十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "359",
+              "date": "2003-06-03",
+              "kind": "增訂"
+            },
+            {
+              "article": "359",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-184",
@@ -709,20 +1535,50 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務於個資案件中，多以自然人員工之個人刑責為中心，法人是否併罰之討論較少，個案處理差異明顯。",
-          "note": "待核對個別裁判。"
+          "view": "實務於個資案件中，多以自然人員工之個人刑責為中心，法人是否併罰之討論較少，個案處理差異明顯。"
         },
         {
           "period": "近年",
-          "view": "部分案件對於企業未建立必要安全措施、導致大量外洩之情形，嘗試追究法人與負責人之責任，但仍以是否有監督過失之具體證明為前提。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "部分案件對於企業未建立必要安全措施、導致大量外洩之情形，嘗試追究法人與負責人之責任，但仍以是否有監督過失之具體證明為前提。"
         }
       ],
       "lawRefs": [
-        "個人資料保護法罰則之兩罰規定（條次待核對）",
+        "個人資料保護法第 50 條",
         "刑法第 14 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "個人資料保護法罰則之兩罰規定（條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-185",
@@ -764,20 +1620,94 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多參照消息公開後之股價變動與成交量，並綜合消息內容之具體程度判斷重大性，偏向事後客觀標準。",
-          "note": "待核對個別裁判。"
+          "view": "實務多參照消息公開後之股價變動與成交量，並綜合消息內容之具體程度判斷重大性，偏向事後客觀標準。"
         },
         {
           "period": "近年",
-          "view": "裁判同時考量消息之具體性、確定性與對公司營運之影響，不以單一股價數據為唯一依據，傾向兩者併用。",
-          "note": "是否形成穩定見解，待核對最高法院判決。"
+          "view": "裁判同時考量消息之具體性、確定性與對公司營運之影響，不以單一股價數據為唯一依據，傾向兩者併用。"
         }
       ],
       "lawRefs": [
         "證券交易法第 157 條之 1 第 1 項",
         "證券交易法第 157 條之 1 第 5 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "證券交易法第 157 條之 1 第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "下列各款之人，實際知悉發行股票公司有重大影響其股票價格之消息時，在該消息明確後，未公開前或公開後十八小時內，不得對該公司之上市或在證券商營業處所買賣之股票或其他具有股權性質之有價證券，自行或以他人名義買入或賣出：\n一、該公司之董事、監察人、"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "證券交易法第 157 條之 1 第 5 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 5,
+              "item": null,
+              "ok": true,
+              "currentText": "第一項所稱有重大影響其股票價格之消息，指涉及公司之財務、業務或該證券之市場供求、公開收購，其具體內容對其股票價格有重大影響，或對正當投資人之投資決定有重要影響之消息；其範圍及公開方式等相關事項之辦法，由主管機關定之。"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-186",
@@ -819,20 +1749,94 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多聚焦於公司內部人本身之交易，對於外圍受領人之處罰較為保守，常需證明其與內部人間有緊密之資訊傳遞關係。",
-          "note": "待核對個別裁判。"
+          "view": "實務多聚焦於公司內部人本身之交易，對於外圍受領人之處罰較為保守，常需證明其與內部人間有緊密之資訊傳遞關係。"
         },
         {
           "period": "近年",
-          "view": "裁判對於明知消息來源並具有不正當性之受領人，多肯認其為行為主體，並以其交易與消息內容之關聯性作為判斷，傾向肯定說之方向。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判對於明知消息來源並具有不正當性之受領人，多肯認其為行為主體，並以其交易與消息內容之關聯性作為判斷，傾向肯定說之方向。"
         }
       ],
       "lawRefs": [
         "證券交易法第 157 條之 1 第 1 項",
         "證券交易法第 157 條之 1 第 2 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "證券交易法第 157 條之 1 第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "下列各款之人，實際知悉發行股票公司有重大影響其股票價格之消息時，在該消息明確後，未公開前或公開後十八小時內，不得對該公司之上市或在證券商營業處所買賣之股票或其他具有股權性質之有價證券，自行或以他人名義買入或賣出：\n一、該公司之董事、監察人、"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "證券交易法第 157 條之 1 第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "前項各款所定之人，實際知悉發行股票公司有重大影響其支付本息能力之消息時，在該消息明確後，未公開前或公開後十八小時內，不得對該公司之上市或在證券商營業處所買賣之非股權性質之公司債，自行或以他人名義賣出。"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-187",
@@ -874,20 +1878,94 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務主要依傳統理論，以交易人是否具有內部人身分或取得資訊之關係為中心，對外部人之處罰多需依法條擬制內部人之規定。",
-          "note": "待核對。"
+          "view": "實務主要依傳統理論，以交易人是否具有內部人身分或取得資訊之關係為中心，對外部人之處罰多需依法條擬制內部人之規定。"
         },
         {
           "period": "近年",
-          "view": "裁判於擬制內部人之解釋中，有吸納盜用理論或公平資訊精神之傾向，但仍需具體依條文主體範圍認定，理論之採用未必一致。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判於擬制內部人之解釋中，有吸納盜用理論或公平資訊精神之傾向，但仍需具體依條文主體範圍認定，理論之採用未必一致。"
         }
       ],
       "lawRefs": [
         "證券交易法第 157 條之 1 第 1 項",
         "證券交易法第 157 條之 1 第 2 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "證券交易法第 157 條之 1 第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "下列各款之人，實際知悉發行股票公司有重大影響其股票價格之消息時，在該消息明確後，未公開前或公開後十八小時內，不得對該公司之上市或在證券商營業處所買賣之股票或其他具有股權性質之有價證券，自行或以他人名義買入或賣出：\n一、該公司之董事、監察人、"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "證券交易法第 157 條之 1 第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "前項各款所定之人，實際知悉發行股票公司有重大影響其支付本息能力之消息時，在該消息明確後，未公開前或公開後十八小時內，不得對該公司之上市或在證券商營業處所買賣之非股權性質之公司債，自行或以他人名義賣出。"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-188",
@@ -929,20 +2007,94 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以公告時點為消息公開之判斷基準，個案中若行為人於公告前即有交易，較容易認定其利用未公開消息。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以公告時點為消息公開之判斷基準，個案中若行為人於公告前即有交易，較容易認定其利用未公開消息。"
         },
         {
           "period": "近年",
-          "view": "主管機關規範與部分裁判已以公告後一定時間（如十八小時）作為消息視為充分公開之參考，但其法律效果與刑事判斷之關係仍有爭議。",
-          "note": "十八小時之規範來源與效力待核對法令與施行細則。"
+          "view": "部分裁判已以公告後一定時間作為消息是否充分公開之參考，但其法律效果與刑事判斷之關係仍有爭議。"
         }
       ],
       "lawRefs": [
         "證券交易法第 157 條之 1 第 1 項",
-        "證券交易法第 157 條之 1 第 5 項（條次待核對）"
+        "證券交易法第 157 條之 1 第 5 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "證券交易法第 157 條之 1 第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "下列各款之人，實際知悉發行股票公司有重大影響其股票價格之消息時，在該消息明確後，未公開前或公開後十八小時內，不得對該公司之上市或在證券商營業處所買賣之股票或其他具有股權性質之有價證券，自行或以他人名義買入或賣出：\n一、該公司之董事、監察人、"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "證券交易法第 157 條之 1 第 5 項（條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 5,
+              "item": null,
+              "ok": true,
+              "currentText": "第一項所稱有重大影響其股票價格之消息，指涉及公司之財務、業務或該證券之市場供求、公開收購，其具體內容對其股票價格有重大影響，或對正當投資人之投資決定有重要影響之消息；其範圍及公開方式等相關事項之辦法，由主管機關定之。"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-189",
@@ -984,13 +2136,11 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以行為人之實際買賣差價或避免之損失為計算基礎，計算方式較為直接，個案中亦會考量交易量與時點。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以行為人之實際買賣差價或避免之損失為計算基礎，計算方式較為直接，個案中亦會考量交易量與時點。"
         },
         {
           "period": "近年",
-          "view": "裁判雖仍以實際差價為主，但在有爭議時會參考股價變動之合理性與消息影響程度，對計算基準之彈性逐漸提高。",
-          "note": "待核對最新裁判。"
+          "view": "裁判雖仍以實際差價為主，但在有爭議時會參考股價變動之合理性與消息影響程度，對計算基準之彈性逐漸提高。"
         }
       ],
       "lawRefs": [
@@ -998,7 +2148,125 @@
         "證券交易法第 171 條",
         "刑法第 38 條之 1"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "證券交易法第 157 條之 1 第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "157-1",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "下列各款之人，實際知悉發行股票公司有重大影響其股票價格之消息時，在該消息明確後，未公開前或公開後十八小時內，不得對該公司之上市或在證券商營業處所買賣之股票或其他具有股權性質之有價證券，自行或以他人名義買入或賣出：\n一、該公司之董事、監察人、"
+            }
+          ],
+          "latestAmendmentDate": "2010-05-04",
+          "amendments": [
+            {
+              "article": "157-1",
+              "date": "1988-01-12",
+              "kind": "增訂"
+            },
+            {
+              "article": "157-1",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "157-1",
+              "date": "2010-05-04",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "證券交易法第 171 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "171",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有下列情事之一者，處三年以上十年以下有期徒刑，得併科新臺幣一千萬元以上二億元以下罰金：\n一、違反第二十條第一項、第二項、第一百五十五條第一項、第二項、第一百五十七條之一第一項或第二項規定。\n二、已依本法發行有價證券公司之董事、監察人、經理人"
+            }
+          ],
+          "latestAmendmentDate": "2017-12-29",
+          "amendments": [
+            {
+              "article": "171",
+              "date": "1968-04-16",
+              "kind": "制定"
+            },
+            {
+              "article": "171",
+              "date": "1988-01-12",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2000-06-30",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2004-01-13",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2010-05-04",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2011-12-12",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2017-12-29",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 38 條之 1",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "38-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "38-1",
+              "date": "2015-12-17",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-190",
@@ -1040,20 +2308,119 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多要求證明行為人之操縱意圖與價格或成交量之實際影響，並以交易之異常性與集中度作為推認依據。",
-          "note": "待核對個別裁判。"
+          "view": "實務多要求證明行為人之操縱意圖與價格或成交量之實際影響，並以交易之異常性與集中度作為推認依據。"
         },
         {
           "period": "近年",
-          "view": "裁判對於以相對委託或連續交易製造假象之行為，若具有明顯之操縱意圖，即使影響程度有限，仍傾向認定構成要件該當，判斷上趨向危險犯之思維。",
-          "note": "是否形成穩定見解，待核對最高法院判決。"
+          "view": "裁判對於以相對委託或連續交易製造假象之行為，若具有明顯之操縱意圖，即使影響程度有限，仍傾向認定構成要件該當，判斷上趨向危險犯之思維。"
         }
       ],
       "lawRefs": [
         "證券交易法第 155 條第 1 項",
         "證券交易法第 171 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "證券交易法第 155 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "155",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "對於在證券交易所上市之有價證券，不得有下列各款之行為：\n一、在集中交易市場委託買賣或申報買賣，業經成交而不履行交割，足以影響市場秩序。\n二、（刪除）\n三、意圖抬高或壓低集中交易市場某種有價證券之交易價格，與他人通謀，以約定價格於自己出售，或"
+            }
+          ],
+          "latestAmendmentDate": "2015-06-16",
+          "amendments": [
+            {
+              "article": "155",
+              "date": "1968-04-16",
+              "kind": "制定"
+            },
+            {
+              "article": "155",
+              "date": "1988-01-12",
+              "kind": "修正"
+            },
+            {
+              "article": "155",
+              "date": "2000-06-30",
+              "kind": "修正"
+            },
+            {
+              "article": "155",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "155",
+              "date": "2015-06-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "證券交易法第 171 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "171",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有下列情事之一者，處三年以上十年以下有期徒刑，得併科新臺幣一千萬元以上二億元以下罰金：\n一、違反第二十條第一項、第二項、第一百五十五條第一項、第二項、第一百五十七條之一第一項或第二項規定。\n二、已依本法發行有價證券公司之董事、監察人、經理人"
+            }
+          ],
+          "latestAmendmentDate": "2017-12-29",
+          "amendments": [
+            {
+              "article": "171",
+              "date": "1968-04-16",
+              "kind": "制定"
+            },
+            {
+              "article": "171",
+              "date": "1988-01-12",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2000-06-30",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2004-01-13",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2010-05-04",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2011-12-12",
+              "kind": "修正"
+            },
+            {
+              "article": "171",
+              "date": "2017-12-29",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-191",
@@ -1095,13 +2462,11 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以登記之董事或經理人為行為主體，對於實際負責人之刑事責任，多以共犯方式追究，認定須有實際參與決策之具體事證。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以登記之董事或經理人為行為主體，對於實際負責人之刑事責任，多以共犯方式追究，認定須有實際參與決策之具體事證。"
         },
         {
           "period": "近年",
-          "view": "裁判較常援引公司法第8條第3項，認定實際指揮經營之人具有負責人地位，但仍要求其確實行使職權而非僅有影響力。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判較常援引公司法第8條第3項，認定實際指揮經營之人具有負責人地位，但仍要求其確實行使職權而非僅有影響力。"
         }
       ],
       "lawRefs": [
@@ -1109,7 +2474,110 @@
         "刑法第 336 條第 2 項",
         "刑法第 342 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "公司法第 8 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "8",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "公司之非董事，而實質上執行董事業務或實質控制公司之人事、財務或業務經營而實質指揮董事執行業務者，與本法董事同負民事、刑事及行政罰之責任。但政府為發展經濟、促進社會安定或其他增進公共利益等情形，對政府指派之董事所為之指揮，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2018-07-06",
+          "amendments": [
+            {
+              "article": "8",
+              "date": "1929-12-07",
+              "kind": "制定"
+            },
+            {
+              "article": "8",
+              "date": "1946-03-23",
+              "kind": "全文修正"
+            },
+            {
+              "article": "8",
+              "date": "1966-07-05",
+              "kind": "全文修正"
+            },
+            {
+              "article": "8",
+              "date": "1980-04-18",
+              "kind": "修正"
+            },
+            {
+              "article": "8",
+              "date": "2011-12-14",
+              "kind": "修正"
+            },
+            {
+              "article": "8",
+              "date": "2018-07-06",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 336 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "336",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "對於業務上所持有之物，犯前條第一項之罪者，處六月以上五年以下有期徒刑，得併科九萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "336",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "336",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 342 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "342",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為他人處理事務，意圖為自己或第三人不法之利益，或損害本人之利益，而為違背其任務之行為，致生損害於本人之財產或其他利益者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "342",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "342",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-192",
@@ -1132,18 +2600,18 @@
         "背信罪",
         "公司法特別背信"
       ],
-      "proposition": "公司負責人違背職務致公司受損之行為，應優先適用公司法特別背信規定，抑或與刑法普通背信罪成立法條競合或想像競合？",
-      "distinction": "採法條競合（特別法優於普通法）者，僅適用公司法特別背信，刑度與構成要件依該特別規定；採想像競合者，則同時評價兩罪，從一重處斷。兩說差異決定構成要件之適用範圍與刑度上限，並影響「為自己或第三人利益」與「損害公司」之證明重點。",
+      "proposition": "公司負責人違背職務致公司受損之行為，應優先適用特別規定，抑或與刑法第 342 條普通背信罪成立法條競合或想像競合？",
+      "distinction": "採法條競合（特別法優於普通法）者，僅適用該特別規定，刑度與構成要件依其規定；採想像競合者，則同時評價兩罪，從一重處斷。兩說差異決定構成要件之適用範圍與刑度上限，並影響「為自己或第三人利益」與「損害公司」之證明重點。",
       "doctrines": [
         {
           "label": "甲說（法條競合說）",
-          "view": "公司負責人之背信行為與刑法普通背信之構成要件高度重疊，公司法特別背信為特別規定，應排除普通背信之適用。",
+          "view": "公司負責人之背信行為與刑法普通背信之構成要件高度重疊，該特別規定應排除普通背信之適用。",
           "pros": "避免同一不法行為重複評價，與禁止重複評價原則一致，裁判適用明確。",
-          "cons": "若特別背信之構成要件或刑度較窄，可能使部分嚴重背信行為被評價不足。"
+          "cons": "若特別規定之構成要件或刑度較窄，可能使部分嚴重背信行為被評價不足。"
         },
         {
           "label": "乙說（想像競合說）",
-          "view": "公司法特別背信與刑法背信之保護法益與主體範圍不完全相同，同一行為可能同時符合兩罪，應依想像競合從一重處斷。",
+          "view": "特別規定與刑法背信之保護法益與主體範圍不完全相同，同一行為可能同時符合兩罪，應依想像競合從一重處斷。",
           "pros": "能充分涵蓋不同主體與法益之侵害，避免處罰漏洞，較能反映行為之完整不法內涵。",
           "cons": "若行為本質上僅為單一背信，評價為想像競合可能產生重複評價之疑慮。"
         }
@@ -1151,21 +2619,82 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多認公司負責人之背信案件應優先適用公司法特別規定，以其為特別法排除刑法普通背信，個案中亦視具體情節判斷競合關係。",
-          "note": "待核對個別裁判與條次。"
+          "view": "實務多認公司負責人之背信案件應優先適用特別規定，以其為特別法排除刑法普通背信，個案中亦視具體情節判斷競合關係。"
         },
         {
           "period": "近年",
-          "view": "裁判對於同時侵害公司與第三人利益之情形，傾向認定想像競合，並依較重之罪論處，但仍因個案而異。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判對於同時侵害公司與第三人利益之情形，傾向認定想像競合，並依較重之罪論處，但仍因個案而異。"
         }
       ],
       "lawRefs": [
-        "公司法特別背信條文（條次待核對）",
         "刑法第 342 條",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "公司法特別背信條文（條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        },
+        {
+          "ref": "刑法第 342 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "342",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為他人處理事務，意圖為自己或第三人不法之利益，或損害本人之利益，而為違背其任務之行為，致生損害於本人之財產或其他利益者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "342",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "342",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-193",
@@ -1188,18 +2717,18 @@
         "公司文書",
         "競合"
       ],
-      "proposition": "公司負責人製作不實財務報表或向主管機關申報不實文件，應依公司法特別規定論處，抑或應依刑法業務上文書登載不實罪論處，二者關係如何？",
-      "distinction": "採特別法優先說者，僅適用公司法之財報不實規定，刑度依該規定；採刑法優先或想像競合說者，則依刑法第215條或第214條論罪，刑度與主體要件可能不同。兩說差異影響不實文書是否涉及偽造或變造，以及能否以公文書不實科刑。",
+      "proposition": "公司負責人製作不實財務報表或向主管機關申報不實文件，應依證券交易法第 174 條第 1 項第 5 款論處，抑或應依刑法業務上文書登載不實罪論處，二者關係如何？",
+      "distinction": "採特別法優先說者，僅適用證券交易法之財報不實規定，刑度依該規定；採刑法優先或想像競合說者，則依刑法第215條或第214條論罪，刑度與主體要件可能不同。兩說差異影響不實文書是否涉及偽造或變造，以及能否以公文書不實科刑。",
       "doctrines": [
         {
           "label": "甲說（特別法優先說）",
-          "view": "公司法針對財務報告與公司文件之不實特別設有規範，屬特別規定，應優先適用，避免重複評價。",
-          "pros": "與公司法之監理體系一致，主體與要件明確，符合法條競合之一般原理。",
+          "view": "證券交易法針對財務報告與相關業務文件之不實特別設有規範，屬特別規定，應優先適用，避免重複評價。",
+          "pros": "與證券監理體系一致，主體與要件明確，符合法條競合之一般原理。",
           "cons": "若特別規定之刑度較輕或要件較窄，可能使不實文書之不法未被充分評價。"
         },
         {
           "label": "乙說（想像競合說）",
-          "view": "不實財報同時侵害公司財務資訊之正確性與文書公信力，應依刑法業務上文書登載不實論處，並與公司法規定成立想像競合。",
+          "view": "不實財報同時侵害公司財務資訊之正確性與文書公信力，應依刑法業務上文書登載不實論處，並與證券交易法規定成立想像競合。",
           "pros": "能同時評價對財務資訊與文書公信力之侵害，適用範圍較完整。",
           "cons": "同一財務不實之行為可能受雙重評價，與禁止重複評價原則有緊張關係。"
         }
@@ -1207,21 +2736,83 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務於公司財報不實案件，多以公司法相關規定處理，若涉及業務上登載不實者，則另依刑法論罪，處理方式不一。",
-          "note": "待核對個別裁判。"
+          "view": "實務於公司財報不實案件，多以證券交易法相關規定處理，若涉及業務上登載不實者，則另依刑法論罪，處理方式不一。"
         },
         {
           "period": "近年",
-          "view": "裁判傾向依文書之性質與公信力程度判斷，對於以公文書形式向主管機關申報不實者，較常論以刑法文書罪，並視情節與公司法競合。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判傾向依文書之性質與公信力程度判斷，對於以公文書形式向主管機關申報不實者，較常論以刑法文書罪，並視情節與證券交易法競合。"
         }
       ],
       "lawRefs": [
         "刑法第 214 條",
         "刑法第 215 條",
-        "公司法財務報告不實之罰則（條次待核對）"
+        "證券交易法第 174 條第 1 項第 5 款"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 214 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "214",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "明知為不實之事項，而使公務員登載於職務上所掌之公文書，足以生損害於公眾或他人者，處三年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "214",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "214",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 215 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "215",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "從事業務之人，明知為不實之事項，而登載於其業務上作成之文書，足以生損害於公眾或他人者，處三年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "215",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "215",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "公司法財務報告不實之罰則（條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-194",
@@ -1244,8 +2835,8 @@
         "不法所有意圖",
         "所有權人"
       ],
-      "proposition": "公司負責人將公司資金挪為私用（如供私人借貸或投資），應論業務侵占，抑或特別背信，或兩者均不成立而僅屬違反公司法之行政責任？",
-      "distinction": "論業務侵占者，須有不法所有意圖並將資金視為自己所有，刑度較重；論特別背信者，只需違背任務並致公司受損，不需不法所有意圖，但須證明損害。兩說差異決定行為人是否需證明主觀上有不法所有之意圖，以及損害之計算與證明方式。",
+      "proposition": "公司負責人將公司資金挪為私用（如供私人借貸或投資），應論業務侵占（刑法第 336 條第 2 項），抑或背信（刑法第 342 條），或兩者均不成立而僅屬違反公司法之行政責任？",
+      "distinction": "論業務侵占者，須有不法所有意圖並將資金視為自己所有，刑度較重；論背信者，只需違背任務並致公司受損，不需不法所有意圖，但須證明損害。兩說差異決定行為人是否需證明主觀上有不法所有之意圖，以及損害之計算與證明方式。",
       "doctrines": [
         {
           "label": "甲說（業務侵占說）",
@@ -1254,8 +2845,8 @@
           "cons": "以不法所有意圖為要件，若行為人主觀上僅為暫時借用並有還款意思，證明侵占故意困難。"
         },
         {
-          "label": "乙說（特別背信說）",
-          "view": "負責人挪用資金係違背其為公司處理事務之任務，致公司財產受損，應論特別背信，而不以不法所有意圖為必要。",
+          "label": "乙說（背信說）",
+          "view": "負責人挪用資金係違背其為公司處理事務之任務，致公司財產受損，應論背信，而不以不法所有意圖為必要。",
           "pros": "不要求不法所有意圖，較易規範借貸型挪用，與公司負責人之信賴義務相符。",
           "cons": "必須證明確實致公司受損，若資金已依約收回，損害認定可能爭議。"
         }
@@ -1263,21 +2854,82 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務於公司負責人挪用資金案件中，多以是否具不法所有意圖作為區分侵占與背信之標準，判斷上常須考量是否有還款安排。",
-          "note": "待核對個別裁判。"
+          "view": "實務於公司負責人挪用資金案件中，多以是否具不法所有意圖作為區分侵占與背信之標準，判斷上常須考量是否有還款安排。"
         },
         {
           "period": "近年",
-          "view": "裁判漸重視是否有致公司損害之具體風險或實際損失，並以資金流向與是否經董事會決議等事實判斷，背信之適用較為普遍。",
-          "note": "待核對最新裁判。"
+          "view": "裁判漸重視是否有致公司損害之具體風險或實際損失，並以資金流向與是否經董事會決議等事實判斷，背信之適用較為普遍。"
         }
       ],
       "lawRefs": [
         "刑法第 336 條第 2 項",
-        "刑法第 342 條",
-        "公司法特別背信條文（條次待核對）"
+        "刑法第 342 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 336 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "336",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "對於業務上所持有之物，犯前條第一項之罪者，處六月以上五年以下有期徒刑，得併科九萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "336",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "336",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 342 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "342",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為他人處理事務，意圖為自己或第三人不法之利益，或損害本人之利益，而為違背其任務之行為，致生損害於本人之財產或其他利益者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "342",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "342",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "公司法特別背信條文（條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-195",
@@ -1319,21 +2971,137 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以名義董事是否有實際參與或知悉違法情事判斷，對純粹掛名者多不論罪，但若有明知或放任之情形，則認定其共同責任。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以名義董事是否有實際參與或知悉違法情事判斷，對純粹掛名者多不論罪，但若有明知或放任之情形，則認定其共同責任。"
         },
         {
           "period": "近年",
-          "view": "裁判較強調董事之監督義務與信賴原則之界限，若有明顯之異常徵兆而未盡注意義務，即可能認定其有過失或共犯責任，判斷上趨向實質認定。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判較強調董事之監督義務與信賴原則之界限，若有明顯之異常徵兆而未盡注意義務，即可能認定其有過失或共犯責任，判斷上趨向實質認定。"
         }
       ],
       "lawRefs": [
         "公司法第 8 條",
-        "公司法第 23 條（董事責任，條次待核對）",
+        "公司法第 23 條",
         "刑法第 28 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "公司法第 8 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "8",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱公司負責人：在無限公司、兩合公司為執行業務或代表公司之股東；在有限公司、股份有限公司為董事。\n公司之經理人、清算人或臨時管理人，股份有限公司之發起人、監察人、檢查人、重整人或重整監督人，在執行職務範圍內，亦為公司負責人。\n公司之非董"
+            }
+          ],
+          "latestAmendmentDate": "2018-07-06",
+          "amendments": [
+            {
+              "article": "8",
+              "date": "1929-12-07",
+              "kind": "制定"
+            },
+            {
+              "article": "8",
+              "date": "1946-03-23",
+              "kind": "全文修正"
+            },
+            {
+              "article": "8",
+              "date": "1966-07-05",
+              "kind": "全文修正"
+            },
+            {
+              "article": "8",
+              "date": "1980-04-18",
+              "kind": "修正"
+            },
+            {
+              "article": "8",
+              "date": "2011-12-14",
+              "kind": "修正"
+            },
+            {
+              "article": "8",
+              "date": "2018-07-06",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "公司法第 23 條（董事責任，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公司負責人應忠實執行業務並盡善良管理人之注意義務，如有違反致公司受有損害者，負損害賠償責任。\n公司負責人對於公司業務之執行，如有違反法令致他人受有損害時，對他人應與公司負連帶賠償之責。\n公司負責人對於違反第一項之規定，為自己或他人為該行為時"
+            }
+          ],
+          "latestAmendmentDate": "2011-12-14",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1929-12-07",
+              "kind": "制定"
+            },
+            {
+              "article": "23",
+              "date": "1946-03-23",
+              "kind": "全文修正"
+            },
+            {
+              "article": "23",
+              "date": "1966-07-05",
+              "kind": "全文修正"
+            },
+            {
+              "article": "23",
+              "date": "2001-10-25",
+              "kind": "修正"
+            },
+            {
+              "article": "23",
+              "date": "2011-12-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-196",
@@ -1375,20 +3143,99 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以鑑定報告作為槍枝認定之核心證據，對於無法擊發或殺傷力不足之物品，常認定不屬槍枝，但仍可能論以其他刑責。",
-          "note": "待核對個別裁判與鑑定標準。"
+          "view": "實務多以鑑定報告作為槍枝認定之核心證據，對於無法擊發或殺傷力不足之物品，常認定不屬槍枝，但仍可能論以其他刑責。"
         },
         {
           "period": "近年",
-          "view": "裁判對於經改造而具擊發功能之物品，即使鑑定時已有零件缺損，仍傾向認定其具殺傷力，判斷上較重視實際可用性。",
-          "note": "是否形成統一見解，待核對最高法院相關判決。"
+          "view": "裁判對於經改造而具擊發功能之物品，即使鑑定時已有零件缺損，仍傾向認定其具殺傷力，判斷上較重視實際可用性。"
         }
       ],
       "lawRefs": [
         "槍砲彈藥刀械管制條例第 3 條",
-        "槍砲彈藥刀械管制條例第 7 條（條次待核對）"
+        "槍砲彈藥刀械管制條例第 7 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "槍砲彈藥刀械管制條例第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "槍砲、彈藥、刀械管制之主管機關：中央為內政部；直轄市為直轄市政府；縣（市）為縣（市）政府。"
+            }
+          ],
+          "latestAmendmentDate": "2000-06-20",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2000-06-20",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "7",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未經許可，製造、販賣或運輸制式或非制式火砲、肩射武器、機關槍、衝鋒槍、卡柄槍、自動步槍、普通步槍、馬槍、手槍或各類砲彈、炸彈、爆裂物者，處無期徒刑或七年以上有期徒刑，併科新臺幣三千萬元以下罰金。\n未經許可，轉讓、出租或出借前項所列槍砲、彈藥"
+            }
+          ],
+          "latestAmendmentDate": "2020-05-22",
+          "amendments": [
+            {
+              "article": "7",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "7",
+              "date": "1985-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "7",
+              "date": "2008-11-07",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2020-05-22",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-197",
@@ -1430,20 +3277,99 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務對於自製槍枝多以製造罪論處，改造案件則依個案判斷其改造程度與完成品是否具殺傷力，見解並不統一。",
-          "note": "待核對個別裁判。"
+          "view": "實務對於自製槍枝多以製造罪論處，改造案件則依個案判斷其改造程度與完成品是否具殺傷力，見解並不統一。"
         },
         {
           "period": "近年",
-          "view": "裁判對於以3D列印或零件拼裝完成之槍枝，多認定屬製造行為，並重視是否已達具擊發功能之完成狀態，但個案仍有差異。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判對於以3D列印或零件拼裝完成之槍枝，多認定屬製造行為，並重視是否已達具擊發功能之完成狀態，但個案仍有差異。"
         }
       ],
       "lawRefs": [
         "槍砲彈藥刀械管制條例第 3 條",
-        "槍砲彈藥刀械管制條例第 7 條（條次待核對）"
+        "槍砲彈藥刀械管制條例第 7 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "槍砲彈藥刀械管制條例第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "槍砲、彈藥、刀械管制之主管機關：中央為內政部；直轄市為直轄市政府；縣（市）為縣（市）政府。"
+            }
+          ],
+          "latestAmendmentDate": "2000-06-20",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2000-06-20",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "7",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未經許可，製造、販賣或運輸制式或非制式火砲、肩射武器、機關槍、衝鋒槍、卡柄槍、自動步槍、普通步槍、馬槍、手槍或各類砲彈、炸彈、爆裂物者，處無期徒刑或七年以上有期徒刑，併科新臺幣三千萬元以下罰金。\n未經許可，轉讓、出租或出借前項所列槍砲、彈藥"
+            }
+          ],
+          "latestAmendmentDate": "2020-05-22",
+          "amendments": [
+            {
+              "article": "7",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "7",
+              "date": "1985-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "7",
+              "date": "2008-11-07",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2020-05-22",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-198",
@@ -1485,20 +3411,109 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以行為人對槍枝之實際管領與知悉程度判斷持有，對於寄放者，若有指示或取回之安排，即認定其持有，判斷上較為寬鬆。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以行為人對槍枝之實際管領與知悉程度判斷持有，對於寄放者，若有指示或取回之安排，即認定其持有，判斷上較為寬鬆。"
         },
         {
           "period": "近年",
-          "view": "裁判要求證明行為人對槍枝之存在有認識並能事實上支配，同住或車內之情形則須進一步證明其對該物有實際控制，判斷趨向具體化。",
-          "note": "是否形成穩定見解，待核對最高法院判決。"
+          "view": "裁判要求證明行為人對槍枝之存在有認識並能事實上支配，同住或車內之情形則須進一步證明其對該物有實際控制，判斷趨向具體化。"
         }
       ],
       "lawRefs": [
-        "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+        "槍砲彈藥刀械管制條例第 7 條",
         "刑法第 10 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "7",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未經許可，製造、販賣或運輸制式或非制式火砲、肩射武器、機關槍、衝鋒槍、卡柄槍、自動步槍、普通步槍、馬槍、手槍或各類砲彈、炸彈、爆裂物者，處無期徒刑或七年以上有期徒刑，併科新臺幣三千萬元以下罰金。\n未經許可，轉讓、出租或出借前項所列槍砲、彈藥"
+            }
+          ],
+          "latestAmendmentDate": "2020-05-22",
+          "amendments": [
+            {
+              "article": "7",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "7",
+              "date": "1985-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "7",
+              "date": "2008-11-07",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2020-05-22",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 10 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
+            }
+          ],
+          "latestAmendmentDate": "2023-01-07",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2023-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-199",
@@ -1540,20 +3555,99 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以零件是否可直接組合成具殺傷力之槍枝作為判斷，單獨零件之案件常以其他罪名或不罰處理。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以零件是否可直接組合成具殺傷力之槍枝作為判斷，單獨零件之案件常以其他罪名或不罰處理。"
         },
         {
           "period": "近年",
-          "view": "裁判對於主要零件之收藏與組裝工具一併查獲者，傾向認定具有製造或持有之意圖，並依其整體狀況論罪，但單純零件仍有爭議。",
-          "note": "待核對最新見解。"
+          "view": "裁判對於主要零件之收藏與組裝工具一併查獲者，傾向認定具有製造或持有之意圖，並依其整體狀況論罪，但單純零件仍有爭議。"
         }
       ],
       "lawRefs": [
         "槍砲彈藥刀械管制條例第 3 條",
-        "槍砲彈藥刀械管制條例第 7 條（條次待核對）"
+        "槍砲彈藥刀械管制條例第 7 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "槍砲彈藥刀械管制條例第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "槍砲、彈藥、刀械管制之主管機關：中央為內政部；直轄市為直轄市政府；縣（市）為縣（市）政府。"
+            }
+          ],
+          "latestAmendmentDate": "2000-06-20",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2000-06-20",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "7",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未經許可，製造、販賣或運輸制式或非制式火砲、肩射武器、機關槍、衝鋒槍、卡柄槍、自動步槍、普通步槍、馬槍、手槍或各類砲彈、炸彈、爆裂物者，處無期徒刑或七年以上有期徒刑，併科新臺幣三千萬元以下罰金。\n未經許可，轉讓、出租或出借前項所列槍砲、彈藥"
+            }
+          ],
+          "latestAmendmentDate": "2020-05-22",
+          "amendments": [
+            {
+              "article": "7",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "7",
+              "date": "1985-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "7",
+              "date": "2008-11-07",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2020-05-22",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-200",
@@ -1595,24 +3689,103 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以空包彈是否具殺傷力與是否可用於實際發射作為判斷，對於純空包彈之持有，若無其他危險情事，常認定不屬彈藥。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以空包彈是否具殺傷力與是否可用於實際發射作為判斷，對於純空包彈之持有，若無其他危險情事，常認定不屬彈藥。"
         },
         {
           "period": "近年",
-          "view": "裁判若發現空包彈經改造或與槍枝搭配使用，即傾向認定屬彈藥或其相關管制物，個案判斷趨於嚴格，但純空包彈之定性仍有爭議。",
-          "note": "待核對最新見解與主管機關解釋。"
+          "view": "裁判若發現空包彈經改造或與槍枝搭配使用，即傾向認定屬彈藥或其相關管制物，個案判斷趨於嚴格，但純空包彈之定性仍有爭議。"
         }
       ],
       "lawRefs": [
         "槍砲彈藥刀械管制條例第 3 條",
-        "槍砲彈藥刀械管制條例第 7 條（條次待核對）"
+        "槍砲彈藥刀械管制條例第 7 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "槍砲彈藥刀械管制條例第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "槍砲、彈藥、刀械管制之主管機關：中央為內政部；直轄市為直轄市政府；縣（市）為縣（市）政府。"
+            }
+          ],
+          "latestAmendmentDate": "2000-06-20",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2000-06-20",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "7",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未經許可，製造、販賣或運輸制式或非制式火砲、肩射武器、機關槍、衝鋒槍、卡柄槍、自動步槍、普通步槍、馬槍、手槍或各類砲彈、炸彈、爆裂物者，處無期徒刑或七年以上有期徒刑，併科新臺幣三千萬元以下罰金。\n未經許可，轉讓、出租或出借前項所列槍砲、彈藥"
+            }
+          ],
+          "latestAmendmentDate": "2020-05-22",
+          "amendments": [
+            {
+              "article": "7",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "7",
+              "date": "1985-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "7",
+              "date": "2008-11-07",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "2020-05-22",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-201",
-      "title": "攜帶槍枝犯罪之加重與攜帶認定",
+      "title": "攜帶槍枝之認定標準",
       "path": [
         "重要特別刑事法",
         "槍砲彈藥刀械管制條例",
@@ -1631,39 +3804,97 @@
         "槍砲條例加重",
         "攜帶概念"
       ],
-      "proposition": "行為人犯他罪時攜帶槍枝之加重規定，所稱「攜帶」是否以隨身直接接觸為必要，抑或只要槍枝在行為人可支配之範圍內即足？",
-      "distinction": "採直接接觸說者，槍枝須在行為人身上或手中，車內或附近放置之情形不構成加重；採支配範圍說者，只要槍枝位於行為人可即時取用之範圍，即可認定攜帶，加重適用範圍較廣。兩說差異決定加重刑度之適用，影響犯罪現場槍枝位置之證明重點。",
+      "proposition": "行為人犯罪時攜帶槍枝，所稱「攜帶」是否以隨身直接接觸為必要，抑或只要槍枝在行為人可支配之範圍內即足？",
+      "distinction": "採直接接觸說者，槍枝須在行為人身上或手中，車內或附近放置之情形不構成攜帶；採支配範圍說者，只要槍枝位於行為人可即時取用之範圍，即可認定攜帶，攜帶認定範圍較廣。兩說差異決定是否成立攜帶，影響犯罪現場槍枝位置之證明重點。",
       "doctrines": [
         {
           "label": "甲說（直接接觸說）",
-          "view": "攜帶指槍枝在行為人身體或手中之直接接觸，車內或住處放置之槍枝不屬攜帶，不應加重。",
-          "pros": "文義明確，判斷簡單，避免以間接支配擴張加重範圍，符合罪刑法定。",
-          "cons": "行為人可將槍枝置於車內或附近而規避加重，削弱加重規定之嚇阻效果。"
+          "view": "攜帶指槍枝在行為人身體或手中之直接接觸，車內或住處放置之槍枝不屬攜帶。",
+          "pros": "文義明確，判斷簡單，避免以間接支配擴張攜帶範圍，符合罪刑法定。",
+          "cons": "行為人可將槍枝置於車內或附近而規避攜帶之認定，削弱相關規定之嚇阻效果。"
         },
         {
           "label": "乙說（支配範圍說）",
           "view": "只要槍枝位於行為人可即時取用、得以立即使用之範圍內，即可認定攜帶，無須直接接觸。",
-          "pros": "較能反映犯罪時槍枝對被害人構成之實際威脅，符合加重之立法目的。",
-          "cons": "可取用範圍之界定具彈性，易導致加重認定之不確定，與文義之張力較大。"
+          "pros": "較能反映犯罪時槍枝對被害人構成之實際威脅，符合相關規定之防制目的。",
+          "cons": "可取用範圍之界定具彈性，易導致攜帶認定之不確定，與文義之張力較大。"
         }
       ],
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以槍枝是否在行為人身上或手邊作為攜帶之判斷，對於置於車內或他處之情形，個案中較少加重。",
-          "note": "待核對個別裁判與條次。"
+          "view": "實務多以槍枝是否在行為人身上或手邊作為攜帶之判斷，對於置於車內或他處之情形，個案中較少認定為攜帶。"
         },
         {
           "period": "近年",
-          "view": "裁判對於槍枝位於犯罪地點附近、可即時取用之情形，傾向認定已達攜帶程度，判斷上趨向支配範圍說，但仍須具體證明即時可用性。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判對於槍枝位於犯罪地點附近、可即時取用之情形，傾向認定已達攜帶程度，判斷上趨向支配範圍說，但仍須具體證明即時可用性。"
         }
       ],
       "lawRefs": [
-        "槍砲彈藥刀械管制條例第 18 條（加重條次待核對）",
         "槍砲彈藥刀械管制條例第 3 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "槍砲彈藥刀械管制條例第 18 條（加重條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯本條例之罪自首，並報繳其持有之全部槍砲、彈藥、刀械者，得減輕或免除其刑；其已移轉持有而據實供述全部槍砲、彈藥、刀械之來源或去向，因而查獲者，亦同。\n前項情形，於中央主管機關報經行政院核定辦理公告期間自首者，免除其刑。\n前二項情形，其報繳不"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-18",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "18",
+              "date": "2023-12-18",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "槍砲彈藥刀械管制條例第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "槍砲、彈藥、刀械管制之主管機關：中央為內政部；直轄市為直轄市政府；縣（市）為縣（市）政府。"
+            }
+          ],
+          "latestAmendmentDate": "2000-06-20",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1983-06-07",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "1997-11-11",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2000-06-20",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-202",
@@ -1705,20 +3936,94 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以行為人是否有販售、收取費用或其他經濟收益為判斷，對於純粹免費分享之情形，常認定不具意圖營利。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以行為人是否有販售、收取費用或其他經濟收益為判斷，對於純粹免費分享之情形，常認定不具意圖營利。"
         },
         {
           "period": "近年",
-          "view": "裁判對於透過網站廣告、會員收費或流量導引取得利益之情形，多認定屬間接營利，並認為不以實際收取金額為必要。",
-          "note": "是否形成穩定見解，待核對最高法院判決。"
+          "view": "裁判對於透過網站廣告、會員收費或流量導引取得利益之情形，多認定屬間接營利，並認為不以實際收取金額為必要。"
         }
       ],
       "lawRefs": [
         "著作權法第 91 條",
         "著作權法第 91 條之 1"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "著作權法第 91 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "91",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "擅自以重製之方法侵害他人之著作財產權者，處三年以下有期徒刑、拘役，或科或併科新臺幣七十五萬元以下罰金。\n意圖銷售或出租而擅自以重製之方法侵害他人之著作財產權者，處六月以上五年以下有期徒刑，得併科新臺幣二十萬元以上二百萬元以下罰金。\n著作僅供"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "91",
+              "date": "1992-05-22",
+              "kind": "全文修正"
+            },
+            {
+              "article": "91",
+              "date": "1997-12-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "91",
+              "date": "2003-06-06",
+              "kind": "修正"
+            },
+            {
+              "article": "91",
+              "date": "2004-08-24",
+              "kind": "修正"
+            },
+            {
+              "article": "91",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "著作權法第 91 條之 1",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "91-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "擅自以移轉所有權之方法散布著作原件或其重製物而侵害他人之著作財產權者，處三年以下有期徒刑、拘役，或科或併科新臺幣五十萬元以下罰金。\n明知係侵害著作財產權之重製物而散布或意圖散布而公開陳列或持有者，處三年以下有期徒刑，得併科新臺幣七萬元以上七"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "91-1",
+              "date": "2003-06-06",
+              "kind": "增訂"
+            },
+            {
+              "article": "91-1",
+              "date": "2004-08-24",
+              "kind": "修正"
+            },
+            {
+              "article": "91-1",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-203",
@@ -1760,21 +4065,152 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以上傳行為論以重製或散布罪，並依是否有實際下載或流通認定既遂，對公開傳輸之獨立刑責較少討論。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以上傳行為論以重製或散布罪，並依是否有實際下載或流通認定既遂，對公開傳輸之獨立刑責較少討論。"
         },
         {
           "period": "近年",
-          "view": "裁判對於網路上傳盜版之行為，常以重製或散布論罪，並視上傳者是否為初始上傳者與其營利狀況判斷刑度，公開傳輸之獨立地位仍有爭議。",
-          "note": "待核對最新裁判與條次。"
+          "view": "裁判對於網路上傳盜版之行為，常以重製或散布論罪，並視上傳者是否為初始上傳者與其營利狀況判斷刑度，公開傳輸之獨立地位仍有爭議。"
         }
       ],
       "lawRefs": [
         "著作權法第 91 條",
         "著作權法第 91 條之 1",
-        "著作權法第 87 條（權利之定義，條次待核對）"
+        "著作權法第 87 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "著作權法第 91 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "91",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "擅自以重製之方法侵害他人之著作財產權者，處三年以下有期徒刑、拘役，或科或併科新臺幣七十五萬元以下罰金。\n意圖銷售或出租而擅自以重製之方法侵害他人之著作財產權者，處六月以上五年以下有期徒刑，得併科新臺幣二十萬元以上二百萬元以下罰金。\n著作僅供"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "91",
+              "date": "1992-05-22",
+              "kind": "全文修正"
+            },
+            {
+              "article": "91",
+              "date": "1997-12-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "91",
+              "date": "2003-06-06",
+              "kind": "修正"
+            },
+            {
+              "article": "91",
+              "date": "2004-08-24",
+              "kind": "修正"
+            },
+            {
+              "article": "91",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "著作權法第 91 條之 1",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "91-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "擅自以移轉所有權之方法散布著作原件或其重製物而侵害他人之著作財產權者，處三年以下有期徒刑、拘役，或科或併科新臺幣五十萬元以下罰金。\n明知係侵害著作財產權之重製物而散布或意圖散布而公開陳列或持有者，處三年以下有期徒刑，得併科新臺幣七萬元以上七"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "91-1",
+              "date": "2003-06-06",
+              "kind": "增訂"
+            },
+            {
+              "article": "91-1",
+              "date": "2004-08-24",
+              "kind": "修正"
+            },
+            {
+              "article": "91-1",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "著作權法第 87 條（權利之定義，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "87",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有下列情形之一者，除本法另有規定外，視為侵害著作權或製版權：\n一、以侵害著作人名譽之方法利用其著作者。\n二、明知為侵害製版權之物而散布或意圖散布而公開陳列或持有者。\n三、輸入未經著作財產權人或製版權人授權重製之重製物或製版物者。\n四、未經著"
+            }
+          ],
+          "latestAmendmentDate": "2019-04-16",
+          "amendments": [
+            {
+              "article": "87",
+              "date": "1992-05-22",
+              "kind": "全文修正"
+            },
+            {
+              "article": "87",
+              "date": "1993-04-22",
+              "kind": "修正"
+            },
+            {
+              "article": "87",
+              "date": "1997-12-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "87",
+              "date": "2003-06-06",
+              "kind": "修正"
+            },
+            {
+              "article": "87",
+              "date": "2004-08-24",
+              "kind": "修正"
+            },
+            {
+              "article": "87",
+              "date": "2007-06-14",
+              "kind": "修正"
+            },
+            {
+              "article": "87",
+              "date": "2014-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "87",
+              "date": "2019-04-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-204",
@@ -1816,20 +4252,99 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務於合理使用之判斷上，多以四項因素綜合衡量，並依個案判斷是否阻卻違法，對舉證責任之分配較少明確交代。",
-          "note": "待核對個別裁判。"
+          "view": "實務於合理使用之判斷上，多以四項因素綜合衡量，並依個案判斷是否阻卻違法，對舉證責任之分配較少明確交代。"
         },
         {
           "period": "近年",
-          "view": "裁判較傾向於先確認利用之性質與市場影響，並依被告所提之抗辯判斷合理使用，阻卻違法之理解更為普遍，但仍會結合檢察官之舉證。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判較傾向於先確認利用之性質與市場影響，並依被告所提之抗辯判斷合理使用，阻卻違法之理解更為普遍，但仍會結合檢察官之舉證。"
         }
       ],
       "lawRefs": [
         "著作權法第 65 條",
         "著作權法第 91 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "著作權法第 65 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "65",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "著作之合理使用，不構成著作財產權之侵害。\n著作之利用是否合於第四十四條至第六十三條所定之合理範圍或其他合理使用之情形，應審酌一切情狀，尤應注意下列事項，以為判斷之基準：\n一、利用之目的及性質，包括係為商業目的或非營利教育目的。\n二、著作之性"
+            }
+          ],
+          "latestAmendmentDate": "2014-01-07",
+          "amendments": [
+            {
+              "article": "65",
+              "date": "1992-05-22",
+              "kind": "全文修正"
+            },
+            {
+              "article": "65",
+              "date": "1997-12-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "65",
+              "date": "2003-06-06",
+              "kind": "修正"
+            },
+            {
+              "article": "65",
+              "date": "2014-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "著作權法第 91 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "91",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "擅自以重製之方法侵害他人之著作財產權者，處三年以下有期徒刑、拘役，或科或併科新臺幣七十五萬元以下罰金。\n意圖銷售或出租而擅自以重製之方法侵害他人之著作財產權者，處六月以上五年以下有期徒刑，得併科新臺幣二十萬元以上二百萬元以下罰金。\n著作僅供"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "91",
+              "date": "1992-05-22",
+              "kind": "全文修正"
+            },
+            {
+              "article": "91",
+              "date": "1997-12-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "91",
+              "date": "2003-06-06",
+              "kind": "修正"
+            },
+            {
+              "article": "91",
+              "date": "2004-08-24",
+              "kind": "修正"
+            },
+            {
+              "article": "91",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-205",
@@ -1871,21 +4386,98 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務於平台業者案件中，多以個別內容之通知與移除情形判斷其是否有幫助故意，對整體知悉之見解較少採用。",
-          "note": "待核對個別裁判。"
+          "view": "實務於平台業者案件中，多以個別內容之通知與移除情形判斷其是否有幫助故意，對整體知悉之見解較少採用。"
         },
         {
           "period": "近年",
-          "view": "裁判對於經權利人明確通知後仍不移除之情形，認定其有幫助故意之機會增加，但對於僅有概括知悉者，仍傾向採個別判斷。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判對於經權利人明確通知後仍不移除之情形，認定其有幫助故意之機會增加，但對於僅有概括知悉者，仍傾向採個別判斷。"
         }
       ],
       "lawRefs": [
         "著作權法第 91 條",
         "刑法第 30 條",
-        "著作權法網路服務提供者責任條文（條次待核對）"
+        "著作權法第 90 條之 4"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "著作權法第 91 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "91",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "擅自以重製之方法侵害他人之著作財產權者，處三年以下有期徒刑、拘役，或科或併科新臺幣七十五萬元以下罰金。\n意圖銷售或出租而擅自以重製之方法侵害他人之著作財產權者，處六月以上五年以下有期徒刑，得併科新臺幣二十萬元以上二百萬元以下罰金。\n著作僅供"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "91",
+              "date": "1992-05-22",
+              "kind": "全文修正"
+            },
+            {
+              "article": "91",
+              "date": "1997-12-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "91",
+              "date": "2003-06-06",
+              "kind": "修正"
+            },
+            {
+              "article": "91",
+              "date": "2004-08-24",
+              "kind": "修正"
+            },
+            {
+              "article": "91",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 30 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "著作權法網路服務提供者責任條文（條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-206",
@@ -1927,21 +4519,147 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以是否於商品或服務上標示相同或近似商標作為判斷，對於關鍵字或內部使用之情形，較少認定為構成侵害。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以是否於商品或服務上標示相同或近似商標作為判斷，對於關鍵字或內部使用之情形，較少認定為構成侵害。"
         },
         {
           "period": "近年",
-          "view": "裁判對於網路關鍵字廣告，若足以使消費者誤認來源，多認定屬商標之使用，判斷上趨向廣義之理解，但仍須個案認定混淆之可能。",
-          "note": "是否形成穩定見解，待核對最高法院判決。"
+          "view": "裁判對於網路關鍵字廣告，若足以使消費者誤認來源，多認定屬商標之使用，判斷上趨向廣義之理解，但仍須個案認定混淆之可能。"
         }
       ],
       "lawRefs": [
         "商標法第 95 條",
-        "商標法第 5 條（商標使用定義，條次待核對）",
+        "商標法第 5 條",
         "商標法第 68 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "商標法第 95 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "95",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未得商標權人或團體商標權人同意，有下列情形之一，處三年以下有期徒刑、拘役或科或併科新臺幣二十萬元以下罰金：\n一、於同一商品或服務，使用相同於註冊商標或團體商標之商標者。\n二、於類似之商品或服務，使用相同於註冊商標或團體商標之商標，有致相關消"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "95",
+              "date": "2011-05-31",
+              "kind": "全文修正"
+            },
+            {
+              "article": "95",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "商標法第 5 條（商標使用定義，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "5",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "商標之使用，指為行銷之目的，而有下列情形之一，並足以使相關消費者認識其為商標：\n一、將商標用於商品或其包裝容器。\n二、持有、陳列、販賣、輸出或輸入前款之商品。\n三、將商標用於與提供服務有關之物品。\n四、將商標用於與商品或服務有關之商業文書或"
+            }
+          ],
+          "latestAmendmentDate": "2011-05-31",
+          "amendments": [
+            {
+              "article": "5",
+              "date": "1930-04-26",
+              "kind": "制定"
+            },
+            {
+              "article": "5",
+              "date": "1935-10-31",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "1958-10-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "1972-06-23",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "1993-11-19",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "1997-04-15",
+              "kind": "修正"
+            },
+            {
+              "article": "5",
+              "date": "2003-04-29",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "2011-05-31",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "商標法第 68 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "68",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未得商標權人同意，有下列情形之一，為侵害商標權：\n一、於同一商品或服務，使用相同於註冊商標之商標者。\n二、於類似之商品或服務，使用相同於註冊商標之商標，有致相關消費者混淆誤認之虞者。\n三、於同一或類似之商品或服務，使用近似於註冊商標之商標，"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "68",
+              "date": "1972-06-23",
+              "kind": "全文修正"
+            },
+            {
+              "article": "68",
+              "date": "1993-11-19",
+              "kind": "全文修正"
+            },
+            {
+              "article": "68",
+              "date": "2003-04-29",
+              "kind": "全文修正"
+            },
+            {
+              "article": "68",
+              "date": "2011-05-31",
+              "kind": "全文修正"
+            },
+            {
+              "article": "68",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-207",
@@ -1983,21 +4701,147 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多綜合考量商標之相似程度、指定商品之關聯性與交易情況判斷混淆之虞，對於是否須有實際混淆之證據，見解不一。",
-          "note": "待核對個別裁判。"
+          "view": "實務多綜合考量商標之相似程度、指定商品之關聯性與交易情況判斷混淆之虞，對於是否須有實際混淆之證據，見解不一。"
         },
         {
           "period": "近年",
-          "view": "裁判多採抽象混淆之判斷方式，以一般消費者之注意程度評估近似與混淆可能性，實際混淆之事證則作為加強心證之參考，而非必要要件。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判多採抽象混淆之判斷方式，以一般消費者之注意程度評估近似與混淆可能性，實際混淆之事證則作為加強心證之參考，而非必要要件。"
         }
       ],
       "lawRefs": [
         "商標法第 95 條",
-        "商標法第 5 條（條次待核對）",
+        "商標法第 5 條",
         "商標法第 68 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "商標法第 95 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "95",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未得商標權人或團體商標權人同意，有下列情形之一，處三年以下有期徒刑、拘役或科或併科新臺幣二十萬元以下罰金：\n一、於同一商品或服務，使用相同於註冊商標或團體商標之商標者。\n二、於類似之商品或服務，使用相同於註冊商標或團體商標之商標，有致相關消"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "95",
+              "date": "2011-05-31",
+              "kind": "全文修正"
+            },
+            {
+              "article": "95",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "商標法第 5 條（條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "5",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "商標之使用，指為行銷之目的，而有下列情形之一，並足以使相關消費者認識其為商標：\n一、將商標用於商品或其包裝容器。\n二、持有、陳列、販賣、輸出或輸入前款之商品。\n三、將商標用於與提供服務有關之物品。\n四、將商標用於與商品或服務有關之商業文書或"
+            }
+          ],
+          "latestAmendmentDate": "2011-05-31",
+          "amendments": [
+            {
+              "article": "5",
+              "date": "1930-04-26",
+              "kind": "制定"
+            },
+            {
+              "article": "5",
+              "date": "1935-10-31",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "1958-10-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "1972-06-23",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "1993-11-19",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "1997-04-15",
+              "kind": "修正"
+            },
+            {
+              "article": "5",
+              "date": "2003-04-29",
+              "kind": "全文修正"
+            },
+            {
+              "article": "5",
+              "date": "2011-05-31",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "商標法第 68 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "68",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未得商標權人同意，有下列情形之一，為侵害商標權：\n一、於同一商品或服務，使用相同於註冊商標之商標者。\n二、於類似之商品或服務，使用相同於註冊商標之商標，有致相關消費者混淆誤認之虞者。\n三、於同一或類似之商品或服務，使用近似於註冊商標之商標，"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "68",
+              "date": "1972-06-23",
+              "kind": "全文修正"
+            },
+            {
+              "article": "68",
+              "date": "1993-11-19",
+              "kind": "全文修正"
+            },
+            {
+              "article": "68",
+              "date": "2003-04-29",
+              "kind": "全文修正"
+            },
+            {
+              "article": "68",
+              "date": "2011-05-31",
+              "kind": "全文修正"
+            },
+            {
+              "article": "68",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-208",
@@ -2039,24 +4883,78 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多以行為人是否確知商品為仿冒作為明知之判斷，對於未查證之情形，常視其有無異常情事而認定是否具未必故意。",
-          "note": "待核對個別裁判。"
+          "view": "實務多以行為人是否確知商品為仿冒作為明知之判斷，對於未查證之情形，常視其有無異常情事而認定是否具未必故意。"
         },
         {
           "period": "近年",
-          "view": "裁判對於明顯低價、來源不明或與正規通路不符之情形，傾向認定行為人有未必故意，並對經銷商之查證義務有較具體之要求。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判對於明顯低價、來源不明或與正規通路不符之情形，傾向認定行為人有未必故意，並對經銷商之查證義務有較具體之要求。"
         }
       ],
       "lawRefs": [
         "商標法第 97 條",
         "商標法第 95 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "商標法第 97 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "97",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "販賣或意圖販賣而持有、陳列、輸出或輸入他人所為之前二條第一項商品者，處一年以下有期徒刑、拘役或科或併科新臺幣五萬元以下罰金。\n前項之行為透過電子媒體或網路方式為之者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "97",
+              "date": "2011-05-31",
+              "kind": "全文修正"
+            },
+            {
+              "article": "97",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "商標法第 95 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "95",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未得商標權人或團體商標權人同意，有下列情形之一，處三年以下有期徒刑、拘役或科或併科新臺幣二十萬元以下罰金：\n一、於同一商品或服務，使用相同於註冊商標或團體商標之商標者。\n二、於類似之商品或服務，使用相同於註冊商標或團體商標之商標，有致相關消"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "95",
+              "date": "2011-05-31",
+              "kind": "全文修正"
+            },
+            {
+              "article": "95",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-209",
-      "title": "著作權與商標犯罪之告訴乃論效力",
+      "title": "著作權犯罪之告訴乃論效力",
       "path": [
         "重要特別刑事法",
         "智慧財產權刑事責任",
@@ -2075,7 +4973,7 @@
         "刑事訴訟法第239條",
         "撤回告訴"
       ],
-      "proposition": "著作權法與商標法之犯罪採告訴乃論時，告訴人對共犯之一人提出告訴，其效力是否及於其他未受告訴之共犯？若告訴權人不明，其他共犯是否仍得追訴？",
+      "proposition": "著作權法之犯罪採告訴乃論時，告訴人對共犯之一人提出告訴，其效力是否及於其他未受告訴之共犯？若告訴權人不明，其他共犯是否仍得追訴？",
       "distinction": "採告訴不可分說者，告訴效力及於全部共犯，未告訴之其他共犯亦得追訴；採個別告訴說者，告訴僅及於特定被告，其他未受告訴者不得追訴。兩說差異決定智慧財產權案件中平台業者、上游供應者與下游販售者能否因單一告訴而一併追究。",
       "doctrines": [
         {
@@ -2094,22 +4992,140 @@
       "practice": [
         {
           "period": "早期",
-          "view": "實務多依告訴不可分原則，認為對共犯之一人告訴即及於全部共犯，但在告訴人明確表示限定之情形，則尊重其意思。",
-          "note": "待核對個別裁判與告訴期間之計算。"
+          "view": "實務多依告訴不可分原則，認為對共犯之一人告訴即及於全部共犯，但在告訴人明確表示限定之情形，則尊重其意思。"
         },
         {
           "period": "近年",
-          "view": "裁判於智慧財產權案件中，較重視告訴人之具體意思與告訴內容之範圍，判斷上趨向個案認定，並注意六個月告訴期間之起算與是否已逾期。",
-          "note": "是否形成穩定見解，待核對。"
+          "view": "裁判於智慧財產權案件中，較重視告訴人之具體意思與告訴內容之範圍，判斷上趨向個案認定，並注意六個月告訴期間之起算與是否已逾期。"
         }
       ],
       "lawRefs": [
-        "著作權法第 100 條（告訴乃論，條次待核對）",
-        "商標法告訴乃論條文（條次待核對）",
+        "著作權法第 100 條",
         "刑事訴訟法第 237 條",
         "刑事訴訟法第 239 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "著作權法第 100 條（告訴乃論，條次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "100",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本章之罪，須告訴乃論。但有下列情形之一，就有償提供著作全部原樣利用，致著作財產權人受有新臺幣一百萬元以上之損害者，不在此限：\n一、犯第九十一條第二項之罪，其重製物為數位格式。\n二、意圖營利犯第九十一條之一第二項明知係侵害著作財產權之重製物而"
+            }
+          ],
+          "latestAmendmentDate": "2022-04-15",
+          "amendments": [
+            {
+              "article": "100",
+              "date": "1992-05-22",
+              "kind": "全文修正"
+            },
+            {
+              "article": "100",
+              "date": "1997-12-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "100",
+              "date": "2003-06-06",
+              "kind": "修正"
+            },
+            {
+              "article": "100",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "100",
+              "date": "2022-04-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "商標法告訴乃論條文（條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        },
+        {
+          "ref": "刑事訴訟法第 237 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "237",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "告訴乃論之罪，其告訴應自得為告訴之人知悉犯人之時起，於六個月內為之。\n得為告訴之人有數人，其一人遲誤期間者，其效力不及於他人。"
+            }
+          ],
+          "latestAmendmentDate": "1967-01-13",
+          "amendments": [
+            {
+              "article": "237",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "237",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "237",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 239 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "239",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "告訴乃論之罪，對於共犯之一人告訴或撤回告訴者，其效力及於其他共犯。"
+            }
+          ],
+          "latestAmendmentDate": "2021-05-31",
+          "amendments": [
+            {
+              "article": "239",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "239",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "239",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "239",
+              "date": "2021-05-31",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }
