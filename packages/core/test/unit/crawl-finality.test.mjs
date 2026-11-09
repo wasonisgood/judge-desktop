@@ -144,4 +144,10 @@ test('extractDefendants：從判決開頭取出多位被告姓名，遇「犯」
   assert.deepEqual(extractDefendants('被告 甲○○、乙○○\n主文\n甲○○犯詐欺罪'), ['甲○○', '乙○○']);
   assert.deepEqual(extractDefendants('上訴人即被告王小明 因詐欺案件'), ['王小明']);
   assert.deepEqual(extractDefendants('本文沒有當事人欄位'), []);
+  // 實測回歸：「被告前案紀錄表各1份在卷」不是姓名；「被 告 周卉蘭指定辯護人」只取姓名。
+  assert.deepEqual(extractDefendants('被 告 周卉蘭指定辯護人 本院公設辯護人\n被告前案紀錄表各1份在卷'), ['周卉蘭']);
+  // 聲請案件的受刑人（標示為「受 刑 人」）。
+  assert.deepEqual(extractDefendants('聲 請 人 臺灣桃園地方檢察署檢察官\n受 刑 人 林文棋上列聲請人'), ['林文棋']);
+  // 實測回歸：「被告現繫屬」「被告入監執行後」等狀態語不是姓名。
+  assert.deepEqual(extractDefendants('被告林文棋現繫屬\n被告入監執行後'), ['林文棋']);
 });

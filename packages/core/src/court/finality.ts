@@ -82,14 +82,27 @@ export function namedInHeader(fullText: string, name: string): boolean {
 export function extractDefendants(fullText: string): string[] {
   const head = fullText.slice(0, 600);
   const names: string[] = [];
-  const re = /被告\s*([^\s、，,。；;（(:：犯因於上列經即與及]{1,10}(?:\s*[、，,]\s*[^\s、，,。；;（(:：犯因於上列經即與及]{1,10})*)/g;
+  const re = /(?:被\s*告|受\s*刑\s*人)\s*([^\s、，,。；;（(:：]{1,40}(?:\s*[、，,]\s*[^\s、，,。；;（(:：]{1,40})*)/g;
   for (const m of head.matchAll(re)) {
     for (const part of m[1].split(/[、，,]/)) {
-      const name = part.trim();
-      if (name && !names.includes(name)) names.push(name);
+      const name = cleanDefendantName(part.trim());
+      if (name.length < 2 || name.length > 8 || /[\d份各]/.test(name)) continue;
+      if (!names.includes(name)) names.push(name);
     }
   }
   return names;
+}
+
+/** 名稱之後常接的詞（指定辯護人、上列、前案紀錄…）：遇到即截斷。 */
+const NAME_CUT = ['指定', '選任', '辯護人', '上列', '前案', '在卷', '紀錄', '現', '繫屬', '入監', '執行', '在押', '羈押', '因', '犯', '於', '經', '即', '與', '及', '年', '月', '日', '等', '本院', '公訴'];
+
+function cleanDefendantName(raw: string): string {
+  let s = raw;
+  for (const k of NAME_CUT) {
+    const i = s.indexOf(k);
+    if (i >= 0) s = s.slice(0, i);
+  }
+  return s.trim();
 }
 
 /** 上訴審判決是否以 ref 為原審，且載明被告姓名。 */
