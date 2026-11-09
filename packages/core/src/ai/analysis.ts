@@ -153,7 +153,7 @@ export function normalizeBriefFields(fields: BriefField[]): BriefField[] {
 export async function briefJudgment(
   ai: AiComplete,
   d: JudgmentDetail,
-  opts: { focus: string; length: string; fields?: BriefField[] },
+  opts: { focus: string; length: string; fields?: BriefField[]; lawContext?: string },
 ): Promise<BriefDocument> {
   const system = '你是台灣法律研究助理。依使用者指定的重點、長度與欄位，只根據提供的判決原文整理，不得編造。以繁體中文回答，並且只輸出一個 JSON 物件。';
   const focus = opts.focus.trim() || '由你判斷最重要的爭點、事實、理由與主文';
@@ -165,6 +165,7 @@ export async function briefJudgment(
     `歷審位置：${d.historyPosition?.summary ?? '未取得歷審資料'}`,
     `法院：${d.meta.court ?? ''}　日期：${d.meta.dateIso ?? d.meta.dateMinguo}　案由：${d.meta.cause}`,
     `使用者想了解的重點：${focus}`,
+    ...(opts.lawContext ? ['判決引用法規的現行條文與沿革（判讀時請對照，不可編造條文內容）：', opts.lawContext, ''] : []),
     `輸出長度：${opts.length}`,
     '',
     '請輸出 JSON，格式：{"title":"文書標題","sections":[{"heading":"段落標題","paragraphs":["段落一"],"evidence":["依據的原文逐字引用"]}]}',

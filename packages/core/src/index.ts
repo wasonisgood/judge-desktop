@@ -54,3 +54,5 @@ export * from './pipeline/trace';
 export * from './pipeline/queryRounds';
 export * from './pipeline/settle';
 export * from './pipeline/proposeQueries';
+export * from './pipeline/searchBudget';
+export * from './pipeline/lawContext';

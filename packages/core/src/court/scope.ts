@@ -14,6 +14,8 @@ export interface ScopeOptions {
   /** 西元年；未設定則不限制。 */
   yearFrom?: number;
   yearTo?: number;
+  /** 實際送去司法院搜尋的關鍵字；未提供時使用法規名稱。引用比對一律以法規名稱進行。 */
+  searchQuery?: string;
   /** 最多處理的筆數（每筆都要取得內頁，會花時間）。 */
   maxItems?: number;
   client?: CourtClient;
@@ -80,7 +82,7 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
   const jurisdiction = jurisdictionRegistry.get(opts.jurisdiction);
   const client = opts.client ?? new CourtClient();
   const max = Math.min(Math.max(opts.maxItems ?? 30, 1), 200);
-  const candidates = await jurisdiction.search(opts.statute, { maxItems: max * 2, client });
+  const candidates = await jurisdiction.search(opts.searchQuery?.trim() || opts.statute, { maxItems: max * 2, client });
   const rows: ScopeRow[] = [];
   let done = 0;
   for (const it of candidates) {

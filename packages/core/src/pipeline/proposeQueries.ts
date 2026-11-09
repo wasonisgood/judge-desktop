@@ -9,6 +9,8 @@ export interface ProposeInput {
   tried: string[];
   keptCount: number;
   round: number;
+  /** 法規上下文（現行條文與沿革）；提供時 AI 會讀入後再提議關鍵字。 */
+  lawContext?: string;
 }
 
 export async function proposeQueries(ai: AiComplete, input: ProposeInput): Promise<QueryProposal> {
@@ -17,6 +19,7 @@ export async function proposeQueries(ai: AiComplete, input: ProposeInput): Promi
     `使用者需求：${input.request}`,
     `已嘗試的關鍵字：${input.tried.join('、') || '（無）'}`,
     `目前保留的結果：${input.keptCount} 筆（第 ${input.round} 輪後）`,
+    ...(input.lawContext ? ['相關法規內容（請據此選用正式用語與條文用字）：', input.lawContext, ''] : []),
     '',
     '若能判斷，請提議 1 到 3 組新的關鍵字（與已嘗試的不同，短詞為佳）。',
     '若需求語意不清（例如同時可能指兩種法律領域），請回報 unclear 並提出 2 到 3 個候選解讀。',
