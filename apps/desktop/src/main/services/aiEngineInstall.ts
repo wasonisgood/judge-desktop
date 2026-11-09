@@ -17,6 +17,7 @@ import { appendFailure } from '../data/local/failureLog';
 import { emitStage, runAsJob, type StageEvent } from './jobBus';
 import { setModule, ensureBundledModules } from './moduleState';
 import { installEngineFiles } from './engineInstaller';
+import { checkPrerequisites } from './prerequisites';
 
 export interface InstallOptions {
   /** 強制重新安裝自己的引擎（不沿用既有服務）。 */
@@ -54,6 +55,10 @@ async function installAiEngineModuleCore(plan: LocalPlan, send: (ev: StageEvent)
       source = `先前偵測（${cached.at.slice(0, 16).replace('T', ' ')}）`;
     }
     await ev(stage, 'done', { detail: `記憶體 ${hw.ramGB} GB，磁碟可用 ${hw.freeDiskGB} GB，CPU ${arch}（${source}）` });
+
+    // 前置工具（macOS、Linux）：缺少 tar 或 df 時在這裡停止，並給出發行版對應的安裝指令。
+    const pre = await checkPrerequisites();
+    if (!pre.ok) throw new Error(pre.error);
 
     stage = 'checkNetwork';
     await ev(stage, 'start');
