@@ -22,13 +22,16 @@ export interface CodingFieldInput {
   enabled?: boolean;
 }
 
-/** 預設欄位集（與原本的逐案分析欄位一致；id 沿用舊欄位名，舊結果可直接對應）。 */
+/**
+ * 預設欄位集（與原本的逐案分析欄位一致，順序也相同，舊的 Excel 版面不變；id 沿用舊欄位名，舊結果可直接對應）。
+ * 使用者可取消勾選、改名、調整順序，或加入自訂欄位。
+ */
 export const DEFAULT_CODING_FIELDS: CodingField[] = [
+  { id: 'group', name: '分類', description: '依案件性質歸類的類型名稱（四字到十字）' },
   { id: 'issue', name: '爭點', description: '本案爭點' },
   { id: 'holding', name: '法院見解', description: '法院見解（核心論證）' },
   { id: 'statuteApplication', name: '法條適用', description: '該法規如何被適用或排除' },
   { id: 'outcome', name: '結論', description: '結論（駁回、廢棄發回、准許等）' },
-  { id: 'group', name: '分類', description: '依案件性質歸類的類型名稱（四字到十字）' },
 ];
 
 /** 欄位名稱的上限（字），避免過長的自訂名稱撐爆表格與提示詞。 */

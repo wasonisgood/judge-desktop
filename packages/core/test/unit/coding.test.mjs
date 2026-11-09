@@ -9,9 +9,9 @@ import {
 const TEXT = '原告主張被告行為構成侵權行為，依國家賠償法第二條第二項請求賠償。法院認為該請求應予駁回，理由如下。';
 const field = (id, name) => ({ id, name });
 
-test('預設欄位集與舊欄位名一致，順序為爭點、法院見解、法條適用、結論、分類', () => {
-  assert.deepEqual(DEFAULT_CODING_FIELDS.map((f) => f.id), ['issue', 'holding', 'statuteApplication', 'outcome', 'group']);
-  assert.deepEqual(DEFAULT_CODING_FIELDS.map((f) => f.name), ['爭點', '法院見解', '法條適用', '結論', '分類']);
+test('預設欄位集與舊欄位 id 一致，順序與舊版 Excel 相同（分類、爭點、法院見解、法條適用、結論）', () => {
+  assert.deepEqual(DEFAULT_CODING_FIELDS.map((f) => f.id), ['group', 'issue', 'holding', 'statuteApplication', 'outcome']);
+  assert.deepEqual(DEFAULT_CODING_FIELDS.map((f) => f.name), ['分類', '爭點', '法院見解', '法條適用', '結論']);
 });
 
 test('欄位清理：去除未勾選、空名與重複名，保留順序，自訂欄位指派不重複的識別碼', () => {

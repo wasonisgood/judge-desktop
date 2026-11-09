@@ -23,6 +23,7 @@ export function registerSettingsIpc(): void {
       defaultMaxItems: s.defaultMaxItems,
       cacheDays: s.cacheDays,
       briefFields: s.briefFields,
+      scopeFields: s.scopeFields,
       localAiEnabled: s.localAiEnabled,
       defaultJurisdiction: s.defaultJurisdiction,
     };
@@ -74,6 +75,9 @@ export function registerSettingsIpc(): void {
     }
     if (patch.briefFields) {
       next.briefFields = (patch.briefFields as StoredSettings['briefFields']).filter((f) => f && typeof f.name === 'string');
+    }
+    if (patch.scopeFields) {
+      next.scopeFields = (patch.scopeFields as StoredSettings['scopeFields']).filter((f) => f && typeof f.name === 'string');
     }
     if (patch.federation) {
       next.federation = { ...EMPTY_FEDERATION, ...next.federation, ...patch.federation };
