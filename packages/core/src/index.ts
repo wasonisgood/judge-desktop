@@ -89,3 +89,4 @@ export * from './pipeline/criteria';
 export * from './court/passages';
 export * from './ai/semanticRank';
 export * from './ai/scopedQa';
+export * from './pipeline/designGuide';
