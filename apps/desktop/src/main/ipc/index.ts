@@ -11,6 +11,7 @@ import { registerBriefIpc } from './briefIpc';
 import { registerAuthIpc } from './authIpc';
 import { registerJobsIpc } from './jobsIpc';
 import { registerKnowledgeIpc } from './knowledgeIpc';
+import { registerDesignIpc } from './designIpc';
 
 export function registerIpc(): void {
   registerAuthIpc();
@@ -25,4 +26,5 @@ export function registerIpc(): void {
   registerBriefIpc();
   registerJobsIpc();
   registerKnowledgeIpc();
+  registerDesignIpc();
 }
