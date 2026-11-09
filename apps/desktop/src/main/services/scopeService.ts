@@ -14,6 +14,8 @@ export interface ScopeRunArgs {
   yearFrom?: number;
   yearTo?: number;
   maxItems: number;
+  /** 法院管轄區；未指定為台灣司法院。法規名稱確認與法條沿革目前只支援台灣法規資料庫。 */
+  jurisdiction?: string;
 }
 
 export interface ScopeProgress {
@@ -43,6 +45,7 @@ export async function runScope(
       yearTo: args.yearTo,
       maxItems: args.maxItems,
       client,
+      jurisdiction: args.jurisdiction,
       lawHistory,
       onProgress: (done, total) => onProgress({ statute: statute.name, done, total, phase: '篩選判決' }),
     });
@@ -50,7 +53,7 @@ export async function runScope(
     const analyses: CaseAnalysis[] = [];
     for (let i = 0; i < rows.length; i++) {
       onProgress({ statute: statute.name, done: i + 1, total: rows.length, phase: 'AI 逐案分析' });
-      const d = await cachedDetail(rows[i].id, client);
+      const d = await cachedDetail(rows[i].id, client, args.jurisdiction);
       analyses.push(await analyzeCase(ai, statute.name, rows[i], d));
     }
     onProgress({ statute: statute.name, done: 1, total: 1, phase: 'AI 綜合分析' });
