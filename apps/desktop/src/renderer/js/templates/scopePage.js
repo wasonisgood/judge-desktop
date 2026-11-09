@@ -22,10 +22,12 @@
             <input type="checkbox" id="scopeRelatedOnly">
             <span>只保留引用相關法規的判決（預設關閉，與判決列表相同；開啟後關鍵字結果會以相關法規篩選）</span>
           </label>
+          <small class="fed-msg" id="scopeRelatedOnlyMsg" role="status"></small>
           <label class="check">
             <input type="checkbox" id="scopeSmart">
             <span>智慧搜尋：AI 會自動調整關鍵字（最多 3 輪，未設定 AI 時只查一次）</span>
           </label>
+          <small class="fed-msg" id="scopeSmartMsg" role="status"></small>
           <label class="field">
             <span>法規（選填，每行一部；可以只寫法名，也可以寫到條、項、款，例如「民法第184條第1項」。法名需與全國法規資料庫的正式名稱相同）</span>
             <textarea id="scopeLines" rows="3" placeholder="例如：&#10;國家賠償法&#10;民法第184條第1項"></textarea>
@@ -68,6 +70,7 @@
             <button class="btn" type="button" id="scopeDocx" disabled>匯出 Word</button>
             <button class="btn" type="button" id="scopeExplain" disabled>查看處理流程</button>
           </div>
+          <p class="hint" id="scopeActionHint" role="status"></p>
           <div class="progress" id="scopeProgress" hidden><div class="bar"></div></div>
           <p class="status" id="scopeStatus" role="status"></p>
           <div class="clarify" id="scopeClarify" hidden></div>

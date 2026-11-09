@@ -130,3 +130,34 @@ test('AI 編碼沒有依據時標示待覆核，並在說明中提示', async ()
   assert.equal(v.reviewStatus, 'pending');
   assert.ok(r.notes.some((n) => /待覆核/.test(n)), '說明中要提示待覆核');
 });
+
+test('執行結束的流程面板：每個節點的狀態與說明句來自實際執行的紀錄', async () => {
+  const { ai } = makeAi();
+  const r = await run({ keyword: '戒嚴 賠償', relatedStatute: '國家賠償法', relatedOnly: true, aiAnalysis: true }, ai);
+  const byId = Object.fromEntries(r.flow.map((n) => [n.id, n]));
+  assert.equal(byId.search.status, 'done');
+  assert.equal(byId.lookup.status, 'skipped', '只用關鍵字，不做法名確認');
+  assert.equal(byId.coding.status, 'done');
+  assert.ok(byId.filter.lines.some((l) => /相關法規篩選/.test(l) || /篩選結果/.test(l)));
+  assert.ok(byId.coding.lines.some((l) => /AI 逐案編碼/.test(l)));
+  assert.ok(byId.verify.lines.some((l) => /依據驗證/.test(l)));
+  assert.match(r.explanation.paragraphs.at(-1), /^結果：/);
+  assert.ok(r.explanation.paragraphs.some((p) => /AI 設定：.*自動調整搜尋用語/.test(p)));
+});
+
+test('進度事件附上流程狀態：進行中的階段與之前的完成', async () => {
+  const { ai } = makeAi();
+  const events = [];
+  await svc.runScope({ maxItems: 10, statutes: [], keyword: '戒嚴 賠償', fields: FIELDS, aiAnalysis: true }, ai, (p) => events.push(p));
+  const coding = events.find((p) => p.phase === 'AI 逐案編碼');
+  assert.ok(coding, '應有逐案編碼的進度');
+  const s = Object.fromEntries(coding.flow.map((n) => [n.id, n.status]));
+  assert.equal(s.coding, 'running');
+  assert.equal(s.search, 'done');
+  assert.equal(s.synthesis, 'pending');
+});
+
+test('scopeFlowInputOf 與執行參數一致', () => {
+  const input = svc.scopeFlowInputOf({ statutes: ['國家賠償法'], keyword: ' 戒嚴 ', relatedStatute: '', relatedOnly: true, smart: true, aiAnalysis: false, fields: FIELDS, maxItems: 10 });
+  assert.deepEqual(input, { statutes: ['國家賠償法'], keyword: '戒嚴', relatedStatute: '', relatedOnly: true, smart: true, aiOn: false, fieldCount: 3 });
+});

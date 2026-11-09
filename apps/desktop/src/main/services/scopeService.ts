@@ -8,7 +8,8 @@ import {
   jurisdictionRegistry, buildScopeTable, CourtClient, analyzeCase, synthesizeScope, proposeQueries,
   currentTextForCitations, settleEach, newTrace, addStep, explainTrace, runQueryRounds, buildLawContext, buildClarifyOptions,
   raceAbort, isCancelError, normalizeCodingFields, DEFAULT_CODING_FIELDS, countPendingReview,
-  type CitationRef, type CodingField, type CodingFieldInput,
+  scopeFlowNodes, explainScopeTrace,
+  type CitationRef, type CodingField, type CodingFieldInput, type ScopeFlowInput, type ScopeFlowNode,
   type CaseAnalysis, type ClarifyOption, type CurrentLaw, type HistoryArticle, type PipelineTrace, type ScopeRow, type ScopeSynthesis, type AiComplete,
   type TraceExplanation,
 } from '@judge/core';
@@ -52,10 +53,27 @@ export interface ScopeProgress {
   done: number;
   total: number;
   phase: string;
+  /** 目前的流程狀態（節點與進行中的階段），畫面的流程面板直接使用。 */
+  flow?: ScopeFlowNode[];
+}
+
+/** 流程面板與按鈕前置條件共用的輸入：與執行參數一致。 */
+export function scopeFlowInputOf(args: ScopeRunArgs): ScopeFlowInput {
+  return {
+    statutes: args.statutes,
+    keyword: (args.keyword ?? '').trim(),
+    relatedStatute: (args.relatedStatute ?? '').trim(),
+    relatedOnly: !!args.relatedOnly,
+    smart: !!args.smart,
+    aiOn: args.aiAnalysis !== false,
+    fieldCount: normalizeCodingFields(args.fields ?? DEFAULT_CODING_FIELDS).length,
+  };
 }
 
 export interface ScopeRunDone {
   status: 'done';
+  /** 流程面板的最終狀態（每個節點完成、失敗、略過）。 */
+  flow: ScopeFlowNode[];
   sheets: ScopeSheet[];
   notes: string[];
   /** 使用者取消時為 true；sheets 為取消前已完成的部分。 */
@@ -69,6 +87,7 @@ export interface ScopeRunDone {
 /** 法名有多個候選：回傳選項，畫面讓使用者選；選定後以選項文字重新執行（issue #4 第 3 點）。 */
 export interface ScopeRunAsk {
   status: 'ask';
+  flow: ScopeFlowNode[];
   /** 要更正的輸入欄位：statute 為法規清單的那一行，keyword 為關鍵字欄位。 */
   target: 'statute' | 'keyword';
   /** 需要使用者選擇的那一行（法規）或關鍵字（原始輸入）。 */
@@ -113,7 +132,10 @@ export async function runScope(
 ): Promise<ScopeRunResult> {
   const sheets: ScopeSheet[] = [];
   const notes: string[] = [];
-  const trace = newTrace('範圍整理');
+  const trace = newTrace('標編碼標注工序');
+  const flowInput = scopeFlowInputOf(args);
+  // 進度事件附上流程狀態，畫面的流程面板即時更新。
+  const emit = (p: ScopeProgress) => onProgress({ ...p, flow: scopeFlowNodes(flowInput, { running: p.phase }) });
   const keyword = (args.keyword ?? '').trim();
   const relatedStatute = (args.relatedStatute ?? '').trim();
   if (args.statutes.length === 0 && !keyword) throw new Error('請輸入法規或關鍵字');
@@ -124,10 +146,10 @@ export async function runScope(
   if (aiOn && fields.length === 0) throw new Error('請至少勾選一個分析欄位');
   addStep(trace, {
     stage: 'AI 分析設定', module: 'rule', input: aiOn ? '啟用' : '關閉',
-    output: aiOn ? `逐案編碼（${fields.map((f) => f.name).join('、')}）與綜合分析、自動換關鍵字皆啟用` : '只做傳統篩選',
+    output: aiOn ? `逐案編碼（${fields.map((f) => f.name).join('、')}）與綜合分析、自動調整搜尋用語皆啟用` : '只做傳統篩選',
     decision: 'pass', reason: aiOn ? '使用者啟用 AI 分析' : '使用者關閉 AI 分析或沒有可用的 AI',
   });
-  const ctx: RunCtx = { args, ai, aiOn, client, signal, notes, trace, onProgress, fields };
+  const ctx: RunCtx = { args, ai, aiOn, client, signal, notes, trace, onProgress: emit, fields };
 
   for (const line of args.statutes) {
     if (signal?.aborted) break;
@@ -135,7 +157,7 @@ export async function runScope(
     try {
       const outcome = await runOneStatute(ctx, { line, name, citation });
       if (outcome.kind === 'ask') {
-        return { status: 'ask', target: 'statute', statuteLine: line, question: outcome.question, options: outcome.options, notes, trace, explanation: explainTrace(trace) };
+        return { status: 'ask', flow: scopeFlowNodes(flowInput, { trace }), target: 'statute', statuteLine: line, question: outcome.question, options: outcome.options, notes, trace, explanation: explainScopeTrace(trace) };
       }
       sheets.push(outcome.sheet);
     } catch (err) {
@@ -151,7 +173,7 @@ export async function runScope(
     try {
       const kw = await runKeywordSheet(ctx, keyword, relatedStatute);
       if (kw.kind === 'ask') {
-        return { status: 'ask', target: 'keyword', statuteLine: keyword, question: kw.question, options: kw.options, notes, trace, explanation: explainTrace(trace) };
+        return { status: 'ask', flow: scopeFlowNodes(flowInput, { trace }), target: 'keyword', statuteLine: keyword, question: kw.question, options: kw.options, notes, trace, explanation: explainScopeTrace(trace) };
       }
       sheets.push(kw.sheet);
     } catch (err) {
@@ -171,7 +193,17 @@ export async function runScope(
     summary: `${sheets.length} 部，共 ${total} 筆${cancelled ? '（已取消，部分結果）' : ''}`,
     payload: { sheets, yearFrom: args.yearFrom, yearTo: args.yearTo, trace },
   });
-  return { status: 'done', sheets, notes, cancelled, saveError: save.saveError, trace, explanation: explainTrace(trace) };
+  const pending = sheets.reduce((n, sh) => n + countPendingReview(sh.analyses), 0);
+  return {
+    status: 'done',
+    flow: scopeFlowNodes(flowInput, { trace }),
+    sheets,
+    notes,
+    cancelled,
+    saveError: save.saveError,
+    trace,
+    explanation: explainScopeTrace(trace, { sheets: sheets.length, rows: total, pending }),
+  };
 }
 
 type OneStatuteOutcome = { kind: 'sheet'; sheet: ScopeSheet } | { kind: 'ask'; question: string; options: ClarifyOption[] };
@@ -272,6 +304,13 @@ async function analyzeRows(ctx: RunCtx, label: string, rows: ScopeRow[], current
   const pending = countPendingReview(results);
   if (pending) notes.push(`「${label}」有 ${pending} 格編碼待覆核（依據無法在判決原文中找到，或內容未取得）。`);
   addStep(trace, { stage: 'AI 逐案編碼', module: 'cloud', input: `${rows.length} 筆判決，${fields.length} 個欄位`, output: `成功 ${results.length} 筆，失敗 ${failures.length} 筆，待覆核 ${pending} 格${cancelled ? '，已取消' : ''}`, decision: 'pass', reason: failures.length ? '失敗的案件已記錄，其餘照常生成' : '全部案件編碼完成' });
+
+  // 依據驗證與待覆核：分開記錄，說明視窗可以逐步說明。
+  const cells = results.reduce((n, a) => n + (a.values ?? []).length, 0);
+  const verified = results.reduce((n, a) => n + (a.values ?? []).reduce((m, v) => m + v.evidence.length, 0), 0);
+  const dropped = results.reduce((n, a) => n + (a.values ?? []).reduce((m, v) => m + v.droppedEvidence, 0), 0);
+  addStep(trace, { stage: '依據逐字驗證', module: 'rule', input: `${verified + dropped} 則依據`, output: `通過 ${verified} 則，移除 ${dropped} 則`, decision: 'pass', reason: '依據必須逐字出現在 AI 看過的原文中，否則丟棄' });
+  addStep(trace, { stage: '待覆核標示', module: 'rule', input: `${cells} 格`, output: `${pending} 格待覆核`, decision: 'pass', reason: '內容未取得，或依據被移除的格子' });
 
   let synthesis: ScopeSynthesis | null = null;
   if (!signal?.aborted) {
@@ -407,6 +446,9 @@ async function runKeywordSheet(ctx: RunCtx, keyword: string, relatedStatute: str
     return { kind: 'sheet', sheet: { statute: label, rows: [], analyses: [], synthesis: null, fields: ctx.fields } };
   }
   const rows = filterYears(found.rows, args);
+  if (relatedStatute) {
+    addStep(trace, { stage: '相關法規篩選', module: 'rule', input: `${found.rows.length} 筆`, output: `${filterYears(found.rows, args).length} 筆`, decision: 'pass', reason: relatedOnly ? `只保留引用「${relatedStatute}」的判決` : `未開啟，全部保留（相關法規只作為 AI 的上下文）` });
+  }
   addStep(trace, { stage: '整理篩選結果', module: 'rule', input: label, output: `${rows.length} 筆`, decision: 'pass', reason: relatedOnly ? `只保留引用「${relatedStatute}」的判決` : '關鍵字搜尋結果全部列出（不以法規篩選）' });
   const { analyses, synthesis } = await analyzeRows(ctx, label, rows, null);
   return { kind: 'sheet', sheet: { statute: label, rows, analyses, synthesis, fields: ctx.fields } };

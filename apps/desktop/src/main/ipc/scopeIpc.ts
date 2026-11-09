@@ -1,5 +1,6 @@
 // IPC：範圍整理表（法名確認、法條沿革、現行法規、執行、匯出）。範圍整理登記為背景工作，可取消（v3.6.0）。
 import { ipcMain } from 'electron';
+import { scopeUiState, type ScopeControlInput } from '@judge/core';
 import { type ScopeSheet, buildScopeWorkbook, buildScopeDocx } from '../scopeExporters';
 import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
 import { resolveStatute, currentLawFor } from '../data/cloud/lawRepo';
@@ -33,6 +34,19 @@ export function registerScopeIpc(): void {
         throw toUserError(err);
       }
     }));
+  // 按鈕與欄位的前置條件、尚未執行時的流程面板（純函式，見 core scopeFlow）。
+  ipcMain.handle('scope:controls', (_e, args: ScopeControlInput) => scopeUiState({
+    statutes: Array.isArray(args.statutes) ? args.statutes.map(String) : [],
+    keyword: String(args.keyword ?? ''),
+    relatedStatute: String(args.relatedStatute ?? ''),
+    relatedOnly: !!args.relatedOnly,
+    smart: !!args.smart,
+    aiOn: !!args.aiOn,
+    fieldCount: Number(args.fieldCount) || 0,
+    running: !!args.running,
+    hasResult: !!args.hasResult,
+    hasExplanation: !!args.hasExplanation,
+  }));
   ipcMain.handle('export:scope', async (_e, args: { sheets: ScopeSheet[]; yearFrom?: number; yearTo?: number; format: 'xlsx' | 'docx' }) => {
     const ext = args.format;
     const meta = { yearFrom: args.yearFrom, yearTo: args.yearTo };

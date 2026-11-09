@@ -26,6 +26,16 @@
 .table tr.row-picked td { background: var(--shu-wash); }
 .table tr.row-picked td:first-child { box-shadow: inset 3px 0 0 var(--shu); }
 
+/* 標編碼標注工序的流程面板：沿用工作負載身分聯盟引導面板（fed-steps）的步驟樣式，只補狀態顏色 */
+.scope-steps { grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); }
+.scope-step-btn { min-height: 0; }
+.scope-step-state { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; color: var(--ink-3); }
+.scope-step-state .fed-tick { width: 12px; height: 12px; }
+.scope-step-btn.done .scope-step-state { color: var(--koke); }
+.scope-step-btn.failed .scope-step-state, .scope-step-btn.running .scope-step-state, .scope-step-btn.waiting .scope-step-state { color: var(--shu-ink); }
+.scope-step-body p { margin: 4px 0; }
+.explain-body { max-height: 60vh; overflow-y: auto; }
+
 /* 標編碼標注工序：欄位設定的上移／下移／移除按鈕併成一格；待覆核標記 */
 .coding-field-actions { display: flex; gap: 4px; }
 .pending-tag { display: inline-block; margin-left: 6px; padding: 0 6px; font-style: normal; font-size: 0.75rem; color: var(--shu); border: 1px solid var(--shu); border-radius: 3px; }
