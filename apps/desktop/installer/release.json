@@ -8,7 +8,7 @@
   "minimumVersion": "1.0.0",
   "mandatory": false,
   "notes": {
-    "zh": "・新增 macOS（dmg、zip）與 Linux（AppImage、deb、rpm）安裝包；macOS 修正複製貼上快捷鍵。\n・啟動時新增登入閘門（瀏覽器登入，權杖加密保存）；設定頁可登出。\n・授權頁支援 Google 帳號；已在瀏覽器登入時自動完成。\n・發版流程拆為多個平臺工作，共用部分只建置一次。\n・單檔不超過 300 行，主程序與畫面依資料層、服務、視圖、控制器分層。\n・包含 3.2 的全部功能。",
-    "en": "・Added macOS (dmg, zip) and Linux (AppImage, deb, rpm) packages; macOS copy and paste shortcuts fixed.\n・A sign-in gate at startup (browser sign-in, tokens stored encrypted); sign-out in Settings.\n・The authorization page supports Google accounts and completes automatically when already signed in.\n・The release pipeline builds the shared parts once across platforms.\n・Source files kept under 300 lines and layered by data, service, view and controller.\n・Includes all 3.2 features."
+    "zh": "・新增 macOS（dmg、zip）與 Linux（AppImage、deb、rpm）安裝包；macOS 修正複製貼上快捷鍵。\n・啟動時新增登入閘門（瀏覽器登入，權杖加密保存）；設定頁可登出。\n・授權頁支援 Google 帳號；已在瀏覽器登入時自動完成。\n・發版流程拆為多個平臺工作，共用部分只建置一次。\n・單檔不超過 300 行，主程序與畫面依資料層、服務、視圖、控制器分層。\n・判決列表新增「手動輸入判決」：每行貼上判決網址或 ID，產生列表並可匯出 Excel。\n・判決列表、範圍整理、單一判決精讀可選擇 AI 來源（自動、本地模型、雲端）。\n・模組隨 App 版本增量同步，不需個別下載。\n・包含 3.2 的全部功能。",
+    "en": "・Added macOS (dmg, zip) and Linux (AppImage, deb, rpm) packages; macOS copy and paste shortcuts fixed.\n・A sign-in gate at startup (browser sign-in, tokens stored encrypted); sign-out in Settings.\n・The authorization page supports Google accounts and completes automatically when already signed in.\n・The release pipeline builds the shared parts once across platforms.\n・Source files kept under 300 lines and layered by data, service, view and controller.\n・Added manual judgment entry on the list page: paste judgment URLs or IDs, build a list, and export to Excel.\n・The list, scope and single-judgment brief pages let you choose the AI source (auto, local model, or cloud).\n・Modules sync incrementally with the app version; no separate download is needed.\n・Includes all 3.2 features."
   }
 }
