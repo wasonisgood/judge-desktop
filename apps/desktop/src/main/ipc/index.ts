@@ -9,6 +9,7 @@ import { registerAssistantIpc } from './assistantIpc';
 import { registerBriefIpc } from './briefIpc';
 import { registerAuthIpc } from './authIpc';
 import { registerJobsIpc } from './jobsIpc';
+import { registerKnowledgeIpc } from './knowledgeIpc';
 
 export function registerIpc(): void {
   registerAuthIpc();
@@ -21,4 +22,5 @@ export function registerIpc(): void {
   registerAssistantIpc();
   registerBriefIpc();
   registerJobsIpc();
+  registerKnowledgeIpc();
 }
