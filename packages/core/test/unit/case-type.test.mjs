@@ -98,6 +98,41 @@ test('結果表標籤：民事／刑事／行政／重疊／未知，與判定�
   assert.equal(caseTypeLabel('無字號'), '未知');
 });
 
+// 2026-11 擴充搜尋（50 組關鍵字，853 筆不重複字號）的字別證據。
+test('字別證據：每個判定都帶證據筆數；前綴規則與未觀察到的字別有明確標示', () => {
+  const c1 = caseTypeOf('臺灣臺北地方法院 113 年度消債更字第 5 號');
+  assert.equal(c1.type, '民事');
+  assert.equal(c1.evidence, 36, '證據筆數來自搜尋結果');
+  assert.equal(caseTypeOf('臺灣臺中地方法院 114 年度交字第 9 號').type, null, '交 只在行政法院的字號中觀察到，地方法院的同字別不判定');
+  assert.equal(caseTypeOf('臺灣臺中地方法院 114 年度交字第 9 號').status, 'unknown');
+  // 前綴規則：字別不在表中，但以「原」開頭，原字別觀察皆為刑事
+  const pre = caseTypeOf('臺灣高等法院 115 年度原某字第 1 號');
+  assert.equal(pre.type, '刑事');
+  assert.equal(pre.status, 'by-zi');
+  assert.match(pre.message, /前綴/);
+  // 使用者指定但未觀察到：保留並標示
+  const unobs = caseTypeOf('臺灣臺北地方法院 115 年度重刑字第 1 號');
+  assert.equal(unobs.type, '刑事');
+  assert.match(unobs.message, /未觀察到/);
+  // 交 在行政法院觀察 10 筆，字號無類型字樣時以法院為準
+  assert.equal(caseTypeOf('臺中高等行政法院 地方庭 115 年度交字第 33 號判決').type, '行政');
+});
+
+test('字別表：常見的民事、刑事、行政字別都有實際證據；重疊字別維持標示', () => {
+  const civil = ['補', '消債更', '司票', '家親聲', '勞訴', '監宣', '竹小'];
+  const crim = ['易', '上訴', '聲保', '交簡', '單聲沒', '侵訴', '原訴'];
+  const adm = ['續收', '停', '交上', '稅簡'];
+  for (const zi of civil) assert.equal(caseTypeOf(`115 年度${zi}字第 1 號`).type, '民事', zi);
+  for (const zi of crim) assert.equal(caseTypeOf(`115 年度${zi}字第 1 號`).type, '刑事', zi);
+  for (const zi of adm) assert.equal(caseTypeOf(`臺中高等行政法院 115 年度${zi}字第 1 號`).type, '行政', zi);
+  for (const zi of ['訴', '上', '抗', '聲', '簡', '再', '全', '重訴', '上易', '聲再', '簡上']) {
+    const c = caseTypeOf(`115 年度${zi}字第 1 號`);
+    assert.equal(c.type, null, `${zi} 不得單獨定案`);
+    assert.equal(c.status, 'ambiguous', zi);
+  }
+  assert.deepEqual(caseTypeOf('115 年度全字第 1 號').candidates.sort(), ['民事', '行政']);
+});
+
 test('使用者輸入的案件類型：只接受唯一的類型用語', () => {
   assert.equal(parseCaseTypeInput('民事'), '民事');
   assert.equal(parseCaseTypeInput('刑事案件'), '刑事');
