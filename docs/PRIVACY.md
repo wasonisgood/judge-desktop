@@ -28,8 +28,9 @@
   - 判決的顯示資訊：案號、標題、法院、日期、案由、來源網址、管轄區；
   - 刪除紀錄（記錄哪些標注已被刪除，避免被舊資料帶回）。
 - 上傳的內容儲存在伺服器上，依帳號隔離，只能由該帳號存取。
-- **同步功能目前尚未對外開放**，伺服器端的同步服務尚待部署。
-- **尚未實作、目前不會上傳的內容**：範圍整理結果、精讀結果、判決列表結果、研究設計摘要、匯出檔案的內容。這些內容目前只保存在使用者電腦上。若未來要把它們納入同步，本聲明會先更新，並由使用者另行決定是否啟用。
+- **同步服務已開放**：使用者登入後，按「立即同步」即可使用。
+- **目前尚未上傳的內容**：範圍整理結果、精讀結果、判決列表結果、匯出檔案的內容。這些內容目前只保存在使用者電腦上。若未來要把它們納入同步，本聲明會先更新，並由使用者另行決定是否啟用。
+- **將隨版本提供的功能**：編碼結果、研究設計摘要。這兩項功能正在開發中，將隨版本合併提供；屆時其同步範圍仍依本聲明（只在使用者主動同步時上傳），並會在版本發布時更新本聲明。在目前的版本中，這兩項內容不會上傳。
 
 ### 不會上傳的內容
 
@@ -85,8 +86,9 @@ Judge Research Desk (the "App") is a desktop application that runs on the user's
   - display information about the judgment: case number, title, court, date, cause, source URL, and jurisdiction;
   - deletion records (which annotations were deleted, so old data cannot bring them back).
 - Uploaded content is stored on the server per account and is accessible only to that account.
-- **Sync is not yet open to users.** The server-side sync service is awaiting deployment.
-- **Not yet implemented; not uploaded at present:** scope-table results, brief results, judgment-list results, research design summaries, and the contents of exported files. These remain only on the user's computer. If they are added to sync in the future, this statement will be updated first and the user will decide whether to enable it.
+- **The sync service is open.** After signing in, the user can use "Sync now".
+- **Not uploaded at present:** scope-table results, brief results, judgment-list results, and the contents of exported files. These remain only on the user's computer. If they are added to sync in the future, this statement will be updated first and the user will decide whether to enable it.
+- **Features planned for a future release:** coding results and research design summaries. These are under development and will be included in a future release. When they are, their sync will follow this statement (uploaded only when the user syncs manually), and this statement will be updated at that release. In the current version, these two are not uploaded.
 
 ### What is never uploaded
 
