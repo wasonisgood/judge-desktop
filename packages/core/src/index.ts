@@ -80,3 +80,4 @@ export {
 export {
   buildReviewPrompt, parseReviewReply, type ReviewPrompt, type ReviewReply,
 } from './knowledge/review';
+export * from './annotation/anchor';
