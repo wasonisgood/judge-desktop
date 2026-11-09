@@ -55,7 +55,6 @@ export function normalizeAiMode(v: unknown): AiMode {
   return v === 'local' || v === 'cloud' ? v : 'auto';
 }
 
-/** 依來源選擇回傳 AI 呼叫函式。本地與雲端共用同一個輸入格式（system、user、maxTokens），輸出都是文字。 */
 /** 依來源選擇回傳 AI 呼叫函式。signal 觸發時：雲端請求立即中止；本地請求的結果被捨棄並拋出取消（v3.6.0）。 */
 export async function requireAi(mode: AiMode = 'auto', signal?: AbortSignal): Promise<AiComplete> {
   const cfg = await aiConfigOrThrow();

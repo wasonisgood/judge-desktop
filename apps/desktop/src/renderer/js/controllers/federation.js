@@ -66,7 +66,7 @@
     if (!res.hasSession && !fileMode) missing.push('尚未登入本工具：請先在上方「帳號」登入。');
     res.problems.forEach(function (p) { missing.push(p.message); });
     var summary = $('fedSummary');
-    summary.textContent = missing.length ? '尚缺：' + missing.join(' ') : '設定完整，可以按「測試連線」。';
+    summary.textContent = missing.length ? '尚缺：' + missing.join(' ') : '設定完整。請先按「儲存」，再按「測試連線」（測試使用已儲存的設定）。';
     summary.className = 'hint ' + (missing.length ? 'bad' : 'good');
     if (isFedMode()) $('setTest').disabled = missing.length > 0;
   }

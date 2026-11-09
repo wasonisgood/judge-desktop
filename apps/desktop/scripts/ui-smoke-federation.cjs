@@ -58,10 +58,10 @@ app.whenReady().then(async () => {
     await wait(300);
     check('改回本工具簽發後隱藏檔案欄位', await js(`document.getElementById('fedFileRow').hidden === true`));
 
+    check('聯盟規則的主體預設為 desktop:*（全部）', await js(`document.getElementById('fedRuleSub').textContent === 'desktop:*'`));
     await js(`(function(){var r=document.getElementById('fedScopeOne'); r.checked=true; r.dispatchEvent(new Event('change'));})()`);
     await wait(150);
     check('選「只限我自己」時顯示取得主體的按鈕', await js(`document.getElementById('fedSubRow').hidden === false`));
-    check('聯盟規則的主體預設為 desktop:*（全部）', await js(`document.getElementById('fedRuleSub').textContent === 'desktop:*'`));
 
     await w.webContents.capturePage().then((img) => fs.writeFileSync(path.join(shotDir, 'federation-step4.png'), img.toPNG()));
   } catch (err) {
