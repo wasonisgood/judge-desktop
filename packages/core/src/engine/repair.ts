@@ -22,6 +22,7 @@ export interface RepairPlan {
 }
 
 const TABLE: Record<EngineErrorCode, { automatic: RepairActionId[]; userSteps: string[] }> = {
+  PREREQUISITE_MISSING: { automatic: ['retry'], userSteps: ['缺少系統工具（tar 或 df）。請依上方的安裝指令安裝後，再按「重試」。'] },
   DISK_FULL: { automatic: [], userSteps: ['磁碟空間不足，請清出至少 15 GB 後再按「重試」。'] },
   PERMISSION: { automatic: [], userSteps: ['權限不足。請以一般使用者身分重新開啟本程式，或確認安裝資料夾沒有被防毒軟體鎖定。'] },
   NETWORK: { automatic: ['retry'], userSteps: ['網路連線不穩。請確認網路後再按「重試」（會從中斷處續傳）。'] },

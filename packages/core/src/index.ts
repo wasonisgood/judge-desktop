@@ -47,3 +47,4 @@ export * from './modules/mirrorUrls';
 export * from './jurisdiction/registry';
 export * from './auth/pkce';
 export * from './local/gpuProbe';
+export * from './local/prerequisites';

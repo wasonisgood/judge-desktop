@@ -11,6 +11,7 @@ export const ENGINE_ERROR_CODES = [
   'SIGNATURE_INVALID',
   'HASH_MISMATCH',
   'PULL_FAILED',
+  'PREREQUISITE_MISSING',
   'UNKNOWN',
 ] as const;
 
@@ -40,5 +41,6 @@ export function classifyError(err: unknown): ClassifiedError {
   if (/安裝程式|installer/i.test(msg)) return pick('INSTALLER_FAILED', true);
   if (/服務.*(沒有回應|未回應)|SERVICE/i.test(msg)) return pick('SERVICE_DOWN', true);
   if (/拉取模型|pull/i.test(msg)) return pick('PULL_FAILED', true);
+  if (/缺少系統工具|command not found|(\btar\b|\bdf\b).*ENOENT|ENOENT.*\b(tar|df)\b/i.test(msg)) return pick('PREREQUISITE_MISSING', true);
   return pick('UNKNOWN', false);
 }
