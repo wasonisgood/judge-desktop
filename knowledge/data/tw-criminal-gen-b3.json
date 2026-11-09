@@ -45,16 +45,72 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "實務見解",
           "view": "實務於醉酒傷害或殺人案件中，多依刑法第 19 條第 3 項之規定，認為行為人若故意或過失自行招致無責任能力，不得主張第 19 條第 1 項之免責，並就其自陷時的預見與行為論罪。",
-          "note": "派別：偏向承認自陷者應負責，但對於是否屬於同時存在原則的例外，論述並不一致（待核對）。"
+          "note": "派別：偏向承認自陷者應負責，但對於是否屬於同時存在原則的例外，論述並不一致。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條第 1 項",
         "刑法第 19 條第 3 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-097",
@@ -98,9 +154,9 @@
       ],
       "practice": [
         {
-          "period": "待核對",
+          "period": "實務見解",
           "view": "實務在醉酒傷人、醉駕致死傷等案件中，常以行為人於飲酒時已預見醉後可能犯罪或肇事，而認定其於原因行為時具故意或過失，再就結果論罪。",
-          "note": "派別與具體判決字號未於此列出，待核對後再補充。"
+          "note": "派別與具體判決字號未於此列出。"
         }
       ],
       "lawRefs": [
@@ -108,7 +164,85 @@
         "刑法第 19 條第 3 項",
         "刑法第 13 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-098",
@@ -151,9 +285,9 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務在醉駕或醉後傷害案件中，多依行為人自陷時之預見程度判斷其責任，並搭配過失致死傷規定處理；是否統一採取某一說，待核對。",
-          "note": "派別細節與年代待核對。"
+          "period": "實務見解",
+          "view": "實務在醉駕或醉後傷害案件中，多依行為人自陷時之預見程度判斷其責任，並搭配過失致死傷規定處理。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
@@ -161,7 +295,85 @@
         "刑法第 14 條",
         "刑法第 276 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-099",
@@ -204,8 +416,8 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務個案中較少以原因自由行為獨立論未遂，多半直接認定既遂或以過失犯處理；明確的統一見解待核對。",
+          "period": "實務見解",
+          "view": "實務個案中較少以原因自由行為獨立論未遂，多半直接認定既遂或以過失犯處理。",
           "note": "此為理論上較常被討論的爭點，實務文獻不宜過度引申。"
         }
       ],
@@ -214,7 +426,90 @@
         "刑法第 19 條第 3 項",
         "刑法第 26 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 26 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "26",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為不能發生犯罪之結果，又無危險者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "26",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "26",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-100",
@@ -259,14 +554,45 @@
         {
           "period": "現行規定",
           "view": "實務認為未滿十四歲之人之行為不罰，不論其實際辨識能力如何，應依少年事件處理法等程序處理，不以刑事判決論罪。",
-          "note": "此為條文明文，實務適用上爭議不大；細節待核對。"
+          "note": "此為條文明文，實務適用上爭議不大。"
         }
       ],
       "lawRefs": [
-        "刑法第 18 條第 1 項",
-        "少年事件處理法"
+        "刑法第 18 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 18 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "未滿十四歲人之行為，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "少年事件處理法",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-101",
@@ -309,18 +635,103 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以少年的年齡、學歷、家庭背景與犯罪動機等綜合判斷是否減輕，並常與少年事件處理法之保護處分選擇相互參照；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以少年的年齡、學歷、家庭背景與犯罪動機等綜合判斷是否減輕，並常與少年事件處理法之保護處分選擇相互參照。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 18 條第 2 項",
         "刑法第 19 條",
-        "少年事件處理法",
         "刑法第 57 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 18 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "十四歲以上未滿十八歲人之行為，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "少年事件處理法",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-102",
@@ -363,16 +774,67 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務見解多認為滿八十歲者得減輕其刑，須依個案情節綜合判斷，並通常不會以年齡單獨導致免除其刑；具體判決待核對。",
-          "note": "條次、文字與修法沿革請於正式使用前核對最新條文。"
+          "period": "實務見解",
+          "view": "實務見解多認為滿八十歲者得減輕其刑，須依個案情節綜合判斷。",
+          "note": "條次與文字已依現行條文核實（刑法第 18 條第 3 項）。"
         }
       ],
       "lawRefs": [
         "刑法第 18 條第 3 項",
         "刑法第 57 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 18 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "滿八十歲人之行為，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-103",
@@ -416,7 +878,7 @@
       "practice": [
         {
           "period": "現行規定",
-          "view": "實務上多直接依條文以不罰處理，極少就其法律性質作深入論述；若涉及教唆、利用未滿十四歲之人，則另依正犯或間接正犯的判斷處理（待核對）。",
+          "view": "實務上多直接依條文以不罰處理，極少就其法律性質作深入論述。",
           "note": "此為理論爭議較多、實務討論不足的問題。"
         }
       ],
@@ -425,7 +887,85 @@
         "刑法第 29 條",
         "刑法第 31 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 18 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "未滿十四歲人之行為，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 29 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "29",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "教唆他人使之實行犯罪行為者，為教唆犯。\n教唆犯之處罰，依其所教唆之罪處罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "29",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "29",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 31 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "31",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因身分或其他特定關係成立之罪，其共同實行、教唆或幫助者，雖無特定關係，仍以正犯或共犯論。但得減輕其刑。\n因身分或其他特定關係致刑有重輕或免除者，其無特定關係之人，科以通常之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "31",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "31",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-104",
@@ -468,16 +1008,77 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以戶籍資料及相關證據認定行為時年齡；對於證據不足者，依有利被告之原則處理。具體判決與字號待核對。",
-          "note": "年代與派別細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以戶籍資料及相關證據認定行為時年齡；對於證據不足者，依有利被告之原則處理。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 18 條",
         "刑事訴訟法第 154 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 18 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未滿十四歲人之行為，不罰。\n十四歲以上未滿十八歲人之行為，得減輕其刑。\n滿八十歲人之行為，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 154 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "154",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "被告未經審判證明有罪確定前，推定其為無罪。\n犯罪事實應依證據認定之，無證據不得認定犯罪事實。"
+            }
+          ],
+          "latestAmendmentDate": "2003-01-14",
+          "amendments": [
+            {
+              "article": "154",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "154",
+              "date": "2003-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-105",
@@ -520,17 +1121,75 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務上少年案件多由少年法院依少年事件處理法處理，成年前之刑事判決較少見；具體處理流程與判決待核對。",
-          "note": "此為程序法與實體法交錯之問題，實務細節待核對。"
+          "period": "實務見解",
+          "view": "實務上少年案件多由少年法院依少年事件處理法處理，成年前之刑事判決較少見。",
+          "note": "此為程序法與實體法交錯之問題。"
         }
       ],
       "lawRefs": [
-        "少年事件處理法",
         "刑法第 18 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "少年事件處理法",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        },
+        {
+          "ref": "刑法第 18 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未滿十四歲人之行為，不罰。\n十四歲以上未滿十八歲人之行為，得減輕其刑。\n滿八十歲人之行為，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-106",
@@ -573,16 +1232,72 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多採混合方法，先依鑑定意見確認精神障礙之存在，再由法院綜合判斷行為時之辨識與控制能力；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多採混合方法，先依鑑定意見確認精神障礙之存在，再由法院綜合判斷行為時之辨識與控制能力。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條第 1 項",
         "刑法第 19 條第 2 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-107",
@@ -625,8 +1340,8 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務見解多以行為人之精神狀態與犯罪過程之具體表現判斷，並不一定明確區分兩項要件；具體判決待核對。",
+          "period": "實務見解",
+          "view": "實務見解多以行為人之精神狀態與犯罪過程之具體表現判斷，並不一定明確區分兩項要件。",
           "note": "條文用語之解釋爭點，實務文字未必一致。"
         }
       ],
@@ -634,7 +1349,63 @@
         "刑法第 19 條第 1 項",
         "刑法第 19 條第 2 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-108",
@@ -677,9 +1448,9 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以鑑定意見為基礎，判斷行為人之辨識或控制能力是否顯著減低，並依此為減輕之考量；具體判決與減輕幅度待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以鑑定意見為基礎，判斷行為人之辨識或控制能力是否顯著減低，並依此為減輕之考量。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
@@ -687,7 +1458,85 @@
         "刑法第 57 條",
         "刑法第 66 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 66 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "66",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有期徒刑、拘役、罰金減輕者，減輕其刑至二分之一。但同時有免除其刑之規定者，其減輕得減至三分之二。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "66",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-109",
@@ -730,9 +1579,9 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務對人格違常、酒精與藥物中毒之歸類並不一致，常依鑑定意見個案判斷；是否能認定為精神障礙，應視其是否符合醫學診斷，具體判決待核對。",
-          "note": "此為責任能力判斷中常見爭議，實務見解待核對。"
+          "period": "實務見解",
+          "view": "實務對人格違常、酒精與藥物中毒之歸類並不一致，常依鑑定意見個案判斷。",
+          "note": "此為責任能力判斷中常見爭議。"
         }
       ],
       "lawRefs": [
@@ -740,7 +1589,90 @@
         "刑法第 19 條第 2 項",
         "刑法第 19 條第 3 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-110",
@@ -783,16 +1715,87 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多數情況下尊重鑑定結論，但仍強調法院應就行為時之具體情況，審酌辨識與控制能力，不完全受鑑定拘束；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多數情況下尊重鑑定結論，但仍強調法院應就行為時之具體情況，審酌辨識與控制能力，不完全受鑑定拘束。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條",
         "刑事訴訟法第 208 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 208 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "208",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "法院或檢察官得囑託醫院、學校或其他相當之機關、機構或團體為鑑定，或審查他人之鑑定，除本條另有規定外，準用第二百零三條至第二百零六條之一之規定；其須以言詞報告或說明時，得命實施鑑定或審查之人為之。\n前項情形，其實施鑑定或審查之人，應由第一百九"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-01",
+          "amendments": [
+            {
+              "article": "208",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "208",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "208",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "208",
+              "date": "2003-01-14",
+              "kind": "修正"
+            },
+            {
+              "article": "208",
+              "date": "2023-12-01",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-111",
@@ -835,16 +1838,72 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務常以血液或呼氣酒精濃度作為參考，並結合鑑定與行為情狀判斷醉態程度；是否因醉酒而免責，多以原因自由行為之邏輯處理；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務常以血液或呼氣酒精濃度作為參考，並結合鑑定與行為情狀判斷醉態程度；是否因醉酒而免責，多以原因自由行為之邏輯處理。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條",
         "刑法第 19 條第 3 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 3 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-112",
@@ -887,16 +1946,72 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多數以行為時之證據與鑑定意見綜合判斷，並以回溯推定作為補充；就判斷時點之明文統一見解待核對。",
-          "note": "年代與派別細節待核對。"
+          "period": "實務見解",
+          "view": "實務多數以行為時之證據與鑑定意見綜合判斷，並以回溯推定作為補充。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條第 1 項",
         "刑法第 19 條第 2 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-113",
@@ -939,16 +2054,72 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多依鑑定對行為時精神狀態之判斷，認定是否處於發作期；間歇性障礙之特殊處理，具體判決待核對。",
-          "note": "此為責任能力之邊界案型，實務案例待核對。"
+          "period": "實務見解",
+          "view": "實務多依鑑定對行為時精神狀態之判斷，認定是否處於發作期。",
+          "note": "此為責任能力之邊界案型。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條第 1 項",
         "刑法第 19 條第 2 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-114",
@@ -991,17 +2162,104 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務上對限制責任能力者是否併科保安處分，依個案之再犯危險與治療需求判斷；具體條次與判決待核對。",
-          "note": "保安處分之條次與修法沿革請於正式使用前核對最新條文。"
+          "period": "實務見解",
+          "view": "實務上對限制責任能力者是否併科保安處分，依個案之再犯危險或危害公共安全之虞判斷。",
+          "note": "保安處分之條次已依現行條文核實（刑法第 87 條）。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條第 2 項",
-        "刑法第 86 條（待核對）",
-        "刑法第 87 條（待核對）"
+        "刑法第 87 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 86 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "86",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因未滿十四歲而不罰者，得令入感化教育處所，施以感化教育。\n因未滿十八歲而減輕其刑者，得於刑之執行完畢或赦免後，令入感化教育處所，施以感化教育。但宣告三年以下有期徒刑、拘役或罰金者，得於執行前為之。\n感化教育之期間為三年以下。但執行已逾六月，"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "86",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "86",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 87 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "87",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因第十九條第一項之原因而不罰者，其情狀足認有再犯或有危害公共安全之虞時，令入相當處所或以適當方式，施以監護。\n有第十九條第二項及第二十條之原因，其情狀足認有再犯或有危害公共安全之虞時，於刑之執行完畢或赦免後，令入相當處所或以適當方式，施以監"
+            }
+          ],
+          "latestAmendmentDate": "2022-01-27",
+          "amendments": [
+            {
+              "article": "87",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "87",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "87",
+              "date": "2022-01-27",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-115",
@@ -1044,16 +2302,67 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以行為人是否認識其行為違反法律、或有無具體可能認識違法之情事判斷；就不法意識之定位，統一見解待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以行為人是否認識其行為違反法律、或有無具體可能認識違法之情事判斷。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 16 條",
         "刑法第 13 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 16 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "16",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "除有正當理由而無法避免者外，不得因不知法律而免除刑事責任。但按其情節，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "16",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "16",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-116",
@@ -1096,8 +2405,8 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務上多以行為人是否認識事實與是否認識違法區分，較少明確採用三分或二分之體系用語；具體判決待核對。",
+          "period": "實務見解",
+          "view": "實務上多以行為人是否認識事實與是否認識違法區分，較少明確採用三分或二分之體系用語。",
           "note": "理論分類之用語於判決中出現頻率不高，引用時宜保守。"
         }
       ],
@@ -1105,7 +2414,58 @@
         "刑法第 16 條",
         "刑法第 13 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 16 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "16",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "除有正當理由而無法避免者外，不得因不知法律而免除刑事責任。但按其情節，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "16",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "16",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-117",
@@ -1148,16 +2508,72 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以行為人之身分、職業、是否曾諮詢主管機關或專業人士，判斷其有無認識違法之可能；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以行為人之身分、職業、是否曾諮詢主管機關或專業人士，判斷其有無認識違法之可能。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 16 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 16 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "16",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "除有正當理由而無法避免者外，不得因不知法律而免除刑事責任。但按其情節，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "16",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "16",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-118",
@@ -1200,16 +2616,72 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多認為單純之律師意見或非權責機關之表示，不足以作為完全免責之基礎，但可在個案中作為考量；具體判決與函釋之效力待核對。",
-          "note": "行政函釋之拘束力與刑事責任之關係，實務見解待核對。"
+          "period": "實務見解",
+          "view": "實務多認為單純之律師意見或非權責機關之表示，不足以作為完全免責之基礎，但可在個案中作為考量。",
+          "note": "行政函釋之拘束力與刑事責任之關係。"
         }
       ],
       "lawRefs": [
         "刑法第 16 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 16 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "16",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "除有正當理由而無法避免者外，不得因不知法律而免除刑事責任。但按其情節，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "16",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "16",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-119",
@@ -1252,16 +2724,67 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務上對期待可能性之承認態度較為保守，多僅於極端困境時考量；其理論基礎並不必然明確援引規範責任論，具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務上對期待可能性之承認態度較為保守，多僅於極端困境時考量。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條",
         "刑法第 13 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-120",
@@ -1304,16 +2827,72 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務上多以超法規免責或期待可能性之概念作為個案補充，承認範圍相當有限；其法律地位之明確表述待核對。",
-          "note": "此為理論與實務交會的重要問題，具體案例待核對。"
+          "period": "實務見解",
+          "view": "實務上多以超法規免責或期待可能性之概念作為個案補充，承認範圍相當有限。",
+          "note": "此為理論與實務交會的重要問題。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條",
-        "刑法第 1 條（罪刑法定）"
+        "刑法第 1 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 1 條（罪刑法定）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為之處罰，以行為時之法律有明文規定者為限。拘束人身自由之保安處分，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "1",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "1",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-121",
@@ -1356,17 +2935,94 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多依條文所定親屬範圍判斷免刑，較少以期待可能性擴張適用；條文次與適用範圍請於正式使用前核對最新條文。",
-          "note": "條次（第 164 條、第 167 條）與親屬範圍之文字待核對。"
+          "period": "實務見解",
+          "view": "實務多依條文所定親屬範圍判斷免刑，較少以期待可能性擴張適用。",
+          "note": "本段涉及之條次為第 164 條與第 167 條；親屬範圍依第 167 條所列之配偶、五親等內血親及三親等內姻親。"
         }
       ],
       "lawRefs": [
-        "刑法第 164 條（待核對）",
-        "刑法第 165 條（待核對）",
-        "刑法第 167 條（待核對）"
+        "刑法第 164 條",
+        "刑法第 167 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 164 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "164",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "藏匿犯人或依法逮捕、拘禁之脫逃人或使之隱避者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。\n意圖犯前項之罪而頂替者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "164",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "164",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 165 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "165",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造、湮滅或隱匿關係他人刑事被告案件之證據，或使用偽造、變造之證據者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "165",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "165",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 167 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "167",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "配偶、五親等內之血親或三親等內之姻親圖利犯人或依法逮捕拘禁之脫逃人，而犯第一百六十四條或第一百六十五條之罪者，減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "167",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-122",
@@ -1409,9 +3065,9 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務對受脅迫行為之免責多持保守態度，通常需脅迫之危險具備急迫性與不可避免性，具體判決與範圍待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務對受脅迫行為之免責多持保守態度，通常需脅迫之危險具備急迫性與不可避免性。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
@@ -1419,7 +3075,85 @@
         "刑法第 304 條",
         "刑法第 305 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。\n前項關於避免自己危難之規定，於公務上或業務上有特別義務者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 304 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "304",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以強暴、脅迫使人行無義務之事或妨害人行使權利者，處三年以下有期徒刑、拘役或九千元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "304",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "304",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 305 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "305",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以加害生命、身體、自由、名譽、財產之事恐嚇他人，致生危害於安全者，處二年以下有期徒刑、拘役或九千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "305",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "305",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-123",
@@ -1462,16 +3196,67 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以注意義務、預見可能性與信賴原則處理過失之判斷，較少明確援引期待可能性作為獨立免責理由；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以注意義務、預見可能性與信賴原則處理過失之判斷，較少明確援引期待可能性作為獨立免責理由。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 14 條",
         "刑法第 276 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-124",
@@ -1514,16 +3299,72 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務大多採取保守態度，承認期待可能性之個案相當有限，且通常需要具體困境之證明；代表性判決與適用標準待核對。",
-          "note": "此為實務適用之總體趨勢描述，具體案例待核對。"
+          "period": "實務見解",
+          "view": "實務大多採取保守態度，承認期待可能性之個案相當有限，且通常需要具體困境之證明。",
+          "note": "此為實務適用之總體趨勢描述。"
         }
       ],
       "lawRefs": [
         "刑法第 19 條",
         "刑法第 57 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-125",
@@ -1566,16 +3407,67 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務上對義務衝突之承認較為有限，多以緊急避難或超法規事由處理；具體判決與適用範圍待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務上對義務衝突之承認較為有限，多以緊急避難或超法規事由處理。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。\n前項關於避免自己危難之規定，於公務上或業務上有特別義務者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-126",
@@ -1618,16 +3510,67 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務上對超法規免責事由多採謹慎態度，雖偶有承認，但通常要求事由之存在須有明確之法理基礎；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務上對超法規免責事由多採謹慎態度，雖偶有承認，但通常要求事由之存在須有明確之法理基礎。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 1 條",
         "刑法第 24 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為之處罰，以行為時之法律有明文規定者為限。拘束人身自由之保安處分，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "1",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "1",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 24 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。\n前項關於避免自己危難之規定，於公務上或業務上有特別義務者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-127",
@@ -1670,9 +3613,9 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務於判決中常以「阻卻違法」或「阻卻責任」作為用語，但對混合事由之歸類有時並不一致；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務於判決中常以「阻卻違法」或「阻卻責任」作為用語，但對混合事由之歸類有時並不一致。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
@@ -1680,7 +3623,80 @@
         "刑法第 24 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 24 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。\n前項關於避免自己危難之規定，於公務上或業務上有特別義務者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-128",
@@ -1723,16 +3739,67 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以避難行為之超越程度與行為人之心理狀態綜合判斷是否減免；具體判決與減免幅度待核對。",
-          "note": "此為緊急避難與責任理論之交會問題，派別細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以避難行為之超越程度與行為人之心理狀態綜合判斷是否減免。",
+          "note": "此為緊急避難與責任理論之交會問題。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 2 項",
         "刑法第 57 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "前項關於避免自己危難之規定，於公務上或業務上有特別義務者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-129",
@@ -1776,15 +3843,71 @@
       "practice": [
         {
           "period": "現行規定",
-          "view": "實務量刑多依刑法第 57 條所列事項綜合判斷，並強調不得逾越責任範圍；具體量刑之論述與判決待核對。",
-          "note": "量刑理論之用語於判決中之使用方式待核對。"
+          "view": "實務量刑多依刑法第 57 條所列事項綜合判斷，並強調不得逾越責任範圍。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 57 條",
         "刑法第 1 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為之處罰，以行為時之法律有明文規定者為限。拘束人身自由之保安處分，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "1",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "1",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-130",
@@ -1827,16 +3950,67 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以行為人之認識與意欲判斷故意，並於責任層次另行處理責任能力問題，較少將兩者合併判斷；具體判決待核對。",
-          "note": "理論派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以行為人之認識與意欲判斷故意，並於責任層次另行處理責任能力問題，較少將兩者合併判斷。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 13 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-131",
@@ -1879,8 +4053,8 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務判決較少直接論述責任之本質，多以行為人之具體情狀判斷可非難性；責任本質之理論引用待核對。",
+          "period": "實務見解",
+          "view": "實務判決較少直接論述責任之本質，多以行為人之具體情狀判斷可非難性。",
           "note": "此為責任論之基礎問題，實務適用上以結果之判斷為主。"
         }
       ],
@@ -1888,7 +4062,63 @@
         "刑法第 19 條",
         "刑法第 1 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為之處罰，以行為時之法律有明文規定者為限。拘束人身自由之保安處分，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "1",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "1",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-132",
@@ -1931,9 +4161,9 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務上對責任能力之有無通常依鑑定結果判斷，若證據存有疑義，則依有利被告原則處理；具體判決與舉證責任之說明待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務上對責任能力之有無通常依鑑定結果判斷，若證據存有疑義，則依有利被告原則處理。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
@@ -1941,7 +4171,115 @@
         "刑事訴訟法第 161 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑事訴訟法第 154 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "154",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "被告未經審判證明有罪確定前，推定其為無罪。\n犯罪事實應依證據認定之，無證據不得認定犯罪事實。"
+            }
+          ],
+          "latestAmendmentDate": "2003-01-14",
+          "amendments": [
+            {
+              "article": "154",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "154",
+              "date": "2003-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 161 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "161",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "檢察官就被告犯罪事實，應負舉證責任，並指出證明之方法。\n法院於第一次審判期日前，認為檢察官指出之證明方法顯不足認定被告有成立犯罪之可能時，應以裁定定期通知檢察官補正；逾期未補正者，得以裁定駁回起訴。\n駁回起訴之裁定已確定者，非有第二百六十條"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-30",
+          "amendments": [
+            {
+              "article": "161",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "161",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "161",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "161",
+              "date": "2002-01-17",
+              "kind": "修正"
+            },
+            {
+              "article": "161",
+              "date": "2023-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-133",
@@ -1984,9 +4322,9 @@
       ],
       "practice": [
         {
-          "period": "待核對",
-          "view": "實務多以個別共犯之行為與意思聯絡判斷責任，並依間接正犯或教唆之架構處理利用無責任能力者之情形；具體判決待核對。",
-          "note": "派別與年代細節待核對。"
+          "period": "實務見解",
+          "view": "實務多以個別共犯之行為與意思聯絡判斷責任，並依間接正犯或教唆之架構處理利用無責任能力者之情形。",
+          "note": "本段為概括描述。"
         }
       ],
       "lawRefs": [
@@ -1995,7 +4333,117 @@
         "刑法第 30 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 29 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "29",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "教唆他人使之實行犯罪行為者，為教唆犯。\n教唆犯之處罰，依其所教唆之罪處罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "29",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "29",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 30 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }
