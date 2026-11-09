@@ -72,7 +72,8 @@ function Compile($out, $sources, $extra) {
 }
 
 # 4. Compile Uninstaller
-Compile "$scriptDir\uninstall.exe" (@("$scriptDir\UninstallerApp.cs") + $common) @()
+$uninstallerSources = @("$scriptDir\UninstallerApp.cs", "$scriptDir\UninstallerWindow.Logic.cs", "$scriptDir\UninstallerWindow.UI.Cards.cs", "$scriptDir\UninstallerWindow.UI.Frame.cs", "$scriptDir\UninstallerWindow.UI.Helpers.cs", "$scriptDir\UninstallerEntry.cs")
+Compile "$scriptDir\uninstall.exe" ($uninstallerSources + $common) @()
 
 # 5. Compile Updater
 $updaterSources = @("$scriptDir\UpdaterApp.cs", "$scriptDir\UpdaterWindow.UI.cs", "$scriptDir\UpdaterWindow.Render.cs", "$scriptDir\UpdaterWindow.Download.cs", "$scriptDir\UpdaterWindow.Helpers.cs", "$scriptDir\UpdaterEntry.cs")

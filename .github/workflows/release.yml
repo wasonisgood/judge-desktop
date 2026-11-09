@@ -245,6 +245,9 @@ jobs:
           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
+          # 沒設定的 secret 會變成空字串；electron-builder 只看變數是否存在，會把空字串當成憑證路徑而報錯，所以空值要 unset。
+          [ -z "$CSC_LINK" ] && unset CSC_LINK CSC_KEY_PASSWORD
+          [ -z "$APPLE_ID" ] && unset APPLE_ID APPLE_APP_SPECIFIC_PASSWORD APPLE_TEAM_ID
           if [ -n "$CSC_LINK" ] && [ -n "$APPLE_ID" ]; then
             echo "使用 Developer ID 簽章並公證"
             npx electron-builder --mac --publish never
