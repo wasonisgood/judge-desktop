@@ -59,6 +59,7 @@ const manifest = {
   mandatory: Boolean(releaseConfig.mandatory),
   releaseDate: new Date().toISOString().split('T')[0],
   installerUrl: `https://github.com/${releaseConfig.githubRepo}/releases/download/v${pkg.version}/${releaseConfig.installerFileName}`,
+  installerMirrorUrl: `https://firebasestorage.googleapis.com/v0/b/judge-remote-mcp-2026.firebasestorage.app/o/${encodeURIComponent(`judge-desktop/v${pkg.version}/${releaseConfig.installerFileName}`)}?alt=media`,
   size: fileSize,
   sha256: sha256,
   notes: releaseConfig.notes

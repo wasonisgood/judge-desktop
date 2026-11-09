@@ -13,6 +13,8 @@ if (!tag || !outDir) {
   console.error('用法：node scripts/make-catalog.mjs <tag> <輸出資料夾>');
   process.exit(1);
 }
+// 與 @judge/core 的 FIREBASE_BUCKET 相同（Firebase Storage 鏡像）。
+const FIREBASE_BUCKET = 'judge-remote-mcp-2026.firebasestorage.app';
 const repo = process.env.GITHUB_REPOSITORY || 'wasonisgood/judge-desktop';
 fs.mkdirSync(outDir, { recursive: true });
 
@@ -34,6 +36,7 @@ for (const id of fs.readdirSync(modulesRoot)) {
           sha256: createHash('sha256').update(buf).digest('hex'),
           size: buf.length,
           url: `https://github.com/${repo}/releases/download/${tag}/${asset}`,
+          mirror: `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_BUCKET}/o/${encodeURIComponent(`judge-desktop/${tag}/${asset}`)}?alt=media`,
         };
       }
     }

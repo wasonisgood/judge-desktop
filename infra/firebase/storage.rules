@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// 司法院裁判研究的發佈鏡像（引擎 zip、模組檔案、安裝程式、更新清單）。
+// 任何人都可以唯讀下載 judge-desktop/ 底下的檔案；不允許用戶端寫入（發版由維護者以管理者身分上傳）。
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /judge-desktop/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{allOther=**} {
+      allow read, write: if false;
+    }
+  }
+}

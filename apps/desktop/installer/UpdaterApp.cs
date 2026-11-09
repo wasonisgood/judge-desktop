@@ -121,13 +121,16 @@ namespace JudgeResearchUpdater {
 
         private async Task CheckAsync() {
             state = UpState.Checking; Render();
+            UpdateState.Update(s => { s.Phase = "checking"; });
             try {
                 UpdateManifest m = await Task.Run(() => UpdateCommon.FetchManifest(10000));
                 SetManifest(m);
+                UpdateState.Update(s => { s.Phase = "idle"; s.LastCheckUtc = DateTime.UtcNow.ToString("o"); s.LastCheckResult = "ok"; s.LatestVersion = m.Version; s.LastError = null; });
             } catch (Exception ex) {
                 UpdateCommon.Log("Manual check failed: " + ex);
                 errorDetail = ex.Message;
                 state = UpState.CheckError;
+                UpdateState.Update(s => { s.Phase = "error"; s.LastCheckUtc = DateTime.UtcNow.ToString("o"); s.LastCheckResult = "error"; s.LastError = ex.Message; });
             }
             Render();
         }
@@ -448,6 +451,7 @@ namespace JudgeResearchUpdater {
         private async Task DownloadAndLaunchAsync() {
             cancelRequested = false;
             state = UpState.Downloading; Render();
+            UpdateState.Update(s => { s.Phase = "downloading"; });
             prgBar.Value = 0;
             txtProgressStatus.Text = T("連線中…", "Connecting…");
             txtProgressPct.Text = "0%";
@@ -461,16 +465,33 @@ namespace JudgeResearchUpdater {
                         try { UpdateCommon.VerifyInstaller(dest, manifest); reuse = !string.IsNullOrEmpty(manifest.Sha256); } catch { }
                     }
                     if (!reuse) {
-                        UpdateCommon.DownloadFile(manifest.InstallerUrl, dest, manifest.Size, (done, total) => {
-                            Dispatcher.BeginInvoke(new Action(() => {
-                                int pct = total > 0 ? (int)(done * 100 / total) : 0;
-                                prgBar.Value = pct;
-                                txtProgressPct.Text = total > 0 ? pct + "%" : "";
-                                txtProgressStatus.Text = UpdateCommon.FormatSize(done) + (total > 0 ? " / " + UpdateCommon.FormatSize(total) : "");
-                            }));
-                        }, () => cancelRequested);
+                        // 依序嘗試來源（鏡像 → GitHub）；每個來源下載後都必須通過 SHA-256 校驗，失敗就換下一個。
+                        Exception lastEx = null;
+                        foreach (string src in manifest.InstallerUrls()) {
+                            try {
+                                UpdateCommon.DownloadFile(src, dest, manifest.Size, (done, total) => {
+                                    Dispatcher.BeginInvoke(new Action(() => {
+                                        int pct = total > 0 ? (int)(done * 100 / total) : 0;
+                                        prgBar.Value = pct;
+                                        txtProgressPct.Text = total > 0 ? pct + "%" : "";
+                                        txtProgressStatus.Text = UpdateCommon.FormatSize(done) + (total > 0 ? " / " + UpdateCommon.FormatSize(total) : "");
+                                    }));
+                                }, () => cancelRequested);
+                                UpdateCommon.VerifyInstaller(dest, manifest);
+                                lastEx = null;
+                                break;
+                            } catch (OperationCanceledException) {
+                                throw;
+                            } catch (Exception ex) {
+                                lastEx = ex;
+                                UpdateCommon.Log("Installer from " + src + " failed: " + ex.Message);
+                                try { File.Delete(dest); } catch { }
+                            }
+                        }
+                        if (lastEx != null) throw lastEx;
                     }
                     Dispatcher.Invoke(() => { txtProgressStatus.Text = T("正在驗證檔案完整性…", "Verifying file integrity…"); });
+                    UpdateState.Update(s => { s.Phase = "verifying"; });
                     UpdateCommon.VerifyInstaller(dest, manifest);
                 });
             } catch (OperationCanceledException) {

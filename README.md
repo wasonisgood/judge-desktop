@@ -21,6 +21,12 @@ Windows 桌面應用程式，用來檢索司法院公開的裁判書，並整理
 
 範圍整理表與單一判決精讀需要 AI 服務。在「設定」輸入 API 金鑰即可。金鑰只保存在使用者自己的電腦，並以 Windows 加密機制保護。支援 Anthropic 與 OpenAI 相容的服務。
 
+## 系統需求與 .NET
+
+- 應用程式本身（Electron）與本地模組（AI 引擎、爬取模組）不需要 .NET；模組安裝與更新使用 Windows 內建的 PowerShell。
+- 安裝程式（`JudgeResearchSetup.exe`）與更新程式（`JudgeResearchUpdater.exe`）是 .NET Framework 4 程式。Windows 10（1903 之後）與 Windows 11 已內建 .NET Framework 4.8。若安裝程式無法啟動，請到微軟官方網站安裝 [.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48)，然後重新執行安裝程式。
+- 模組更新不需要更新程式：模組檔案由應用程式內直接下載與校驗（先 Firebase Storage 鏡像，失敗再 GitHub）。
+
 ## 本地 AI（可選，3.0 起）
 
 設定頁的「本地 AI」可檢查這台電腦是否適合在本機執行 AI（依記憶體、磁碟與顯卡分級）。同意後才會安裝本地服務（Ollama）與模型；精讀與範圍整理優先使用本地模型，失敗時自動改用雲端。不適合或未安裝時，行為與以前相同。

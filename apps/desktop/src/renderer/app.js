@@ -819,6 +819,22 @@
     });
   }
   document.getElementById('openWizard').addEventListener('click', function () { api.localAi.openWizard(); });
+  // 更新程式狀態：每 3 秒讀取一次（更新程式執行中或閒置都會即時反映）。
+  var UPD_PHASE = { idle: '閒置', checking: '檢查更新中', available: '有新版本', downloading: '下載中', verifying: '驗證中', installing: '安裝中', error: '發生錯誤' };
+  function refreshUpdater() {
+    api.updaterStatus().then(function (u) {
+      var el = document.getElementById('updaterSummary');
+      if (!u.available) { el.textContent = '更新程式：此版本未包含更新程式。'; el.className = 'status'; return; }
+      var parts = ['更新程式：' + (u.running ? '執行中（' + (UPD_PHASE[u.phase] || u.phase) + '）' : (UPD_PHASE[u.phase] || u.phase))];
+      if (u.lastCheckUtc) parts.push('上次檢查：' + new Date(u.lastCheckUtc).toLocaleString());
+      if (u.latestVersion) parts.push('最新版本：' + u.latestVersion);
+      if (u.lastError) parts.push('錯誤：' + u.lastError);
+      el.textContent = parts.join('　');
+      el.className = 'status' + (u.phase === 'error' ? ' error' : '');
+    }).catch(function () { /* 讀取失敗時保留上一次的內容 */ });
+  }
+  refreshUpdater();
+  setInterval(refreshUpdater, 3000);
   document.getElementById('openDiag').addEventListener('click', function () { api.localAi.openWizard({ view: 'diag' }); });
   api.localAi.onChanged(refresh);
   refresh();

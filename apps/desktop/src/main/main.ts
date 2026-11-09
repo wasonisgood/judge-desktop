@@ -433,6 +433,35 @@ async function annotateOriginalPdf(d: JudgmentDetail, doc: BriefDocument): Promi
   return { files, pages: pages.length, highlighted: pages.reduce((n, p) => n + p.highlighted, 0), ocrPages, quotes: quotes.length };
 }
 
+/** 更新程式的狀態：讀取更新程式寫入的 update-state.json，並查詢程序是否正在執行（唯讀）。 */
+async function readUpdaterStatus(): Promise<{
+  phase: string; lastCheckUtc: string | null; lastCheckResult: string | null; latestVersion: string | null; lastError: string | null; running: boolean; available: boolean;
+}> {
+  const file = path.join(app.getPath('appData'), 'JudgeResearch', 'update-state.json');
+  let s: Record<string, string> = {};
+  try { s = JSON.parse(await fs.readFile(file, 'utf8')); } catch { /* 尚未產生 */ }
+  let running = false;
+  if (process.platform === 'win32') {
+    running = await new Promise<boolean>((resolve) => {
+      const child = spawn('tasklist.exe', ['/FI', 'IMAGENAME eq JudgeResearchUpdater.exe', '/NH'], { windowsHide: true });
+      let out = '';
+      child.stdout.on('data', (d) => (out += d.toString()));
+      child.on('error', () => resolve(false));
+      child.on('close', () => resolve(/JudgeResearchUpdater\.exe/i.test(out)));
+    });
+  }
+  const updaterExists = fsSync.existsSync(path.join(path.dirname(app.getPath('exe')), 'JudgeResearchUpdater.exe'));
+  return {
+    phase: s.phase ?? 'idle',
+    lastCheckUtc: s.lastCheckUtc ?? null,
+    lastCheckResult: s.lastCheckResult ?? null,
+    latestVersion: s.latestVersion ?? null,
+    lastError: s.lastError ?? null,
+    running,
+    available: updaterExists,
+  };
+}
+
 function registerIpc() {
   // 視窗控制一律作用在「發出請求的那個視窗」（主視窗或本地模組精靈視窗）。
   const senderWin = (e: Electron.IpcMainInvokeEvent) => BrowserWindow.fromWebContents(e.sender);
@@ -444,6 +473,7 @@ function registerIpc() {
   });
   ipcMain.handle('win:close', (e) => senderWin(e)?.close());
   ipcMain.handle('app:info', () => ({ version: app.getVersion(), packaged: app.isPackaged }));
+  ipcMain.handle('app:updaterStatus', () => readUpdaterStatus());
   ipcMain.handle('update:openUpdater', () => openUpdater(true));
 
   // 本地模組：檢查與方案（唯讀）、安裝（使用者選擇後才執行）、修復、爬取模組安裝。

@@ -42,3 +42,5 @@ export * from './engine/diagnostics';
 export * from './engine/version';
 export * from './modules/catalog';
 export * from './modules/apply';
+export * from './engine/mirror';
+export * from './modules/mirrorUrls';

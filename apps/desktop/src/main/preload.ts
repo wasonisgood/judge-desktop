@@ -5,6 +5,7 @@ const invoke = (channel: string, ...args: unknown[]) => ipcRenderer.invoke(chann
 
 contextBridge.exposeInMainWorld('api', {
   appInfo: () => invoke('app:info'),
+  updaterStatus: () => invoke('app:updaterStatus'),
   win: {
     minimize: () => invoke('win:minimize'),
     toggleMaximize: () => invoke('win:toggleMaximize'),

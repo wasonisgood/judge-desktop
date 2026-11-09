@@ -15,7 +15,8 @@ $pkg = Get-Content "$rootDir\package.json" -Raw -Encoding UTF8 | ConvertFrom-Jso
 $version = $pkg.version
 $release = Get-Content "$scriptDir\release.json" -Raw -Encoding UTF8 | ConvertFrom-Json
 
-$manifestUrl = "https://github.com/$($release.githubRepo)/releases/latest/download/latest.json"
+$manifestUrl = "https://firebasestorage.googleapis.com/v0/b/judge-remote-mcp-2026.firebasestorage.app/o/judge-desktop%2Flatest%2Flatest.json?alt=media"
+$manifestFallbackUrl = "https://github.com/$($release.githubRepo)/releases/latest/download/latest.json"
 $installerUrl = "https://github.com/$($release.githubRepo)/releases/download/v$version/$($release.installerFileName)"
 
 function CsStr([string]$s) { return '"' + ($s -replace '\\', '\\' -replace '"', '\"') + '"' }
@@ -26,6 +27,7 @@ namespace JudgeResearch {
     internal static class BuildInfo {
         public const string Version = $(CsStr $version);
         public const string ManifestUrl = $(CsStr $manifestUrl);
+        public const string ManifestFallbackUrl = $(CsStr $manifestFallbackUrl);
     }
 }
 "@

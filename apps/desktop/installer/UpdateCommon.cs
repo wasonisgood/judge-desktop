@@ -15,6 +15,14 @@ namespace JudgeResearch {
         public string MinimumVersion;
         public bool Mandatory;
         public string InstallerUrl;
+        public string InstallerMirrorUrl;
+        // 下載來源順序：鏡像（Firebase Storage）優先，GitHub 為備援；每個來源都必須通過 SHA-256 校驗。
+        public List<string> InstallerUrls() {
+            var list = new List<string>();
+            if (!string.IsNullOrEmpty(InstallerMirrorUrl)) list.Add(InstallerMirrorUrl);
+            if (!string.IsNullOrEmpty(InstallerUrl) && !list.Contains(InstallerUrl)) list.Add(InstallerUrl);
+            return list;
+        }
         public string Sha256;
         public long Size;
         public string ReleaseDate;
@@ -98,8 +106,25 @@ namespace JudgeResearch {
         }
 
         // ───── 取得線上更新清單 ─────
+        // 清單來源：鏡像優先，GitHub 備援。
+        public static List<string> ManifestUrls() {
+            var list = new List<string>();
+            if (!string.IsNullOrEmpty(ManifestUrl)) list.Add(ManifestUrl);
+            string fb = BuildInfo.ManifestFallbackUrl;
+            if (!string.IsNullOrEmpty(fb) && !list.Contains(fb)) list.Add(fb);
+            return list;
+        }
+
         public static UpdateManifest FetchManifest(int timeoutMs) {
-            string url = ManifestUrl;
+            Exception last = null;
+            foreach (string u in ManifestUrls()) {
+                try { return FetchManifestFrom(u, timeoutMs); }
+                catch (Exception ex) { last = ex; Log("Manifest from " + u + " failed: " + ex.Message); }
+            }
+            throw last ?? new InvalidOperationException("Update manifest URL not configured");
+        }
+
+        static UpdateManifest FetchManifestFrom(string url, int timeoutMs) {
             if (string.IsNullOrEmpty(url)) throw new InvalidOperationException("Update manifest URL not configured");
             if (url.StartsWith("http", StringComparison.OrdinalIgnoreCase)) {
                 url += (url.Contains("?") ? "&" : "?") + "t=" + DateTime.UtcNow.Ticks;
@@ -131,6 +156,7 @@ namespace JudgeResearch {
                 MinimumVersion = Str(d, "minimumVersion"),
                 Mandatory = Bool(d, "mandatory"),
                 InstallerUrl = Str(d, "installerUrl"),
+                InstallerMirrorUrl = Str(d, "installerMirrorUrl"),
                 Sha256 = Str(d, "sha256"),
                 ReleaseDate = Str(d, "releaseDate")
             };
@@ -251,6 +277,12 @@ namespace JudgeResearch {
         public string Lang;
         // 有新版時自動下載並啟動安裝（預設開啟；可在 update-state.json 將 autoInstall 設為 false 關閉）
         public bool AutoInstall = true;
+        // 更新程式狀態（給主程式的設定頁顯示）：idle / checking / available / downloading / verifying / installing / error
+        public string Phase = "idle";
+        public string LastCheckUtc;
+        public string LastCheckResult;
+        public string LatestVersion;
+        public string LastError;
 
         static string FilePath { get { return Path.Combine(UpdateCommon.StateDir, "update-state.json"); } }
 
@@ -269,6 +301,11 @@ namespace JudgeResearch {
                         }
                         if (d.TryGetValue("lang", out v) && v != null) s.Lang = v.ToString();
                         if (d.TryGetValue("autoInstall", out v) && v is bool) s.AutoInstall = (bool)v;
+                        if (d.TryGetValue("phase", out v) && v != null) s.Phase = v.ToString();
+                        if (d.TryGetValue("lastCheckUtc", out v) && v != null) s.LastCheckUtc = v.ToString();
+                        if (d.TryGetValue("lastCheckResult", out v) && v != null) s.LastCheckResult = v.ToString();
+                        if (d.TryGetValue("latestVersion", out v) && v != null) s.LatestVersion = v.ToString();
+                        if (d.TryGetValue("lastError", out v) && v != null) s.LastError = v.ToString();
                     }
                 }
             } catch (Exception ex) { UpdateCommon.Log("State load failed: " + ex.Message); }
@@ -281,8 +318,19 @@ namespace JudgeResearch {
                 if (SnoozeUntilTicks > 0) d["snoozeUntil"] = new DateTime(SnoozeUntilTicks, DateTimeKind.Utc).ToString("o");
                 if (!string.IsNullOrEmpty(Lang)) d["lang"] = Lang;
                 d["autoInstall"] = AutoInstall;
+                d["phase"] = Phase ?? "idle";
+                if (!string.IsNullOrEmpty(LastCheckUtc)) d["lastCheckUtc"] = LastCheckUtc;
+                if (!string.IsNullOrEmpty(LastCheckResult)) d["lastCheckResult"] = LastCheckResult;
+                if (!string.IsNullOrEmpty(LatestVersion)) d["latestVersion"] = LatestVersion;
+                if (!string.IsNullOrEmpty(LastError)) d["lastError"] = LastError;
+                d["updatedUtc"] = DateTime.UtcNow.ToString("o");
                 File.WriteAllText(FilePath, new JavaScriptSerializer().Serialize(d), new UTF8Encoding(false));
             } catch (Exception ex) { UpdateCommon.Log("State save failed: " + ex.Message); }
+        }
+
+        // 讀取→修改→寫回（單一寫入點，避免覆蓋其他欄位）。
+        public static void Update(Action<UpdateState> change) {
+            try { var s = Load(); change(s); s.Save(); } catch (Exception ex) { UpdateCommon.Log("State update failed: " + ex.Message); }
         }
 
         public bool IsSnoozed { get { return SnoozeUntilTicks > DateTime.UtcNow.Ticks; } }

@@ -7,6 +7,7 @@ import * as fs from 'node:fs';
 import * as fsp from 'node:fs/promises';
 import * as path from 'node:path';
 import { downloadWithResume, sha256File } from '../engine/download';
+import { downloadFromFirstAvailable } from '../engine/mirror';
 import type { CatalogModule, InstalledModule } from './catalog';
 import type { ModuleId } from './registry';
 
@@ -83,8 +84,9 @@ export async function applyModuleUpdate(opts: ApplyOptions): Promise<ApplyResult
         continue;
       }
       opts.onProgress?.(`下載 ${rel}`);
-      await downloadWithResume({
-        url: f.url, file: dest, expectedSha256: f.sha256, fetchImpl: opts.fetchImpl,
+      // 先鏡像、後主要來源；每個來源都必須通過 SHA-256 校驗。
+      await downloadFromFirstAvailable({
+        urls: [f.mirror, f.url].filter((u): u is string => !!u), file: dest, expectedSha256: f.sha256, fetchImpl: opts.fetchImpl,
       });
       downloaded.push(rel);
     }

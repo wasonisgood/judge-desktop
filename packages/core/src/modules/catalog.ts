@@ -6,7 +6,10 @@ import type { ModuleId } from './registry';
 export interface CatalogFile {
   sha256: string;
   size: number;
+  /** 主要來源（GitHub Releases）。 */
   url: string;
+  /** 鏡像來源（Firebase Storage，優先使用）；可省略。 */
+  mirror?: string;
 }
 
 export interface CatalogModule {
@@ -56,6 +59,7 @@ export function validateCatalog(x: unknown): { ok: true; catalog: ModuleCatalog 
       if (p.includes('..') || p.startsWith('/') || /^[A-Za-z]:/.test(p)) return { ok: false, error: `${id} 檔案路徑不安全：${p}` };
       if (!SHA256.test(f.sha256)) return { ok: false, error: `${id}/${p} 的 sha256 格式錯誤` };
       if (typeof f.url !== 'string' || !/^https?:\/\//.test(f.url)) return { ok: false, error: `${id}/${p} 的網址無效` };
+      if (f.mirror !== undefined && !/^https:\/\//.test(f.mirror)) return { ok: false, error: `${id}/${p} 的鏡像網址無效` };
     }
   }
   return { ok: true, catalog: c };
