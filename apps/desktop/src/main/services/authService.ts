@@ -7,7 +7,7 @@ import {
   createPkce, createState, buildAuthorizeUrl, parseCallbackParams, isAccessValid,
 } from '@judge/core';
 import {
-  AUTH_BASE, LOOPBACK_PORT, REDIRECT_URI, registerClient, exchangeCode, refreshTokens, AuthHttpError, type TokenSet,
+  AUTH_BASE, LOOPBACK_PORT, REDIRECT_URI, registerClient, exchangeCode, refreshTokens, checkSession, AuthHttpError, type TokenSet,
 } from '../data/cloud/authRepo';
 import {
   readClientId, writeClientId, readSession, writeSession, clearSession, type AuthSession,
@@ -37,32 +37,46 @@ function toSession(t: TokenSet, previousRefresh: string | null): AuthSession {
   };
 }
 
-/** 目前登入狀態；權杖過期時先嘗試更新。 */
+/**
+ * 目前登入狀態。權威判斷在伺服器：每次檢查都向 /oauth/session 確認權杖仍有效（撤銷、過期都會在此生效）。
+ * 本機只保存權杖；伺服器無法連線時閘門保持關閉，不以本機記錄放行。
+ */
 export async function authStatus(): Promise<AuthState> {
   if (bypassed()) return { signedIn: true, expiresAt: null, message: '開發模式：已略過登入' };
-  const s = await readSession();
+  let s = await readSession();
   if (!s) return SIGNED_OUT(null);
-  if (isAccessValid(s.expiresAt)) return { signedIn: true, expiresAt: s.expiresAt, message: null };
-  if (!s.refreshToken) {
-    await clearSession();
-    return SIGNED_OUT('登入已過期，請重新登入。');
-  }
-  const clientId = await readClientId();
-  if (!clientId) {
-    await clearSession();
-    return SIGNED_OUT('登入資料不完整，請重新登入。');
-  }
-  try {
-    const next = toSession(await refreshTokens(s.refreshToken, clientId), s.refreshToken);
-    await writeSession(next);
-    return { signedIn: true, expiresAt: next.expiresAt, message: null };
-  } catch (err) {
-    // 授權伺服器拒絕更新（例如已撤銷）才清除；網路暫時失敗時保留工作階段，讓使用者稍後再試。
-    if (err instanceof AuthHttpError) {
+
+  if (!isAccessValid(s.expiresAt)) {
+    if (!s.refreshToken) {
       await clearSession();
       return SIGNED_OUT('登入已過期，請重新登入。');
     }
-    return SIGNED_OUT('無法確認登入狀態，請檢查網路後重試。');
+    const clientId = await readClientId();
+    if (!clientId) {
+      await clearSession();
+      return SIGNED_OUT('登入資料不完整，請重新登入。');
+    }
+    try {
+      s = toSession(await refreshTokens(s.refreshToken, clientId), s.refreshToken);
+      await writeSession(s);
+    } catch (err) {
+      if (err instanceof AuthHttpError) {
+        await clearSession();
+        return SIGNED_OUT('登入已過期，請重新登入。');
+      }
+      return SIGNED_OUT('無法向伺服器確認登入狀態，請檢查網路後重試。');
+    }
+  }
+
+  try {
+    const info = await checkSession(s.accessToken);
+    return { signedIn: true, expiresAt: info.expiresAt ?? s.expiresAt, message: null };
+  } catch (err) {
+    if (err instanceof AuthHttpError && err.status === 401) {
+      await clearSession();
+      return SIGNED_OUT('登入已失效，請重新登入。');
+    }
+    return SIGNED_OUT('無法向伺服器確認登入狀態，請檢查網路後重試。');
   }
 }
 

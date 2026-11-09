@@ -42,6 +42,12 @@ const server = http.createServer((req, res) => {
       res.writeHead(302, { location: `${seen.redirectUri}?code=E2E_CODE&state=${encodeURIComponent(seen.state)}` });
       return res.end();
     }
+    if (u.pathname === '/oauth/session' && req.method === 'GET') {
+      const tok = (req.headers.authorization || '').replace(/^Bearer\s+/i, '');
+      seen.sessionChecks = (seen.sessionChecks || 0) + 1;
+      if (!seen.revoked && (tok === 'jma_e2e' || tok === 'jma_e2e_2')) { res.writeHead(200, { 'content-type': 'application/json' }); return res.end(JSON.stringify({ active: true, client_name: 'e2e', scope: 'judge', expires_at: new Date(Date.now() + 3600e3).toISOString() })); }
+      res.writeHead(401, { 'content-type': 'application/json' }); return res.end(JSON.stringify({ active: false, error: 'invalid_token' }));
+    }
     if (u.pathname === '/oauth/token' && req.method === 'POST') {
       const f = new URLSearchParams(body);
       const json = (code, obj) => { res.writeHead(code, { 'content-type': 'application/json' }); res.end(JSON.stringify(obj)); };
@@ -93,11 +99,16 @@ server.listen(AUTH_PORT, '127.0.0.1', () => {
       check('登入後閘門隱藏', gateAfter === true, gateAfter);
 
       const st2 = await js(`window.api.auth.status()`);
-      check('登入狀態持久（未過期，不呼叫更新）', st2.signedIn === true && seen.refreshCalls === 0, JSON.stringify(st2));
+      check('登入狀態由伺服器確認（/oauth/session 被呼叫）', st2.signedIn === true && (seen.sessionChecks || 0) >= 1, JSON.stringify(st2));
 
       const enc = fs.readFileSync(path.join(tmp, 'auth-session.json'), 'utf8');
       check('權杖在磁碟上為加密內容（不含明文）', !enc.includes('jma_e2e') && enc.includes('"enc"'), enc.slice(0, 60));
 
+      // 模擬權杖在伺服器端被撤銷：本機仍有權杖，但伺服器回 401，必須回到未登入。
+      seen.revoked = true;
+      const revokedState = await js(`window.api.auth.status()`);
+      check('伺服器撤銷權杖後，本機狀態會回到未登入', revokedState.signedIn === false, JSON.stringify(revokedState));
+            seen.revoked = false;
       await js(`window.api.auth.signOut()`);
       const st3 = await js(`window.api.auth.status()`);
       check('登出後回到未登入', st3.signedIn === false, JSON.stringify(st3));

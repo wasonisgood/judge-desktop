@@ -79,3 +79,19 @@ export async function refreshTokens(refreshToken: string, clientId: string): Pro
   if (!res.ok || typeof json.access_token !== 'string') throw failure(res, json, '更新登入憑證失敗');
   return json as TokenSet;
 }
+
+/**
+ * 向伺服器確認權杖仍有效（GET /oauth/session）。
+ * 401 代表權杖已撤銷、過期或不存在；其他失敗（網路、5xx）由呼叫端視為「無法確認」。
+ */
+export async function checkSession(accessToken: string): Promise<{ expiresAt: number | null }> {
+  const res = await fetch(new URL('/oauth/session', AUTH_BASE), {
+    headers: { authorization: `Bearer ${accessToken}`, accept: 'application/json' },
+    signal: AbortSignal.timeout(15_000),
+  });
+  const json = await readJson(res);
+  if (res.status === 401) throw new AuthHttpError('登入已失效', 401, 'invalid_token');
+  if (!res.ok || json.active !== true) throw new AuthHttpError('無法確認登入狀態', res.status, null);
+  const expiresAt = typeof json.expires_at === 'string' ? Date.parse(json.expires_at) : NaN;
+  return { expiresAt: Number.isFinite(expiresAt) ? expiresAt : null };
+}
