@@ -130,6 +130,11 @@
       } else {
         renderParagraphs();
       }
+      if (current.notes && current.notes.length) {
+        var notes = el('ul', 'hint explain-notes');
+        current.notes.forEach(function (t) { notes.appendChild(el('li', '', t)); });
+        body.appendChild(notes);
+      }
     }
 
     function update(next) {

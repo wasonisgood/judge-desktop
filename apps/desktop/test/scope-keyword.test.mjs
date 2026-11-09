@@ -38,7 +38,8 @@ stub('../dist/main/data/cloud/lawRepo.js', {
   lawHistoryFor: async () => [],
   currentLawFor: async () => ({ pcode: 'P1', name: '國家賠償法', articles: [] }),
 });
-stub('../dist/main/services/savedResult.js', { saveToLibrary: async () => ({ saveError: null }) });
+const SAVED = [];
+stub('../dist/main/services/savedResult.js', { saveToLibrary: async (item) => { SAVED.push(item); return { saveError: null }; } });
 stub('../dist/main/services/lawContext.js', { lawContextForStatute: async () => ({ text: '', notes: [], statuteName: null }) });
 stub('../dist/main/services/knowledgeService.js', { knowledgeContextWithReview: async () => ({ text: '', usedIds: [], notes: [] }) });
 
@@ -155,6 +156,30 @@ test('進度事件附上流程狀態：進行中的階段與之前的完成', as
   assert.equal(s.coding, 'running');
   assert.equal(s.search, 'done');
   assert.equal(s.synthesis, 'pending');
+});
+
+test('流程紀錄即時推送：每寫入一步就有一則進度事件，說明句立即可見', async () => {
+  const { ai } = makeAi();
+  const events = [];
+  await svc.runScope({ maxItems: 10, statutes: [], keyword: '戒嚴 賠償', fields: FIELDS, aiAnalysis: true }, ai, (p) => events.push(p));
+  const recordOnly = events.filter((p) => !p.phase && p.flow);
+  assert.ok(recordOnly.length >= 3, `應有多則紀錄事件，實際 ${recordOnly.length}`);
+  const search = (flow) => flow.find((n) => n.id === 'search');
+  const firstWithSearch = recordOnly.find((p) => search(p.flow).lines.length > 0);
+  assert.ok(firstWithSearch, '搜尋的說明句應在執行中就出現');
+  assert.ok(!firstWithSearch.flow.find((n) => n.id === 'coding').lines.length, '編碼還沒做完，不應先出現');
+});
+
+test('保存的結果帶著處理流程與說明（從檔案開啟時使用）', async () => {
+  const { ai } = makeAi();
+  SAVED.length = 0;
+  const r = await run({ keyword: '戒嚴 賠償', aiAnalysis: true }, ai);
+  // 結果會透過 IPC 傳回畫面，必須能被結構化複製（Proxy 不行）。
+  assert.doesNotThrow(() => structuredClone(r));
+  const payload = SAVED.at(-1).payload;
+  assert.ok(Array.isArray(payload.flow) && payload.flow.length === 7);
+  assert.match(payload.explanation.paragraphs.at(-1), /^結果：/);
+  assert.equal(payload.trace.steps.length > 0, true);
 });
 
 test('scopeFlowInputOf 與執行參數一致', () => {

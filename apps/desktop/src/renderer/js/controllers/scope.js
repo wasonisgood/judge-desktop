@@ -7,6 +7,11 @@
   var api = window.api;
   var state = JR.state;
   var PAGE = 'scope';
+  // 尚未接入的功能：等對應分支合併後才會出現在流程中，這裡只說明，不產生任何處理步驟。
+  var PENDING_NOTES = [
+    '案件類型篩選：尚未接入，等案件類型分支（feat/case-type-handoff）合併後接入。',
+    '覆核：尚未接入，等覆核 UI 分支（feat/coding-review）合併後接入。'
+  ];
 
   function statuteLines() {
     return $('scopeLines').value.split(/\n/).map(function (s) { return s.trim(); }).filter(Boolean);
@@ -147,6 +152,18 @@
   }
 
   JR.controllers.scope = {
+    /**
+     * 從「檔案」開啟已保存的結果：流程與說明隨結果保存。舊結果沒有流程紀錄時，明確說明它產生於紀錄功能加入之前。
+     * 先設定流程狀態，再顯示結果（按鈕前置條件會讀取這些狀態）。
+     */
+    showSaved: function (p) {
+      state.scopeExplanation = p.explanation || {
+        title: '標編碼標注工序：處理流程說明',
+        paragraphs: ['此結果產生於紀錄功能加入之前，沒有處理流程紀錄。']
+      };
+      state.scopeFlow = p.flow || [];
+      JR.controllers.scope.showResult(p.sheets || [], p.yearFrom, p.yearTo);
+    },
     /** 供助理與「檔案」頁面重新開啟結果。 */
     showResult: function (sheets, from, to) {
       state.scopeSheets = sheets;
@@ -256,18 +273,20 @@
       api.scope.onProgress(function (p) {
         // 進度訊息與執行結果走不同通道，可能晚到；只在執行中才更新，避免蓋掉「完成」的狀態。
         if (!state.scopeRunning) return;
-        $('scopeProgress').querySelector('.bar').style.width = Math.round((p.done / Math.max(p.total, 1)) * 100) + '%';
-        JR.setStatus($('scopeStatus'), '「' + p.statute + '」' + p.phase + '：' + p.done + ' / ' + p.total);
-        // 流程面板即時跟著目前的階段更新（開著說明視窗時）。
+        // 流程面板即時跟著目前的階段與每一步的紀錄更新（開著說明視窗時）。
         if (p.flow) {
           state.scopeFlow = p.flow;
           if (state.scopeDialog) state.scopeDialog.update({ flow: p.flow });
         }
+        // 只有紀錄更新（沒有階段名稱）時，不改動狀態列。
+        if (!p.phase) return;
+        $('scopeProgress').querySelector('.bar').style.width = Math.round((p.done / Math.max(p.total, 1)) * 100) + '%';
+        JR.setStatus($('scopeStatus'), '「' + p.statute + '」' + p.phase + '：' + p.done + ' / ' + p.total);
       });
       $('scopeExplain').addEventListener('click', function () {
         // 執行中顯示即時流程；執行結束後顯示完整紀錄（說明文字來自流程紀錄）。
         var base = state.scopeExplanation || { title: '標編碼標注工序：處理流程說明', paragraphs: ['整理完成後會顯示每一步的完整處理紀錄。'] };
-        state.scopeDialog = JR.components.explainDialog(Object.assign({}, base, { flow: state.scopeFlow || [] }));
+        state.scopeDialog = JR.components.explainDialog(Object.assign({}, base, { flow: state.scopeFlow || [], notes: PENDING_NOTES }));
       });
       $('scopeXlsx').addEventListener('click', function () { exportScope('xlsx'); });
       $('scopeDocx').addEventListener('click', function () { exportScope('docx'); });

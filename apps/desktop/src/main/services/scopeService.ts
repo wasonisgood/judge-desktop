@@ -102,6 +102,11 @@ export interface ScopeRunAsk {
 export type ScopeRunResult = ScopeRunDone | ScopeRunAsk;
 
 /** 工作名稱與檔案標題：法規與關鍵字合併顯示。 */
+/** 結果要透過 IPC 傳回與保存：去掉推送用的代理（Electron 無法複製 Proxy），只留下純資料。 */
+function plainTrace(t: PipelineTrace): PipelineTrace {
+  return { feature: t.feature, steps: [...t.steps] };
+}
+
 export function scopeTitle(args: { statutes: string[]; keyword?: string }): string {
   const parts = [...args.statutes, ...(args.keyword?.trim() ? [`關鍵字：${args.keyword.trim()}`] : [])];
   return parts.join('、') || '範圍整理';
@@ -135,7 +140,19 @@ export async function runScope(
   const trace = newTrace('標編碼標注工序');
   const flowInput = scopeFlowInputOf(args);
   // 進度事件附上流程狀態，畫面的流程面板即時更新。
-  const emit = (p: ScopeProgress) => onProgress({ ...p, flow: scopeFlowNodes(flowInput, { running: p.phase }) });
+  let currentPhase: string | null = null;
+  const emit = (p: ScopeProgress) => {
+    if (p.phase) currentPhase = p.phase;
+    onProgress({ ...p, flow: scopeFlowNodes(flowInput, { running: currentPhase, trace }) });
+  };
+  // 每寫入一步流程紀錄就推送一次（執行中即時顯示該步的說明句）。
+  trace.steps = new Proxy(trace.steps, {
+    set(target, prop, value) {
+      (target as unknown as Record<string | symbol, unknown>)[prop] = value;
+      if (prop !== 'length') onProgress({ statute: '', done: 0, total: 0, phase: '', flow: scopeFlowNodes(flowInput, { running: currentPhase, trace }) });
+      return true;
+    },
+  });
   const keyword = (args.keyword ?? '').trim();
   const relatedStatute = (args.relatedStatute ?? '').trim();
   if (args.statutes.length === 0 && !keyword) throw new Error('請輸入法規或關鍵字');
@@ -157,7 +174,7 @@ export async function runScope(
     try {
       const outcome = await runOneStatute(ctx, { line, name, citation });
       if (outcome.kind === 'ask') {
-        return { status: 'ask', flow: scopeFlowNodes(flowInput, { trace }), target: 'statute', statuteLine: line, question: outcome.question, options: outcome.options, notes, trace, explanation: explainScopeTrace(trace) };
+        return { status: 'ask', flow: scopeFlowNodes(flowInput, { trace }), target: 'statute', statuteLine: line, question: outcome.question, options: outcome.options, notes, trace: plainTrace(trace), explanation: explainScopeTrace(trace) };
       }
       sheets.push(outcome.sheet);
     } catch (err) {
@@ -173,7 +190,7 @@ export async function runScope(
     try {
       const kw = await runKeywordSheet(ctx, keyword, relatedStatute);
       if (kw.kind === 'ask') {
-        return { status: 'ask', flow: scopeFlowNodes(flowInput, { trace }), target: 'keyword', statuteLine: keyword, question: kw.question, options: kw.options, notes, trace, explanation: explainScopeTrace(trace) };
+        return { status: 'ask', flow: scopeFlowNodes(flowInput, { trace }), target: 'keyword', statuteLine: keyword, question: kw.question, options: kw.options, notes, trace: plainTrace(trace), explanation: explainScopeTrace(trace) };
       }
       sheets.push(kw.sheet);
     } catch (err) {
@@ -187,23 +204,17 @@ export async function runScope(
   const cancelled = !!signal?.aborted;
   if (cancelled) addStep(trace, { stage: '取消', module: 'user', input: '使用者要求取消', output: `保留 ${sheets.length} 部的已完成部分`, decision: 'stop', reason: '使用者取消，輸出取消前已完成的結果' });
   const total = sheets.reduce((n, sh) => n + sh.rows.length, 0);
+  // 處理流程隨結果一起保存（說明與流程狀態），從「檔案」開啟時直接顯示，不必重新執行。
+  const pending = sheets.reduce((n, sh) => n + countPendingReview(sh.analyses), 0);
+  const flow = scopeFlowNodes(flowInput, { trace });
+  const explanation = explainScopeTrace(trace, { sheets: sheets.length, rows: total, pending });
   const save = await saveToLibrary({
     kind: 'scope',
-    title: `範圍整理：${scopeTitle(args)}`,
+    title: `標編碼標注工序：${scopeTitle(args)}`,
     summary: `${sheets.length} 部，共 ${total} 筆${cancelled ? '（已取消，部分結果）' : ''}`,
-    payload: { sheets, yearFrom: args.yearFrom, yearTo: args.yearTo, trace },
+    payload: { sheets, yearFrom: args.yearFrom, yearTo: args.yearTo, trace: plainTrace(trace), flow, explanation },
   });
-  const pending = sheets.reduce((n, sh) => n + countPendingReview(sh.analyses), 0);
-  return {
-    status: 'done',
-    flow: scopeFlowNodes(flowInput, { trace }),
-    sheets,
-    notes,
-    cancelled,
-    saveError: save.saveError,
-    trace,
-    explanation: explainScopeTrace(trace, { sheets: sheets.length, rows: total, pending }),
-  };
+  return { status: 'done', flow, sheets, notes, cancelled, saveError: save.saveError, trace: plainTrace(trace), explanation };
 }
 
 type OneStatuteOutcome = { kind: 'sheet'; sheet: ScopeSheet } | { kind: 'ask'; question: string; options: ClarifyOption[] };
