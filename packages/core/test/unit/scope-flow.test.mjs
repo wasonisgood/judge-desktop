@@ -135,3 +135,32 @@ test('階段與進度名稱對應到正確的流程節點', () => {
   assert.equal(scopeNodeForPhase('AI 逐案編碼'), 'coding');
   assert.equal(scopeNodeForPhase('其他'), null);
 });
+
+test('執行中但紀錄只寫到一半：已寫入的步驟立即顯示說明句，目前階段進行中，之後的未開始', () => {
+  const t = newTrace('標編碼標注工序');
+  step(t, { stage: 'AI 分析設定', input: '啟用', output: '逐案編碼（分類）與綜合分析、自動調整搜尋用語皆啟用' });
+  step(t, { stage: '第 1 輪篩選判決', input: '戒嚴', output: '「戒嚴」3 筆；累計保留 3 筆', decision: 'pass' });
+  step(t, { stage: '整理篩選結果', input: '關鍵字：戒嚴', output: '3 筆', reason: '關鍵字搜尋結果全部列出' });
+  const nodes = scopeFlowNodes({ ...base, keyword: '戒嚴' }, { trace: t, running: 'AI 逐案編碼' });
+  const s = status(nodes);
+  assert.equal(s.input, 'done');
+  assert.equal(s.search, 'done');
+  assert.equal(s.filter, 'done');
+  assert.equal(s.coding, 'running', '目前階段是編碼，即使還沒有編碼的紀錄');
+  assert.equal(s.verify, 'pending');
+  assert.equal(s.synthesis, 'pending');
+  assert.equal(s.lookup, 'skipped', '不適用的節點維持略過');
+  assert.match(nodes.find((n) => n.id === 'search').lines[0], /第 1 輪篩選判決/, '已寫入的步驟立即有說明句');
+});
+
+test('執行中的步驟即時寫入：目前階段的說明句隨紀錄增加', () => {
+  const t = newTrace('標編碼標注工序');
+  step(t, { stage: 'AI 分析設定', input: '啟用', output: '逐案編碼' });
+  const before = scopeFlowNodes({ ...base, keyword: 'x' }, { trace: t, running: '篩選判決' }).find((n) => n.id === 'search');
+  assert.equal(before.status, 'running');
+  assert.equal(before.lines.length, 0);
+  step(t, { stage: '第 1 輪篩選判決', input: 'x', output: '「x」1 筆；累計保留 1 筆', decision: 'pass' });
+  const after = scopeFlowNodes({ ...base, keyword: 'x' }, { trace: t, running: '篩選判決' }).find((n) => n.id === 'search');
+  assert.equal(after.lines.length, 1);
+  assert.match(after.lines[0], /第 1 輪篩選判決：以「x」搜尋/);
+});

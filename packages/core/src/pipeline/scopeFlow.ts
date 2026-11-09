@@ -129,7 +129,20 @@ export function scopeFlowNodes(i: ScopeFlowInput, opts: { running?: string | nul
   const applicable = applicableNodes(i);
   if (opts.trace) {
     const trace = opts.trace;
-    return FLOW_NODES.map((n) => nodeFromTrace(n.id, i, trace.steps.filter((s) => scopeNodeForStage(s.stage) === n.id)));
+    // 執行中（有紀錄且目前階段已知）：目前節點進行中，之前的節點依紀錄或略過／完成，之後的未開始。
+    const current = opts.running ? scopeNodeForPhase(opts.running) ?? 'search' : null;
+    const curIdx = current ? FLOW_NODES.findIndex((n) => n.id === current) : -1;
+    return FLOW_NODES.map((n, idx) => {
+      const steps = trace.steps.filter((s) => scopeNodeForStage(s.stage) === n.id);
+      if (curIdx >= 0 && n.id === current) {
+        const last = steps[steps.length - 1];
+        return { id: n.id, label: n.label, status: 'running', detail: last ? last.output.slice(0, 40) : '', lines: steps.map(describeStep).filter((x): x is string => !!x) };
+      }
+      if (steps.length > 0) return nodeFromTrace(n.id, i, steps);
+      if (curIdx < 0) return nodeFromTrace(n.id, i, steps);
+      const status: FlowStatus = idx < curIdx ? (applicable.has(n.id) ? 'done' : 'skipped') : (applicable.has(n.id) ? 'pending' : 'skipped');
+      return { id: n.id, label: n.label, status, detail: '', lines: [] };
+    });
   }
   const current = opts.running ? scopeNodeForPhase(opts.running) ?? 'search' : null;
   let reached = false;
