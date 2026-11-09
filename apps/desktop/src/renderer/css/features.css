@@ -103,6 +103,31 @@
 .fed-msg.good { color: var(--koke); }
 .fed-nav { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; }
 .hint.bad { color: var(--shu-ink); }
+
+/* 納入／排除核查（issue #12）：標準列、規劃摘要、結果格（判定與依據可展開） */
+.crit-rows { display: flex; flex-direction: column; gap: 8px; margin: 8px 0; }
+.crit-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.crit-row .crit-text { flex: 1 1 260px; }
+.crit-row .crit-kw { flex: 1 1 200px; }
+.crit-plan { margin: 12px 0; padding: 10px 14px; border-left: 3px solid var(--rule); background: var(--paper-2); }
+.crit-plan-line { margin: 4px 0; font-size: 0.92rem; }
+.crit-pick { flex: 1 1 220px; }
+.crit-suggest { margin: 12px 0; padding: 10px 14px; border-left: 3px solid var(--shu); background: var(--shu-wash); color: var(--shu-ink); font-size: 0.92rem; }
+.crit-rerun { margin: 12px 0; }
+.crit-rerun summary { cursor: pointer; font-weight: 700; }
+.crit-compare { margin: 12px 0; font-size: 0.92rem; }
+.crit-changes { margin: 6px 0 0 1.2em; }
+.crit-table td.crit-caseno { min-width: 140px; }
+.crit-table td.crit-decision { font-weight: 700; white-space: nowrap; }
+.crit-d-exclude { color: var(--shu-ink); }
+.crit-d-review { color: var(--ink-2); }
+.crit-d-include { color: var(--koke); }
+.crit-cell summary { cursor: pointer; list-style-position: outside; }
+.crit-verdict.crit-v-met { color: var(--koke); font-weight: 700; }
+.crit-verdict.crit-v-not_met { color: var(--shu-ink); font-weight: 700; }
+.crit-verdict.crit-v-unknown { color: var(--ink-3); font-weight: 700; }
+.crit-basis { margin: 6px 0; font-size: 0.86rem; color: var(--ink-2); }
+.crit-quote { margin: 4px 0; padding-left: 10px; border-left: 2px solid var(--rule); font-size: 0.86rem; color: var(--ink); }
 .hint.good { color: var(--koke); }
 @media (max-width: 720px) {
   .fed-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }

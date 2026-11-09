@@ -1,7 +1,7 @@
 // 工作登記表（v3.6.0）：所有長時間工作（搜尋、範圍、精讀、助理對話、模組安裝與修復）都在這裡登記。
 // 提供：取消（AbortController）、狀態查詢、同類工作互斥、以及「是否還有工作」供關閉流程使用。
 // 此模組不依賴 Electron，可直接以 node 測試。
-export type JobKind = 'search' | 'scope' | 'brief' | 'assistant' | 'install' | 'repair';
+export type JobKind = 'search' | 'scope' | 'brief' | 'assistant' | 'install' | 'repair' | 'criteria';
 export type JobStatus = 'running' | 'done' | 'cancelled' | 'failed';
 
 export interface JobInfo {

@@ -3,7 +3,7 @@
   'use strict';
 
   // authGate 是覆蓋畫面的登入閘門（不是頁面，但與頁面同樣以模板掛載）。
-  var ORDER = ['home', 'list', 'semantic', 'scope', 'brief', 'design', 'files', 'settings', 'authGate'];
+  var ORDER = ['home', 'list', 'semantic', 'scope', 'brief', 'design', 'criteria', 'files', 'settings', 'authGate'];
 
   JR.views.mountPages = function () {
     var html = ORDER.map(function (n) { return JR.templates[n + 'Page']; }).join('\n');
