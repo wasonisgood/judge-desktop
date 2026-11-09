@@ -5,6 +5,7 @@
   "description": "司法院裁判研究桌面端：判決列表、範圍整理表、單一判決精讀",
   "main": "dist/main/main.js",
   "private": true,
+  "homepage": "https://github.com/wasonisgood/judge-desktop",
   "author": "wasonisgood",
   "scripts": {
     "build": "tsc -p tsconfig.json && node scripts/copy-renderer.mjs",
