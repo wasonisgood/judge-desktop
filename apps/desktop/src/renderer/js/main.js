@@ -11,6 +11,7 @@
   JR.controllers.scope.bind();
   JR.controllers.brief.bind();
   JR.controllers.files.bind();
+  JR.controllers.crawl.bind();
   JR.controllers.assistant.bind();
   JR.controllers.localAi.bind();
   JR.controllers.auth.bind();
