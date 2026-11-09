@@ -3,6 +3,7 @@
 import type { JudgmentDetail } from '../court/parse';
 import type { ScopeRow } from '../court/scope';
 import { DEFAULT_CODING_FIELDS, normalizeCodingFields, verifyCodedValues, type CodedValue, type CodingFieldInput } from '../pipeline/coding';
+import type { CodingReviewPolicy } from '../pipeline/coding-review';
 
 /** 呼叫 AI 的函式由呼叫端提供（桌面端、遠端 MCP 各自帶入自己的金鑰與服務）。 */
 export type AiComplete = (system: string, user: string, maxTokens: number) => Promise<string>;
@@ -60,6 +61,8 @@ export interface AnalyzeCaseOptions {
   currentText?: string;
   /** 分析欄位（預設集或使用者自訂）；未提供時使用預設欄位。 */
   fields?: CodingFieldInput[];
+  /** 覆核規則的門檻（來自設定）；未提供時使用預設值。 */
+  reviewPolicy?: CodingReviewPolicy;
 }
 
 const LEGACY_KEYS = ['issue', 'holding', 'statuteApplication', 'outcome', 'group'] as const;
@@ -95,7 +98,7 @@ export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow
   const hasValues = reply && typeof reply === 'object' && Array.isArray((reply as { values?: unknown }).values);
   const normalized = hasValues ? reply : { values: fields.map((f) => ({ id: f.id, value: (reply as Record<string, unknown> | null)?.[f.id] })) };
   // 依據只能取自 AI 實際看過的原文（bodyOf 的上限內）：驗證範圍與提示詞一致，不會出現 AI 沒看過卻被採信的依據。
-  const values = verifyCodedValues(bodyOf(d), fields, normalized);
+  const values = verifyCodedValues(bodyOf(d), fields, normalized, opts.reviewPolicy);
   const byField = new Map(values.map((v) => [v.fieldId, v.value]));
   const legacy = Object.fromEntries(LEGACY_KEYS.map((k) => [k, byField.get(k) ?? '']));
   return { id: row.id, ...legacy, group: legacy.group || '未分類', values } as CaseAnalysis;

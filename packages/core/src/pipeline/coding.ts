@@ -3,6 +3,7 @@
 // 內容無效或依據不全的欄位標示為「待覆核」，交給使用者確認（覆核畫面由其他模組處理，這裡只保留欄位）。
 // 所有結構都可序列化（純 JSON），可直接存入檔案管理。
 import { keepVerifiedQuotes, locateQuote } from '../ai/evidence';
+import { DEFAULT_REVIEW_POLICY, decideReview, type CodingReviewPolicy, type ReviewStep } from './coding-review';
 
 /** 分析欄位設定。順序即畫面與匯出的欄位順序。 */
 export interface CodingField {
@@ -66,7 +67,6 @@ export function normalizeCodingFields(input: CodingFieldInput[]): CodingField[] 
 
 /** 單一欄位的編碼結果（可序列化）。 */
 export type ReviewStatus = 'none' | 'pending' | 'accepted' | 'rejected';
-
 export interface CodedValue {
   fieldId: string;
   fieldName: string;
@@ -80,6 +80,10 @@ export interface CodedValue {
   reviewStatus: ReviewStatus;
   /** 待覆核的原因（給使用者看）。 */
   reviewNote?: string;
+  /** AI 原始內容：人工修改過才會有值（修改前的內容，供對照與還原）。 */
+  aiValue?: string;
+  /** 覆核操作紀錄（每次都保存操作前的內容與狀態，可逐步還原）。 */
+  reviewHistory?: ReviewStep[];
 }
 
 /** 依據驗證：只保留逐字存在於判決原文中的引文（忽略空白與全形差異）。 */
@@ -91,34 +95,21 @@ function checkEvidence(fullText: string, raw: unknown): { evidence: string[]; dr
 }
 
 /**
- * 驗證單一欄位的 AI 回覆。
- * - 內容為空：待覆核（未取得內容）。
- * - 沒有任何有效依據：待覆核（依據無法在判決原文中找到）。
- * - 部分依據無效：待覆核（保留有效依據，並說明有幾則被移除）。
+ * 驗證單一欄位的 AI 回覆：依據逐字驗證後，套用覆核規則（見 coding-review.ts）決定是否待覆核。
+ * 門檻預設值見 DEFAULT_REVIEW_POLICY；可由設定傳入。
  */
-export function verifyCodedValue(fullText: string, field: CodingField, raw: { value?: unknown; evidence?: unknown }): CodedValue {
+export function verifyCodedValue(fullText: string, field: CodingField, raw: { value?: unknown; evidence?: unknown }, policy: CodingReviewPolicy = DEFAULT_REVIEW_POLICY): CodedValue {
   const value = typeof raw?.value === 'string' ? raw.value.trim() : '';
   const { evidence, dropped } = checkEvidence(fullText, raw?.evidence);
-  let reviewStatus: ReviewStatus = 'none';
-  let reviewNote: string | undefined;
-  if (!value) {
-    reviewStatus = 'pending';
-    reviewNote = '未取得內容';
-  } else if (evidence.length === 0) {
-    reviewStatus = 'pending';
-    reviewNote = '沒有有效依據（依據無法在判決原文中找到）';
-  } else if (dropped > 0) {
-    reviewStatus = 'pending';
-    reviewNote = `已移除 ${dropped} 則無法在判決原文中找到的依據`;
-  }
-  return { fieldId: field.id, fieldName: field.name, value, evidence, droppedEvidence: dropped, reviewStatus, reviewNote };
+  const decision = decideReview({ value, evidence, dropped }, policy);
+  return { fieldId: field.id, fieldName: field.name, value, evidence, droppedEvidence: dropped, reviewStatus: decision.reviewStatus, reviewNote: decision.reviewNote };
 }
 
 /**
  * 依欄位設定驗證整批 AI 回覆（格式：{"values":[{"id","value","evidence"}]}）。
  * 每個欄位都會產生一筆結果：AI 漏掉的欄位視為未取得內容（待覆核），不猜。
  */
-export function verifyCodedValues(fullText: string, fields: CodingField[], reply: unknown): CodedValue[] {
+export function verifyCodedValues(fullText: string, fields: CodingField[], reply: unknown, policy: CodingReviewPolicy = DEFAULT_REVIEW_POLICY): CodedValue[] {
   const list = reply && typeof reply === 'object' && Array.isArray((reply as { values?: unknown }).values)
     ? (reply as { values: unknown[] }).values
     : [];
@@ -128,7 +119,7 @@ export function verifyCodedValues(fullText: string, fields: CodingField[], reply
       byId.set((item as { id: string }).id, item as { value?: unknown; evidence?: unknown });
     }
   }
-  return fields.map((f) => verifyCodedValue(fullText, f, byId.get(f.id) ?? {}));
+  return fields.map((f) => verifyCodedValue(fullText, f, byId.get(f.id) ?? {}, policy));
 }
 
 /** 待覆核的格數（用於狀態列與匯出說明）。 */
@@ -138,11 +129,23 @@ export function countPendingReview(items: { values?: CodedValue[] }[]): number {
   return n;
 }
 
-/** 匯出用的儲存格文字：內容、依據與待覆核標示放在同一格，依據不會與內容分離。 */
+/**
+ * 匯出用的儲存格文字：內容、AI 原文（人工修改過時）、逐字依據與覆核狀態放在同一格，依據不會與內容分離。
+ */
 export function formatCodedCell(v: CodedValue | undefined): string {
   if (!v) return '';
   const parts = [v.value || '（未取得）'];
+  if (v.aiValue !== undefined && v.aiValue !== v.value) parts.push(`AI 原文：${v.aiValue || '（未取得）'}`);
   if (v.evidence.length) parts.push(`依據：${v.evidence.join('；')}`);
-  if (v.reviewStatus === 'pending') parts.push(`【待覆核】${v.reviewNote ?? ''}`.trim());
+  const tag = reviewTag(v);
+  if (tag) parts.push(tag);
   return parts.join('\n');
+}
+
+/** 覆核狀態的文字標記（無須覆核的結果不加標記）。 */
+export function reviewTag(v: CodedValue): string {
+  if (v.reviewStatus === 'pending') return `【待覆核】${v.reviewNote ?? ''}`.trim();
+  if (v.reviewStatus === 'rejected') return '【已駁回】';
+  if (v.reviewStatus === 'accepted') return v.aiValue !== undefined && v.aiValue !== v.value ? '【已修改】' : '【已接受】';
+  return '';
 }
