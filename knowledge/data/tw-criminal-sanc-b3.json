@@ -44,8 +44,8 @@
       "practice": [
         {
           "period": "現行實務",
-          "view": "實務傳統見解以「最先確定之科刑判決」為界，判決確定前所犯之罪方得併罰，大致接近乙說（個別判決之具體表述待核對）。",
-          "note": "具體派別與適用細節以個案裁判為準（待核對）。"
+          "view": "實務傳統見解以「最先確定之科刑判決」為界，判決確定前所犯之罪方得併罰，大致接近乙說。",
+          "note": "具體派別與適用細節以個案裁判為準。"
         }
       ],
       "lawRefs": [
@@ -53,7 +53,105 @@
         "刑法第51條",
         "刑事訴訟法第477條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第477條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "477",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依刑法第五十三條及第五十四條應依刑法第五十一條第五款至第七款之規定，定其應執行之刑者，由該案犯罪事實最後判決之法院對應之檢察署檢察官，備具繕本，聲請該法院裁定之。法院於接受繕本後，應將繕本送達於受刑人。\n受刑人或其法定代理人、配偶，亦得請求"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-12",
+          "amendments": [
+            {
+              "article": "477",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "477",
+              "date": "2023-12-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-097",
@@ -98,14 +196,70 @@
         {
           "period": "現行實務",
           "view": "實務以行為單數為基本判斷，並就接續犯、集合犯、繼續犯等個別檢視是否評價為一罪，仍強調依社會通念與構成要件評價綜合判斷。",
-          "note": "個別案例之派別仍有出入（待核對）。"
+          "note": "個別案例之派別仍有出入，應以個案裁判為準。"
         }
       ],
       "lawRefs": [
         "刑法第50條",
         "刑法第55條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第55條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-098",
@@ -149,14 +303,70 @@
         {
           "period": "一般實務",
           "view": "實務以行為單數為主要判斷標準，一行為觸犯數罪名即適用想像競合；行為單數而侵害數法益的情形，仍多以想像競合處理。",
-          "note": "個別案件之見解仍有出入（待核對）。"
+          "note": "個別案件之見解仍有出入，應以個案裁判為準。"
         }
       ],
       "lawRefs": [
         "刑法第55條",
         "刑法第50條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第55條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-099",
@@ -200,13 +410,42 @@
         {
           "period": "早期至今",
           "view": "實務認為集合犯與接續犯以評價為一罪，但對於侵害個別法益之多次行為，仍會分別論罪。",
-          "note": "具體條文與派別待核對。"
+          "note": "具體條文與派別以個案裁判為準。"
         }
       ],
       "lawRefs": [
         "刑法第50條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-100",
@@ -230,7 +469,7 @@
         "民國100年修法",
         "接續犯"
       ],
-      "proposition": "連續犯於民國100年刑法修正刪除後，原屬連續犯之多次行為應如何認定為一罪或數罪，以及是否併罰。",
+      "proposition": "連續犯於民國94年（2005年）刑法修正刪除後，原屬連續犯之多次行為應如何認定為一罪或數罪，以及是否併罰。",
       "distinction": "若仍視為一罪，則不併罰；若回歸數罪處理，則各罪分別科刑後定應執行刑，刑期合計差異甚大。",
       "doctrines": [
         {
@@ -248,17 +487,105 @@
       ],
       "practice": [
         {
-          "period": "民國100年修法後",
+          "period": "民國94年修法後",
           "view": "實務不再以連續犯論罪，個案以接續犯或其他罪數理論評價；涉及修法前行為之從舊、從輕適用，應依刑法第2條比較。",
-          "note": "個別判決之具體表述待核對。"
+          "note": "修法前後之比較適用依刑法第2條。"
         }
       ],
       "lawRefs": [
-        "刑法第56條（已刪除）",
+        "刑法第56條",
         "刑法第55條",
         "刑法第2條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第56條（已刪除）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "56",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "（刪除）"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "56",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "56",
+              "date": "2005-01-07",
+              "kind": "刪除"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第55條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第2條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。\n沒收、非拘束人身自由之保安處分適用裁判時之法律。\n處罰或保安處分之裁判確定後，未執行或執行未完畢，而法律有變更，不處罰其行為或不施以保安處分者，"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-101",
@@ -302,7 +629,7 @@
         {
           "period": "現行條文",
           "view": "依第50條但書第1款，得易科與不得易科之罪原則不併合；受刑人請求者，由檢察官聲請法院依第51條定應執行刑（但書後段）。實務以條文為準。",
-          "note": "細節待核對個別裁定。"
+          "note": "細節以個別裁定為準。"
         }
       ],
       "lawRefs": [
@@ -310,7 +637,110 @@
         "刑法第51條",
         "刑法第41條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第41條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯最重本刑為五年以下有期徒刑以下之刑之罪，而受六月以下有期徒刑或拘役之宣告者，得以新臺幣一千元、二千元或三千元折算一日，易科罰金。但易科罰金，難收矯正之效或難以維持法秩序者，不在此限。\n依前項規定得易科罰金而未聲請易科罰金者，得以提供社會勞"
+            }
+          ],
+          "latestAmendmentDate": "2009-12-15",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "2001-01-04",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2008-12-30",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2009-12-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-102",
@@ -354,7 +784,7 @@
         {
           "period": "現行條文",
           "view": "依第50條但書第2、3款，得易服社會勞動之罪與得易科罪、不得易服之罪不併合；受刑人請求者依第51條定刑。實務依條文處理。",
-          "note": "細節待核對。"
+          "note": "細節以個案處理為準。"
         }
       ],
       "lawRefs": [
@@ -362,7 +792,100 @@
         "刑法第51條",
         "刑法第42條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第42條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "42",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "罰金應於裁判確定後二個月內完納。期滿而不完納者，強制執行。其無力完納者，易服勞役。但依其經濟或信用狀況，不能於二個月內完納者，得許期滿後一年內分期繳納。遲延一期不繳或未繳足者，其餘未完納之罰金，強制執行或易服勞役。\n依前項規定應強制執行者，"
+            }
+          ],
+          "latestAmendmentDate": "2009-05-19",
+          "amendments": [
+            {
+              "article": "42",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "42",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "42",
+              "date": "2009-05-19",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-103",
@@ -406,7 +929,7 @@
         {
           "period": "現行實務",
           "view": "實務依文義採「確定後所犯不併罰」之立場，並以累犯、另案執行或撤銷緩刑等方式處理。",
-          "note": "個案待核對。"
+          "note": "以個案裁判為準。"
         }
       ],
       "lawRefs": [
@@ -414,7 +937,95 @@
         "刑法第47條",
         "刑法第51條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-104",
@@ -443,7 +1054,7 @@
       "doctrines": [
         {
           "label": "甲說（只執行其一說）",
-          "view": "依第51條第1、2款，宣告多數死刑者只執行其一；宣告多數無期徒刑者只執行一無期徒刑。",
+          "view": "依第51條第1款及第3款，宣告多數死刑者只執行其一；宣告多數無期徒刑者只執行其一。",
           "pros": "條文明確，符合刑罰之比例與人道考量。",
           "cons": "罪數多寡不影響刑度，可能被認為對多罪行為人之評價不足。"
         },
@@ -457,16 +1068,109 @@
       "practice": [
         {
           "period": "現行條文",
-          "view": "實務依第51條第1、2款採只執行其一，不採乙說；死刑與有期徒刑等併存之定刑，另依其他款處理。",
-          "note": "款次細節待核對。"
+          "view": "實務依第51條第1款及第3款採只執行其一，不採乙說；宣告之最重刑為死刑或無期徒刑者，依第51條第2款或第4款不執行他刑（但罰金及從刑不在此限）。",
+          "note": "款次以第51條現行條文為準。"
         }
       ],
       "lawRefs": [
         "刑法第51條第1款",
-        "刑法第51條第2款",
+        "刑法第51條第3款",
         "刑法第50條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條第1款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 1,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條第2款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 2,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-105",
@@ -495,7 +1199,7 @@
       "doctrines": [
         {
           "label": "甲說（分別定刑說）",
-          "view": "有期徒刑依第51條第3款定刑，罰金依第4款定額，分別裁定。",
+          "view": "有期徒刑依第51條第5款定其刑期，罰金依第7款定其金額，分別裁定。",
           "pros": "符合條文結構，各刑性質分明。",
           "cons": "對被告而言，自由刑與財產刑同時執行，負擔可能偏重。"
         },
@@ -510,15 +1214,112 @@
         {
           "period": "現行條文",
           "view": "實務依第51條分別定刑，有期徒刑與罰金各自裁定，不採換算或吸收。",
-          "note": "第5款之具體文字與適用範圍待核對。"
+          "note": "有期徒刑依第51條第5款定其刑期（但不得逾三十年），罰金依第7款定其金額。"
         }
       ],
       "lawRefs": [
-        "刑法第51條第3款",
-        "刑法第51條第4款",
-        "刑法第51條第5款"
+        "刑法第51條第5款",
+        "刑法第51條第7款"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條第3款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 3,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條第4款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 4,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條第5款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 5,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-106",
@@ -547,7 +1348,7 @@
       "doctrines": [
         {
           "label": "甲說（分別定刑說）",
-          "view": "拘役與有期徒刑分別依第51條定刑，拘役不超過一百二十日。",
+          "view": "拘役與有期徒刑分別依第51條第6款及第5款定刑，拘役不得逾一百二十日。",
           "pros": "符合各刑種之法定上限。",
           "cons": "拘役與有期徒刑併罰之實際執行順序與方式，尚需另行規範。"
         },
@@ -562,15 +1363,103 @@
         {
           "period": "現行條文",
           "view": "實務依第51條分別定刑，拘役與有期徒刑互不換算，並遵守拘役上限之規定。",
-          "note": "具體款次待核對。"
+          "note": "拘役依第51條第6款比照有期徒刑定其刑期，但不得逾一百二十日。"
         }
       ],
       "lawRefs": [
-        "刑法第51條",
+        "刑法第51條第6款",
         "刑法第33條",
         "刑法第50條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第33條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "33",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "主刑之種類如下：\n一、死刑。\n二、無期徒刑。\n三、有期徒刑：二月以上十五年以下。但遇有加減時，得減至二月未滿，或加至二十年。\n四、拘役：一日以上，六十日未滿。但遇有加重時，得加至一百二十日。\n五、罰金：新臺幣一千元以上，以百元計算之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "33",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "33",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-107",
@@ -599,7 +1488,7 @@
       "doctrines": [
         {
           "label": "甲說（最多額下限、合併金額上限說）",
-          "view": "依第51條第4款，罰金應定於各罰金中最多額以上、各罰金合併金額以下。",
+          "view": "依第51條第7款，罰金應定於各罰金中最多額以上、各罰金合併金額以下。",
           "pros": "條文明確，並保留定刑之裁量空間。",
           "cons": "上下限之間的裁量標準仍需個案判斷，可能出現不一致。"
         },
@@ -613,15 +1502,76 @@
       "practice": [
         {
           "period": "現行條文",
-          "view": "實務依第51條第4款定罰金之上下限，裁量時考量各罪罪質與行為人之資力，不採平均數。",
-          "note": "個別判決待核對。"
+          "view": "實務依第51條第7款定罰金之上下限，裁量時考量各罪罪質與行為人之資力，不採平均數。",
+          "note": "以個別判決所定之金額為準。"
         }
       ],
       "lawRefs": [
-        "刑法第51條第4款",
+        "刑法第51條第7款",
         "刑法第50條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條第4款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 4,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-108",
@@ -665,7 +1615,7 @@
         {
           "period": "現行實務",
           "view": "實務傾向於定刑後重新審酌緩刑之宣告與否，並於裁定理由中說明。",
-          "note": "個案待核對。"
+          "note": "以個案裁定為準。"
         }
       ],
       "lawRefs": [
@@ -673,7 +1623,105 @@
         "刑法第51條",
         "刑法第50條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第74條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "74",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受二年以下有期徒刑、拘役或罰金之宣告，而有下列情形之一，認以暫不執行為適當者，得宣告二年以上五年以下之緩刑，其期間自裁判確定之日起算：\n一、未曾因故意犯罪受有期徒刑以上刑之宣告者。\n二、前因故意犯罪受有期徒刑以上刑之宣告，執行完畢或赦免後，"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "74",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "74",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "74",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "74",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-109",
@@ -717,7 +1765,7 @@
         {
           "period": "現行實務",
           "view": "實務多採撤銷假釋後，原殘餘刑期與新罪依併罰規定合併定刑。",
-          "note": "個別裁定與相關見解待核對。"
+          "note": "以個別裁定為準。"
         }
       ],
       "lawRefs": [
@@ -726,7 +1774,152 @@
         "刑法第50條",
         "刑法第51條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第77條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "77",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行而有悛悔實據者，無期徒刑逾二十五年，有期徒刑逾二分之一、累犯逾三分之二，由監獄報請法務部，得許假釋出獄。\n前項關於有期徒刑假釋之規定，於下列情形，不適用之：\n一、有期徒刑執行未滿六個月者。\n二、犯最輕本刑五年以上有期徒刑之罪之累"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "77",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "77",
+              "date": "1954-07-06",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1994-01-18",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1997-11-11",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第78條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "78",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "假釋中因故意更犯罪，受逾六月有期徒刑之宣告確定者，撤銷其假釋。\n假釋中因故意更犯罪，受緩刑或六月以下有期徒刑之宣告確定，而有再入監執行刑罰之必要者，得撤銷其假釋。\n前二項之撤銷，於判決確定後六月以內為之。但假釋期滿逾三年者，不在此限。\n假釋"
+            }
+          ],
+          "latestAmendmentDate": "2021-12-28",
+          "amendments": [
+            {
+              "article": "78",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "78",
+              "date": "1994-01-18",
+              "kind": "修正"
+            },
+            {
+              "article": "78",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "78",
+              "date": "2021-12-28",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-110",
@@ -769,15 +1962,76 @@
       "practice": [
         {
           "period": "現行實務",
-          "view": "實務以第51條第3款之文義界限為基本框架，並在界限內依罪數、罪質、行為期間及人格等因素裁量。",
-          "note": "待核對個別裁定。"
+          "view": "實務以第51條第5款之文義界限為基本框架，並在界限內依罪數、罪質、行為期間及人格等因素裁量。",
+          "note": "以個別裁定為準。"
         }
       ],
       "lawRefs": [
-        "刑法第51條第3款",
+        "刑法第51條第5款",
         "刑法第50條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條第3款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 3,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-111",
@@ -820,15 +2074,76 @@
       "practice": [
         {
           "period": "現行條文",
-          "view": "實務依第51條第3款但書，有期徒刑定刑不得逾三十年，不採突破說；特別法之刑度規定另依各該法處理。",
-          "note": "待核對。"
+          "view": "實務依第51條第5款但書，有期徒刑定刑不得逾三十年，不採突破說；特別法之刑度規定另依各該法處理。",
+          "note": "以個案裁定為準。"
         }
       ],
       "lawRefs": [
-        "刑法第51條第3款",
+        "刑法第51條第5款",
         "刑法第33條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條第3款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 3,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第33條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "33",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "主刑之種類如下：\n一、死刑。\n二、無期徒刑。\n三、有期徒刑：二月以上十五年以下。但遇有加減時，得減至二月未滿，或加至二十年。\n四、拘役：一日以上，六十日未滿。但遇有加重時，得加至一百二十日。\n五、罰金：新臺幣一千元以上，以百元計算之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "33",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "33",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-112",
@@ -872,14 +2187,85 @@
         {
           "period": "現行實務",
           "view": "實務強調定刑不得重新審酌各罪之事實與罪責，應以各罪宣告刑為基礎。",
-          "note": "待核對個別裁定。"
+          "note": "以個別裁定為準。"
         }
       ],
       "lawRefs": [
         "刑法第51條",
         "刑事訴訟法第477條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第477條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "477",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依刑法第五十三條及第五十四條應依刑法第五十一條第五款至第七款之規定，定其應執行之刑者，由該案犯罪事實最後判決之法院對應之檢察署檢察官，備具繕本，聲請該法院裁定之。法院於接受繕本後，應將繕本送達於受刑人。\n受刑人或其法定代理人、配偶，亦得請求"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-12",
+          "amendments": [
+            {
+              "article": "477",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "477",
+              "date": "2023-12-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-113",
@@ -923,14 +2309,75 @@
         {
           "period": "現行實務",
           "view": "實務於定刑時兼顧責罰與恤刑，以各罪罪質、次數、間隔及改善可能性為裁量因素。",
-          "note": "待核對。"
+          "note": "以個案裁定為準。"
         }
       ],
       "lawRefs": [
         "刑法第51條",
         "刑法第57條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第57條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-114",
@@ -974,7 +2421,7 @@
         {
           "period": "現行實務",
           "view": "實務以各罪判決確定之先後判斷併罰可能，定刑裁定則以各罪最後判決為基礎。",
-          "note": "待核對個別裁定。"
+          "note": "以個別裁定為準。"
         }
       ],
       "lawRefs": [
@@ -982,7 +2429,105 @@
         "刑法第51條",
         "刑事訴訟法第477條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第477條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "477",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依刑法第五十三條及第五十四條應依刑法第五十一條第五款至第七款之規定，定其應執行之刑者，由該案犯罪事實最後判決之法院對應之檢察署檢察官，備具繕本，聲請該法院裁定之。法院於接受繕本後，應將繕本送達於受刑人。\n受刑人或其法定代理人、配偶，亦得請求"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-12",
+          "amendments": [
+            {
+              "article": "477",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "477",
+              "date": "2023-12-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-115",
@@ -1026,7 +2571,7 @@
         {
           "period": "現行條文",
           "view": "依刑事訴訟法第477條，定刑由犯罪事實最後判決之法院管轄，並由檢察官聲請；受刑人依第50條但書後段請求檢察官聲請。",
-          "note": "條文與實務細節待核對。"
+          "note": "實務細節以個案裁定為準。"
         }
       ],
       "lawRefs": [
@@ -1034,7 +2579,105 @@
         "刑法第50條",
         "刑法第51條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑事訴訟法第477條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "477",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依刑法第五十三條及第五十四條應依刑法第五十一條第五款至第七款之規定，定其應執行之刑者，由該案犯罪事實最後判決之法院對應之檢察署檢察官，備具繕本，聲請該法院裁定之。法院於接受繕本後，應將繕本送達於受刑人。\n受刑人或其法定代理人、配偶，亦得請求"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-12",
+          "amendments": [
+            {
+              "article": "477",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "477",
+              "date": "2023-12-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-116",
@@ -1078,14 +2721,61 @@
         {
           "period": "現行實務",
           "view": "實務多以抗告作為定刑裁定之主要救濟，定刑錯誤之救濟則視情形以抗告、再審或非常救濟處理。",
-          "note": "抗告相關條次與裁定待核對。"
+          "note": "對定刑裁定之抗告，依刑事訴訟法第415條但書第4款得提起再抗告。"
         }
       ],
       "lawRefs": [
         "刑事訴訟法第477條",
-        "刑事訴訟法（抗告相關規定，條次待核對）"
+        "刑事訴訟法第415條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑事訴訟法第477條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "477",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依刑法第五十三條及第五十四條應依刑法第五十一條第五款至第七款之規定，定其應執行之刑者，由該案犯罪事實最後判決之法院對應之檢察署檢察官，備具繕本，聲請該法院裁定之。法院於接受繕本後，應將繕本送達於受刑人。\n受刑人或其法定代理人、配偶，亦得請求"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-12",
+          "amendments": [
+            {
+              "article": "477",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "477",
+              "date": "2023-12-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法（抗告相關規定，條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-117",
@@ -1129,7 +2819,7 @@
         {
           "period": "現行實務",
           "view": "實務多依併合處罰之整體性，撤銷原定刑重新定刑；新罪是否得與已定刑之數罪併合，仍須考量裁判確定時點。",
-          "note": "相關大法庭裁定字號待核對。"
+          "note": "以個案裁定及裁判確定時點為準。"
         }
       ],
       "lawRefs": [
@@ -1137,7 +2827,105 @@
         "刑法第51條",
         "刑事訴訟法第477條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第477條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "477",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依刑法第五十三條及第五十四條應依刑法第五十一條第五款至第七款之規定，定其應執行之刑者，由該案犯罪事實最後判決之法院對應之檢察署檢察官，備具繕本，聲請該法院裁定之。法院於接受繕本後，應將繕本送達於受刑人。\n受刑人或其法定代理人、配偶，亦得請求"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-12",
+          "amendments": [
+            {
+              "article": "477",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "477",
+              "date": "2023-12-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-118",
@@ -1181,15 +2969,94 @@
         {
           "period": "現行實務",
           "view": "實務多認為作為定刑基礎之判決撤銷後，原定刑應撤銷並重新定刑。",
-          "note": "待核對個別裁定與相關規定。"
+          "note": "以個案裁定及再審程序之結果為準。"
         }
       ],
       "lawRefs": [
         "刑事訴訟法第477條",
         "刑法第51條",
-        "刑事訴訟法（再審相關規定）"
+        "刑事訴訟法第420條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑事訴訟法第477條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "477",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依刑法第五十三條及第五十四條應依刑法第五十一條第五款至第七款之規定，定其應執行之刑者，由該案犯罪事實最後判決之法院對應之檢察署檢察官，備具繕本，聲請該法院裁定之。法院於接受繕本後，應將繕本送達於受刑人。\n受刑人或其法定代理人、配偶，亦得請求"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-12",
+          "amendments": [
+            {
+              "article": "477",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "477",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "477",
+              "date": "2023-12-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法（再審相關規定）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-119",
@@ -1233,14 +3100,75 @@
         {
           "period": "現行實務",
           "view": "實務多採綜合衡量，並特別考量各罪之關聯性與行為人之更生可能。",
-          "note": "待核對個別裁定。"
+          "note": "以個別裁定為準。"
         }
       ],
       "lawRefs": [
         "刑法第51條",
         "刑法第57條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第57條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-120",
@@ -1284,7 +3212,7 @@
         {
           "period": "現行條文",
           "view": "依第41條，以定應執行刑之刑期判斷易科；各罪均得易科者，依第50條但書之規定處理。",
-          "note": "個別裁定待核對。"
+          "note": "以個別裁定為準。"
         }
       ],
       "lawRefs": [
@@ -1292,7 +3220,110 @@
         "刑法第50條",
         "刑法第51條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第41條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯最重本刑為五年以下有期徒刑以下之刑之罪，而受六月以下有期徒刑或拘役之宣告者，得以新臺幣一千元、二千元或三千元折算一日，易科罰金。但易科罰金，難收矯正之效或難以維持法秩序者，不在此限。\n依前項規定得易科罰金而未聲請易科罰金者，得以提供社會勞"
+            }
+          ],
+          "latestAmendmentDate": "2009-12-15",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "2001-01-04",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2008-12-30",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2009-12-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-121",
@@ -1336,14 +3367,95 @@
         {
           "period": "現行條文",
           "view": "實務依刑法第77條，以定應執行刑之刑期與假釋要件為判斷。",
-          "note": "個別判決與條文細節待核對。"
+          "note": "以個別判決與條文為準。"
         }
       ],
       "lawRefs": [
         "刑法第77條",
         "刑法第51條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第77條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "77",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行而有悛悔實據者，無期徒刑逾二十五年，有期徒刑逾二分之一、累犯逾三分之二，由監獄報請法務部，得許假釋出獄。\n前項關於有期徒刑假釋之規定，於下列情形，不適用之：\n一、有期徒刑執行未滿六個月者。\n二、犯最輕本刑五年以上有期徒刑之罪之累"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "77",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "77",
+              "date": "1954-07-06",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1994-01-18",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1997-11-11",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-122",
@@ -1387,14 +3499,56 @@
         {
           "period": "現行實務",
           "view": "實務多認定刑裁量屬事實審職權，最高法院僅於界限錯誤或明顯違反比例時審查。",
-          "note": "待核對個別裁定。"
+          "note": "以個案裁定為準。"
         }
       ],
       "lawRefs": [
-        "刑事訴訟法（再抗告相關規定）",
+        "刑事訴訟法第415條",
         "刑法第51條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑事訴訟法（再抗告相關規定）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        },
+        {
+          "ref": "刑法第51條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-123",
@@ -1438,13 +3592,42 @@
         {
           "period": "現行條文",
           "view": "實務依第47條文義，以有期徒刑以上刑之宣告為前科要件，不採廣義說。",
-          "note": "待核對個別判決。"
+          "note": "以個別判決為準。"
         }
       ],
       "lawRefs": [
         "刑法第47條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-124",
@@ -1488,7 +3671,7 @@
         {
           "period": "現行實務",
           "view": "實務認為緩刑期滿未撤銷者，刑之宣告失其效力，不成累犯；假釋期滿視為執行完畢，得成累犯；易科罰金執行完畢者，多數見解認可成累犯。",
-          "note": "假釋期滿之條次與易科見解待核對。"
+          "note": "假釋期滿之效力依刑法第78條；易科罰金執行完畢之認定以個案判決為準。"
         }
       ],
       "lawRefs": [
@@ -1497,7 +3680,137 @@
         "刑法第76條",
         "刑法第78條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第74條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "74",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受二年以下有期徒刑、拘役或罰金之宣告，而有下列情形之一，認以暫不執行為適當者，得宣告二年以上五年以下之緩刑，其期間自裁判確定之日起算：\n一、未曾因故意犯罪受有期徒刑以上刑之宣告者。\n二、前因故意犯罪受有期徒刑以上刑之宣告，執行完畢或赦免後，"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "74",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "74",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "74",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "74",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第76條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "76",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "緩刑期滿，而緩刑之宣告未經撤銷者，其刑之宣告失其效力。但依第七十五條第二項、第七十五條之一第二項撤銷緩刑宣告者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "76",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "76",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第78條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "78",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "假釋中因故意更犯罪，受逾六月有期徒刑之宣告確定者，撤銷其假釋。\n假釋中因故意更犯罪，受緩刑或六月以下有期徒刑之宣告確定，而有再入監執行刑罰之必要者，得撤銷其假釋。\n前二項之撤銷，於判決確定後六月以內為之。但假釋期滿逾三年者，不在此限。\n假釋"
+            }
+          ],
+          "latestAmendmentDate": "2021-12-28",
+          "amendments": [
+            {
+              "article": "78",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "78",
+              "date": "1994-01-18",
+              "kind": "修正"
+            },
+            {
+              "article": "78",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "78",
+              "date": "2021-12-28",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-125",
@@ -1541,13 +3854,42 @@
         {
           "period": "現行實務",
           "view": "實務以再犯之行為時為準計算五年期間；前罪執行完畢或赦免之時點，依前科紀錄認定。",
-          "note": "待核對。"
+          "note": "以個案認定為準。"
         }
       ],
       "lawRefs": [
         "刑法第47條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-126",
@@ -1591,14 +3933,65 @@
         {
           "period": "現行條文",
           "view": "實務依第47條文義，堅持再犯必須故意，過失犯不成立累犯。",
-          "note": "待核對個別判決。"
+          "note": "以個別判決為準。"
         }
       ],
       "lawRefs": [
         "刑法第47條",
         "刑法第12條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第12條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "12",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為非出於故意或過失者，不罰。\n過失行為之處罰，以有特別規定者，為限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "12",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-127",
@@ -1642,18 +4035,69 @@
         {
           "period": "釋字第775號之後",
           "view": "實務於累犯案件應說明加重與否之理由，並就個案罪責與再犯情形綜合判斷。",
-          "note": "解釋公布年份、字號與修法後條文待核對。"
+          "note": "引用之解釋意旨以司法院解釋文為準。"
         }
       ],
       "lawRefs": [
         "刑法第47條",
-        "憲法第23條（比例原則）"
+        "憲法第23條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "憲法第23條（比例原則）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以上各條列舉之自由權利，除為防止妨礙他人自由、避免緊急危難、維持社會秩序，或增進公共利益所必要者外，不得以法律限制之。"
+            }
+          ],
+          "latestAmendmentDate": "1946-12-25",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1946-12-25",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-128",
-      "title": "累犯之但書排除：最輕本刑五年以上之罪",
+      "title": "強制工作擬制累犯之適用",
       "path": [
         "刑法",
         "刑法總則",
@@ -1673,37 +4117,66 @@
         "加重最低本刑",
         "刑法第47條"
       ],
-      "proposition": "再犯之罪若為最輕本刑五年以上有期徒刑之罪，是否排除累犯之加重。",
-      "distinction": "但書適用時不得依累犯加重，即使前科與再犯條件均符合；誤適用將使刑期超過應有範圍。",
+      "proposition": "因強制工作而免其刑之執行者，於強制工作處分執行完畢或一部執行而免除後五年內故意再犯有期徒刑以上之罪，是否以累犯論（第47條第2項擬制累犯）。",
+      "distinction": "以累犯論者，依第47條加重本刑至二分之一；不以累犯論者，不生累犯加重之問題。",
       "doctrines": [
         {
-          "label": "甲說（文義排除說）",
-          "view": "依第47條但書，再犯之罪最輕本刑為五年以上有期徒刑者，不適用累犯加重。",
-          "pros": "文義明確，避免對重罪重複加重。",
-          "cons": "對重罪之再犯性評價可能不足。"
+          "label": "甲說（文義適用說）",
+          "view": "依第47條第2項文義，因強制工作而免其刑之執行者，於強制工作處分執行完畢或一部執行而免除後五年內故意再犯有期徒刑以上之罪，以累犯論。",
+          "pros": "文義明確，與強制工作與刑罰互代之制度銜接一致。",
+          "cons": "強制工作與刑罰之制裁性質不同，一律擬制累犯可能與個案再犯危險不符。"
         },
         {
-          "label": "乙說（實質評價說）",
-          "view": "最輕本刑較重者，仍應就個案再犯危險評價，不應因形式條件排除。",
-          "pros": "考量個案行為人之危險性。",
-          "cons": "與但書之明文相違。"
+          "label": "乙說（個案限縮說）",
+          "view": "擬制累犯之適用應考量強制工作之目的與行為人之再犯危險，個案認為刑罰反應力並未薄弱者，不宜依累犯加重其刑。",
+          "pros": "兼顧保安處分之教化目的與罪責相當原則。",
+          "cons": "與條文「以累犯論」之明文有距離，裁量標準難以統一。"
         }
       ],
       "practice": [
         {
           "period": "現行條文",
-          "view": "實務依但書文義排除累犯加重，不採實質評價說。",
-          "note": "現行條文用語待核對。"
+          "view": "依第47條第2項，因強制工作而免刑執行者，其後五年內故意再犯有期徒刑以上之罪，以累犯論並依第47條加重其刑。",
+          "note": "是否加重仍應就個案再犯情形判斷。"
         }
       ],
       "lawRefs": [
         "刑法第47條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-129",
-      "title": "累犯之但書排除：加重最低本刑之罪",
+      "title": "累犯加重之計算範圍：加重本刑至二分之一",
       "path": [
         "刑法",
         "刑法總則",
@@ -1723,33 +4196,63 @@
         "累犯限制",
         "雙重加重"
       ],
-      "proposition": "再犯之罪若為因加重最低本刑之罪，是否排除累犯之加重。",
-      "distinction": "再犯罪名已含加重最低本刑規定時，不得再依累犯加重，以避免雙重加重；若重複加重，將違反比例原則。",
+      "proposition": "累犯加重時，「加重本刑至二分之一」之計算是否及於法定最低本刑，以及加重後之刑度如何確定。",
+      "distinction": "加重範圍包含最低本刑者，宣告刑下限隨之提高；僅加重最高刑者，下限不變。兩者差異直接影響宣告刑之區間與量刑裁量。",
       "doctrines": [
         {
-          "label": "甲說（排除雙重加重說）",
-          "view": "再犯之罪已因加重最低本刑而加重者，不再依累犯加重。",
-          "pros": "防止雙重加重，符合比例原則。",
-          "cons": "可能使累犯之再犯性評價不足。"
+          "label": "甲說（整體加重說）",
+          "view": "依第47條，累犯之加重係對該罪之法定本刑整體加重至二分之一，最高刑與最低刑均依比例計算。",
+          "pros": "文義與「加重本刑」相合，計算方式一致。",
+          "cons": "最低刑提高可能使宣告刑下限過高，與個案罪責不符。"
         },
         {
-          "label": "乙說（分別加重說）",
-          "view": "特別加重與累犯加重各自獨立，得分別適用。",
-          "pros": "反映行為人之再犯危險。",
-          "cons": "雙重加重之刑度可能過重。"
+          "label": "乙說（上限加重說）",
+          "view": "累犯加重主要反映於刑度之上限，下限維持不變，由法院於法定範圍內依第57條裁量。",
+          "pros": "保留裁量空間，避免下限過度提高。",
+          "cons": "與「加重本刑」之文義有距離，且缺乏明文依據。"
         }
       ],
       "practice": [
         {
           "period": "現行條文",
-          "view": "實務依第47條但書，對因加重最低本刑之罪不適用累犯加重，不採分別加重說。",
-          "note": "待核對。"
+          "view": "實務依第47條以本刑加重至二分之一計算累犯之加重範圍，並於加重後之法定範圍內依第57條量刑。",
+          "note": "以個案判決所定之加重結果為準。"
         }
       ],
       "lawRefs": [
-        "刑法第47條"
+        "刑法第47條",
+        "刑法第57條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-130",
@@ -1793,14 +4296,51 @@
         {
           "period": "現行實務",
           "view": "實務要求判決就累犯之前科與加重理由具體說明，並參照前案紀錄表認定前科。",
-          "note": "具體裁判字號待核對。"
+          "note": "依刑事訴訟法第310條第4款，刑罰有加重者應於理由內記載其理由。"
         }
       ],
       "lawRefs": [
         "刑法第47條",
-        "刑事訴訟法（判決理由記載相關規定）"
+        "刑事訴訟法第310條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法（判決理由記載相關規定）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-131",
@@ -1844,14 +4384,70 @@
         {
           "period": "現行實務",
           "view": "實務認為前罪確定後再犯之罪不得併罰，僅得依累犯加重；其他確定前所犯之罪，依併罰規定處理。",
-          "note": "個別判決待核對。"
+          "note": "以個別判決為準。"
         }
       ],
       "lawRefs": [
         "刑法第47條",
         "刑法第50條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第50條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-132",
@@ -1895,7 +4491,7 @@
         {
           "period": "現行實務",
           "view": "實務多採假釋中不成立累犯，而以撤銷假釋並合併定刑處理。",
-          "note": "個別判決待核對。"
+          "note": "以個別判決為準。"
         }
       ],
       "lawRefs": [
@@ -1903,7 +4499,120 @@
         "刑法第77條",
         "刑法第78條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第77條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "77",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行而有悛悔實據者，無期徒刑逾二十五年，有期徒刑逾二分之一、累犯逾三分之二，由監獄報請法務部，得許假釋出獄。\n前項關於有期徒刑假釋之規定，於下列情形，不適用之：\n一、有期徒刑執行未滿六個月者。\n二、犯最輕本刑五年以上有期徒刑之罪之累"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "77",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "77",
+              "date": "1954-07-06",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1994-01-18",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1997-11-11",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "77",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第78條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "78",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "假釋中因故意更犯罪，受逾六月有期徒刑之宣告確定者，撤銷其假釋。\n假釋中因故意更犯罪，受緩刑或六月以下有期徒刑之宣告確定，而有再入監執行刑罰之必要者，得撤銷其假釋。\n前二項之撤銷，於判決確定後六月以內為之。但假釋期滿逾三年者，不在此限。\n假釋"
+            }
+          ],
+          "latestAmendmentDate": "2021-12-28",
+          "amendments": [
+            {
+              "article": "78",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "78",
+              "date": "1994-01-18",
+              "kind": "修正"
+            },
+            {
+              "article": "78",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "78",
+              "date": "2021-12-28",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-sanc-133",
@@ -1946,15 +4655,51 @@
       "practice": [
         {
           "period": "現行實務",
-          "view": "實務對特別法之累犯規定，原則依特別法優先適用；特別累犯之要件與款次，應依各特別法現行條文核對。",
-          "note": "待核對。"
+          "view": "實務對特別法之累犯規定，原則依特別法優先適用；特別累犯之要件與款次，應依各特別法現行條文適用。",
+          "note": "特別法之累犯規定，應依各該法現行條文適用。"
         }
       ],
       "lawRefs": [
-        "刑法第47條",
-        "毒品危害防制條例（累犯規定，條次待核對）"
+        "刑法第47條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第47條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "47",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "47",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "47",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "毒品危害防制條例（累犯規定，條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     }
   ]
 }
