@@ -97,11 +97,7 @@
     lines.push('候選判決 ' + p.total + ' 筆。');
     if (p.hasAi) {
       lines.push('程式判斷已確定排除（不呼叫 AI）' + plan.skippedByProgram + ' 筆；需要 AI 判斷的案件 ' + plan.aiCases + ' 筆，共 ' + plan.aiCalls + ' 次 AI 呼叫。');
-      if (p.costUsd !== null && p.costUsd !== undefined) {
-        lines.push('依你在「設定」自行填寫的 AI 單價（US$ ' + p.usdPerMillion + ' / 百萬 token）粗估費用約 US$ ' + p.costUsd.toFixed(4) + '，以字數估算，實際費用以服務商帳單為準。');
-      } else {
-        lines.push('AI 單價未填寫（本工具沒有內建定價），因此只顯示 AI 呼叫次數，不估計費用。');
-      }
+      lines.push('AI 呼叫使用你在「設定」中自行填入的雲端 AI 金鑰，費用由你的服務帳戶計算。');
     } else {
       lines.push('全部以程式判斷完成，不呼叫 AI。');
     }

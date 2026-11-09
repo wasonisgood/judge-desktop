@@ -284,8 +284,6 @@ export interface RunPlan {
   /** 需要呼叫 AI 的案件數（每案會對每條 AI 標準各呼叫一次）。 */
   aiCases: number;
   aiCalls: number;
-  /** 估計的輸入字元數（以原文截斷後計）。 */
-  estimatedChars: number;
 }
 
 export function planRun(criteria: Criterion[], cases: CaseInput[]): RunPlan {
@@ -293,7 +291,6 @@ export function planRun(criteria: Criterion[], cases: CaseInput[]): RunPlan {
   const aiCriteria = criteria.filter((c) => c.method === 'ai');
   let skippedByProgram = 0;
   let aiCases = 0;
-  let estimatedChars = 0;
   for (const cs of cases) {
     const progResults = programCriteria.map((c) => evaluateProgram(c, cs.fullText));
     const decided = decide(programCriteria, progResults);
@@ -301,24 +298,14 @@ export function planRun(criteria: Criterion[], cases: CaseInput[]): RunPlan {
       skippedByProgram++;
       continue;
     }
-    if (aiCriteria.length) {
-      aiCases++;
-      estimatedChars += Math.min(cs.fullText.length, MAX_BODY) * aiCriteria.length;
-    }
+    if (aiCriteria.length) aiCases++;
   }
   return {
     total: cases.length,
     skippedByProgram,
     aiCases,
     aiCalls: aiCases * aiCriteria.length,
-    estimatedChars,
   };
-}
-
-/** 估計費用（由呼叫端提供每百萬 token 的價格；價格不寫死在程式中）。以每 2 字元約 1 token 粗估。 */
-export function estimateCostUsd(plan: RunPlan, usdPerMillionTokens: number): number {
-  const tokens = plan.estimatedChars / 2;
-  return (tokens / 1_000_000) * usdPerMillionTokens;
 }
 
 // ---------------------------------------------------------------------------

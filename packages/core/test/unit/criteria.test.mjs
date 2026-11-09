@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  validateCriteria, evaluateProgram, evaluateByAi, decide, summarizeRun, planRun, estimateCostUsd,
+  validateCriteria, evaluateProgram, evaluateByAi, decide, summarizeRun, planRun,
   runCriteria, appendRun, compareRuns, toCriteriaTable,
 } from '../../dist/index.js';
 import * as core from '../../dist/index.js';
@@ -140,16 +140,11 @@ test('執行：可以取消', async () => {
   await assert.rejects(runCriteria({ query: 'q', criteria: [program('a', 'include', ['消費者'])], cases: CASES }, { signal: controller.signal }), /取消/);
 });
 
-test('規劃：列出 AI 判斷的案件數、呼叫次數與估計費用（價格由呼叫端提供）', () => {
+test('規劃：只列出候選數、程式已排除數、AI 判斷案件數與 AI 呼叫次數（不估計費用）', () => {
   const criteria = [program('inc', 'include', ['消費者']), program('exc', 'exclude', ['上訴']), ai('ai1', 'include'), ai('ai2', 'exclude')];
   const plan = planRun(criteria, CASES);
-  assert.equal(plan.total, 3);
-  assert.equal(plan.skippedByProgram, 2);
-  assert.equal(plan.aiCases, 1);
-  assert.equal(plan.aiCalls, 2);
-  const cost = estimateCostUsd(plan, 1);
-  assert.ok(cost > 0);
-  assert.equal(estimateCostUsd(plan, 0), 0);
+  assert.deepEqual(plan, { total: 3, skippedByProgram: 2, aiCases: 1, aiCalls: 2 });
+  assert.equal(core.estimateCostUsd, undefined, '費用估算已移除（使用者自行付費，應用程式不做定價）');
 });
 
 test('重新檢索的結果分開保存：編號遞增、既有紀錄不被覆蓋；比較可找出決定改變的案件', async () => {

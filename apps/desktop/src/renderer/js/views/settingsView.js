@@ -38,9 +38,7 @@
     $('setModel').value = s.aiModel;
     $('keyState').textContent = s.hasKey ? '（已設定）' : '（尚未設定）';
     $('setCacheDays').value = s.cacheDays;
-    $('setMaxItems').value = s.defaultMaxItems;
-    $('setUsdPerMillion').value = s.aiUsdPerMillion === null || s.aiUsdPerMillion === undefined ? '' : s.aiUsdPerMillion;
-    $('listMax').value = s.defaultMaxItems;
+    $('setMaxItems').value = s.defaultMaxItems;    $('listMax').value = s.defaultMaxItems;
     $('setLocalAi').checked = s.localAiEnabled !== false;
   };
 

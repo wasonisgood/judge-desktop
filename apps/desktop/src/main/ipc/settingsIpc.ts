@@ -25,7 +25,6 @@ export function registerSettingsIpc(): void {
       briefFields: s.briefFields,
       localAiEnabled: s.localAiEnabled,
       defaultJurisdiction: s.defaultJurisdiction,
-      aiUsdPerMillion: s.aiUsdPerMillion,
     };
   });
   // 聯盟設定狀態（v3.7.0）：即時檢查欄位與登入狀態，給畫面逐步引導用。
@@ -69,11 +68,6 @@ export function registerSettingsIpc(): void {
     const next: StoredSettings = { ...(await readSettings()) };
     for (const k of ['aiProvider', 'aiAuthMode', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays', 'localAiEnabled', 'defaultJurisdiction'] as const) {
       if (patch[k] !== undefined) (next as any)[k] = patch[k];
-    }
-    if (patch.aiUsdPerMillion !== undefined) {
-      const v = patch.aiUsdPerMillion === null ? null : Number(patch.aiUsdPerMillion);
-      if (v !== null && (!Number.isFinite(v) || v < 0)) throw new Error('AI 單價必須是 0 或正數');
-      next.aiUsdPerMillion = v;
     }
     if (patch.defaultJurisdiction && !jurisdictionRegistry.has(patch.defaultJurisdiction)) {
       throw new Error(`未知的管轄區：${patch.defaultJurisdiction}`);

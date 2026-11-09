@@ -1,13 +1,12 @@
 // IPC：納入／排除核查（issue #12）。候選判決來自「檔案」中的判決列表或範圍整理，或以新關鍵字重新檢索；
-// 執行前先規劃（AI 案件數、呼叫次數、估計費用），確認後才執行。每次執行是獨立的一筆 run，保存在 criteria-runs.json，不覆蓋。
+// 執行前先規劃（候選數、AI 案件數、呼叫次數），確認後才執行。每次執行是獨立的一筆 run，保存在 criteria-runs.json，不覆蓋。
 import { ipcMain } from 'electron';
 import {
-  CourtClient, runCriteria, planRun, estimateCostUsd, reviewRerun, appendRun, compareRuns,
+  CourtClient, runCriteria, planRun, reviewRerun, appendRun, compareRuns,
   type CaseInput, type CriteriaRun,
 } from '@judge/core';
 import { readJson, writeJson } from '../data/local/jsonFile';
 import { userPath } from '../data/local/paths';
-import { readSettings } from '../data/local/settingsStore';
 import { library } from '../data/local/libraryAccess';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
@@ -109,14 +108,11 @@ export function registerCriteriaIpc(): void {
       };
     }));
 
-  // 執行前規劃：只計算，不呼叫 AI。費用只在設定了單價時估計；沒有單價時只回傳次數。
-  ipcMain.handle('criteria:plan', async (_e, args: { prepId: string; criteria: unknown }) => {
+  // 執行前規劃：只計算候選數、程式已排除數、AI 判斷案件數與 AI 呼叫次數，不呼叫 AI。不估計費用（使用者自行付費）。
+  ipcMain.handle('criteria:plan', (_e, args: { prepId: string; criteria: unknown }) => {
     const p = requirePrepared(args.prepId);
     const criteria = parseCriteriaInput(args.criteria);
-    const plan = planRun(criteria, p.cases);
-    const usd = (await readSettings()).aiUsdPerMillion;
-    const costUsd = usd !== null && plan.aiCalls > 0 ? estimateCostUsd(plan, usd) : null;
-    return { plan, costUsd, usdPerMillion: usd, hasAi: criteria.some((c) => c.method === 'ai'), total: p.cases.length };
+    return { plan: planRun(criteria, p.cases), hasAi: criteria.some((c) => c.method === 'ai'), total: p.cases.length };
   });
 
   // 執行核查（使用者確認後才會呼叫）。AI 服務錯誤會中止整次執行；取消時不保存。

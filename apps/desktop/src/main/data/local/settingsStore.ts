@@ -30,8 +30,6 @@ export interface StoredSettings {
   localAiEnabled: boolean;
   /** 預設管轄區識別碼（見 jurisdictionRegistry）。 */
   defaultJurisdiction: string;
-  /** AI 單價（美元／每百萬 token，選填）：只用來估計核查的費用；未設定（null）時只顯示呼叫次數。 */
-  aiUsdPerMillion: number | null;
 }
 
 export const EMPTY_FEDERATION: FederationSettings = {
@@ -50,7 +48,6 @@ export const DEFAULTS: StoredSettings = {
   briefFields: DEFAULT_BRIEF_FIELDS.map((f) => ({ ...f, enabled: true })),
   localAiEnabled: true,
   defaultJurisdiction: DEFAULT_JURISDICTION_ID,
-  aiUsdPerMillion: null,
 };
 
 export async function readSettings(): Promise<StoredSettings> {

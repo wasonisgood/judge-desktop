@@ -69,19 +69,6 @@
         }
       });
 
-      // AI 單價（選填）：立即保存；清空即回到「未設定」（核查只顯示次數）。
-      $('setUsdPerMillion').addEventListener('change', async function () {
-        var raw = $('setUsdPerMillion').value.trim();
-        var v = raw === '' ? null : Number(raw);
-        try {
-          await api.settings.set({ aiUsdPerMillion: v });
-          JR.components.notice(v === null ? 'AI 單價已留空，核查只顯示 AI 呼叫次數。' : '已保存你自行填寫的 AI 單價（US$ ' + v + ' / 百萬 token），僅用於粗估核查費用。');
-        } catch (err) {
-          JR.components.notice('設定沒有保存：' + JR.errText(err));
-          load();
-        }
-      });
-
       $('setTest').addEventListener('click', async function () {
         JR.setStatus($('setStatus'), '測試中…');
         try {
