@@ -31,6 +31,11 @@ export interface ScopeOptions {
   onItemError?: (id: string, title: string, err: unknown) => void;
   /** 取消訊號：取消後停止取得內頁，回傳取消前已完成的列。 */
   signal?: AbortSignal;
+  /**
+   * 關鍵字模式（標編碼工序）：不以單一法規篩選，搜尋結果全部列出；引用條文取自判決的相關法條。
+   * 此時 statute 只作顯示用，不做引用比對。
+   */
+  keywordMode?: boolean;
 }
 
 export interface ScopeRow {
@@ -111,8 +116,13 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
       opts.onItemError?.(it.id, it.title, err);
       continue;
     }
-    const cited = articlesCiting(d, opts.statute);
-    if (cited.length === 0) continue; // 只保留真的引用該法規的判決
+    let cited: string[];
+    if (opts.keywordMode) {
+      cited = d.relatedLaws.slice();
+    } else {
+      cited = articlesCiting(d, opts.statute);
+      if (cited.length === 0) continue; // 只保留真的引用該法規的判決
+    }
     rows.push({
       id: it.id,
       title: d.meta.title || it.title,
@@ -125,7 +135,7 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
       lawNotes: opts.lawHistory
         ? citationLawNotes(parseCitations(cited.join('；')), opts.lawHistory, { from: opts.yearFrom ? `${opts.yearFrom}-01-01` : undefined, to: opts.yearTo ? `${opts.yearTo}-12-31` : undefined })
         : [],
-      excerpts: { main: (d.sections['主文'] ?? '').slice(0, 1200), citing: citingExcerpt(d.fullText, opts.statute) },
+      excerpts: { main: (d.sections['主文'] ?? '').slice(0, 1200), citing: opts.keywordMode && !opts.statute ? d.fullText.slice(0, 800) : citingExcerpt(d.fullText, opts.statute) },
       href: d.meta.sourceUrl,
     });
   }

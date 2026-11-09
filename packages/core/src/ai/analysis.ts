@@ -2,6 +2,7 @@
 // 所有內容都由 AI 產生，只根據提供的判決原文，不得編造。AI 回覆必須是 JSON，解析失敗會重試一次。
 import type { JudgmentDetail } from '../court/parse';
 import type { ScopeRow } from '../court/scope';
+import { DEFAULT_CODING_FIELDS, normalizeCodingFields, verifyCodedValues, type CodedValue, type CodingFieldInput } from '../pipeline/coding';
 
 /** 呼叫 AI 的函式由呼叫端提供（桌面端、遠端 MCP 各自帶入自己的金鑰與服務）。 */
 export type AiComplete = (system: string, user: string, maxTokens: number) => Promise<string>;
@@ -44,19 +45,32 @@ async function askJson<T>(ai: AiComplete, system: string, user: string, maxToken
 // ---------------------------------------------------------------------------
 export interface CaseAnalysis {
   id: string;
+  /** 以下五欄為預設欄位的舊格式對應（由 values 填入），保留給舊結果與既有匯出使用。 */
   issue: string;        // 本案爭點
   holding: string;      // 法院見解（核心論證）
   statuteApplication: string; // 該法規如何被適用或排除
   outcome: string;      // 結論（駁回、廢棄發回、准許等）
   group: string;        // AI 歸類的類型名稱（例如：財產損害、政治案件、程序駁回）
+  /** 依分析欄位的編碼結果（含逐字依據與待覆核標示），順序同欄位設定。 */
+  values?: CodedValue[];
 }
 
 export interface AnalyzeCaseOptions {
   /** 法規現行條文（已由呼叫端取得、只含本案引用的條文）；提供後 AI 會依現行條文判讀。 */
   currentText?: string;
+  /** 分析欄位（預設集或使用者自訂）；未提供時使用預設欄位。 */
+  fields?: CodingFieldInput[];
 }
 
+const LEGACY_KEYS = ['issue', 'holding', 'statuteApplication', 'outcome', 'group'] as const;
+
+/**
+ * 逐案分析（標編碼工序）：一次 AI 呼叫產生所有勾選欄位，每個欄位附逐字依據。
+ * 依據必須逐字出現在判決原文中，驗證不過的依據丟掉；內容或依據不全的欄位標示為待覆核。
+ */
 export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow, d: JudgmentDetail, opts: AnalyzeCaseOptions = {}): Promise<CaseAnalysis> {
+  const fields = normalizeCodingFields(opts.fields ?? DEFAULT_CODING_FIELDS);
+  if (fields.length === 0) throw new Error('請至少勾選一個分析欄位');
   const system = '你是台灣法律研究助理。只根據提供的判決原文作答，不得編造。以繁體中文回答，並且只輸出一個 JSON 物件。';
   const user = [
     `研究的法規：${statute}`,
@@ -66,14 +80,24 @@ export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow
     ...((row.lawNotes ?? []).length ? ["法條異動提示（由法條沿革比對，請在分析中一併考慮）：", ...(row.lawNotes ?? []).map((n) => `- ${n.summary}`)] : []),
     ...(opts.currentText ? ['法規現行條文（引用條文的現行內容，判讀時請對照）：', opts.currentText.slice(0, 2000)] : []),
     '',
-    '請輸出 JSON，欄位如下。每個欄位限 120 字以內的繁體中文，不要換行，不要加說明文字：',
-    '{"issue":"本案爭點","holding":"法院見解（核心論證）","statuteApplication":"該法規如何被適用或排除","outcome":"結論（駁回、廢棄發回、准許等）","group":"依案件性質歸類的類型名稱（四字到十字）"}',
+    '請對下列每個欄位輸出內容與依據，格式如下（values 必須包含每一個 id，一個都不能少）：',
+    '{"values":[{"id":"欄位 id","value":"內容（限 120 字以內的繁體中文，不要換行）","evidence":["依據的原文逐字引用"]}]}',
+    '依據規則：每個欄位的 evidence 為 1 到 2 句從判決原文逐字複製的句子（每句 8 到 80 字），必須真的出現在下方的判決原文中；找不到依據就留空陣列，不可自行改寫。',
+    '欄位如下：',
+    ...fields.map((f) => `- id「${f.id}」｜${f.name}${f.description ? `：${f.description}` : ''}`),
+    '判決中找不到的資訊，內容寫明「判決原文未載明」。',
     '',
     '判決原文：',
     bodyOf(d),
   ].join('\n');
-  const r = await askJson<Omit<CaseAnalysis, 'id'>>(ai, system, user, 2000);
-  return { id: row.id, issue: r.issue ?? '', holding: r.holding ?? '', statuteApplication: r.statuteApplication ?? '', outcome: r.outcome ?? '', group: r.group ?? '未分類' };
+  const reply = await askJson<unknown>(ai, system, user, Math.min(4000, 800 + fields.length * 350));
+  // 相容舊格式（欄位直接放在物件頂層）：沒有依據，因此會標示為待覆核。
+  const hasValues = reply && typeof reply === 'object' && Array.isArray((reply as { values?: unknown }).values);
+  const normalized = hasValues ? reply : { values: fields.map((f) => ({ id: f.id, value: (reply as Record<string, unknown> | null)?.[f.id] })) };
+  const values = verifyCodedValues(d.fullText, fields, normalized);
+  const byField = new Map(values.map((v) => [v.fieldId, v.value]));
+  const legacy = Object.fromEntries(LEGACY_KEYS.map((k) => [k, byField.get(k) ?? '']));
+  return { id: row.id, ...legacy, group: legacy.group || '未分類', values } as CaseAnalysis;
 }
 
 // ---------------------------------------------------------------------------
