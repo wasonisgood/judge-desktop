@@ -4,6 +4,7 @@ export * from './court/search';
 export * from './text/normalize';
 export * from './text/snippets';
 export * from './court/scope';
+export * from './court/caseType';
 export * from './ai/analysis';
 export * from './law/citation';
 export * from './law/structure';
