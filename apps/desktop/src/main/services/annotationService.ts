@@ -4,11 +4,42 @@
 // 本檔不匯入 electron，可直接以 node 測試。
 import * as fs from 'node:fs/promises';
 import {
-  makeAnnotation, anchorStatus, reanchor, updateAnnotation, removeAnnotation,
+  makeAnnotation, anchorStatus, reanchor, updateAnnotation, removeAnnotation, HIGHLIGHT_COLORS, DEFAULT_COLOR_LABELS,
   type Annotation, type AnchorStatus, type NewAnnotationInput, type AnnotationMode, type HighlightColor,
 } from '@judge/core';
 
 export const ANNOTATION_SCHEMA_VERSION = 1;
+
+/** 顏色名稱（四色）。預設為事實、爭點、主文、理由；使用者可改名，存於檔案頂層的 colorLabels。 */
+export type ColorLabels = Record<HighlightColor, string>;
+export const COLOR_LABEL_MAX = 12;
+
+/** 合併使用者設定與預設值（缺項或空白時用預設）。 */
+export function resolveColorLabels(custom?: Partial<Record<HighlightColor, string>>): ColorLabels {
+  const out = { ...DEFAULT_COLOR_LABELS } as ColorLabels;
+  for (const c of HIGHLIGHT_COLORS) {
+    const v = custom?.[c];
+    if (typeof v === 'string' && v.trim()) out[c] = v.trim();
+  }
+  return out;
+}
+
+/** 驗證使用者輸入的顏色名稱：缺項沿用 base（目前保存的名稱）；有值者必須非空、不超過上限、不含換行。 */
+export function validateColorLabels(input: unknown, base: ColorLabels = { ...DEFAULT_COLOR_LABELS } as ColorLabels): ColorLabels {
+  if (!input || typeof input !== 'object') throw new Error('顏色名稱格式不正確');
+  const src = input as Record<string, unknown>;
+  const out = { ...base } as ColorLabels;
+  for (const c of HIGHLIGHT_COLORS) {
+    const v = src[c];
+    if (v === undefined) continue;
+    if (typeof v !== 'string') throw new Error('顏色名稱必須是文字');
+    const t = v.trim();
+    if (!t) throw new Error('顏色名稱不可空白');
+    if (t.length > COLOR_LABEL_MAX || /[\r\n]/.test(t)) throw new Error(`顏色名稱最多 ${COLOR_LABEL_MAX} 字，且不可換行`);
+    out[c] = t;
+  }
+  return out;
+}
 
 /** 判決的顯示資訊快照（不含全文），讓「過去筆記」列表不必重新抓取判決。 */
 export interface JudgmentNoteMeta {
@@ -29,6 +60,8 @@ export interface JudgmentAnnotations {
 export interface AnnotationFile {
   schemaVersion: number;
   judgments: Record<string, JudgmentAnnotations>;
+  /** 使用者自訂的顏色名稱（可省略；省略時用預設）。 */
+  colorLabels?: Partial<ColorLabels>;
 }
 
 export type AnnotationView = Annotation & { status: AnchorStatus };
@@ -52,7 +85,8 @@ export function parseAnnotationFile(text: string): AnnotationFile {
   if (f.schemaVersion > ANNOTATION_SCHEMA_VERSION) {
     throw new Error('標注檔案來自較新的版本，請更新應用程式後再開啟。');
   }
-  return { schemaVersion: ANNOTATION_SCHEMA_VERSION, judgments: f.judgments as Record<string, JudgmentAnnotations> };
+  const colorLabels = f.colorLabels && typeof f.colorLabels === 'object' ? f.colorLabels : undefined;
+  return { schemaVersion: ANNOTATION_SCHEMA_VERSION, judgments: f.judgments as Record<string, JudgmentAnnotations>, ...(colorLabels ? { colorLabels } : {}) };
 }
 
 /** 為每筆標注加上對位狀態（不改變資料本身）。 */
@@ -131,6 +165,19 @@ export class AnnotationStore {
       await this.write(f);
     }
     return withStatus(entry?.annotations ?? [], fullText);
+  }
+
+  async getColorLabels(): Promise<ColorLabels> {
+    return resolveColorLabels((await this.read()).colorLabels);
+  }
+
+  /** 儲存顏色名稱（驗證後寫入）；回傳實際保存的完整四色名稱。 */
+  async setColorLabels(input: unknown): Promise<ColorLabels> {
+    const f = await this.read();
+    const labels = validateColorLabels(input, resolveColorLabels(f.colorLabels));
+    f.colorLabels = labels;
+    await this.write(f);
+    return labels;
   }
 
   /** 原始資料（不含對位狀態），供匯出與同步使用。 */

@@ -107,6 +107,29 @@ test('純函式：addToFile 不改動原物件；patchInFile 找不到時拋錯'
   assert.throws(() => svc.patchInFile(f1, 'J', 'missing', { color: 'pink' }), /找不到/);
 });
 
+test('顏色名稱：預設為事實／爭點／主文／理由；自訂後保存在檔案頂層且 schemaVersion 不變；空白或過長拒絕', async () => {
+  const { file, store } = tmpStore();
+  assert.deepEqual(await store.getColorLabels(), { yellow: '事實', green: '爭點', pink: '主文', blue: '理由' });
+  const saved = await store.setColorLabels({ yellow: ' 事實認定 ', blue: '法律見解' });
+  assert.equal(saved.yellow, '事實認定', '去除前後空白');
+  assert.equal(saved.green, '爭點', '未填的沿用預設');
+  assert.equal(saved.blue, '法律見解');
+  const f = JSON.parse(fs.readFileSync(file, 'utf8'));
+  assert.equal(f.schemaVersion, 1);
+  assert.equal(f.colorLabels.blue, '法律見解');
+  assert.deepEqual(await store.getColorLabels(), saved);
+  // 其他資料不受影響
+  const start = FULL.indexOf('持刀');
+  await store.add('J1', META, { judgmentId: 'J1', start, end: start + 2, color: 'pink', mode: 'highlight' }, FULL);
+  await store.setColorLabels({ pink: '暴力要件' });
+  assert.equal((await store.list('J1', FULL)).length, 1, '改名不影響標注');
+  await assert.rejects(store.setColorLabels({ yellow: '   ' }), /不可空白/);
+  await assert.rejects(store.setColorLabels({ yellow: '這個名稱實在是太長了超過十二個字' }), /最多 12 字/);
+  await assert.rejects(store.setColorLabels({ yellow: 'a\nb' }), /換行/);
+  await assert.rejects(store.setColorLabels({ yellow: 3 }), /必須是文字/);
+  assert.equal((await store.getColorLabels()).yellow, '事實認定', '驗證失敗不改動既有名稱');
+});
+
 test('雲端同步酬載：只含標注與判決快照，不含判決全文；未設定後端時明確回報不可用', async () => {
   const { store, file } = tmpStore();
   const start = FULL.indexOf('持刀');

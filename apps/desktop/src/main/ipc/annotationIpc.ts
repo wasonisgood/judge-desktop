@@ -2,13 +2,13 @@
 // 判決全文一律經 cachedDetail 取得（快取優先），不另外重新呼叫司法院。
 import { ipcMain } from 'electron';
 import type { HighlightColor, AnnotationMode, JurisdictionId, JudgmentDetail } from '@judge/core';
-import { HIGHLIGHT_COLORS, segmentText, DEFAULT_COLOR_LABELS } from '@judge/core';
-import { buildAnnotatedDocx } from '../exporters';
-import { autoSaveExport } from '../services/exportService';
+import { HIGHLIGHT_COLORS, segmentText } from '@judge/core';
+import { buildAnnotatedDocx, buildAnnotatedCasesDocx, type AnnotatedCase } from '../exporters';
+import { autoSaveExport, stamp } from '../services/exportService';
 import { cachedDetail } from '../data/cloud/courtRepo';
 import { annotations } from '../data/local/annotationAccess';
 import { withStatus, type JudgmentNoteMeta, type AnnotationView } from '../services/annotationService';
-import { syncStatus } from '../services/annotationSync';
+import { syncStatus, buildSyncPayload } from '../services/annotationSync';
 import { toUserError } from '../services/userError';
 
 interface Target {
@@ -52,6 +52,7 @@ export function registerAnnotationIpc(): void {
     const list = await annotations().list(t.judgmentId, d.fullText, meta);
     const includeAi = t.includeAi !== false;
     const shown = list.filter((a) => a.status === 'ok' && (includeAi || a.origin !== 'ai'));
+    const colorLabels = await annotations().getColorLabels();
     return {
       meta,
       fullText: d.fullText,
@@ -59,7 +60,7 @@ export function registerAnnotationIpc(): void {
       annotations: list,
       /** 只傳位置與顏色，文字由畫面以全文切出（避免重複傳送全文）。 */
       segments: segmentText(d.fullText, shown).map((s) => ({ start: s.start, end: s.end, color: s.color, annotationIds: s.annotationIds })),
-      colorLabels: DEFAULT_COLOR_LABELS,
+      colorLabels,
     };
   });
 
@@ -109,14 +110,42 @@ export function registerAnnotationIpc(): void {
 
   ipcMain.handle('annotation:judgments', async () => annotations().listJudgments());
 
-  ipcMain.handle('annotation:export', async (_e, t: Target) => {
+  /** 單案匯出一律使用目前保存的顏色名稱。 */
+  async function caseFor(t: Target): Promise<AnnotatedCase> {
     const { d, meta } = await loadDetail(t);
     const all = withStatus((await annotations().raw(t.judgmentId))?.annotations ?? [], d.fullText);
-    const ok = all.filter((a) => a.status === 'ok');
-    const stale = all.filter((a) => a.status !== 'ok');
-    const buf = await buildAnnotatedDocx({ meta, fullText: d.fullText }, ok, stale);
-    return autoSaveExport(`判決筆記_${(meta.caseNo || t.judgmentId).replace(/[\\/:*?"<>|]/g, '_')}.docx`, buf);
+    return {
+      meta,
+      fullText: d.fullText,
+      annotations: all.filter((a) => a.status === 'ok'),
+      stale: all.filter((a) => a.status !== 'ok'),
+    };
+  }
+
+  ipcMain.handle('annotation:export', async (_e, t: Target) => {
+    const c = await caseFor(t);
+    const buf = await buildAnnotatedDocx(c, await annotations().getColorLabels());
+    return autoSaveExport(`判決筆記_${(c.meta.caseNo || t.judgmentId).replace(/[\\/:*?"<>|]/g, '_')}.docx`, buf);
   });
 
+  /** 多案合併匯出：每案獨立區塊（分頁），依傳入順序排列；任一案無法取得全文時整批中止並說明。 */
+  ipcMain.handle('annotation:exportMany', async (_e, args: { targets: Target[] }) => {
+    const targets = args.targets ?? [];
+    if (targets.length === 0) throw new Error('請先勾選要匯出的案件');
+    if (targets.length > 50) throw new Error('一次最多合併 50 案');
+    const cases: AnnotatedCase[] = [];
+    for (const t of targets) cases.push(await caseFor(t));
+    const buf = await buildAnnotatedCasesDocx(cases, await annotations().getColorLabels());
+    return autoSaveExport(`判決筆記_合併${cases.length}案_${stamp()}.docx`, buf);
+  });
+
+  ipcMain.handle('annotation:labels:get', async () => annotations().getColorLabels());
+  ipcMain.handle('annotation:labels:set', async (_e, args: { labels: unknown }) => annotations().setColorLabels(args.labels));
+
   ipcMain.handle('annotation:syncStatus', async () => syncStatus());
+  /** 同步酬載預覽（不送出）：只含標注、註解與判決快照，不含全文。 */
+  ipcMain.handle('annotation:syncPreview', async () => {
+    const f = await annotations().read();
+    return buildSyncPayload(f.judgments, new Date(), await annotations().getColorLabels());
+  });
 }

@@ -9,6 +9,8 @@ export interface AnnotationSyncPayload {
   schemaVersion: number;
   exportedAt: string;
   judgments: { judgmentId: string; meta: JudgmentAnnotations['meta']; annotations: JudgmentAnnotations['annotations'] }[];
+  /** 使用者自訂的四色名稱（省略時為預設）。 */
+  colorLabels?: Record<string, string>;
 }
 
 /** 同步後端介面。實作者需處理衝突（以 updatedAt 較新者為準，刪除需保留墓碑）。 */
@@ -43,10 +45,12 @@ export function syncStatus(backend: AnnotationSyncBackend = notConfiguredBackend
 export function buildSyncPayload(
   judgments: Record<string, JudgmentAnnotations>,
   now: Date = new Date(),
+  colorLabels?: Record<string, string>,
 ): AnnotationSyncPayload {
   return {
     schemaVersion: SYNC_SCHEMA_VERSION,
     exportedAt: now.toISOString(),
     judgments: Object.entries(judgments).map(([judgmentId, e]) => ({ judgmentId, meta: e.meta, annotations: e.annotations })),
+    ...(colorLabels ? { colorLabels } : {}),
   };
 }

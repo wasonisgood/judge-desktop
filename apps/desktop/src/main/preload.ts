@@ -102,6 +102,12 @@ contextBridge.exposeInMainWorld('api', {
     importAi: (args: unknown) => invoke('annotation:importAi', args),
     judgments: () => invoke('annotation:judgments'),
     export: (args: unknown) => invoke('annotation:export', args),
+    exportMany: (args: unknown) => invoke('annotation:exportMany', args),
+    labels: {
+      get: () => invoke('annotation:labels:get'),
+      set: (args: unknown) => invoke('annotation:labels:set', args),
+    },
     syncStatus: () => invoke('annotation:syncStatus'),
+    syncPreview: () => invoke('annotation:syncPreview'),
   },
 });
