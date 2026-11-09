@@ -1,4 +1,4 @@
-name: 發版（安裝檔與更新清單）
+name: 發版（Windows 安裝檔、macOS 與 Linux 安裝包、更新清單）
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: '完整發版（建置安裝器與 latest.json）'
+        description: '完整發版（建置所有平臺與更新清單）'
         required: true
         default: release
         type: choice
@@ -17,8 +17,60 @@ on:
 permissions:
   contents: write
 
+env:
+  NODE_VERSION: 22
+  # 與 apps/desktop/package.json 的 electron 主版本同步，用於快取鍵。
+  ELECTRON_MAJOR: 38
+
 jobs:
-  release:
+  # 與平臺無關的部分只建置一次：核心套件的 JavaScript 輸出與模組目錄（規則表與端點）。
+  # 其餘各平臺工作直接下載這份輸出，不重複建置、不重複下載。
+  shared:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: |
+            packages/core/package-lock.json
+            apps/desktop/package-lock.json
+
+      - name: 建置共用核心（JavaScript 輸出）
+        working-directory: packages/core
+        run: |
+          npm ci
+          npm run build
+
+      - name: 上傳共用核心輸出
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-dist
+          path: packages/core/dist
+          retention-days: 1
+
+      - name: 產生模組目錄 modules.json（規則表與端點，可獨立更新）
+        working-directory: apps/desktop
+        shell: bash
+        run: |
+          v=$(node -p "require('./package.json').version")
+          node scripts/make-catalog.mjs "v$v" installer/publish
+
+      - name: 上傳模組目錄
+        uses: actions/upload-artifact@v4
+        with:
+          name: module-catalog
+          path: apps/desktop/installer/publish
+          retention-days: 1
+
+  windows:
+    needs: shared
     runs-on: windows-latest
     steps:
       - name: 取得程式碼
@@ -29,19 +81,31 @@ jobs:
       - name: 安裝 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: |
+            packages/core/package-lock.json
+            apps/desktop/package-lock.json
 
-      - name: 建置共用核心
+      - name: 取得共用核心輸出
+        uses: actions/download-artifact@v4
+        with:
+          name: core-dist
+          path: packages/core/dist
+
+      - name: 安裝核心相依套件（含本平臺的原生模組）
         working-directory: packages/core
+        shell: bash
         run: |
-          npm ci
-          npm run build
+          for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
 
-      - name: 快取 Electron 執行檔
+      - name: 快取 Electron 與 electron-builder 下載
         uses: actions/cache@v4
         with:
-          path: ~\AppData\Local\electron\Cache
-          key: electron-38-${{ runner.os }}
+          path: |
+            ~\AppData\Local\electron\Cache
+            ~\AppData\Local\electron-builder\Cache
+          key: electron-${{ env.ELECTRON_MAJOR }}-windows-${{ hashFiles('apps/desktop/package-lock.json') }}
 
       - name: 建置應用程式
         working-directory: apps/desktop
@@ -62,12 +126,6 @@ jobs:
         working-directory: apps/desktop
         run: node installer/generate_manifest.js
 
-      - name: 產生模組目錄 modules.json（規則表與端點，可獨立更新）
-        working-directory: apps/desktop
-        shell: bash
-        run: |
-          v=$(node -p "require('./package.json').version")
-          node scripts/make-catalog.mjs "v$v" installer/publish
       - name: 檢查安裝器完整性
         shell: bash
         run: |
@@ -78,6 +136,154 @@ jobs:
           size=$(stat -c%s "$f")
           if [ "$size" -lt 50000000 ]; then echo "安裝器過小（$size bytes），內容可能不完整"; exit 1; fi
           echo "安裝器檢查通過（$size bytes）"
+
+      - name: 上傳 Windows 產物
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: |
+            apps/desktop/JudgeResearchSetup.exe
+            apps/desktop/installer/publish/latest.json
+          retention-days: 1
+
+  linux:
+    needs: shared
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: |
+            packages/core/package-lock.json
+            apps/desktop/package-lock.json
+
+      - name: 取得共用核心輸出
+        uses: actions/download-artifact@v4
+        with:
+          name: core-dist
+          path: packages/core/dist
+
+      - name: 安裝核心相依套件（含本平臺的原生模組）
+        working-directory: packages/core
+        run: |
+          for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
+
+      - name: 安裝 rpm 打包工具
+        run: sudo apt-get update && sudo apt-get install -y rpm
+
+      - name: 快取 Electron 與 electron-builder 下載
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/electron
+            ~/.cache/electron-builder
+          key: electron-${{ env.ELECTRON_MAJOR }}-linux-${{ hashFiles('apps/desktop/package-lock.json') }}
+
+      - name: 建置應用程式
+        working-directory: apps/desktop
+        run: |
+          for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
+          npm run build
+
+      - name: 打包 Linux 安裝包（AppImage、deb、rpm）
+        working-directory: apps/desktop
+        run: npx electron-builder --linux --publish never
+
+      - name: 上傳 Linux 產物
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-packages
+          path: |
+            apps/desktop/release/*.AppImage
+            apps/desktop/release/*.deb
+            apps/desktop/release/*.rpm
+          retention-days: 1
+
+  macos:
+    needs: shared
+    runs-on: macos-latest
+    steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: |
+            packages/core/package-lock.json
+            apps/desktop/package-lock.json
+
+      - name: 取得共用核心輸出
+        uses: actions/download-artifact@v4
+        with:
+          name: core-dist
+          path: packages/core/dist
+
+      - name: 安裝核心相依套件（含本平臺的原生模組）
+        working-directory: packages/core
+        run: |
+          for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
+
+      - name: 快取 Electron 與 electron-builder 下載
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/electron
+            ~/Library/Caches/electron-builder
+          key: electron-${{ env.ELECTRON_MAJOR }}-macos-${{ hashFiles('apps/desktop/package-lock.json') }}
+
+      - name: 建置應用程式
+        working-directory: apps/desktop
+        run: |
+          for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
+          npm run build
+
+      - name: 打包 macOS 安裝包（dmg、zip；x64 與 arm64）
+        working-directory: apps/desktop
+        run: npx electron-builder --mac --publish never
+
+      - name: 上傳 macOS 產物
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-packages
+          path: |
+            apps/desktop/release/*.dmg
+            apps/desktop/release/*.zip
+          retention-days: 1
+
+  release:
+    needs: [windows, linux, macos]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取得程式碼（僅為讀取版本號）
+        uses: actions/checkout@v4
+
+      - name: 下載所有平臺的產物
+        uses: actions/download-artifact@v4
+        with:
+          path: dist-all
+          merge-multiple: true
+
+      - name: 檢查必要檔案
+        shell: bash
+        run: |
+          ls -la dist-all
+          test -f dist-all/JudgeResearchSetup.exe || { echo "缺少 Windows 安裝器"; exit 1; }
+          test -f dist-all/latest.json || { echo "缺少 latest.json"; exit 1; }
+          test -f dist-all/modules.json || { echo "缺少 modules.json"; exit 1; }
+          ls dist-all/*.AppImage dist-all/*.deb dist-all/*.rpm >/dev/null 2>&1 || { echo "缺少 Linux 安裝包"; exit 1; }
+          ls dist-all/*.dmg dist-all/*.zip >/dev/null 2>&1 || { echo "缺少 macOS 安裝包"; exit 1; }
 
       - name: 讀取版本號
         id: ver
@@ -93,17 +299,26 @@ jobs:
           tag_name: ${{ steps.ver.outputs.tag }}
           name: 司法院裁判研究 v${{ steps.ver.outputs.version }}
           files: |
-            apps/desktop/JudgeResearchSetup.exe
-            apps/desktop/installer/publish/latest.json
-            apps/desktop/installer/publish/modules.json
-            apps/desktop/installer/publish/module-*
+            dist-all/JudgeResearchSetup.exe
+            dist-all/*.AppImage
+            dist-all/*.deb
+            dist-all/*.rpm
+            dist-all/*.dmg
+            dist-all/*.zip
+            dist-all/latest.json
+            dist-all/modules.json
+            dist-all/module-*
           generate_release_notes: true
           body: |
-            **程式碼簽章 / Code signing**：本專案的 Windows 安裝檔由 [SignPath.io](https://signpath.io) 提供免費簽章，憑證由 SignPath Foundation 核發。
+            **Windows**：下載 JudgeResearchSetup.exe 並執行。程式碼簽章由 [SignPath.io](https://signpath.io) 提供，憑證由 SignPath Foundation 核發。若出現 SmartScreen 警告，點「其他資訊」再點「仍要執行」。
             Free code signing provided by SignPath.io, certificate by SignPath Foundation.
 
-            **隱私 / Privacy**：本程式不收集個人資料。詳見 [隱私說明](https://github.com/wasonisgood/judge-desktop/blob/master/docs/PRIVACY.md)。 The App does not collect personal data. See the [privacy statement](https://github.com/wasonisgood/judge-desktop/blob/master/docs/PRIVACY.md).
+            **macOS**：下載 dmg（或 zip），將應用程式拖入「應用程式」。本版本尚未經 Apple 公證，第一次開啟請在 Finder 中右鍵點選「打開」。Apple Silicon 與 Intel 各有一個檔案。
 
-            **安裝 / Installation**：下載 JudgeResearchSetup.exe 並執行。若出現 SmartScreen 警告，點「其他資訊」再點「仍要執行」。 Run JudgeResearchSetup.exe. If SmartScreen appears, click "More info", then "Run anyway".
+            **Linux**：AppImage 下載後執行 `chmod +x` 再開啟；Debian／Ubuntu 系列用 deb、Fedora／openSUSE 等用 rpm。Linux 版不含應用程式內自動更新，請到本頁下載新版。
+
+            **應用程式內更新**：僅 Windows 安裝版提供。
+
+            **隱私 / Privacy**：本程式不收集個人資料。詳見 [隱私說明](https://github.com/wasonisgood/judge-desktop/blob/master/docs/PRIVACY.md)。 The App does not collect personal data. See the [privacy statement](https://github.com/wasonisgood/judge-desktop/blob/master/docs/PRIVACY.md).
           draft: false
           prerelease: false

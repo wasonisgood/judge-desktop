@@ -15,3 +15,33 @@ win:
     - target: dir
       arch:
         - x64
+# macOS 與 Linux 版：產出可直接安裝的格式（不含應用程式內自動更新）。
+# 未取得 Apple 開發者憑證前以 ad-hoc 簽章（identity "-"）；正式公證流程見 docs/PLATFORMS.md。
+mac:
+  category: public.app-category.productivity
+  icon: build/icon.png
+  identity: "-"
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+    - target: zip
+      arch:
+        - x64
+        - arm64
+linux:
+  category: Education
+  icon: build/icon.png
+  target:
+    - target: AppImage
+      arch:
+        - x64
+    - target: deb
+      arch:
+        - x64
+    - target: rpm
+      arch:
+        - x64
+# 檔名不含中文，便於在各發行版與下載工具中辨識：JudgeResearch-3.2.0-linux-x64.AppImage 等。
+artifactName: "JudgeResearch-${version}-${os}-${arch}.${ext}"
