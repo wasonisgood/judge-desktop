@@ -6,13 +6,14 @@ import {
   jurisdictionRegistry, buildScopeTable, CourtClient, analyzeCase, synthesizeScope, proposeQueries,
   currentTextForCitations, settleEach, newTrace, addStep, explainTrace, runQueryRounds, buildLawContext, buildClarifyOptions,
   raceAbort, isCancelError, type CitationRef,
-  type CaseAnalysis, type ClarifyOption, type CurrentLaw, type HistoryArticle, type PipelineTrace, type ScopeRow, type ScopeSynthesis, type AiComplete,
+  type CaseAnalysis, type CaseTypeStatus, type ClarifyOption, type CurrentLaw, type HistoryArticle, type PipelineTrace, type ScopeRow, type ScopeSynthesis, type AiComplete,
   type TraceExplanation,
 } from '@judge/core';
 import type { ScopeSheet } from '../scopeExporters';
 import { resolveStatuteOrCandidates, lawHistoryFor, currentLawFor } from '../data/cloud/lawRepo';
 import { cachedDetail, cachedSearch } from '../data/cloud/courtRepo';
 import { splitStatuteLine, rowCites } from './statuteInput';
+import { resolveCaseTypeArg, caseTypeSkipNote } from './caseTypeArgs';
 import { saveToLibrary } from './savedResult';
 import { toUserError } from './userError';
 
@@ -25,6 +26,8 @@ export interface ScopeRunArgs {
   maxItems: number;
   /** 法院管轄區；未指定為台灣司法院。法規名稱確認與法條沿革目前只支援台灣法規資料庫。 */
   jurisdiction?: string;
+  /** 案件類型（民事、刑事、行政）；未指定為不限。依判決字號篩選，無法判定的判決會被排除並回報。 */
+  caseType?: string;
   /** AI 來源：auto、local、cloud（見 aiRepo）。 */
   ai?: string;
   /** 是否進行 AI 分析（逐案與綜合）。關閉時只做傳統篩選。預設開啟。 */
@@ -87,11 +90,18 @@ export async function runScope(
     decision: 'pass', reason: aiOn ? '使用者啟用 AI 分析' : '使用者關閉 AI 分析或沒有可用的 AI',
   });
 
+  const ct = resolveCaseTypeArg(args.caseType);
+  if (ct.note) notes.push(ct.note);
+  const runArgs: ScopeRunArgs = { ...args, caseType: ct.caseType };
+  if (ct.caseType) {
+    addStep(trace, { stage: '案件類型設定', module: 'rule', input: ct.caseType, output: `依判決字號篩選為「${ct.caseType}」`, decision: 'pass', reason: '字號明載類型或字別唯一對應時採用；字別重疊或不在字別表中的判決排除（不猜）' });
+  }
+
   for (const line of args.statutes) {
     if (signal?.aborted) break;
     const { name, citation } = splitStatuteLine(line);
     try {
-      const outcome = await runOneStatute({ line, name, citation, args, ai, aiOn, client, signal, notes, trace, onProgress });
+      const outcome = await runOneStatute({ line, name, citation, args: runArgs, ai, aiOn, client, signal, notes, trace, onProgress });
       if (outcome.kind === 'ask') {
         return { status: 'ask', statuteLine: line, question: outcome.question, options: outcome.options, notes, trace, explanation: explainTrace(trace) };
       }
@@ -112,7 +122,7 @@ export async function runScope(
     kind: 'scope',
     title: `範圍整理：${args.statutes.join('、')}`,
     summary: `${sheets.length} 部法規，共 ${total} 筆${cancelled ? '（已取消，部分結果）' : ''}`,
-    payload: { sheets, yearFrom: args.yearFrom, yearTo: args.yearTo, trace },
+    payload: { sheets, yearFrom: args.yearFrom, yearTo: args.yearTo, caseType: ct.caseType ?? null, trace },
   });
   return { status: 'done', sheets, notes, cancelled, saveError: save.saveError, trace, explanation: explainTrace(trace) };
 }
@@ -164,6 +174,8 @@ async function runOneStatute(p: {
   const lawContext = buildLawContext({ statuteName: statute.name, law: currentLaw, history: lawHistory }).text;
 
   // 篩選判決：第一輪用法名；結果不足時（AI 啟用時）由 AI 依法規上下文提議新關鍵字，最多 SCOPE_MAX_ROUNDS 輪。
+  // 案件類型排除的判決（以標題去重；多輪搜尋可能重複遇到同一筆）。
+  const typeSkipped = new Map<string, CaseTypeStatus>();
   const search = async (q: string): Promise<ScopeRow[]> => {
     const rows = await buildScopeTable({
       statute: statute.name,
@@ -174,6 +186,8 @@ async function runOneStatute(p: {
       client,
       jurisdiction: args.jurisdiction,
       lawHistory,
+      caseType: resolveCaseTypeArg(args.caseType).caseType,
+      onCaseTypeSkip: (title, status) => typeSkipped.set(title, status),
       signal,
       // 繼承快取（v3.6.1）：列表或前一階段已取得的搜尋與內頁直接使用，不重複爬取。
       searchSource: (query, max) => cachedSearch(query, max, undefined, args.jurisdiction),
@@ -201,6 +215,12 @@ async function runOneStatute(p: {
   });
   if (rounds.status === 'ask') return { kind: 'ask', question: rounds.question, options: rounds.options };
   if (rounds.status === 'capped') notes.push(`「${statute.name}」${rounds.advice}`);
+  const activeType = resolveCaseTypeArg(args.caseType).caseType;
+  if (activeType) {
+    const typeNote = caseTypeSkipNote(statute.name, activeType, [...typeSkipped.values()].map((status) => ({ status })));
+    if (typeNote) notes.push(typeNote);
+    addStep(trace, { stage: '案件類型篩選', module: 'rule', input: `${statute.name}（${activeType}）`, output: `排除 ${typeSkipped.size} 筆`, decision: 'pass', reason: '依判決字號判定類型，不猜' });
+  }
   let rows: ScopeRow[] = rounds.items;
   if (args.yearFrom || args.yearTo) {
     rows = rows.filter((r) => {

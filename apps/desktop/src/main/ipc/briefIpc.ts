@@ -9,7 +9,7 @@ import { withJob } from '../services/jobRegistry';
 import { toUserError } from '../services/userError';
 
 export function registerBriefIpc(): void {
-  ipcMain.handle('brief:run', (_e, args: { runId: string; judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[]; jurisdiction?: string; ai?: string }) =>
+  ipcMain.handle('brief:run', (_e, args: { runId: string; judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[]; jurisdiction?: string; caseType?: string; ai?: string }) =>
     withJob(args.runId, 'brief', `精讀：${args.judgmentId}`, async (signal) => {
       let ai;
       try {

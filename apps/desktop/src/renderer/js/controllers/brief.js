@@ -94,6 +94,7 @@
             focus: $('briefFocus').value.trim(),
             lengthHint: $('briefLength').value,
             jurisdiction: $('briefJurisdiction').value,
+            caseType: $('briefCaseType').value,
             ai: $('briefAi').value,
             fields: fields
           });
@@ -107,6 +108,7 @@
           parts.push(annotationText(an));
           if (r.doc.droppedQuotes) parts.push('已移除 ' + r.doc.droppedQuotes + ' 則無法在判決原文中找到的引文。');
           if ((r.lawNotes || []).length) parts.push('法規內容未完整取得：' + r.lawNotes.join('；'));
+          if (r.caseTypeNote) parts.push(r.caseTypeNote);
           JR.setStatus($('briefStatus'), parts.join('　'), (an.error || r.saveError) ? 'error' : 'ok');
           state.briefExplanation = r.explanation;
           $('briefExplain').disabled = !r.explanation;

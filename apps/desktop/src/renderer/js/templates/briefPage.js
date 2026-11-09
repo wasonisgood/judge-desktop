@@ -40,6 +40,15 @@
             <input id="briefFocus" placeholder="例如：爭點、事實認定、回復原狀的要件" autocomplete="off">
           </label>
           <label class="field">
+            <span>案件類型（選填；提示 AI，並檢查判決字號是否相符）</span>
+            <select id="briefCaseType">
+              <option value="">不指定</option>
+              <option value="民事">民事</option>
+              <option value="刑事">刑事</option>
+              <option value="行政">行政</option>
+            </select>
+          </label>
+          <label class="field">
             <span>篇幅</span>
             <select id="briefLength">
               <option value="半頁">半頁</option>

@@ -27,6 +27,15 @@
               <span>每部法規最多筆數</span>
               <input id="scopeMax" type="number" min="1" max="100" value="30">
             </label>
+            <label class="field">
+              <span>案件類型（選填，依判決字號篩選）</span>
+              <select id="scopeCaseType">
+                <option value="">不限</option>
+                <option value="民事">民事</option>
+                <option value="刑事">刑事</option>
+                <option value="行政">行政</option>
+              </select>
+            </label>
           </div>
           <label class="check">
             <input type="checkbox" id="scopeAiOn" checked>
