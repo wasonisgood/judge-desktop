@@ -11,6 +11,7 @@ import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
 import { library } from '../data/local/libraryAccess';
 import { autoSaveExport, stamp } from '../services/exportService';
+import { lawContextForStatute } from '../services/lawContext';
 
 export function registerSearchIpc(): void {
   ipcMain.handle('search:screen', async (_e, args: { topic: string; items: RelevanceItem[]; ai?: string }) => {
@@ -75,7 +76,7 @@ export function registerSearchIpc(): void {
   });
   // 智慧搜尋（issue #4）：有上限的查詢輪次。未設定 AI 時退回傳統搜尋（只查一次）。
   // 語意不清時回傳選項；使用者選擇後，畫面以選項文字重新呼叫。流程紀錄隨結果回傳，供說明視窗使用。
-  ipcMain.handle('search:smart', async (_e, args: { request: string; jurisdiction?: string; maxItems?: number; ai?: string }) => {
+  ipcMain.handle('search:smart', async (_e, args: { request: string; statute?: string; jurisdiction?: string; maxItems?: number; ai?: string }) => {
     const request = String(args.request ?? '').trim();
     const trace = newTrace('判決列表');
     if (!request) return { status: 'done', items: [], tried: [], explanation: explainTrace(trace) };
@@ -86,6 +87,17 @@ export function registerSearchIpc(): void {
       addStep(trace, { stage: 'AI 設定', module: 'rule', input: request, output: '未使用 AI', decision: 'skip', reason: err instanceof Error ? err.message : String(err) });
     }
     const maxItems = args.maxItems ?? 20;
+    // 法規上下文（issue #4 第 4 點）：有指定相關法規時，AI 提議關鍵字前先讀入現行條文與沿革。
+    let lawContext: string | undefined;
+    const statute = String(args.statute ?? '').trim();
+    if (statute) {
+      const lc = await lawContextForStatute(statute);
+      if (lc.text) lawContext = lc.text;
+      addStep(trace, {
+        stage: '讀入法規現行條文與沿革', module: 'rule', input: statute,
+        output: lc.text ? '已讀入' : '未取得', decision: 'pass', reason: lc.notes.length ? lc.notes.join('；') : '法規內容已交給 AI 提議關鍵字',
+      });
+    }
     const result = await runQueryRounds<JudgmentSummary>({
       feature: '判決搜尋',
       trace,
@@ -97,7 +109,7 @@ export function registerSearchIpc(): void {
       onError: () => { /* 單一關鍵字失敗已記錄在流程中，其餘關鍵字照常 */ },
       propose: async ({ tried, kept, round }) => {
         if (!ai) return { unclear: false, queries: [], reason: '未設定 AI，無法自動調整關鍵字' };
-        return proposeQueries(ai, { request, tried, keptCount: kept.length, round });
+        return proposeQueries(ai, { request, tried, keptCount: kept.length, round, lawContext });
       },
     });
     if (result.items.length) {

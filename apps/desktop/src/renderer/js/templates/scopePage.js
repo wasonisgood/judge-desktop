@@ -28,6 +28,10 @@
               <input id="scopeMax" type="number" min="1" max="100" value="30">
             </label>
           </div>
+          <label class="check">
+            <input type="checkbox" id="scopeAiOn" checked>
+            <span>啟用 AI 分析（逐案與綜合；關閉時只做傳統篩選，不需要 AI）</span>
+          </label>
           <div class="actions">
             <select id="scopeAi" class="ai-source" title="AI 來源">
               <option value="auto">AI：自動（本地優先）</option>
@@ -41,6 +45,7 @@
           </div>
           <div class="progress" id="scopeProgress" hidden><div class="bar"></div></div>
           <p class="status" id="scopeStatus" role="status"></p>
+          <div class="clarify" id="scopeClarify" hidden></div>
         </form>
         <div id="scopeResult"></div>
       </section>

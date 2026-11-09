@@ -60,6 +60,10 @@
   <header class="assist-head">
     <span class="assist-title">助理</span>
     <span class="spacer"></span>
+    <select id="assistMode" class="ai-source" title="搜尋方式">
+      <option value="ai">搜尋：AI 協助</option>
+      <option value="traditional">搜尋：傳統（原文）</option>
+    </select>
     <button class="btn small" type="button" id="assistFull" aria-pressed="false">全螢幕</button>
     <button class="btn small" type="button" id="assistClear">清除對話</button>
     <button class="btn small" type="button" id="assistClose" aria-label="收起">收起</button>
@@ -76,6 +80,7 @@
 <script src="js/core/dom.js"></script>
 <script src="js/components/notice.js"></script>
 <script src="js/components/explainDialog.js"></script>
+<script src="js/components/clarifyBox.js"></script>
 <script src="js/components/progressCard.js"></script>
 <script src="js/components/briefFieldRow.js"></script>
 <script src="js/components/assistMessages.js"></script>

@@ -58,7 +58,7 @@
         var thinking = JR.components.addMsg('assistant', '思考中…');
         $('assistSend').disabled = true;
         try {
-          var turn = await api.assistant.chat({ history: state.assistHistory, text: text });
+          var turn = await api.assistant.chat({ history: state.assistHistory, text: text, searchMode: $('assistMode').value });
           thinking.querySelector('.assist-text').textContent = turn.reply;
           state.assistHistory.push({ role: 'user', text: text });
           state.assistHistory.push({ role: 'assistant', text: turn.reply });

@@ -14,7 +14,11 @@ export function registerScopeIpc(): void {
     return currentLawFor(args.pcode);
   });
   ipcMain.handle('scope:run', async (e, args: ScopeRunArgs) => {
-    const ai = await requireAi(normalizeAiMode(args.ai));
+    // AI 分析關閉時不需要金鑰；開啟但沒有可用的 AI 時改為傳統篩選，並在結果的說明中記錄。
+    let ai = null;
+    if (args.aiAnalysis !== false) {
+      try { ai = await requireAi(normalizeAiMode(args.ai)); } catch { ai = null; }
+    }
     return runScope(args, ai, (p) => e.sender.send('scope:progress', p));
   });
   ipcMain.handle('export:scope', async (_e, args: { sheets: ScopeSheet[]; yearFrom?: number; yearTo?: number; format: 'xlsx' | 'docx' }) => {

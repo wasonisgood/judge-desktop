@@ -9,6 +9,15 @@
     return $('scopeLines').value.split(/\n/).map(function (s) { return s.trim(); }).filter(Boolean);
   }
 
+  // 法名有多個候選時，使用者選定後替換該行並重新執行（issue #4 第 3 點）。
+  function replaceStatuteLine(oldLine, newLine) {
+    var lines = $('scopeLines').value.split(/\n/).map(function (x) { return x.trim(); });
+    var idx = lines.indexOf(String(oldLine || '').trim());
+    if (idx < 0) lines.push(newLine); else lines[idx] = newLine;
+    $('scopeLines').value = lines.filter(Boolean).join('\n');
+    $('scopeForm').dispatchEvent(new Event('submit', { cancelable: true }));
+  }
+
   async function exportScope(format) {
     if (!state.scopeSheets) return;
     try {
@@ -48,10 +57,21 @@
         state.scopeRunning = true;
         JR.setStatus($('scopeStatus'), '確認法名中…（每則判決都會交由 AI 分析）');
         try {
-          var r = await api.scope.run({ statutes: statutes, yearFrom: from, yearTo: to, maxItems: max, jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value });
-          JR.controllers.scope.showResult(r.sheets, from, to);
+          JR.components.clarifyHide($('scopeClarify'));
+          var r = await api.scope.run({ statutes: statutes, yearFrom: from, yearTo: to, maxItems: max, jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value, aiAnalysis: $('scopeAiOn').checked });
           state.scopeExplanation = r.explanation;
           $('scopeExplain').disabled = !r.explanation;
+          if (r.status === 'ask') {
+            JR.components.clarifyBox($('scopeClarify'), {
+              question: r.question,
+              options: r.options,
+              onPick: function (o) { replaceStatuteLine(r.statuteLine, o.label); },
+              onManual: function (text) { replaceStatuteLine(r.statuteLine, text); }
+            });
+            JR.setStatus($('scopeStatus'), r.question);
+            return;
+          }
+          JR.controllers.scope.showResult(r.sheets, from, to);
           var total = r.sheets.reduce(function (n, s) { return n + s.rows.length; }, 0);
           // 把結果摘要交給助理，讓它能接著討論（助理只看得到對話紀錄，看不到畫面）。
           state.assistHistory.push({ role: 'user', text: '[系統通知] 範圍整理已完成。' + r.sheets.map(function (sh) {

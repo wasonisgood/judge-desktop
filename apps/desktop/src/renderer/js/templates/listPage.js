@@ -13,6 +13,10 @@
             <span>關鍵字</span>
             <input id="listKeyword" required placeholder="例如：戒嚴、回復原狀" autocomplete="off">
           </label>
+          <label class="field">
+            <span>相關法規（選填，智慧搜尋時 AI 會先讀入現行條文與沿革）</span>
+            <input id="listStatute" placeholder="例如：國家賠償法" autocomplete="off">
+          </label>
           <div class="row">
             <label class="field">
               <span>最多筆數</span>

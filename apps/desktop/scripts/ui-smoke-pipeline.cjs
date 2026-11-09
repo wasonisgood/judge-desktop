@@ -61,6 +61,29 @@ app.whenReady().then(async () => {
     await js(w, `document.querySelector('.rail-item[data-page="brief"]').click()`);
     await wait(200);
     check('精讀頁有「查看處理流程」按鈕（初始停用）', await js(w, `(function(){var b=document.getElementById('briefExplain');return !!b&&b.disabled;})()`));
+    // 第二輪補齊：列表相關法規欄位、範圍 AI 分析開關、助理搜尋方式、共用澄清元件
+    await js(w, `document.querySelector('.rail-item[data-page="list"]').click()`);
+    await wait(150);
+    check('列表頁有「相關法規」欄位', await js(w, `!!document.getElementById('listStatute')`));
+    await js(w, `document.querySelector('.rail-item[data-page="scope"]').click()`);
+    await wait(150);
+    check('範圍頁「啟用 AI 分析」預設勾選', await js(w, `document.getElementById('scopeAiOn').checked === true`));
+    check('範圍頁有澄清選項容器（初始隱藏）', await js(w, `(function(){var c=document.getElementById('scopeClarify');return !!c&&c.hidden;})()`));
+    check('助理有搜尋方式選擇（AI／傳統）', await js(w, `(function(){var s=document.getElementById('assistMode');return !!s&&s.options.length===2&&s.value==='ai';})()`));
+    const clarifyOk = await js(w, `(function(){
+      var box=document.getElementById('scopeClarify');
+      window.JR.components.clarifyBox(box,{question:'請選擇',options:[{id:'candidate-1',label:'民法',description:'a'},{id:'manual',label:'自行輸入更正後再試',description:''}],onPick:function(){},onManual:function(){}});
+      var n=box.querySelectorAll('button').length;
+      return n===2 && box.querySelector('button:last-of-type').textContent==='自行輸入更正後再試';
+    })()`);
+    check('澄清元件：選項數正確，最後一項為自行輸入', clarifyOk);
+    await js(w, `(function(){ var bs=document.querySelectorAll('#scopeClarify button'); bs[bs.length-1].click(); })()`);
+    await wait(100);
+    check('澄清元件：選自行輸入會出現文字框', await js(w, `!!document.querySelector('#scopeClarify input[type="text"]')`));
+    await js(w, `window.JR.components.clarifyHide(document.getElementById('scopeClarify'))`);
+    check('澄清元件可隱藏', await js(w, `document.getElementById('scopeClarify').hidden === true`));
+    await w.webContents.capturePage().then((img) => fs.writeFileSync(path.join(shotDir, 'pipeline-scope-page.png'), img.toPNG()));
+
   } catch (err) {
     check('執行過程沒有例外', false, err instanceof Error ? err.stack : String(err));
   } finally {

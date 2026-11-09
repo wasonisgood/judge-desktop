@@ -5,6 +5,21 @@
 //    由使用者在畫面上按同意後才執行；模型本身不能直接執行這些操作。
 // 3. 金鑰只在主程序使用，不會傳給畫面。
 import { anthropicAuthHeaders, type AiConfig } from './ai';
+import { createSearchBudget, type SearchBudget } from '@judge/core';
+
+/** 搜尋方式（issue #4 第 5、6 點）：AI 協助（模型改寫與擴充關鍵字）或傳統（使用者原文，只搜一次）。 */
+export type AssistantSearchMode = 'ai' | 'traditional';
+
+/** 每一輪對話的搜尋預算：最多 3 次搜尋，結果跨次保留。 */
+export const ASSISTANT_SEARCH_MAX = 3;
+
+/** 一輪對話中工具可共用的狀態。 */
+export interface AssistantTurnContext {
+  budget: SearchBudget<SearchHit>;
+  searchMode: AssistantSearchMode;
+  /** 使用者本輪的原文（傳統模式下直接拿來搜尋）。 */
+  userText: string;
+}
 
 export type AssistantPage = 'home' | 'list' | 'scope' | 'brief' | 'files' | 'settings';
 
@@ -101,14 +116,22 @@ export const ASSISTANT_TOOLS: ToolDef[] = [
   },
 ];
 
-const SYSTEM_PROMPT = [
+const SYSTEM_PROMPT_BASE = [
   '你是「司法院裁判研究」桌面應用程式的助理。使用繁體中文（台灣用語），語氣簡潔平實，不使用表情符號。',
   '你可以用工具查詢判決與法規，也可以提議操作應用程式的功能。',
   '會呼叫 AI 或改動資料的操作，只能用 propose_ 開頭的工具提議，由使用者確認後才會執行。',
-  '搜尋判決時，請把同義詞、案由、法名拆成 2 到 4 組關鍵字一起搜尋（用 queries），不要只用一個詞；查到的結果若不足以回答，再換關鍵字補搜。',
+  '搜尋判決時，請把同義詞、案由、法名拆成 2 到 4 組關鍵字一起搜尋（用 queries），不要只用一個詞。',
+  `每一輪對話最多搜尋 ${ASSISTANT_SEARCH_MAX} 次。工具回傳的「剩餘次數」與「目前保留筆數」會告訴你狀況：結果不足就換不同的關鍵字補搜；已達上限就停止搜尋，依目前保留的結果回答，說明狀況與解方，並詢問使用者是否同意新方向。`,
+  '若使用者的需求語意不清（例如同一個詞可能指兩種法律領域），不要猜：請列出 2 到 3 個候選解讀，並把「自行輸入更正後再試」放在最後一項，請使用者選擇。',
   '只在使用者明確要求時才呼叫工具；不要為了「順便」再搜尋或重複執行先前已完成的查詢。回覆只說明與使用者要求有關的內容，不要提及自己沒有被要求的動作。',
   '不確定使用者要什麼時，先問清楚，不要猜。不得編造判決字號或法條內容；查不到就說查不到。',
 ].join('\n');
+
+const SYSTEM_PROMPT_TRADITIONAL = '傳統搜尋模式：搜尋判決時只使用使用者的原文作為關鍵字，只搜尋一次，不要自行改寫或擴充關鍵字。';
+
+function systemPromptFor(mode: AssistantSearchMode): string {
+  return [SYSTEM_PROMPT_BASE, mode === 'traditional' ? SYSTEM_PROMPT_TRADITIONAL : ''].filter(Boolean).join('\n');
+}
 
 // ---------------------------------------------------------------------------
 // 供應商格式轉換
@@ -152,7 +175,7 @@ interface ModelReply {
   calls: ToolCall[];
 }
 
-async function askModel(cfg: AiConfig, items: Item[]): Promise<ModelReply> {
+async function askModel(cfg: AiConfig, items: Item[], system: string): Promise<ModelReply> {
   const base = cfg.baseUrl.replace(/\/$/, '');
   const signal = AbortSignal.timeout(120_000);
   if (cfg.provider === 'anthropic') {
@@ -163,7 +186,7 @@ async function askModel(cfg: AiConfig, items: Item[]): Promise<ModelReply> {
       body: JSON.stringify({
         model: cfg.model,
         max_tokens: 1500,
-        system: SYSTEM_PROMPT,
+        system,
         tools: ASSISTANT_TOOLS.map((t) => ({ name: t.name, description: t.description, input_schema: t.parameters })),
         messages: toAnthropic(items),
       }),
@@ -183,7 +206,7 @@ async function askModel(cfg: AiConfig, items: Item[]): Promise<ModelReply> {
     body: JSON.stringify({
       model: cfg.model,
       max_tokens: 1500,
-      messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...toOpenAi(items)],
+      messages: [{ role: 'system', content: system }, ...toOpenAi(items)],
       tools: ASSISTANT_TOOLS.map((t) => ({ type: 'function', function: { name: t.name, description: t.description, parameters: t.parameters } })),
     }),
   });
@@ -203,7 +226,7 @@ async function askModel(cfg: AiConfig, items: Item[]): Promise<ModelReply> {
 // ---------------------------------------------------------------------------
 export interface AssistantDeps {
   config: () => Promise<AiConfig>;
-  execute: (call: ToolCall) => Promise<ToolOutcome>;
+  execute: (call: ToolCall, ctx: AssistantTurnContext) => Promise<ToolOutcome>;
 }
 
 /**
@@ -214,8 +237,16 @@ export async function runAssistantTurn(
   deps: AssistantDeps,
   history: { role: 'user' | 'assistant'; text: string }[],
   userText: string,
+  opts: { searchMode?: AssistantSearchMode } = {},
 ): Promise<AssistantTurn> {
   const cfg = await deps.config();
+  const searchMode: AssistantSearchMode = opts.searchMode === 'traditional' ? 'traditional' : 'ai';
+  const ctx: AssistantTurnContext = {
+    budget: createSearchBudget<SearchHit>(searchMode === 'traditional' ? 1 : ASSISTANT_SEARCH_MAX),
+    searchMode,
+    userText,
+  };
+  const system = systemPromptFor(searchMode);
   const items: Item[] = [
     ...history.map((h): Item => (h.role === 'user' ? { type: 'user', text: h.text } : { type: 'assistant', text: h.text, calls: [] })),
     { type: 'user', text: userText },
@@ -223,14 +254,14 @@ export async function runAssistantTurn(
   const turn: AssistantTurn = { reply: '', navigate: null, pending: [] };
 
   for (let round = 0; round < 6; round++) {
-    const r = await askModel(cfg, items);
+    const r = await askModel(cfg, items, system);
     items.push({ type: 'assistant', text: r.text, calls: r.calls });
     if (r.calls.length === 0) {
       turn.reply = r.text || '（沒有回覆）';
       return turn;
     }
     for (const call of r.calls) {
-      const out = await deps.execute(call);
+      const out = await deps.execute(call, ctx);
       if (out.navigate) turn.navigate = out.navigate;
       if (out.pending) turn.pending.push(out.pending);
       items.push({ type: 'tool', id: call.id, name: call.name, content: out.content });

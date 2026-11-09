@@ -12,27 +12,35 @@ export function lawClient(): LawClient {
   return new LawClient({ fetchImpl: createCurlFetch() });
 }
 
-/** 把使用者輸入的法名確認為全國法規資料庫的正式法名。完全相同或明顯相近時自動採用（會回報），否則列出候選讓使用者選。 */
-export async function resolveStatute(name: string): Promise<{ name: string; pcode: string; note?: string }> {
+export type StatuteResolution =
+  | { status: 'ok'; name: string; pcode: string; note?: string }
+  | { status: 'candidates'; candidates: string[] };
+
+/** 把使用者輸入的法名確認為正式法名；有多個候選時回傳候選清單，讓使用者選（issue #4 第 3 點）。 */
+export async function resolveStatuteOrCandidates(name: string): Promise<StatuteResolution> {
   const key = name.trim();
   const hit = await cacheGet<{ name: string; pcode: string; note?: string }>('law-name', key, FOREVER);
-  if (hit) return hit;
+  if (hit) return { status: 'ok', ...hit };
   const r = await resolveLawName(lawClient(), key);
   if (r.status === 'exact') {
     const out = { name: r.match.name, pcode: r.match.pcode };
     await cachePut('law-name', key, out);
-    return out;
+    return { status: 'ok', ...out };
   }
   if (r.status === 'auto') {
     const out = { name: r.match.name, pcode: r.match.pcode, note: `「${key}」不是完整的正式法名，已採用最接近的「${r.match.name}」。` };
     await cachePut('law-name', key, out);
-    return out;
+    return { status: 'ok', ...out };
   }
-  if (r.status === 'candidates') {
-    const hint = r.candidates.map((x) => x.name).join('、');
-    throw new Error(`法規名稱「${key}」找不到完全相同的法規，請選擇：${hint}`);
-  }
+  if (r.status === 'candidates') return { status: 'candidates', candidates: r.candidates.map((x) => x.name) };
   throw new Error(`法規名稱「${key}」在全國法規資料庫中查無結果。請確認法名，例如「國家賠償法」。`);
+}
+
+/** 只要求單一結果的版本（舊呼叫端使用）；有候選時拋出含候選清單的錯誤。 */
+export async function resolveStatute(name: string): Promise<{ name: string; pcode: string; note?: string }> {
+  const r = await resolveStatuteOrCandidates(name);
+  if (r.status === 'candidates') throw new Error(`法規名稱「${name.trim()}」找不到完全相同的法規，請選擇：${r.candidates.join('、')}`);
+  return { name: r.name, pcode: r.pcode, note: r.note };
 }
 
 export async function lawHistoryFor(lawName: string): Promise<HistoryArticle[]> {

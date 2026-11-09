@@ -5,11 +5,12 @@ import { aiConfigOrThrow } from '../data/cloud/aiRepo';
 import { executeAssistantTool } from '../services/assistantTools';
 
 export function registerAssistantIpc(): void {
-  ipcMain.handle('assistant:chat', async (_e, args: { history: { role: 'user' | 'assistant'; text: string }[]; text: string }) => {
+  ipcMain.handle('assistant:chat', async (_e, args: { history: { role: 'user' | 'assistant'; text: string }[]; text: string; searchMode?: 'ai' | 'traditional' }) => {
     const turn: AssistantTurn = await runAssistantTurn(
       { config: aiConfigOrThrow, execute: executeAssistantTool },
       args.history.slice(-12),
       args.text,
+      { searchMode: args.searchMode },
     );
     return turn;
   });

@@ -1,28 +1,40 @@
 // 懸浮 AI 助理的工具執行：查詢類工具直接執行；會花費額度的操作只會列為待確認（見 assistant.ts）。
-import type { ToolCall, ToolOutcome, SearchHit } from '../assistant';
-import { mergeSearchHits } from '../assistant';
+import type { ToolCall, ToolOutcome, SearchHit, AssistantTurnContext } from '../assistant';
+import { createSearchBudget, runBudgetedSearch } from '@judge/core';
 import { newId } from '../library';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { resolveStatute } from '../data/cloud/lawRepo';
 
 export type AssistantPageName = 'home' | 'list' | 'scope' | 'brief' | 'files' | 'settings';
 
-export async function executeAssistantTool(call: ToolCall): Promise<ToolOutcome> {
+// 工具執行。ctx 是本輪對話的共用狀態（搜尋預算與搜尋方式）；未提供時使用單次預算。
+export async function executeAssistantTool(call: ToolCall, ctx?: AssistantTurnContext): Promise<ToolOutcome> {
   const input = call.input as Record<string, any>;
+  const turn: AssistantTurnContext = ctx ?? { budget: createSearchBudget<SearchHit>(3), searchMode: 'ai', userText: '' };
   try {
     switch (call.name) {
       case 'search_judgments': {
-        const list: string[] = Array.isArray(input.queries) ? input.queries.map(String) : [];
-        if (input.query) list.push(String(input.query));
-        const queries = [...new Set(list.map((q) => q.trim()).filter(Boolean))].slice(0, 4);
-        if (queries.length === 0) return { content: '沒有提供關鍵字。' };
-        const groups: SearchHit[][] = [];
-        for (const q of queries) {
-          const items = await cachedSearch(q, 10);
-          groups.push(items.map((it) => ({ id: it.id, title: it.title, date: it.dateIso ?? null, cause: it.cause ?? '' })));
-        }
-        const merged = mergeSearchHits(groups, 20);
-        return { content: merged.length ? JSON.stringify({ queries, hits: merged }) : '查無符合的判決。' };
+        // 傳統模式：只用使用者原文搜尋一次（不採用模型改寫的關鍵字）。
+        const requested: string[] = turn.searchMode === 'traditional'
+          ? [turn.userText]
+          : [...(Array.isArray(input.queries) ? input.queries.map(String) : []), ...(input.query ? [String(input.query)] : [])];
+        if (requested.every((q) => !q.trim())) return { content: '沒有提供關鍵字。' };
+        const r = await runBudgetedSearch<SearchHit>(
+          turn.budget,
+          requested,
+          async (q) => (await cachedSearch(q, 10)).map((it) => ({ id: it.id, title: it.title, date: it.dateIso ?? null, cause: it.cause ?? '' })),
+          (h) => h.id,
+        );
+        const hits = r.items.slice(0, 20);
+        return {
+          content: JSON.stringify({
+            status: r.status,
+            searched: r.ran,
+            remaining: r.remaining,
+            message: r.message,
+            hits,
+          }),
+        };
       }
       case 'resolve_statute': {
         const r = await resolveStatute(String(input.name ?? ''));

@@ -5,67 +5,16 @@
   var api = window.api;
   var state = JR.state;
 
-  // ---- 智慧搜尋（issue #4）：有上限的重試；語意不清時顯示選項，最後一項可自行輸入更正 ----
-  function hideClarify() {
-    var box = $('listClarify');
-    box.innerHTML = '';
-    box.hidden = true;
-  }
-
-  function showManualInput() {
-    var box = $('listClarify');
-    box.innerHTML = '';
-    var label = document.createElement('label');
-    label.className = 'field';
-    var span = document.createElement('span');
-    span.textContent = '請輸入更正後的需求描述';
-    var input = document.createElement('input');
-    input.type = 'text';
-    input.autocomplete = 'off';
-    label.appendChild(span);
-    label.appendChild(input);
-    var go = document.createElement('button');
-    go.type = 'button';
-    go.className = 'btn primary';
-    go.textContent = '以此重試';
-    go.addEventListener('click', function () {
-      var text = input.value.trim();
-      if (text) smartRun(text);
-    });
-    box.appendChild(label);
-    box.appendChild(go);
-    input.focus();
-  }
-
-  function showClarify(r) {
-    var box = $('listClarify');
-    box.innerHTML = '';
-    box.hidden = false;
-    var q = document.createElement('p');
-    q.textContent = r.question;
-    box.appendChild(q);
-    r.options.forEach(function (opt) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'btn';
-      b.textContent = opt.label;
-      b.title = opt.description || '';
-      b.addEventListener('click', function () {
-        if (opt.id === 'manual') showManualInput();
-        else smartRun(opt.label);
-      });
-      box.appendChild(b);
-    });
-  }
-
+  // ---- 智慧搜尋（issue #4）：有上限的重試；語意不清時顯示選項（共用元件），最後一項可自行輸入更正 ----
   function smartRun(request) {
     var status = $('listStatus');
     $('listRun').disabled = true;
     $('listExport').disabled = true;
-    hideClarify();
+    JR.components.clarifyHide($('listClarify'));
     JR.setStatus(status, '智慧搜尋中…（依結果自動調整關鍵字，最多 3 輪）');
     return api.search.smart({
       request: request,
+      statute: $('listStatute').value.trim(),
       jurisdiction: $('listJurisdiction').value,
       maxItems: Number($('listMax').value) || 20,
       ai: $('listAi').value
@@ -82,7 +31,12 @@
         JR.views.renderList(r.items);
       }
       if (r.status === 'ask') {
-        showClarify(r);
+        JR.components.clarifyBox($('listClarify'), {
+          question: r.question,
+          options: r.options,
+          onPick: function (o) { smartRun(o.label); },
+          onManual: function (text) { smartRun(text); }
+        });
         JR.setStatus(status, r.question);
         return;
       }

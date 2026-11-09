@@ -10,6 +10,7 @@ import { buildFourPerPageDocx, groupPages, type PageImage } from '../pdfWord';
 import { library } from '../data/local/libraryAccess';
 import { cachedDetail } from '../data/cloud/courtRepo';
 import { exportDir } from './exportService';
+import { lawContextForCitations } from './lawContext';
 
 export interface AnnotateResult {
   files: string[];
@@ -58,7 +59,13 @@ export async function runBrief(
   const d = await cachedDetail(args.judgmentId, undefined, args.jurisdiction);
   addStep(trace, { stage: '取得判決內頁', module: 'rule', input: args.judgmentId, output: `${d.fullText.length} 字`, decision: 'pass', reason: '判決原文已取得' });
   const fields = normalizeBriefFields(args.fields ?? []);
-  const doc: BriefDocument = await briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined });
+  // 法規上下文（issue #4 第 4 點）：判決引用的法條現行內容與沿革交給 AI 判讀。
+  const lc = await lawContextForCitations(d.relatedLaws ?? []);
+  addStep(trace, {
+    stage: '讀入法規現行條文與沿革', module: 'rule', input: `${(d.relatedLaws ?? []).length} 條相關法條`,
+    output: lc.text ? '已讀入' : '未取得', decision: 'pass', reason: lc.notes.length ? lc.notes.join('；') : '法規內容已交給 AI 判讀',
+  });
+  const doc: BriefDocument = await briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined, lawContext: lc.text || undefined });
   addStep(trace, { stage: 'AI 整理文書', module: 'cloud', input: `${fields.length || '預設'} 個欄位；重點：${args.focus || '（未指定）'}`, output: `${doc.sections.length} 段`, decision: 'pass', reason: '只根據判決原文整理' });
   const dropped = doc.droppedQuotes ?? 0;
   addStep(trace, {
