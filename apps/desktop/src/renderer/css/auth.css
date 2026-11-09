@@ -1,0 +1,17 @@
+/* 登入閘門：覆蓋整個主畫面，沿用本站的紙色、墨色與朱色。 */
+.auth-gate {
+  /* 自訂標題列高 40px（見 base.css），閘門不覆蓋它，讓使用者仍可最小化或關閉視窗。 */
+  position: fixed; inset: 40px 0 0 0; z-index: 200;
+  display: grid; place-items: center; padding: 24px;
+  background: var(--paper); background-image: none;
+}
+.auth-gate[hidden] { display: none; }
+.auth-card {
+  width: min(460px, 100%); padding: 28px 30px;
+  background: var(--paper-2); border: 1px solid var(--rule); border-top: 3px solid var(--shu);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+.auth-card h1 { margin-top: 2px; }
+.auth-kicker { margin: 0; font-size: 0.78rem; letter-spacing: 0.12em; color: var(--ink-3); font-weight: 700; }
+.auth-card .actions { margin-top: 14px; }
+.auth-card .status { min-height: 1.4em; }

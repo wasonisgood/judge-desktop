@@ -12,9 +12,12 @@
   JR.controllers.files.bind();
   JR.controllers.assistant.bind();
   JR.controllers.localAi.bind();
+  JR.controllers.auth.bind();
 
   api.appInfo().then(function (info) {
     JR.$('versionInfo').textContent = '版本 ' + info.version + (info.packaged ? '' : '（開發版）');
   });
   JR.controllers.settings.load();
+  // 未登入時顯示登入閘門，覆蓋主畫面。
+  JR.controllers.auth.checkOnStart();
 })(window.JR);

@@ -7,8 +7,10 @@ import { registerScopeIpc } from './scopeIpc';
 import { registerLibraryIpc } from './libraryIpc';
 import { registerAssistantIpc } from './assistantIpc';
 import { registerBriefIpc } from './briefIpc';
+import { registerAuthIpc } from './authIpc';
 
 export function registerIpc(): void {
+  registerAuthIpc();
   registerWindowIpc();
   registerLocalIpc();
   registerSettingsIpc();

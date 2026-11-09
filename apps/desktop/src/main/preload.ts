@@ -37,6 +37,12 @@ contextBridge.exposeInMainWorld('api', {
     export: (args: unknown) => invoke('export:brief', args),
   },
   update: { openUpdater: () => invoke('update:openUpdater') },
+  auth: {
+    status: () => invoke('auth:status'),
+    start: () => invoke('auth:start'),
+    cancel: () => invoke('auth:cancel'),
+    signOut: () => invoke('auth:signOut'),
+  },
   localAi: {
     modules: () => invoke('local:modules'),
     jobStatus: () => invoke('local:jobStatus'),

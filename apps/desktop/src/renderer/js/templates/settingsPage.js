@@ -81,6 +81,11 @@
             <button class="btn" type="button" id="openUpdater">檢查更新</button>
           </div>
         </form>
+        <section class="account" aria-labelledby="accountTitle">
+          <h2 id="accountTitle">帳號</h2>
+          <p class="hint">目前以授權帳號登入。登出只會清除這台電腦上的登入資料。</p>
+          <div class="actions"><button class="btn" type="button" id="authSignOut">登出</button></div>
+        </section>
         <p class="hint">金鑰只保存在這台電腦，並以系統的加密機制保護。本程式不會把金鑰傳給其他服務。</p>
         <p class="hint" id="versionInfo"></p>
       </section>
