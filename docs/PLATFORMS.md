@@ -69,6 +69,6 @@ shared (ubuntu)  ──┬──> windows (windows-latest) ──┐
 ## 6. 維護者需要處理的事項
 
 - [ ] 設定 Apple 簽章與公證的 secrets，並在 `macos` 工作加入簽章與公證步驟。
-- [ ] 補上 `apps/desktop/electron-builder.yml` 的 `linux.maintainer` 可聯絡的 Email（目前只有名稱；deb、rpm 的維護者欄位需要）。
+- [x] `linux.maintainer` 已填入 wasonisgood <wasonisgood@gmail.com>（deb、rpm 用）。
 - [ ] 在 macOS 與 Linux 實機測試：啟動、匯出、金鑰保存、法規資料連線。
 - [ ] 視需要加入 Linux 與 macOS 的顯卡加速偵測（見第 3 節第 1 點）。

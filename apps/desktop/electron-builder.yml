@@ -33,8 +33,8 @@ mac:
 linux:
   category: Education
   icon: build/icon.png
-  # deb、rpm 必填維護者（否則 electron-builder 會拒絕建置）。目前只填名稱；正式發布前請補上可聯絡的 Email（見 docs/PLATFORMS.md）。
-  maintainer: wasonisgood
+  # deb、rpm 必填維護者（否則 electron-builder 會拒絕建置）。
+  maintainer: "wasonisgood <wasonisgood@gmail.com>"
   target:
     - target: AppImage
       arch:
