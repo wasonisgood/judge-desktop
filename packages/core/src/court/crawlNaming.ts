@@ -139,7 +139,7 @@ export const CRAWL_LOG_HEADER = ['清單序號', '步驟', '字號', '網址', '
 export function buildCrawlLogCsv(entries: CrawlLogEntry[]): string {
   return buildCsv([
     CRAWL_LOG_HEADER,
-    ...entries.map((e) => [e.index, e.step, e.title, e.url, e.ok ? '成功' : '失敗', e.file ?? '', e.ok ? '' : (e.reason ?? '未知錯誤')]),
+    ...entries.map((e) => [e.index, e.step, e.title, e.url, e.ok ? '成功' : '失敗', e.file ?? '', e.reason ?? (e.ok ? '' : '未知錯誤')]),
   ]);
 }
 

@@ -41,6 +41,7 @@ test('擷取紀錄 CSV：失敗列寫明原因，成功列無原因', () => {
   const text = buildCrawlLogCsv([
     { index: 1, step: 'Step 2', title: '臺灣高等法院 115 年度上訴字第 1 號 判決', url: 'https://x?id=1', ok: true, file: '1.txt' },
     { index: 2, step: 'Step 2', title: '某案', url: 'https://x?id=2', ok: false, reason: 'HTTP 503' },
+    { index: 3, step: 'Step 3', title: '某案', url: 'https://x?id=3', ok: true, reason: '第 2 審無法對應網址' },
   ]);
   const rows = parseCsv(text);
   assert.deepEqual(rows[0], CRAWL_LOG_HEADER);
@@ -48,6 +49,8 @@ test('擷取紀錄 CSV：失敗列寫明原因，成功列無原因', () => {
   assert.equal(rows[1][5], '1.txt');
   assert.equal(rows[2][4], '失敗');
   assert.equal(rows[2][6], 'HTTP 503');
+  assert.equal(rows[3][4], '成功');
+  assert.equal(rows[3][6], '第 2 審無法對應網址');
 });
 
 test('清單匯入：依字號去重（忽略空白）、逐列回報錯誤、序號保留', () => {
