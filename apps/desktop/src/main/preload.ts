@@ -88,6 +88,13 @@ contextBridge.exposeInMainWorld('api', {
   assistant: {
     chat: (args: unknown) => invoke('assistant:chat', args),
   },
+  crawl: {
+    pickFile: () => invoke('crawl:pickFile'),
+    run: (args: unknown) => invoke('crawl:run', args),
+    onProgress: (cb: (p: unknown) => void) => {
+      ipcRenderer.on('crawl:progress', (_e, p) => cb(p));
+    },
+  },
   library: {
     list: (args: unknown) => invoke('library:list', args),
     update: (args: unknown) => invoke('library:update', args),
