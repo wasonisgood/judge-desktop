@@ -5,6 +5,18 @@ import { caseNoBase } from './finality';
 import type { HistoryRow } from './history';
 import type { JudgmentSummary } from './parse';
 
+// ───── 連線間隔（設定）─────
+/** 每次連線之間的間隔（秒）：預設 3，最小 3（司法院要求）。 */
+export const CRAWL_DEFAULT_INTERVAL_SEC = 3;
+export const CRAWL_MIN_INTERVAL_SEC = 3;
+
+/** 把設定值正規化為整數秒，不得低於 3；無法解析時用預設值。 */
+export function normalizeCrawlIntervalSec(v: unknown): number {
+  const n = typeof v === 'string' && v.trim() === '' ? NaN : Number(v);
+  if (!Number.isFinite(n)) return CRAWL_DEFAULT_INTERVAL_SEC;
+  return Math.max(CRAWL_MIN_INTERVAL_SEC, Math.round(n));
+}
+
 // ───── Step 1：列表頁數 ─────
 export const LIST_PAGE_SIZE = 20;
 /** 司法院每次查詢上限：25 頁、500 筆。 */

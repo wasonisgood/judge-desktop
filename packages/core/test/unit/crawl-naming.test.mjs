@@ -5,6 +5,7 @@ import {
   uniqueName, stepTwoFileName, stepFourFileName, buildCsv, parseCsv, buildCrawlLogCsv, CRAWL_LOG_HEADER,
   parseListImport, planListPages, parseTotalCount, listPageUrl, matchHistoryRowToItems, buildHistoryTable,
   LIST_MAX_PAGES, LIST_MAX_ITEMS, safeFileName, isoDay,
+  CRAWL_DEFAULT_INTERVAL_SEC, CRAWL_MIN_INTERVAL_SEC, normalizeCrawlIntervalSec,
 } from '../../dist/index.js';
 
 test('uniqueName：不存在則原名；同名加 _2、_3，不覆蓋', () => {
@@ -113,6 +114,20 @@ test('Step 1：讀取「共 N 筆」與翻頁網址（&page=N，取代既有 pag
   const base = 'https://judgment.judicial.gov.tw/FJUD/qryresultlst.aspx?ty=JUDBOOK&q=abc';
   assert.equal(listPageUrl(base, 2), `${base}&page=2`);
   assert.equal(listPageUrl(`${base}&page=5`, 3), `${base}&page=3`);
+});
+
+test('連線間隔設定：預設 3 秒、下限 3 秒、非數字回到預設', () => {
+  assert.equal(CRAWL_DEFAULT_INTERVAL_SEC, 3);
+  assert.equal(CRAWL_MIN_INTERVAL_SEC, 3);
+  assert.equal(normalizeCrawlIntervalSec(undefined), 3);
+  assert.equal(normalizeCrawlIntervalSec(''), 3);
+  assert.equal(normalizeCrawlIntervalSec('abc'), 3);
+  assert.equal(normalizeCrawlIntervalSec(0), 3);
+  assert.equal(normalizeCrawlIntervalSec(1), 3);
+  assert.equal(normalizeCrawlIntervalSec(2.4), 3);
+  assert.equal(normalizeCrawlIntervalSec('5'), 5);
+  assert.equal(normalizeCrawlIntervalSec(4.6), 5);
+  assert.equal(normalizeCrawlIntervalSec(10), 10);
 });
 
 test('isoDay：本地日期格式 YYYY-MM-DD', () => {
