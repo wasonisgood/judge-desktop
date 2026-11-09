@@ -6,7 +6,7 @@
 // - 排除問題：收集事實 → 核心的診斷規則判讀 → 每項附修復按鈕；可匯出報告。
 // - 模組更新：從模組目錄（modules.json）比對，只下載變動檔案，驗證失敗自動回滾。
 // 判斷邏輯都在 @judge/core（有單元測試）；這裡負責與系統、檔案、Ollama、網路互動。
-import { app } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
 import * as fsSync from 'node:fs';
@@ -149,7 +149,46 @@ async function setModule(id: ModuleId, patch: Partial<ModuleState>): Promise<Mod
   const reg = await loadRegistry();
   const next = reg.set(id, patch);
   await saveRegistry(reg);
+  broadcast('local:changed', { id, state: next }); // 設定頁與精靈即時更新
   return next;
+}
+
+// 安裝任務狀態保存在主程序：關閉精靈不會中斷安裝，重新開啟時可還原進度。
+type JobKind = 'install' | 'repair' | 'crawler' | null;
+const job: { running: boolean; kind: JobKind; events: StageEvent[]; result: ModuleState | null } = { running: false, kind: null, events: [], result: null };
+
+function broadcast(channel: string, payload: unknown): void {
+  for (const w of BrowserWindow.getAllWindows()) {
+    if (!w.isDestroyed()) w.webContents.send(channel, payload);
+  }
+}
+
+function emitStage(ev: StageEvent): void {
+  job.events.push(ev);
+  if (job.events.length > 300) job.events.shift();
+  broadcast('local:progress', ev);
+}
+
+export function jobStatus(): { running: boolean; kind: JobKind; events: StageEvent[]; result: ModuleState | null } {
+  return { running: job.running, kind: job.kind, events: [...job.events], result: job.result };
+}
+
+async function runAsJob<T extends ModuleState>(kind: Exclude<JobKind, null>, work: () => Promise<T>): Promise<T> {
+  // 已有任務在執行（例如修復時呼叫安裝）：併入同一個任務，不另外開新的。
+  if (job.running) return work();
+  job.running = true;
+  job.kind = kind;
+  job.events = [];
+  job.result = null;
+  broadcast('local:changed', { id: AI_ENGINE_MODULE_ID, state: null });
+  try {
+    const st = await work();
+    job.result = st;
+    return st;
+  } finally {
+    job.running = false;
+    broadcast('local:changed', { id: AI_ENGINE_MODULE_ID, state: null });
+  }
 }
 export async function readModuleStatus(): Promise<Record<ModuleId, ModuleState>> {
   return (await loadRegistry()).toJSON();
@@ -213,6 +252,7 @@ export async function planForUi(): Promise<{
   const { rules, source } = await loadActiveRules();
   const hardware = await detectHardware();
   const nativeArch = await detectNativeArch();
+  await writeJson(path.join(engineRoot(), 'hardware.json'), { hardware, nativeArch, at: new Date().toISOString() });
   const recommended = planLocalAI(hardware, rules);
   const network = await runNetworkProbe({ targets: await activeProbeTargets() });
   const options: PlanOption[] = [];
@@ -277,13 +317,27 @@ async function installEngineFiles(arch: NativeArch, send: (ev: StageEvent) => vo
   if (!assetName) throw new Error(`不支援的 CPU 架構 ${arch}，無法安裝本地引擎`);
   const asset = await fetchLatestAsset(assetName);
   const zipFile = path.join(engineRoot(), 'download', assetName);
-  await withRetry(
-    () => downloadWithResume({
-      url: asset.url, file: zipFile, expectedSha256: asset.sha256,
-      onProgress: (d, t) => send({ module: 'ai-engine', stage: 'installEngine', status: 'progress', detail: '下載引擎', completed: d, total: t ?? undefined }),
-    }),
-    { attempts: 3, baseDelayMs: 2000, onRetry: (n, delay) => send({ module: 'ai-engine', stage: 'installEngine', status: 'retry', detail: `第 ${n} 次重試（${delay / 1000} 秒後）` }) },
-  );
+
+  // 先檢查本機是否已有相同版本（同一個 SHA-256）且完整的引擎：有就直接沿用，不重新下載或解壓。
+  const prev = await readEngine();
+  if (prev.zipSha256 === asset.sha256 && prev.exePath && fsSync.existsSync(prev.exePath) && prev.exeSha256) {
+    if ((await sha256File(prev.exePath)) === prev.exeSha256) {
+      send({ module: 'ai-engine', stage: 'installEngine', status: 'progress', detail: '本機已有相同版本的引擎，略過下載與解壓' });
+      return { exe: prev.exePath, zipSha256: asset.sha256, asset: assetName };
+    }
+  }
+
+  // 下載：若下載資料夾內已有相同摘要的 zip，直接使用，不再從網路下載。
+  const haveZip = fsSync.existsSync(zipFile) && (await sha256File(zipFile)) === asset.sha256;
+  if (!haveZip) {
+    await withRetry(
+      () => downloadWithResume({
+        url: asset.url, file: zipFile, expectedSha256: asset.sha256,
+        onProgress: (d, t) => send({ module: 'ai-engine', stage: 'installEngine', status: 'progress', detail: '下載引擎', completed: d, total: t ?? undefined }),
+      }),
+      { attempts: 3, baseDelayMs: 2000, onRetry: (n, delay) => send({ module: 'ai-engine', stage: 'installEngine', status: 'retry', detail: `第 ${n} 次重試（${delay / 1000} 秒後）` }) },
+    );
+  }
   const bin = path.join(engineRoot(), 'bin');
   await fs.rm(bin, { recursive: true, force: true });
   await fs.mkdir(bin, { recursive: true });
@@ -314,7 +368,12 @@ export interface InstallOptions {
   forceOwnEngine?: boolean;
 }
 
-export async function installAiEngineModule(plan: LocalPlan, send: (ev: StageEvent) => void, opts: InstallOptions = {}): Promise<ModuleState> {
+/** 安裝 AI 引擎模組（作為主程序的背景任務；畫面只是觀看者）。 */
+export async function installAiEngineModule(plan: LocalPlan, _send: (ev: StageEvent) => void, opts: InstallOptions = {}): Promise<ModuleState> {
+  return runAsJob('install', () => installAiEngineModuleCore(plan, emitStage, opts));
+}
+
+async function installAiEngineModuleCore(plan: LocalPlan, send: (ev: StageEvent) => void, opts: InstallOptions = {}): Promise<ModuleState> {
   if (plan.tier === 'none' || !plan.judgmentModel || !plan.chatModel) throw new Error('所選方案為不安裝，沒有需要安裝的模型');
   await ensureBundledModules();
   const { rules } = await loadActiveRules();
@@ -324,9 +383,22 @@ export async function installAiEngineModule(plan: LocalPlan, send: (ev: StageEve
   await setModule(AI_ENGINE_MODULE_ID, { status: 'installing', lastError: null, failedStage: null });
   try {
     await ev(stage, 'start');
-    const hw = await detectHardware();
-    const arch = await detectNativeArch();
-    await ev(stage, 'done', { detail: `記憶體 ${hw.ramGB} GB，磁碟可用 ${hw.freeDiskGB} GB，CPU ${arch}` });
+    // 系統偵測失敗不應中斷安裝：改用方案選擇時快取的結果（硬體資訊不會在安裝途中改變）。
+    let hw: HardwareInfo;
+    let arch: NativeArch;
+    let source = '本次偵測';
+    try {
+      hw = await detectHardware();
+      arch = await detectNativeArch();
+      await writeJson(path.join(engineRoot(), 'hardware.json'), { hardware: hw, nativeArch: arch, at: new Date().toISOString() });
+    } catch (e: any) {
+      const cached = await readJson<{ hardware: HardwareInfo; nativeArch: NativeArch; at: string } | null>(path.join(engineRoot(), 'hardware.json'), null);
+      if (!cached) throw new Error(`系統偵測失敗且沒有先前的紀錄（${e?.message ?? e}）`);
+      hw = cached.hardware;
+      arch = cached.nativeArch;
+      source = `先前偵測（${cached.at.slice(0, 16).replace('T', ' ')}）`;
+    }
+    await ev(stage, 'done', { detail: `記憶體 ${hw.ramGB} GB，磁碟可用 ${hw.freeDiskGB} GB，CPU ${arch}（${source}）` });
 
     stage = 'checkNetwork';
     await ev(stage, 'start');
@@ -527,7 +599,11 @@ export async function exportDiagnosticReport(): Promise<string> {
 // ---------------------------------------------------------------------------
 // 修復動作
 // ---------------------------------------------------------------------------
-export async function runRepair(action: RepairActionId, send: (ev: StageEvent) => void): Promise<ModuleState> {
+export async function runRepair(action: RepairActionId, _send: (ev: StageEvent) => void): Promise<ModuleState> {
+  return runAsJob('repair', () => runRepairCore(action, emitStage));
+}
+
+async function runRepairCore(action: RepairActionId, send: (ev: StageEvent) => void): Promise<ModuleState> {
   const eng = await readEngine();
   const plan = await readPlan();
   const base = eng.baseUrl ?? (engineBaseOverride() || OWN_BASE);

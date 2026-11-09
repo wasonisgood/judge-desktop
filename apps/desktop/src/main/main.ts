@@ -24,7 +24,7 @@ import { LibraryStore, newId, type LibraryStatus } from './library';
 import {
   readModuleStatus, planForUi, installAiEngineModule, installCrawlerModuleForApp,
   runRepair, localBackendIfReady, setSkipAi, type PlanChoice,
-  diagnose, exportDiagnosticReport, checkModuleUpdates, applyModuleUpdates,
+  diagnose, exportDiagnosticReport, checkModuleUpdates, applyModuleUpdates, jobStatus,
 } from './localAi';
 import type { RepairActionId } from '@judge/core';
 
@@ -449,6 +449,7 @@ function registerIpc() {
   // 本地模組：檢查與方案（唯讀）、安裝（使用者選擇後才執行）、修復、爬取模組安裝。
   // 進度事件以 local:progress 推送；方案一律由主程序重新計算，不信任畫面傳來的內容。
   ipcMain.handle('local:modules', () => readModuleStatus());
+  ipcMain.handle('local:jobStatus', () => jobStatus());
   ipcMain.handle('local:plan', () => planForUi());
   ipcMain.handle('local:installAi', async (e, args: { choice: PlanChoice }) => {
     const { options } = await planForUi();

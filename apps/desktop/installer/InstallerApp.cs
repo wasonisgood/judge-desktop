@@ -83,6 +83,7 @@ namespace JudgeResearchInstaller {
         // 已安裝偵測 / 修復模式
         private bool isRepairMode = false;
         private bool installFinished = false;
+        private string installTargetDir = "";
         private string existingInstallDir = null;
         private string installedVersion = null;
         private bool isUpgrade = false;
@@ -173,7 +174,7 @@ namespace JudgeResearchInstaller {
             if (!selfUpdating || selfUpdateManifest == null) return;
             bool en = currentLang == "en";
             string v = "v" + UpdateCommon.ParseVersion(selfUpdateManifest.Version).ToString(3);
-            txtKicker.Text = "MOOT COURT COMPANION DESK / SELF UPDATE";
+            txtKicker.Text = en ? "JUDGE RESEARCH · INSTALLER UPDATE" : "司法院裁判研究 · 安裝程式更新";
             txtPageTitle.Text = en ? "Newer Installer Available" : "發現新版安裝引導程式";
             txtPageLead.Text = en
                 ? "A newer installer version (" + v + ") is available. Downloading and replacing automatically."
@@ -245,7 +246,7 @@ namespace JudgeResearchInstaller {
             btnAction.Visibility = Visibility.Visible;
             btnCancel.Visibility = Visibility.Visible;
             UpdateLanguage();
-            txtKicker.Text = isRepairMode ? "MOOT COURT COMPANION DESK / REPAIR SUITE" : "MOOT COURT COMPANION DESK / INSTALLATION SUITE";
+            txtKicker.Text = currentLang == "en" ? (isRepairMode ? "JUDGE RESEARCH · REPAIR" : "JUDGE RESEARCH · INSTALL") : (isRepairMode ? "司法院裁判研究 · 修復" : "司法院裁判研究 · 安裝");
             bool en = currentLang == "en";
             if (error != null) {
                 MessageBox.Show((en ? "Failed to download newer installer: " : "新版安裝引導程式下載失敗：") + error +
@@ -445,7 +446,7 @@ namespace JudgeResearchInstaller {
                 FontSize = 11,
                 Foreground = BrushInkFaint,
                 Margin = new Thickness(0, 0, 0, 4),
-                Text = "MOOT COURT COMPANION DESK / INSTALLATION SUITE"
+                Text = "JUDGE RESEARCH · INSTALL"
             };
             txtPageTitle = new TextBlock {
                 FontFamily = FontMincho,
@@ -683,7 +684,7 @@ namespace JudgeResearchInstaller {
                 FontSize = 11,
                 Foreground = BrushInkFaint,
                 VerticalAlignment = VerticalAlignment.Center,
-                Text = "© DEBATE COMPANION DESK / judge-remote-mcp-2026.web.app"
+                Text = "© wasonisgood"
             };
             Grid.SetColumn(txtFootNote, 0);
             footGrid.Children.Add(txtFootNote);
@@ -697,6 +698,7 @@ namespace JudgeResearchInstaller {
             btnCancel.Padding = new Thickness(20, 8, 20, 8);
             btnCancel.Margin = new Thickness(0, 0, 12, 0);
             btnCancel.Click += (s, e) => {
+                if (installFinished) { try { Process.Start("explorer.exe", installTargetDir); } catch { } Close(); return; }
                 if (selfUpdating) { selfUpdateCancel = true; return; }
                 Close();
             };
@@ -704,7 +706,7 @@ namespace JudgeResearchInstaller {
             btnAction = CreateVermilionButton("［ 開始安裝 ］", 13);
             btnAction.Padding = new Thickness(26, 8, 26, 8);
             btnAction.Click += (s, e) => {
-                if (installFinished) return;
+                if (installFinished) { LaunchInstalledApp(installTargetDir); Close(); return; }
                 StartInstallWorkflow();
             };
 
@@ -863,24 +865,24 @@ namespace JudgeResearchInstaller {
             txtTitleBar.Text = en ? "Judge Research ・ Setup Guide" : "司法院裁判研究 ・ 安裝指南";
 
             if (isUpgrade) {
-                txtKicker.Text = "MOOT COURT COMPANION DESK / UPGRADE SUITE";
+                txtKicker.Text = "JUDGE RESEARCH · UPGRADE";
                 txtPageTitle.Text = en ? "Upgrade Judge Research" : "升級 司法院裁判研究";
                 txtPageLead.Text = en
-                    ? "Upgrading from v" + installedVersion + " to v" + BuildInfo.Version + ". All notes, recordings and credentials will be preserved."
+                    ? "Upgrading from v" + installedVersion + " to v" + BuildInfo.Version + ". Your settings, AI key and local cache will be kept."
                     : "即將從現有版本 v" + installedVersion + " 升級至 v" + BuildInfo.Version + "。您的設定、AI 金鑰與本機快取將完整保留。";
                 btnAction.Content = en ? "［ Begin Upgrade ］" : "［ 開始升級 ］";
             } else if (isRepairMode) {
-                txtKicker.Text = "MOOT COURT COMPANION DESK / REPAIR SUITE";
+                txtKicker.Text = "JUDGE RESEARCH · REPAIR";
                 txtPageTitle.Text = en ? "Reinstall / Repair Research Desk" : "重新安裝 / 修復 應用程式";
                 txtPageLead.Text = en
-                    ? "Existing installation detected (v" + (installedVersion ?? BuildInfo.Version) + "). Overwriting system runtime and verifying registries."
+                    ? "Existing installation detected (v" + (installedVersion ?? BuildInfo.Version) + "). Program files will be replaced and the Windows registration refreshed."
                     : "系統中已偵測到已安裝之應用程式（v" + (installedVersion ?? BuildInfo.Version) + "）。將覆寫程式核心檔案並重新校正系統註冊。";
                 btnAction.Content = en ? "［ Repair / Reinstall ］" : "［ 重新安裝 / 修復 ］";
             } else {
-                txtKicker.Text = "MOOT COURT COMPANION DESK / INSTALLATION SUITE";
+                txtKicker.Text = "JUDGE RESEARCH · INSTALL";
                 txtPageTitle.Text = en ? "Install Judge Research" : "部署 司法院裁判研究";
                 txtPageLead.Text = en
-                    ? "Moot court judger practice companion & researcher AI intelligent question assistant desktop suite."
+                    ? "Search, list and analyze Judicial Yuan judgments, build scope tables and single-judgment briefs."
                     : "司法院判決的檢索、列表生成、綜合分析與單一判決精讀桌面端。將完整解壓部署程式核心與系統註冊。";
                 btnAction.Content = en ? "［ Begin Installation ］" : "［ 開始安裝 ］";
             }
@@ -890,18 +892,19 @@ namespace JudgeResearchInstaller {
             txtLblDesktop.Text = en ? "Create Desktop Shortcut (司法院裁判研究)" : "建立桌面捷徑（司法院裁判研究）";
             txtLblStartMenu.Text = en ? "Register in Start Menu Programs" : "於開始功能表「所有程式」建立捷徑";
             txtSizeBadge.Text = en
-                ? "Required disk space: ~180 MB  ·  Includes offline speech engine & cloud sync bridge"
-                : "需要磁碟空間：約 150 MB  ·  內含檢索核心、本機快取與文件輸出元件";
+                ? string.Format("Required disk space: about {0} MB", RequiredMb())
+                : string.Format("需要磁碟空間：約 {0} MB", RequiredMb());
 
             btnCancel.Content = en ? "［ Cancel ］" : "［ 取消 ］";
             txtFootNote.Text = en
-                ? "© DEBATE COMPANION DESK / judge-remote-mcp-2026.web.app  v" + BuildInfo.Version
+                ? "© wasonisgood  v" + BuildInfo.Version
                 : "© 司法院裁判研究 / wasonisgood  v" + BuildInfo.Version;
         }
 
         private async void StartInstallWorkflow() {
             string targetDir = txtInstallPath.Text.Trim();
             if (string.IsNullOrEmpty(targetDir)) return;
+            installTargetDir = targetDir;
 
             string err = PrecheckTarget(targetDir, currentLang == "en");
             if (err != null) {
@@ -967,19 +970,9 @@ namespace JudgeResearchInstaller {
 
             btnAction.Content = en ? "［ Launch Research Desk ］" : "［ 啟動應用程式 ］";
             btnAction.IsEnabled = true;
-            btnAction.Click -= null;
-            btnAction.Click += (s, e) => {
-                LaunchInstalledApp(targetDir);
-                Close();
-            };
 
             btnCancel.Content = en ? "［ Open Folder ］" : "［ 開啟安裝目錄 ］";
             btnCancel.Visibility = Visibility.Visible;
-            btnCancel.Click -= null;
-            btnCancel.Click += (s, e) => {
-                try { Process.Start("explorer.exe", targetDir); } catch { }
-                Close();
-            };
         }
 
         // 注意：此方法在背景執行緒執行，不可存取任何 WPF 控制項（如 chkDesktop），只能使用參數傳入的值
@@ -1013,7 +1006,7 @@ namespace JudgeResearchInstaller {
                                 Directory.CreateDirectory(fullDest);
                             } else {
                                 Directory.CreateDirectory(Path.GetDirectoryName(fullDest));
-                                entry.ExtractToFile(fullDest, true);
+                                ExtractWithRetry(entry, fullDest, en);
                             }
                             i++;
                             if (i % 20 == 0) {
@@ -1115,6 +1108,37 @@ namespace JudgeResearchInstaller {
             } catch { }
 
             report(100, en ? "Setup completed!" : "部署完成！");
+        }
+
+        // 檔案可能仍被剛結束的程序占用：短暫重試，仍被占用時給出明確說明（使用 C# 5 相容語法）。
+        private static void ExtractWithRetry(ZipArchiveEntry entry, string dest, bool en) {
+            for (int attempt = 1; ; attempt++) {
+                try {
+                    entry.ExtractToFile(dest, true);
+                    return;
+                } catch (IOException) {
+                    if (attempt >= 15) {
+                        throw new IOException(en
+                            ? "A file is still in use by another program:\n" + dest + "\n\nClose Judge Research and its updater, then run the installer again."
+                            : "檔案仍被其他程序占用：\n" + dest + "\n\n請關閉「司法院裁判研究」與其更新程式後，重新執行安裝程式。");
+                    }
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        // 估算安裝所需空間（內嵌 payload 解壓後大小 + 10% 餘量；讀取失敗時使用 300 MB）
+        private static long RequiredMb() {
+            try {
+                using (Stream zs = Assembly.GetExecutingAssembly().GetManifestResourceStream("app-payload.zip")) {
+                    if (zs == null) return 300;
+                    using (ZipArchive za = new ZipArchive(zs, ZipArchiveMode.Read)) {
+                        long total = 0;
+                        foreach (ZipArchiveEntry e in za.Entries) total += e.Length;
+                        return Math.Max(50, (long)Math.Ceiling(total * 1.1 / 1048576.0));
+                    }
+                }
+            } catch { return 300; }
         }
 
         private static string GetMainExePath(string dir) {

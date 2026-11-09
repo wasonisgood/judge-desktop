@@ -32,6 +32,8 @@ app.whenReady().then(async () => {
     await wait(1200);
     await shot(wz, '01-檢查電腦-初始.png');
     await js(wz, `document.getElementById('btnCheck').click()`);
+    await waitFor(wz, `!document.getElementById('btnCheckNext').disabled`, 120000);
+    await js(wz, `document.getElementById('btnCheckNext').click()`);
     const gotChoose = await waitFor(wz, `!document.querySelector('.wiz-view[data-view="choose"]').hidden`, 120000);
     if (!gotChoose) console.log('checkMsg=', await js(wz, `document.getElementById('checkMsg').textContent`));
     check('檢查後進入選擇方案', gotChoose);

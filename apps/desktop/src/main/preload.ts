@@ -38,6 +38,7 @@ contextBridge.exposeInMainWorld('api', {
   update: { openUpdater: () => invoke('update:openUpdater') },
   localAi: {
     modules: () => invoke('local:modules'),
+    jobStatus: () => invoke('local:jobStatus'),
     plan: () => invoke('local:plan'),
     installAi: (args: { choice: string }) => invoke('local:installAi', args),
     installCrawler: () => invoke('local:installCrawler'),

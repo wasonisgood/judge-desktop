@@ -46,9 +46,22 @@
 
   // ---- 視圖切換 ----
   var STEP_VIEWS = ['check', 'choose', 'agree', 'install', 'done'];
-  var state = { plan: null, choice: null, installStatus: 'idle', lastError: null, failedStage: null, agreed: false, installedVersion: null };
+  var state = { plan: null, choice: null, installStatus: 'idle', lastError: null, failedStage: null, agreed: false, installedVersion: null, installStarted: false, maxReached: 0 };
+  var ORDER_STEPS = ['check', 'choose', 'agree', 'install', 'done'];
+  function reach(view) { var i = ORDER_STEPS.indexOf(view); if (i > state.maxReached) state.maxReached = i; }
+  // 安裝流程規則：只能往前到達過的步驟；安裝開始後不能回到前面的步驟；安裝中不能離開安裝頁（維護頁除外）。
+  function canEnter(view) {
+    if (view === 'diag' || view === 'modules') return state.installStatus !== 'running' || view === 'diag';
+    var i = ORDER_STEPS.indexOf(view);
+    if (i < 0) return false;
+    if (i > state.maxReached) return false;
+    if (state.installStarted && i < 3) return false;
+    if (state.installStatus === 'running' && view !== 'install') return false;
+    return true;
+  }
 
   function show(view) {
+    if (!canEnter(view)) return;
     document.querySelectorAll('.wiz-view').forEach(function (v) { v.hidden = v.getAttribute('data-view') !== view; });
     document.querySelectorAll('.wiz-nav').forEach(function (b) {
       var on = b.getAttribute('data-view') === view;
@@ -67,6 +80,9 @@
   });
 
   function renderSideStates() {
+    document.querySelectorAll('.wiz-nav').forEach(function (b) {
+      b.disabled = !canEnter(b.getAttribute('data-view'));
+    });
     var st = {
       check: state.plan ? '已完成' : '',
       choose: state.choice ? '已選擇' : '',
@@ -87,6 +103,8 @@
     $('checkMsg').className = 'status';
     api.localAi.plan().then(function (r) {
       state.plan = r;
+      reach('choose');
+      $('btnCheckNext').disabled = false;
       var hw = r.hardware;
       var f = $('checkFacts');
       clear(f);
@@ -117,6 +135,8 @@
       $('checkMsg').className = 'status error';
     }).finally(function () { btn.disabled = false; });
   });
+
+  $('btnCheckNext').addEventListener('click', function () { show('choose'); });
 
   // ---- 2 選擇方案 ----
   function renderOptions(options, networkReady) {
@@ -158,6 +178,7 @@
     var sel = document.querySelector('input[name="aiChoice"]:checked');
     if (!sel) return;
     state.choice = sel.value;
+    reach('agree');
     var opt = state.plan.options.find(function (o) { return o.id === state.choice; });
     var f = $('agreeFacts');
     clear(f);
@@ -248,6 +269,8 @@
   function runInstall(fn) {
     resetStages();
     state.installStatus = 'running';
+    state.installStarted = true;
+    reach('install');
     state.lastError = null;
     state.failedStage = null;
     $('failBox').hidden = true;
@@ -258,6 +281,7 @@
     return fn().then(function (s) {
       if (s && s.status === 'ready') {
         state.installStatus = 'ready';
+        reach('done');
         state.installedVersion = s.installedVersion;
         $('installLead').textContent = '安裝完成，已註冊並啟用。';
         $('btnToDone').disabled = false;
@@ -403,6 +427,7 @@
     if (c.fix && FIX_NAMES[c.fix] && c.fix !== 'free-disk-space' && c.fix !== 'check-network-vpn') {
       var b = h('button', FIX_NAMES[c.fix], 'btn');
       b.type = 'button';
+      b.disabled = state.installStatus === 'running';
       b.addEventListener('click', function () { fixFromDiag(c.fix, b); });
       side.appendChild(b);
     }
@@ -534,5 +559,58 @@
   var startView = new URLSearchParams(window.location.search).get('view');
   resetStages();
   renderStages();
-  show(startView === 'diag' ? 'diag' : 'check');
+  if (startView === 'diag') { state.maxReached = 0; }
+  // 重新開啟精靈時，依主程序的任務狀態還原畫面（安裝中、已完成或失敗）。
+  function restoreFromJob(job) {
+    if (!job) return false;
+    if (job.running && job.kind === 'install') {
+      state.installStatus = 'running';
+      state.installStarted = true;
+      reach('install');
+      resetStages();
+      (job.events || []).forEach(onStageEvent);
+      $('installLead').textContent = '安裝進行中，請保持網路連線。關閉此視窗不會中斷安裝。';
+      $('btnToDone').disabled = true;
+      $('failBox').hidden = true;
+      show('install');
+      return true;
+    }
+    if (!job.running && job.result) {
+      var r = job.result;
+      state.installStarted = true;
+      reach('install');
+      resetStages();
+      if (r.status === 'ready') {
+        state.installStatus = 'ready';
+        reach('done');
+        $('installLead').textContent = '安裝完成，已註冊並啟用。';
+        STAGES.forEach(function (x) { stageState[x[0]].status = 'done'; });
+        renderStages();
+        $('btnToDone').disabled = false;
+        buildDone(true);
+        show('done');
+        return true;
+      }
+      if (r.status === 'failed') {
+        state.installStatus = 'failed';
+        failInstall(r.lastError, r.failedStage);
+        show('install');
+        return true;
+      }
+    }
+    return false;
+  }
+
+  api.localAi.onChanged(function () {
+    api.localAi.jobStatus().then(function (job) {
+      if (!job.running && state.installStatus === 'running') restoreFromJob(job);
+      renderSideStates();
+      refreshModules();
+    });
+  });
+
+  api.localAi.jobStatus().then(function (job) {
+    if (!restoreFromJob(job)) show(startView === 'diag' ? 'diag' : 'check');
+    renderSideStates();
+  }).catch(function () { show(startView === 'diag' ? 'diag' : 'check'); });
 })();

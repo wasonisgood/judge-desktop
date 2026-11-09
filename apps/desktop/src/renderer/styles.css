@@ -428,3 +428,6 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
   .wiz-main { padding: 22px 22px 28px; }
   .wiz-facts { grid-template-columns: 110px minmax(0, 1fr); }
 }
+/* 失敗說明：技術訊息可捲動、自動換行，避免撐破版面 */
+.wiz-fail-tech { margin: 6px 0 0; padding: 8px 10px; max-height: 96px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-family: Consolas, "Courier New", monospace; font-size: 0.82rem; color: var(--ink-2); background: var(--paper); border: 1px solid var(--rule); }
+.wiz-fail-steps li { overflow-wrap: anywhere; }

@@ -50,6 +50,7 @@
         <p class="status" id="checkMsg" role="status"></p>
         <div class="wiz-bar">
           <button class="btn primary" type="button" id="btnCheck">開始檢查</button>
+          <button class="btn primary" type="button" id="btnCheckNext" disabled>下一步</button>
         </div>
       </section>
 
@@ -88,7 +89,7 @@
         <ol class="wiz-stages" id="stageList"></ol>
         <div class="notice wiz-fail" id="failBox" hidden>
           <p class="wiz-fail-title" id="failTitle"></p>
-          <p class="hint" id="failTech"></p>
+          <pre class="wiz-fail-tech" id="failTech"></pre>
           <ul class="wiz-fail-steps" id="failSteps"></ul>
           <div class="actions">
             <button class="btn primary" type="button" id="btnRetry">重試（從中斷處續傳）</button>
@@ -96,7 +97,6 @@
           </div>
         </div>
         <div class="wiz-bar">
-          <button class="btn" type="button" data-go="agree" id="btnBackInstall">上一步</button>
           <button class="btn primary" type="button" data-go="done" id="btnToDone" disabled>下一步</button>
         </div>
       </section>
