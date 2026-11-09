@@ -12,7 +12,7 @@ import { lawContextForStatute } from '../services/lawContext';
 import { withJob } from '../services/jobRegistry';
 import { safeSend } from '../services/safeSend';
 import { saveToLibrary } from '../services/savedResult';
-import { knowledgeContextFor } from '../services/knowledgeService';
+import { knowledgeContextWithReview } from '../services/knowledgeService';
 import { toUserError } from '../services/userError';
 
 const SMART_MAX_ROUNDS = 3;
@@ -129,7 +129,7 @@ export function registerSearchIpc(): void {
         });
       }
       // 爭點知識庫（issue #5）：依查詢挑出相關爭點，與法規上下文一併交給 AI。
-      const kc = knowledgeContextFor(`${request} ${statute}`.trim());
+      const kc = await knowledgeContextWithReview(ai, `${request} ${statute}`.trim());
       if (kc.text) lawContext = [lawContext, kc.text].filter(Boolean).join('\n\n');
       addStep(trace, {
         stage: '讀入爭點知識庫', module: 'rule', input: request,

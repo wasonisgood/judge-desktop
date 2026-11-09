@@ -81,6 +81,10 @@
             <div class="set-ctl"><button class="btn small" type="button" id="openCrawl">管理</button></div>
           </div>
           <div class="set-row">
+            <div class="set-label"><strong>爭點知識庫</strong><span class="set-desc" id="knowledgeSummary" role="status">讀取中…</span></div>
+            <div class="set-ctl"><button class="btn small" type="button" id="knowledgeInstall">更新知識庫</button></div>
+          </div>
+          <div class="set-row">
             <div class="set-label"><strong>應用程式更新</strong><span class="set-desc" id="updaterSummary" role="status"></span></div>
             <div class="set-ctl"><button class="btn small" type="button" id="openUpdater">檢查更新</button></div>
           </div>

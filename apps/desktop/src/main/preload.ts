@@ -56,6 +56,10 @@ contextBridge.exposeInMainWorld('api', {
     cancel: () => invoke('auth:cancel'),
     signOut: () => invoke('auth:signOut'),
   },
+  knowledge: {
+    status: () => invoke('knowledge:status'),
+    install: () => invoke('knowledge:install'),
+  },
   localAi: {
     modules: () => invoke('local:modules'),
     jobStatus: () => invoke('local:jobStatus'),

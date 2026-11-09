@@ -7,6 +7,7 @@ import { getMainWindow } from './windows/windowState';
 import { openUpdater } from './services/updaterService';
 import { isDev } from './data/local/paths';
 import { syncBundledModules } from './services/moduleState';
+import { installKnowledgeModule } from './services/knowledgeService';
 import { initLifecycle, reconcileStaleInstalls, shouldQuitOnAllClosed, revealMainWindow } from './services/appLifecycle';
 
 app.whenReady().then(() => {
@@ -15,6 +16,8 @@ app.whenReady().then(() => {
   reconcileStaleInstalls().catch((err) => console.error('清理安裝狀態失敗：', err));
   // 模組隨應用程式版本同步：啟動時只複製有變動的內建檔案。
   syncBundledModules().catch((err) => console.error('模組同步失敗：', err));
+  // 爭點知識庫：啟動時在背景檢查並安裝最新版本（版本相同則略過；失敗只記錄，不影響搜尋與判決功能）。
+  installKnowledgeModule().then((r) => { if (!r.ok) console.error('爭點知識庫安裝失敗：', r.error); }).catch((err) => console.error('爭點知識庫安裝失敗：', err));
   createMainWindow();
   if (!isDev) {
     openUpdater(false);

@@ -89,3 +89,18 @@ test('真實內容檔：knowledge/data 下所有 JSON 都能通過驗證，且 i
   assert.deepEqual(bad, [], '不應有驗證錯誤');
   assert.ok(built.index.issues.length >= 900);
 });
+
+import { buildReviewPrompt, parseReviewReply } from '../../dist/index.js';
+
+test('AI 檢閱：提示詞只列標題與 id，不含全文；回覆解析涵蓋 ok、不相關附查詢詞、格式錯誤', () => {
+  const { index } = buildKnowledgeIndex([{ source: 'a', raw: fileOf([sampleIssue()]) }]);
+  const r = routeIssues(index, { query: '正當防衛' });
+  const p = buildReviewPrompt('正當防衛', r.hits);
+  assert.match(p.user, /tw-crim-test-001/);
+  assert.ok(!p.user.includes('防衛行為是否須具必要性'), '不應帶入全文');
+  assert.deepEqual(parseReviewReply('{"ok":true}'), { ok: true });
+  assert.deepEqual(parseReviewReply('好的 {"ok":false,"query":"緊急避難"}'), { ok: false, query: '緊急避難' });
+  assert.deepEqual(parseReviewReply('{"ok":false}'), { ok: false });
+  assert.equal(parseReviewReply('不是 JSON'), null);
+  assert.equal(parseReviewReply('{"ok":"maybe"}'), null);
+});

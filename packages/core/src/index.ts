@@ -77,3 +77,6 @@ export {
   buildKnowledgeContext, buildKnowledgeIndex, KNOWLEDGE_CONTEXT_MAX_CHARS,
   type KnowledgeContextOutput, type KnowledgeBuildResult,
 } from './knowledge/context';
+export {
+  buildReviewPrompt, parseReviewReply, type ReviewPrompt, type ReviewReply,
+} from './knowledge/review';
