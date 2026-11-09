@@ -7,7 +7,7 @@ import { readModuleStatus } from '../data/local/registryStore';
 import { loadActiveRules, activeProbeTargets } from '../data/local/moduleFiles';
 import { detectHardware, detectNativeArch } from '../data/local/system';
 import { writeHardwareCache } from '../data/local/engineStore';
-import { setModule, ensureBundledModules } from './moduleState';
+import { setModule, syncBundledModules } from './moduleState';
 
 export type PlanChoice = 'recommended' | 'light' | 'skip';
 
@@ -25,7 +25,7 @@ export async function planForUi(): Promise<{
   registry: Record<ModuleId, ModuleState>;
   rulesSource: 'module' | 'builtin';
 }> {
-  await ensureBundledModules();
+  await syncBundledModules();
   const { rules, source } = await loadActiveRules();
   const hardware = await detectHardware();
   const nativeArch = await detectNativeArch();

@@ -7,11 +7,11 @@ import { moduleCurrent } from '../data/local/localPaths';
 import { readJson } from '../data/local/jsonFile';
 import { appendFailure } from '../data/local/failureLog';
 import { activeProbeTargets } from '../data/local/moduleFiles';
-import { setModule, ensureBundledModules } from './moduleState';
+import { setModule, syncBundledModules } from './moduleState';
 import type { StageEvent } from './jobBus';
 
 export async function installCrawlerModuleForApp(send: (ev: StageEvent) => void): Promise<ModuleState> {
-  await ensureBundledModules();
+  await syncBundledModules();
   await setModule('crawler', { status: 'installing', lastError: null, failedStage: null });
   const targets = await activeProbeTargets();
   const res = await installCrawlerModule({

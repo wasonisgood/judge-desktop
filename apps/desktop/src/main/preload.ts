@@ -21,6 +21,7 @@ contextBridge.exposeInMainWorld('api', {
   search: {
     run: (args: unknown) => invoke('search:run', args),
     screen: (args: unknown) => invoke('search:screen', args),
+    manual: (args: unknown) => invoke('search:manual', args),
     onProgress: (cb: (p: { done: number; total: number; id: string }) => void) => {
       ipcRenderer.on('search:progress', (_e, p) => cb(p));
     },
@@ -56,8 +57,6 @@ contextBridge.exposeInMainWorld('api', {
     },
     diagnose: () => invoke('local:diagnose'),
     exportReport: () => invoke('local:exportReport'),
-    checkUpdates: () => invoke('local:checkUpdates'),
-    applyUpdates: () => invoke('local:applyUpdates'),
     openWizard: (args?: { view?: 'install' | 'diag' }) => invoke('local:openWizard', args),
     wizardDone: () => invoke('local:wizardDone'),
     onChanged: (cb: () => void) => {

@@ -2,13 +2,13 @@
 import { ipcMain } from 'electron';
 import type { BriefField, BriefDocument, JudgmentDetail } from '@judge/core';
 import { buildBriefDocx } from '../exporters';
-import { requireAi } from '../data/cloud/aiRepo';
+import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
 import { autoSaveExport } from '../services/exportService';
 import { runBrief } from '../services/briefService';
 
 export function registerBriefIpc(): void {
-  ipcMain.handle('brief:run', async (_e, args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[] }) => {
-    const ai = await requireAi();
+  ipcMain.handle('brief:run', async (_e, args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[]; jurisdiction?: string; ai?: string }) => {
+    const ai = await requireAi(normalizeAiMode(args.ai));
     return runBrief(args, ai);
   });
   ipcMain.handle('export:brief', async (_e, args: { detail: JudgmentDetail; doc: BriefDocument }) => {

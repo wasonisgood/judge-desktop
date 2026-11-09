@@ -6,9 +6,9 @@ import { readModuleStatus } from '../data/local/registryStore';
 import { engineBaseOverride } from '../data/local/ollamaService';
 import { readSettings } from '../data/local/settingsStore';
 
-export async function localBackendIfReady(): Promise<{ kind: 'local'; run: <T>(task: 'judgment' | 'chat' | 'crawl', payload: unknown) => Promise<T> } | null> {
-  // 使用者在設定中關閉本地模組時，即使已安裝也只走雲端。
-  if (!(await readSettings()).localAiEnabled) return null;
+export async function localBackendIfReady(opts: { ignoreSwitch?: boolean } = {}): Promise<{ kind: 'local'; run: <T>(task: 'judgment' | 'chat' | 'crawl', payload: unknown) => Promise<T> } | null> {
+  // 使用者在設定中關閉本地模組時，即使已安裝也只走雲端；明確選擇「本地」時（ignoreSwitch）才會忽略此開關。
+  if (!opts.ignoreSwitch && !(await readSettings()).localAiEnabled) return null;
   const st = (await readModuleStatus())[AI_ENGINE_MODULE_ID];
   const plan = await readPlan();
   if (st.status !== 'ready' || !plan || plan.tier === 'none' || !plan.judgmentModel || !plan.chatModel) return null;

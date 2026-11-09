@@ -1,11 +1,9 @@
 // 雲端資料層：引擎資產與模組目錄的來源。先 Firebase Storage 鏡像，再 GitHub；都必須通過 SHA-256 校驗。
 import {
-  findVerifiedAsset, firebaseMirrorUrl, latestObjectPath, validateCatalog,
-  type GithubAssetJson, type ModuleCatalog,
+  findVerifiedAsset, firebaseMirrorUrl, type GithubAssetJson,
 } from '@judge/core';
 
 const GITHUB_RELEASE_API = 'https://api.github.com/repos/ollama/ollama/releases/latest';
-const DEFAULT_CATALOG_URL = 'https://github.com/wasonisgood/judge-desktop/releases/latest/download/modules.json';
 
 export interface EngineAsset {
   name: string;
@@ -28,24 +26,4 @@ export async function fetchLatestAsset(name: string): Promise<EngineAsset> {
   const a = findVerifiedAsset(json.assets, name);
   if (!a || !a.url) throw new Error(`找不到已驗證摘要的引擎資產 ${name}（沒有 SHA-256，拒絕安裝）`);
   return { name, size: a.size, sha256: a.sha256, urls: [firebaseMirrorUrl(`judge-desktop/engine/${name}`), a.url] };
-}
-
-export function catalogUrl(): string {
-  return process.env.JUDGE_MODULES_CATALOG_URL || DEFAULT_CATALOG_URL;
-}
-
-/** 取得模組目錄。測試覆寫時只用指定網址；正式使用先 Firebase Storage，失敗再 GitHub。 */
-export async function fetchCatalog(): Promise<ModuleCatalog> {
-  const urls = process.env.JUDGE_MODULES_CATALOG_URL ? [process.env.JUDGE_MODULES_CATALOG_URL] : [firebaseMirrorUrl(latestObjectPath('modules.json')), DEFAULT_CATALOG_URL];
-  let lastErr = '';
-  for (const u of urls) {
-    try {
-      const res = await fetch(u, { signal: AbortSignal.timeout(20_000) });
-      if (!res.ok) { lastErr = `HTTP ${res.status}`; continue; }
-      const v = validateCatalog(await res.json());
-      if (!v.ok) { lastErr = `模組目錄無效：${v.error}`; continue; }
-      return v.catalog;
-    } catch (e: any) { lastErr = e?.message ?? String(e); }
-  }
-  throw new Error(`無法取得模組目錄（${lastErr}）`);
 }

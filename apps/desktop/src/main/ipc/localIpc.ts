@@ -4,7 +4,7 @@ import type { RepairActionId } from '@judge/core';
 import {
   readModuleStatus, planForUi, installAiEngineModule, installCrawlerModuleForApp,
   runRepair, setSkipAi, type PlanChoice, diagnose, exportDiagnosticReport,
-  checkModuleUpdates, applyModuleUpdates, jobStatus,
+  jobStatus,
 } from '../localAi';
 import { openWizardWindow } from '../windows/wizardWindow';
 import { getMainWindow, getWizardWindow } from '../windows/windowState';
@@ -34,8 +34,6 @@ export function registerLocalIpc(): void {
   // 排除問題與模組更新（3.1）
   ipcMain.handle('local:diagnose', () => diagnose());
   ipcMain.handle('local:exportReport', () => exportDiagnosticReport());
-  ipcMain.handle('local:checkUpdates', () => checkModuleUpdates());
-  ipcMain.handle('local:applyUpdates', (e) => applyModuleUpdates((ev) => e.sender.send('local:progress', ev)));
   ipcMain.handle('local:repair', (e, args: { action: RepairActionId }) =>
     runRepair(args.action, (ev) => e.sender.send('local:progress', ev)));
 }

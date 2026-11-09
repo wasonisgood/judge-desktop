@@ -15,7 +15,7 @@ import { activeProbeTargets, loadActiveRules } from '../data/local/moduleFiles';
 import { detectHardware, detectNativeArch } from '../data/local/system';
 import { appendFailure } from '../data/local/failureLog';
 import { emitStage, runAsJob, type StageEvent } from './jobBus';
-import { setModule, ensureBundledModules } from './moduleState';
+import { setModule, syncBundledModules } from './moduleState';
 import { installEngineFiles } from './engineInstaller';
 import { checkPrerequisites } from './prerequisites';
 
@@ -31,7 +31,7 @@ export async function installAiEngineModule(plan: LocalPlan, _send: (ev: StageEv
 
 async function installAiEngineModuleCore(plan: LocalPlan, send: (ev: StageEvent) => void, opts: InstallOptions = {}): Promise<ModuleState> {
   if (plan.tier === 'none' || !plan.judgmentModel || !plan.chatModel) throw new Error('所選方案為不安裝，沒有需要安裝的模型');
-  await ensureBundledModules();
+  await syncBundledModules();
   const { rules } = await loadActiveRules();
   const required = [...new Set([plan.judgmentModel, plan.chatModel])];
   const ev = (stage: string, status: StageEvent['status'], extra: Partial<StageEvent> = {}) => send({ module: AI_ENGINE_MODULE_ID, stage, status, ...extra });

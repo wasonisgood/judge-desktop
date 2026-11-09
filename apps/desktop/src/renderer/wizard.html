@@ -133,7 +133,7 @@
       <section class="wiz-view" data-view="modules" hidden>
         <p class="wiz-kicker">維護</p>
         <h1>模組與更新</h1>
-        <p class="lead">模組包含分級規則與網路端點設定，可以獨立更新，不必重新安裝程式。更新只下載有變動的檔案；驗證失敗會自動回到原本的版本。</p>
+        <p class="lead">模組內建於應用程式，隨應用程式版本一起更新。啟動時會自動同步有變動的檔案，不需要另外下載或檢查。</p>
         <div class="wiz-mods">
           <section class="wiz-mod" id="modAi">
             <div class="wiz-mod-head"><h2>AI 引擎模組</h2><span class="wiz-pill" id="modAiPill"></span></div>
@@ -147,14 +147,8 @@
             <div class="actions"><button class="btn" type="button" id="crawlerInstall">安裝或修復爬取模組</button></div>
           </section>
         </div>
-        <h2 class="wiz-h2">模組目錄</h2>
-        <div class="wiz-summary" id="updSummary" role="status">尚未檢查。按「檢查更新」比對目前的模組版本。</div>
-        <ul class="wiz-rows" id="updRows"></ul>
+        <p class="hint" id="modVersionNote"></p>
         <p class="status" id="updMsg" role="status"></p>
-        <div class="wiz-bar">
-          <button class="btn" type="button" id="btnUpdCheck">檢查更新</button>
-          <button class="btn primary" type="button" id="btnUpdApply" disabled>套用更新</button>
-        </div>
       </section>
     </main>
   </div>

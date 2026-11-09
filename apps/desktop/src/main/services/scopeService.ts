@@ -16,6 +16,8 @@ export interface ScopeRunArgs {
   maxItems: number;
   /** 法院管轄區；未指定為台灣司法院。法規名稱確認與法條沿革目前只支援台灣法規資料庫。 */
   jurisdiction?: string;
+  /** AI 來源：auto、local、cloud（見 aiRepo）。 */
+  ai?: string;
 }
 
 export interface ScopeProgress {

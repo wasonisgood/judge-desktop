@@ -1,17 +1,17 @@
 // IPC：判決列表（檢索、AI 相關性篩選、匯出）與單一判決的候選查找。
 import { ipcMain } from 'electron';
 import {
-  screenRelevance, judgmentQueries, DEFAULT_JURISDICTION_ID, type RelevanceItem, type JudgmentDetail, type JudgmentSummary,
+  screenRelevance, judgmentQueries, parseManualJudgmentIds, DEFAULT_JURISDICTION_ID, type RelevanceItem, type JudgmentDetail, type JudgmentSummary,
 } from '@judge/core';
 import { buildListWorkbook } from '../exporters';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
-import { requireAi } from '../data/cloud/aiRepo';
+import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
 import { library } from '../data/local/libraryAccess';
 import { autoSaveExport, stamp } from '../services/exportService';
 
 export function registerSearchIpc(): void {
-  ipcMain.handle('search:screen', async (_e, args: { topic: string; items: RelevanceItem[] }) => {
-    const ai = await requireAi();
+  ipcMain.handle('search:screen', async (_e, args: { topic: string; items: RelevanceItem[]; ai?: string }) => {
+    const ai = await requireAi(normalizeAiMode(args.ai));
     return screenRelevance(ai, args.topic, args.items.slice(0, 40));
   });
   ipcMain.handle('search:run', async (e, args: { keyword: string; courtCode?: string; maxItems: number; includeFullText: boolean; jurisdiction?: string }) => {
@@ -36,6 +36,39 @@ export function registerSearchIpc(): void {
   });
   ipcMain.handle('export:list', async (_e, args: { keyword: string; items: JudgmentSummary[]; details: Record<string, any> }) => {
     return autoSaveExport(`判決列表_${args.keyword}_${stamp()}.xlsx`, await buildListWorkbook({ keyword: args.keyword, items: args.items, details: args.details }));
+  });
+  // 手動輸入判決：每行一則（網址或 ID）。逐則取得基本資料，產生與搜尋相同格式的列表，並存入檔案管理。
+  ipcMain.handle('search:manual', async (e, args: { text: string; jurisdiction?: string }) => {
+    const parsed = parseManualJudgmentIds(args.text ?? '');
+    const items: JudgmentSummary[] = [];
+    const details: Record<string, Pick<JudgmentDetail, 'meta' | 'sections' | 'fullText'> & { historyPosition: string }> = {};
+    const notes: string[] = parsed.invalid.map((line) => `無法辨識：${line}`);
+    let i = 0;
+    for (const id of parsed.ids) {
+      i++;
+      e.sender.send('search:progress', { done: i, total: parsed.ids.length, id });
+      try {
+        const d = await cachedDetail(id, undefined, args.jurisdiction);
+        items.push({
+          id,
+          title: d.meta.title || id,
+          dateDisplay: d.meta.dateMinguo ?? d.meta.dateIso ?? '',
+          dateIso: d.meta.dateIso ?? null,
+          cause: d.meta.cause ?? '',
+          href: d.meta.sourceUrl,
+        });
+        details[id] = { meta: d.meta, sections: d.sections, fullText: d.fullText, historyPosition: d.historyPosition?.summary ?? '' };
+      } catch (err) {
+        notes.push(`${id}：${err instanceof Error ? err.message : String(err)}`);
+      }
+    }
+    await library().add({
+      kind: 'list',
+      title: '手動輸入判決列表',
+      summary: `${items.length} 筆`,
+      payload: { keyword: '手動輸入', items, details },
+    });
+    return { items, details, notes };
   });
   // 單一判決：先搜尋、列出候選，再由使用者指定一則（鎖定單一判決）
   ipcMain.handle('judgment:find', async (_e, args: { query: string; jurisdiction?: string }) => {

@@ -12,5 +12,4 @@ export { installAiEngineModule, type InstallOptions } from './services/aiEngineI
 export { installCrawlerModuleForApp } from './services/crawlerInstall';
 export { diagnose, exportDiagnosticReport } from './services/diagnosticsService';
 export { runRepair } from './services/repairService';
-export { checkModuleUpdates, applyModuleUpdates, type UpdateCheck } from './services/updateService';
 export { localBackendIfReady } from './services/localBackend';

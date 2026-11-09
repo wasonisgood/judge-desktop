@@ -1,7 +1,7 @@
 // IPC：範圍整理表（法名確認、法條沿革、現行法規、執行、匯出）。
 import { ipcMain } from 'electron';
 import { type ScopeSheet, buildScopeWorkbook, buildScopeDocx } from '../scopeExporters';
-import { requireAi } from '../data/cloud/aiRepo';
+import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
 import { resolveStatute, currentLawFor } from '../data/cloud/lawRepo';
 import { autoSaveExport, stamp } from '../services/exportService';
 import { runScope, type ScopeRunArgs } from '../services/scopeService';
@@ -14,7 +14,7 @@ export function registerScopeIpc(): void {
     return currentLawFor(args.pcode);
   });
   ipcMain.handle('scope:run', async (e, args: ScopeRunArgs) => {
-    const ai = await requireAi();
+    const ai = await requireAi(normalizeAiMode(args.ai));
     return runScope(args, ai, (p) => e.sender.send('scope:progress', p));
   });
   ipcMain.handle('export:scope', async (_e, args: { sheets: ScopeSheet[]; yearFrom?: number; yearTo?: number; format: 'xlsx' | 'docx' }) => {

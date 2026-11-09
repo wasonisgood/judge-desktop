@@ -50,6 +50,11 @@
           </label>
           <p class="hint">精讀內容全部由 AI 整理，請先在「設定」輸入 AI 金鑰。</p>
           <div class="actions">
+            <select id="briefAi" class="ai-source" title="AI 來源">
+              <option value="auto">AI：自動（本地優先）</option>
+              <option value="local">AI：本地模型</option>
+              <option value="cloud">AI：雲端</option>
+            </select>
             <button class="btn primary" type="submit" id="briefRun" disabled>整理這則判決</button>
             <button class="btn" type="button" id="briefExport" disabled>匯出 Word</button>
           </div>

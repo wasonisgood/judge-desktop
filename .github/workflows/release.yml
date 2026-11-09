@@ -55,20 +55,6 @@ jobs:
           path: packages/core/dist
           retention-days: 1
 
-      - name: 產生模組目錄 modules.json（規則表與端點，可獨立更新）
-        working-directory: apps/desktop
-        shell: bash
-        run: |
-          v=$(node -p "require('./package.json').version")
-          node scripts/make-catalog.mjs "v$v" installer/publish
-
-      - name: 上傳模組目錄
-        uses: actions/upload-artifact@v4
-        with:
-          name: module-catalog
-          path: apps/desktop/installer/publish
-          retention-days: 1
-
   windows:
     needs: shared
     runs-on: windows-latest
@@ -298,7 +284,6 @@ jobs:
           ls -la dist-all
           test -f dist-all/JudgeResearchSetup.exe || { echo "缺少 Windows 安裝器"; exit 1; }
           test -f dist-all/latest.json || { echo "缺少 latest.json"; exit 1; }
-          test -f dist-all/modules.json || { echo "缺少 modules.json"; exit 1; }
           ls dist-all/*.AppImage dist-all/*.deb dist-all/*.rpm >/dev/null 2>&1 || { echo "缺少 Linux 安裝包"; exit 1; }
           ls dist-all/*.dmg dist-all/*.zip >/dev/null 2>&1 || { echo "缺少 macOS 安裝包"; exit 1; }
 
@@ -323,8 +308,6 @@ jobs:
             dist-all/*.dmg
             dist-all/*.zip
             dist-all/latest.json
-            dist-all/modules.json
-            dist-all/module-*
           generate_release_notes: true
           body: |
             **Windows**：下載 JudgeResearchSetup.exe 並執行。程式碼簽章由 [SignPath.io](https://signpath.io) 提供，憑證由 SignPath Foundation 核發。若出現 SmartScreen 警告，點「其他資訊」再點「仍要執行」。

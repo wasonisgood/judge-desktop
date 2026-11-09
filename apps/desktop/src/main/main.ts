@@ -6,9 +6,12 @@ import { createMainWindow } from './windows/mainWindow';
 import { getMainWindow } from './windows/windowState';
 import { openUpdater } from './services/updaterService';
 import { isDev } from './data/local/paths';
+import { syncBundledModules } from './services/moduleState';
 
 app.whenReady().then(() => {
   registerIpc();
+  // 模組隨應用程式版本同步：啟動時只複製有變動的內建檔案。
+  syncBundledModules().catch((err) => console.error('模組同步失敗：', err));
   createMainWindow();
   if (!isDev) {
     openUpdater(false);

@@ -52,3 +52,8 @@
 .assist-panel.fullscreen .assist-msg { max-width: 920px; }
 .assist-panel.fullscreen .assist-input { padding: 14px 20px; }
 
+
+/* AI 來源選擇器與手動輸入區塊 */
+.ai-source { width: auto; min-width: 200px; align-self: center; }
+.manual-list { margin-top: 30px; padding-top: 4px; border-top: 1px solid var(--rule); }
+.manual-list h2 { margin-top: 18px; }

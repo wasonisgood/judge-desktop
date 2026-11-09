@@ -39,11 +39,26 @@ export async function aiConfigOrThrow(): Promise<AiConfig> {
   return { provider: s.aiProvider, baseUrl: s.aiBaseUrl, model: s.aiModel, apiKey: key, authMode: 'apiKey' };
 }
 
-/** 本地 AI 已安裝並註冊時先走本地（Ollama），失敗或冷卻中則自動回退雲端。沒有安裝時行為與以前相同。 */
-export async function requireAi(): Promise<AiComplete> {
+/** AI 來源：auto＝本地就緒時優先、失敗回退雲端；local＝只用本地（未就緒即報錯）；cloud＝只用雲端。 */
+export type AiMode = 'auto' | 'local' | 'cloud';
+
+export function normalizeAiMode(v: unknown): AiMode {
+  return v === 'local' || v === 'cloud' ? v : 'auto';
+}
+
+/** 依來源選擇回傳 AI 呼叫函式。本地與雲端共用同一個輸入格式（system、user、maxTokens），輸出都是文字。 */
+export async function requireAi(mode: AiMode = 'auto'): Promise<AiComplete> {
   const cfg = await aiConfigOrThrow();
-  const local = await localBackendIfReady();
   const cloud = { kind: 'cloud' as const, run: async <T>(_t: unknown, payload: unknown) => callAi(cfg, payload as { system: string; user: string; maxTokens: number }) as unknown as T };
+  if (mode === 'cloud') {
+    return async (system, user, maxTokens) => (await cloud.run<{ text: string }>('judgment', { system, user, prompt: user, maxTokens })) as unknown as string;
+  }
+  if (mode === 'local') {
+    const local = await localBackendIfReady({ ignoreSwitch: true });
+    if (!local) throw new Error('本地模型尚未就緒（請到設定的「模組」安裝本地 AI），或改選雲端。');
+    return async (system, user, maxTokens) => (await local.run<string>('judgment', { system, user, prompt: user, maxTokens }));
+  }
+  const local = await localBackendIfReady();
   const router = new LocalCloudRouter(local, cloud);
   if (local) router.registerLocalReady();
   // 本地後端讀 prompt、雲端讀 user，因此兩者都放入同一份內容。

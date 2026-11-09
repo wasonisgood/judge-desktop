@@ -48,3 +48,5 @@ export * from './jurisdiction/registry';
 export * from './auth/pkce';
 export * from './local/gpuProbe';
 export * from './local/prerequisites';
+export * from './modules/bundleSync';
+export * from './court/manualIds';

@@ -30,6 +30,11 @@
           <div class="actions">
             <button class="btn primary" type="submit" id="listRun">搜尋</button>
             <button class="btn" type="button" id="listExport" disabled>匯出 Excel</button>
+            <select id="listAi" class="ai-source" title="AI 來源">
+              <option value="auto">AI：自動（本地優先）</option>
+              <option value="local">AI：本地模型</option>
+              <option value="cloud">AI：雲端</option>
+            </select>
             <button class="btn" type="button" id="listScreen" disabled>AI 篩選相關判決</button>
           </div>
           <div class="progress" id="listProgress" hidden><div class="bar"></div></div>
@@ -43,6 +48,20 @@
             <tbody id="listBody"></tbody>
           </table>
         </div>
+        <section class="manual-list" aria-labelledby="manualTitle">
+          <h2 id="manualTitle">手動輸入判決</h2>
+          <p class="hint">每行貼上一則判決的網址或判決 ID（例如司法院判決頁網址，或 TPSV_103_2434_20141119）。系統會逐則取得基本資料，產生列表；可匯出 Excel，也會存入「檔案」。</p>
+          <form class="form" id="manualForm">
+            <label class="field">
+              <span>判決網址或 ID（每行一則）</span>
+              <textarea id="manualIds" rows="4" placeholder="https://judgment.judicial.gov.tw/FJUD/data.aspx?ty=JD&amp;id=…"></textarea>
+            </label>
+            <div class="actions">
+              <button class="btn primary" type="submit" id="manualRun">產生列表</button>
+            </div>
+            <p class="status" id="manualStatus" role="status"></p>
+          </form>
+        </section>
       </section>
 `;
 })(window.JR);

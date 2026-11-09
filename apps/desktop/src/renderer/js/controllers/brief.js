@@ -83,6 +83,7 @@
             focus: $('briefFocus').value.trim(),
             lengthHint: $('briefLength').value,
             jurisdiction: $('briefJurisdiction').value,
+            ai: $('briefAi').value,
             fields: fields
           });
           state.brief = r;

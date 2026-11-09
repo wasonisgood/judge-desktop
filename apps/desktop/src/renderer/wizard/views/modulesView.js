@@ -20,49 +20,4 @@
     $('updMsg').textContent = text;
     $('updMsg').className = 'status' + (kind ? ' ' + kind : '');
   };
-
-  /** 檢查更新的結果：計畫列表與摘要；回傳是否有可套用的更新。 */
-  WZ.views.renderUpdatePlans = function (r) {
-    var rows = $('updRows');
-    clear(rows);
-    if (!r.ok) {
-      $('updSummary').textContent = '無法檢查更新：' + r.error;
-      $('updSummary').className = 'wiz-summary error';
-      return false;
-    }
-    r.plans.forEach(function (p) {
-      var li = h('li', null, 'wiz-row');
-      var body = h('div', null, 'wiz-row-body');
-      body.appendChild(h('div', WZ.MOD_NAMES[p.moduleId] || p.moduleId, 'wiz-row-title'));
-      var detail = p.upToDate ? '已是最新版本 ' + p.toVersion
-        : p.requiresAppUpdate ? '版本 ' + p.toVersion + ' 需要更新應用程式'
-        : (p.fromVersion || '未安裝') + ' → ' + p.toVersion + '；需下載 ' + p.download.length + ' 個檔案，沿用 ' + p.reuse.length + ' 個';
-      body.appendChild(h('div', detail, 'wiz-row-detail'));
-      li.appendChild(body);
-      var tone = p.upToDate ? 'pass' : p.requiresAppUpdate ? 'fail' : 'warn';
-      li.appendChild(h('span', p.upToDate ? '最新' : p.requiresAppUpdate ? '需升級程式' : '有更新', 'wiz-pill ' + tone));
-      rows.appendChild(li);
-    });
-    var anyChange = r.plans.some(function (p) { return !p.upToDate && !p.requiresAppUpdate; });
-    $('updSummary').textContent = anyChange ? '有可套用的更新。' : '目前沒有可套用的更新。';
-    $('updSummary').className = 'wiz-summary ' + (anyChange ? '' : 'ok');
-    return anyChange;
-  };
-
-  WZ.views.renderApplyResults = function (r) {
-    var rows = $('updRows');
-    clear(rows);
-    r.results.forEach(function (x) {
-      var li = h('li', null, 'wiz-row ' + (x.ok ? 'pass' : 'fail'));
-      var body = h('div', null, 'wiz-row-body');
-      body.appendChild(h('div', WZ.MOD_NAMES[x.module] || x.module, 'wiz-row-title'));
-      body.appendChild(h('div', x.message, 'wiz-row-detail'));
-      li.appendChild(body);
-      li.appendChild(h('span', x.ok ? '完成' : '失敗', 'wiz-pill ' + (x.ok ? 'pass' : 'fail')));
-      rows.appendChild(li);
-    });
-    var allOk = r.results.every(function (x) { return x.ok; });
-    $('updSummary').textContent = allOk ? '更新已套用。' : '部分模組沒有更新成功，已保留原本的版本。';
-    $('updSummary').className = 'wiz-summary ' + (allOk ? 'ok' : 'error');
-  };
 })(window.WZ);

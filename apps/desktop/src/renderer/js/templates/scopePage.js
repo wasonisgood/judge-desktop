@@ -29,6 +29,11 @@
             </label>
           </div>
           <div class="actions">
+            <select id="scopeAi" class="ai-source" title="AI 來源">
+              <option value="auto">AI：自動（本地優先）</option>
+              <option value="local">AI：本地模型</option>
+              <option value="cloud">AI：雲端</option>
+            </select>
             <button class="btn primary" type="submit" id="scopeRun">開始整理</button>
             <button class="btn" type="button" id="scopeXlsx" disabled>匯出 Excel</button>
             <button class="btn" type="button" id="scopeDocx" disabled>匯出 Word</button>
