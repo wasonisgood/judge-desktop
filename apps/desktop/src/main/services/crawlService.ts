@@ -141,10 +141,17 @@ function countOf(logs: CrawlLogEntry[]): { ok: number; failed: number } {
 /** 歷審中某一列的裁判書網址：以字號搜尋後比對（歷審列印表沒有連結）。同一字號只搜尋一次。 */
 async function resolveHistoryUrl(client: CourtClient, row: HistoryRow, cache: Map<string, JudgmentSummary[]>): Promise<string | null> {
   if (row.pending || !row.caseNo || !row.court) return null;
-  const key = row.caseNo.replace(/(判決|裁定)$/, '').trim();
+  // 搜尋字串去除空白（實測：「104 年度 侵訴 字第 74 號」漏查，「104年度侵訴字第74號」可查到舊案）。
+  const key = row.caseNo.replace(/(判決|裁定)$/, '').replace(/\s+/g, '').trim();
   let items = cache.get(key);
   if (!items) {
-    items = await searchJudgments(key, { client, maxItems: 20 });
+    try {
+      items = await searchJudgments(key, { client, maxItems: 20 });
+    } catch (err) {
+      // 搜尋失敗（例如「查無查詢結果入口」）視為該列沒有裁判書網址，不中斷整案；取消則照常往上拋出。
+      if (reasonOf(err) === '已取消') throw err;
+      items = [];
+    }
     cache.set(key, items);
   }
   return matchHistoryRowToItems(row, items).item?.href ?? null;

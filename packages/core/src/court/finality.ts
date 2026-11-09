@@ -64,6 +64,9 @@ export function caseNoBase(caseNo: string): string {
 /** 取出上訴審判決開頭「不服……判決／裁定」的子句；找不到回傳 null。 */
 export function appealedFrom(fullText: string): string | null {
   const head = fullText.slice(0, 1200);
+  // 最高法院的寫法：「不服○○法院…第二審判決（字號，起訴案號…），提起上訴」，字號在「判決」之後的括號內，因此讀到「提起」為止。
+  const wide = /不服([\s\S]{1,260}?)提起/.exec(head);
+  if (wide) return wide[1];
   const m = /不服([\s\S]{1,200}?)(?:判決|裁定)/.exec(head);
   return m ? m[1] : null;
 }
@@ -81,20 +84,27 @@ export function namedInHeader(fullText: string, name: string): boolean {
  */
 export function extractDefendants(fullText: string): string[] {
   const head = fullText.slice(0, 600);
-  const names: string[] = [];
-  const re = /(?:被\s*告|受\s*刑\s*人)\s*([^\s、，,。；;（(:：]{1,40}(?:\s*[、，,]\s*[^\s、，,。；;（(:：]{1,40})*)/g;
-  for (const m of head.matchAll(re)) {
-    for (const part of m[1].split(/[、，,]/)) {
-      const name = cleanDefendantName(part.trim());
-      if (name.length < 2 || name.length > 8 || /[\d份各]/.test(name)) continue;
-      if (!names.includes(name)) names.push(name);
+  const pick = (re: RegExp): string[] => {
+    const out: string[] = [];
+    for (const m of head.matchAll(re)) {
+      for (const part of m[1].split(/[、，,]/)) {
+        const name = cleanDefendantName(part.trim());
+        // 判決中的姓名為 2 至 4 字（甲○○ 之類以○代字）；含英數、標點或其他詞句者不採用。
+        if (!/^[一-鿿㐀-䶿○Ｏ〇]{2,4}$/.test(name)) continue;
+        if (!out.includes(name)) out.push(name);
+      }
     }
-  }
-  return names;
+    return out;
+  };
+  const tail = '\\s*([^\\s、，,。；;（(:：]{1,40}(?:\\s*[、，,]\\s*[^\\s、，,。；;（(:：]{1,40})*)';
+  // 先看「被告」「受刑人」；最高法院判決沒有「被告」標示時，改看「上訴人」。
+  const named = pick(new RegExp('(?:被\\s*告|受\\s*刑\\s*人)' + tail, 'g'));
+  if (named.length) return named;
+  return pick(new RegExp('上\\s*訴\\s*人' + tail, 'g'));
 }
 
 /** 名稱之後常接的詞（指定辯護人、上列、前案紀錄…）：遇到即截斷。 */
-const NAME_CUT = ['指定', '選任', '辯護人', '上列', '前案', '在卷', '紀錄', '現', '繫屬', '入監', '執行', '在押', '羈押', '因', '犯', '於', '經', '即', '與', '及', '年', '月', '日', '等', '本院', '公訴'];
+const NAME_CUT = ['指定', '選任', '辯護人', '上列', '前案', '在卷', '紀錄', '現', '繫屬', '入監', '執行', '在押', '羈押', '因', '犯', '於', '經', '即', '與', '及', '年', '月', '日', '等', '本院', '公訴', '案件', '不服', '明知', '被訴', '之', '證據', '應', '固', '指稱', '被', '有', '先後', '各次', '侵害', '聲請', '書', '定其', '應執行', '其'];
 
 function cleanDefendantName(raw: string): string {
   let s = raw;
@@ -197,7 +207,13 @@ export function judgeFinality(input: FinalityInput): FinalityResult {
   // 繫屬中（尚無裁判書）或上訴最高法院審理中的列，位於最後一審之後：尚未確定。
   const laterPending = rows.some((r, j) => j > cur && r.pending);
   const supremeAfterStart = rows.some((r, j) => j > startIdx && r.supremeAppeal);
+  // 發回、更審、再審等後續程序不一定以「不服」銜接（實測：最高法院發回後，更一判決直接以第一審為原審）。
+  // 因此，最後一審之後若仍有載明本被告姓名的判決，保守判為尚未確定，不以字號推定已確定。
+  const laterDefendantRow = rows.findIndex((r, j) => j > cur && !r.pending && history[j].fullText != null && namedInHeader(history[j].fullText as string, defendant));
   const appealed = chain.length > 0;
+  if (laterDefendantRow >= 0) {
+    return result('appealed_pending', `歷審中最後一審之後，第 ${laterDefendantRow + 1} 筆（${rows[laterDefendantRow].court} ${rows[laterDefendantRow].caseNo}）仍載明被告姓名，可能為發回或後續程序，判為尚未確定。`, { finalJudgment: terminal, appealChain });
+  }
   if (laterPending || supremeAfterStart) {
     const why = supremeAfterStart ? '歷審中有案件上訴至最高法院審理中' : '歷審中有繫屬中（尚無裁判書）的後續審級';
     return result('appealed_pending', `${why}。`, { finalJudgment: terminal, appealChain, aggregate: { status: 'not_applicable', note: '' } });

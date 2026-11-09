@@ -122,6 +122,24 @@ test('同一起訴書其他被告的上訴不計入本被告', () => {
   assert.equal(r.appealChain.length, 0);
 });
 
+test('後續程序（發回、更審）不以「不服」銜接：最後一審之後仍載明被告的判決，判為尚未確定', () => {
+  // 第 2 筆：2021 年的更審判決，以第一審為原審、未引用本件字號，但仍載明被告。
+  const later = { court: '臺灣高等法院', caseNo: '110 年度 重侵上更一 字第 3 號判決', dateDisplay: '110.05.25', dateIso: '2021-05-25' };
+  const laterText = '臺灣高等法院刑事判決\n110年度重侵上更一字第3號\n上訴人即被告 甲○○\n主文\n原判決撤銷。\n';
+  const r = judgeFinality({
+    target: T, defendant: '甲○○', today: '2026-12-01',
+    history: [HIST_T, hist(later, laterText)],
+  });
+  assert.equal(r.outcome, 'appealed_pending');
+  assert.match(r.basis, /發回或後續程序/);
+  // 對照：後續判決不載明本被告時，不影響判斷（仍為本件確定）。
+  const other = judgeFinality({
+    target: T, defendant: '甲○○', today: '2026-12-01',
+    history: [HIST_T, hist(later, laterText.replace('甲○○', '乙○○'))],
+  });
+  assert.equal(other.outcome, 'final');
+});
+
 test('appealedFrom：取出「不服……判決」子句', () => {
   assert.match(appealedFrom(appealText('甲○○')), /臺灣臺北地方法院 112年度訴字第100號/);
   assert.equal(appealedFrom('沒有上訴字樣的判決'), null);
@@ -144,6 +162,17 @@ test('extractDefendants：從判決開頭取出多位被告姓名，遇「犯」
   assert.deepEqual(extractDefendants('被告 甲○○、乙○○\n主文\n甲○○犯詐欺罪'), ['甲○○', '乙○○']);
   assert.deepEqual(extractDefendants('上訴人即被告王小明 因詐欺案件'), ['王小明']);
   assert.deepEqual(extractDefendants('本文沒有當事人欄位'), []);
+  // 實測回歸（舊案）：標題與「被告妨害性自主案件」「被告乙○○固指稱」「被告被訴明知A女」不是姓名。
+  assert.deepEqual(extractDefendants('被告妨害性自主案件 被告乙○○固指稱 被告被訴明知A女 應一律注意'), ['乙○○']);
+  // 實測回歸（最高法院）：沒有「被告」標示，改取「上訴人」後的姓名。
+  assert.deepEqual(extractDefendants('上　訴　人　吳○○選任辯護人　林傳源律師上列上訴人因家暴妨害性自主案件'), ['吳○○']);
+  // 實測回歸（聲請定應執行刑）：「被告池威俊被」「受刑人…有受刑人」「先後」「侵害法益」等不是姓名。
+  assert.deepEqual(extractDefendants('被告池威俊被 先後 各次 侵害法益'), ['池威俊']);
+  assert.deepEqual(extractDefendants('受刑人陳冠宇，聲請書 有受刑人'), ['陳冠宇']);
+  // 實測回歸（最高法院）：字號在「判決」之後的括號內，「不服」子句要讀到「提起」為止。
+  const sc = '上列上訴人因被告妨害性自主案件，不服臺灣高等法院中華民國109 年2月18日第二審判決（107年度侵上訴字第179號，起訴案號：某案），提起上訴，';
+  assert.match(appealedFrom(sc), /107年度侵上訴字第179號/);
+
   // 實測回歸：「被告前案紀錄表各1份在卷」不是姓名；「被 告 周卉蘭指定辯護人」只取姓名。
   assert.deepEqual(extractDefendants('被 告 周卉蘭指定辯護人 本院公設辯護人\n被告前案紀錄表各1份在卷'), ['周卉蘭']);
   // 聲請案件的受刑人（標示為「受 刑 人」）。
