@@ -1,7 +1,7 @@
 // 本地資料層：設定檔（settings.json）。金鑰以 safeStorage 加密後才寫入。
 import { app, safeStorage } from 'electron';
 import * as fs from 'node:fs/promises';
-import { DEFAULT_BRIEF_FIELDS, DEFAULT_CODING_FIELDS, DEFAULT_JURISDICTION_ID, type BriefField, type CodingField } from '@judge/core';
+import { DEFAULT_BRIEF_FIELDS, DEFAULT_CODING_FIELDS, DEFAULT_JURISDICTION_ID, DEFAULT_REVIEW_POLICY, type BriefField, type CodingField, type CodingReviewPolicy } from '@judge/core';
 import { userPath } from './paths';
 
 export interface FederationSettings {
@@ -28,6 +28,8 @@ export interface StoredSettings {
   briefFields: (BriefField & { enabled: boolean })[];
   /** 標編碼工序的分析欄位設定：enabled 表示是否勾選；自訂欄位與順序也保存在這裡。 */
   scopeFields: (CodingField & { enabled: boolean })[];
+  /** 覆核規則的門檻（信心與人工覆核）：預設值與理由見 @judge/core 的 DEFAULT_REVIEW_POLICY。 */
+  scopeReviewPolicy: CodingReviewPolicy;
   /** 本地 AI 模組開關：關閉時即使已安裝，也一律使用雲端。 */
   localAiEnabled: boolean;
   /** 預設管轄區識別碼（見 jurisdictionRegistry）。 */
@@ -49,6 +51,7 @@ export const DEFAULTS: StoredSettings = {
   cacheDays: 7,
   briefFields: DEFAULT_BRIEF_FIELDS.map((f) => ({ ...f, enabled: true })),
   scopeFields: DEFAULT_CODING_FIELDS.map((f) => ({ ...f, enabled: true })),
+  scopeReviewPolicy: { ...DEFAULT_REVIEW_POLICY, unknownMarkers: [...DEFAULT_REVIEW_POLICY.unknownMarkers] },
   localAiEnabled: true,
   defaultJurisdiction: DEFAULT_JURISDICTION_ID,
 };

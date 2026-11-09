@@ -6,6 +6,7 @@ import { cacheClear } from '../data/local/cacheStore';
 import { aiConfigOrThrow } from '../data/cloud/aiRepo';
 import {
   jurisdictionRegistry, checkFederationFields, FEDERATION_ISSUER, FEDERATION_AUDIENCE, FEDERATION_TOKEN_TTL_SECONDS, FEDERATION_SUBJECT_PATTERN,
+  normalizeReviewPolicy,
 } from '@judge/core';
 import { readSession } from '../data/local/authStore';
 import { fetchIdentityToken } from '../data/cloud/authRepo';
@@ -24,6 +25,7 @@ export function registerSettingsIpc(): void {
       cacheDays: s.cacheDays,
       briefFields: s.briefFields,
       scopeFields: s.scopeFields,
+      scopeReviewPolicy: normalizeReviewPolicy(s.scopeReviewPolicy),
       localAiEnabled: s.localAiEnabled,
       defaultJurisdiction: s.defaultJurisdiction,
     };
@@ -78,6 +80,9 @@ export function registerSettingsIpc(): void {
     }
     if (patch.scopeFields) {
       next.scopeFields = (patch.scopeFields as StoredSettings['scopeFields']).filter((f) => f && typeof f.name === 'string');
+    }
+    if (patch.scopeReviewPolicy) {
+      next.scopeReviewPolicy = normalizeReviewPolicy(patch.scopeReviewPolicy);
     }
     if (patch.federation) {
       next.federation = { ...EMPTY_FEDERATION, ...next.federation, ...patch.federation };

@@ -41,6 +41,7 @@ contextBridge.exposeInMainWorld('api', {
   scope: {
     run: (args: unknown) => invoke('scope:run', args),
     export: (args: unknown) => invoke('export:scope', args),
+    review: (args: unknown) => invoke('scope:review', args),
     onProgress: (cb: (p: { statute: string; done: number; total: number }) => void) => {
       ipcRenderer.on('scope:progress', (_e, p) => cb(p));
     },
