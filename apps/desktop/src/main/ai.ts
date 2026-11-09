@@ -23,9 +23,11 @@ export interface AiCall {
   maxTokens: number;
 }
 
-export async function callAi(cfg: AiConfig, call: AiCall): Promise<string> {
+/** 呼叫雲端 AI。逾時 120 秒；取消訊號觸發時立即中止請求（v3.6.0）。 */
+export async function callAi(cfg: AiConfig, call: AiCall, cancel?: AbortSignal): Promise<string> {
   const base = cfg.baseUrl.replace(/\/$/, '');
-  const signal = AbortSignal.timeout(120_000);
+  const timeout = AbortSignal.timeout(120_000);
+  const signal = cancel ? AbortSignal.any([cancel, timeout]) : timeout;
   if (cfg.provider === 'anthropic') {
     const res = await fetch(`${base}/v1/messages`, {
       method: 'POST',

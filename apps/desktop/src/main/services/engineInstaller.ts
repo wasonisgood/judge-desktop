@@ -14,6 +14,7 @@ import { fetchLatestAsset } from '../data/cloud/releaseSource';
 import { runCommand } from '../data/local/system';
 import { decompressZstdFile } from './zstdArchive';
 import type { StageEvent } from './jobBus';
+import { signalOfRunning } from './jobRegistry';
 
 // adm-zip 是既有依賴，以 CommonJS 方式載入。
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -89,10 +90,10 @@ export async function installEngineFiles(arch: NativeArch, send: (ev: StageEvent
   if (!haveArchive) {
     await withRetry(
       () => downloadFromFirstAvailable({
-        urls: asset.urls, file: archiveFile, expectedSha256: asset.sha256,
+        urls: asset.urls, file: archiveFile, expectedSha256: asset.sha256, signal: signalOfRunning(['install', 'repair']),
         onProgress: (d, t) => send({ module: 'ai-engine', stage: 'installEngine', status: 'progress', detail: '下載引擎', completed: d, total: t ?? undefined }),
       }),
-      { attempts: 3, baseDelayMs: 2000, onRetry: (n, delay) => send({ module: 'ai-engine', stage: 'installEngine', status: 'retry', detail: `第 ${n} 次重試（${delay / 1000} 秒後）` }) },
+      { attempts: 3, baseDelayMs: 2000, signal: signalOfRunning(['install', 'repair']), onRetry: (n, delay) => send({ module: 'ai-engine', stage: 'installEngine', status: 'retry', detail: `第 ${n} 次重試（${delay / 1000} 秒後）` }) },
     );
   }
   const bin = path.join(engineRoot(), 'bin');

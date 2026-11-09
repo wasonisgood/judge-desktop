@@ -1,13 +1,14 @@
 // 單一判決精讀服務：AI 整理成文書、存入檔案管理，並（若有原版 PDF）產生螢光標示的 Word 版。
 import {
-  briefJudgment, normalizeBriefFields, CourtClient, openPdf, pagesNeedingOcr, renderPageWithHighlights,
+  briefJudgment, normalizeBriefFields, CourtClient, openPdf, pagesNeedingOcr, renderPageWithHighlights, raceAbort, JobCancelledError,
   newTrace, addStep, explainTrace, type BriefField, type BriefDocument, type JudgmentDetail, type AiComplete,
 } from '@judge/core';
 import { shell } from 'electron';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import { buildFourPerPageDocx, groupPages, type PageImage } from '../pdfWord';
-import { library } from '../data/local/libraryAccess';
+import { saveToLibrary } from './savedResult';
+import { toUserError } from './userError';
 import { cachedDetail } from '../data/cloud/courtRepo';
 import { exportDir } from './exportService';
 import { lawContextForCitations } from './lawContext';
@@ -51,12 +52,15 @@ export async function annotateOriginalPdf(d: JudgmentDetail, doc: BriefDocument)
   return { files, pages: pages.length, highlighted: pages.reduce((n, p) => n + p.highlighted, 0), ocrPages, quotes: quotes.length };
 }
 
+/** 精讀（v3.6.0）：取消時不產生文書（丟出「已取消」）；AI 完成後的存檔失敗只回報，不丟失結果。 */
 export async function runBrief(
   args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[]; jurisdiction?: string },
   ai: AiComplete,
+  signal?: AbortSignal,
 ) {
   const trace = newTrace('精讀');
   const d = await cachedDetail(args.judgmentId, undefined, args.jurisdiction);
+  if (signal?.aborted) throw new JobCancelledError();
   addStep(trace, { stage: '取得判決內頁', module: 'rule', input: args.judgmentId, output: `${d.fullText.length} 字`, decision: 'pass', reason: '判決原文已取得' });
   const fields = normalizeBriefFields(args.fields ?? []);
   // 法規上下文（issue #4 第 4 點）：判決引用的法條現行內容與沿革交給 AI 判讀。
@@ -65,7 +69,14 @@ export async function runBrief(
     stage: '讀入法規現行條文與沿革', module: 'rule', input: `${(d.relatedLaws ?? []).length} 條相關法條`,
     output: lc.text ? '已讀入' : '未取得', decision: 'pass', reason: lc.notes.length ? lc.notes.join('；') : '法規內容已交給 AI 判讀',
   });
-  const doc: BriefDocument = await briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined, lawContext: lc.text || undefined });
+  if (signal?.aborted) throw new JobCancelledError();
+  let doc: BriefDocument;
+  try {
+    doc = await raceAbort(briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined, lawContext: lc.text || undefined }), signal);
+  } catch (err) {
+    if (signal?.aborted) throw new JobCancelledError();
+    throw toUserError(err);
+  }
   addStep(trace, { stage: 'AI 整理文書', module: 'cloud', input: `${fields.length || '預設'} 個欄位；重點：${args.focus || '（未指定）'}`, output: `${doc.sections.length} 段`, decision: 'pass', reason: '只根據判決原文整理' });
   const dropped = doc.droppedQuotes ?? 0;
   addStep(trace, {
@@ -73,17 +84,20 @@ export async function runBrief(
     output: dropped ? `移除 ${dropped} 則無法在原文中找到的引文` : '全部引文都在原文中',
     decision: 'pass', reason: dropped ? '找不到原文依據的引文不保留（不猜）' : '引文皆可驗證',
   });
-  await library().add({
+  const save = await saveToLibrary({
     kind: 'brief',
     title: `精讀：${d.meta.title || args.judgmentId}`,
     summary: d.meta.court ?? '',
     payload: { detail: d, doc, trace },
   });
-  const annotated = await annotateOriginalPdf(d, doc).catch((err) => ({ error: err instanceof Error ? err.message : String(err), files: [] as string[] }));
+  if (save.saveError) addStep(trace, { stage: '存入檔案', module: 'rule', input: '精讀文書', output: '失敗', decision: 'skip', reason: save.saveError });
+  const annotated = signal?.aborted
+    ? { error: '已取消原版標示', files: [] as string[] }
+    : await annotateOriginalPdf(d, doc).catch((err) => ({ error: toUserError(err).message, files: [] as string[] }));
   addStep(trace, {
     stage: '原版 PDF 標示', module: 'rule', input: d.pdfUrl ? '原版 PDF' : '無原版 PDF 連結',
     output: annotated.error ? `未完成：${annotated.error}` : `${annotated.files.length} 份 Word，標示 ${"quotes" in annotated ? annotated.quotes : 0} 則引文`,
     decision: annotated.error ? 'skip' : 'pass', reason: annotated.error ? '標示失敗不影響精讀文書' : '原版標示完成',
   });
-  return { detail: d, doc, annotated, trace, explanation: explainTrace(trace) };
+  return { detail: d, doc, annotated, saveError: save.saveError, trace, explanation: explainTrace(trace) };
 }

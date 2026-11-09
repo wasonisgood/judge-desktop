@@ -15,6 +15,8 @@ import { activeProbeTargets, loadActiveRules } from '../data/local/moduleFiles';
 import { detectHardware, detectNativeArch } from '../data/local/system';
 import { appendFailure } from '../data/local/failureLog';
 import { emitStage, runAsJob, type StageEvent } from './jobBus';
+import { signalOfRunning } from './jobRegistry';
+import { JobCancelledError } from '@judge/core';
 import { setModule, syncBundledModules } from './moduleState';
 import { installEngineFiles } from './engineInstaller';
 import { checkPrerequisites } from './prerequisites';
@@ -34,7 +36,11 @@ async function installAiEngineModuleCore(plan: LocalPlan, send: (ev: StageEvent)
   await syncBundledModules();
   const { rules } = await loadActiveRules();
   const required = [...new Set([plan.judgmentModel, plan.chatModel])];
-  const ev = (stage: string, status: StageEvent['status'], extra: Partial<StageEvent> = {}) => send({ module: AI_ENGINE_MODULE_ID, stage, status, ...extra });
+  const ev = (stage: string, status: StageEvent['status'], extra: Partial<StageEvent> = {}) => {
+    // 階段開始前檢查取消（v3.6.0）：取消後不再進入下一階段。
+    if (status === 'start' && signalOfRunning(['install', 'repair'])?.aborted) throw new JobCancelledError();
+    send({ module: AI_ENGINE_MODULE_ID, stage, status, ...extra });
+  };
   let stage = 'checkSystem';
   await setModule(AI_ENGINE_MODULE_ID, { status: 'installing', lastError: null, failedStage: null });
   try {
@@ -132,7 +138,7 @@ async function installAiEngineModuleCore(plan: LocalPlan, send: (ev: StageEvent)
     for (const m of modelsToPull(required, installedModels)) {
       await ev(stage, 'start', { detail: m });
       await withRetry(
-        () => pullModel(m, (p) => ev(stage, 'progress', { detail: m, completed: p.completed, total: p.total }), { baseUrl: base }),
+        () => pullModel(m, (p) => ev(stage, 'progress', { detail: m, completed: p.completed, total: p.total }), { baseUrl: base, signal: signalOfRunning(['install', 'repair']) }),
         { attempts: 3, baseDelayMs: 2000, onRetry: (n, delay) => ev(stage, 'retry', { detail: `${m} 第 ${n} 次重試（${delay / 1000} 秒後）` }) },
       );
       await ev(stage, 'done', { detail: m });
@@ -156,6 +162,12 @@ async function installAiEngineModuleCore(plan: LocalPlan, send: (ev: StageEvent)
     await ev(stage, 'done', { detail: `規則表版本 ${rules.rulesVersion}` });
     return state;
   } catch (e: any) {
+    if (e instanceof JobCancelledError) {
+      // 取消不是失敗：已下載的部分檔保留，重新安裝時可接續。
+      const cancelled = await setModule(AI_ENGINE_MODULE_ID, { status: 'failed', lastError: '已取消安裝；已下載的部分會保留，重新安裝時可接續。', failedStage: stage });
+      ev(stage, 'failed', { detail: '已取消' });
+      return cancelled;
+    }
     const c = classifyError(e);
     const rp = repairPlan(c.code);
     const msg = `${c.code}：${e?.message ?? String(e)}`;

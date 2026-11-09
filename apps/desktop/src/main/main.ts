@@ -7,9 +7,12 @@ import { getMainWindow } from './windows/windowState';
 import { openUpdater } from './services/updaterService';
 import { isDev } from './data/local/paths';
 import { syncBundledModules } from './services/moduleState';
+import { initLifecycle, reconcileStaleInstalls, shouldQuitOnAllClosed, revealMainWindow } from './services/appLifecycle';
 
 app.whenReady().then(() => {
   registerIpc();
+  initLifecycle();
+  reconcileStaleInstalls().catch((err) => console.error('清理安裝狀態失敗：', err));
   // 模組隨應用程式版本同步：啟動時只複製有變動的內建檔案。
   syncBundledModules().catch((err) => console.error('模組同步失敗：', err));
   createMainWindow();
@@ -22,17 +25,14 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
+  // 有背景工作執行中時不結束程式；工作完成後由生命週期模組結束。
+  if (process.platform !== 'darwin' && shouldQuitOnAllClosed()) app.quit();
 });
 
 if (!app.requestSingleInstanceLock()) {
   app.quit();
 } else {
   app.on('second-instance', () => {
-    const win = getMainWindow();
-    if (win) {
-      if (win.isMinimized()) win.restore();
-      win.focus();
-    }
+    revealMainWindow(getMainWindow());
   });
 }

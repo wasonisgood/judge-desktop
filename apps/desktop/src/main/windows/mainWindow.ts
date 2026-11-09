@@ -3,6 +3,7 @@ import { BrowserWindow, Menu, shell } from 'electron';
 import * as path from 'node:path';
 import { isDev } from '../data/local/paths';
 import { getMainWindow, setMainWindow } from './windowState';
+import { deferCloseIfBusy } from '../services/appLifecycle';
 
 /**
  * 應用程式選單：Windows 與 Linux 維持無選單（自訂標題列）。
@@ -42,6 +43,10 @@ export function createMainWindow(): void {
     return { action: 'deny' };
   });
   if (isDev) win.webContents.openDevTools({ mode: 'detach' });
+  // 有工作執行中：攔下關閉，視窗隱藏並讓工作在背景完成（見 appLifecycle）。
+  win.on('close', (e) => {
+    if (deferCloseIfBusy(win)) e.preventDefault();
+  });
   win.on('closed', () => setMainWindow(null));
 }
 

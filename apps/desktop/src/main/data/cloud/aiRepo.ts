@@ -1,6 +1,7 @@
 // 雲端資料層（AI）：依設定組出 AI 設定（API 金鑰或工作負載身分聯合），並包成 requireAi。
 // 所有 AI 產出都必須經過 requireAi；沒有金鑰時直接報錯，不會退回規則式的文字切割。
 import * as fs from 'node:fs/promises';
+import { raceAbort } from '@judge/core';
 import {
   FederatedTokenProvider, type FederationConfig, LocalCloudRouter, type AiComplete,
 } from '@judge/core';
@@ -47,21 +48,23 @@ export function normalizeAiMode(v: unknown): AiMode {
 }
 
 /** 依來源選擇回傳 AI 呼叫函式。本地與雲端共用同一個輸入格式（system、user、maxTokens），輸出都是文字。 */
-export async function requireAi(mode: AiMode = 'auto'): Promise<AiComplete> {
+/** 依來源選擇回傳 AI 呼叫函式。signal 觸發時：雲端請求立即中止；本地請求的結果被捨棄並拋出取消（v3.6.0）。 */
+export async function requireAi(mode: AiMode = 'auto', signal?: AbortSignal): Promise<AiComplete> {
   const cfg = await aiConfigOrThrow();
-  const cloud = { kind: 'cloud' as const, run: async <T>(_t: unknown, payload: unknown) => callAi(cfg, payload as { system: string; user: string; maxTokens: number }) as unknown as T };
+  const cloud = { kind: 'cloud' as const, run: async <T>(_t: unknown, payload: unknown) => callAi(cfg, payload as { system: string; user: string; maxTokens: number }, signal) as unknown as T };
+  const guard = (fn: AiComplete): AiComplete => (system, user, maxTokens) => raceAbort(fn(system, user, maxTokens), signal);
   if (mode === 'cloud') {
-    return async (system, user, maxTokens) => (await cloud.run<{ text: string }>('judgment', { system, user, prompt: user, maxTokens })) as unknown as string;
+    return guard(async (system, user, maxTokens) => (await cloud.run<{ text: string }>('judgment', { system, user, prompt: user, maxTokens })) as unknown as string);
   }
   if (mode === 'local') {
     const local = await localBackendIfReady({ ignoreSwitch: true });
     if (!local) throw new Error('本地模型尚未就緒（請到設定的「模組」安裝本地 AI），或改選雲端。');
-    return async (system, user, maxTokens) => (await local.run<string>('judgment', { system, user, prompt: user, maxTokens }));
+    return guard(async (system, user, maxTokens) => (await local.run<string>('judgment', { system, user, prompt: user, maxTokens })));
   }
   const local = await localBackendIfReady();
   const router = new LocalCloudRouter(local, cloud);
   if (local) router.registerLocalReady();
   // 本地後端讀 prompt、雲端讀 user，因此兩者都放入同一份內容。
-  return async (system, user, maxTokens) => (await router.route<string>('judgment', { system, user, prompt: user, maxTokens })).value;
+  return guard(async (system, user, maxTokens) => (await router.route<string>('judgment', { system, user, prompt: user, maxTokens })).value);
 }
 

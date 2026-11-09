@@ -28,6 +28,13 @@ contextBridge.exposeInMainWorld('api', {
     },
   },
   exportList: (args: unknown) => invoke('export:list', args),
+  jobs: {
+    list: () => invoke('jobs:list'),
+    cancel: (args: unknown) => invoke('jobs:cancel', args),
+    onChanged: (cb: (list: unknown) => void) => {
+      ipcRenderer.on('jobs:changed', (_e, list) => cb(list));
+    },
+  },
   scope: {
     run: (args: unknown) => invoke('scope:run', args),
     export: (args: unknown) => invoke('export:scope', args),

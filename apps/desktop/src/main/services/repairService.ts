@@ -11,6 +11,7 @@ import { readEngine, readPlan } from '../data/local/engineStore';
 import { engineBaseOverride, listModels, startOwnService } from '../data/local/ollamaService';
 import { setModule } from './moduleState';
 import { runAsJob, emitStage, type StageEvent } from './jobBus';
+import { signalOfRunning } from './jobRegistry';
 import { installAiEngineModule } from './aiEngineInstall';
 import { diagnose } from './diagnosticsService';
 
@@ -37,7 +38,7 @@ async function runRepairCore(action: RepairActionId, send: (ev: StageEvent) => v
   if (action === 'repull-models') {
     if (!plan || plan.tier === 'none') throw new Error('沒有安裝方案紀錄，請重新檢查並安裝');
     for (const m of modelsToPull([plan.judgmentModel!, plan.chatModel!], await listModels(base))) {
-      await withRetry(() => pullModel(m, (p) => send({ module: AI_ENGINE_MODULE_ID, stage: 'pullModels', status: 'progress', detail: m, completed: p.completed, total: p.total }), { baseUrl: base }), { attempts: 3, baseDelayMs: 2000 });
+      await withRetry(() => pullModel(m, (p) => send({ module: AI_ENGINE_MODULE_ID, stage: 'pullModels', status: 'progress', detail: m, completed: p.completed, total: p.total }), { baseUrl: base, signal: signalOfRunning(['install', 'repair']) }), { attempts: 3, baseDelayMs: 2000, signal: signalOfRunning(['install', 'repair']) });
     }
     return setModule(AI_ENGINE_MODULE_ID, { status: 'ready', lastError: null, failedStage: null });
   }

@@ -7,20 +7,26 @@ import {
   jobStatus,
 } from '../localAi';
 import { openWizardWindow } from '../windows/wizardWindow';
+import { withJob } from '../services/jobRegistry';
+import { safeSend } from '../services/safeSend';
+import { toUserError } from '../services/userError';
 import { getMainWindow, getWizardWindow } from '../windows/windowState';
 
 export function registerLocalIpc(): void {
   ipcMain.handle('local:modules', () => readModuleStatus());
   ipcMain.handle('local:jobStatus', () => jobStatus());
   ipcMain.handle('local:plan', () => planForUi());
-  ipcMain.handle('local:installAi', async (e, args: { choice: PlanChoice }) => {
+  ipcMain.handle('local:installAi', async (e, args: { runId: string; choice: PlanChoice }) => {
     const { options } = await planForUi();
     const opt = options.find((o) => o.id === args?.choice);
     if (!opt) throw new Error('找不到所選方案');
     if (opt.id === 'skip') return setSkipAi();
-    return installAiEngineModule(opt.plan, (ev) => e.sender.send('local:progress', ev));
+    return withJob(args.runId, 'install', '安裝本地 AI', () =>
+      installAiEngineModule(opt.plan, (ev) => safeSend(e.sender, 'local:progress', ev))).catch((err) => { throw toUserError(err); });
   });
-  ipcMain.handle('local:installCrawler', (e) => installCrawlerModuleForApp((ev) => e.sender.send('local:progress', ev)));
+  ipcMain.handle('local:installCrawler', (e, args: { runId: string }) =>
+    withJob(args.runId, 'install', '安裝爬取模組', () =>
+      installCrawlerModuleForApp((ev) => safeSend(e.sender, 'local:progress', ev))).catch((err) => { throw toUserError(err); }));
   ipcMain.handle('local:openWizard', (_e, args?: { view?: 'install' | 'diag' }) => {
     openWizardWindow(args?.view === 'diag' ? 'diag' : 'install');
     return { ok: true };
@@ -34,6 +40,7 @@ export function registerLocalIpc(): void {
   // 排除問題與模組更新（3.1）
   ipcMain.handle('local:diagnose', () => diagnose());
   ipcMain.handle('local:exportReport', () => exportDiagnosticReport());
-  ipcMain.handle('local:repair', (e, args: { action: RepairActionId }) =>
-    runRepair(args.action, (ev) => e.sender.send('local:progress', ev)));
+  ipcMain.handle('local:repair', (e, args: { runId: string; action: RepairActionId }) =>
+    withJob(args.runId, 'repair', '修復本地 AI', () =>
+      runRepair(args.action, (ev) => safeSend(e.sender, 'local:progress', ev))).catch((err) => { throw toUserError(err); }));
 }

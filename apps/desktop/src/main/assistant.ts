@@ -5,7 +5,7 @@
 //    由使用者在畫面上按同意後才執行；模型本身不能直接執行這些操作。
 // 3. 金鑰只在主程序使用，不會傳給畫面。
 import { anthropicAuthHeaders, type AiConfig } from './ai';
-import { createSearchBudget, type SearchBudget } from '@judge/core';
+import { createSearchBudget, type SearchBudget, JobCancelledError, raceAbort } from '@judge/core';
 
 /** 搜尋方式（issue #4 第 5、6 點）：AI 協助（模型改寫與擴充關鍵字）或傳統（使用者原文，只搜一次）。 */
 export type AssistantSearchMode = 'ai' | 'traditional';
@@ -175,9 +175,10 @@ interface ModelReply {
   calls: ToolCall[];
 }
 
-async function askModel(cfg: AiConfig, items: Item[], system: string): Promise<ModelReply> {
+async function askModel(cfg: AiConfig, items: Item[], system: string, cancel?: AbortSignal): Promise<ModelReply> {
   const base = cfg.baseUrl.replace(/\/$/, '');
-  const signal = AbortSignal.timeout(120_000);
+  const timeout = AbortSignal.timeout(120_000);
+  const signal = cancel ? AbortSignal.any([cancel, timeout]) : timeout;
   if (cfg.provider === 'anthropic') {
     const res = await fetch(`${base}/v1/messages`, {
       method: 'POST',
@@ -237,7 +238,7 @@ export async function runAssistantTurn(
   deps: AssistantDeps,
   history: { role: 'user' | 'assistant'; text: string }[],
   userText: string,
-  opts: { searchMode?: AssistantSearchMode } = {},
+  opts: { searchMode?: AssistantSearchMode; signal?: AbortSignal } = {},
 ): Promise<AssistantTurn> {
   const cfg = await deps.config();
   const searchMode: AssistantSearchMode = opts.searchMode === 'traditional' ? 'traditional' : 'ai';
@@ -254,7 +255,8 @@ export async function runAssistantTurn(
   const turn: AssistantTurn = { reply: '', navigate: null, pending: [] };
 
   for (let round = 0; round < 6; round++) {
-    const r = await askModel(cfg, items, system);
+    if (opts.signal?.aborted) throw new JobCancelledError();
+    const r = await raceAbort(askModel(cfg, items, system, opts.signal), opts.signal);
     items.push({ type: 'assistant', text: r.text, calls: r.calls });
     if (r.calls.length === 0) {
       turn.reply = r.text || '（沒有回覆）';
