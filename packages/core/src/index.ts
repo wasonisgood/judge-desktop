@@ -29,6 +29,7 @@ export * from './local/updateDiff';
 export * from './local/telemetry';
 export * from './modules/registry';
 export * from './modules/crawlerModule';
+export * from './modules/chartModule';
 export * from './engine/stream';
 export * from './engine/errors';
 export * from './engine/retry';
