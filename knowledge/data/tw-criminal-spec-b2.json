@@ -44,16 +44,72 @@
       ],
       "practice": [
         {
-          "period": "早期至近年（待核對）",
+          "period": "早期至近年",
           "view": "實務多以被害人是否在一定時間內無法依其意思離開特定場所，作為判斷因素；對於僅阻止去路、短暫拉扯等行為，常改論強制罪，而不以私行拘禁論處。",
-          "note": "實務見解以個案事實判斷為主，各法院對「一定時間」之標準並無一致量化，具體立場應待核對近期裁判。"
+          "note": "實務見解以個案事實判斷為主，各法院對「一定時間」之標準並無一致量化。"
         }
       ],
       "lawRefs": [
         "刑法第 302 條",
         "刑法第 304 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 302 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "302",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "私行拘禁或以其他非法方法，剝奪人之行動自由者，處五年以下有期徒刑、拘役或九千元以下罰金。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "302",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "302",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 304 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "304",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以強暴、脅迫使人行無義務之事或妨害人行使權利者，處三年以下有期徒刑、拘役或九千元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "304",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "304",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-059",
@@ -96,17 +152,110 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務見解多傾向將私行拘禁理解為於被害人遭剝奪自由之期間持續成立之犯罪，並據此處理追訴時效與共犯參與之問題；具體案例之立場應待核對。",
+          "period": "近年",
+          "view": "實務見解多傾向將私行拘禁理解為於被害人遭剝奪自由之期間持續成立之犯罪，並據此處理追訴時效與共犯參與之問題。",
           "note": "此部分涉及時效與共犯責任，實務與學說之文字表述差異大，引用前須以具體裁判核對。"
         }
       ],
       "lawRefs": [
         "刑法第 302 條",
-        "刑法第 27 條（共同正犯）",
-        "刑法第 80 條（追訴時效，待核對）"
+        "刑法第 28 條（共同正犯）",
+        "刑法第 80 條（追訴時效）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 302 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "302",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "私行拘禁或以其他非法方法，剝奪人之行動自由者，處五年以下有期徒刑、拘役或九千元以下罰金。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "302",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "302",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 27 條（共同正犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "27",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行，而因己意中止或防止其結果之發生者，減輕或免除其刑。結果之不發生，非防止行為所致，而行為人已盡力為防止行為者，亦同。\n前項規定，於正犯或共犯中之一人或數人，因己意防止犯罪結果之發生，或結果之不發生，非防止行為所致，而行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "27",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "27",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 80 條（追訴時效，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "80",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "追訴權，因下列期間內未起訴而消滅：\n一、犯最重本刑為死刑、無期徒刑或十年以上有期徒刑之罪者，三十年。但發生死亡結果者，不在此限。\n二、犯最重本刑為三年以上十年未滿有期徒刑之罪者，二十年。\n三、犯最重本刑為一年以上三年未滿有期徒刑之罪者，十年"
+            }
+          ],
+          "latestAmendmentDate": "2026-07-07",
+          "amendments": [
+            {
+              "article": "80",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "80",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "80",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "80",
+              "date": "2026-07-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-060",
@@ -132,7 +281,7 @@
         "行使職權"
       ],
       "proposition": "公務員假借職權而犯私行拘禁或妨害自由之行為，其「假借職權」之要件應如何認定？與公務員之正當職務行為（如依法逮捕、留置）之界線何在？",
-      "distinction": "若採形式假借說，只要公務員利用職務上之地位實施拘束即可能成立加重之妨害自由罪，則濫權之範圍較寬；若採實質違法說，則須以行為欠缺法令依據為前提，正當職務行為即使有瑕疵亦可能阻卻違法。此爭點影響警察、獄政及其他執法人員之刑事責任判斷，也牽涉與公務員濫權罪（第131條）之適用關係。",
+      "distinction": "若採形式假借說，只要公務員利用職務上之地位實施拘束即可能成立加重之妨害自由罪，則濫權之範圍較寬；若採實質違法說，則須以行為欠缺法令依據為前提，正當職務行為即使有瑕疵亦可能阻卻違法。此爭點影響警察、獄政及其他執法人員之刑事責任判斷，也牽涉與第134條（假借職權加重）之適用關係。",
       "doctrines": [
         {
           "label": "甲說（形式假借說）",
@@ -149,17 +298,104 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "實務上對公務員拘束行為多先判斷有無法定職權與程序依據，若已逾越職權而以私人目的為之，常論以假借職權之加重罪；若屬依法執行，則以正當職務行為論處或不罰。",
-          "note": "具體判斷標準因案件類型（逮捕、留置、看管）而異，應待核對個案裁判。"
+          "note": "具體判斷標準因案件類型（逮捕、留置、看管）而異。"
         }
       ],
       "lawRefs": [
-        "刑法第 303 條",
-        "刑法第 302 條",
-        "刑法第 131 條（公務員濫權，待核對）"
+        "刑法第 134 條（公務員假借職權加重）",
+        "刑法第 302 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 303 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "303",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於直系血親尊親屬犯前二條第一項或第二項之罪者，加重其刑至二分之一。"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "303",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "303",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 302 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "302",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "私行拘禁或以其他非法方法，剝奪人之行動自由者，處五年以下有期徒刑、拘役或九千元以下罰金。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "302",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "302",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 131 條（公務員濫權，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "131",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公務員對於主管或監督之事務，明知違背法令，直接或間接圖自己或其他私人不法利益，因而獲得利益者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2018-05-08",
+          "amendments": [
+            {
+              "article": "131",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "131",
+              "date": "2001-10-25",
+              "kind": "修正"
+            },
+            {
+              "article": "131",
+              "date": "2018-05-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-061",
@@ -202,16 +438,72 @@
       ],
       "practice": [
         {
-          "period": "早期至近年（待核對）",
-          "view": "實務多以強暴、脅迫是否足以使人不敢抗拒或改變其意思，綜合行為方式、場合與被害人狀況判斷，並不一律要求達到不能抗拒之程度；具體門檻應待核對。",
+          "period": "早期至近年",
+          "view": "實務多以強暴、脅迫是否足以使人不敢抗拒或改變其意思，綜合行為方式、場合與被害人狀況判斷，並不一律要求達到不能抗拒之程度。",
           "note": "實務在強制罪與恐嚇危害安全罪之區分上常出現爭議，需結合行為內容與被害人反應判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 304 條",
-        "刑法第 221 條（強制性交之不能抗拒，比較用）"
+        "刑法第 221 條（強制性交，比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 304 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "304",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以強暴、脅迫使人行無義務之事或妨害人行使權利者，處三年以下有期徒刑、拘役或九千元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "304",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "304",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條（強制性交之不能抗拒，比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-062",
@@ -254,17 +546,84 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務多採綜合判斷，考量權利之存否、手段之強度與是否合於社會通念；對於以暴力或持續威嚇討債之行為，多不認為屬正當權利之行使，應待核對具體案例。",
+          "period": "近年",
+          "view": "實務多採綜合判斷，考量權利之存否、手段之強度與是否合於社會通念；對於以暴力或持續威嚇討債之行為，多不認為屬正當權利之行使。",
           "note": "債務催收與糾眾抗議之案件爭議較多，個案之認定標準差異大。"
         }
       ],
       "lawRefs": [
         "刑法第 304 條",
-        "刑法第 21 條（違法性與正當行為，待核對）",
-        "民法第 151 條（自助行為，待核對）"
+        "刑法第 21 條（依法令之行為，比較用）",
+        "民法第 151 條（自助行為）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 304 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "304",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以強暴、脅迫使人行無義務之事或妨害人行使權利者，處三年以下有期徒刑、拘役或九千元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "304",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "304",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 21 條（違法性與正當行為，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "民法第 151 條（自助行為，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "151",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為保護自己權利，對於他人之自由或財產施以拘束、押收或毀損者，不負損害賠償之責。但以不及受法院或其他有關機關援助，並非於其時為之，則請求權不得實行或其實行顯有困難者為限。"
+            }
+          ],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "沿革抓取失敗：立法院資料庫查無完全相同的法名：民法"
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-063",
@@ -307,17 +666,100 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "實務於個案中常依據惡害之內容、行為人所欲達成之具體行為、被害人是否因此為一定行為等綜合判斷，若被害人確實因威脅而為一定行為，多傾向論強制罪；單純預告惡害而未迫使作為者，則論恐嚇危害安全。",
-          "note": "兩罪之競合與吸收關係，應待核對具體判決之結論與理由。"
+          "note": "兩罪之競合與吸收關係，應就具體判決之結論與理由個別檢視。"
         }
       ],
       "lawRefs": [
         "刑法第 304 條",
         "刑法第 305 條",
-        "刑法第 55 條（想像競合，待核對）"
+        "刑法第 55 條（想像競合）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 304 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "304",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以強暴、脅迫使人行無義務之事或妨害人行使權利者，處三年以下有期徒刑、拘役或九千元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "304",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "304",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 305 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "305",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以加害生命、身體、自由、名譽、財產之事恐嚇他人，致生危害於安全者，處二年以下有期徒刑、拘役或九千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "305",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "305",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條（想像競合，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-064",
@@ -360,15 +802,44 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "實務上多要求惡害之通知須足以使一般人心生畏懼，並就行為人之言語內容、前後脈絡與雙方關係綜合判斷，對於明顯玩笑或無具體威脅性之語句，常不認定為恐嚇。",
-          "note": "何種程度之具體性為必要，各裁判之表述差異大，應待核對。"
+          "note": "何種程度之具體性為必要，各裁判之表述差異大。"
         }
       ],
       "lawRefs": [
         "刑法第 305 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 305 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "305",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以加害生命、身體、自由、名譽、財產之事恐嚇他人，致生危害於安全者，處二年以下有期徒刑、拘役或九千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "305",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "305",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-065",
@@ -394,11 +865,11 @@
         "傳達"
       ],
       "proposition": "恐嚇危害安全罪之既遂，是否以惡害之通知已到達被害人、被害人已知悉其內容為必要？或只要行為人已發出通知即足？",
-      "distinction": "若採到達或知悉說，則行為人已發出但未被收到之訊息（如電子郵件未開啟、信件遺失）不成立既遂，僅可能為未遂（惟本罪未遂是否處罰，應待核對）；若採發出即既遂說，則不論被害人是否知悉，只要行為人已完成發送即成立既遂。此差異影響網路與書信恐嚇之既遂認定與未遂處罰問題。",
+      "distinction": "若採到達或知悉說，則行為人已發出但未被收到之訊息（如電子郵件未開啟、信件遺失）不成立既遂；依第25條，未遂犯之處罰以有特別規定者為限，而第305條並無未遂處罰之明文；若採發出即既遂說，則不論被害人是否知悉，只要行為人已完成發送即成立既遂。此差異影響網路與書信恐嚇之既遂認定與未遂處罰問題。",
       "doctrines": [
         {
           "label": "甲說（到達知悉說）",
-          "view": "惡害之通知須已到達被害人或被害人已知悉其內容，本罪始告既遂。行為人若已發出而因故未到達，僅屬行為之未遂，視法律是否處罰未遂而定。",
+          "view": "惡害之通知須已到達被害人或被害人已知悉其內容，本罪始告既遂。行為人若已發出而因故未到達，僅屬未遂之階段，而第305條並無未遂處罰之明文。",
           "pros": "與「使人生危害於安全」之結果要件相符，恐懼感須以被害人實際知悉為前提，能避免純粹之發送行為即被評為既遂，與結果犯之理論一致。",
           "cons": "網路與通訊媒介之到達與知悉難以即時確認，被害人可能刻意不讀取而逃避責任，證明困難；且未遂是否處罰之問題，使部分具可罰性之行為可能無法定罪。"
         },
@@ -411,16 +882,72 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於書信、電話、通訊軟體之恐嚇，多以行為人已將惡害內容傳達至被害人或其可得知悉之狀態，判斷其行為已完成；對於未到達之情形，應待核對個案處理方式。",
+          "period": "近年",
+          "view": "實務上對於書信、電話、通訊軟體之恐嚇，多以行為人已將惡害內容傳達至被害人或其可得知悉之狀態，判斷其行為已完成。",
           "note": "此爭點與網路通訊之證據保全、到達時點之認定密切相關。"
         }
       ],
       "lawRefs": [
         "刑法第 305 條",
-        "刑法第 25 條（未遂，待核對）"
+        "刑法第 25 條（未遂）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 305 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "305",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以加害生命、身體、自由、名譽、財產之事恐嚇他人，致生危害於安全者，處二年以下有期徒刑、拘役或九千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "305",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "305",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條（未遂，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-066",
@@ -464,16 +991,67 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "實務上多綜合語句內容、雙方關係、言詞前後脈絡、行為人之情緒狀態與事後舉動判斷是否具有恐嚇之故意，對於明顯之氣話或玩笑，多不認定為犯罪。",
-          "note": "個案判斷仍以事實脈絡為主，各裁判之論理深度不一，應待核對具體裁判。"
+          "note": "個案判斷仍以事實脈絡為主，各裁判之論理深度不一。"
         }
       ],
       "lawRefs": [
         "刑法第 305 條",
-        "憲法第 11 條（言論自由，待核對）"
+        "憲法第 11 條（言論自由）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 305 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "305",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以加害生命、身體、自由、名譽、財產之事恐嚇他人，致生危害於安全者，處二年以下有期徒刑、拘役或九千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "305",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "305",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "憲法第 11 條（言論自由，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "11",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "人民有言論、講學、著作及出版之自由。"
+            }
+          ],
+          "latestAmendmentDate": "1946-12-25",
+          "amendments": [
+            {
+              "article": "11",
+              "date": "1946-12-25",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-067",
@@ -516,15 +1094,44 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "實務於判斷同意時，多以住居權人之明示意思為主，並考量進入之時間、目的與雙方關係；對於已遭拒絕或明顯不受歡迎之進入，多認定為無故侵入。",
-          "note": "個案之認定密切依賴事實，各裁判對默示同意之範圍與標準仍有差異，應待核對。"
+          "note": "個案之認定密切依賴事實，各裁判對默示同意之範圍與標準仍有差異。"
         }
       ],
       "lawRefs": [
         "刑法第 306 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 306 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "306",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "無故侵入他人住宅、建築物或附連圍繞之土地或船艦者，處一年以下有期徒刑、拘役或九千元以下罰金。\n無故隱匿其內，或受退去之要求而仍留滯者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "306",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "306",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-068",
@@ -567,15 +1174,44 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "實務上多以處所是否供住居權人居住或起居生活使用為主要判斷，並斟酌其是否具排他管領性；對於公寓共用區域或營業場所，則依個案之管領狀態與進入之方式判斷。",
-          "note": "空屋、營業場所與共用空間之判斷，各裁判標準不一，應待核對具體案例。"
+          "note": "空屋、營業場所與共用空間之判斷，各裁判標準不一。"
         }
       ],
       "lawRefs": [
         "刑法第 306 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 306 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "306",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "無故侵入他人住宅、建築物或附連圍繞之土地或船艦者，處一年以下有期徒刑、拘役或九千元以下罰金。\n無故隱匿其內，或受退去之要求而仍留滯者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "306",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "306",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-069",
@@ -618,8 +1254,8 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上常見住宅糾紛之個案，法院多先判斷行為人最初進入是否經有效同意，再就撤回後之留存視情形評價；是否直接以侵入住居論處，因個案而異，應待核對。",
+          "period": "近年",
+          "view": "實務上常見住宅糾紛之個案，法院多先判斷行為人最初進入是否經有效同意，再就撤回後之留存視情形評價；是否直接以侵入住居論處，因個案而異。",
           "note": "此爭點與民事返還請求及占有保護之關係密切，個案處理方式有差異。"
         }
       ],
@@ -627,11 +1263,67 @@
         "刑法第 306 條",
         "刑法第 304 條（強制，比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 306 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "306",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "無故侵入他人住宅、建築物或附連圍繞之土地或船艦者，處一年以下有期徒刑、拘役或九千元以下罰金。\n無故隱匿其內，或受退去之要求而仍留滯者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "306",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "306",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 304 條（強制，比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "304",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以強暴、脅迫使人行無義務之事或妨害人行使權利者，處三年以下有期徒刑、拘役或九千元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "304",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "304",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-070",
-      "title": "略誘與和誘之區分",
+      "title": "略誘之手段與被誘人同意之區分",
       "path": [
         "刑法",
         "刑法分則",
@@ -653,7 +1345,7 @@
         "誘出"
       ],
       "proposition": "行為人以強暴、脅迫、詐術或其他方法使人離開其住所或原所在處所，與經被誘人同意而誘出，兩者應如何區分？區分之標準是否以被誘人之同意為唯一判準？",
-      "distinction": "略誘罪以以強暴、脅迫或其他不正之方法為手段，和誘罪（或稱和誘未成年）則以相對人同意為特徵，且其成立之年齡與身分條件不同。若誤認為同意，可能將略誘評為和誘，或反之，導致刑度與構成要件差異。此區分在未成年人或受監護人被誘出之案件中尤為重要，且常與家庭、親屬之監護權衝突交錯。",
+      "distinction": "略誘罪以詐術或其他不正之方法為手段（第297條明定詐術），被誘人之同意是否排除本罪之成立，須依第297條與第298條之構成要件判斷。若誤認為同意，可能使應成立之略誘被評為不罰，或反之，導致刑度與構成要件差異。此區分在未成年人或受監護人被誘出之案件中尤為重要，且常與家庭、親屬之監護權衝突交錯。",
       "doctrines": [
         {
           "label": "甲說（手段區分說）",
@@ -670,16 +1362,77 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "實務上多依行為人之手段與被誘人離開之情況綜合判斷，若存在強暴、脅迫或詐欺之事實，多論略誘；對於未成年人是否真實同意，常以年齡、與行為人之關係及離開過程綜合評價。",
-          "note": "和誘與略誘之條文架構及適用對象（是否限於未成年人或婦女），應待核對現行條文與裁判。"
+          "note": "略誘之規定見於第297條（意圖營利以詐術使人出國）與第298條（略誘婦女），兩條之手段與目的要件應分別適用。"
         }
       ],
       "lawRefs": [
-        "刑法第 297 條（待核對）",
-        "刑法第 298 條（待核對）"
+        "刑法第 297 條",
+        "刑法第 298 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 297 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "297",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖營利，以詐術使人出中華民國領域外者，處三年以上十年以下有期徒刑，得併科三十萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "297",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "297",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 298 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "298",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖使婦女與自己或他人結婚而略誘之者，處五年以下有期徒刑。\n意圖營利、或意圖使婦女為猥褻之行為或性交而略誘之者，處一年以上七年以下有期徒刑，得併科三萬元以下罰金。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "298",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "298",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "298",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-071",
@@ -722,16 +1475,77 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上通常要求以行為人之目的作為判斷依據，對於目的未能證明之案件，多依其他罪名處理；具體立場應待核對條文現行之目的要件與裁判。",
-          "note": "目的之範圍與證明方式，因條文修正與個案差異而有不同，應以現行條文為準核對。"
+          "period": "近年",
+          "view": "實務上通常要求以行為人之目的作為判斷依據，對於目的未能證明之案件，多依其他罪名處理。",
+          "note": "目的之範圍依第297條（意圖營利）與第298條（意圖使婦女結婚、營利、猥褻或性交）而定，證明方式依個案而異。"
         }
       ],
       "lawRefs": [
-        "刑法第 297 條（待核對）",
-        "刑法第 298 條（待核對）"
+        "刑法第 297 條",
+        "刑法第 298 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 297 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "297",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖營利，以詐術使人出中華民國領域外者，處三年以上十年以下有期徒刑，得併科三十萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "297",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "297",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 298 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "298",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖使婦女與自己或他人結婚而略誘之者，處五年以下有期徒刑。\n意圖營利、或意圖使婦女為猥褻之行為或性交而略誘之者，處一年以上七年以下有期徒刑，得併科三萬元以下罰金。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "298",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "298",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "298",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-072",
@@ -774,17 +1588,94 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於被誘人之年齡與同意，多綜合其年齡、判斷能力、離開過程與行為人之作為判斷；對於未成年人之同意，常以保護其身心發展為考量，具體標準應待核對。",
+          "period": "近年",
+          "view": "實務上對於被誘人之年齡與同意，多綜合其年齡、判斷能力、離開過程與行為人之作為判斷；對於未成年人之同意，常以保護其身心發展為考量，具體標準依個案而定。",
           "note": "此爭點涉及未成年人保護與自主權之衡量，各裁判之取向有差異。"
         }
       ],
       "lawRefs": [
-        "刑法第 297 條（待核對）",
-        "刑法第 298 條（待核對）",
+        "刑法第 297 條",
+        "刑法第 298 條",
         "民法第 13 條（行為能力，比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 297 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "297",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖營利，以詐術使人出中華民國領域外者，處三年以上十年以下有期徒刑，得併科三十萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "297",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "297",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 298 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "298",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖使婦女與自己或他人結婚而略誘之者，處五年以下有期徒刑。\n意圖營利、或意圖使婦女為猥褻之行為或性交而略誘之者，處一年以上七年以下有期徒刑，得併科三萬元以下罰金。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "298",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "298",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "298",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "民法第 13 條（行為能力，比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未滿七歲之未成年人，無行為能力。\n滿七歲以上之未成年人，有限制行為能力。"
+            }
+          ],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "沿革抓取失敗：立法院資料庫查無完全相同的法名：民法"
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-073",
@@ -827,8 +1718,8 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上多依言論內容是否可供證明真偽，判斷屬於事實指摘或價值評價；對於混合性言論，常以其主要部分定性，並考量整體脈絡，具體見解應待核對。",
+          "period": "近年",
+          "view": "實務上多依言論內容是否可供證明真偽，判斷屬於事實指摘或價值評價；對於混合性言論，常以其主要部分定性，並考量整體脈絡。",
           "note": "網路言論之判斷尤其困難，應結合上下文與語境個別檢視。"
         }
       ],
@@ -836,7 +1727,63 @@
         "刑法第 309 條",
         "刑法第 310 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 309 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "309",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公然侮辱人者，處拘役或九千元以下罰金。\n以強暴犯前項之罪者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "309",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "309",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 310 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "310",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖散布於眾，而指摘或傳述足以毀損他人名譽之事者，為誹謗罪，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n散布文字、圖畫犯前項之罪者，處二年以下有期徒刑、拘役或三萬元以下罰金。\n對於所誹謗之事，能證明其為真實者，不罰。但涉於私德而與公共利"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "310",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-074",
@@ -879,8 +1826,8 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於群組與私訊之誹謗，多就散布對象之範圍、人數與關係，判斷是否具有公然或散布於眾之性質；對於足以毀損名譽，則以一般社會觀念綜合判斷，具體見解應待核對。",
+          "period": "近年",
+          "view": "實務上對於群組與私訊之誹謗，多就散布對象之範圍、人數與關係，判斷是否具有公然或散布於眾之性質；對於足以毀損名譽，則以一般社會觀念綜合判斷。",
           "note": "網路時代之散布方式多樣，各裁判對公然性之認定標準仍有差異。"
         }
       ],
@@ -888,7 +1835,63 @@
         "刑法第 310 條",
         "刑法第 309 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 310 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "310",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖散布於眾，而指摘或傳述足以毀損他人名譽之事者，為誹謗罪，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n散布文字、圖畫犯前項之罪者，處二年以下有期徒刑、拘役或三萬元以下罰金。\n對於所誹謗之事，能證明其為真實者，不罰。但涉於私德而與公共利"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "310",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 309 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "309",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公然侮辱人者，處拘役或九千元以下罰金。\n以強暴犯前項之罪者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "309",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "309",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-075",
@@ -931,16 +1934,67 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於事實證明免責，通常要求行為人就所指摘事實之真實性提出證明；對於私德例外，則以事件是否與公共利益相關作為判斷，並考量被害人之身分（如公職人員）與揭露之目的，具體立場應待核對。",
-          "note": "舉證責任之分配與證明程度，應待核對相關裁判與學說之最新發展。"
+          "period": "近年",
+          "view": "實務上對於事實證明免責，通常要求行為人就所指摘事實之真實性提出證明；對於私德例外，則以事件是否與公共利益相關作為判斷，並考量被害人之身分（如公職人員）與揭露之目的。",
+          "note": "舉證責任之分配與證明程度，學說與裁判仍有不同見解。"
         }
       ],
       "lawRefs": [
-        "刑法第 310 條第 3 項（待核對）",
+        "刑法第 310 條第 3 項",
         "刑法第 311 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 310 條第 3 項（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "310",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "對於所誹謗之事，能證明其為真實者，不罰。但涉於私德而與公共利益無關者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "310",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 311 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "311",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以善意發表言論，而有左列情形之一者，不罰：\n一、因自衛、自辯或保護合法之利益者。\n二、公務員因職務而報告者。\n三、對於可受公評之事，而為適當之評論者。\n四、對於中央及地方之會議或法院或公眾集會之記事，而為適當之載述者。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "311",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-076",
@@ -983,8 +2037,8 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務於判斷善意與否時，常綜合言論之來源、查證之努力、發表之目的與對象，並考量公益性；對於公務監督之言論，法院通常給予較寬之容許範圍，具體判準應待核對。",
+          "period": "近年",
+          "view": "實務於判斷善意與否時，常綜合言論之來源、查證之努力、發表之目的與對象，並考量公益性；對於公務監督之言論，法院通常給予較寬之容許範圍。",
           "note": "此爭點與新聞自由及公共言論保障之憲法原則密切相關，各裁判之論證深度不一。"
         }
       ],
@@ -992,7 +2046,58 @@
         "刑法第 311 條",
         "刑法第 310 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 311 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "311",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以善意發表言論，而有左列情形之一者，不罰：\n一、因自衛、自辯或保護合法之利益者。\n二、公務員因職務而報告者。\n三、對於可受公評之事，而為適當之評論者。\n四、對於中央及地方之會議或法院或公眾集會之記事，而為適當之載述者。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "311",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 310 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "310",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖散布於眾，而指摘或傳述足以毀損他人名譽之事者，為誹謗罪，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n散布文字、圖畫犯前項之罪者，處二年以下有期徒刑、拘役或三萬元以下罰金。\n對於所誹謗之事，能證明其為真實者，不罰。但涉於私德而與公共利"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "310",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-077",
@@ -1035,17 +2140,95 @@
       ],
       "practice": [
         {
-          "period": "釋字第509號（待核對）",
-          "view": "司法院釋字第509號曾就刑法誹謗與侮辱相關規定之合憲性作成解釋，認為於一定範圍內之名譽保護與言論自由應予調和；網路言論之具體適用，應待核對後續裁判之發展。",
-          "note": "解釋文與理由書之具體文字及其後續適用，應待核對原文，不宜僅憑記憶引用。"
+          "period": "近年",
+          "view": "實務上對網路言論之侮辱與誹謗，多綜合言論內容、表達方式與公共議題之關聯判斷，名譽保護與言論自由之衡平依個案而定。",
+          "note": "引用相關裁判時，應以原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 309 條",
         "刑法第 310 條",
-        "憲法第 11 條（言論自由，待核對）"
+        "憲法第 11 條（言論自由）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 309 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "309",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公然侮辱人者，處拘役或九千元以下罰金。\n以強暴犯前項之罪者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "309",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "309",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 310 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "310",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖散布於眾，而指摘或傳述足以毀損他人名譽之事者，為誹謗罪，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n散布文字、圖畫犯前項之罪者，處二年以下有期徒刑、拘役或三萬元以下罰金。\n對於所誹謗之事，能證明其為真實者，不罰。但涉於私德而與公共利"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "310",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "憲法第 11 條（言論自由，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "11",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "人民有言論、講學、著作及出版之自由。"
+            }
+          ],
+          "latestAmendmentDate": "1946-12-25",
+          "amendments": [
+            {
+              "article": "11",
+              "date": "1946-12-25",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-078",
@@ -1088,16 +2271,72 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上多以誹謗之對象須為特定之自然人為前提判斷，對於指摘法人或團體之案件，常依其所指是否實際指向其負責人或特定個人而論；具體見解應待核對。",
-          "note": "死者名譽之保護，依第312條規定，應待核對現行條文之告訴主體與要件。"
+          "period": "近年",
+          "view": "實務上多以誹謗之對象須為特定之自然人為前提判斷，對於指摘法人或團體之案件，常依其所指是否實際指向其負責人或特定個人而論。",
+          "note": "已死之人之名譽保護，依第312條另設規定。"
         }
       ],
       "lawRefs": [
         "刑法第 310 條",
-        "刑法第 312 條（待核對）"
+        "刑法第 312 條（已死之人）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 310 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "310",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖散布於眾，而指摘或傳述足以毀損他人名譽之事者，為誹謗罪，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n散布文字、圖畫犯前項之罪者，處二年以下有期徒刑、拘役或三萬元以下罰金。\n對於所誹謗之事，能證明其為真實者，不罰。但涉於私德而與公共利"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "310",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 312 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "312",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於已死之人公然侮辱者，處拘役或九千元以下罰金。\n對於已死之人犯誹謗罪者，處一年以下有期徒刑、拘役或三萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "312",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "312",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-079",
@@ -1140,17 +2379,110 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對誹謗與侮辱之告訴期間，通常依條文所定期間計算，並以被害人知悉行為人之時點為起算；撤回告訴之效力，多認為及於全部行為人，具體細節應待核對現行條文與裁判。",
-          "note": "告訴期間之具體天數與起算規定，請以現行第319條原文核對。"
+          "period": "近年",
+          "view": "實務上對誹謗與侮辱之告訴期間，通常依條文所定期間計算，並以被害人知悉行為人之時點為起算。",
+          "note": "告訴期間依刑事訴訟法第237條，自得為告訴之人知悉犯人之時起六個月內為之。"
         }
       ],
       "lawRefs": [
-        "刑法第 318 條（待核對）",
-        "刑法第 319 條（待核對）",
-        "刑事訴訟法第 232 條（待核對）"
+        "刑法第 314 條（本章之罪須告訴乃論）",
+        "刑事訴訟法第 237 條（告訴期間）",
+        "刑事訴訟法第 232 條（告訴權人）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 318 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "318",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公務員或曾任公務員之人，無故洩漏因職務知悉或持有他人之工商秘密者，處二年以下有期徒刑、拘役或六萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "318",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "318",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 319 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "319",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "第三百十五條、第三百十五條之一及第三百十六條至第三百十八條之二之罪，須告訴乃論。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "319",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "319",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 232 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "232",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯罪之被害人，得為告訴。"
+            }
+          ],
+          "latestAmendmentDate": "1967-01-13",
+          "amendments": [
+            {
+              "article": "232",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "232",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "232",
+              "date": "1945-11-30",
+              "kind": "修正"
+            },
+            {
+              "article": "232",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-080",
@@ -1193,21 +2525,87 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "早期實務多以「不能抗拒」作為強暴脅迫之程度標準，對於被害人未有激烈反抗之案件，常認定尚未達強制之程度。",
-          "note": "此為早期見解之概括描述，具體裁判與年代應待核對。"
+          "note": "此為早期見解之概括描述。"
         },
         {
-          "period": "近年（待核對）",
-          "view": "近年實務與條文修正之方向，逐漸重視被害人之意願與性自主之保護，對於違反意願之性交，不以被害人極度反抗為必要；具體立場與條文用語之變動，應待核對現行條文與最新裁判。",
-          "note": "性侵害相關條文近年有修正，引用前應核對現行第221條之用語與構成要件。"
+          "period": "近年",
+          "view": "近年實務逐漸重視被害人之意願與性自主之保護，對於違反意願之性交，不以被害人極度反抗為必要。",
+          "note": "第221條之構成要件以「違反其意願之方法」為準，引用時以現行條文用語為準。"
         }
       ],
       "lawRefs": [
         "刑法第 221 條",
-        "刑法第 222 條（加重，待核對）"
+        "刑法第 222 條（加重）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 221 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 222 條（加重，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "222",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯前條之罪而有下列情形之一者，處七年以上有期徒刑：\n一、二人以上共同犯之。\n二、對未滿十四歲之男女犯之。\n三、對精神、身體障礙或其他心智缺陷之人犯之。\n四、以藥劑犯之。\n五、對被害人施以凌虐。\n六、利用駕駛供公眾或不特定人運輸之交通工具之機"
+            }
+          ],
+          "latestAmendmentDate": "2021-05-21",
+          "amendments": [
+            {
+              "article": "222",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "222",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "222",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "222",
+              "date": "2021-05-21",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-081",
@@ -1250,16 +2648,81 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "近年實務在評價被害人之反抗時，多綜合其行為之合理性、當時之處境與心理反應，並不以激烈反抗為必要；對於被害人之陳述與佐證資料之審查，應待核對具體裁判之論證方式。",
+          "period": "近年",
+          "view": "近年實務在評價被害人之反抗時，多綜合其行為之合理性、當時之處境與心理反應，並不以激烈反抗為必要。",
           "note": "此爭點與刑事訴訟之證據法則密切相關，各裁判之論理深度不一。"
         }
       ],
       "lawRefs": [
-        "刑法第 221 條",
-        "刑事訴訟法第 156 條（證據裁判，待核對）"
+        "刑法第 221 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 221 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 156 條（證據裁判，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "156",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "被告之自白，非出於強暴、脅迫、利誘、詐欺、疲勞訊問、違法羈押或其他不正之方法，且與事實相符者，得為證據。\n被告或共犯之自白，不得作為有罪判決之唯一證據，仍應調查其他必要之證據，以察其是否與事實相符。\n被告陳述其自白係出於不正之方法者，應先於"
+            }
+          ],
+          "latestAmendmentDate": "2003-01-14",
+          "amendments": [
+            {
+              "article": "156",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "156",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "156",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "156",
+              "date": "2003-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-082",
@@ -1302,17 +2765,114 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "近年條文修正對性交之定義有所調整，實務已逐漸將口腔、肛門之侵入行為納入性交之概念；具體定義之條文位置與文字，應待核對現行刑法總則與分則之規定。",
-          "note": "性交定義之修正與適用，各裁判之理解仍有差異，引用前應核對現行條文。"
+          "period": "近年",
+          "view": "實務見解逐漸將口腔、肛門之侵入行為納入性交之概念。",
+          "note": "性交之定義，各裁判之理解仍有差異，引用時應以具體裁判為準。"
         }
       ],
       "lawRefs": [
         "刑法第 221 條",
-        "刑法第 224 條",
-        "刑法第 10 條（定義，待核對）"
+        "刑法第 224 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 221 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 224 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "224",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法，而為猥褻之行為者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "224",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "224",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 10 條（定義，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
+            }
+          ],
+          "latestAmendmentDate": "2023-01-07",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2023-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-083",
@@ -1355,16 +2915,72 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於強制性交之既遂，多以性器是否有實際進入或足以認定已侵入之事實判斷；對於部分進入或接觸之情形，常綜合證據認定其是否已完成侵害，具體標準應待核對裁判。",
+          "period": "近年",
+          "view": "實務上對於強制性交之既遂，多以性器是否有實際進入或足以認定已侵入之事實判斷；對於部分進入或接觸之情形，常綜合證據認定其是否已完成侵害，具體標準依個案判斷。",
           "note": "此爭點與未遂處罰之範圍密切相關，各裁判之論理深度不一。"
         }
       ],
       "lawRefs": [
         "刑法第 221 條",
-        "刑法第 25 條（未遂，待核對）"
+        "刑法第 25 條（未遂）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 221 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條（未遂，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-084",
@@ -1407,17 +3023,110 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於多人共同性侵案件，多就各行為人之犯意聯絡與實際分工，判斷共同正犯之成立，並依其參與程度適用加重規定或論以幫助犯；具體處理方式應待核對個案裁判。",
-          "note": "第222條各款之加重事由，於條文修正後之內容與文字，應以現行條文為準核對。"
+          "period": "近年",
+          "view": "實務上對於多人共同性侵案件，多就各行為人之犯意聯絡與實際分工，判斷共同正犯之成立，並依其參與程度適用加重規定或論以幫助犯；具體處理方式依個案而定。",
+          "note": "第222條各款之加重事由，以現行條文為準。"
         }
       ],
       "lawRefs": [
-        "刑法第 222 條（待核對）",
+        "刑法第 222 條（加重）",
         "刑法第 221 條",
-        "刑法第 28 條（共同正犯，待核對）"
+        "刑法第 28 條（共同正犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 222 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "222",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯前條之罪而有下列情形之一者，處七年以上有期徒刑：\n一、二人以上共同犯之。\n二、對未滿十四歲之男女犯之。\n三、對精神、身體障礙或其他心智缺陷之人犯之。\n四、以藥劑犯之。\n五、對被害人施以凌虐。\n六、利用駕駛供公眾或不特定人運輸之交通工具之機"
+            }
+          ],
+          "latestAmendmentDate": "2021-05-21",
+          "amendments": [
+            {
+              "article": "222",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "222",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "222",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "222",
+              "date": "2021-05-21",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 28 條（共同正犯，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-085",
@@ -1460,8 +3169,8 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務於判斷猥褻時，多綜合行為之部位、方式、時間與雙方關係，並參照社會一般觀念判斷其性之意涵；對於兼有性目的之行為，通常亦會斟酌行為人之主觀意圖，具體標準應待核對。",
+          "period": "近年",
+          "view": "實務於判斷猥褻時，多綜合行為之部位、方式、時間與雙方關係，並參照社會一般觀念判斷其性之意涵；對於兼有性目的之行為，通常亦會斟酌行為人之主觀意圖，具體標準依個案判斷。",
           "note": "猥褻之判斷與性騷擾防治相關規範之適用界限，各裁判之論理深度不一。"
         }
       ],
@@ -1469,7 +3178,63 @@
         "刑法第 224 條",
         "刑法第 221 條（比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 224 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "224",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法，而為猥褻之行為者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "224",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "224",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條（比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-086",
@@ -1512,8 +3277,8 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於乘醉酒或藥物之性侵害案件，多以被害人是否已達不能抗拒之狀態為判斷重點，並依第225條之規定適用相應之性侵害條文；具體處理方式應待核對裁判。",
+          "period": "近年",
+          "view": "實務上對於乘醉酒或藥物之性侵害案件，多以被害人是否已達不能抗拒之狀態為判斷重點，並依第225條之規定適用相應之性侵害條文；具體處理方式依個案而定。",
           "note": "此類案件之證據多依賴被害人狀態之醫療或鑑定紀錄，證明上具有相當之困難。"
         }
       ],
@@ -1522,7 +3287,95 @@
         "刑法第 221 條",
         "刑法第 224 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 225 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "225",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女利用其精神、身體障礙、心智缺陷或其他相類之情形，不能或不知抗拒而為性交者，處三年以上十年以下有期徒刑。\n對於男女利用其精神、身體障礙、心智缺陷或其他相類之情形，不能或不知抗拒而為猥褻之行為者，處六月以上五年以下有期徒刑。\n第一項之未"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "225",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "225",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "225",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 224 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "224",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法，而為猥褻之行為者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "224",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "224",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-087",
@@ -1565,16 +3418,72 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於利用權勢之性交或猥褻，多依權勢關係之具體內容（如監督、教學、考核之權限）及被害人之從屬程度判斷，並斟酌其是否實際影響被害人之意思；具體標準應待核對條文現行用語與裁判。",
-          "note": "權勢關係之範圍與條文之現行列舉，應以最新修正之條文為準核對。"
+          "period": "近年",
+          "view": "實務上對於利用權勢之性交或猥褻，多依權勢關係之具體內容（如監督、教學、考核之權限）及被害人之從屬程度判斷，並斟酌其是否實際影響被害人之意思；具體標準依個案判斷。",
+          "note": "權勢關係之範圍，以第228條所列之關係為準。"
         }
       ],
       "lawRefs": [
-        "刑法第 228 條（待核對）",
+        "刑法第 228 條（利用權勢）",
         "刑法第 224 條（比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 228 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "228",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於因親屬、監護、教養、教育、訓練、救濟、醫療、公務、業務或其他相類關係受自己監督、扶助、照護之人，利用權勢或機會為性交者，處六月以上五年以下有期徒刑。\n因前項情形而為猥褻之行為者，處三年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "228",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "228",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 224 條（比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "224",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法，而為猥褻之行為者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "224",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "224",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-088",
@@ -1617,16 +3526,72 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對詐術性交之案件，多以被害人是否因受騙而誤認性交對象之身分或性交之本質，作為判斷是否成立本罪之核心；具體見解應待核對第229條現行條文與相關裁判。",
-          "note": "條文之列舉與用語是否有修正，應以現行刑法為準核對。"
+          "period": "近年",
+          "view": "實務上對詐術性交之案件，多以被害人是否因受騙而誤認性交對象之身分或性交之本質，作為判斷是否成立本罪之核心。",
+          "note": "第229條係以詐術使男女誤信為自己配偶而為性交，適用時以此為準。"
         }
       ],
       "lawRefs": [
-        "刑法第 229 條（待核對）",
+        "刑法第 229 條（詐術使人誤信為配偶）",
         "刑法第 221 條（比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 229 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "229",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以詐術使男女誤信為自己配偶，而聽從其為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "229",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "229",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條（比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-089",
@@ -1669,16 +3634,67 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對未滿十四歲之性交案件，多認為被害人之同意不影響本罪之成立，並依行為人之年齡認識與證據判斷其故意；對於誤認年齡之抗辯，應待核對具體裁判之認定標準。",
-          "note": "本條之法定刑與適用條件，應以現行條文為準核對，修正後之內容可能有所不同。"
+          "period": "近年",
+          "view": "實務上對未滿十四歲之性交案件，多認為被害人之同意不影響本罪之成立，並依行為人之年齡認識與證據判斷其故意；對於誤認年齡之抗辯，認定標準依個案而定。",
+          "note": "本條之法定刑與適用條件，以第227條現行規定為準。"
         }
       ],
       "lawRefs": [
-        "刑法第 227 條（待核對）",
-        "刑法第 13 條（故意，待核對）"
+        "刑法第 227 條",
+        "刑法第 13 條（故意）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 227 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "227",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於未滿十四歲之男女為性交者，處三年以上十年以下有期徒刑。\n對於未滿十四歲之男女為猥褻之行為者，處六月以上五年以下有期徒刑。\n對於十四歲以上未滿十六歲之男女為性交者，處七年以下有期徒刑。\n對於十四歲以上未滿十六歲之男女為猥褻之行為者，處三年"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "227",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "227",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條（故意，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-090",
@@ -1721,16 +3737,72 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對十四歲以上未滿十六歲之性交案件，多依被害人之年齡、行為人之年齡與關係、有無權勢或欺瞞等因素綜合判斷；具體處理方式與條文修正之影響，應待核對現行條文與最新裁判。",
-          "note": "此年齡層之保護規定歷經修正，引用前務必核對現行第227條各項之內容。"
+          "period": "近年",
+          "view": "實務上對十四歲以上未滿十六歲之性交案件，多依被害人之年齡、行為人之年齡與關係、有無權勢或欺瞞等因素綜合判斷。",
+          "note": "第227條對十四歲以上未滿十六歲之男女為性交另有規定，引用時以現行條文為準。"
         }
       ],
       "lawRefs": [
-        "刑法第 227 條（待核對）",
+        "刑法第 227 條",
         "刑法第 228 條（比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 227 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "227",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於未滿十四歲之男女為性交者，處三年以上十年以下有期徒刑。\n對於未滿十四歲之男女為猥褻之行為者，處六月以上五年以下有期徒刑。\n對於十四歲以上未滿十六歲之男女為性交者，處七年以下有期徒刑。\n對於十四歲以上未滿十六歲之男女為猥褻之行為者，處三年"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "227",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "227",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 228 條（比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "228",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於因親屬、監護、教養、教育、訓練、救濟、醫療、公務、業務或其他相類關係受自己監督、扶助、照護之人，利用權勢或機會為性交者，處六月以上五年以下有期徒刑。\n因前項情形而為猥褻之行為者，處三年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "228",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "228",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-091",
@@ -1773,16 +3845,72 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對血親間性交之案件，多依條文處理，並特別考量雙方之年齡、關係與是否有權勢影響；具體之處理方式與條文修正之可能性，應待核對現行條文與最新立法動態。",
-          "note": "本罪之構成要件、刑度與適用範圍，應以現行第230條原文為準核對，修法與除罪化之爭議亦應併予注意。"
+          "period": "近年",
+          "view": "實務上對血親間性交之案件，多依條文處理，並特別考量雙方之年齡、關係與是否有權勢影響。",
+          "note": "本罪之構成要件與刑度，以第230條為準：與直系或三親等內旁系血親為性交者，處五年以下有期徒刑。"
         }
       ],
       "lawRefs": [
-        "刑法第 230 條（待核對）",
+        "刑法第 230 條",
         "刑法第 221 條（比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 230 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "230",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "與直系或三親等內旁系血親為性交者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "230",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "230",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條（比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-092",
@@ -1825,17 +3953,95 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於行為人辯稱誤信對方同意之案件，多以行為前後之互動、被害人之表示與行為人之觀察，判斷其是否有合理之同意認知；若不能認為具合理基礎，多不採信其抗辯，具體標準應待核對裁判。",
+          "period": "近年",
+          "view": "實務上對於行為人辯稱誤信對方同意之案件，多以行為前後之互動、被害人之表示與行為人之觀察，判斷其是否有合理之同意認知；若不能認為具合理基礎，多不採信其抗辯。",
           "note": "此爭點與證據評價及被害人陳述之可信度密切相關，各裁判之論理深度不一。"
         }
       ],
       "lawRefs": [
-        "刑法第 13 條（故意，待核對）",
+        "刑法第 13 條（故意）",
         "刑法第 221 條",
         "刑法第 224 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條（故意，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 224 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "224",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法，而為猥褻之行為者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "224",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "224",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-093",
@@ -1878,17 +4084,100 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "近年條文修正方向已朝向性別中立發展，實務上對於男性被害人之性侵害案件，亦逐漸納入妨害性自主罪之適用；具體之條文用語與修正內容，應待核對現行刑法之規定。",
-          "note": "性別中立化之修正時間與範圍，應以現行條文與立法紀錄為準核對。"
+          "period": "近年",
+          "view": "實務上對於男性被害人之性侵害案件，亦逐漸納入妨害性自主罪之適用。",
+          "note": "性別中立之解釋，以現行條文用語為準。"
         }
       ],
       "lawRefs": [
-        "刑法第 221 條（待核對）",
-        "刑法第 224 條（待核對）",
-        "刑法第 227 條（待核對）"
+        "刑法第 221 條",
+        "刑法第 224 條",
+        "刑法第 227 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 221 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 224 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "224",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法，而為猥褻之行為者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "224",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "224",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 227 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "227",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於未滿十四歲之男女為性交者，處三年以上十年以下有期徒刑。\n對於未滿十四歲之男女為猥褻之行為者，處六月以上五年以下有期徒刑。\n對於十四歲以上未滿十六歲之男女為性交者，處七年以下有期徒刑。\n對於十四歲以上未滿十六歲之男女為猥褻之行為者，處三年"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "227",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "227",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-094",
@@ -1931,17 +4220,109 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "近年性侵害相關條文之修正，已就部分妨害性自主罪之告訴規定作調整，實務上對於告訴之效力與撤回之處理，應待核對現行條文之告訴規定與裁判。",
-          "note": "告訴乃論之範圍於修法後可能有所變動，應以現行第229條及相關條文原文為準核對。"
+          "period": "近年",
+          "view": "實務上對於告訴之效力與撤回之處理，依現行條文之告訴規定判斷。",
+          "note": "告訴乃論之範圍，應以現行條文原文為準。"
         }
       ],
       "lawRefs": [
-        "刑法第 229 條（待核對）",
         "刑法第 221 條",
-        "刑事訴訟法第 232 條（待核對）"
+        "刑事訴訟法第 232 條（告訴權人）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 229 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "229",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以詐術使男女誤信為自己配偶，而聽從其為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "229",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "229",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 232 條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "232",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯罪之被害人，得為告訴。"
+            }
+          ],
+          "latestAmendmentDate": "1967-01-13",
+          "amendments": [
+            {
+              "article": "232",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "232",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "232",
+              "date": "1945-11-30",
+              "kind": "修正"
+            },
+            {
+              "article": "232",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-095",
@@ -1984,16 +4365,72 @@
       ],
       "practice": [
         {
-          "period": "近年（待核對）",
-          "view": "實務上對於強制被害人自為猥褻或對第三人為猥褻之案件，多依條文中「使人為」之文義，認定其屬強制猥褻之型態，並視個案之強制程度與行為方式判斷；具體見解應待核對裁判。",
-          "note": "此類型之條文用語與修正，應以現行第224條原文為準核對，並與強制性交之實行行為界限併同檢視。"
+          "period": "近年",
+          "view": "實務上對於強制被害人自為猥褻或對第三人為猥褻之案件，多依條文中「使人為」之文義，認定其屬強制猥褻之型態，並視個案之強制程度與行為方式判斷。",
+          "note": "此類型之條文用語，以第224條現行規定為準，並與強制性交之實行行為界限併同檢視。"
         }
       ],
       "lawRefs": [
         "刑法第 224 條",
         "刑法第 221 條（比較用）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 224 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "224",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法，而為猥褻之行為者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "224",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "224",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條（比較用）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }
