@@ -20,6 +20,8 @@ test('範圍頁控制器與視圖用到的元素 id 都存在於頁面模板', (
   for (const src of [scopeController, scopeView]) {
     for (const m of src.matchAll(/\$\('([A-Za-z][A-Za-z0-9]*)'\)/g)) used.add(m[1]);
   }
+  // 以字串傳給 setGate／setMsg 等輔助函式的 id 也要檢查。
+  for (const m of scopeController.matchAll(/'(scope[A-Za-z]+)'/g)) used.add(m[1]);
   const missing = [...used].filter((id) => !templateIds.has(id));
   assert.deepEqual(missing, [], `模板缺少的 id：${missing.join('、')}`);
 });

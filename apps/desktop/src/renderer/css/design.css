@@ -1,0 +1,43 @@
+/* 研究設計引導（issue #11）：沿用 base.css 的 tokens 與表單元件，只補對話紀錄、檢查與建議的版面。 */
+.design-bar { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: flex-end; margin: 0 0 14px; }
+.design-bar .field { min-width: 260px; }
+.design-log {
+  max-height: 360px; overflow: auto; margin: 0 0 14px; padding: 12px 14px;
+  background: var(--paper-2); border: 1px solid var(--rule); border-radius: var(--radius);
+}
+.design-turn { margin: 0 0 12px; }
+.design-turn:last-child { margin-bottom: 0; }
+.design-turn-who { font-size: 0.8rem; color: var(--ink-3); }
+.design-turn-user .design-turn-text { color: var(--ink); }
+.design-turn-guide .design-turn-text { color: var(--ink-2); }
+.design-turn-why { font-size: 0.85rem; color: var(--ink-3); margin-top: 2px; white-space: pre-wrap; }
+.design-answer { max-width: 760px; }
+.design-next {
+  margin: 0 0 10px; padding: 10px 12px; border-left: 3px solid var(--shu); background: var(--paper-2);
+}
+.design-next-text { margin: 0 0 4px; font-weight: 700; }
+.design-next-why { margin: 0; font-size: 0.85rem; color: var(--ink-3); }
+.design-section { margin-top: 26px; padding-top: 4px; border-top: 1px solid var(--rule); }
+.design-section > h2 { margin-top: 14px; }
+.design-section .form { margin-top: 6px; }
+.design-checks { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.design-check { display: flex; gap: 10px; align-items: baseline; font-size: 0.92rem; }
+.design-check-badge {
+  flex: 0 0 auto; min-width: 3.2em; text-align: center; font-size: 0.78rem; padding: 1px 6px;
+  border: 1px solid var(--rule); border-radius: var(--radius); color: var(--ink-2);
+}
+.design-check-ok .design-check-badge { color: var(--koke); border-color: var(--koke); }
+.design-check-warn .design-check-badge { color: var(--ink-2); border-color: var(--ink-3); }
+.design-check-fail .design-check-badge { color: var(--shu-ink); border-color: var(--shu-ink); background: var(--shu-wash); }
+.design-suggestion {
+  margin: 0 0 10px; padding: 10px 12px; border: 1px solid var(--rule); border-left: 3px solid var(--ink-3);
+  background: var(--paper-2); border-radius: var(--radius);
+}
+.design-suggestion-text { margin: 0 0 4px; font-weight: 700; }
+.design-suggestion-why, .design-suggestion-cost { margin: 0 0 2px; font-size: 0.88rem; color: var(--ink-2); }
+.design-suggestion .actions { margin: 8px 0 0; }
+.design-summary {
+  margin: 0 0 12px; padding: 12px 14px; white-space: pre-wrap; word-break: break-all;
+  background: var(--paper-2); border: 1px solid var(--rule); border-radius: var(--radius);
+  font-family: var(--sans); font-size: 0.88rem; line-height: 1.6; user-select: text; max-height: 420px; overflow: auto;
+}

@@ -68,6 +68,8 @@ export interface CriteriaRun {
   criteria: Criterion[];
   outcomes: CaseOutcome[];
   summary: RunSummary;
+  /** AI 對這次結果的重新檢索檢閱（研究者按下檢閱後才有）。 */
+  review?: RerunReview;
 }
 
 // ---------------------------------------------------------------------------
@@ -203,22 +205,73 @@ export function summarizeRun(outcomes: CaseOutcome[]): RunSummary {
   };
 }
 
-export interface RerunThresholds {
-  /** 納入率低於此值時建議重新檢索。 */
-  minMatchRate: number;
-  /** 無法判斷率高於此值時建議重新檢索。 */
-  maxReviewRate: number;
+// ---------------------------------------------------------------------------
+// 重新檢索的判斷：由 AI 看過結果摘要後決定（不使用固定門檻）。
+// AI 只看摘要（候選數、各標準的符合／不符合／無法判斷次數、無效依據數）與查詢詞，不看判決全文。
+// AI 服務錯誤原樣拋出（不靜默決定）；回覆無法判讀時回傳 unclear，明確表示沒有建議。
+// ---------------------------------------------------------------------------
+export type RerunVerdict = 'ok' | 'rerun' | 'unclear';
+
+export interface RerunReview {
+  verdict: RerunVerdict;
+  /** verdict 為 rerun 時，AI 提出的新查詢詞（可能沒有）。 */
+  query?: string;
+  /** AI 給出的簡短理由（若有）。 */
+  reason?: string;
+  reviewedAt: string;
 }
 
-export const DEFAULT_RERUN_THRESHOLDS: RerunThresholds = { minMatchRate: 0.2, maxReviewRate: 0.5 };
+export function buildRerunPrompt(run: Pick<CriteriaRun, 'query' | 'criteria' | 'outcomes' | 'summary'>): { system: string; user: string } {
+  const s = run.summary;
+  const perCriterion = run.criteria.map((c) => {
+    const rs = run.outcomes.flatMap((o) => o.results.filter((r) => r.criterionId === c.id));
+    const count = (v: Verdict) => rs.filter((r) => r.verdict === v).length;
+    return `- ${c.kind === 'include' ? '納入' : '排除'}：${c.text}（${c.method === 'program' ? '程式判斷' : 'AI 判斷'}）：符合 ${count('met')}、不符合 ${count('not_met')}、無法判斷 ${count('unknown')}`;
+  });
+  return {
+    system: [
+      '你是納入／排除核查的檢查員。根據下列摘要，判斷這次的查詢是否需要重新檢索。',
+      '若結果大致符合研究目的（候選判決多數與標準相關、可以判斷），回覆 {"ok":true}。',
+      '若候選判決大多與標準無關、大多無法判斷，或沒有候選判決，回覆 {"ok":false,"query":"更精準的查詢詞（繁體中文，一行）","reason":"一句理由"}。',
+      '只回覆 JSON，不要其他文字。',
+    ].join('\n'),
+    user: [
+      `查詢：${run.query}`,
+      `候選 ${s.total} 筆；納入 ${s.include}、排除 ${s.exclude}、需人工檢視 ${s.review}；無效依據 ${s.invalidEvidenceCount} 則。`,
+      '各標準的判定次數：',
+      ...(perCriterion.length ? perCriterion : ['（沒有標準）']),
+    ].join('\n'),
+  };
+}
 
-/** 是否建議重新檢索（只是建議，由研究者決定；不會自動改動查詢）。 */
-export function rerunSuggestion(s: RunSummary, t: RerunThresholds = DEFAULT_RERUN_THRESHOLDS): { suggest: boolean; reasons: string[] } {
-  const reasons: string[] = [];
-  if (s.total === 0) return { suggest: true, reasons: ['沒有任何候選判決，建議放寬查詢條件'] };
-  if (s.matchRate < t.minMatchRate) reasons.push(`納入率僅 ${(s.matchRate * 100).toFixed(0)}%，低於 ${(t.minMatchRate * 100).toFixed(0)}%`);
-  if (s.reviewRate > t.maxReviewRate) reasons.push(`無法判斷的案件占 ${(s.reviewRate * 100).toFixed(0)}%，高於 ${(t.maxReviewRate * 100).toFixed(0)}%`);
-  return { suggest: reasons.length > 0, reasons };
+/** 解析 AI 回覆：格式不合法回傳 null（呼叫端視為 unclear）。 */
+export function parseRerunReply(text: string): { verdict: 'ok' | 'rerun'; query?: string; reason?: string } | null {
+  const m = text.match(/\{[\s\S]*\}/);
+  if (!m) return null;
+  let obj: unknown;
+  try {
+    obj = JSON.parse(m[0]);
+  } catch {
+    return null;
+  }
+  if (typeof obj !== 'object' || obj === null) return null;
+  const o = obj as Record<string, unknown>;
+  const reason = typeof o.reason === 'string' && o.reason.trim() ? o.reason.trim() : undefined;
+  if (o.ok === true) return { verdict: 'ok', reason };
+  if (o.ok === false) {
+    const query = typeof o.query === 'string' && o.query.trim() ? o.query.trim() : undefined;
+    return { verdict: 'rerun', query, reason };
+  }
+  return null;
+}
+
+/** 由 AI 檢閱這次核查是否需要重新檢索。AI 服務錯誤會拋出，由呼叫端明確告知。 */
+export async function reviewRerun(ai: AiComplete, run: Pick<CriteriaRun, 'query' | 'criteria' | 'outcomes' | 'summary'>, now: Date = new Date()): Promise<RerunReview> {
+  const { system, user } = buildRerunPrompt(run);
+  const reply = parseRerunReply(await ai(system, user, 200));
+  const reviewedAt = now.toISOString();
+  if (!reply) return { verdict: 'unclear', reason: 'AI 回覆無法判讀，沒有重新檢索的建議', reviewedAt };
+  return { ...reply, reviewedAt };
 }
 
 // ---------------------------------------------------------------------------
@@ -231,8 +284,6 @@ export interface RunPlan {
   /** 需要呼叫 AI 的案件數（每案會對每條 AI 標準各呼叫一次）。 */
   aiCases: number;
   aiCalls: number;
-  /** 估計的輸入字元數（以原文截斷後計）。 */
-  estimatedChars: number;
 }
 
 export function planRun(criteria: Criterion[], cases: CaseInput[]): RunPlan {
@@ -240,7 +291,6 @@ export function planRun(criteria: Criterion[], cases: CaseInput[]): RunPlan {
   const aiCriteria = criteria.filter((c) => c.method === 'ai');
   let skippedByProgram = 0;
   let aiCases = 0;
-  let estimatedChars = 0;
   for (const cs of cases) {
     const progResults = programCriteria.map((c) => evaluateProgram(c, cs.fullText));
     const decided = decide(programCriteria, progResults);
@@ -248,24 +298,14 @@ export function planRun(criteria: Criterion[], cases: CaseInput[]): RunPlan {
       skippedByProgram++;
       continue;
     }
-    if (aiCriteria.length) {
-      aiCases++;
-      estimatedChars += Math.min(cs.fullText.length, MAX_BODY) * aiCriteria.length;
-    }
+    if (aiCriteria.length) aiCases++;
   }
   return {
     total: cases.length,
     skippedByProgram,
     aiCases,
     aiCalls: aiCases * aiCriteria.length,
-    estimatedChars,
   };
-}
-
-/** 估計費用（由呼叫端提供每百萬 token 的價格；價格不寫死在程式中）。以每 2 字元約 1 token 粗估。 */
-export function estimateCostUsd(plan: RunPlan, usdPerMillionTokens: number): number {
-  const tokens = plan.estimatedChars / 2;
-  return (tokens / 1_000_000) * usdPerMillionTokens;
 }
 
 // ---------------------------------------------------------------------------

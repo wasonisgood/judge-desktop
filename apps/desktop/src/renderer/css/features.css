@@ -26,6 +26,53 @@
 .table tr.row-picked td { background: var(--shu-wash); }
 .table tr.row-picked td:first-child { box-shadow: inset 3px 0 0 var(--shu); }
 
+/* 標編碼標注工序的版面：頁首、固定位置的操作列、編號區塊；空的狀態行不佔版面 */
+.scope-head { margin-bottom: 4px; }
+.scope-form { max-width: 980px; }
+.scope-bar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 10px 0; margin-bottom: 4px; background: var(--paper-2, #efe8da); border-bottom: 1px solid var(--rule); }
+.scope-bar-main, .scope-bar-export { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.scope-reason { margin: 6px 0 0; }
+.scope-reason:empty { display: none; }
+.scope-sec { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.scope-sec > h2 { margin: 0 0 10px; font-family: var(--serif); font-size: 1rem; color: var(--ink-2); }
+.scope-msg { display: block; min-height: 0; margin: -4px 0 8px 26px; }
+.scope-msg:empty { display: none; }
+.scope-sec .row { margin-top: 4px; }
+/* 搜尋範圍與執行條件：標籤欄與數值欄分開的定義列 */
+.scope-deflist { display: grid; grid-template-columns: minmax(150px, 200px) minmax(0, 1fr); margin: 0; border-top: 1px solid var(--rule); }
+.scope-def { display: contents; }
+.scope-deflist dt, .scope-deflist dd { margin: 0; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
+.scope-deflist dt { font-weight: 700; color: var(--ink-2); align-self: start; }
+.scope-deflist dd { padding-left: 12px; display: flex; flex-direction: column; gap: 6px; }
+.scope-deflist dd input, .scope-deflist dd select, .scope-deflist dd textarea { width: 100%; }
+.scope-deflist dd .hint { margin: 0; }
+.scope-deflist .check { display: flex; align-items: flex-start; justify-content: flex-start; gap: 8px; margin: 0; }
+.scope-deflist .check input { flex: 0 0 auto; margin-top: 3px; }
+.scope-deflist .scope-msg { margin: 0; }
+/* 分析欄位表：標頭列、欄寬固定，操作欄在最右側 */
+.scope-fields { table-layout: fixed; }
+.scope-fields th, .scope-fields td { vertical-align: middle; }
+.scope-fields input.brief-field-name, .scope-fields input.brief-field-desc { width: 100%; }
+.scope-col-on, .scope-col-order { width: 64px; text-align: center; }
+.scope-col-ops { width: 260px; }
+.scope-fields .coding-field-actions { display: flex; flex-wrap: wrap; gap: 4px; }
+.scope-fields .coding-field-actions button { min-width: 0; padding: 4px 8px; }
+@media (max-width: 720px) {
+  .scope-deflist { grid-template-columns: 1fr; }
+  .scope-deflist dt { border-bottom: 0; padding-bottom: 0; }
+  .scope-col-ops { width: auto; }
+}
+
+/* 標編碼標注工序的流程面板：沿用工作負載身分聯盟引導面板（fed-steps）的步驟樣式，只補狀態顏色 */
+.scope-steps { grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); }
+.scope-step-btn { min-height: 0; }
+.scope-step-state { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; color: var(--ink-3); }
+.scope-step-state .fed-tick { width: 12px; height: 12px; }
+.scope-step-btn.done .scope-step-state { color: var(--koke); }
+.scope-step-btn.failed .scope-step-state, .scope-step-btn.running .scope-step-state, .scope-step-btn.waiting .scope-step-state { color: var(--shu-ink); }
+.scope-step-body p { margin: 4px 0; }
+.explain-body { max-height: 60vh; overflow-y: auto; }
+
 /* 標編碼標注工序：欄位設定的上移／下移／移除按鈕併成一格；待覆核標記 */
 .coding-field-actions { display: flex; gap: 4px; }
 .pending-tag { display: inline-block; margin-left: 6px; padding: 0 6px; font-style: normal; font-size: 0.75rem; color: var(--shu); border: 1px solid var(--shu); border-radius: 3px; }
@@ -108,6 +155,31 @@
 .fed-msg.good { color: var(--koke); }
 .fed-nav { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; }
 .hint.bad { color: var(--shu-ink); }
+
+/* 納入／排除核查（issue #12）：標準列、規劃摘要、結果格（判定與依據可展開） */
+.crit-rows { display: flex; flex-direction: column; gap: 8px; margin: 8px 0; }
+.crit-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.crit-row .crit-text { flex: 1 1 260px; }
+.crit-row .crit-kw { flex: 1 1 200px; }
+.crit-plan { margin: 12px 0; padding: 10px 14px; border-left: 3px solid var(--rule); background: var(--paper-2); }
+.crit-plan-line { margin: 4px 0; font-size: 0.92rem; }
+.crit-pick { flex: 1 1 220px; }
+.crit-suggest { margin: 12px 0; padding: 10px 14px; border-left: 3px solid var(--shu); background: var(--shu-wash); color: var(--shu-ink); font-size: 0.92rem; }
+.crit-rerun { margin: 12px 0; }
+.crit-rerun summary { cursor: pointer; font-weight: 700; }
+.crit-compare { margin: 12px 0; font-size: 0.92rem; }
+.crit-changes { margin: 6px 0 0 1.2em; }
+.crit-table td.crit-caseno { min-width: 140px; }
+.crit-table td.crit-decision { font-weight: 700; white-space: nowrap; }
+.crit-d-exclude { color: var(--shu-ink); }
+.crit-d-review { color: var(--ink-2); }
+.crit-d-include { color: var(--koke); }
+.crit-cell summary { cursor: pointer; list-style-position: outside; }
+.crit-verdict.crit-v-met { color: var(--koke); font-weight: 700; }
+.crit-verdict.crit-v-not_met { color: var(--shu-ink); font-weight: 700; }
+.crit-verdict.crit-v-unknown { color: var(--ink-3); font-weight: 700; }
+.crit-basis { margin: 6px 0; font-size: 0.86rem; color: var(--ink-2); }
+.crit-quote { margin: 4px 0; padding-left: 10px; border-left: 2px solid var(--rule); font-size: 0.86rem; color: var(--ink); }
 .hint.good { color: var(--koke); }
 @media (max-width: 720px) {
   .fed-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -141,3 +213,28 @@
 .judgment-text { white-space: pre-wrap; line-height: 1.8; max-height: 56vh; overflow: auto; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 4px; }
 .judgment-hit { background: var(--shu-wash); color: var(--ink); padding: 0 2px; border-radius: 2px; }
 .status.ok { color: var(--koke); }
+
+/* 段落檢索（issue #10）：結果依案號分組；AI 評分與回退 notice 以提示色標示。 */
+.semantic-summary { margin: 14px 0 6px; }
+.semantic-notice {
+  padding: 8px 12px; margin: 8px 0; border-left: 3px solid var(--shu); background: var(--shu-wash);
+  color: var(--shu-ink); font-size: 0.9rem;
+}
+.semantic-case { border: 1px solid var(--rule); background: var(--paper-2); padding: 12px 14px; margin: 0 0 12px; }
+.semantic-case-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.semantic-case-head h3 { margin: 0; font-size: 1rem; }
+.semantic-badge { font-size: 0.8rem; color: var(--shu-ink); border: 1px solid var(--shu); padding: 1px 6px; }
+.semantic-source { margin: 2px 0; word-break: break-all; }
+.semantic-passages { list-style: none; margin: 8px 0; padding: 0; }
+.semantic-passage { border-left: 2px solid var(--rule); padding: 4px 0 4px 10px; margin: 0 0 10px; }
+.semantic-text { font-family: var(--serif); white-space: pre-wrap; margin: 0 0 4px; line-height: 1.7; }
+.semantic-basis, .semantic-quote { font-size: 0.88rem; color: var(--ink-2); margin: 2px 0; }
+.semantic-fulltext { margin-top: 8px; }
+.semantic-fulltext-body {
+  white-space: pre-wrap; max-height: 360px; overflow: auto; padding: 10px 12px;
+  border: 1px solid var(--rule); background: var(--paper); font-size: 0.9rem; line-height: 1.6;
+}
+.semantic-assist { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.semantic-chat { min-height: 120px; max-height: 360px; overflow: auto; padding: 8px 4px; border: 1px solid var(--rule); margin: 8px 0; }
+.semantic-chat .semantic-notice { margin: 4px 0; }
+.semantic-untrusted { color: var(--ink-3); }

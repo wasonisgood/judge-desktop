@@ -5,6 +5,7 @@
 // - 可實證性檢查：能否由判決原文回答；不能的要明說。
 // - 摘要可帶入範圍整理流程（summaryToScopeOptions），並可匯出文字。
 // 純函式、可直接測試；AI 只用於把使用者的自然語言回答整理成欄位（由呼叫端決定是否使用）。
+import { CASE_TYPES, parseCaseTypeInput, type CaseType } from '../court/caseType';
 
 export interface DesignSlots {
   /** 原始的問題意識（使用者的原話）。 */
@@ -20,7 +21,7 @@ export interface DesignSlots {
   yearTo?: number;
   /** 法規（引用的條文或法律名稱）；用於範圍整理。 */
   statute?: string;
-  /** 案件類型（民事、刑事、行政等）；範圍整理不支援自動篩選，需人工於列表篩選。 */
+  /** 案件類型（民事、刑事、行政）；範圍整理與精讀會依字號套用（見 court/caseType.ts）。 */
   caseType?: string;
   /** 法院層級（地方、高等、最高）；同上。 */
   courtLevel?: string;
@@ -122,14 +123,31 @@ export function suggestNarrowing(slots: DesignSlots): NarrowingSuggestion[] {
     });
   }
   if (slots.statute && !slots.caseType) {
-    out.push({
-      id: 'case-type',
-      dimension: 'caseType',
-      text: '限定為民事或刑事其中一類',
-      rationale: '同一法規可能同時出現在民事與刑事案件中，性質不同的判決混在一起，會稀釋變項的效果。',
-      tradeoff: '樣本會減少；且需人工在列表中篩選（範圍整理表不會自動篩）。',
-      patch: {},
-    });
+    // 三個選項互斥，由研究者擇一；本模組不替研究者預設類型（取決於研究問題）。
+    const reasons: Record<CaseType, { rationale: string; tradeoff: string }> = {
+      民事: {
+        rationale: '同一法規常同時出現在民事與刑事案件中，性質不同的判決混在一起會稀釋變項的效果；若研究問題涉及私法上的權利義務（例如損害賠償、契約），限定民事較合適。',
+        tradeoff: '樣本會減少，且只代表民事判決的實務見解；字號未寫明類型的判決會被排除（不猜）。',
+      },
+      刑事: {
+        rationale: '若法規的主要適用在刑罰或犯罪構成要件，限定刑事可避免民事請求權的裁判混入，使變項（例如量刑、有罪判決）可比。',
+        tradeoff: '樣本會減少，且只代表刑事判決的實務見解；字號未寫明類型的判決會被排除（不猜）。',
+      },
+      行政: {
+        rationale: '若法規的適用對象是行政機關的處分或國家與人民的公法關係，限定行政可避免民事或刑事判決混入。',
+        tradeoff: '樣本會減少，且只代表行政訴訟的實務見解；行政字別（訴、上、再）與民刑事字別重疊，字號未寫明類型的判決會被排除（不猜）。',
+      },
+    };
+    for (const t of CASE_TYPES) {
+      out.push({
+        id: `case-type-${t}`,
+        dimension: 'caseType',
+        text: `限定為${t}案件（擇一，請依研究問題選擇）`,
+        rationale: reasons[t].rationale,
+        tradeoff: reasons[t].tradeoff,
+        patch: { caseType: t },
+      });
+    }
   }
   if (!slots.courtLevel) {
     out.push({
@@ -273,6 +291,8 @@ export interface DesignSummary {
   variable: string;
   period: string;
   statute: string;
+  /** 案件類型（已套用於範圍整理與精讀；未指定時為「（未指定）」）。 */
+  caseType: string;
   /** 需要人工在列表中篩選的條件（範圍整理表不支援自動篩選）。 */
   manualFilters: string[];
   analysisPlan: string[];
@@ -287,7 +307,9 @@ export function buildDesignSummary(session: DesignSession): DesignSummary {
   const s = session.slots;
   const missing = SLOT_ORDER.filter((k) => isMissing(s[k]));
   const period = s.yearFrom && s.yearTo ? `${s.yearFrom}–${s.yearTo} 年` : '未設定';
-  const manualFilters = [s.caseType ? `案件類型：${s.caseType}` : '', s.courtLevel ? `法院層級：${s.courtLevel}` : ''].filter(Boolean);
+  // 案件類型可自動套用（範圍整理依字號篩選），因此不列入人工篩選；法院層級仍需人工。
+  const manualFilters = [s.courtLevel ? `法院層級：${s.courtLevel}` : ''].filter(Boolean);
+  const caseType = s.caseType ? (parseCaseTypeInput(s.caseType) ?? `${s.caseType}（無法對應民事、刑事、行政，未套用）`) : '（未指定）';
   const plan = [
     s.variable ? `以「${s.variable}」為主要變項，逐案從判決原文編碼` : '尚未定義分析變項',
     '先計算描述統計（次數與比例），再依研究問題決定是否需要檢定',
@@ -304,6 +326,7 @@ export function buildDesignSummary(session: DesignSession): DesignSummary {
     variable: s.variable ?? '（尚未定義）',
     period,
     statute: s.statute ?? '（未指定，以關鍵字搜尋）',
+    caseType,
     manualFilters,
     analysisPlan: plan,
     limitations,
@@ -313,13 +336,15 @@ export function buildDesignSummary(session: DesignSession): DesignSummary {
 }
 
 /** 摘要轉為範圍整理的參數（只帶入可自動套用的條件；其餘列在 manualFilters）。 */
-export function summaryToScopeOptions(slots: DesignSlots): { statute: string; yearFrom?: number; yearTo?: number; searchQuery?: string } | null {
+export function summaryToScopeOptions(slots: DesignSlots): { statute: string; yearFrom?: number; yearTo?: number; searchQuery?: string; caseType?: CaseType } | null {
   if (!slots.statute?.trim()) return null;
+  const caseType = slots.caseType ? parseCaseTypeInput(slots.caseType) : null;
   return {
     statute: slots.statute.trim(),
     yearFrom: slots.yearFrom,
     yearTo: slots.yearTo,
     searchQuery: slots.question?.trim() || undefined,
+    ...(caseType ? { caseType } : {}),
   };
 }
 
@@ -332,6 +357,7 @@ export function designSummaryText(sum: DesignSummary): string {
     `變項：${sum.variable}`,
     `期間：${sum.period}`,
     `法規：${sum.statute}`,
+    `案件類型：${sum.caseType}`,
   ];
   if (sum.manualFilters.length) lines.push(`需人工篩選：${sum.manualFilters.join('；')}`);
   lines.push('分析方式：', ...sum.analysisPlan.map((p) => `- ${p}`));

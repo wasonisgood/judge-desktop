@@ -1,7 +1,7 @@
 // 工作登記表（v3.6.0）：所有長時間工作（搜尋、範圍、精讀、助理對話、模組安裝與修復）都在這裡登記。
 // 提供：取消（AbortController）、狀態查詢、同類工作互斥、以及「是否還有工作」供關閉流程使用。
 // 此模組不依賴 Electron，可直接以 node 測試。
-export type JobKind = 'search' | 'scope' | 'brief' | 'assistant' | 'install' | 'repair';
+export type JobKind = 'search' | 'scope' | 'brief' | 'assistant' | 'install' | 'repair' | 'criteria' | 'crawl';
 export type JobStatus = 'running' | 'done' | 'cancelled' | 'failed';
 
 export interface JobInfo {
@@ -55,6 +55,11 @@ export function beginJob(id: string, kind: JobKind, label: string): AbortSignal 
   if (existing?.info.status === 'running') throw new Error('這項工作已在執行中，請等候完成。');
   if (EXCLUSIVE.has(kind)) {
     const busy = runningJobs().find((j) => EXCLUSIVE.has(j.kind));
+    if (busy) throw new Error(`已有「${busy.label}」進行中，請等它完成後再試。`);
+  }
+  // 文本擷取：同時只跑一批（每次連線間隔 3 秒，平行執行會違反節流約定）。
+  if (kind === 'crawl') {
+    const busy = runningJobs().find((j) => j.kind === 'crawl');
     if (busy) throw new Error(`已有「${busy.label}」進行中，請等它完成後再試。`);
   }
   const controller = new AbortController();

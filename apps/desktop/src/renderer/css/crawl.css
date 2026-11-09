@@ -1,0 +1,15 @@
+/* 文本擷取頁面：五步卡片、輸入列、輸出路徑。 */
+.crawl-steps { display: grid; gap: 12px; margin: 16px 0; }
+.crawl-step { border: 1px solid var(--border, #d8d8d8); border-radius: 8px; padding: 12px 14px; }
+.crawl-step h2 { font-size: 15px; margin: 0 0 4px; }
+.crawl-step .hint { margin: 0 0 8px; opacity: 0.8; font-size: 13px; }
+.crawl-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.crawl-row input[type="text"] { flex: 1 1 260px; min-width: 0; }
+.crawl-row input[type="number"] { width: 80px; }
+.crawl-file { flex: 1 1 260px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; opacity: 0.85; }
+.crawl-days { font-size: 13px; }
+.crawl-result { margin-top: 12px; font-size: 13px; }
+.crawl-output { word-break: break-all; opacity: 0.85; }
+@media (max-width: 640px) {
+  .crawl-row { flex-direction: column; align-items: stretch; }
+}

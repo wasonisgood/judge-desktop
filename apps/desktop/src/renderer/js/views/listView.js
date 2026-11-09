@@ -38,7 +38,7 @@
       var bt = document.createElement('td');
       var b = document.createElement('button');
       b.className = 'btn small'; b.type = 'button'; b.textContent = '精讀這則';
-      b.addEventListener('click', function () { JR.controllers.brief.openFromList(it); });
+      b.addEventListener('click', function () { JR.controllers.brief.openFromList(it, items); });
       bt.appendChild(b);
       tr.appendChild(bt);
       body.appendChild(tr);

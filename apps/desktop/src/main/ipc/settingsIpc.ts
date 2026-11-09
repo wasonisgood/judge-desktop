@@ -7,6 +7,7 @@ import { aiConfigOrThrow } from '../data/cloud/aiRepo';
 import {
   jurisdictionRegistry, checkFederationFields, FEDERATION_ISSUER, FEDERATION_AUDIENCE, FEDERATION_TOKEN_TTL_SECONDS, FEDERATION_SUBJECT_PATTERN,
   normalizeReviewPolicy,
+  normalizeCrawlIntervalSec,
 } from '@judge/core';
 import { readSession } from '../data/local/authStore';
 import { fetchIdentityToken } from '../data/cloud/authRepo';
@@ -28,6 +29,7 @@ export function registerSettingsIpc(): void {
       scopeReviewPolicy: normalizeReviewPolicy(s.scopeReviewPolicy),
       localAiEnabled: s.localAiEnabled,
       defaultJurisdiction: s.defaultJurisdiction,
+      crawlIntervalSec: s.crawlIntervalSec,
     };
   });
   // 聯盟設定狀態（v3.7.0）：即時檢查欄位與登入狀態，給畫面逐步引導用。
@@ -72,6 +74,7 @@ export function registerSettingsIpc(): void {
     for (const k of ['aiProvider', 'aiAuthMode', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays', 'localAiEnabled', 'defaultJurisdiction'] as const) {
       if (patch[k] !== undefined) (next as any)[k] = patch[k];
     }
+    if (patch.crawlIntervalSec !== undefined) next.crawlIntervalSec = normalizeCrawlIntervalSec(patch.crawlIntervalSec);
     if (patch.defaultJurisdiction && !jurisdictionRegistry.has(patch.defaultJurisdiction)) {
       throw new Error(`未知的管轄區：${patch.defaultJurisdiction}`);
     }

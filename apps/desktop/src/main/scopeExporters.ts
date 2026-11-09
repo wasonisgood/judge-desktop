@@ -17,14 +17,21 @@ export interface ScopeSheet {
   synthesis: ScopeSynthesis | null;
   /** 分析欄位（勾選的欄位，順序即欄位順序）；舊結果沒有此欄位時使用預設欄位。 */
   fields?: CodingField[];
+  /** 案件類型篩選（有指定時）：類型與因字號而排除的筆數。 */
+  caseType?: { type: string; excluded: number };
 }
 
 const byId = (analyses: CaseAnalysis[]) => new Map(analyses.map((a) => [a.id, a]));
 
+/** 案件類型篩選的說明文字（匯出用）。 */
+function caseTypeLine(sh: ScopeSheet): string | null {
+  return sh.caseType ? `案件類型：${sh.caseType.type}（依判決字號篩選，排除 ${sh.caseType.excluded} 筆）` : null;
+}
+
 const LEAD_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由'];
 const LEAD_WIDTHS = [6, 40, 16, 13, 28];
-const TAIL_HEADERS = ['引用條文', '法條異動（依沿革比對）', '歷審位置（司法院清單）', '判決連結'];
-const TAIL_WIDTHS = [30, 46, 40, 30];
+const TAIL_HEADERS = ['引用條文', '法條異動（依沿革比對）', '歷審位置（司法院清單）', '判決連結', '字號類型'];
+const TAIL_WIDTHS = [30, 46, 40, 30, 10];
 /** 預設欄位的 Excel 欄寬（字元單位）；自訂欄位使用 36。 */
 const FIELD_WIDTH: Record<string, number> = { issue: 36, holding: 50, statuteApplication: 40, outcome: 30, group: 14 };
 /** 待覆核格子的底色（Excel 與 Word 共用）。 */
@@ -49,14 +56,19 @@ function legacyText(a: CaseAnalysis | undefined, fieldId: string): string {
 export interface CaseLayout {
   headers: string[];
   widths: number[];
+  hrefCol: number;
   cells: (i: number, r: ScopeRow, a: CaseAnalysis | undefined) => string[];
 }
 
 export function caseLayout(sh: ScopeSheet): CaseLayout {
   const fields = fieldsOf(sh);
+  const headers = [...LEAD_HEADERS, ...fields.map((f) => `${f.name}（AI）`), ...TAIL_HEADERS];
+  const widths = [...LEAD_WIDTHS, ...fields.map((f) => FIELD_WIDTH[f.id] ?? 36), ...TAIL_WIDTHS];
+  const hrefCol = headers.indexOf('判決連結');
   return {
-    headers: [...LEAD_HEADERS, ...fields.map((f) => `${f.name}（AI）`), ...TAIL_HEADERS],
-    widths: [...LEAD_WIDTHS, ...fields.map((f) => FIELD_WIDTH[f.id] ?? 36), ...TAIL_WIDTHS],
+    headers,
+    widths,
+    hrefCol,
     cells: (i, r, a) => [
       String(i + 1),
       r.title,
@@ -71,6 +83,7 @@ export function caseLayout(sh: ScopeSheet): CaseLayout {
       (r.lawNotes ?? []).map((n) => n.summary).join('\n'),
       r.historyPosition ?? '',
       r.href,
+      r.caseTypeLabel ?? '',
     ],
   };
 }
@@ -163,6 +176,7 @@ export async function buildScopeWorkbook(sheets: ScopeSheet[], meta: { yearFrom?
         (r.lawNotes ?? []).map((n) => n.summary).join('\n'),
         r.historyPosition ?? '',
         r.href ? { text: r.href, hyperlink: r.href } : '',
+        r.caseTypeLabel ?? '',
       ];
       const row = ws.addRow(Object.fromEntries(values.map((v, j) => ['c' + j, v])));
       row.alignment = { vertical: 'top', wrapText: true };
@@ -213,6 +227,10 @@ export async function buildScopeWorkbook(sheets: ScopeSheet[], meta: { yearFrom?
   const info = wb.addWorksheet('說明');
   info.addRow(['範圍', sheets.map((s) => s.statute).join('、')]);
   info.addRow(['期間', `${meta.yearFrom ?? '不限'} 至 ${meta.yearTo ?? '不限'}`]);
+  for (const sh of sheets) {
+    const line = caseTypeLine(sh);
+    if (line) info.addRow([sh.statute, line]);
+  }
   info.addRow(['產生時間', new Date().toLocaleString('zh-TW')]);
   info.addRow(['待覆核格數', String(pendingTotal)]);
   info.addRow(['資料來源', '司法院裁判書查詢系統（公開資料）。逐案分析與綜合分析由 AI 產生，請對照原判決確認。']);
@@ -265,6 +283,8 @@ export async function buildScopeDocx(sheets: ScopeSheet[], meta: { yearFrom?: nu
       heading: HeadingLevel.HEADING_2,
       children: [new TextRun({ text: `${sh.statute}（${sh.rows.length} 筆）`, bold: true, font })],
     }));
+    const typeLine = caseTypeLine(sh);
+    if (typeLine) children.push(para(typeLine, 20));
     const s = sh.synthesis;
     if (s) {
       children.push(para('綜合分析', 22, true));

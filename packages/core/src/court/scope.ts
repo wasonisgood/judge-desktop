@@ -6,6 +6,7 @@ import type { JudgmentDetail, JudgmentSummary } from './parse';
 import { parseCitations } from '../law/citation';
 import type { HistoryArticle } from '../law/history';
 import { citationLawNotes, type CitationLawNote } from '../law/citationNotes';
+import { caseTypeOf, caseTypeLabel, matchCaseType, type CaseType, type CaseTypeStatus } from './caseType';
 
 export interface ScopeOptions {
   statute: string;
@@ -16,6 +17,10 @@ export interface ScopeOptions {
   yearTo?: number;
   /** 實際送去司法院搜尋的關鍵字；未提供時使用法規名稱。引用比對一律以法規名稱進行。 */
   searchQuery?: string;
+  /** 案件類型（民事、刑事、行政）；未指定則不限。依字號判定（見 caseType.ts），無法判定的判決會被排除並回報。 */
+  caseType?: CaseType;
+  /** 因案件類型篩選而排除的判決（字別無法判定或不符）時呼叫；不影響其他判決。 */
+  onCaseTypeSkip?: (title: string, status: CaseTypeStatus) => void;
   /** 最多處理的筆數（每筆都要取得內頁，會花時間）。 */
   maxItems?: number;
   client?: CourtClient;
@@ -53,6 +58,8 @@ export interface ScopeRow {
   /** 供 AI 分析用的原文摘錄：主文，以及法規被引用處前後的理由文字。 */
   excerpts: { main: string; citing: string };
   href: string;
+  /** 依字號判定的類型標籤：民事／刑事／行政，或「重疊」（字別同時見於多類）、「未知」（不在字別表中）。 */
+  caseTypeLabel?: string;
 }
 
 /** 主文第一句，作為「結果」欄的摘要。 */
@@ -108,6 +115,11 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
     const year = it.dateIso ? Number(it.dateIso.slice(0, 4)) : null;
     if (opts.yearFrom && year && year < opts.yearFrom) continue;
     if (opts.yearTo && year && year > opts.yearTo) continue;
+    // 案件類型：先用搜尋列表的字號判斷（能判定且不符就不取內頁）；其餘在取得內頁後，依裁判字號再判斷。
+    if (opts.caseType) {
+      const pre = caseTypeOf(it.title);
+      if (pre.type !== null && pre.type !== opts.caseType) { opts.onCaseTypeSkip?.(it.title, pre.status); continue; }
+    }
     let d;
     try {
       d = opts.detailSource ? await opts.detailSource(it.id) : await jurisdiction.getDetail(it.id, { client });
@@ -116,6 +128,12 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
       opts.onItemError?.(it.id, it.title, err);
       continue;
     }
+    // 案件類型（master）：字號不符合所選類型的判決先排除（並回報排除原因）。
+    if (opts.caseType && matchCaseType(d.meta.title || it.title, opts.caseType) !== 'match') {
+      opts.onCaseTypeSkip?.(d.meta.title || it.title, caseTypeOf(d.meta.title || it.title).status);
+      continue;
+    }
+    // 關鍵字模式（本分支）：不以法規篩選；否則只保留真的引用該法規的判決。
     let cited: string[];
     if (opts.keywordMode) {
       cited = d.relatedLaws.slice();
@@ -124,6 +142,7 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
       if (cited.length === 0) continue; // 只保留真的引用該法規的判決
     }
     rows.push({
+      caseTypeLabel: caseTypeLabel(d.meta.title || it.title),
       id: it.id,
       title: d.meta.title || it.title,
       court: d.meta.court,

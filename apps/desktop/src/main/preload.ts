@@ -31,6 +31,14 @@ contextBridge.exposeInMainWorld('api', {
     },
   },
   exportList: (args: unknown) => invoke('export:list', args),
+  semantic: {
+    run: (args: unknown) => invoke('semantic:run', args),
+    fullText: (args: unknown) => invoke('semantic:fullText', args),
+    ask: (args: unknown) => invoke('semantic:ask', args),
+    onProgress: (cb: (p: { done: number; total: number; phase: string }) => void) => {
+      ipcRenderer.on('semantic:progress', (_e, p) => cb(p));
+    },
+  },
   jobs: {
     list: () => invoke('jobs:list'),
     cancel: (args: unknown) => invoke('jobs:cancel', args),
@@ -43,6 +51,7 @@ contextBridge.exposeInMainWorld('api', {
     export: (args: unknown) => invoke('export:scope', args),
     review: (args: unknown) => invoke('scope:review', args),
     judgmentText: (args: unknown) => invoke('scope:judgmentText', args),
+    controls: (args: unknown) => invoke('scope:controls', args),
     onProgress: (cb: (p: { statute: string; done: number; total: number }) => void) => {
       ipcRenderer.on('scope:progress', (_e, p) => cb(p));
     },
@@ -50,6 +59,39 @@ contextBridge.exposeInMainWorld('api', {
   brief: {
     run: (args: unknown) => invoke('brief:run', args),
     export: (args: unknown) => invoke('export:brief', args),
+  },
+  chart: {
+    pickFile: () => invoke('chart:pickFile'),
+    inspect: (args: unknown) => invoke('chart:inspect', args),
+    render: (args: unknown) => invoke('chart:render', args),
+    exportSvg: (args: unknown) => invoke('export:chartSvg', args),
+    exportPng: (args: unknown) => invoke('export:chartPng', args),
+    exportDocx: (args: unknown) => invoke('export:chartDocx', args),
+    install: () => invoke('chart:install'),
+    disable: () => invoke('chart:disable'),
+    remove: () => invoke('chart:remove'),
+  },
+  worker: {
+    list: () => invoke('worker:list'),
+    enqueue: (args: unknown) => invoke('worker:enqueue', args),
+    resume: (args: { id: string }) => invoke('worker:resume', args),
+    discard: (args: { id: string }) => invoke('worker:discard', args),
+    cancel: (args: { id: string }) => invoke('worker:cancel', args),
+    settingsGet: () => invoke('worker:settings:get'),
+    settingsSet: (patch: unknown) => invoke('worker:settings:set', patch),
+    test: () => invoke('worker:test'),
+    onChanged: (cb: (list: unknown) => void) => {
+      ipcRenderer.on('worker:changed', (_e, list) => cb(list));
+    },
+    onOpen: (cb: (p: { page: string }) => void) => {
+      ipcRenderer.on('worker:open', (_e, p) => cb(p));
+    },
+    notice: {
+      click: (page: string) => invoke('worker:notice:click', { page }),
+      dismiss: () => invoke('worker:notice:dismiss'),
+      hold: () => invoke('worker:notice:hold'),
+      leave: () => invoke('worker:notice:leave'),
+    },
   },
   update: { openUpdater: () => invoke('update:openUpdater') },
   auth: {
@@ -90,9 +132,58 @@ contextBridge.exposeInMainWorld('api', {
   assistant: {
     chat: (args: unknown) => invoke('assistant:chat', args),
   },
+  design: {
+    list: () => invoke('design:list'),
+    create: (args: unknown) => invoke('design:create', args),
+    get: (args: unknown) => invoke('design:get', args),
+    answer: (args: unknown) => invoke('design:answer', args),
+    setFields: (args: unknown) => invoke('design:setFields', args),
+    aiFill: (args: unknown) => invoke('design:aiFill', args),
+    accept: (args: unknown) => invoke('design:accept', args),
+    skip: (args: unknown) => invoke('design:skip', args),
+    remove: (args: unknown) => invoke('design:remove', args),
+    export: (args: unknown) => invoke('design:export', args),
+  },
+  crawl: {
+    pickFile: () => invoke('crawl:pickFile'),
+    run: (args: unknown) => invoke('crawl:run', args),
+    onProgress: (cb: (p: unknown) => void) => {
+      ipcRenderer.on('crawl:progress', (_e, p) => cb(p));
+    },
+  },
   library: {
     list: (args: unknown) => invoke('library:list', args),
     update: (args: unknown) => invoke('library:update', args),
     remove: (args: unknown) => invoke('library:remove', args),
+  },
+  criteria: {
+    fetch: (args: unknown) => invoke('criteria:fetch', args),
+    plan: (args: unknown) => invoke('criteria:plan', args),
+    run: (args: unknown) => invoke('criteria:run', args),
+    review: (args: unknown) => invoke('criteria:review', args),
+    runs: () => invoke('criteria:runs'),
+    compare: (args: unknown) => invoke('criteria:compare', args),
+    export: (args: unknown) => invoke('export:criteria', args),
+    onProgress: (cb: (p: { phase: 'fetch' | 'run'; done: number; total: number }) => void) => {
+      ipcRenderer.on('criteria:progress', (_e, p) => cb(p));
+    },
+  },
+  annotation: {
+    load: (args: unknown) => invoke('annotation:load', args),
+    add: (args: unknown) => invoke('annotation:add', args),
+    update: (args: unknown) => invoke('annotation:update', args),
+    remove: (args: unknown) => invoke('annotation:remove', args),
+    reanchor: (args: unknown) => invoke('annotation:reanchor', args),
+    importAi: (args: unknown) => invoke('annotation:importAi', args),
+    judgments: () => invoke('annotation:judgments'),
+    export: (args: unknown) => invoke('annotation:export', args),
+    exportMany: (args: unknown) => invoke('annotation:exportMany', args),
+    labels: {
+      get: () => invoke('annotation:labels:get'),
+      set: (args: unknown) => invoke('annotation:labels:set', args),
+    },
+    syncStatus: () => invoke('annotation:syncStatus'),
+    syncPreview: () => invoke('annotation:syncPreview'),
+    syncNow: () => invoke('annotation:syncNow'),
   },
 });

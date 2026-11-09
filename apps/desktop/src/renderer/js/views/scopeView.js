@@ -174,6 +174,9 @@
         });
         block.appendChild(syn);
       }
+      if (sh.caseType) {
+        block.appendChild(el('p', 'hint', '案件類型：' + sh.caseType.type + '（依判決字號篩選，排除 ' + sh.caseType.excluded + ' 筆；「重疊」「未知」的字號不會被納入）'));
+      }
       var fields = sh.fields && sh.fields.length ? sh.fields : DEFAULT_FIELDS;
       var byId = {};
       (sh.analyses || []).forEach(function (a) { byId[a.id] = a; });
@@ -206,7 +209,7 @@
 
       var wrap = el('div', 'table-wrap');
       var table = el('table', 'table');
-      var heads = ['序號', '裁判字號', '裁判日期'].concat(fields.map(function (f) { return f.name; }), ['引用條文', '法條異動', '歷審位置', '操作']);
+      var heads = ['序號', '裁判字號', '裁判日期'].concat(fields.map(function (f) { return f.name; }), ['引用條文', '法條異動', '歷審位置', '字號類型', '操作']);
       var thead = el('thead');
       var headRow = el('tr');
       heads.forEach(function (h) { headRow.appendChild(el('th', '', h)); });
@@ -233,13 +236,14 @@
         tr.appendChild(el('td', '', r.citedArticles.join('；')));
         tr.appendChild(el('td', '', notes));
         tr.appendChild(el('td', '', r.historyPosition || ''));
+        tr.appendChild(el('td', '', r.caseTypeLabel || ''));
         var bt = el('td');
         if (ui.actions && a && a.values && a.values.length) {
           var key = cellKey(si, r.id, '');
           var open = !!ui.openPanels[key];
           bt.appendChild(button(open ? '收起覆核' : '覆核', function () { ui.actions.togglePanel(key); }));
         }
-        bt.appendChild(button('精讀這則', function () { JR.controllers.brief.openFromList(r); }));
+        bt.appendChild(button('精讀這則', function () { JR.controllers.brief.openFromList(r, sh.rows); }));
         tr.appendChild(bt);
         tbody.appendChild(tr);
         if (ui.actions && a && a.values && a.values.length && ui.openPanels[cellKey(si, r.id, '')]) {

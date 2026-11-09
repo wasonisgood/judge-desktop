@@ -11,6 +11,7 @@
       document.querySelectorAll('.rail-item').forEach(function (n) { n.classList.toggle('active', n.dataset.page === name); });
       if (name === 'settings') JR.controllers.settings.load();
       if (name === 'files') JR.controllers.files.load();
+      if (name === 'criteria') JR.controllers.criteria.load();
     }
   };
 

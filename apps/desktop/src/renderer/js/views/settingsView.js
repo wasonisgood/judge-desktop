@@ -38,6 +38,7 @@
     $('setModel').value = s.aiModel;
     $('keyState').textContent = s.hasKey ? '（已設定）' : '（尚未設定）';
     $('setCacheDays').value = s.cacheDays;
+    $('setCrawlInterval').value = s.crawlIntervalSec || 3;
     $('setMaxItems').value = s.defaultMaxItems;
     var rp = s.scopeReviewPolicy || {};
     $('setReviewMinEvidence').value = rp.minEvidence !== undefined ? rp.minEvidence : 1;
@@ -105,6 +106,7 @@
       aiBaseUrl: $('setBaseUrl').value.trim(),
       aiModel: $('setModel').value.trim(),
       cacheDays: Number($('setCacheDays').value) || 7,
+      crawlIntervalSec: Math.max(3, Math.round(Number($('setCrawlInterval').value) || 3)),
       defaultMaxItems: Number($('setMaxItems').value) || 20
     };
   };
