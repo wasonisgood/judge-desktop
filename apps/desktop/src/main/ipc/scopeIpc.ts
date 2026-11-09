@@ -1,6 +1,8 @@
 // IPC：範圍整理表（法名確認、法條沿革、現行法規、執行、匯出、覆核）。範圍整理登記為背景工作，可取消（v3.6.0）。
 import { ipcMain } from 'electron';
-import { applyReviewOp, normalizeReviewPolicy, summarizeReview, type CellRef, type ReviewOp } from '@judge/core';
+import { applyReviewOp, normalizeReviewPolicy, summarizeReview, CourtClient, type CellRef, type ReviewOp } from '@judge/core';
+import { cachedDetail } from '../data/cloud/courtRepo';
+import { locateJudgmentQuote, judgmentFetchError } from '../services/judgmentQuote';
 import { type ScopeSheet, buildScopeWorkbook, buildScopeDocx } from '../scopeExporters';
 import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
 import { resolveStatute, currentLawFor } from '../data/cloud/lawRepo';
@@ -59,6 +61,15 @@ export function registerScopeIpc(): void {
       }
     }
     return { sheets, changed, summaries: sheets.map((sh) => summarizeReview(sh, reviewPolicy)), saveError };
+  });
+  // 跳至原文：取得判決全文（快取優先，沿用既有的 CourtClient 與節流）並定位依據。失敗時回傳說明，不丟錯。
+  ipcMain.handle('scope:judgmentText', async (_e, args: { id: string; quote: string }) => {
+    try {
+      const d = await cachedDetail(String(args?.id ?? ''), new CourtClient());
+      return locateJudgmentQuote(d, String(args?.quote ?? ''));
+    } catch (err) {
+      return { ok: false, error: judgmentFetchError(err) };
+    }
   });
   ipcMain.handle('export:scope', async (_e, args: { sheets: ScopeSheet[]; yearFrom?: number; yearTo?: number; format: 'xlsx' | 'docx' }) => {
     const ext = args.format;

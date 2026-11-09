@@ -2,7 +2,7 @@
 // 管轄區：未指定或為預設（台灣司法院）時，快取鍵與呼叫方式與過去完全相同（既有快取不失效）；
 // 其他管轄區的快取鍵加上管轄區識別碼，避免與台灣的判決互相覆蓋。
 import {
-  searchJudgments, getJudgmentDetail, CourtClient, jurisdictionRegistry, DEFAULT_JURISDICTION_ID,
+  searchJudgments, getJudgmentDetail, CourtClient, jurisdictionRegistry, DEFAULT_JURISDICTION_ID, judgmentHasBody,
   type JudgmentDetail, type JudgmentSummary, type JurisdictionId,
 } from '@judge/core';
 import { readSettings } from '../local/settingsStore';
@@ -32,6 +32,7 @@ export async function cachedDetail(id: string, client?: CourtClient, jurisdictio
   const d = isDefault(jid)
     ? await getJudgmentDetail(id, client)
     : await jurisdictionRegistry.get(jid).getDetail(id, { client });
-  await cachePut('detail', k, d);
+  // 沒有原文的內頁（例如判決編號不存在）不寫入快取，避免之後永久沿用空白結果。
+  if (judgmentHasBody(d)) await cachePut('detail', k, d);
   return d;
 }

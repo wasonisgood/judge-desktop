@@ -165,11 +165,16 @@
       renderResult();
     },
     setFilter: function (si, value) { state.scopeFilters[si] = value; renderResult(); },
-    /** 跳至原文：開啟判決來源頁（外部瀏覽器），並顯示與複製該則依據，請在原文頁用 Ctrl+F 搜尋。 */
-    openSource: function (href, quote) {
-      try { navigator.clipboard.writeText(quote).catch(function () {}); } catch (e) { /* 剪貼簿不可用時只顯示文字 */ }
-      if (href) window.open(href, '_blank');
-      JR.setStatus($('scopeStatus'), '已開啟判決原文；依據已複製（可用 Ctrl+F 搜尋）：「' + quote + '」', 'ok');
+    /** 跳至原文（應用程式內）：取得判決全文（快取優先）並在視窗中定位依據；取得失敗或找不到時說明原因。 */
+    openSource: function (judgmentId, quote) {
+      var status = $('scopeStatus');
+      JR.setStatus(status, '正在取得判決原文…');
+      api.scope.judgmentText({ id: judgmentId, quote: quote }).then(function (view) {
+        JR.components.judgmentDialog(view, quote);
+        JR.setStatus(status, view && view.ok ? (view.message || '') : (view && view.error) || '', view && view.ok && view.span ? 'ok' : 'error');
+      }).catch(function (err) {
+        JR.setStatus(status, '無法開啟原文：' + JR.errText(err), 'error');
+      });
     }
   };
 

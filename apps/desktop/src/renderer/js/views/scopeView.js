@@ -65,7 +65,7 @@
     var td = el('td');
     td.colSpan = colCount;
     var box = el('div', 'review-panel');
-    box.appendChild(el('p', 'hint', '逐欄覆核：接受、修改或駁回後，可用「還原此欄」或工具列的「還原上一步」撤銷。依據是判決原文的逐字引用，「跳至原文」會開啟判決並複製該段文字（可用 Ctrl+F 搜尋）。'));
+    box.appendChild(el('p', 'hint', '逐欄覆核：接受、修改或駁回後，可用「還原此欄」或工具列的「還原上一步」撤銷。依據是判決原文的逐字引用，「跳至原文」在應用程式內開啟判決原文，並標示依據所在位置。'));
     fields.forEach(function (f) {
       var v = valueOf(a, f.id);
       var key = cellKey(si, r.id, f.id);
@@ -104,7 +104,7 @@
           var li = el('li', '', q);
           var go = el('button', 'btn small', '跳至原文');
           go.type = 'button';
-          go.addEventListener('click', function () { ui.actions.openSource(r.href, q); });
+          go.addEventListener('click', function () { ui.actions.openSource(r.id, q); });
           li.appendChild(document.createTextNode(' '));
           li.appendChild(go);
           list.appendChild(li);

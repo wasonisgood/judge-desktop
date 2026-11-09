@@ -137,3 +137,7 @@
 .review-evidence ul { margin: 4px 0 0 1em; padding: 0; }
 .review-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
 .review-edit { width: 100%; box-sizing: border-box; font: inherit; }
+.judgment-box { max-width: 880px; }
+.judgment-text { white-space: pre-wrap; line-height: 1.8; max-height: 56vh; overflow: auto; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 4px; }
+.judgment-hit { background: var(--shu-wash); color: var(--ink); padding: 0 2px; border-radius: 2px; }
+.status.ok { color: var(--koke); }

@@ -33,7 +33,7 @@ test('結果頁提供待覆核篩選、批次接受、還原上一步與依據�
   for (const s of ['待覆核', '批次接受高信心結果', '還原上一步', '跳至原文', '接受', '修改', '駁回', '還原此欄']) {
     assert.ok(scopeView.includes(s), `視圖缺少「${s}」`);
   }
-  assert.match(scopeController, /window\.open\(href, '_blank'\)/);
+  assert.match(scopeController, /api\.scope\.judgmentText\(/);
 });
 
 test('檔案頁開啟舊結果時會帶入項目 id，覆核狀態才能寫回', () => {
