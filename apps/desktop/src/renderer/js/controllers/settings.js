@@ -14,9 +14,26 @@
     }).catch(function () { $('authSummary').textContent = '無法讀取登入狀態'; });
   }
 
+  // 覆核門檻的無效標記（畫面沒有編輯欄，保留設定中的值，保存時一併送出）。
+  var reviewMarkers = null;
+
+  function saveReviewPolicy() {
+    var policy = {
+      minEvidence: Number($('setReviewMinEvidence').value),
+      maxDroppedEvidence: Number($('setReviewMaxDropped').value),
+      unknownMarkers: reviewMarkers || undefined
+    };
+    return api.settings.set({ scopeReviewPolicy: policy }).then(function () {
+      JR.components.notice('已保存覆核門檻（下次整理生效）。');
+    }).catch(function (err) {
+      JR.components.notice('覆核門檻沒有保存：' + JR.errText(err));
+    });
+  }
+
   function load() {
     return Promise.all([api.settings.get(), api.jurisdictions.list()]).then(function (res) {
       var s = res[0];
+      reviewMarkers = s.scopeReviewPolicy && s.scopeReviewPolicy.unknownMarkers ? s.scopeReviewPolicy.unknownMarkers : null;
       jurisdictions = res[1] || [];
       defaultJurisdiction = s.defaultJurisdiction;
       JR.views.fillSettings(s);
@@ -45,6 +62,9 @@
           JR.setStatus($('setStatus'), '儲存失敗：' + JR.errText(err), 'error');
         }
       });
+
+      $('setReviewMinEvidence').addEventListener('change', saveReviewPolicy);
+      $('setReviewMaxDropped').addEventListener('change', saveReviewPolicy);
 
       $('setLocalAi').addEventListener('change', async function () {
         var on = $('setLocalAi').checked;

@@ -39,6 +39,9 @@
     $('keyState').textContent = s.hasKey ? '（已設定）' : '（尚未設定）';
     $('setCacheDays').value = s.cacheDays;
     $('setMaxItems').value = s.defaultMaxItems;
+    var rp = s.scopeReviewPolicy || {};
+    $('setReviewMinEvidence').value = rp.minEvidence !== undefined ? rp.minEvidence : 1;
+    $('setReviewMaxDropped').value = rp.maxDroppedEvidence !== undefined ? rp.maxDroppedEvidence : 0;
     $('listMax').value = s.defaultMaxItems;
     $('setLocalAi').checked = s.localAiEnabled !== false;
   };

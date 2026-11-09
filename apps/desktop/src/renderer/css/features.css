@@ -117,3 +117,23 @@
 /* 步驟編號與圖示的間距（v3.7.0） */
 .fed-step-btn { gap: 6px; line-height: 1.3; }
 .fed-step-no { line-height: 1.3; display: block; }
+
+/* 覆核（v4）：結果頁的待覆核摘要、篩選列、逐案覆核面板（沿用既有色票）。 */
+.pending-summary { color: var(--shu-ink); margin: 8px 0; }
+.review-toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 8px 0; }
+.review-filter { min-width: 7em; }
+.review-row > td { background: var(--paper-2); }
+.review-panel { padding: 6px 4px; }
+.review-field { border-top: 1px solid var(--rule); padding: 8px 0; }
+.review-field.pending-cell { padding-left: 8px; border-left: 3px solid var(--shu); }
+.review-field-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.review-status { font-style: normal; font-size: 0.75rem; padding: 0 6px; border: 1px solid currentColor; border-radius: 3px; }
+.review-status-pending { color: var(--shu-ink); }
+.review-status-accepted { color: var(--koke); }
+.review-status-rejected { color: var(--ink-3); }
+.review-value { margin: 4px 0; white-space: pre-wrap; }
+.review-evidence { margin: 4px 0; }
+.review-evidence summary { cursor: pointer; color: var(--ink-2); }
+.review-evidence ul { margin: 4px 0 0 1em; padding: 0; }
+.review-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.review-edit { width: 100%; box-sizing: border-box; font: inherit; }

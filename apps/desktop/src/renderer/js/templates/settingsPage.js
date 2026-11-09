@@ -111,6 +111,13 @@
               <button class="btn small" type="button" id="cacheClear">清除快取</button>
             </div>
           </div>
+          <div class="set-row">
+            <div class="set-label"><strong>覆核門檻（標編碼標注工序）</strong><span class="set-desc">有效依據至少幾則才算可接受（預設 1）；允許幾則依據不在判決原文中（預設 0，任何一則都要覆核）。變更後下次整理生效。</span></div>
+            <div class="set-ctl">
+              <label>有效依據至少 <input id="setReviewMinEvidence" type="number" min="0" max="10" value="1"></label>
+              <label>允許無效依據 <input id="setReviewMaxDropped" type="number" min="0" max="10" value="0"></label>
+            </div>
+          </div>
         </section>
 
         <p class="hint">金鑰只保存在這台電腦，並以系統的加密機制保護。本程式不會把金鑰傳給其他服務。</p>

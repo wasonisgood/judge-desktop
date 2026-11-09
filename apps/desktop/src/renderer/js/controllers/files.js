@@ -25,7 +25,7 @@
       JR.setStatus($('listStatus'), '已從「檔案」開啟。', 'ok');
       JR.nav.showPage('list');
     } else if (it.kind === 'scope') {
-      JR.controllers.scope.showResult(p.sheets || [], p.yearFrom, p.yearTo);
+      JR.controllers.scope.showResult(p.sheets || [], p.yearFrom, p.yearTo, it.id);
       JR.setStatus($('scopeStatus'), '已從「檔案」開啟。', 'ok');
       JR.nav.showPage('scope');
     } else if (it.kind === 'brief') {
