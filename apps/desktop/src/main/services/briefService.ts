@@ -12,6 +12,7 @@ import { toUserError } from './userError';
 import { cachedDetail } from '../data/cloud/courtRepo';
 import { exportDir } from './exportService';
 import { lawContextForCitations } from './lawContext';
+import { knowledgeContextFor } from './knowledgeService';
 
 export interface AnnotateResult {
   files: string[];
@@ -70,9 +71,17 @@ export async function runBrief(
     output: lc.text ? '已讀入' : '未取得', decision: 'pass', reason: lc.notes.length ? lc.notes.join('；') : '法規內容已交給 AI 判讀',
   });
   if (signal?.aborted) throw new JobCancelledError();
+  // 爭點知識庫（issue #5）：依重點與引用法條挑出相關爭點，與法規上下文一併交給 AI。
+  const kc = knowledgeContextFor([args.focus ?? '', ...(d.relatedLaws ?? [])].join(' '));
+  const lawText = [lc.text, kc.text].filter(Boolean).join('\n\n');
+  addStep(trace, {
+    stage: '讀入爭點知識庫', module: 'rule', input: args.focus || '（未指定重點）',
+    output: kc.usedIds.length ? `${kc.usedIds.length} 個爭點` : '未取得', decision: 'pass',
+    reason: kc.notes.length ? kc.notes.join('；') : '相關爭點已交給 AI 參考',
+  });
   let doc: BriefDocument;
   try {
-    doc = await raceAbort(briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined, lawContext: lc.text || undefined }), signal);
+    doc = await raceAbort(briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined, lawContext: lawText || undefined }), signal);
   } catch (err) {
     if (signal?.aborted) throw new JobCancelledError();
     throw toUserError(err);

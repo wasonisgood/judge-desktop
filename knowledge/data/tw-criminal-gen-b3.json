@@ -583,14 +583,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "少年事件處理法",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -695,14 +687,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "少年事件處理法",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         },
         {
           "ref": "刑法第 57 條",
@@ -1132,14 +1116,6 @@
       ],
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
-        {
-          "ref": "少年事件處理法",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
         {
           "ref": "刑法第 18 條",
           "status": "verified",
@@ -2201,34 +2177,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 86 條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "86",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "因未滿十四歲而不罰者，得令入感化教育處所，施以感化教育。\n因未滿十八歲而減輕其刑者，得於刑之執行完畢或赦免後，令入感化教育處所，施以感化教育。但宣告三年以下有期徒刑、拘役或罰金者，得於執行前為之。\n感化教育之期間為三年以下。但執行已逾六月，"
-            }
-          ],
-          "latestAmendmentDate": "2005-01-07",
-          "amendments": [
-            {
-              "article": "86",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "86",
-              "date": "2005-01-07",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第 87 條（待核對）",
+          "ref": "刑法第 87 條",
           "status": "verified",
           "checks": [
             {
@@ -2866,7 +2815,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 1 條（罪刑法定）",
+          "ref": "刑法第 1 條",
           "status": "verified",
           "checks": [
             {
@@ -2947,7 +2896,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 164 條（待核對）",
+          "ref": "刑法第 164 條",
           "status": "verified",
           "checks": [
             {
@@ -2974,34 +2923,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 165 條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "165",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "偽造、變造、湮滅或隱匿關係他人刑事被告案件之證據，或使用偽造、變造之證據者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。"
-            }
-          ],
-          "latestAmendmentDate": "2019-12-03",
-          "amendments": [
-            {
-              "article": "165",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "165",
-              "date": "2019-12-03",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第 167 條（待核對）",
+          "ref": "刑法第 167 條",
           "status": "verified",
           "checks": [
             {

@@ -103,15 +103,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例附表",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "刑法第1條（罪刑法定原則）",
+          "ref": "刑法第1條",
           "status": "verified",
           "checks": [
             {
@@ -254,7 +246,7 @@
           "note": null
         },
         {
-          "ref": "刑法第28條（共同正犯）",
+          "ref": "刑法第28條",
           "status": "verified",
           "checks": [
             {
@@ -281,7 +273,7 @@
           "note": null
         },
         {
-          "ref": "刑法第30條（幫助犯）",
+          "ref": "刑法第30條",
           "status": "verified",
           "checks": [
             {
@@ -418,12 +410,41 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例轉讓相關條次（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "毒品危害防制條例第8條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "8",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "轉讓第一級毒品者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n轉讓第二級毒品者，處六月以上五年以下有期徒刑，得併科新臺幣七十萬元以下罰金。\n轉讓第三級毒品者，處三年以下有期徒刑，得併科新臺幣三十萬元以下罰金。\n轉讓第四級毒品"
+            }
+          ],
+          "latestAmendmentDate": "2003-06-06",
+          "amendments": [
+            {
+              "article": "8",
+              "date": "1955-05-27",
+              "kind": "制定"
+            },
+            {
+              "article": "8",
+              "date": "1992-07-03",
+              "kind": "修正"
+            },
+            {
+              "article": "8",
+              "date": "1997-10-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "8",
+              "date": "2003-06-06",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -541,7 +562,7 @@
           "note": null
         },
         {
-          "ref": "刑法第25條（未遂犯）",
+          "ref": "刑法第25條",
           "status": "verified",
           "checks": [
             {
@@ -568,7 +589,7 @@
           "note": null
         },
         {
-          "ref": "刑法第26條（不能犯）",
+          "ref": "刑法第26條",
           "status": "verified",
           "checks": [
             {
@@ -649,7 +670,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第25條（未遂犯）",
+          "ref": "刑法第25條",
           "status": "verified",
           "checks": [
             {
@@ -676,7 +697,7 @@
           "note": null
         },
         {
-          "ref": "刑法第26條（不能犯）",
+          "ref": "刑法第26條",
           "status": "verified",
           "checks": [
             {
@@ -813,58 +834,21 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第156條（證據能力，條次待核對）",
+          "ref": "刑事訴訟法第158條之4",
           "status": "verified",
           "checks": [
             {
-              "article": "156",
+              "article": "158-4",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "被告之自白，非出於強暴、脅迫、利誘、詐欺、疲勞訊問、違法羈押或其他不正之方法，且與事實相符者，得為證據。\n被告或共犯之自白，不得作為有罪判決之唯一證據，仍應調查其他必要之證據，以察其是否與事實相符。\n被告陳述其自白係出於不正之方法者，應先於"
+              "currentText": "除法律另有規定外，實施刑事訴訟程序之公務員因違背法定程序取得之證據，其有無證據能力之認定，應審酌人權保障及公共利益之均衡維護。"
             }
           ],
           "latestAmendmentDate": "2003-01-14",
           "amendments": [
             {
-              "article": "156",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "156",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "156",
-              "date": "1967-01-13",
-              "kind": "全文修正"
-            },
-            {
-              "article": "156",
-              "date": "2003-01-14",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑事訴訟法第159條之5（違法取得證據之排除，條次待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "159-5",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "被告以外之人於審判外之陳述，雖不符前四條之規定，而經當事人於審判程序同意作為證據，法院審酌該言詞陳述或書面陳述作成時之情況，認為適當者，亦得為證據。\n當事人、代理人或辯護人於法院調查證據時，知有第一百五十九條第一項不得為證據之情形，而未於言"
-            }
-          ],
-          "latestAmendmentDate": "2003-01-14",
-          "amendments": [
-            {
-              "article": "159-5",
+              "article": "158-4",
               "date": "2003-01-14",
               "kind": "增訂"
             }
@@ -983,7 +967,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第28條（共同正犯）",
+          "ref": "刑法第28條",
           "status": "verified",
           "checks": [
             {
@@ -1010,7 +994,7 @@
           "note": null
         },
         {
-          "ref": "刑法第30條（幫助犯）",
+          "ref": "刑法第30條",
           "status": "verified",
           "checks": [
             {
@@ -1205,7 +1189,7 @@
           "note": null
         },
         {
-          "ref": "刑法第55條（想像競合）",
+          "ref": "刑法第55條",
           "status": "verified",
           "checks": [
             {
@@ -1232,7 +1216,7 @@
           "note": null
         },
         {
-          "ref": "刑法第51條（數罪併罰）",
+          "ref": "刑法第51條",
           "status": "verified",
           "checks": [
             {
@@ -1318,7 +1302,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第11條（持有，條次待核對）",
+          "ref": "毒品危害防制條例第11條",
           "status": "verified",
           "checks": [
             {
@@ -1365,49 +1349,29 @@
           "note": null
         },
         {
-          "ref": "刑法第10條（故意與過失）",
+          "ref": "刑法第12條",
           "status": "verified",
           "checks": [
             {
-              "article": "10",
+              "article": "12",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
+              "currentText": "行為非出於故意或過失者，不罰。\n過失行為之處罰，以有特別規定者，為限。"
             }
           ],
-          "latestAmendmentDate": "2023-01-07",
+          "latestAmendmentDate": "1934-10-31",
           "amendments": [
             {
-              "article": "10",
+              "article": "12",
               "date": "1934-10-31",
               "kind": "制定"
-            },
-            {
-              "article": "10",
-              "date": "1999-03-30",
-              "kind": "修正"
-            },
-            {
-              "article": "10",
-              "date": "2005-01-07",
-              "kind": "修正"
-            },
-            {
-              "article": "10",
-              "date": "2019-05-10",
-              "kind": "修正"
-            },
-            {
-              "article": "10",
-              "date": "2023-01-07",
-              "kind": "修正"
             }
           ],
           "note": null
         },
         {
-          "ref": "刑事訴訟法第154條（無罪推定原則）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -1498,7 +1462,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第11條（持有，條次待核對）",
+          "ref": "毒品危害防制條例第11條",
           "status": "verified",
           "checks": [
             {
@@ -1545,7 +1509,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第154條（無罪推定原則）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -1582,7 +1546,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第161條（證明責任，條次待核對）",
+          "ref": "刑事訴訟法第161條",
           "status": "verified",
           "checks": [
             {
@@ -1735,54 +1699,44 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第11條（意圖販賣而持有，條次待核對）",
+          "ref": "毒品危害防制條例第5條",
           "status": "verified",
           "checks": [
             {
-              "article": "11",
+              "article": "5",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "持有第一級毒品者，處三年以下有期徒刑、拘役或新臺幣三十萬元以下罰金。\n持有第二級毒品者，處二年以下有期徒刑、拘役或新臺幣二十萬元以下罰金。\n持有第一級毒品純質淨重十公克以上者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n持有"
+              "currentText": "意圖販賣而持有第一級毒品者，處無期徒刑或十年以上有期徒刑，得併科新臺幣七百萬元以下罰金。\n意圖販賣而持有第二級毒品者，處五年以上有期徒刑，得併科新臺幣五百萬元以下罰金。\n意圖販賣而持有第三級毒品者，處三年以上十年以下有期徒刑，得併科新臺幣三"
             }
           ],
-          "latestAmendmentDate": "2019-12-17",
+          "latestAmendmentDate": "2003-06-06",
           "amendments": [
             {
-              "article": "11",
+              "article": "5",
               "date": "1955-05-27",
               "kind": "制定"
             },
             {
-              "article": "11",
+              "article": "5",
               "date": "1992-07-03",
               "kind": "修正"
             },
             {
-              "article": "11",
+              "article": "5",
               "date": "1997-10-30",
               "kind": "全文修正"
             },
             {
-              "article": "11",
+              "article": "5",
               "date": "2003-06-06",
               "kind": "全文修正"
-            },
-            {
-              "article": "11",
-              "date": "2009-05-05",
-              "kind": "修正"
-            },
-            {
-              "article": "11",
-              "date": "2019-12-17",
-              "kind": "修正"
             }
           ],
           "note": null
         },
         {
-          "ref": "刑事訴訟法第154條（無罪推定原則）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -1873,7 +1827,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第10條（施用，條次待核對）",
+          "ref": "毒品危害防制條例第10條",
           "status": "verified",
           "checks": [
             {
@@ -1910,7 +1864,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第20條（觀察勒戒）",
+          "ref": "毒品危害防制條例第20條",
           "status": "verified",
           "checks": [
             {
@@ -1952,7 +1906,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第154條（證明責任）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -2044,7 +1998,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第10條（施用，條次待核對）",
+          "ref": "毒品危害防制條例第10條",
           "status": "verified",
           "checks": [
             {
@@ -2081,7 +2035,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第158條之4（違法取得證據之衡量，條次待核對）",
+          "ref": "刑事訴訟法第158條之4",
           "status": "verified",
           "checks": [
             {
@@ -2103,7 +2057,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第154條（證明責任）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -2194,7 +2148,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第10條（施用，條次待核對）",
+          "ref": "毒品危害防制條例第10條",
           "status": "verified",
           "checks": [
             {
@@ -2231,7 +2185,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第11條（持有，條次待核對）",
+          "ref": "毒品危害防制條例第11條",
           "status": "verified",
           "checks": [
             {
@@ -2278,7 +2232,7 @@
           "note": null
         },
         {
-          "ref": "刑法第51條（數罪併罰）",
+          "ref": "刑法第51條",
           "status": "verified",
           "checks": [
             {
@@ -2364,7 +2318,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第25條（未遂犯）",
+          "ref": "刑法第25條",
           "status": "verified",
           "checks": [
             {
@@ -2391,7 +2345,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第10條（施用，條次待核對）",
+          "ref": "毒品危害防制條例第10條",
           "status": "verified",
           "checks": [
             {
@@ -2428,7 +2382,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第20條（觀察勒戒）",
+          "ref": "毒品危害防制條例第20條",
           "status": "verified",
           "checks": [
             {
@@ -2525,7 +2479,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第10條（施用，條次待核對）",
+          "ref": "毒品危害防制條例第10條",
           "status": "verified",
           "checks": [
             {
@@ -2562,7 +2516,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第11條（持有，條次待核對）",
+          "ref": "毒品危害防制條例第11條",
           "status": "verified",
           "checks": [
             {
@@ -2609,7 +2563,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第20條（觀察勒戒）",
+          "ref": "毒品危害防制條例第20條",
           "status": "verified",
           "checks": [
             {
@@ -2710,64 +2664,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第4條（數量與法定刑，條次待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "4",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "製造、運輸、販賣第一級毒品者，處死刑或無期徒刑；處無期徒刑者，得併科新臺幣三千萬元以下罰金。\n製造、運輸、販賣第二級毒品者，處無期徒刑或十年以上有期徒刑，得併科新臺幣一千五百萬元以下罰金。\n製造、運輸、販賣第三級毒品者，處七年以上有期徒刑，"
-            }
-          ],
-          "latestAmendmentDate": "2019-12-17",
-          "amendments": [
-            {
-              "article": "4",
-              "date": "1955-05-27",
-              "kind": "制定"
-            },
-            {
-              "article": "4",
-              "date": "1973-06-12",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
-              "date": "1992-07-03",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
-              "date": "1997-10-30",
-              "kind": "全文修正"
-            },
-            {
-              "article": "4",
-              "date": "2003-06-06",
-              "kind": "全文修正"
-            },
-            {
-              "article": "4",
-              "date": "2009-05-05",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
-              "date": "2015-01-23",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
-              "date": "2019-12-17",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "毒品危害防制條例第11條（持有數量，條次待核對）",
+          "ref": "毒品危害防制條例第11條",
           "status": "verified",
           "checks": [
             {
@@ -2814,7 +2711,7 @@
           "note": null
         },
         {
-          "ref": "刑法第57條（量刑審酌）",
+          "ref": "刑法第57條",
           "status": "verified",
           "checks": [
             {
@@ -2896,7 +2793,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第154條（證明責任）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -2933,7 +2830,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第155條（證據裁判，條次待核對）",
+          "ref": "刑事訴訟法第155條",
           "status": "verified",
           "checks": [
             {
@@ -2970,56 +2867,51 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條（數量與法定刑，條次待核對）",
+          "ref": "毒品危害防制條例第9條",
           "status": "verified",
           "checks": [
             {
-              "article": "4",
+              "article": "9",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "製造、運輸、販賣第一級毒品者，處死刑或無期徒刑；處無期徒刑者，得併科新臺幣三千萬元以下罰金。\n製造、運輸、販賣第二級毒品者，處無期徒刑或十年以上有期徒刑，得併科新臺幣一千五百萬元以下罰金。\n製造、運輸、販賣第三級毒品者，處七年以上有期徒刑，"
+              "currentText": "成年人對未成年人販賣毒品或犯前三條之罪者，依各該條項規定加重其刑至二分之一。\n明知為懷胎婦女而對之販賣毒品或犯前三條之罪者，亦同。\n犯前五條之罪而混合二種以上之毒品者，適用其中最高級別毒品之法定刑，並加重其刑至二分之一。"
             }
           ],
           "latestAmendmentDate": "2019-12-17",
           "amendments": [
             {
-              "article": "4",
+              "article": "9",
               "date": "1955-05-27",
               "kind": "制定"
             },
             {
-              "article": "4",
+              "article": "9",
               "date": "1973-06-12",
               "kind": "修正"
             },
             {
-              "article": "4",
+              "article": "9",
               "date": "1992-07-03",
               "kind": "修正"
             },
             {
-              "article": "4",
+              "article": "9",
               "date": "1997-10-30",
               "kind": "全文修正"
             },
             {
-              "article": "4",
+              "article": "9",
               "date": "2003-06-06",
               "kind": "全文修正"
             },
             {
-              "article": "4",
-              "date": "2009-05-05",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
+              "article": "9",
               "date": "2015-01-23",
               "kind": "修正"
             },
             {
-              "article": "4",
+              "article": "9",
               "date": "2019-12-17",
               "kind": "修正"
             }
@@ -3081,56 +2973,46 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第4條（數量與法定刑，條次待核對）",
+          "ref": "毒品危害防制條例第11條",
           "status": "verified",
           "checks": [
             {
-              "article": "4",
+              "article": "11",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "製造、運輸、販賣第一級毒品者，處死刑或無期徒刑；處無期徒刑者，得併科新臺幣三千萬元以下罰金。\n製造、運輸、販賣第二級毒品者，處無期徒刑或十年以上有期徒刑，得併科新臺幣一千五百萬元以下罰金。\n製造、運輸、販賣第三級毒品者，處七年以上有期徒刑，"
+              "currentText": "持有第一級毒品者，處三年以下有期徒刑、拘役或新臺幣三十萬元以下罰金。\n持有第二級毒品者，處二年以下有期徒刑、拘役或新臺幣二十萬元以下罰金。\n持有第一級毒品純質淨重十公克以上者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n持有"
             }
           ],
           "latestAmendmentDate": "2019-12-17",
           "amendments": [
             {
-              "article": "4",
+              "article": "11",
               "date": "1955-05-27",
               "kind": "制定"
             },
             {
-              "article": "4",
-              "date": "1973-06-12",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
+              "article": "11",
               "date": "1992-07-03",
               "kind": "修正"
             },
             {
-              "article": "4",
+              "article": "11",
               "date": "1997-10-30",
               "kind": "全文修正"
             },
             {
-              "article": "4",
+              "article": "11",
               "date": "2003-06-06",
               "kind": "全文修正"
             },
             {
-              "article": "4",
+              "article": "11",
               "date": "2009-05-05",
               "kind": "修正"
             },
             {
-              "article": "4",
-              "date": "2015-01-23",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
+              "article": "11",
               "date": "2019-12-17",
               "kind": "修正"
             }
@@ -3138,7 +3020,7 @@
           "note": null
         },
         {
-          "ref": "刑法第51條（數罪併罰）",
+          "ref": "刑法第51條",
           "status": "verified",
           "checks": [
             {
@@ -3226,7 +3108,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第4條第1項（條次與刑度待核對）",
+          "ref": "毒品危害防制條例第4條第1項",
           "status": "verified",
           "checks": [
             {
@@ -3283,7 +3165,7 @@
           "note": null
         },
         {
-          "ref": "刑法第59條（酌減其刑）",
+          "ref": "刑法第59條",
           "status": "verified",
           "checks": [
             {
@@ -3310,7 +3192,7 @@
           "note": null
         },
         {
-          "ref": "憲法第23條（比例原則）",
+          "ref": "憲法第23條",
           "status": "verified",
           "checks": [
             {
@@ -3387,7 +3269,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第4條第2項（條次與刑度待核對）",
+          "ref": "毒品危害防制條例第4條第2項",
           "status": "verified",
           "checks": [
             {
@@ -3444,7 +3326,7 @@
           "note": null
         },
         {
-          "ref": "刑法第59條（酌減其刑）",
+          "ref": "刑法第59條",
           "status": "verified",
           "checks": [
             {
@@ -3471,7 +3353,7 @@
           "note": null
         },
         {
-          "ref": "刑法第57條（量刑審酌）",
+          "ref": "刑法第57條",
           "status": "verified",
           "checks": [
             {
@@ -3552,7 +3434,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第4條第3項（條次與刑度待核對）",
+          "ref": "毒品危害防制條例第4條第3項",
           "status": "verified",
           "checks": [
             {
@@ -3609,7 +3491,7 @@
           "note": null
         },
         {
-          "ref": "刑法第59條（酌減其刑）",
+          "ref": "刑法第59條",
           "status": "verified",
           "checks": [
             {
@@ -3636,7 +3518,7 @@
           "note": null
         },
         {
-          "ref": "刑法第57條（量刑審酌）",
+          "ref": "刑法第57條",
           "status": "verified",
           "checks": [
             {
@@ -3717,7 +3599,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第4條第4項（條次與刑度待核對）",
+          "ref": "毒品危害防制條例第4條第4項",
           "status": "verified",
           "checks": [
             {
@@ -3774,7 +3656,7 @@
           "note": null
         },
         {
-          "ref": "刑法第59條（酌減其刑）",
+          "ref": "刑法第59條",
           "status": "verified",
           "checks": [
             {
@@ -3801,7 +3683,7 @@
           "note": null
         },
         {
-          "ref": "刑法第74條（緩刑）",
+          "ref": "刑法第74條",
           "status": "verified",
           "checks": [
             {
@@ -3893,7 +3775,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第4條（製造、運輸、販賣，條次待核對）",
+          "ref": "毒品危害防制條例第4條",
           "status": "verified",
           "checks": [
             {
@@ -3950,7 +3832,7 @@
           "note": null
         },
         {
-          "ref": "刑法第51條（數罪併罰）",
+          "ref": "刑法第51條",
           "status": "verified",
           "checks": [
             {
@@ -3982,7 +3864,7 @@
           "note": null
         },
         {
-          "ref": "刑法第55條（想像競合）",
+          "ref": "刑法第55條",
           "status": "verified",
           "checks": [
             {
@@ -4063,15 +3945,44 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例轉讓相關條次（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "毒品危害防制條例第8條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "8",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "轉讓第一級毒品者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n轉讓第二級毒品者，處六月以上五年以下有期徒刑，得併科新臺幣七十萬元以下罰金。\n轉讓第三級毒品者，處三年以下有期徒刑，得併科新臺幣三十萬元以下罰金。\n轉讓第四級毒品"
+            }
+          ],
+          "latestAmendmentDate": "2003-06-06",
+          "amendments": [
+            {
+              "article": "8",
+              "date": "1955-05-27",
+              "kind": "制定"
+            },
+            {
+              "article": "8",
+              "date": "1992-07-03",
+              "kind": "修正"
+            },
+            {
+              "article": "8",
+              "date": "1997-10-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "8",
+              "date": "2003-06-06",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條（販賣相關）",
+          "ref": "毒品危害防制條例第4條",
           "status": "verified",
           "checks": [
             {
@@ -4128,7 +4039,7 @@
           "note": null
         },
         {
-          "ref": "刑法第2條（行為後法律之比較適用）",
+          "ref": "刑法第2條",
           "status": "verified",
           "checks": [
             {
@@ -4213,7 +4124,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第17條（供出毒品來源，條次待核對）",
+          "ref": "毒品危害防制條例第17條",
           "status": "verified",
           "checks": [
             {
@@ -4255,7 +4166,7 @@
           "note": null
         },
         {
-          "ref": "刑法第57條（量刑審酌）",
+          "ref": "刑法第57條",
           "status": "verified",
           "checks": [
             {
@@ -4335,7 +4246,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第17條（因而查獲，條次待核對）",
+          "ref": "毒品危害防制條例第17條",
           "status": "verified",
           "checks": [
             {
@@ -4377,7 +4288,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第154條（證明責任）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -4467,41 +4378,51 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第18條（加重事由，條次待核對）",
+          "ref": "毒品危害防制條例第9條",
           "status": "verified",
           "checks": [
             {
-              "article": "18",
+              "article": "9",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "查獲之第一級、第二級毒品及專供製造或施用第一級、第二級毒品之器具，不問屬於犯罪行為人與否，均沒收銷燬之；查獲之第三級、第四級毒品及製造或施用第三級、第四級毒品之器具，無正當理由而擅自持有者，均沒入銷燬之。但合於醫藥、研究或訓練之用者，得不予"
+              "currentText": "成年人對未成年人販賣毒品或犯前三條之罪者，依各該條項規定加重其刑至二分之一。\n明知為懷胎婦女而對之販賣毒品或犯前三條之罪者，亦同。\n犯前五條之罪而混合二種以上之毒品者，適用其中最高級別毒品之法定刑，並加重其刑至二分之一。"
             }
           ],
           "latestAmendmentDate": "2019-12-17",
           "amendments": [
             {
-              "article": "18",
+              "article": "9",
               "date": "1955-05-27",
               "kind": "制定"
             },
             {
-              "article": "18",
+              "article": "9",
+              "date": "1973-06-12",
+              "kind": "修正"
+            },
+            {
+              "article": "9",
+              "date": "1992-07-03",
+              "kind": "修正"
+            },
+            {
+              "article": "9",
               "date": "1997-10-30",
               "kind": "全文修正"
             },
             {
-              "article": "18",
+              "article": "9",
               "date": "2003-06-06",
               "kind": "全文修正"
             },
             {
-              "article": "18",
-              "date": "2016-05-27",
+              "article": "9",
+              "date": "2015-01-23",
               "kind": "修正"
             },
             {
-              "article": "18",
+              "article": "9",
               "date": "2019-12-17",
               "kind": "修正"
             }
@@ -4509,15 +4430,7 @@
           "note": null
         },
         {
-          "ref": "兒童及少年福利與權益保障法（相關規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "刑法第57條（量刑審酌）",
+          "ref": "刑法第57條",
           "status": "verified",
           "checks": [
             {
@@ -4599,7 +4512,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第51條（數罪併罰）",
+          "ref": "刑法第51條",
           "status": "verified",
           "checks": [
             {
@@ -4631,7 +4544,7 @@
           "note": null
         },
         {
-          "ref": "刑法第55條（想像競合）",
+          "ref": "刑法第55條",
           "status": "verified",
           "checks": [
             {
@@ -4658,7 +4571,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條（販賣，條次待核對）",
+          "ref": "毒品危害防制條例第4條",
           "status": "verified",
           "checks": [
             {
@@ -4771,7 +4684,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第55條（想像競合）",
+          "ref": "刑法第55條",
           "status": "verified",
           "checks": [
             {
@@ -4798,7 +4711,7 @@
           "note": null
         },
         {
-          "ref": "刑法第51條（數罪併罰）",
+          "ref": "刑法第51條",
           "status": "verified",
           "checks": [
             {
@@ -4830,7 +4743,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條與第11條（條次待核對）",
+          "ref": "毒品危害防制條例第4條",
           "status": "verified",
           "checks": [
             {
@@ -4839,13 +4752,6 @@
               "item": null,
               "ok": true,
               "currentText": "製造、運輸、販賣第一級毒品者，處死刑或無期徒刑；處無期徒刑者，得併科新臺幣三千萬元以下罰金。\n製造、運輸、販賣第二級毒品者，處無期徒刑或十年以上有期徒刑，得併科新臺幣一千五百萬元以下罰金。\n製造、運輸、販賣第三級毒品者，處七年以上有期徒刑，"
-            },
-            {
-              "article": "11",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "持有第一級毒品者，處三年以下有期徒刑、拘役或新臺幣三十萬元以下罰金。\n持有第二級毒品者，處二年以下有期徒刑、拘役或新臺幣二十萬元以下罰金。\n持有第一級毒品純質淨重十公克以上者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n持有"
             }
           ],
           "latestAmendmentDate": "2019-12-17",
@@ -4889,7 +4795,24 @@
               "article": "4",
               "date": "2019-12-17",
               "kind": "修正"
-            },
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "毒品危害防制條例第11條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "11",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "持有第一級毒品者，處三年以下有期徒刑、拘役或新臺幣三十萬元以下罰金。\n持有第二級毒品者，處二年以下有期徒刑、拘役或新臺幣二十萬元以下罰金。\n持有第一級毒品純質淨重十公克以上者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n持有"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-17",
+          "amendments": [
             {
               "article": "11",
               "date": "1955-05-27",
@@ -4980,15 +4903,81 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "通訊保障及監察法（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "通訊保障及監察法第5條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "5",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有事實足認被告或犯罪嫌疑人有下列各款罪嫌之一，並危害國家安全、經濟秩序或社會秩序情節重大，而有相當理由可信其通訊內容與本案有關，且不能或難以其他方法蒐集或調查證據者，得發通訊監察書：\n一、最輕本刑為三年以上有期徒刑之罪。\n二、刑法第一百條第"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-12",
+          "amendments": [
+            {
+              "article": "5",
+              "date": "1999-06-22",
+              "kind": "制定"
+            },
+            {
+              "article": "5",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "5",
+              "date": "2007-06-15",
+              "kind": "修正"
+            },
+            {
+              "article": "5",
+              "date": "2014-01-14",
+              "kind": "修正"
+            },
+            {
+              "article": "5",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "5",
+              "date": "2024-07-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         },
         {
-          "ref": "刑事訴訟法第158條之4（違法取得證據之衡量，條次待核對）",
+          "ref": "通訊保障及監察法第13條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "通訊監察以截收、監聽、錄音、錄影、攝影、開拆、檢查、影印或其他類似之必要方法為之。但不得於私人住宅裝置竊聽器、錄影設備或其他監察器材。\n執行通訊監察，除經依法處置者外，應維持通訊暢通。\n執行機關除有正當理由者外，應至少每三日派員取回監錄內容"
+            }
+          ],
+          "latestAmendmentDate": "2014-01-14",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1999-06-22",
+              "kind": "制定"
+            },
+            {
+              "article": "13",
+              "date": "2014-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第158條之4",
           "status": "verified",
           "checks": [
             {
@@ -5010,7 +4999,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第154條（證明責任）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -5102,7 +5091,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第154條（證明責任）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -5139,7 +5128,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第155條（證據裁判，條次待核對）",
+          "ref": "刑事訴訟法第155條",
           "status": "verified",
           "checks": [
             {
@@ -5176,7 +5165,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條（販賣，條次待核對）",
+          "ref": "毒品危害防制條例第4條",
           "status": "verified",
           "checks": [
             {
@@ -5288,7 +5277,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第154條（證明責任）",
+          "ref": "刑事訴訟法第154條",
           "status": "verified",
           "checks": [
             {
@@ -5325,7 +5314,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第155條（證據裁判，條次待核對）",
+          "ref": "刑事訴訟法第155條",
           "status": "verified",
           "checks": [
             {
@@ -5362,56 +5351,46 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條（數量與法定刑，條次待核對）",
+          "ref": "毒品危害防制條例第11條",
           "status": "verified",
           "checks": [
             {
-              "article": "4",
+              "article": "11",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "製造、運輸、販賣第一級毒品者，處死刑或無期徒刑；處無期徒刑者，得併科新臺幣三千萬元以下罰金。\n製造、運輸、販賣第二級毒品者，處無期徒刑或十年以上有期徒刑，得併科新臺幣一千五百萬元以下罰金。\n製造、運輸、販賣第三級毒品者，處七年以上有期徒刑，"
+              "currentText": "持有第一級毒品者，處三年以下有期徒刑、拘役或新臺幣三十萬元以下罰金。\n持有第二級毒品者，處二年以下有期徒刑、拘役或新臺幣二十萬元以下罰金。\n持有第一級毒品純質淨重十公克以上者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n持有"
             }
           ],
           "latestAmendmentDate": "2019-12-17",
           "amendments": [
             {
-              "article": "4",
+              "article": "11",
               "date": "1955-05-27",
               "kind": "制定"
             },
             {
-              "article": "4",
-              "date": "1973-06-12",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
+              "article": "11",
               "date": "1992-07-03",
               "kind": "修正"
             },
             {
-              "article": "4",
+              "article": "11",
               "date": "1997-10-30",
               "kind": "全文修正"
             },
             {
-              "article": "4",
+              "article": "11",
               "date": "2003-06-06",
               "kind": "全文修正"
             },
             {
-              "article": "4",
+              "article": "11",
               "date": "2009-05-05",
               "kind": "修正"
             },
             {
-              "article": "4",
-              "date": "2015-01-23",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
+              "article": "11",
               "date": "2019-12-17",
               "kind": "修正"
             }
@@ -5474,7 +5453,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第29條（教唆犯）",
+          "ref": "刑法第29條",
           "status": "verified",
           "checks": [
             {
@@ -5501,7 +5480,44 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第10條（施用，條次待核對）",
+          "ref": "毒品危害防制條例第7條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "7",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "引誘他人施用第一級毒品者，處三年以上十年以下有期徒刑，得併科新臺幣三百萬元以下罰金。\n引誘他人施用第二級毒品者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n引誘他人施用第三級毒品者，處六月以上五年以下有期徒刑，得併科新臺幣七"
+            }
+          ],
+          "latestAmendmentDate": "2003-06-06",
+          "amendments": [
+            {
+              "article": "7",
+              "date": "1955-05-27",
+              "kind": "制定"
+            },
+            {
+              "article": "7",
+              "date": "1992-07-03",
+              "kind": "修正"
+            },
+            {
+              "article": "7",
+              "date": "1997-10-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "7",
+              "date": "2003-06-06",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "毒品危害防制條例第10條",
           "status": "verified",
           "checks": [
             {
@@ -5536,14 +5552,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "毒品危害防制條例教唆、引誘施用相關條次（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -5601,7 +5609,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第28條（共同正犯）",
+          "ref": "刑法第28條",
           "status": "verified",
           "checks": [
             {
@@ -5628,7 +5636,7 @@
           "note": null
         },
         {
-          "ref": "刑法第30條（幫助犯）",
+          "ref": "刑法第30條",
           "status": "verified",
           "checks": [
             {
@@ -5655,7 +5663,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第10條（施用，條次待核對）",
+          "ref": "毒品危害防制條例第10條",
           "status": "verified",
           "checks": [
             {
@@ -5748,7 +5756,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第51條（數罪併罰）",
+          "ref": "刑法第51條",
           "status": "verified",
           "checks": [
             {
@@ -5780,7 +5788,7 @@
           "note": null
         },
         {
-          "ref": "刑法第55條（想像競合）",
+          "ref": "刑法第55條",
           "status": "verified",
           "checks": [
             {
@@ -5807,7 +5815,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條與第10條（條次待核對）",
+          "ref": "毒品危害防制條例第4條",
           "status": "verified",
           "checks": [
             {
@@ -5816,13 +5824,6 @@
               "item": null,
               "ok": true,
               "currentText": "製造、運輸、販賣第一級毒品者，處死刑或無期徒刑；處無期徒刑者，得併科新臺幣三千萬元以下罰金。\n製造、運輸、販賣第二級毒品者，處無期徒刑或十年以上有期徒刑，得併科新臺幣一千五百萬元以下罰金。\n製造、運輸、販賣第三級毒品者，處七年以上有期徒刑，"
-            },
-            {
-              "article": "10",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "施用第一級毒品者，處六月以上五年以下有期徒刑。\n施用第二級毒品者，處三年以下有期徒刑。"
             }
           ],
           "latestAmendmentDate": "2019-12-17",
@@ -5866,7 +5867,24 @@
               "article": "4",
               "date": "2019-12-17",
               "kind": "修正"
-            },
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "毒品危害防制條例第10條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "施用第一級毒品者，處六月以上五年以下有期徒刑。\n施用第二級毒品者，處三年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2003-06-06",
+          "amendments": [
             {
               "article": "10",
               "date": "1955-05-27",
@@ -5946,7 +5964,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第51條（數罪併罰）",
+          "ref": "刑法第51條",
           "status": "verified",
           "checks": [
             {
@@ -5978,7 +5996,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第10條（施用，條次待核對）",
+          "ref": "毒品危害防制條例第10條",
           "status": "verified",
           "checks": [
             {
@@ -6015,7 +6033,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第20條（觀察勒戒）",
+          "ref": "毒品危害防制條例第20條",
           "status": "verified",
           "checks": [
             {
@@ -6112,7 +6130,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第25條第2項（未遂之減輕）",
+          "ref": "刑法第25條第2項",
           "status": "verified",
           "checks": [
             {
@@ -6139,7 +6157,7 @@
           "note": null
         },
         {
-          "ref": "刑法第59條（酌減其刑）",
+          "ref": "刑法第59條",
           "status": "verified",
           "checks": [
             {
@@ -6166,7 +6184,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條（販賣，條次待核對）",
+          "ref": "毒品危害防制條例第4條",
           "status": "verified",
           "checks": [
             {

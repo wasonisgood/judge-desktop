@@ -43,19 +43,90 @@
         {
           "period": "修法前後之早期實務",
           "view": "多以行為人之層層轉帳、即時提領、將款項交付他人等客觀樣態，推認具有隱匿或掩飾之意圖，較少審查遮斷效果是否實際達成。",
-          "note": "派別未形成定論（待核對）。"
+          "note": "派別未形成定論。"
         },
         {
           "period": "近期實務",
           "view": "傾向以資金流向是否斷裂、所得是否仍可被追蹤，作為判斷本款是否成立之依據，並分別說明隱匿與掩飾之認定。",
-          "note": "（待核對）實務見解之具體判決請逐案查證，本條目未列判決字號。"
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
         "洗錢防制法第 2 條第 1 款",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條第 1 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 1,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-059",
@@ -97,19 +168,90 @@
         {
           "period": "早期實務",
           "view": "多以行為是否足以使所得之流向難以查知作為判斷，對於妨礙結果之實際發生較少逐一審查。",
-          "note": "偏向抽象危險之寬鬆理解（待核對）。"
+          "note": "偏向抽象危險之寬鬆理解。"
         },
         {
           "period": "近期實務",
           "view": "對於行為是否「確有妨礙之適性」會具體說明，並結合偵查機關之查扣或凍結情況判斷。",
-          "note": "派別仍有分歧，逐案須查證（待核對）。"
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
         "洗錢防制法第 2 條第 2 款",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條第 2 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 2,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-060",
@@ -151,14 +293,80 @@
         {
           "period": "近年實務",
           "view": "多依行為人之身分背景、報酬高低、領款方式、與對方之聯繫情況等間接事實，推認其有未必故意。",
-          "note": "派別以未必故意為主流見解，但個案差異大（待核對）。"
+          "note": "派別以未必故意為主流見解，但個案差異大。"
         }
       ],
       "lawRefs": [
         "洗錢防制法第 2 條第 3 款",
         "刑法第 13 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條第 3 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 3,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-061",
@@ -200,14 +408,85 @@
         {
           "period": "近期實務",
           "view": "多以行為人是否實際提領、轉交或依指示處分款項，作為認定持有、使用之依據；對單純入帳則較為保守。",
-          "note": "（待核對）派別以個案事實為準。"
+          "note": "派別以個案事實為準。"
         }
       ],
       "lawRefs": [
         "洗錢防制法第 2 條第 3 款",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條第 3 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 3,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-062",
@@ -249,7 +528,7 @@
         {
           "period": "近年實務",
           "view": "多依行為人在集團中之分工與知悉程度，分別認定為正犯、共犯或幫助犯，並就洗錢與詐欺之罪數作個案判斷。",
-          "note": "派別未統一，細節以個案為準（待核對）。"
+          "note": "派別未統一，細節以個案為準。"
         }
       ],
       "lawRefs": [
@@ -257,7 +536,105 @@
         "洗錢防制法第 19 條",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-063",
@@ -298,8 +675,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "多數情形以單一洗錢行為論為一罪，並就其所符合之款項於量刑中綜合評價（待核對）。",
-          "note": "派別是否穩定須逐案查證。"
+          "view": "多數情形以單一洗錢行為論為一罪，並就其所符合之款項於量刑中綜合評價。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -307,7 +684,105 @@
         "刑法第 55 條",
         "刑法第 57 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-064",
@@ -348,8 +823,8 @@
       "practice": [
         {
           "period": "修法後實務",
-          "view": "就金額分級之計算，實務以行為人參與之金額為基礎，並考量其在整體犯罪中之地位（待核對）。",
-          "note": "（待核對）確切金額分界與施行日，請依現行條文與最新修法查證。"
+          "view": "就金額分級之計算，實務以行為人參與之金額為基礎，並考量其在整體犯罪中之地位。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -357,7 +832,105 @@
         "洗錢防制法第 19 條",
         "刑法第 57 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-065",
@@ -398,15 +971,71 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "多數案件以既遂論處，對於未遂之認定較為謹慎，僅於行為確未造成任何追查妨礙時方論未遂（待核對）。",
-          "note": "派別未完全明確，逐案查證。"
+          "view": "多數案件以既遂論處，對於未遂之認定較為謹慎。",
+          "note": "依洗錢防制法第19條第2項，洗錢未遂行為罰之（工具查得之現行條文）。"
         }
       ],
       "lawRefs": [
         "洗錢防制法第 19 條",
         "刑法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-066",
@@ -448,14 +1077,105 @@
         {
           "period": "修法前後實務",
           "view": "實務以條文所定之門檻與列舉罪名作為判斷基礎，對於門檻之計算多依現行條文逐罪比對。",
-          "note": "（待核對）門檻標準於歷次修法之具體內容，請依修正前後條文查證。"
+          "note": "洗錢防制法第3條自1996年制定後歷經多次修正（2016-12-09、2024-07-16等全文修正）；2016-12-09全文修正依修正理由，將特定犯罪之最輕本刑門檻由五年以上有期徒刑改為六月以上有期徒刑。"
         }
       ],
       "lawRefs": [
         "洗錢防制法第 3 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱特定犯罪，指下列各款之罪：\n一、最輕本刑為六月以上有期徒刑之罪。\n二、刑法第一百二十一條、第一百二十三條、第二百零一條之一第二項、第二百三十一條、第二百三十三條第一項、第二百三十五條第一項、第二項、第二百六十六條第一項、第二項、第二"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2008-05-23",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-067",
@@ -496,16 +1216,154 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "多以條文明文列舉之罪名為基礎，對於特別法是否屬特定犯罪，會逐一檢視其法定刑及是否列於條文中（待核對）。",
-          "note": "派別仍須依個案與最新條文查證。"
+          "view": "多以條文明文列舉之罪名為基礎，對於特別法是否屬特定犯罪，會逐一檢視其法定刑及是否列於條文中。",
+          "note": "洗錢防制法第3條第1款以最輕本刑為準，第2款至第21款則以條文列舉之罪名為準（列舉者包括稅捐稽徵法第41條、證券交易法第172條等）。"
         }
       ],
       "lawRefs": [
         "洗錢防制法第 3 條",
-        "稅捐稽徵法",
-        "證券交易法"
+        "稅捐稽徵法第 41 條",
+        "證券交易法第 172 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱特定犯罪，指下列各款之罪：\n一、最輕本刑為六月以上有期徒刑之罪。\n二、刑法第一百二十一條、第一百二十三條、第二百零一條之一第二項、第二百三十一條、第二百三十三條第一項、第二百三十五條第一項、第二項、第二百六十六條第一項、第二項、第二"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2008-05-23",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "稅捐稽徵法第 41 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "納稅義務人以詐術或其他不正當方法逃漏稅捐者，處五年以下有期徒刑，併科新臺幣一千萬元以下罰金。\n犯前項之罪，個人逃漏稅額在新臺幣一千萬元以上，營利事業逃漏稅額在新臺幣五千萬元以上者，處一年以上七年以下有期徒刑，併科新臺幣一千萬元以上一億元以下"
+            }
+          ],
+          "latestAmendmentDate": "2021-11-30",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1976-10-12",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "1990-01-16",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2021-11-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "證券交易法第 172 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "172",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "證券交易所之董事、監察人或受僱人，對於職務上之行為，要求期約或收受不正利益者，處五年以下有期徒刑、拘役或科或併科新臺幣二百四十萬元以下罰金。\n前項人員對於違背職務之行為，要求期約或收受不正利益者，處七年以下有期徒刑，得併科新臺幣三百萬元以下"
+            }
+          ],
+          "latestAmendmentDate": "2017-12-29",
+          "amendments": [
+            {
+              "article": "172",
+              "date": "1968-04-16",
+              "kind": "制定"
+            },
+            {
+              "article": "172",
+              "date": "1988-01-12",
+              "kind": "修正"
+            },
+            {
+              "article": "172",
+              "date": "2000-06-30",
+              "kind": "修正"
+            },
+            {
+              "article": "172",
+              "date": "2005-12-20",
+              "kind": "修正"
+            },
+            {
+              "article": "172",
+              "date": "2017-12-29",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-068",
@@ -546,8 +1404,8 @@
       "practice": [
         {
           "period": "近年實務",
-          "view": "多要求前置犯罪有實際之不法所得存在，方能認定洗錢之對象存在；未遂情形則個案審酌（待核對）。",
-          "note": "派別仍須逐案查證。"
+          "view": "多要求前置犯罪有實際之不法所得存在，方能認定洗錢之對象存在；未遂情形則個案審酌。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -555,7 +1413,125 @@
         "洗錢防制法第 19 條",
         "刑法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱特定犯罪，指下列各款之罪：\n一、最輕本刑為六月以上有期徒刑之罪。\n二、刑法第一百二十一條、第一百二十三條、第二百零一條之一第二項、第二百三十一條、第二百三十三條第一項、第二百三十五條第一項、第二項、第二百六十六條第一項、第二項、第二"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2008-05-23",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-069",
@@ -596,8 +1572,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "於跨境詐欺案件中，多著重於境外前置犯罪之存在及洗錢行為於我國境內之實施情形（待核對）。",
-          "note": "（待核對）雙重可罰之要求在實務上之具體程度，請逐案查證。"
+          "view": "於跨境詐欺案件中，多著重於境外前置犯罪之存在及洗錢行為於我國境內之實施情形。",
+          "note": "洗錢防制法第23條第5項規定，第19條之罪不以特定犯罪之行為或結果在中華民國領域內為必要，但該特定犯罪依行為地之法律不罰者，不在此限。"
         }
       ],
       "lawRefs": [
@@ -605,7 +1581,135 @@
         "刑法第 3 條",
         "刑法第 5 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱特定犯罪，指下列各款之罪：\n一、最輕本刑為六月以上有期徒刑之罪。\n二、刑法第一百二十一條、第一百二十三條、第二百零一條之一第二項、第二百三十一條、第二百三十三條第一項、第二百三十五條第一項、第二項、第二百六十六條第一項、第二項、第二"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2008-05-23",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法於在中華民國領域內犯罪者，適用之。在中華民國領域外之中華民國船艦或航空器內犯罪者，以在中華民國領域內犯罪論。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 5 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "5",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法於凡在中華民國領域外犯下列各罪者，適用之：\n一、內亂罪。\n二、外患罪。\n三、第一百三十五條、第一百三十六條及第一百三十八條之妨害公務罪。\n四、第一百八十五條之一及第一百八十五條之二之公共危險罪。\n五、偽造貨幣罪。\n六、第二百零一條至第二"
+            }
+          ],
+          "latestAmendmentDate": "2016-11-15",
+          "amendments": [
+            {
+              "article": "5",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "5",
+              "date": "1948-10-26",
+              "kind": "修正"
+            },
+            {
+              "article": "5",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "5",
+              "date": "2016-11-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-070",
@@ -646,8 +1750,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "多數案件承認第三人得構成洗錢罪，但須就其對所得來源之認識與處分情形個案判斷（待核對）。",
-          "note": "派別以文義為主，細節逐案查證。"
+          "view": "多數案件承認第三人得構成洗錢罪，但須就其對所得來源之認識與處分情形個案判斷。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -655,7 +1759,105 @@
         "洗錢防制法第 19 條",
         "刑法第 28 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條第 3 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 3,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-071",
@@ -696,8 +1898,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "多數見解認為前置犯罪之事實只需經證明存在即可，不以前置犯罪須經有罪判決為必要（待核對）。",
-          "note": "派別仍須依個案查證。"
+          "view": "多數見解認為前置犯罪之事實只需經證明存在即可，不以前置犯罪須經有罪判決為必要。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -705,7 +1907,130 @@
         "洗錢防制法第 19 條",
         "刑事訴訟法第 302 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱特定犯罪，指下列各款之罪：\n一、最輕本刑為六月以上有期徒刑之罪。\n二、刑法第一百二十一條、第一百二十三條、第二百零一條之一第二項、第二百三十一條、第二百三十三條第一項、第二百三十五條第一項、第二項、第二百六十六條第一項、第二項、第二"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2008-05-23",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 302 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "302",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "案件有左列情形之一者，應諭知免訴之判決：\n一、曾經判決確定者。\n二、時效已完成者。\n三、曾經大赦者。\n四、犯罪後之法律已廢止其刑罰者。"
+            }
+          ],
+          "latestAmendmentDate": "1967-01-13",
+          "amendments": [
+            {
+              "article": "302",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "302",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "302",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-072",
@@ -746,8 +2071,8 @@
       "practice": [
         {
           "period": "修法後實務",
-          "view": "實務一般依刑法第2條之比較適用原則，就洗錢行為之可罰性及法定刑進行新舊法比較（待核對）。",
-          "note": "（待核對）個案之比較結論，請依實際修法內容與施行日查證。"
+          "view": "實務一般依刑法第2條之比較適用原則，就洗錢行為之可罰性及法定刑進行新舊法比較。",
+          "note": "洗錢防制法第3條與第19條分別於2016-12-09、2024-07-16全文修正；新舊法比較須依各次修正之條文內容與施行時點判斷。"
         }
       ],
       "lawRefs": [
@@ -755,7 +2080,130 @@
         "洗錢防制法第 3 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。\n沒收、非拘束人身自由之保安處分適用裁判時之法律。\n處罰或保安處分之裁判確定後，未執行或執行未完畢，而法律有變更，不處罰其行為或不施以保安處分者，"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱特定犯罪，指下列各款之罪：\n一、最輕本刑為六月以上有期徒刑之罪。\n二、刑法第一百二十一條、第一百二十三條、第二百零一條之一第二項、第二百三十一條、第二百三十三條第一項、第二百三十五條第一項、第二項、第二百六十六條第一項、第二項、第二"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2008-05-23",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-073",
@@ -796,8 +2244,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務之見解分歧，多依免刑事由之性質與個案情況判斷前置犯罪所得是否仍屬洗錢之客體（待核對）。",
-          "note": "派別未統一，逐案查證。"
+          "view": "實務之見解分歧，多依免刑事由之性質與個案情況判斷前置犯罪所得是否仍屬洗錢之客體。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -805,7 +2253,125 @@
         "洗錢防制法第 3 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 62 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "62",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於未發覺之罪自首而受裁判者，得減輕其刑。但有特別規定者，依其規定。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "62",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "62",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱特定犯罪，指下列各款之罪：\n一、最輕本刑為六月以上有期徒刑之罪。\n二、刑法第一百二十一條、第一百二十三條、第二百零一條之一第二項、第二百三十一條、第二百三十三條第一項、第二百三十五條第一項、第二項、第二百六十六條第一項、第二項、第二"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2008-05-23",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-074",
@@ -846,8 +2412,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "多依沒收之計算原則與個案事實，就所得金額作認定；對於成本之扣除，依證據狀況斟酌（待核對）。",
-          "note": "派別未統一，請逐案查證。"
+          "view": "多依沒收之計算原則與個案事實，就所得金額作認定；對於成本之扣除，依證據狀況斟酌。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -855,7 +2421,100 @@
         "刑法第 38 條之 1",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 38 條之 1",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "38-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "38-1",
+              "date": "2015-12-17",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-075",
@@ -896,7 +2555,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多數以是否能追蹤至原犯罪所得為判斷基礎，對於替代物之追蹤與金額之計算個案認定（待核對）。",
+          "view": "實務多數以是否能追蹤至原犯罪所得為判斷基礎，對於替代物之追蹤與金額之計算個案認定。",
           "note": "派別以追蹤可能性為核心。"
         }
       ],
@@ -905,7 +2564,100 @@
         "刑法第 38 條之 1",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 38 條之 1",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "38-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "38-1",
+              "date": "2015-12-17",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-076",
@@ -946,8 +2698,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "多以詐欺取財既遂後行為人所取得之款項，作為洗錢之客體，並就款項來源之認定予以論述（待核對）。",
-          "note": "派別仍以多數見解為準，逐案查證。"
+          "view": "多以詐欺取財既遂後行為人所取得之款項，作為洗錢之客體，並就款項來源之認定予以論述。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -955,7 +2707,105 @@
         "刑法第 339 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以詐術使人將本人或第三人之物交付者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n以前項方法得財產上不法之利益或使第三人得之者，亦同。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-077",
@@ -996,7 +2846,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "多以實際取得之財物或財產上利益作為洗錢客體，對於僅有承諾報酬之情形，依個案判斷是否已實際取得（待核對）。",
+          "view": "多以實際取得之財物或財產上利益作為洗錢客體，對於僅有承諾報酬之情形，依個案判斷是否已實際取得。",
           "note": "派別以實際取得為基本立場。"
         }
       ],
@@ -1005,7 +2855,105 @@
         "洗錢防制法第 19 條",
         "刑法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-078",
@@ -1046,8 +2994,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多要求證明不法所得之金額與來源，對於無法區分之混同財產，個案判斷是否以全額或比例計算（待核對）。",
-          "note": "派別未統一，逐案查證。"
+          "view": "實務多要求證明不法所得之金額與來源，對於無法區分之混同財產，個案判斷是否以全額或比例計算。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1055,7 +3003,100 @@
         "洗錢防制法第 19 條",
         "刑法第 38 條之 1"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 38 條之 1",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "38-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "38-1",
+              "date": "2015-12-17",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-079",
@@ -1102,8 +3143,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務上對於自洗錢之可罰性見解分歧，有承認另論洗錢罪者，亦有認為不另罰者，常依行為之複雜度與追查障礙之程度作個案區分（待核對）。",
-          "note": "派別未統一，請以最新裁判與修法後之條文查證。"
+          "view": "實務上對於自洗錢之可罰性見解分歧，有承認另論洗錢罪者，亦有認為不另罰者，常依行為之複雜度與追查障礙之程度作個案區分。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1111,7 +3152,105 @@
         "洗錢防制法第 19 條",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-080",
@@ -1152,7 +3291,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務雖多以洗錢罪保護獨立法益為前提，但對於是否屬不罰之後行為，常依個案之妨礙程度判斷（待核對）。",
+          "view": "實務雖多以洗錢罪保護獨立法益為前提，但對於是否屬不罰之後行為，常依個案之妨礙程度判斷。",
           "note": "派別未完全統一。"
         }
       ],
@@ -1160,7 +3299,78 @@
         "洗錢防制法第 2 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-081",
@@ -1201,8 +3411,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多數不以自我保護為由直接阻卻責任，但在量刑時會考量行為動機與程度（待核對）。",
-          "note": "派別以否定說為主流，細節逐案查證。"
+          "view": "實務多數不以自我保護為由直接阻卻責任，但在量刑時會考量行為動機與程度。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1210,7 +3420,90 @@
         "刑法第 19 條",
         "刑法第 57 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-082",
@@ -1251,15 +3544,71 @@
       "practice": [
         {
           "period": "修法前後實務",
-          "view": "舊法時期之條文曾明定洗錢罪之宣告刑不得超過前置犯罪之最重本刑；修法後條文內容是否延續此一限制，應依現行條文查證（待核對）。",
-          "note": "（待核對）請以現行條文之科刑限制規定為準。"
+          "view": "依2016-12-09全文修正之修正理由，該次修法增訂洗錢罪之宣告刑不得超過特定犯罪罪名法定最重本刑之規定；依工具查得之現行第19條條文，科刑規定未見此項限制，應以現行條文為準。",
+          "note": "現行第19條條文中未見宣告刑上限之規定。"
         }
       ],
       "lawRefs": [
         "洗錢防制法第 19 條",
         "刑法第 57 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-083",
@@ -1300,7 +3649,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多依各人於犯罪計畫中之角色與是否實際參與洗錢行為，分別認定共同正犯或幫助犯之範圍（待核對）。",
+          "view": "實務多依各人於犯罪計畫中之角色與是否實際參與洗錢行為，分別認定共同正犯或幫助犯之範圍。",
           "note": "派別以個案分工為準。"
         }
       ],
@@ -1309,7 +3658,90 @@
         "刑法第 30 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 30 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-084",
@@ -1350,8 +3782,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務上通常依條文要件判斷是否減刑，並就自白與繳交所得之時點與完整程度審查（待核對）。",
-          "note": "條次與要件以現行條文為準，請查證。"
+          "view": "依現行第23條第3項，在偵查及歷次審判中均自白，且有所得並自動繳交全部所得財物者，減輕其刑；並因而使司法警察機關或檢察官得以扣押全部洗錢之財物或財產上利益，或查獲其他正犯或共犯者，減輕或免除其刑。2024-07-16全文修正新增「自動繳交全部所得財物」之減刑要件。實務上通常依條文要件判斷是否減刑，並就自白與繳交所得之完整程度予以審查。",
+          "note": "條次與要件以現行第23條為準。"
         }
       ],
       "lawRefs": [
@@ -1359,7 +3791,90 @@
         "洗錢防制法第 19 條",
         "刑法第 66 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "法人之代表人、代理人、受僱人或其他從業人員，因執行業務犯前四條之罪者，除處罰行為人外，對該法人並科以十倍以下之罰金。但法人之代表人或自然人對於犯罪之發生，已盡力為防止行為者，不在此限。\n犯第十九條至第二十一條之罪，於犯罪後自首，如有所得並自"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "23",
+              "date": "2018-11-02",
+              "kind": "修正"
+            },
+            {
+              "article": "23",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 66 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "66",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有期徒刑、拘役、罰金減輕者，減輕其刑至二分之一。但同時有免除其刑之規定者，其減輕得減至三分之二。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "66",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-085",
@@ -1400,7 +3915,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多要求證明前置犯罪之存在與犯罪所得之來源具有合理之依據，對於具體罪名與細節之證明程度，依個案判斷（待核對）。",
+          "view": "實務多要求證明前置犯罪之存在與犯罪所得之來源具有合理之依據，對於具體罪名與細節之證明程度，依個案判斷。",
           "note": "派別以個案證據為準。"
         }
       ],
@@ -1408,7 +3923,73 @@
         "刑事訴訟法第 154 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑事訴訟法第 154 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "154",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "被告未經審判證明有罪確定前，推定其為無罪。\n犯罪事實應依證據認定之，無證據不得認定犯罪事實。"
+            }
+          ],
+          "latestAmendmentDate": "2003-01-14",
+          "amendments": [
+            {
+              "article": "154",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "154",
+              "date": "2003-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-086",
@@ -1449,7 +4030,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多採獨立認定之立場，允許法院就前置犯罪之事實予以認定，惟需有相當之證據支持（待核對）。",
+          "view": "實務多採獨立認定之立場，允許法院就前置犯罪之事實予以認定，惟需有相當之證據支持。",
           "note": "派別仍以個案為準。"
         }
       ],
@@ -1457,7 +4038,73 @@
         "洗錢防制法第 19 條",
         "刑事訴訟法第 154 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 154 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "154",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "被告未經審判證明有罪確定前，推定其為無罪。\n犯罪事實應依證據認定之，無證據不得認定犯罪事實。"
+            }
+          ],
+          "latestAmendmentDate": "2003-01-14",
+          "amendments": [
+            {
+              "article": "154",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "154",
+              "date": "2003-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-087",
@@ -1498,8 +4145,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務於詐欺類案件中，多以前置犯罪之類型及所得來源之事實，概括認定其屬特定犯罪（待核對）。",
-          "note": "派別仍以概括認定為主流，須逐案查證。"
+          "view": "實務於詐欺類案件中，多以前置犯罪之類型及所得來源之事實，概括認定其屬特定犯罪。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1507,7 +4154,135 @@
         "洗錢防制法第 19 條",
         "刑事訴訟法第 154 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 3 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本法所稱特定犯罪，指下列各款之罪：\n一、最輕本刑為六月以上有期徒刑之罪。\n二、刑法第一百二十一條、第一百二十三條、第二百零一條之一第二項、第二百三十一條、第二百三十三條第一項、第二百三十五條第一項、第二項、第二百六十六條第一項、第二項、第二"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2006-05-05",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2008-05-23",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2009-05-19",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-03-25",
+              "kind": "修正"
+            },
+            {
+              "article": "3",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "3",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 154 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "154",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "被告未經審判證明有罪確定前，推定其為無罪。\n犯罪事實應依證據認定之，無證據不得認定犯罪事實。"
+            }
+          ],
+          "latestAmendmentDate": "2003-01-14",
+          "amendments": [
+            {
+              "article": "154",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "154",
+              "date": "2003-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-088",
@@ -1548,8 +4323,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多以被害款項之流向、帳戶往來與詐欺手法之整體事實，判斷前置事實之存在，並就個別款項之來源作必要之認定（待核對）。",
-          "note": "派別以整體認定為主，具體程度逐案查證。"
+          "view": "實務多以被害款項之流向、帳戶往來與詐欺手法之整體事實，判斷前置事實之存在，並就個別款項之來源作必要之認定。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1557,7 +4332,105 @@
         "洗錢防制法第 19 條",
         "刑法第 339 條之 4"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條第 3 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 3,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 4",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第三百三十九條詐欺罪而有下列情形之一者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金：\n一、冒用政府機關或公務員名義犯之。\n二、三人以上共同犯之。\n三、以廣播電視、電子通訊、網際網路或其他媒體等傳播工具，對公眾散布而犯之。\n四、以電"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-089",
@@ -1598,7 +4471,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多依洗錢行為之次數與資金流轉之獨立性認定罪數，對於單一行為涵蓋多來源之情形，多論為一罪（待核對）。",
+          "view": "實務多依洗錢行為之次數與資金流轉之獨立性認定罪數，對於單一行為涵蓋多來源之情形，多論為一罪。",
           "note": "派別仍須個案判斷。"
         }
       ],
@@ -1607,7 +4480,95 @@
         "刑法第 50 條",
         "刑法第 51 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 50 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 51 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-090",
@@ -1648,8 +4609,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多要求檢察官就前置犯罪之事實負實質之證明責任，但允許法院就被告所提之來源說明予以審酌，綜合判斷（待核對）。",
-          "note": "派別以綜合判斷為準，請逐案查證。"
+          "view": "實務多要求檢察官就前置犯罪之事實負實質之證明責任，但允許法院就被告所提之來源說明予以審酌，綜合判斷。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1657,7 +4618,115 @@
         "刑事訴訟法第 154 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑事訴訟法第 161 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "161",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "檢察官就被告犯罪事實，應負舉證責任，並指出證明之方法。\n法院於第一次審判期日前，認為檢察官指出之證明方法顯不足認定被告有成立犯罪之可能時，應以裁定定期通知檢察官補正；逾期未補正者，得以裁定駁回起訴。\n駁回起訴之裁定已確定者，非有第二百六十條"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-30",
+          "amendments": [
+            {
+              "article": "161",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "161",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "161",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "161",
+              "date": "2002-01-17",
+              "kind": "修正"
+            },
+            {
+              "article": "161",
+              "date": "2023-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 154 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "154",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "被告未經審判證明有罪確定前，推定其為無罪。\n犯罪事實應依證據認定之，無證據不得認定犯罪事實。"
+            }
+          ],
+          "latestAmendmentDate": "2003-01-14",
+          "amendments": [
+            {
+              "article": "154",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "154",
+              "date": "2003-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-091",
@@ -1698,8 +4767,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務上對於收受、搬運犯罪所得之案件，常就贓物罪與洗錢罪之關係予以論述，多數見解認為可依個案之行為態樣判斷（待核對）。",
-          "note": "派別未完全統一，逐案查證。"
+          "view": "實務上對於收受、搬運犯罪所得之案件，常就贓物罪與洗錢罪之關係予以論述，多數見解認為可依個案之行為態樣判斷。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1707,7 +4776,90 @@
         "洗錢防制法第 19 條",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 349 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "349",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "收受、搬運、寄藏、故買贓物或媒介者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n因贓物變得之財物，以贓物論。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "349",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "349",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-092",
@@ -1748,8 +4900,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務上對於隱匿犯罪所得是否另構成湮滅證據罪，常依隱匿之標的與目的個案判斷（待核對）。",
-          "note": "派別未統一，請逐案查證。"
+          "view": "實務上對於隱匿犯罪所得是否另構成湮滅證據罪，常依隱匿之標的與目的個案判斷。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1757,7 +4909,90 @@
         "刑法第 165 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 164 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "164",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "藏匿犯人或依法逮捕、拘禁之脫逃人或使之隱避者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。\n意圖犯前項之罪而頂替者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "164",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "164",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 165 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "165",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造、湮滅或隱匿關係他人刑事被告案件之證據，或使用偽造、變造之證據者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "165",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "165",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-093",
@@ -1798,8 +5033,8 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多以洗錢防制法之立法目的獨立解釋其隱匿與掩飾之內涵，但在個案上會參酌刑法相關概念（待核對）。",
-          "note": "派別以獨立解釋為主，細節逐案查證。"
+          "view": "實務多以洗錢防制法之立法目的獨立解釋其隱匿與掩飾之內涵，但在個案上會參酌刑法相關概念。",
+          "note": "本條目未列判決字號，派別以個案事實為準。"
         }
       ],
       "lawRefs": [
@@ -1807,7 +5042,105 @@
         "刑法第 349 條",
         "洗錢防制法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 2 條第 1 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": 1,
+              "ok": true,
+              "currentText": "本法所稱洗錢，指下列行為：\n一、隱匿特定犯罪所得或掩飾其來源。\n二、妨礙或危害國家對於特定犯罪所得之調查、發現、保全、沒收或追徵。\n三、收受、持有或使用他人之特定犯罪所得。\n四、使用自己之特定犯罪所得與他人進行交易。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "2",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 349 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "349",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "收受、搬運、寄藏、故買贓物或媒介者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n因贓物變得之財物，以贓物論。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "349",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "349",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-094",
@@ -1848,7 +5181,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務多以洗錢罪之防制目的與妨礙追查之危險為基礎論述保護法益，較少就法益之性質作深入之獨立論證（待核對）。",
+          "view": "實務多以洗錢罪之防制目的與妨礙追查之危險為基礎論述保護法益，較少就法益之性質作深入之獨立論證。",
           "note": "派別以司法追查功能為主要論述基礎。"
         }
       ],
@@ -1857,7 +5190,105 @@
         "洗錢防制法第 19 條",
         "刑法第 349 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "洗錢防制法第 1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為防制洗錢，打擊犯罪，健全防制洗錢體系，穩定金融秩序，促進金流之透明，強化國際合作，特制定本法。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "1",
+              "date": "1996-10-03",
+              "kind": "制定"
+            },
+            {
+              "article": "1",
+              "date": "2003-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "1",
+              "date": "2007-06-14",
+              "kind": "全文修正"
+            },
+            {
+              "article": "1",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "1",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 349 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "349",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "收受、搬運、寄藏、故買贓物或媒介者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n因贓物變得之財物，以贓物論。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "349",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "349",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spc-095",
@@ -1898,7 +5329,7 @@
       "practice": [
         {
           "period": "近期實務",
-          "view": "實務於詐欺洗錢案件中，多以前置詐欺行為與後續洗錢行為之時間、地點與行為之獨立性，分別判斷是否成立想像競合或數罪（待核對）。",
+          "view": "實務於詐欺洗錢案件中，多以前置詐欺行為與後續洗錢行為之時間、地點與行為之獨立性，分別判斷是否成立想像競合或數罪。",
           "note": "派別以個案行為之獨立性為準。"
         }
       ],
@@ -1908,7 +5339,117 @@
         "洗錢防制法第 19 條",
         "刑法第 339 條之 4"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 50 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "洗錢防制法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有第二條各款所列洗錢行為者，處三年以上十年以下有期徒刑，併科新臺幣一億元以下罰金。其洗錢之財物或財產上利益未達新臺幣一億元者，處六月以上五年以下有期徒刑，併科新臺幣五千萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "19",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 4",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第三百三十九條詐欺罪而有下列情形之一者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金：\n一、冒用政府機關或公務員名義犯之。\n二、三人以上共同犯之。\n三、以廣播電視、電子通訊、網際網路或其他媒體等傳播工具，對公眾散布而犯之。\n四、以電"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }

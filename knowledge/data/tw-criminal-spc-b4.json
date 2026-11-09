@@ -215,15 +215,15 @@
           "note": null
         },
         {
-          "ref": "刑法第 25 條（既遂與未遂之區分，待核對適用）",
+          "ref": "刑法第 25 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "25",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。"
             }
           ],
           "latestAmendmentDate": "2005-01-07",
@@ -295,7 +295,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 13 條（故意與未必故意）",
+          "ref": "刑法第 13 條",
           "status": "verified",
           "checks": [
             {
@@ -407,27 +407,37 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 27 條（追訴期間之起算，待核對）",
+          "ref": "刑法第 80 條第 2 項",
           "status": "verified",
           "checks": [
             {
-              "article": "27",
-              "paragraph": null,
+              "article": "80",
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "已著手於犯罪行為之實行，而因己意中止或防止其結果之發生者，減輕或免除其刑。結果之不發生，非防止行為所致，而行為人已盡力為防止行為者，亦同。\n前項規定，於正犯或共犯中之一人或數人，因己意防止犯罪結果之發生，或結果之不發生，非防止行為所致，而行"
+              "currentText": "前項期間自犯罪成立之日起算。但犯罪行為有繼續之狀態者，自行為終了之日起算。"
             }
           ],
-          "latestAmendmentDate": "2005-01-07",
+          "latestAmendmentDate": "2026-07-07",
           "amendments": [
             {
-              "article": "27",
+              "article": "80",
               "date": "1934-10-31",
               "kind": "制定"
             },
             {
-              "article": "27",
+              "article": "80",
               "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "80",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "80",
+              "date": "2026-07-07",
               "kind": "修正"
             }
           ],
@@ -525,7 +535,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 25 條第 2 項（未遂之處罰，待核對）",
+          "ref": "刑法第 25 條第 2 項",
           "status": "verified",
           "checks": [
             {
@@ -589,15 +599,15 @@
           "note": null
         },
         {
-          "ref": "組織犯罪防制條例第 4 條（招募、介紹等行為，條次待核對）",
+          "ref": "組織犯罪防制條例第 4 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "4",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "招募他人加入犯罪組織者，處六月以上五年以下有期徒刑，得併科新臺幣一千萬元以下罰金。\n意圖使他人出中華民國領域外實行犯罪，而犯前項之罪者，處一年以上七年以下有期徒刑，得併科新臺幣二千萬元以下罰金。\n成年人招募未滿十八歲之人加入犯罪組織，而犯前"
+              "currentText": "招募他人加入犯罪組織者，處六月以上五年以下有期徒刑，得併科新臺幣一千萬元以下罰金。"
             }
           ],
           "latestAmendmentDate": "2023-05-09",
@@ -712,7 +722,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 30 條（幫助犯，待核對）",
+          "ref": "刑法第 30 條",
           "status": "verified",
           "checks": [
             {
@@ -790,33 +800,6 @@
       ],
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
-        {
-          "ref": "刑法第 19 條（責任能力與期待可能性相關規定，待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "19",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
-            }
-          ],
-          "latestAmendmentDate": "2005-01-07",
-          "amendments": [
-            {
-              "article": "19",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "19",
-              "date": "2005-01-07",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
         {
           "ref": "組織犯罪防制條例第 3 條第 1 項後段",
           "status": "verified",
@@ -909,7 +892,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 55 條（想像競合，待核對適用）",
+          "ref": "刑法第 55 條",
           "status": "verified",
           "checks": [
             {
@@ -936,7 +919,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 50 條（數罪併罰，待核對）",
+          "ref": "刑法第 50 條",
           "status": "verified",
           "checks": [
             {
@@ -1391,7 +1374,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 28 條（共同正犯，待核對適用）",
+          "ref": "刑法第 28 條",
           "status": "verified",
           "checks": [
             {
@@ -1472,7 +1455,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 29 條（教唆犯）",
+          "ref": "刑法第 29 條",
           "status": "verified",
           "checks": [
             {
@@ -1536,7 +1519,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 55 條（想像競合，待核對）",
+          "ref": "刑法第 55 條",
           "status": "verified",
           "checks": [
             {
@@ -1616,7 +1599,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 28 條（共同正犯）",
+          "ref": "刑法第 28 條",
           "status": "verified",
           "checks": [
             {
@@ -1771,7 +1754,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 55 條（想像競合，待核對）",
+          "ref": "刑法第 55 條",
           "status": "verified",
           "checks": [
             {
@@ -1798,7 +1781,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 50 條（數罪併罰，待核對）",
+          "ref": "刑法第 50 條",
           "status": "verified",
           "checks": [
             {
@@ -1915,7 +1898,7 @@
           "note": null
         },
         {
-          "ref": "組織犯罪防制條例第 2 條第 1 項（組織之存續要件）",
+          "ref": "組織犯罪防制條例第 2 條第 1 項",
           "status": "verified",
           "checks": [
             {
@@ -2001,7 +1984,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 55 條（想像競合，待核對）",
+          "ref": "刑法第 55 條",
           "status": "verified",
           "checks": [
             {
@@ -2028,7 +2011,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 50 條（數罪併罰，待核對）",
+          "ref": "刑法第 50 條",
           "status": "verified",
           "checks": [
             {
@@ -2145,7 +2128,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 57 條（量刑審酌，待核對）",
+          "ref": "刑法第 57 條",
           "status": "verified",
           "checks": [
             {
@@ -2262,7 +2245,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 30 條（幫助犯）",
+          "ref": "刑法第 30 條",
           "status": "verified",
           "checks": [
             {
@@ -2379,7 +2362,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 28 條（共同正犯）",
+          "ref": "刑法第 28 條",
           "status": "verified",
           "checks": [
             {
@@ -2495,7 +2478,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 28 條（共同正犯）",
+          "ref": "刑法第 28 條",
           "status": "verified",
           "checks": [
             {
@@ -2515,33 +2498,6 @@
             },
             {
               "article": "28",
-              "date": "2005-01-07",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第 30 條（幫助犯，待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "30",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
-            }
-          ],
-          "latestAmendmentDate": "2005-01-07",
-          "amendments": [
-            {
-              "article": "30",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "30",
               "date": "2005-01-07",
               "kind": "修正"
             }
@@ -2603,15 +2559,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "組織犯罪防制條例第 4 條（條次與內容待核對）",
+          "ref": "組織犯罪防制條例第 4 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "4",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "招募他人加入犯罪組織者，處六月以上五年以下有期徒刑，得併科新臺幣一千萬元以下罰金。\n意圖使他人出中華民國領域外實行犯罪，而犯前項之罪者，處一年以上七年以下有期徒刑，得併科新臺幣二千萬元以下罰金。\n成年人招募未滿十八歲之人加入犯罪組織，而犯前"
+              "currentText": "招募他人加入犯罪組織者，處六月以上五年以下有期徒刑，得併科新臺幣一千萬元以下罰金。"
             }
           ],
           "latestAmendmentDate": "2023-05-09",
@@ -2635,7 +2591,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 29 條（教唆犯）",
+          "ref": "刑法第 29 條",
           "status": "verified",
           "checks": [
             {
@@ -2752,7 +2708,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 28 條（共同正犯）",
+          "ref": "刑法第 28 條",
           "status": "verified",
           "checks": [
             {
@@ -2870,7 +2826,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 55 條（想像競合）",
+          "ref": "刑法第 55 條",
           "status": "verified",
           "checks": [
             {
@@ -2897,7 +2853,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 50 條（數罪併罰）",
+          "ref": "刑法第 50 條",
           "status": "verified",
           "checks": [
             {
@@ -3046,7 +3002,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第 154 條（證明之法則，待核對）",
+          "ref": "刑事訴訟法第 154 條",
           "status": "verified",
           "checks": [
             {
@@ -3303,7 +3259,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "組織犯罪防制條例第 2 條第 1 項但書（條次與內容待核對）",
+          "ref": "組織犯罪防制條例第 2 條第 1 項",
           "status": "verified",
           "checks": [
             {
@@ -3509,7 +3465,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "組織犯罪防制條例第 2 條第 1 項（最重本刑逾五年之要件，待核對）",
+          "ref": "組織犯罪防制條例第 2 條第 1 項",
           "status": "verified",
           "checks": [
             {
@@ -3594,7 +3550,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 154 條（證明之法則，待核對）",
+          "ref": "刑事訴訟法第 154 條",
           "status": "verified",
           "checks": [
             {
@@ -3837,15 +3793,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "組織犯罪防制條例第 8 條（條文內容待核對）",
+          "ref": "組織犯罪防制條例第 8 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "8",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。\n犯第四條、第六條、第六條之一之罪自首，並因其提供資料，而查獲各該條之犯罪組織者，"
+              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。"
             }
           ],
           "latestAmendmentDate": "2023-05-09",
@@ -3922,15 +3878,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "組織犯罪防制條例第 8 條（條文內容待核對）",
+          "ref": "組織犯罪防制條例第 8 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "8",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。\n犯第四條、第六條、第六條之一之罪自首，並因其提供資料，而查獲各該條之犯罪組織者，"
+              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。"
             }
           ],
           "latestAmendmentDate": "2023-05-09",
@@ -4043,15 +3999,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "組織犯罪防制條例第 8 條（條文內容待核對）",
+          "ref": "組織犯罪防制條例第 8 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "8",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。\n犯第四條、第六條、第六條之一之罪自首，並因其提供資料，而查獲各該條之犯罪組織者，"
+              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。"
             }
           ],
           "latestAmendmentDate": "2023-05-09",
@@ -4127,15 +4083,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "組織犯罪防制條例第 8 條（條文內容待核對）",
+          "ref": "組織犯罪防制條例第 8 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "8",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。\n犯第四條、第六條、第六條之一之罪自首，並因其提供資料，而查獲各該條之犯罪組織者，"
+              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。"
             }
           ],
           "latestAmendmentDate": "2023-05-09",
@@ -4212,7 +4168,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 62 條（自首減輕，待核對）",
+          "ref": "刑法第 62 條",
           "status": "verified",
           "checks": [
             {
@@ -4239,15 +4195,15 @@
           "note": null
         },
         {
-          "ref": "組織犯罪防制條例第 8 條（條文內容待核對）",
+          "ref": "組織犯罪防制條例第 8 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "8",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。\n犯第四條、第六條、第六條之一之罪自首，並因其提供資料，而查獲各該條之犯罪組織者，"
+              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。"
             }
           ],
           "latestAmendmentDate": "2023-05-09",
@@ -4324,15 +4280,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "組織犯罪防制條例第 8 條（條文內容待核對）",
+          "ref": "組織犯罪防制條例第 8 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "8",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。\n犯第四條、第六條、第六條之一之罪自首，並因其提供資料，而查獲各該條之犯罪組織者，"
+              "currentText": "犯第三條、第六條之一之罪自首，並自動解散或脫離其所屬之犯罪組織者，減輕或免除其刑；因其提供資料，而查獲該犯罪組織者，亦同；偵查及歷次審判中均自白者，減輕其刑。"
             }
           ],
           "latestAmendmentDate": "2023-05-09",

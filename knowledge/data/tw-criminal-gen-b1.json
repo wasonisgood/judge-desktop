@@ -53,9 +53,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務對行為概念之理論爭執著墨不多，通常直接就行為人之身體動靜與其結果，判斷是否該當構成要件，較少明確採取某一行為論作為裁判理由。",
-          "note": "本段為概括說明，未引用具體裁判字號；各派別在個案中的實際影響，待個案核對。"
+          "note": "本段為概括說明，未引用具體裁判字號。"
         }
       ],
       "lawRefs": [
@@ -63,7 +63,75 @@
         "刑法第 13 條",
         "刑法第 14 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 12 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "12",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為非出於故意或過失者，不罰。\n過失行為之處罰，以有特別規定者，為限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "12",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-021",
@@ -109,9 +177,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於個案中較少以行為性欠缺作為獨立之審查理由，多以行為人「無意識」或「不能控制」為由，認定無犯罪故意或無責任；若行為人係因自陷而致之無意識狀態，則另就前行為論處。",
-          "note": "派別傾向待核對，具體裁判字號未引用，個案適用範圍需逐案確認。"
+          "note": "本段為概括描述，未引用具體裁判字號；個案適用範圍應逐案確認。"
         }
       ],
       "lawRefs": [
@@ -119,7 +187,80 @@
         "刑法第 13 條",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 12 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "12",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為非出於故意或過失者，不罰。\n過失行為之處罰，以有特別規定者，為限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "12",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-022",
@@ -164,16 +305,67 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務對不作為犯之成立，通常要求行為人於客觀上具有防止結果之可能性；若依事證認定其確實無能力防止，則多否定不作為犯之成立。主觀能力之作用，多被置於故意或過失層次審查。",
-          "note": "本段為概括描述，具體裁判待核對，不引用字號。派別以客觀可能性為主流之判斷，仍須逐案確認。"
+          "note": "本段為概括描述，未引用具體裁判字號。"
         }
       ],
       "lawRefs": [
         "刑法第 15 條",
         "刑法第 14 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 15 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "15",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於犯罪結果之發生，法律上有防止之義務，能防止而不防止者，與因積極行為發生結果者同。\n因自己行為致有發生犯罪結果之危險者，負防止其發生之義務。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "15",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "15",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-023",
@@ -218,16 +410,72 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於不作為案件中，通常以行為人履行義務後結果是否可能避免作為判斷，並結合經驗法則為認定；對於存疑之情形，常依罪疑唯輕或疑罪從無之原則處理。",
-          "note": "實務具體採取何種標準，因個案而異，裁判字號未引用，待核對。"
+          "note": "實務具體採取之標準因個案而異，本段未引用裁判字號。"
         }
       ],
       "lawRefs": [
         "刑法第 15 條",
         "刑法第 276 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 15 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "15",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於犯罪結果之發生，法律上有防止之義務，能防止而不防止者，與因積極行為發生結果者同。\n因自己行為致有發生犯罪結果之危險者，負防止其發生之義務。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "15",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "15",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-024",
@@ -272,9 +520,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務多以條件說作為因果關係之事實判斷基礎，並進一步以相當性或經驗法則加以限制，故一般被理解為「以條件說為基礎，輔以相當因果關係」之架構。",
-          "note": "此為概括描述，個案中對條件說與相當性之具體運用待核對，裁判字號未引用。"
+          "note": "本段為概括描述，未引用具體裁判字號。"
         }
       ],
       "lawRefs": [
@@ -282,7 +530,80 @@
         "刑法第 276 條",
         "刑法第 271 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-025",
@@ -327,9 +648,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務傳統上以相當因果關係說作為限制條件說之標準，判斷時多以一般社會經驗法則，考量行為通常是否足以導致結果，並於異常介入時否定相當性。",
-          "note": "實務對判斷基礎採事後客觀或行為時可知，個案之見解待核對，裁判字號未引用。"
+          "note": "本段為概括描述，未引用具體裁判字號。"
         }
       ],
       "lawRefs": [
@@ -337,7 +658,80 @@
         "刑法第 276 條",
         "刑法第 271 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-026",
@@ -382,16 +776,67 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務上較少明確援引重要性說作為裁判理由，多以條件說、相當性與客觀歸責之概念處理相近問題；重要性說之觀點，主要見於學說討論與部分評釋。",
-          "note": "本段為概括說明，實務是否採納重要性說之具體個案，待核對，不引用字號。"
+          "note": "本段為概括說明，未引用具體裁判字號。"
         }
       ],
       "lawRefs": [
         "刑法第 13 條",
         "刑法第 276 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-027",
@@ -435,9 +880,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於過失案件中，多以行為人是否違反注意義務、違反之義務與結果是否相當，作為判斷重點，合法替代行為之論證，於個案中出現時亦多結合相當性與注意義務範圍審查。",
-          "note": "學說與實務之具體立場待核對，裁判字號未引用，個案判斷應依事證另行確認。"
+          "period": "一般理解",
+          "view": "實務於過失案件中，多以行為人是否違反注意義務、違反之義務與結果是否相當，作為判斷重點；合法替代行為之論證於個案中出現時，多結合相當性與注意義務範圍審查。",
+          "note": "本段為概括描述，未引用具體裁判字號。"
         }
       ],
       "lawRefs": [
@@ -445,7 +890,85 @@
         "刑法第 276 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-028",
@@ -491,9 +1014,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於介入案件中，多以介入行為是否異常、是否為行為人所可預見、介入後結果是否仍屬原行為之延續，作為判斷因果中斷之依據；被害人或第三人之重大過失介入，常被認為足以中斷因果。",
-          "note": "實務見解之具體標準與個案結論待核對，裁判字號未引用。"
+          "note": "本段為概括描述，未引用具體裁判字號。"
         }
       ],
       "lawRefs": [
@@ -501,7 +1024,80 @@
         "刑法第 271 條",
         "刑法第 276 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-029",
@@ -547,9 +1143,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於共同從事危險行為、被害人主動參與而受傷之案件中，常以被害人是否明知危險、是否具有支配地位，作為判斷行為人責任之依據；對自陷風險之明確採納與否，待核對個案。",
-          "note": "裁判字號未引用，個案結論因事實差異而有顯著不同，應逐案確認。"
+          "period": "一般理解",
+          "view": "實務於共同從事危險行為、被害人主動參與而受傷之案件中，常以被害人是否明知危險、是否具有支配地位，作為判斷行為人責任之依據。",
+          "note": "本段為概括描述，未引用裁判字號；個案結論因事實差異而有不同，應逐案確認。"
         }
       ],
       "lawRefs": [
@@ -558,7 +1154,107 @@
         "刑法第 276 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-030",
@@ -604,9 +1300,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於數人各自傷害而無法確定致死原因之案件中，常以因果關係之證明不足，依疑罪從輕或從無處理；於數人行為合併致害之案件，則較傾向認定各行為與結果有因果關係，分別評價。",
-          "note": "此為概括描述，具體個案與字號待核對，實務在不同案型之區分標準亦待確認。"
+          "period": "一般理解",
+          "view": "實務於數人各自傷害而無法確定致死原因之案件中，常以因果關係之證明不足，依罪疑唯輕或疑罪從無處理；於數人行為合併致害之案件，則較傾向認定各行為與結果有因果關係，分別評價。",
+          "note": "本段為概括描述，未引用具體裁判字號。"
         }
       ],
       "lawRefs": [
@@ -614,7 +1310,80 @@
         "刑法第 271 條",
         "刑法第 277 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-031",
@@ -660,16 +1429,77 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於因果關係之認定，通常要求依證據與經驗法則達到足以認定之程度，證據不足而存在合理懷疑時，多依罪疑唯輕或疑罪從無處理；在醫療與因果鏈複雜之案件中，尤其強調證據之充分性。",
-          "note": "證明程度之具體用語與判決字號未引用，個案標準待核對。"
+          "note": "本段為概括描述，未引用具體證明用語或裁判字號。"
         }
       ],
       "lawRefs": [
         "刑法第 13 條",
         "刑事訴訟法第 154 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 154 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "154",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "被告未經審判證明有罪確定前，推定其為無罪。\n犯罪事實應依證據認定之，無證據不得認定犯罪事實。"
+            }
+          ],
+          "latestAmendmentDate": "2003-01-14",
+          "amendments": [
+            {
+              "article": "154",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "154",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "154",
+              "date": "2003-01-14",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-032",
@@ -715,9 +1545,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於傷害後經醫療仍死亡之案件中，通常會審查醫療行為是否具有重大過失、是否異常，以及死亡結果與先行傷害是否具有相當因果關係；若醫療過失被認為足以中斷者，則先行行為人之責任可能僅限於傷害。",
-          "note": "個案判斷因醫療事實差異而異，具體裁判字號未引用，待核對。"
+          "note": "個案判斷因醫療事實差異而異，本段未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -726,7 +1556,107 @@
         "刑法第 277 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-033",
@@ -772,9 +1702,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於結果加重犯之案件中，通常要求加重結果與基本行為間具有因果關係，且須考量加重結果是否為基本行為通常可能發生之結果，並以此作為加重之依據；預見可能性之審查，於個案中之態度待核對。",
-          "note": "判決字號未引用，個案中之危險實現與預見可能性標準待核對。"
+          "period": "一般理解",
+          "view": "實務於結果加重犯之案件中，通常要求加重結果與基本行為間具有因果關係，且須考量加重結果是否為基本行為通常可能發生之結果，並以此作為加重之依據；預見可能性之審查方式，須依個案事實判斷。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -782,7 +1712,85 @@
         "刑法第 277 條",
         "刑法第 278 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 17 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "17",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因犯罪致發生一定之結果，而有加重其刑之規定者，如行為人不能預見其發生時，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "17",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 277 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 278 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "278",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "使人受重傷者，處五年以上十二年以下有期徒刑。\n犯前項之罪因而致人於死者，處無期徒刑或十年以上有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "278",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "278",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-034",
@@ -828,9 +1836,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於過失致死與過失傷害之因果判斷中，通常以行為人若遵守注意義務，結果是否可能避免為核心審查；對於單純提高危險而無法確定可避免性之情形，個案中是否採納危險增加之觀點，待核對。",
-          "note": "實務之具體立場在不同案型中可能有別，裁判字號未引用，待核對。"
+          "period": "一般理解",
+          "view": "實務於過失致死與過失傷害之因果判斷中，通常以行為人若遵守注意義務，結果是否可能避免為核心審查；對於單純提高危險而無法確定可避免性之情形，個案中是否採納危險增加之觀點，須依各案判斷。",
+          "note": "實務之具體立場在不同案型中可能有別，本段未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -838,7 +1846,85 @@
         "刑法第 276 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-035",
@@ -884,9 +1970,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於過失與結果犯判斷中，通常綜合因果關係、相當性與注意義務之違反進行審查，較少明確以風險創設與風險實現作為獨立之裁判理由；學說之客觀歸責觀點，多見於評釋與學說討論。",
-          "note": "實務是否明確採納客觀歸責之兩階段架構，待核對，裁判字號未引用。"
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -894,7 +1980,80 @@
         "刑法第 14 條",
         "刑法第 276 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-036",
@@ -940,18 +2099,95 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於交通與醫療案件中，常以行為人是否遵守法規與行為規範、是否盡注意義務，作為判斷其行為是否具有過失之依據；社會相當性之觀點，於個案中有時被作為補充考量，具體運用待核對。",
-          "note": "裁判字號未引用，個案中是否明確採取容許風險之用語，待核對。"
+          "period": "一般理解",
+          "view": "實務於交通與醫療案件中，常以行為人是否遵守法規與行為規範、是否盡注意義務，作為判斷其行為是否具有過失之依據；社會相當性之觀點，於個案中有時被作為補充考量。",
+          "note": "本段為概括描述，未引用裁判字號；個案中是否明確使用容許風險之用語，依各判決而定。"
         }
       ],
       "lawRefs": [
         "刑法第 14 條",
         "刑法第 276 條",
-        "刑法第 284 條",
-        "道路交通管理處罰條例"
+        "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-037",
@@ -997,18 +2233,95 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於交通事故案件中，通常承認信賴原則之適用，認為遵守交通規則之駕駛人，原則上得信賴他人亦遵守規則；但若有具體跡象顯示他人將違規，或其本身有違規情事，則不得主張信賴原則。",
-          "note": "此為交通事故之一般傾向，具體裁判字號未引用，其他分工案件之適用範圍待核對。"
+          "note": "此為交通事故之一般傾向，本段未引用裁判字號；其他分工案件之適用範圍，應逐案確認。"
         }
       ],
       "lawRefs": [
         "刑法第 14 條",
         "刑法第 276 條",
-        "刑法第 284 條",
-        "道路交通安全規則"
+        "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-038",
@@ -1054,9 +2367,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於過失案件中，通常以注意規範之內容與結果是否相當作為判斷，較少明確援引規範保護目的之用語；若個案中出現結果超出注意規範保護範圍之爭議，其具體處理待核對。",
-          "note": "本段為概括描述，裁判字號未引用，實務用語與學說概念之對應待核對。"
+          "period": "一般理解",
+          "view": "實務於過失案件中，通常以注意規範之內容與結果是否相當作為判斷，較少明確援引規範保護目的之用語；若個案中出現結果超出注意規範保護範圍之爭議，應依個案判斷其處理方式。",
+          "note": "本段為概括描述，未引用裁判字號；實務用語與學說概念之對應關係，需另行確認。"
         }
       ],
       "lawRefs": [
@@ -1064,7 +2377,85 @@
         "刑法第 276 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-039",
@@ -1110,9 +2501,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於過失判斷中，通常先檢視行為人是否應注意並能注意，再審查結果是否可能防止；於結果無法避免之情形，多以因果關係或過失不成立作為處理，但具體用語與判斷順序，待核對個案。",
-          "note": "實務採取何種判斷架構，依案型而有差異，裁判字號未引用，待核對。"
+          "period": "一般理解",
+          "view": "實務於過失判斷中，通常先檢視行為人是否應注意並能注意，再審查結果是否可能防止；於結果無法避免之情形，多以因果關係或過失不成立作為處理，具體用語與判斷順序依案型而定。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1120,7 +2511,85 @@
         "刑法第 276 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-040",
@@ -1172,9 +2641,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於普通過失與業務過失之判斷中，通常以一般具有相當智識經驗之人，於相同情境下應有之注意作為基準，並就行為人之專業身分另行提高注意程度；行為人個人能力之考量，個案中之運用待核對。",
-          "note": "實務傾向接近客觀說與折衷說之組合，裁判字號未引用，個案差異待核對。"
+          "period": "一般理解",
+          "view": "實務於普通過失與業務過失之判斷中，通常以一般具有相當智識經驗之人，於相同情境下應有之注意作為基準，並就行為人之專業身分另行提高注意程度；行為人個人能力之考量，於個案中之運用各有不同。",
+          "note": "實務傾向接近客觀說與折衷說之組合，本段未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1182,7 +2651,85 @@
         "刑法第 276 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-041",
@@ -1228,9 +2775,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於醫療團隊與工地作業等案件中，通常審查各行為人之職務內容、是否直接掌握危險源、是否有具體跡象顯示錯誤，作為判斷其業務過失之依據；團隊成員之監督義務，個案中之認定待核對。",
-          "note": "本段為概括描述，裁判字號未引用，具體之分工界線與判決結論待核對。"
+          "period": "一般理解",
+          "view": "實務於醫療團隊與工地作業等案件中，通常審查各行為人之職務內容、是否直接掌握危險源、是否有具體跡象顯示錯誤，作為判斷其業務過失之依據；團隊成員之監督義務，應依個案認定。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1238,7 +2785,85 @@
         "刑法第 276 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-042",
@@ -1284,9 +2909,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於未必故意之認定上，通常綜合行為人之認識、行為方式、結果發生之可能性及事後態度等情狀推認；傾向於以容忍或放任之意思作為判斷核心，並將行為人之確信作為排除故意之重要依據。",
-          "note": "實務以容認說為主流之觀點，具體判決字號未引用，待核對。"
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1295,7 +2920,102 @@
         "刑法第 271 條",
         "刑法第 276 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-043",
@@ -1347,16 +3067,62 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務對未必故意之認定，多以容認或放任之意思為判斷核心，並結合認識程度與行為情狀推認，較少單以認識之有無即認定故意；對感情說之明確採用，於裁判中較為少見，待核對。",
-          "note": "本段為概括描述，具體判決與字號未引用，個案認定待核對。"
+          "period": "一般理解",
+          "view": "實務對未必故意之認定，多以容認或放任之意思為判斷核心，並結合認識程度與行為情狀推認，較少單以認識之有無即認定故意；對感情說之明確採用，於裁判中較為少見。",
+          "note": "本段為概括描述，未引用具體判決與字號。"
         }
       ],
       "lawRefs": [
         "刑法第 13 條",
         "刑法第 14 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-044",
@@ -1402,9 +3168,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於前後行為之案件中，通常依行為人之主觀認知與行為之間之關係分別判斷，對於前行為已足以造成結果者，多就該前行為之結果評價；概括故意之用語與承認與否，待核對個案。",
-          "note": "實務具體採取之分段或概括評價方式，裁判字號未引用，待核對。"
+          "period": "一般理解",
+          "view": "實務於前後行為之案件中，通常依行為人之主觀認知與行為之間之關係分別判斷，對於前行為已足以造成結果者，多就該前行為之結果評價；概括故意之用語與承認與否，依個案判斷。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1412,7 +3178,80 @@
         "刑法第 271 條",
         "刑法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-045",
@@ -1464,9 +3303,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於對象錯誤與客體錯誤之案件中，通常以行為人之故意是否與實際結果之構成要件相符作為判斷，多數情形傾向認定同一構成要件之故意既遂；學說之各說分歧，個案中之理由待核對。",
-          "note": "實務具體見解與字號未引用，派別與結論因案型而異，待核對。"
+          "period": "一般理解",
+          "view": "實務於對象錯誤與客體錯誤之案件中，通常以行為人之故意是否與實際結果之構成要件相符作為判斷，多數情形傾向認定同一構成要件之故意既遂；學說之各說分歧，個案理由須依判決內容確認。",
+          "note": "實務具體見解與字號未引用，派別與結論因案型而異。"
         }
       ],
       "lawRefs": [
@@ -1475,7 +3314,107 @@
         "刑法第 271 條",
         "刑法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 16 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "16",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "除有正當理由而無法避免者外，不得因不知法律而免除刑事責任。但按其情節，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "16",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "16",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-046",
@@ -1514,16 +3453,16 @@
         },
         {
           "label": "乙說",
-          "view": "統一處理說：無論是打擊錯誤或因果歷程錯誤，皆屬於事實錯誤之一種，應依刑法第 16 條之規定處理；若行為人所認識之事實與實際發生之事實在構成要件上一致，則故意不受影響，錯誤僅於特定情形中影響過失之成立。",
+          "view": "統一處理說：無論是打擊錯誤或因果歷程錯誤，皆屬於事實錯誤之一種，應依事實錯誤之一般法理統一處理；若行為人所認識之事實與實際發生之事實在構成要件上一致，則故意不受影響，錯誤僅於特定情形中影響過失之成立。",
           "pros": "將兩類錯誤統一於事實錯誤之架構下，符合刑法第 16 條之規範體系，判斷之法源依據明確，便於實務適用。",
-          "cons": "兩類錯誤之性質與不法內涵不盡相同，統一處理可能忽略打擊錯誤之特殊性，且第 16 條之文義並未直接涵蓋所有因果歷程偏離之情形。"
+          "cons": "兩類錯誤之性質與不法內涵不盡相同，統一處理可能忽略打擊錯誤之特殊性；且刑法第 16 條所規範者為不知法律之情形，並非事實錯誤之明文規定，不能直接涵蓋所有因果歷程偏離之情形。"
         }
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於射擊偏差或對象偏離之案件中，通常視結果是否仍在同一構成要件之範圍內，以判斷故意既遂或未遂加過失；對因果歷程偏離之案件，多以行為人之預見與結果之相當性為依據，個案態度待核對。",
-          "note": "本段為概括描述，裁判字號未引用，實務用語與學說分類之對應待核對。"
+          "period": "一般理解",
+          "view": "實務於射擊偏差或對象偏離之案件中，通常視結果是否仍在同一構成要件之範圍內，以判斷故意既遂或未遂加過失；對因果歷程偏離之案件，多以行為人之預見與結果之相當性為依據，個案態度依判決而定。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1532,7 +3471,107 @@
         "刑法第 25 條",
         "刑法第 271 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 16 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "16",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "除有正當理由而無法避免者外，不得因不知法律而免除刑事責任。但按其情節，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "16",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "16",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-047",
@@ -1561,7 +3600,7 @@
         "客觀歸責"
       ],
       "proposition": "行為人之行為造成結果，而該結果於客觀上無法預見、亦無法避免時，應認為屬意外事件而不罰，還是仍應以過失論？意外事件與過失之界線應如何劃定？",
-      "distinction": "意外事件與過失之區分，決定行為人是否因不可預見之結果而負過失責任。若屬意外事件，則依刑法第 12 條第 1 項「非出於故意或過失者，不罰」而不罰；若屬過失，則須依過失犯之規定處罰。界線之劃定影響交通事故與醫療意外案件之結論，亦涉及預見可能性與注意義務之判斷。",
+      "distinction": "意外事件與過失之區分，決定行為人是否因不可預見之結果而負過失責任。若屬意外事件，則依刑法第 12 條「行為非出於故意或過失者，不罰」而不罰；若屬過失，則須依過失犯之規定處罰。界線之劃定影響交通事故與醫療意外案件之結論，亦涉及預見可能性與注意義務之判斷。",
       "doctrines": [
         {
           "label": "甲說",
@@ -1578,9 +3617,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於交通與意外事故案件中，通常以行為人是否違反注意義務、結果是否可預見作為區分依據；若被認定已盡注意義務而結果不可預見，則多以不具過失為由不予論罪，具體判斷待核對。",
-          "note": "實務用語多以「不可預見之意外」或「無過失」表述，裁判字號未引用，待核對。"
+          "period": "一般理解",
+          "view": "實務於交通與意外事故案件中，通常以行為人是否違反注意義務、結果是否可預見作為區分依據；若被認定已盡注意義務而結果不可預見，則多以不具過失為由不予論罪。",
+          "note": "實務用語多以「不可預見之意外」或「無過失」表述，本段未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1588,7 +3627,80 @@
         "刑法第 14 條",
         "刑法第 276 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 12 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "12",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為非出於故意或過失者，不罰。\n過失行為之處罰，以有特別規定者，為限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "12",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-048",
@@ -1634,9 +3746,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於既遂與未遂之判斷中，通常依構成要件之文義與處罰目的，判斷是否以結果之發生作為既遂之條件；對於以危險或行為為要件之條文，則多認定行為完成即屬既遂，具體案型待核對。",
-          "note": "本段為概括說明，裁判字號未引用，個別罪名之區分待核對。"
+          "period": "一般理解",
+          "view": "實務於既遂與未遂之判斷中，通常依構成要件之文義與處罰目的，判斷是否以結果之發生作為既遂之條件；對於以危險或行為為要件之條文，則多認定行為完成即屬既遂，具體案型須依條文與個案判斷。",
+          "note": "本段為概括說明，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1645,7 +3757,132 @@
         "刑法第 271 條",
         "刑法第 185 條之 3"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 185 條之 3",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "185-3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "駕駛動力交通工具而有下列情形之一者，處三年以下有期徒刑，得併科三十萬元以下罰金：\n一、吐氣所含酒精濃度達每公升零點二五毫克或血液中酒精濃度達百分之零點零五以上。\n二、有前款以外之其他情事足認服用酒類或其他相類之物，致不能安全駕駛。\n三、尿液"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-08",
+          "amendments": [
+            {
+              "article": "185-3",
+              "date": "1999-03-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "185-3",
+              "date": "2007-12-18",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2013-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2019-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2022-01-24",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2023-12-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-049",
@@ -1691,9 +3928,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於公共危險與交通類犯罪中，對於抽象危險犯多依行為類型判斷危險，並允許行為人提出反證；對於具體危險犯，則要求依證據認定個案中已產生具體危險狀態。個案之具體標準與字號待核對。",
-          "note": "本段為概括描述，裁判字號未引用，具體罪名之分類與反證空間待核對。"
+          "period": "一般理解",
+          "view": "實務於公共危險與交通類犯罪中，對於抽象危險犯多依行為類型判斷危險，並允許行為人提出反證；對於具體危險犯，則要求依證據認定個案中已產生具體危險狀態。",
+          "note": "本段為概括描述，未引用裁判字號；具體罪名之分類與反證空間，依條文與個案而定。"
         }
       ],
       "lawRefs": [
@@ -1701,7 +3938,120 @@
         "刑法第 185 條之 4",
         "刑法第 173 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 185 條之 3",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "185-3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "駕駛動力交通工具而有下列情形之一者，處三年以下有期徒刑，得併科三十萬元以下罰金：\n一、吐氣所含酒精濃度達每公升零點二五毫克或血液中酒精濃度達百分之零點零五以上。\n二、有前款以外之其他情事足認服用酒類或其他相類之物，致不能安全駕駛。\n三、尿液"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-08",
+          "amendments": [
+            {
+              "article": "185-3",
+              "date": "1999-03-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "185-3",
+              "date": "2007-12-18",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2013-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2019-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2022-01-24",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2023-12-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 185 條之 4",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "185-4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "駕駛動力交通工具發生交通事故，致人傷害而逃逸者，處六月以上五年以下有期徒刑；致人於死或重傷而逃逸者，處一年以上七年以下有期徒刑。\n犯前項之罪，駕駛人於發生交通事故致人死傷係無過失者，減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2021-05-21",
+          "amendments": [
+            {
+              "article": "185-4",
+              "date": "1999-03-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "185-4",
+              "date": "2013-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-4",
+              "date": "2021-05-21",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 173 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "173",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "放火燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處無期徒刑或七年以上有期徒刑。\n失火燒燬前項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n第一項之未遂犯罰之。\n預備犯第一"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "173",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "173",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-050",
@@ -1753,9 +4103,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
+          "period": "一般理解",
           "view": "實務於未遂與過失之判斷中，通常不直接以不法本質之理論立場作為裁判理由，多以構成要件之結果、行為之危險與注意義務之違反等具體要素論述；學說之不法論爭，較多見於評釋與學理討論。",
-          "note": "本段為概括說明，裁判字號未引用，實務是否明確採取某一不法論，待核對。"
+          "note": "本段為概括說明，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1763,7 +4113,85 @@
         "刑法第 26 條",
         "刑法第 14 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 26 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "26",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為不能發生犯罪之結果，又無危險者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "26",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "26",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-051",
@@ -1808,9 +4236,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於適用空白構成要件之案件中，通常審查補充之法規是否存在、行為人是否違反其所定之義務，並依此判斷構成要件該當性；對補充規範之性質與變動效力之明確表態，個案中之見解待核對。",
-          "note": "本段為概括描述，裁判字號未引用，具體罪名之補充規範與其效力待核對。"
+          "period": "一般理解",
+          "view": "實務於適用空白構成要件之案件中，通常審查補充之法規是否存在、行為人是否違反其所定之義務，並依此判斷構成要件該當性；對補充規範之性質與變動效力，見解依個案而定。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1818,7 +4246,80 @@
         "刑法第 13 條",
         "刑法第 14 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為之處罰，以行為時之法律有明文規定者為限。拘束人身自由之保安處分，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "1",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "1",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-052",
@@ -1864,9 +4365,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於正犯與共犯之區分中，傳統上以行為人是否實行構成要件行為及參與之程度作為重要依據，同時亦兼採犯意與行為分擔之判斷；對於幕後主導之案件，則需進一步論證其支配地位，具體待核對。",
-          "note": "本段為概括描述，裁判字號未引用，實務對正犯與共犯之標準待核對。"
+          "period": "一般理解",
+          "view": "實務於正犯與共犯之區分中，傳統上以行為人是否實行構成要件行為及參與之程度作為重要依據，同時亦兼採犯意與行為分擔之判斷；對於幕後主導之案件，則需進一步論證其支配地位。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1874,7 +4375,90 @@
         "刑法第 29 條",
         "刑法第 30 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 29 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "29",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "教唆他人使之實行犯罪行為者，為教唆犯。\n教唆犯之處罰，依其所教唆之罪處罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "29",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "29",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 30 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-053",
@@ -1920,9 +4504,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於共同正犯與幕後主導之案件中，常以行為人之參與程度、分工地位與對犯罪之重要影響作為判斷依據，有時明確論及犯罪支配之概念；其與形式標準之取捨，個案中之運用待核對。",
-          "note": "裁判字號未引用，支配理論在實務中之採用程度與具體用語待核對。"
+          "period": "一般理解",
+          "view": "實務於共同正犯與幕後主導之案件中，常以行為人之參與程度、分工地位與對犯罪之重要影響作為判斷依據，有時明確論及犯罪支配之概念；其與形式標準之取捨，依個案運用。",
+          "note": "本段未引用裁判字號；支配理論在實務中之採用程度與具體用語，須依判決內容確認。"
         }
       ],
       "lawRefs": [
@@ -1930,7 +4514,90 @@
         "刑法第 29 條",
         "刑法第 30 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 29 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "29",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "教唆他人使之實行犯罪行為者，為教唆犯。\n教唆犯之處罰，依其所教唆之罪處罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "29",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "29",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 30 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-054",
@@ -1976,9 +4643,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於利用他人犯罪之案件中，通常審查被利用者是否具備責任能力與故意，並依利用者對犯罪之支配程度，判斷是否成立間接正犯或教唆犯；對於利用被害人之案件，則需考量被害人之認識與行為之自主性，具體待核對。",
-          "note": "本段為概括描述，裁判字號未引用，個案中利用型態之分類待核對。"
+          "period": "一般理解",
+          "view": "實務於利用他人犯罪之案件中，通常審查被利用者是否具備責任能力與故意，並依利用者對犯罪之支配程度，判斷是否成立間接正犯或教唆犯；對於利用被害人之案件，則需考量被害人之認識與行為之自主性。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -1986,7 +4653,85 @@
         "刑法第 29 條",
         "刑法第 18 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 29 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "29",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "教唆他人使之實行犯罪行為者，為教唆犯。\n教唆犯之處罰，依其所教唆之罪處罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "29",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "29",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 18 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未滿十四歲人之行為，不罰。\n十四歲以上未滿十八歲人之行為，得減輕其刑。\n滿八十歲人之行為，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-055",
@@ -2032,9 +4777,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於組織性之犯罪案件中，較常以指揮、授意與分工之事實，認定上層者之共同正犯或教唆責任，明確援引組織支配理論作為間接正犯依據之案例較為少見，待核對。",
-          "note": "本段為概括描述，裁判字號未引用，組織支配理論在實務中之接受程度待核對。"
+          "period": "一般理解",
+          "view": "實務於組織性之犯罪案件中，較常以指揮、授意與分工之事實，認定上層者之共同正犯或教唆責任；明確援引組織支配理論作為間接正犯依據之案例較為少見。",
+          "note": "本段為概括描述，未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -2042,7 +4787,85 @@
         "刑法第 29 條",
         "刑法第 18 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 29 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "29",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "教唆他人使之實行犯罪行為者，為教唆犯。\n教唆犯之處罰，依其所教唆之罪處罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "29",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "29",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 18 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未滿十四歲人之行為，不罰。\n十四歲以上未滿十八歲人之行為，得減輕其刑。\n滿八十歲人之行為，得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-056",
@@ -2088,9 +4911,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於共同從事危險作業致生結果之案件中，通常分別審查各人之注意義務與過失行為，並就各自之過失與結果之因果關係判斷責任；對於過失共同正犯之明確承認與否，個案中之態度待核對。",
-          "note": "裁判字號未引用，實務上是否採取過失共同正犯之概念及其適用要件，待核對。"
+          "period": "一般理解",
+          "view": "實務於共同從事危險作業致生結果之案件中，通常分別審查各人之注意義務與過失行為，並就各自之過失與結果之因果關係判斷責任；對於過失共同正犯之明確承認與否，依個案態度而定。",
+          "note": "本段未引用裁判字號。"
         }
       ],
       "lawRefs": [
@@ -2099,7 +4922,112 @@
         "刑法第 276 條",
         "刑法第 284 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 276 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "276",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失致人於死者，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "276",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "276",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 284 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "284",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "因過失傷害人者，處一年以下有期徒刑、拘役或十萬元以下罰金；致重傷者，處三年以下有期徒刑、拘役或三十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "284",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "284",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-057",
@@ -2145,9 +5073,9 @@
       ],
       "practice": [
         {
-          "period": "一般理解（待核對）",
-          "view": "實務於利用他人實行特定犯罪之案件中，通常依構成要件之文義與犯罪性質判斷能否成立間接正犯；對於自手犯之概念，裁判中之明確使用與適用範圍，待核對個案。",
-          "note": "本段為概括描述，裁判字號未引用，個別罪名是否屬自手犯，待核對。"
+          "period": "一般理解",
+          "view": "實務於利用他人實行特定犯罪之案件中，通常依構成要件之文義與犯罪性質判斷能否成立間接正犯；對於自手犯之概念，其在裁判中之明確使用與適用範圍，須依個案確認。",
+          "note": "本段為概括描述，未引用裁判字號；個別罪名是否屬自手犯，依構成要件之性質而定。"
         }
       ],
       "lawRefs": [
@@ -2155,7 +5083,85 @@
         "刑法第 29 條",
         "刑法第 168 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 29 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "29",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "教唆他人使之實行犯罪行為者，為教唆犯。\n教唆犯之處罰，依其所教唆之罪處罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "29",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "29",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 168 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "168",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "於執行審判職務之公署審判時或於檢察官偵查時，證人、鑑定人、通譯於案情有重要關係之事項，供前或供後具結，而為虛偽陳述者，處七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "168",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }

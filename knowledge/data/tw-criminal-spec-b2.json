@@ -192,26 +192,26 @@
           "note": null
         },
         {
-          "ref": "刑法第 27 條（共同正犯）",
+          "ref": "刑法第 28 條（共同正犯）",
           "status": "verified",
           "checks": [
             {
-              "article": "27",
+              "article": "28",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "已著手於犯罪行為之實行，而因己意中止或防止其結果之發生者，減輕或免除其刑。結果之不發生，非防止行為所致，而行為人已盡力為防止行為者，亦同。\n前項規定，於正犯或共犯中之一人或數人，因己意防止犯罪結果之發生，或結果之不發生，非防止行為所致，而行"
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
             }
           ],
           "latestAmendmentDate": "2005-01-07",
           "amendments": [
             {
-              "article": "27",
+              "article": "28",
               "date": "1934-10-31",
               "kind": "制定"
             },
             {
-              "article": "27",
+              "article": "28",
               "date": "2005-01-07",
               "kind": "修正"
             }
@@ -219,7 +219,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 80 條（追訴時效，待核對）",
+          "ref": "刑法第 80 條（追訴時效）",
           "status": "verified",
           "checks": [
             {
@@ -310,28 +310,23 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 303 條",
+          "ref": "刑法第 134 條（公務員假借職權加重）",
           "status": "verified",
           "checks": [
             {
-              "article": "303",
+              "article": "134",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "對於直系血親尊親屬犯前二條第一項或第二項之罪者，加重其刑至二分之一。"
+              "currentText": "公務員假借職務上之權力、機會或方法，以故意犯本章以外各罪者，加重其刑至二分之一。但因公務員之身分已特別規定其刑者，不在此限。"
             }
           ],
-          "latestAmendmentDate": "2023-05-16",
+          "latestAmendmentDate": "1934-10-31",
           "amendments": [
             {
-              "article": "303",
+              "article": "134",
               "date": "1934-10-31",
               "kind": "制定"
-            },
-            {
-              "article": "303",
-              "date": "2023-05-16",
-              "kind": "修正"
             }
           ],
           "note": null
@@ -358,38 +353,6 @@
             {
               "article": "302",
               "date": "2019-12-03",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第 131 條（公務員濫權，待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "131",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "公務員對於主管或監督之事務，明知違背法令，直接或間接圖自己或其他私人不法利益，因而獲得利益者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金。"
-            }
-          ],
-          "latestAmendmentDate": "2018-05-08",
-          "amendments": [
-            {
-              "article": "131",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "131",
-              "date": "2001-10-25",
-              "kind": "修正"
-            },
-            {
-              "article": "131",
-              "date": "2018-05-08",
               "kind": "修正"
             }
           ],
@@ -477,7 +440,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 221 條（強制性交之不能抗拒，比較用）",
+          "ref": "刑法第 221 條（強制性交，比較用）",
           "status": "verified",
           "checks": [
             {
@@ -586,7 +549,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 21 條（違法性與正當行為，待核對）",
+          "ref": "刑法第 21 條（依法令之行為，比較用）",
           "status": "verified",
           "checks": [
             {
@@ -608,7 +571,7 @@
           "note": null
         },
         {
-          "ref": "民法第 151 條（自助行為，待核對）",
+          "ref": "民法第 151 條（自助行為）",
           "status": "verified",
           "checks": [
             {
@@ -733,7 +696,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 55 條（想像競合，待核對）",
+          "ref": "刑法第 55 條（想像競合）",
           "status": "verified",
           "checks": [
             {
@@ -921,7 +884,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 25 條（未遂，待核對）",
+          "ref": "刑法第 25 條（未遂）",
           "status": "verified",
           "checks": [
             {
@@ -1030,7 +993,7 @@
           "note": null
         },
         {
-          "ref": "憲法第 11 條（言論自由，待核對）",
+          "ref": "憲法第 11 條（言論自由）",
           "status": "verified",
           "checks": [
             {
@@ -1374,7 +1337,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 297 條（待核對）",
+          "ref": "刑法第 297 條",
           "status": "verified",
           "checks": [
             {
@@ -1401,7 +1364,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 298 條（待核對）",
+          "ref": "刑法第 298 條",
           "status": "verified",
           "checks": [
             {
@@ -1487,7 +1450,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 297 條（待核對）",
+          "ref": "刑法第 297 條",
           "status": "verified",
           "checks": [
             {
@@ -1514,7 +1477,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 298 條（待核對）",
+          "ref": "刑法第 298 條",
           "status": "verified",
           "checks": [
             {
@@ -1601,7 +1564,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 297 條（待核對）",
+          "ref": "刑法第 297 條",
           "status": "verified",
           "checks": [
             {
@@ -1628,7 +1591,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 298 條（待核對）",
+          "ref": "刑法第 298 條",
           "status": "verified",
           "checks": [
             {
@@ -1946,7 +1909,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 310 條第 3 項（待核對）",
+          "ref": "刑法第 310 條第 3 項",
           "status": "verified",
           "checks": [
             {
@@ -2207,7 +2170,7 @@
           "note": null
         },
         {
-          "ref": "憲法第 11 條（言論自由，待核對）",
+          "ref": "憲法第 11 條（言論自由）",
           "status": "verified",
           "checks": [
             {
@@ -2310,7 +2273,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 312 條（待核對）",
+          "ref": "刑法第 312 條（已死之人）",
           "status": "verified",
           "checks": [
             {
@@ -2392,61 +2355,61 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 318 條（待核對）",
+          "ref": "刑法第 314 條（本章之罪須告訴乃論）",
           "status": "verified",
           "checks": [
             {
-              "article": "318",
+              "article": "314",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "公務員或曾任公務員之人，無故洩漏因職務知悉或持有他人之工商秘密者，處二年以下有期徒刑、拘役或六萬元以下罰金。"
+              "currentText": "本章之罪，須告訴乃論。"
             }
           ],
-          "latestAmendmentDate": "2019-12-03",
+          "latestAmendmentDate": "1934-10-31",
           "amendments": [
             {
-              "article": "318",
+              "article": "314",
               "date": "1934-10-31",
               "kind": "制定"
-            },
-            {
-              "article": "318",
-              "date": "2019-12-03",
-              "kind": "修正"
             }
           ],
           "note": null
         },
         {
-          "ref": "刑法第 319 條（待核對）",
+          "ref": "刑事訴訟法第 237 條（告訴期間）",
           "status": "verified",
           "checks": [
             {
-              "article": "319",
+              "article": "237",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "第三百十五條、第三百十五條之一及第三百十六條至第三百十八條之二之罪，須告訴乃論。"
+              "currentText": "告訴乃論之罪，其告訴應自得為告訴之人知悉犯人之時起，於六個月內為之。\n得為告訴之人有數人，其一人遲誤期間者，其效力不及於他人。"
             }
           ],
-          "latestAmendmentDate": "1999-03-30",
+          "latestAmendmentDate": "1967-01-13",
           "amendments": [
             {
-              "article": "319",
-              "date": "1934-10-31",
+              "article": "237",
+              "date": "1928-07-28",
               "kind": "制定"
             },
             {
-              "article": "319",
-              "date": "1999-03-30",
-              "kind": "修正"
+              "article": "237",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "237",
+              "date": "1967-01-13",
+              "kind": "全文修正"
             }
           ],
           "note": null
         },
         {
-          "ref": "刑事訴訟法第 232 條（待核對）",
+          "ref": "刑事訴訟法第 232 條（告訴權人）",
           "status": "verified",
           "checks": [
             {
@@ -2569,7 +2532,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 222 條（加重，待核對）",
+          "ref": "刑法第 222 條（加重）",
           "status": "verified",
           "checks": [
             {
@@ -2684,43 +2647,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "刑事訴訟法第 156 條（證據裁判，待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "156",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "被告之自白，非出於強暴、脅迫、利誘、詐欺、疲勞訊問、違法羈押或其他不正之方法，且與事實相符者，得為證據。\n被告或共犯之自白，不得作為有罪判決之唯一證據，仍應調查其他必要之證據，以察其是否與事實相符。\n被告陳述其自白係出於不正之方法者，應先於"
-            }
-          ],
-          "latestAmendmentDate": "2003-01-14",
-          "amendments": [
-            {
-              "article": "156",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "156",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "156",
-              "date": "1967-01-13",
-              "kind": "全文修正"
-            },
-            {
-              "article": "156",
-              "date": "2003-01-14",
-              "kind": "修正"
-            }
-          ],
-          "note": null
         }
       ]
     },
@@ -2829,48 +2755,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "刑法第 10 條（定義，待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "10",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
-            }
-          ],
-          "latestAmendmentDate": "2023-01-07",
-          "amendments": [
-            {
-              "article": "10",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "10",
-              "date": "1999-03-30",
-              "kind": "修正"
-            },
-            {
-              "article": "10",
-              "date": "2005-01-07",
-              "kind": "修正"
-            },
-            {
-              "article": "10",
-              "date": "2019-05-10",
-              "kind": "修正"
-            },
-            {
-              "article": "10",
-              "date": "2023-01-07",
-              "kind": "修正"
-            }
-          ],
-          "note": null
         }
       ]
     },
@@ -2954,7 +2838,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 25 條（未遂，待核對）",
+          "ref": "刑法第 25 條（未遂）",
           "status": "verified",
           "checks": [
             {
@@ -3036,7 +2920,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 222 條（待核對）",
+          "ref": "刑法第 222 條（加重）",
           "status": "verified",
           "checks": [
             {
@@ -3100,7 +2984,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 28 條（共同正犯，待核對）",
+          "ref": "刑法第 28 條（共同正犯）",
           "status": "verified",
           "checks": [
             {
@@ -3430,7 +3314,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 228 條（待核對）",
+          "ref": "刑法第 228 條（利用權勢）",
           "status": "verified",
           "checks": [
             {
@@ -3538,7 +3422,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 229 條（待核對）",
+          "ref": "刑法第 229 條（詐術使人誤信為配偶）",
           "status": "verified",
           "checks": [
             {
@@ -3646,7 +3530,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 227 條（待核對）",
+          "ref": "刑法第 227 條",
           "status": "verified",
           "checks": [
             {
@@ -3673,7 +3557,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 13 條（故意，待核對）",
+          "ref": "刑法第 13 條（故意）",
           "status": "verified",
           "checks": [
             {
@@ -3749,7 +3633,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 227 條（待核對）",
+          "ref": "刑法第 227 條",
           "status": "verified",
           "checks": [
             {
@@ -3857,7 +3741,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 230 條（待核對）",
+          "ref": "刑法第 230 條",
           "status": "verified",
           "checks": [
             {
@@ -3966,7 +3850,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 13 條（故意，待核對）",
+          "ref": "刑法第 13 條（故意）",
           "status": "verified",
           "checks": [
             {
@@ -4097,7 +3981,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 221 條（待核對）",
+          "ref": "刑法第 221 條",
           "status": "verified",
           "checks": [
             {
@@ -4124,7 +4008,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 224 條（待核對）",
+          "ref": "刑法第 224 條",
           "status": "verified",
           "checks": [
             {
@@ -4151,7 +4035,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 227 條（待核對）",
+          "ref": "刑法第 227 條",
           "status": "verified",
           "checks": [
             {
@@ -4232,33 +4116,6 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 229 條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "229",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "以詐術使男女誤信為自己配偶，而聽從其為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
-            }
-          ],
-          "latestAmendmentDate": "1999-03-30",
-          "amendments": [
-            {
-              "article": "229",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "229",
-              "date": "1999-03-30",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
           "ref": "刑法第 221 條",
           "status": "verified",
           "checks": [
@@ -4286,7 +4143,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第 232 條（待核對）",
+          "ref": "刑事訴訟法第 232 條（告訴權人）",
           "status": "verified",
           "checks": [
             {

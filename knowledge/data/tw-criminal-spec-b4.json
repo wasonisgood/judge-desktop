@@ -689,15 +689,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第335條第3項",
-          "status": "failed",
+          "ref": "刑法第335條第2項",
+          "status": "verified",
           "checks": [
             {
               "article": "335",
-              "paragraph": 3,
+              "paragraph": 2,
               "item": null,
-              "ok": false,
-              "currentText": null
+              "ok": true,
+              "currentText": "前項之未遂犯罰之。"
             }
           ],
           "latestAmendmentDate": "2019-12-03",

@@ -344,41 +344,73 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第 101 條",
+          "ref": "刑事訴訟法第 88 條之 1",
           "status": "verified",
           "checks": [
             {
-              "article": "101",
+              "article": "88-1",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "被告經法官訊問後，認為犯罪嫌疑重大，而有下列情形之一，非予羈押，顯難進行追訴、審判或執行者，得羈押之：\n一、逃亡或有事實足認為有逃亡之虞者。\n二、有事實足認為有湮滅、偽造、變造證據或勾串共犯或證人之虞者。\n三、所犯為死刑、無期徒刑或最輕本刑"
+              "currentText": "檢察官、司法警察官或司法警察偵查犯罪，有下列情形之一而情況急迫者，得逕行拘提之：\n一、因現行犯之供述，且有事實足認為共犯嫌疑重大者。\n二、在執行或在押中之脫逃者。\n三、有事實足認為犯罪嫌疑重大，經被盤查而逃逸者。但所犯顯係最重本刑為一年以下"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-17",
+          "amendments": [
+            {
+              "article": "88-1",
+              "date": "1982-07-23",
+              "kind": "增訂"
+            },
+            {
+              "article": "88-1",
+              "date": "2019-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 93 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "93",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "偵查中經檢察官訊問後，認有羈押之必要者，應自拘提或逮捕之時起二十四小時內，以聲請書敘明犯罪事實並所犯法條及證據與羈押之理由，備具繕本並檢附卷宗及證物，聲請該管法院羈押之。但有事實足認有湮滅、偽造、變造證據或勾串共犯或證人等危害偵查目的或危害"
             }
           ],
           "latestAmendmentDate": "2017-04-21",
           "amendments": [
             {
-              "article": "101",
+              "article": "93",
               "date": "1928-07-28",
               "kind": "制定"
             },
             {
-              "article": "101",
+              "article": "93",
               "date": "1934-11-29",
               "kind": "制定"
             },
             {
-              "article": "101",
+              "article": "93",
               "date": "1967-01-13",
               "kind": "全文修正"
             },
             {
-              "article": "101",
+              "article": "93",
               "date": "1997-12-12",
               "kind": "修正"
             },
             {
-              "article": "101",
+              "article": "93",
+              "date": "2009-06-12",
+              "kind": "修正"
+            },
+            {
+              "article": "93",
               "date": "2017-04-21",
               "kind": "修正"
             }
@@ -700,15 +732,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 88 條",
+          "ref": "刑事訴訟法第 88 條第 2 項",
           "status": "verified",
           "checks": [
             {
               "article": "88",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "現行犯，不問何人得逕行逮捕之。\n犯罪在實施中或實施後即時發覺者，為現行犯。\n有左列情形之一者，以現行犯論：\n一、被追呼為犯罪人者。\n二、因持有兇器、贓物或其他物件，或於身體、衣服等處露有犯罪痕跡，顯可疑為犯罪人者。"
+              "currentText": "犯罪在實施中或實施後即時發覺者，為現行犯。"
             }
           ],
           "latestAmendmentDate": "1967-01-13",
@@ -732,28 +764,33 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第 88 條之 1",
+          "ref": "刑事訴訟法第 88 條第 3 項",
           "status": "verified",
           "checks": [
             {
-              "article": "88-1",
-              "paragraph": null,
+              "article": "88",
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "檢察官、司法警察官或司法警察偵查犯罪，有下列情形之一而情況急迫者，得逕行拘提之：\n一、因現行犯之供述，且有事實足認為共犯嫌疑重大者。\n二、在執行或在押中之脫逃者。\n三、有事實足認為犯罪嫌疑重大，經被盤查而逃逸者。但所犯顯係最重本刑為一年以下"
+              "currentText": "有左列情形之一者，以現行犯論：\n一、被追呼為犯罪人者。\n二、因持有兇器、贓物或其他物件，或於身體、衣服等處露有犯罪痕跡，顯可疑為犯罪人者。"
             }
           ],
-          "latestAmendmentDate": "2019-12-17",
+          "latestAmendmentDate": "1967-01-13",
           "amendments": [
             {
-              "article": "88-1",
-              "date": "1982-07-23",
-              "kind": "增訂"
+              "article": "88",
+              "date": "1928-07-28",
+              "kind": "制定"
             },
             {
-              "article": "88-1",
-              "date": "2019-12-17",
-              "kind": "修正"
+              "article": "88",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "88",
+              "date": "1967-01-13",
+              "kind": "全文修正"
             }
           ],
           "note": null
@@ -817,15 +854,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 88 條第 2 項",
+          "ref": "刑事訴訟法第 88 條第 1 項",
           "status": "verified",
           "checks": [
             {
               "article": "88",
-              "paragraph": 2,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯罪在實施中或實施後即時發覺者，為現行犯。"
+              "currentText": "現行犯，不問何人得逕行逮捕之。"
             }
           ],
           "latestAmendmentDate": "1967-01-13",
@@ -849,27 +886,69 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第 88 條之 1",
+          "ref": "刑事訴訟法第 88 條第 3 項",
           "status": "verified",
           "checks": [
             {
-              "article": "88-1",
-              "paragraph": null,
+              "article": "88",
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "檢察官、司法警察官或司法警察偵查犯罪，有下列情形之一而情況急迫者，得逕行拘提之：\n一、因現行犯之供述，且有事實足認為共犯嫌疑重大者。\n二、在執行或在押中之脫逃者。\n三、有事實足認為犯罪嫌疑重大，經被盤查而逃逸者。但所犯顯係最重本刑為一年以下"
+              "currentText": "有左列情形之一者，以現行犯論：\n一、被追呼為犯罪人者。\n二、因持有兇器、贓物或其他物件，或於身體、衣服等處露有犯罪痕跡，顯可疑為犯罪人者。"
             }
           ],
-          "latestAmendmentDate": "2019-12-17",
+          "latestAmendmentDate": "1967-01-13",
           "amendments": [
             {
-              "article": "88-1",
-              "date": "1982-07-23",
-              "kind": "增訂"
+              "article": "88",
+              "date": "1928-07-28",
+              "kind": "制定"
             },
             {
-              "article": "88-1",
-              "date": "2019-12-17",
+              "article": "88",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "88",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 92 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "92",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "無偵查犯罪權限之人逮捕現行犯者，應即送交檢察官、司法警察官或司法警察。"
+            }
+          ],
+          "latestAmendmentDate": "1997-12-12",
+          "amendments": [
+            {
+              "article": "92",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "92",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "92",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "92",
+              "date": "1997-12-12",
               "kind": "修正"
             }
           ],
@@ -1054,7 +1133,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 91 條至第 93 條（條次待核對）",
+          "ref": "刑事訴訟法第 91 條",
           "status": "verified",
           "checks": [
             {
@@ -1063,16 +1142,9 @@
               "item": null,
               "ok": true,
               "currentText": "拘提或因通緝逮捕之被告，應即解送指定之處所；如二十四小時內不能達到指定之處所者，應分別其命拘提或通緝者為法院或檢察官，先行解送較近之法院或檢察機關，訊問其人有無錯誤。"
-            },
-            {
-              "article": "93",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "被告或犯罪嫌疑人因拘提或逮捕到場者，應即時訊問。\n偵查中經檢察官訊問後，認有羈押之必要者，應自拘提或逮捕之時起二十四小時內，以聲請書敘明犯罪事實並所犯法條及證據與羈押之理由，備具繕本並檢附卷宗及證物，聲請該管法院羈押之。但有事實足認有湮滅、"
             }
           ],
-          "latestAmendmentDate": "2017-04-21",
+          "latestAmendmentDate": "1997-12-12",
           "amendments": [
             {
               "article": "91",
@@ -1093,7 +1165,24 @@
               "article": "91",
               "date": "1997-12-12",
               "kind": "修正"
-            },
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 93 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "93",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "偵查中經檢察官訊問後，認有羈押之必要者，應自拘提或逮捕之時起二十四小時內，以聲請書敘明犯罪事實並所犯法條及證據與羈押之理由，備具繕本並檢附卷宗及證物，聲請該管法院羈押之。但有事實足認有湮滅、偽造、變造證據或勾串共犯或證人等危害偵查目的或危害"
+            }
+          ],
+          "latestAmendmentDate": "2017-04-21",
+          "amendments": [
             {
               "article": "93",
               "date": "1928-07-28",
@@ -1386,12 +1475,41 @@
           "note": null
         },
         {
-          "ref": "警械使用條例（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "警械使用條例第 1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "警察人員執行職務時得依本條例使用警械；使用時應著制服或出示足資識別之警徽或執行職務之證明文件，但情況急迫時，不在此限。\n前項警械，包含警棍、警刀、槍械及其他器械；其種類，由內政部定之。"
+            }
+          ],
+          "latestAmendmentDate": "2022-09-30",
+          "amendments": [
+            {
+              "article": "1",
+              "date": "1933-09-15",
+              "kind": "制定"
+            },
+            {
+              "article": "1",
+              "date": "1968-11-08",
+              "kind": "全文修正"
+            },
+            {
+              "article": "1",
+              "date": "2002-06-04",
+              "kind": "全文修正"
+            },
+            {
+              "article": "1",
+              "date": "2022-09-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -1621,43 +1739,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "刑事訴訟法第 129 條",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "129",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2001-01-03",
-          "amendments": [
-            {
-              "article": "129",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "129",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "129",
-              "date": "1967-01-13",
-              "kind": "全文修正"
-            },
-            {
-              "article": "129",
-              "date": "2001-01-03",
-              "kind": "刪除"
-            }
-          ],
-          "note": null
         }
       ]
     },
@@ -1748,43 +1829,6 @@
               "article": "128",
               "date": "2001-01-03",
               "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑事訴訟法第 129 條",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "129",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2001-01-03",
-          "amendments": [
-            {
-              "article": "129",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "129",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "129",
-              "date": "1967-01-13",
-              "kind": "全文修正"
-            },
-            {
-              "article": "129",
-              "date": "2001-01-03",
-              "kind": "刪除"
             }
           ],
           "note": null
@@ -1879,43 +1923,6 @@
               "article": "128",
               "date": "2001-01-03",
               "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑事訴訟法第 129 條",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "129",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2001-01-03",
-          "amendments": [
-            {
-              "article": "129",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "129",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "129",
-              "date": "1967-01-13",
-              "kind": "全文修正"
-            },
-            {
-              "article": "129",
-              "date": "2001-01-03",
-              "kind": "刪除"
             }
           ],
           "note": null
@@ -2135,42 +2142,42 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 145 條",
+          "ref": "刑事訴訟法第 146 條",
           "status": "verified",
           "checks": [
             {
-              "article": "145",
+              "article": "146",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "法官、檢察官、檢察事務官、司法警察官或司法警察執行搜索及扣押，除依法得不用搜索票或扣押裁定之情形外，應以搜索票或扣押裁定示第一百四十八條在場之人。"
+              "currentText": "有人住居或看守之住宅或其他處所，不得於夜間入內搜索或扣押。但經住居人、看守人或可為其代表之人承諾或有急迫之情形者，不在此限。\n於夜間搜索或扣押者，應記明其事由於筆錄。\n日間已開始搜索或扣押者，得繼續至夜間。\n第一百條之三第三項之規定，於夜間"
             }
           ],
-          "latestAmendmentDate": "2016-05-27",
+          "latestAmendmentDate": "1999-01-14",
           "amendments": [
             {
-              "article": "145",
+              "article": "146",
               "date": "1928-07-28",
               "kind": "制定"
             },
             {
-              "article": "145",
+              "article": "146",
               "date": "1934-11-29",
               "kind": "制定"
             },
             {
-              "article": "145",
+              "article": "146",
               "date": "1967-01-13",
               "kind": "全文修正"
             },
             {
-              "article": "145",
-              "date": "2001-01-03",
+              "article": "146",
+              "date": "1997-12-12",
               "kind": "修正"
             },
             {
-              "article": "145",
-              "date": "2016-05-27",
+              "article": "146",
+              "date": "1999-01-14",
               "kind": "修正"
             }
           ],
@@ -2234,31 +2241,31 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 149 條（條次待核對）",
+          "ref": "刑事訴訟法第 148 條",
           "status": "verified",
           "checks": [
             {
-              "article": "149",
+              "article": "148",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "在政府機關、軍營、軍艦或軍事上秘密處所內行搜索或扣押者，應通知該管長官或可為其代表之人在場。"
+              "currentText": "在有人住居或看守之住宅或其他處所內行搜索或扣押者，應命住居人、看守人或可為其代表之人在場；如無此等人在場時，得命鄰居之人或就近自治團體之職員在場。"
             }
           ],
           "latestAmendmentDate": "1967-01-13",
           "amendments": [
             {
-              "article": "149",
+              "article": "148",
               "date": "1928-07-28",
               "kind": "制定"
             },
             {
-              "article": "149",
+              "article": "148",
               "date": "1934-11-29",
               "kind": "制定"
             },
             {
-              "article": "149",
+              "article": "148",
               "date": "1967-01-13",
               "kind": "全文修正"
             }
@@ -2911,37 +2918,42 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第 128 條",
+          "ref": "刑事訴訟法第 131 條",
           "status": "verified",
           "checks": [
             {
-              "article": "128",
+              "article": "131",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "搜索，應用搜索票。\n搜索票，應記載下列事項：\n一、案由。\n二、應搜索之被告、犯罪嫌疑人或應扣押之物。但被告或犯罪嫌疑人不明時，得不予記載。\n三、應加搜索之處所、身體、物件或電磁紀錄。\n四、有效期間，逾期不得執行搜索及搜索後應將搜索票交還之意"
+              "currentText": "有左列情形之一者，檢察官、檢察事務官、司法警察官或司法警察，雖無搜索票，得逕行搜索住宅或其他處所：\n一、因逮捕被告、犯罪嫌疑人或執行拘提、羈押，有事實足認被告或犯罪嫌疑人確實在內者。\n二、因追躡現行犯或逮捕脫逃人，有事實足認現行犯或脫逃人確"
             }
           ],
-          "latestAmendmentDate": "2001-01-03",
+          "latestAmendmentDate": "2002-01-17",
           "amendments": [
             {
-              "article": "128",
+              "article": "131",
               "date": "1928-07-28",
               "kind": "制定"
             },
             {
-              "article": "128",
+              "article": "131",
               "date": "1934-11-29",
               "kind": "制定"
             },
             {
-              "article": "128",
+              "article": "131",
               "date": "1967-01-13",
               "kind": "全文修正"
             },
             {
-              "article": "128",
+              "article": "131",
               "date": "2001-01-03",
+              "kind": "修正"
+            },
+            {
+              "article": "131",
+              "date": "2002-01-17",
               "kind": "修正"
             }
           ],
@@ -3005,6 +3017,28 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
+          "ref": "刑事訴訟法第 131-1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "131-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "搜索，經受搜索人出於自願性同意者，得不使用搜索票。但執行人員應出示證件，並將其同意之意旨記載於筆錄。"
+            }
+          ],
+          "latestAmendmentDate": "2001-01-03",
+          "amendments": [
+            {
+              "article": "131-1",
+              "date": "2001-01-03",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        },
+        {
           "ref": "刑事訴訟法第 158-4 條",
           "status": "verified",
           "checks": [
@@ -3022,43 +3056,6 @@
               "article": "158-4",
               "date": "2003-01-14",
               "kind": "增訂"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑事訴訟法第 128 條",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "128",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "搜索，應用搜索票。\n搜索票，應記載下列事項：\n一、案由。\n二、應搜索之被告、犯罪嫌疑人或應扣押之物。但被告或犯罪嫌疑人不明時，得不予記載。\n三、應加搜索之處所、身體、物件或電磁紀錄。\n四、有效期間，逾期不得執行搜索及搜索後應將搜索票交還之意"
-            }
-          ],
-          "latestAmendmentDate": "2001-01-03",
-          "amendments": [
-            {
-              "article": "128",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "128",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "128",
-              "date": "1967-01-13",
-              "kind": "全文修正"
-            },
-            {
-              "article": "128",
-              "date": "2001-01-03",
-              "kind": "修正"
             }
           ],
           "note": null
@@ -3121,22 +3118,44 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 158-4 條",
+          "ref": "刑事訴訟法第 131-1 條",
           "status": "verified",
           "checks": [
             {
-              "article": "158-4",
+              "article": "131-1",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "除法律另有規定外，實施刑事訴訟程序之公務員因違背法定程序取得之證據，其有無證據能力之認定，應審酌人權保障及公共利益之均衡維護。"
+              "currentText": "搜索，經受搜索人出於自願性同意者，得不使用搜索票。但執行人員應出示證件，並將其同意之意旨記載於筆錄。"
             }
           ],
-          "latestAmendmentDate": "2003-01-14",
+          "latestAmendmentDate": "2001-01-03",
           "amendments": [
             {
-              "article": "158-4",
-              "date": "2003-01-14",
+              "article": "131-1",
+              "date": "2001-01-03",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第 133-1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "133-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "非附隨於搜索之扣押，除以得為證據之物而扣押或經受扣押標的權利人同意者外，應經法官裁定。\n前項之同意，執行人員應出示證件，並先告知受扣押標的權利人得拒絕扣押，無須違背自己之意思而為同意，並將其同意之意旨記載於筆錄。\n第一項裁定，應記載下列事項"
+            }
+          ],
+          "latestAmendmentDate": "2016-05-27",
+          "amendments": [
+            {
+              "article": "133-1",
+              "date": "2016-05-27",
               "kind": "增訂"
             }
           ],
@@ -3200,6 +3219,28 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
+          "ref": "刑事訴訟法第 131-1 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "131-1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "搜索，經受搜索人出於自願性同意者，得不使用搜索票。但執行人員應出示證件，並將其同意之意旨記載於筆錄。"
+            }
+          ],
+          "latestAmendmentDate": "2001-01-03",
+          "amendments": [
+            {
+              "article": "131-1",
+              "date": "2001-01-03",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        },
+        {
           "ref": "刑事訴訟法第 158-4 條",
           "status": "verified",
           "checks": [
@@ -3217,43 +3258,6 @@
               "article": "158-4",
               "date": "2003-01-14",
               "kind": "增訂"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑事訴訟法第 128 條",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "128",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "搜索，應用搜索票。\n搜索票，應記載下列事項：\n一、案由。\n二、應搜索之被告、犯罪嫌疑人或應扣押之物。但被告或犯罪嫌疑人不明時，得不予記載。\n三、應加搜索之處所、身體、物件或電磁紀錄。\n四、有效期間，逾期不得執行搜索及搜索後應將搜索票交還之意"
-            }
-          ],
-          "latestAmendmentDate": "2001-01-03",
-          "amendments": [
-            {
-              "article": "128",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "128",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "128",
-              "date": "1967-01-13",
-              "kind": "全文修正"
-            },
-            {
-              "article": "128",
-              "date": "2001-01-03",
-              "kind": "修正"
             }
           ],
           "note": null
@@ -3316,38 +3320,23 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 128 條",
+          "ref": "刑事訴訟法第 131-1 條",
           "status": "verified",
           "checks": [
             {
-              "article": "128",
+              "article": "131-1",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "搜索，應用搜索票。\n搜索票，應記載下列事項：\n一、案由。\n二、應搜索之被告、犯罪嫌疑人或應扣押之物。但被告或犯罪嫌疑人不明時，得不予記載。\n三、應加搜索之處所、身體、物件或電磁紀錄。\n四、有效期間，逾期不得執行搜索及搜索後應將搜索票交還之意"
+              "currentText": "搜索，經受搜索人出於自願性同意者，得不使用搜索票。但執行人員應出示證件，並將其同意之意旨記載於筆錄。"
             }
           ],
           "latestAmendmentDate": "2001-01-03",
           "amendments": [
             {
-              "article": "128",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "128",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "128",
-              "date": "1967-01-13",
-              "kind": "全文修正"
-            },
-            {
-              "article": "128",
+              "article": "131-1",
               "date": "2001-01-03",
-              "kind": "修正"
+              "kind": "增訂"
             }
           ],
           "note": null
@@ -3694,6 +3683,43 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
+          "ref": "刑事訴訟法第 128 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "128",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "搜索，應用搜索票。\n搜索票，應記載下列事項：\n一、案由。\n二、應搜索之被告、犯罪嫌疑人或應扣押之物。但被告或犯罪嫌疑人不明時，得不予記載。\n三、應加搜索之處所、身體、物件或電磁紀錄。\n四、有效期間，逾期不得執行搜索及搜索後應將搜索票交還之意"
+            }
+          ],
+          "latestAmendmentDate": "2001-01-03",
+          "amendments": [
+            {
+              "article": "128",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "128",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "128",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "128",
+              "date": "2001-01-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
           "ref": "刑事訴訟法第 133 條",
           "status": "verified",
           "checks": [
@@ -3726,28 +3752,6 @@
               "article": "133",
               "date": "2016-05-27",
               "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑事訴訟法第 133 條之 1（條次待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "133-1",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "非附隨於搜索之扣押，除以得為證據之物而扣押或經受扣押標的權利人同意者外，應經法官裁定。\n前項之同意，執行人員應出示證件，並先告知受扣押標的權利人得拒絕扣押，無須違背自己之意思而為同意，並將其同意之意旨記載於筆錄。\n第一項裁定，應記載下列事項"
-            }
-          ],
-          "latestAmendmentDate": "2016-05-27",
-          "amendments": [
-            {
-              "article": "133-1",
-              "date": "2016-05-27",
-              "kind": "增訂"
             }
           ],
           "note": null
@@ -4034,7 +4038,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第 416 條（條次待核對）",
+          "ref": "刑事訴訟法第 416 條",
           "status": "verified",
           "checks": [
             {
@@ -4305,7 +4309,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "通訊保障及監察法第 5 條（條次與文字待核對）",
+          "ref": "通訊保障及監察法第 5 條",
           "status": "verified",
           "checks": [
             {
@@ -4345,43 +4349,6 @@
             },
             {
               "article": "5",
-              "date": "2024-07-12",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "通訊保障及監察法第 6 條（條次待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "6",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "有事實足認被告或犯罪嫌疑人有犯刑法妨害投票罪章、公職人員選舉罷免法、總統副總統選舉罷免法、槍砲彈藥刀械管制條例第七條、第八條、毒品危害防制條例第四條、擄人勒贖罪或以投置炸彈、爆裂物或投放毒物方法犯恐嚇取財罪、組織犯罪防制條例第三條、洗錢防制"
-            }
-          ],
-          "latestAmendmentDate": "2024-07-12",
-          "amendments": [
-            {
-              "article": "6",
-              "date": "1999-06-22",
-              "kind": "制定"
-            },
-            {
-              "article": "6",
-              "date": "2007-06-15",
-              "kind": "修正"
-            },
-            {
-              "article": "6",
-              "date": "2014-01-14",
-              "kind": "修正"
-            },
-            {
-              "article": "6",
               "date": "2024-07-12",
               "kind": "修正"
             }
@@ -4445,7 +4412,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "通訊保障及監察法第 6 條（條次與期限待核對）",
+          "ref": "通訊保障及監察法第 6 條",
           "status": "verified",
           "checks": [
             {
@@ -4539,7 +4506,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "通訊保障及監察法第 18 條之 1（條次待核對）",
+          "ref": "通訊保障及監察法第 18 條之 1",
           "status": "verified",
           "checks": [
             {
@@ -4640,62 +4607,37 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "通訊保障及監察法第 5 條（條次待核對）",
+          "ref": "通訊保障及監察法第 18 條之 1 第 1 項",
           "status": "verified",
           "checks": [
             {
-              "article": "5",
-              "paragraph": null,
+              "article": "18-1",
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "有事實足認被告或犯罪嫌疑人有下列各款罪嫌之一，並危害國家安全、經濟秩序或社會秩序情節重大，而有相當理由可信其通訊內容與本案有關，且不能或難以其他方法蒐集或調查證據者，得發通訊監察書：\n一、最輕本刑為三年以上有期徒刑之罪。\n二、刑法第一百條第"
+              "currentText": "依第五條、第六條或第七條規定執行通訊監察，取得其他案件之內容者，不得作為證據。但於發現後七日內補行陳報法院，並經法院審查認可該案件與實施通訊監察之案件具有關連性或為第五條第一項所列各款之罪者，不在此限。"
             }
           ],
-          "latestAmendmentDate": "2024-07-12",
+          "latestAmendmentDate": "2014-01-14",
           "amendments": [
             {
-              "article": "5",
-              "date": "1999-06-22",
-              "kind": "制定"
-            },
-            {
-              "article": "5",
-              "date": "2006-05-05",
-              "kind": "修正"
-            },
-            {
-              "article": "5",
-              "date": "2007-06-15",
-              "kind": "修正"
-            },
-            {
-              "article": "5",
+              "article": "18-1",
               "date": "2014-01-14",
-              "kind": "修正"
-            },
-            {
-              "article": "5",
-              "date": "2016-03-25",
-              "kind": "修正"
-            },
-            {
-              "article": "5",
-              "date": "2024-07-12",
-              "kind": "修正"
+              "kind": "增訂"
             }
           ],
           "note": null
         },
         {
-          "ref": "通訊保障及監察法第 18 條之 1（條次待核對）",
+          "ref": "通訊保障及監察法第 18 條之 1 第 2 項",
           "status": "verified",
           "checks": [
             {
               "article": "18-1",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "依第五條、第六條或第七條規定執行通訊監察，取得其他案件之內容者，不得作為證據。但於發現後七日內補行陳報法院，並經法院審查認可該案件與實施通訊監察之案件具有關連性或為第五條第一項所列各款之罪者，不在此限。\n依第五條、第六條或第七條規定執行通訊"
+              "currentText": "依第五條、第六條或第七條規定執行通訊監察所取得之內容或所衍生之證據與監察目的無關者，不得作為司法偵查、審判、其他程序之證據或其他用途，並依第十七條第二項規定予以銷燬。"
             }
           ],
           "latestAmendmentDate": "2014-01-14",

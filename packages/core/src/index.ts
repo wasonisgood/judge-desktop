@@ -59,3 +59,21 @@ export * from './pipeline/lawContext';
 export * from './pipeline/cancel';
 export * from './pipeline/errorMessage';
 export * from './ai/federationSetup';
+
+// 爭點知識庫（issue #5）：型別、驗證、Router 與上下文組裝（純函式，不做檔案 I/O）。
+export {
+  KNOWLEDGE_SCHEMA_VERSION, type Doctrine, type PracticeView, type Issue, type KnowledgeFile,
+  type IndexedIssue, type KnowledgeIndex,
+} from './knowledge/types';
+export {
+  validateIssue, validateKnowledgeFile, type ValidationProblem, type ValidatedFile,
+} from './knowledge/validate';
+export {
+  routeIssues, rerouteIssues, scoreIssue, diceSimilarity, normalizeText, MAX_ROUTE_ATTEMPTS,
+  type RouteOptions as KnowledgeRouteOptions, type RouteHit as KnowledgeRouteHit,
+  type RouteResult as KnowledgeRouteResult, type RerouteRequest, type RerouteOutcome,
+} from './knowledge/router';
+export {
+  buildKnowledgeContext, buildKnowledgeIndex, KNOWLEDGE_CONTEXT_MAX_CHARS,
+  type KnowledgeContextOutput, type KnowledgeBuildResult,
+} from './knowledge/context';

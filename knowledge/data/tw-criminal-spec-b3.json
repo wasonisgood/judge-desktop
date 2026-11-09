@@ -44,17 +44,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "多數見解以行為人已取得財物之實力支配為既遂標準。",
           "note": "派別：取得說為主流。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "對於已被即時監控、無法實際脫離的案件，部分裁判認為尚未取得實力支配而論未遂，其他見解則仍以藏匿即既遂處理。",
-          "note": "派別分歧，個案見解待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "審查既遂時，宜依序檢視：財物是否已脫離原持有人之支配、行為人是否取得事實上之實力支配、被害人或監控者能否即時回復支配。三者綜合判斷，方能說明既遂與未遂之分界。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -63,7 +63,63 @@
         "刑法第 320 條第 1 項",
         "刑法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 320 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-097",
@@ -105,17 +161,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "以事實上之管領與支配作為主要判斷基礎。",
           "note": "派別：事實說為基礎。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "受託人持有他人之物，若已逾越委託範圍而不返還，多論侵占；若行為人以持有人以外之身分取走，則可能論竊盜。規範考量僅作補充。",
-          "note": "派別：事實說為主、規範說補充（待核對）。"
+          "note": "派別：事實說為主、規範說補充。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上常以「財物離開誰的管領、由誰取得管領」為起點，再審查取得的合法性。若財物本即由行為人合法持有，後續拒不返還，論侵占；若財物由第三人持有而被行為人在無權限下取走，論竊盜。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -124,7 +180,63 @@
         "刑法第 320 條第 1 項",
         "刑法第 337 條（侵占離本人持有之物）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 320 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 337 條（侵占離本人持有之物）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "337",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而侵占遺失物、漂流物或其他離本人所持有之物者，處一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "337",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "337",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-098",
@@ -166,17 +278,17 @@
       ],
       "practice": [
         {
-          "period": "竊電（待核對）",
+          "period": "竊電",
           "view": "依第323條明文，竊取電能成立竊盜。",
           "note": "法定明文，爭議較少。"
         },
         {
-          "period": "線上遊戲寶物、虛擬點數（待核對）",
+          "period": "線上遊戲寶物、虛擬點數",
           "view": "部分裁判認為非動產，不成立竊盜，改依電腦相關條文或其他罪名處理；其他見解的態度則有分歧。",
-          "note": "派別分歧，個案見解待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "論述時宜說明：第323條將電能視為動產，係立法者的明文擬制；對於電磁紀錄，則不宜任意類推。若欲擴張竊盜客體，須以立法方式為之，或透過電腦相關規定處理。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -187,7 +299,122 @@
         "刑法第 339 條之 2",
         "刑法第 339 條之 3"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 323 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "323",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "電能、熱能及其他能量，關於本章之罪，以動產論。"
+            }
+          ],
+          "latestAmendmentDate": "2003-06-03",
+          "amendments": [
+            {
+              "article": "323",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "323",
+              "date": "1997-09-25",
+              "kind": "修正"
+            },
+            {
+              "article": "323",
+              "date": "2003-06-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 320 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 2",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以不正方法由自動付款設備取得他人之物者，處三年以下有期徒刑、拘役或三十萬元以下罰金。\n以前項方法得財產上不法之利益或使第三人得之者，亦同。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339-2",
+              "date": "1997-09-25",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-2",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 3",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以不正方法將虛偽資料或不正指令輸入電腦或其相關設備，製作財產權之得喪、變更紀錄，而取得他人之財產者，處七年以下有期徒刑，得併科七十萬元以下罰金。\n以前項方法得財產上不法之利益或使第三人得之者，亦同。\n前二項之未"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339-3",
+              "date": "1997-09-25",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-3",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-099",
@@ -229,17 +456,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "強調行為人是否有「不歸還」或「以所有人自居」之意思。",
           "note": "派別：主觀意思為核心。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於騎走他人機車後棄置、或使用後旋即歸還之案件，是否具不法所有意圖，個案認定差異大。",
-          "note": "以客觀利用狀況與主觀意思綜合判斷（待核對）。"
+          "note": "以客觀利用狀況與主觀意思綜合判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務審查宜分為三階段：先確認客觀上是否排除所有人之支配，再審查行為人是否有利用財物之意思，最後以事後行為判斷其主觀目的。三者缺一，均須說明理由。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -247,7 +474,36 @@
       "lawRefs": [
         "刑法第 320 條第 1 項（意圖為自己或第三人不法之所有）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 320 條第 1 項（意圖為自己或第三人不法之所有）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-100",
@@ -289,26 +545,92 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "多數以客觀危險性為主，並兼顧攜帶之目的。",
-          "note": "派別：客觀危險說為主流（待核對）。"
+          "note": "派別：客觀危險說為主流。"
         },
         {
-          "period": "結夥（待核對）",
+          "period": "結夥",
           "view": "實務認為三人以上須共同實行或參與犯罪之實施；單純事前共謀而未參與實行者，是否計入尚有分歧。",
-          "note": "個案見解待核對。"
+          "note": "個案見解分歧，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "就攜帶兇器部分，可先確認器械之客觀性質，再檢視攜帶時的情境；就結夥部分，則應確認三人以上是否共同參與實行，而非僅具事前之謀議。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
         "刑法第 321 條第 1 項第 3 款（攜帶兇器）",
-        "刑法第 321 條第 1 項第 4 款（結夥三人以上）（款次待核對）"
+        "刑法第 321 條第 1 項第 4 款（結夥三人以上）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 321 條第 1 項第 3 款（攜帶兇器）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "321",
+              "paragraph": 1,
+              "item": 3,
+              "ok": true,
+              "currentText": "三、攜帶兇器而犯之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "321",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "321",
+              "date": "2011-01-10",
+              "kind": "修正"
+            },
+            {
+              "article": "321",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 321 條第 1 項第 4 款（結夥三人以上）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "321",
+              "paragraph": 1,
+              "item": 4,
+              "ok": true,
+              "currentText": "四、結夥三人以上而犯之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "321",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "321",
+              "date": "2011-01-10",
+              "kind": "修正"
+            },
+            {
+              "article": "321",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-101",
@@ -350,26 +672,77 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "多數見解認為免除僅及於具親屬身分者，非親屬共犯仍依法處罰。",
-          "note": "派別：一身事由說為主流（待核對）。"
+          "note": "派別：一身事由說為主流。"
         },
         {
-          "period": "條文適用範圍（待核對）",
-          "view": "條文項次及與告訴乃論之搭配，應以現行條文為準。",
-          "note": "待核對。"
+          "period": "條文適用範圍",
+          "view": "條文項次及與告訴乃論之搭配（刑法第 324 條第 2 項），應以現行條文為準。",
+          "note": "以現行條文為準。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務審理時，常需先確認行為人與被害人之親屬關係與共居事實，再判斷免除是否適用；若確有親屬關係，則對非親屬共犯仍應依其罪責予以處罰。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 324 條（親屬免除，項次待核對）",
+        "刑法第 324 條第 1 項（親屬免除）",
         "刑法第 28 條（共同正犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 324 條第 1 項（親屬免除）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "324",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "於直系血親、配偶或同財共居親屬之間，犯本章之罪者，得免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "324",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 28 條（共同正犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-102",
@@ -411,17 +784,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以接續犯處理同一地點之連續竊盜。",
           "note": "派別：接續犯為主流。"
         },
         {
-          "period": "近年（待核對）",
-          "view": "大法庭裁定就接續犯之適用加以限縮，改以個別行為獨立評價或其他罪數概念處理，具體標準待核對。",
-          "note": "限縮接續犯適用為近期趨勢（待核對）。"
+          "period": "近年",
+          "view": "對於各次犯意獨立、時間間隔明顯之案件，實務上多傾向分別論罪，不宜僅以概括犯意合併評價。",
+          "note": "以各次行為之犯意與時空關係綜合判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上宜先判斷是否屬同一被害人與同一財產法益，再檢視時空密接性與犯意單一性；若各次犯意獨立、時間間隔明顯，即應分別論罪並依數罪併罰原則處理。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -431,7 +804,90 @@
         "刑法第 55 條（想像競合）",
         "刑法第 320 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 50 條（數罪併罰）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條（想像競合）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 320 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-103",
@@ -473,17 +929,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務偏重手段強度是否足以壓制被害人反抗。",
           "note": "派別：程度區分說為主流。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "對搶包、扯項鍊等行為，若拉扯致被害人倒地或受傷，多傾向認定有強暴，論強盜或加重搶奪。",
-          "note": "個案認定待核對。"
+          "note": "個案認定宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "就個案分析，宜將手段強度、被害人能否即時反抗、取得財物之時間差與行為人之後續行為一併考量，並說明為何某一罪名較為妥當。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -492,7 +948,63 @@
         "刑法第 325 條第 1 項",
         "刑法第 328 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 325 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "325",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而搶奪他人之動產者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "325",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 328 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "328",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以強暴、脅迫、藥劑、催眠術或他法，至使不能抗拒，而取他人之物或使其交付者，為強盜罪，處五年以上有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "328",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "328",
+              "date": "2002-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "328",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-104",
@@ -534,27 +1046,123 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "多依個案判斷傷害與搶奪之因果，以傷害罪與搶奪罪競合處理。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對致人重傷或死亡之搶奪，多傾向適用加重條文或結合犯的評價。",
-          "note": "條次與效果待核對。"
+          "note": "條次與效果以現行條文為準。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務論述時，常需說明傷勢與搶奪手段之關聯，並檢視醫療資料與目擊陳述。若因果關係不明確，應避免直接歸責於加重結果。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 325 條",
-        "刑法第 326 條（加重搶奪，條次待核對）",
+        "刑法第 325 條第 1 項",
+        "刑法第 325 條第 2 項（搶奪因而致人於死或重傷）",
+        "刑法第 326 條（加重搶奪）",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 325 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "325",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而搶奪他人之動產者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "325",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 325 條第 2 項（搶奪因而致人於死或重傷）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "325",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "因而致人於死者，處無期徒刑或七年以上有期徒刑，致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "325",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 326 條（加重搶奪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "326",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯前條第一項之罪，而有第三百二十一條第一項各款情形之一者，處一年以上七年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "326",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-105",
@@ -595,17 +1203,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "多以行為人是否已取得財物之事實支配為準。",
-          "note": "派別：取得說為主流（待核對）。"
+          "note": "派別：取得說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於即時被奪回的情形，部分見解論未遂，其他見解仍論既遂。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上常以行為人取得財物後是否能維持支配一段時間作為參考，但對於瞬間奪回的情形，各裁判之標準並不一致，論述時應明確說明採取之立場。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -614,7 +1222,58 @@
         "刑法第 25 條",
         "刑法第 325 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 325 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "325",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而搶奪他人之動產者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "325",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-106",
@@ -656,17 +1315,17 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "多以行為是否隱密、被害人能否即時發覺，作為綜合判斷的依據。",
-          "note": "派別：綜合判斷（待核對）。"
+          "note": "派別：綜合判斷。"
         },
         {
-          "period": "個案（待核對）",
+          "period": "個案",
           "view": "扒竊、搶包之案件，實務常依取得方式與被害人反應，分別論竊盜或搶奪。",
-          "note": "個案見解待核對。"
+          "note": "個案見解分歧，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "論述時可依序檢視：取得時的隱密性、被害人的察覺程度、是否有強力動作、取得後是否立即被發覺與追捕。綜合判斷後說明為何定性為竊盜或搶奪。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -675,7 +1334,58 @@
         "刑法第 320 條第 1 項",
         "刑法第 325 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 320 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 325 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "325",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而搶奪他人之動產者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "325",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-107",
@@ -717,17 +1427,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以一般人標準，判斷施暴程度是否足以壓制反抗。",
-          "note": "派別：相當程度說為主流（待核對）。"
+          "note": "派別：相當程度說為主流。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "對於以推撞、扯拉取財的案件，依行為強度與被害人處境綜合認定，個案差異明顯。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "就個案分析，宜將手段與結果的因果連結加以說明，並避免僅以被害人是否受傷作為判斷的唯一標準。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -736,7 +1446,63 @@
         "刑法第 328 條第 1 項",
         "刑法第 325 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 328 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "328",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以強暴、脅迫、藥劑、催眠術或他法，至使不能抗拒，而取他人之物或使其交付者，為強盜罪，處五年以上有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "328",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "328",
+              "date": "2002-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "328",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 325 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "325",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而搶奪他人之動產者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "325",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-108",
@@ -777,17 +1543,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "多數見解以財物取得或交付作為既遂之要件。",
-          "note": "派別：財物取得說為主流（待核對）。"
+          "note": "派別：財物取得說為主流。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "對於手段已完成而財物未取得之案件，部分裁判論強盜未遂。",
-          "note": "個案見解待核對。"
+          "note": "個案見解分歧，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上，強盜未遂的減刑與否，常影響最終刑度。論述時宜說明未遂之具體情節，並指出被告的行為在客觀上未能實現取財目的之原因。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -796,7 +1562,68 @@
         "刑法第 328 條第 1 項",
         "刑法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 328 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "328",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以強暴、脅迫、藥劑、催眠術或他法，至使不能抗拒，而取他人之物或使其交付者，為強盜罪，處五年以上有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "328",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "328",
+              "date": "2002-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "328",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-109",
@@ -838,17 +1665,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務強調手段與取財之因果連結，對先施暴後起意取財之案件，多論傷害罪與竊盜或搶奪。",
-          "note": "派別：主觀同時說為基礎（待核對）。"
+          "note": "派別：主觀同時說為基礎。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "對於施暴後繼續搜取財物的案件，部分見解認為仍具壓制延續，論強盜。",
-          "note": "個案認定分歧，待核對。"
+          "note": "個案認定分歧。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對於先施暴後起意取財的案件，常以行為人的供述、現場位置與被害人陳述作為判斷的依據，論述時應注意證據之相互印證。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -857,7 +1684,63 @@
         "刑法第 328 條第 1 項",
         "刑法第 329 條（準強盜）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 328 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "328",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以強暴、脅迫、藥劑、催眠術或他法，至使不能抗拒，而取他人之物或使其交付者，為強盜罪，處五年以上有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "328",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "328",
+              "date": "2002-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "328",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 329 條（準強盜）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "329",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "竊盜或搶奪，因防護贓物、脫免逮捕或湮滅罪證，而當場施以強暴脅迫者，以強盜論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "329",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-110",
@@ -899,17 +1782,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以竊盜、搶奪已著手為準強盜之前提，並強調施暴與防護或脫逃的關聯。",
-          "note": "派別：著手即足說為主流（待核對）。"
+          "note": "派別：著手即足說為主流。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "對於未遂階段之施暴案件，部分裁判採較限縮的解釋。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上，準強盜的成立常取決於施暴與防護、脫逃目的之連結；論述時可就行為人被發覺後之行為，說明其施暴是否有直接的脫逃或防護意圖。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -919,7 +1802,80 @@
         "刑法第 320 條第 1 項",
         "刑法第 325 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 329 條（準強盜）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "329",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "竊盜或搶奪，因防護贓物、脫免逮捕或湮滅罪證，而當場施以強暴脅迫者，以強盜論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "329",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 320 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 325 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "325",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而搶奪他人之動產者，處六月以上五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "325",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-111",
@@ -961,26 +1917,87 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "多數以客觀上是否攜帶足以殺傷之器械、是否三人以上實行為判斷。",
-          "note": "派別：同一解釋說為主流（待核對）。"
+          "note": "派別：同一解釋說為主流。"
         },
         {
-          "period": "條次（待核對）",
+          "period": "條次",
           "view": "強盜加重之具體項款，應以現行刑法條文為準。",
-          "note": "條次待核對。"
+          "note": "以現行條文為準。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "就加重事由之認定，宜先確認器械之客觀性質與攜帶情境，再說明其與強盜手段之關聯，最後判斷是否足以提高法定刑。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 330 條（加重強盜，條次待核對）",
+        "刑法第 330 條（加重強盜）",
         "刑法第 321 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 330 條（加重強盜）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "330",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯強盜罪而有第三百二十一條第一項各款情形之一者，處七年以上有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2002-01-08",
+          "amendments": [
+            {
+              "article": "330",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "330",
+              "date": "2002-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 321 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "321",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "犯前條第一項、第二項之罪而有下列情形之一者，處六月以上五年以下有期徒刑，得併科五十萬元以下罰金：\n一、侵入住宅或有人居住之建築物、船艦或隱匿其內而犯之。\n二、毀越門窗、牆垣或其他安全設備而犯之。\n三、攜帶兇器而犯之。\n四、結夥三人以上而犯之"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "321",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "321",
+              "date": "2011-01-10",
+              "kind": "修正"
+            },
+            {
+              "article": "321",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-112",
@@ -1004,12 +2021,12 @@
         "取財",
         "自由剝奪"
       ],
-      "proposition": "強盜罪中「致使人喪失自由」之態樣，是否包括以強暴手段短暫限制行動自由以便取財之情形？與妨害自由罪之關係為何？",
-      "distinction": "若將短暫限制行動自由納入強盜，則可能與強盜結合或加重之評價重疊；若另論妨害自由，則需判斷罪數。例如行為人以繩索綁住被害人後搜取財物，應論強盜或另論剝奪行動自由，影響刑度與罪數。致使人喪失自由之態樣，常與綁架、妨害自由等罪發生競合。論述時宜說明拘束的時間長短、場所、被害人之行動可能性，以及拘束是否為取財所必要之手段。若拘束已超出取財所需，則應考慮獨立評價，並以想像競合或數罪處理。",
+      "proposition": "強盜罪之強暴脅迫手段，若同時拘束被害人之行動自由以便取財，是否另論妨害自由罪（刑法第 302 條）？與強盜罪之罪數關係為何？",
+      "distinction": "若將短暫限制行動自由納入強盜，則可能與強盜結合或加重之評價重疊；若另論妨害自由，則需判斷罪數。例如行為人以繩索綁住被害人後搜取財物，應論強盜或另論剝奪行動自由，影響刑度與罪數。拘束行動自由之手段，常與私行拘禁、妨害自由等罪發生競合。論述時宜說明拘束的時間長短、場所、被害人之行動可能性，以及拘束是否為取財所必要之手段。若拘束已超出取財所需，則應考慮獨立評價，並以想像競合或數罪處理。",
       "doctrines": [
         {
           "label": "甲說（獨立評價說）",
-          "view": "致人喪失自由與取財行為各自獨立評價，應另論妨害自由並與強盜以想像競合或數罪處理。",
+          "view": "拘束行動自由與取財行為各自獨立評價，應另論妨害自由並與強盜以想像競合或數罪處理。",
           "pros": "各行為的不法內涵分別評價，避免重複。",
           "cons": "若實際上拘束行為與取財密切相連，數罪評價可能過重。"
         },
@@ -1022,27 +2039,115 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多依拘束之時間與程度，判斷是否另論妨害自由。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於長時間監禁後取財的案件，實務傾向數罪評價。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務審查時，多依拘束之時間、強度與被害人可否自行脫離，判斷其是否具獨立之不法內涵，並據此決定是否另論妨害自由。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 328 條第 1 項（致使人喪失自由）",
-        "刑法第 302 條（妨害自由，待核對）",
+        "刑法第 328 條第 1 項（強暴脅迫至使不能抗拒）",
+        "刑法第 302 條（妨害自由）",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 328 條第 1 項（強暴脅迫至使不能抗拒）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "328",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以強暴、脅迫、藥劑、催眠術或他法，至使不能抗拒，而取他人之物或使其交付者，為強盜罪，處五年以上有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "328",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "328",
+              "date": "2002-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "328",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 302 條（妨害自由）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "302",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "私行拘禁或以其他非法方法，剝奪人之行動自由者，處五年以下有期徒刑、拘役或九千元以下罰金。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "302",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "302",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-113",
@@ -1084,26 +2189,87 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "多綜合脅迫之內容、方式、在場人數與被害人反應判斷。",
-          "note": "派別：綜合判斷（待核對）。"
+          "note": "派別：綜合判斷。"
         },
         {
-          "period": "個案（待核對）",
+          "period": "個案",
           "view": "以持刀威脅交付財物之案件，多認定為強盜；以電話恐嚇者，則多論恐嚇取財。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上審查時，常以證人陳述與現場監視錄影之內容，判斷行為人之威嚇是否為即時性，並說明被害人之交付是否基於壓制而非心理上的順從。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
         "刑法第 328 條第 1 項",
-        "刑法第 346 條（恐嚇取財，條次待核對）"
+        "刑法第 346 條第 1 項（恐嚇取財）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 328 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "328",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以強暴、脅迫、藥劑、催眠術或他法，至使不能抗拒，而取他人之物或使其交付者，為強盜罪，處五年以上有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "328",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "328",
+              "date": "2002-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "328",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 346 條第 1 項（恐嚇取財）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "346",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以恐嚇使人將本人或第三人之物交付者，處六月以上五年以下有期徒刑，得併科三萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "346",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "346",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-114",
@@ -1145,17 +2311,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多依被害人數及財物所有關係，認定為想像競合或數罪。",
-          "note": "派別：侵害法益數說為主流（待核對）。"
+          "note": "派別：侵害法益數說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於同一現場之單一脅迫行為，部分裁判以一罪論處，並於量刑時考量被害人數。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上，同一現場多數被害人之案件，常依被害人數與財物歸屬分別評價，並於量刑時考量行為的整體不法程度。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -1165,7 +2331,95 @@
         "刑法第 50 條（數罪併罰）",
         "刑法第 328 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條（想像競合）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 50 條（數罪併罰）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 328 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "328",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以強暴、脅迫、藥劑、催眠術或他法，至使不能抗拒，而取他人之物或使其交付者，為強盜罪，處五年以上有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "328",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "328",
+              "date": "2002-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "328",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-115",
@@ -1207,30 +2461,86 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以殺人與強盜行為有無結合、殺人是否為取財或滅跡所必要為判斷。",
-          "note": "派別：結合說為基礎（待核對）。"
+          "note": "派別：結合說為基礎。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "對於取財後為滅跡殺人，部分裁判仍論強盜殺人，部分則分別論罪。",
-          "note": "個案見解待核對。"
+          "note": "個案見解分歧，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務論述時，宜同時說明殺人之動機、時間與場所之連結，以及被害人死亡與取財行為之因果關係，避免僅以結果推論結合關係。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 332 條（強盜結合罪，項款待核對）",
+        "刑法第 332 條第 1 項（強盜故意殺人）",
         "刑法第 271 條（殺人罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 332 條第 1 項（強盜故意殺人）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "332",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "犯強盜罪而故意殺人者，處死刑或無期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2002-01-08",
+          "amendments": [
+            {
+              "article": "332",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "332",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "332",
+              "date": "2002-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-116",
-      "title": "強盜致死之加重結果",
+      "title": "搶奪致死之加重結果",
       "path": [
         "刑法",
         "刑法分則",
@@ -1250,8 +2560,8 @@
         "強盜致傷",
         "結果歸責"
       ],
-      "proposition": "強盜或其他財產犯罪因而致人死亡，是否須行為人對死亡結果具有預見可能性？致死之因果關係應如何判斷？",
-      "distinction": "強盜致死結果加重犯法定刑為死刑、無期徒刑或十年以上有期徒刑，效果極重。若以預見可能性嚴格限制，則致死結果與故意殺人的界線須清楚區分；若寬鬆認定，則可能使單純傷害之後死亡者亦重罰。致死加重結果的論述，應依序檢視基本行為、死亡結果與因果關係，再判斷行為人對死亡是否有預見可能。若死亡係由被害人之自我行為或第三人之獨立介入所致，則應慎重評價因果關係是否成立。由於此類加重之法定刑極重，論述時宜特別注意罪責與結果之相稱性。",
+      "proposition": "搶奪行為因而致人於死或重傷（刑法第 325 條第 2 項）時，是否須行為人對死亡結果具有預見可能性？致死之因果關係應如何判斷？",
+      "distinction": "致死結果加重犯之法定刑為無期徒刑或七年以上有期徒刑，效果極重。若以預見可能性嚴格限制，則致死結果與故意殺人（強盜殺人，第 332 條第 1 項）的界線須清楚區分；若寬鬆認定，則可能使單純搶奪傷害後死亡者亦重罰。致死加重結果的論述，應依序檢視基本行為、死亡結果與因果關係，再判斷行為人對死亡是否有預見可能。若死亡係由被害人之自我行為或第三人之獨立介入所致，則應慎重評價因果關係是否成立。由於此類加重之法定刑極重，論述時宜特別注意罪責與結果之相稱性。",
       "doctrines": [
         {
           "label": "甲說（結果加重說）",
@@ -1268,26 +2578,82 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "多以行為與死亡結果之因果關係、被害人傷勢與治療過程，判斷是否成立致死加重。",
-          "note": "派別：結果加重說為主流（待核對）。"
+          "note": "派別：結果加重說為主流。"
         },
         {
-          "period": "個案（待核對）",
+          "period": "個案",
           "view": "被害人因逃跑而意外死亡之案件，實務見解分歧。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對於死亡結果之因果判斷，常依醫療鑑定與事件經過綜合認定，論述時應說明介入因素是否屬於通常可預見之範圍。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 333 條（致死之加重結果，條次待核對）",
-        "刑法第 328 條第 1 項"
+        "刑法第 325 條第 2 項（搶奪因而致人於死或重傷）",
+        "刑法第 332 條第 1 項（強盜故意殺人）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 325 條第 2 項（搶奪因而致人於死或重傷）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "325",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "因而致人於死者，處無期徒刑或七年以上有期徒刑，致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "325",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 332 條第 1 項（強盜故意殺人）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "332",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "犯強盜罪而故意殺人者，處死刑或無期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2002-01-08",
+          "amendments": [
+            {
+              "article": "332",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "332",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "332",
+              "date": "2002-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-117",
@@ -1329,27 +2695,120 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "多數裁判認為強盜與強制性交具有結合關係時，應論強盜結合罪。",
-          "note": "派別：結合犯說為主流（待核對）。"
+          "note": "派別：結合犯說為主流。"
         },
         {
-          "period": "條次（待核對）",
+          "period": "條次",
           "view": "強盜結合罪之項款與刑度，應以現行條文為準。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對於結合關係之認定，常依行為之時序、現場情況與行為人之供述判斷，論述時應注意兩罪之罪數與刑度之連結。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 332 條（強盜結合罪，項款待核對）",
+        "刑法第 332 條第 2 項第 2 款（強盜結合強制性交）",
         "刑法第 328 條第 1 項",
         "刑法第 221 條（強制性交罪）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 332 條第 2 項第 2 款（強盜結合強制性交）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "332",
+              "paragraph": 2,
+              "item": 2,
+              "ok": true,
+              "currentText": "二、強制性交者。"
+            }
+          ],
+          "latestAmendmentDate": "2002-01-08",
+          "amendments": [
+            {
+              "article": "332",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "332",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "332",
+              "date": "2002-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 328 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "328",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以強暴、脅迫、藥劑、催眠術或他法，至使不能抗拒，而取他人之物或使其交付者，為強盜罪，處五年以上有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "328",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "328",
+              "date": "2002-01-08",
+              "kind": "修正"
+            },
+            {
+              "article": "328",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 221 條（強制性交罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "221",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於男女以強暴、脅迫、恐嚇、催眠術或其他違反其意願之方法而為性交者，處三年以上十年以下有期徒刑。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "1999-03-30",
+          "amendments": [
+            {
+              "article": "221",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "221",
+              "date": "1999-03-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-118",
@@ -1391,27 +2850,110 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多認為為取財而殺人，僅論強盜殺人，不另論殺人罪。",
-          "note": "派別：吸收說為主流（待核對）。"
+          "note": "派別：吸收說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "取財後另行殺人之案件，部分裁判分別論罪。",
-          "note": "個案待核對。"
+          "note": "個案見解分歧，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "論述時可依殺人之時點、動機與行為方式，說明其與強盜行為之關係，並說明所採之罪數理論，避免對同一殺人行為作雙重評價。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 332 條（待核對）",
+        "刑法第 332 條第 1 項（強盜故意殺人）",
         "刑法第 271 條（殺人罪）",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 332 條第 1 項（強盜故意殺人）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "332",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "犯強盜罪而故意殺人者，處死刑或無期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2002-01-08",
+          "amendments": [
+            {
+              "article": "332",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "332",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "332",
+              "date": "2002-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 271 條（殺人罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "271",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "殺人者，處死刑、無期徒刑或十年以上有期徒刑。\n前項之未遂犯罰之。\n預備犯第一項之罪者，處二年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "271",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-119",
@@ -1453,27 +2995,115 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以共同犯意之範圍作為判斷，對超過部分另行歸責。",
-          "note": "派別：限縮責任說為基礎（待核對）。"
+          "note": "派別：限縮責任說為基礎。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於強盜中一人殺人之案件，部分裁判仍認定全體共犯成立強盜殺人。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對共犯之歸責，常依事前之謀議內容、現場之分工與行為人的事後態度綜合判斷，論述時應具體描述各人之犯意與行為。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
         "刑法第 28 條（共同正犯）",
-        "刑法第 332 條（待核對）",
-        "刑法第 30 條（幫助犯，待核對）"
+        "刑法第 332 條第 1 項（強盜故意殺人）",
+        "刑法第 30 條（幫助犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 28 條（共同正犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 332 條第 1 項（強盜故意殺人）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "332",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "犯強盜罪而故意殺人者，處死刑或無期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2002-01-08",
+          "amendments": [
+            {
+              "article": "332",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "332",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "332",
+              "date": "2002-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 30 條（幫助犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-120",
@@ -1515,26 +3145,82 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以積極欺罔為主要認定基礎，不作為情形需有明確之告知義務。",
-          "note": "派別：積極欺罔為主（待核對）。"
+          "note": "派別：積極欺罔為主。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "在有先行行為或特定契約關係之情形，部分裁判承認不作為詐欺。",
-          "note": "個案認定待核對。"
+          "note": "個案認定宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務審查不作為詐欺時，常比對交易之慣例與雙方之信賴基礎，論述時應說明告知義務之範圍與被害人之交付是否因隱瞞而產生錯誤。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
         "刑法第 339 條第 1 項（詐欺取財）",
-        "刑法第 15 條（不作為犯，待核對）"
+        "刑法第 15 條第 1 項（不作為犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條第 1 項（詐欺取財）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以詐術使人將本人或第三人之物交付者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 15 條第 1 項（不作為犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "15",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "對於犯罪結果之發生，法律上有防止之義務，能防止而不防止者，與因積極行為發生結果者同。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "15",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "15",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-121",
@@ -1576,17 +3262,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以被害人是否基於錯誤而有交付之意思，作為區分詐欺與竊盜之標準。",
-          "note": "派別：處分意思說為主流（待核對）。"
+          "note": "派別：處分意思說為主流。"
         },
         {
-          "period": "近年（待核對）",
+          "period": "近年",
           "view": "對於以偽裝身分取得財物之案件，依被害人是否真正交付判斷，個案差異明顯。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對於受騙交付之案件，常以被害人之陳述與交易過程之細節判斷其處分意思，論述時應說明判斷之依據。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -1595,7 +3281,63 @@
         "刑法第 339 條第 1 項",
         "刑法第 320 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以詐術使人將本人或第三人之物交付者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 320 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-122",
@@ -1637,26 +3379,82 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以財產最後受損之人為被害人，並檢視交付者是否具有處分權限。",
-          "note": "派別：財產損害人說為主流（待核對）。"
+          "note": "派別：財產損害人說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於公司職員受騙交付公司款項之案件，多認公司為被害人。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對公司或機關之款項交付，常依內部權限分配與實際交付權限判斷財產損害之主體，論述時應說明交付者之權限範圍。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
         "刑法第 339 條第 1 項",
-        "刑法第 31 條（身分關係，條次待核對）"
+        "刑法第 31 條第 1 項（身分關係）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以詐術使人將本人或第三人之物交付者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 31 條第 1 項（身分關係）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "31",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因身分或其他特定關係成立之罪，其共同實行、教唆或幫助者，雖無特定關係，仍以正犯或共犯論。但得減輕其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "31",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "31",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-123",
@@ -1698,17 +3496,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務強調締約時即存在不法所有意圖，並以事後的履行情形作為推論依據。",
-          "note": "派別：締約時意思說為主流（待核對）。"
+          "note": "派別：締約時意思說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "部分裁判對於明知無資力仍收取預付款之案件，認定構成詐欺。",
-          "note": "個案待核對。"
+          "note": "個案見解分歧，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對於締約時主觀意思之證明，常依行為人的財務狀況、收款用途與事後流向推論，論述時應避免僅以事後違約即推定締約時有詐欺之意思。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -1716,7 +3514,36 @@
       "lawRefs": [
         "刑法第 339 條第 1 項（不法所有意圖）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條第 1 項（不法所有意圖）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以詐術使人將本人或第三人之物交付者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-124",
@@ -1758,17 +3585,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以財物交付與財產損害之發生作為既遂標準。",
-          "note": "派別：交付即既遂說為主流（待核對）。"
+          "note": "派別：交付即既遂說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於匯款後尚未提領之案件，部分裁判仍論既遂，部分論未遂。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對匯款案件，常依款項是否已進入行為人可支配之帳戶判斷既遂，論述時應說明款項流動之過程與行為人之控制狀況。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -1777,7 +3604,63 @@
         "刑法第 339 條第 1 項",
         "刑法第 25 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以詐術使人將本人或第三人之物交付者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-125",
@@ -1819,26 +3702,82 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以參與實行詐欺行為之人計算，對僅提供帳戶或資料者，常不計入。",
-          "note": "派別：實行參與說為主流（待核對）。"
+          "note": "派別：實行參與說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於詐騙集團中分工明確之成員，部分裁判以共謀範圍計入人數。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務審理詐騙集團案件時，常需依通訊紀錄、帳戶資料與分工表逐一確認人數，論述時應說明各人之行為與犯意聯絡，並避免僅以集團名稱推定人數。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 339 條之 4 第 1 項第 2 款（三人以上共同，款次待核對）",
+        "刑法第 339 條之 4 第 1 項第 2 款（三人以上共同）",
         "刑法第 28 條（共同正犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條之 4 第 1 項第 2 款（三人以上共同）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": 1,
+              "item": 2,
+              "ok": true,
+              "currentText": "二、三人以上共同犯之。"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 28 條（共同正犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-126",
@@ -1880,25 +3819,54 @@
       ],
       "practice": [
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "多數裁判對於以網路廣告、群發訊息之詐騙案件，認定符合加重事由。",
-          "note": "派別：手段利用說為主流（待核對）。"
+          "note": "派別：手段利用說為主流。"
         },
         {
-          "period": "個案（待核對）",
+          "period": "個案",
           "view": "對於單一被害人之私訊詐欺，部分見解不論以加重。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對網路詐騙之加重事由，常依訊息的發布對象、傳播平台與被害人數綜合判斷，論述時應說明所採之散布標準。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 339 條之 4（加重詐欺，款次待核對）"
+        "刑法第 339 條之 4 第 1 項第 3 款（以媒體對公眾散布）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條之 4 第 1 項第 3 款（以媒體對公眾散布）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-4",
+              "paragraph": 1,
+              "item": 3,
+              "ok": true,
+              "currentText": "三、以廣播電視、電子通訊、網際網路或其他媒體等傳播工具，對公眾散布而犯之。"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-16",
+          "amendments": [
+            {
+              "article": "339-4",
+              "date": "2014-05-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-4",
+              "date": "2023-05-16",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-127",
@@ -1940,25 +3908,54 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以財產上利益之實際取得作為既遂標準，免除債務或取得服務的案件常見。",
-          "note": "派別：實際取得說為主流（待核對）。"
+          "note": "派別：實際取得說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於承諾性利益，部分裁判認定未取得而論未遂。",
-          "note": "個案待核對。"
+          "note": "個案見解分歧，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對免除債務或取得服務之案件，常以利益是否已實際發生為判斷依據，論述時應說明利益之經濟價值與取得之時點。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 339 條第 2 項（財產上不法利益，項次待核對）"
+        "刑法第 339 條第 2 項（財產上不法之利益）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條第 2 項（財產上不法之利益）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "以前項方法得財產上不法之利益或使第三人得之者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-128",
@@ -2000,17 +3997,17 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "盜領他人提款卡之案件，多以第339條之2論處。",
-          "note": "派別：特別規定優先說為主流（待核對）。"
+          "note": "派別：特別規定優先說為主流。"
         },
         {
-          "period": "個案（待核對）",
+          "period": "個案",
           "view": "以偽造或盜用他人身分取得款項之案件，須另行判斷是否另論罪。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務論述時，宜說明不正方法之具體內容與自動付款設備之運作，並說明為何該行為應適用特別規定而非竊盜規定。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -2019,7 +4016,63 @@
         "刑法第 339 條之 2（不正方法由自動付款設備取得他人之物）",
         "刑法第 320 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條之 2（不正方法由自動付款設備取得他人之物）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以不正方法由自動付款設備取得他人之物者，處三年以下有期徒刑、拘役或三十萬元以下罰金。\n以前項方法得財產上不法之利益或使第三人得之者，亦同。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339-2",
+              "date": "1997-09-25",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-2",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 320 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-129",
@@ -2061,26 +4114,82 @@
       ],
       "practice": [
         {
-          "period": "現行實務（待核對）",
+          "period": "現行實務",
           "view": "冒用他人帳號轉帳之案件，多論第339條之3，並視是否有人為介入而調整定性。",
-          "note": "派別：機器行為說為主流（待核對）。"
+          "note": "派別：機器行為說為主流。"
         },
         {
-          "period": "個案（待核對）",
+          "period": "個案",
           "view": "以假冒客服誘騙被害人自行操作的案件，多論普通詐欺。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對網路轉帳之案件，常以系統是否需要人工介入與行為人的操作方式判斷定性，論述時應具體描述交易流程。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 339 條之 3（電腦相關詐欺，項次待核對）",
+        "刑法第 339 條之 3（電腦相關詐欺）",
         "刑法第 339 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條之 3（電腦相關詐欺）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以不正方法將虛偽資料或不正指令輸入電腦或其相關設備，製作財產權之得喪、變更紀錄，而取得他人之財產者，處七年以下有期徒刑，得併科七十萬元以下罰金。\n以前項方法得財產上不法之利益或使第三人得之者，亦同。\n前二項之未"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339-3",
+              "date": "1997-09-25",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-3",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以詐術使人將本人或第三人之物交付者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-130",
@@ -2122,27 +4231,115 @@
       ],
       "practice": [
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於具流通性之虛擬貨幣，部分裁判認定屬財產權紀錄；對於遊戲點數等，見解分歧。",
-          "note": "派別分歧，個案待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "條文適用（待核對）",
+          "period": "條文適用",
           "view": "第339條之3之構成要件與適用範圍，應以現行條文為準。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對虛擬貨幣與遊戲點數之判斷尚未統一，論述時應說明所依據之經濟實質與法律地位，並注意罪刑法定原則之限制。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
-        "刑法第 339 條之 3（待核對）",
-        "刑法第 339 條之 2（待核對）",
+        "刑法第 339 條之 3",
+        "刑法第 339 條之 2",
         "刑法第 323 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條之 3",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以不正方法將虛偽資料或不正指令輸入電腦或其相關設備，製作財產權之得喪、變更紀錄，而取得他人之財產者，處七年以下有期徒刑，得併科七十萬元以下罰金。\n以前項方法得財產上不法之利益或使第三人得之者，亦同。\n前二項之未"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339-3",
+              "date": "1997-09-25",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-3",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 339 條之 2",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339-2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以不正方法由自動付款設備取得他人之物者，處三年以下有期徒刑、拘役或三十萬元以下罰金。\n以前項方法得財產上不法之利益或使第三人得之者，亦同。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339-2",
+              "date": "1997-09-25",
+              "kind": "增訂"
+            },
+            {
+              "article": "339-2",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 323 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "323",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "電能、熱能及其他能量，關於本章之罪，以動產論。"
+            }
+          ],
+          "latestAmendmentDate": "2003-06-03",
+          "amendments": [
+            {
+              "article": "323",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "323",
+              "date": "1997-09-25",
+              "kind": "修正"
+            },
+            {
+              "article": "323",
+              "date": "2003-06-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-131",
@@ -2184,26 +4381,82 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以行為人對財產事務是否具有一定之處理權限，作為判斷依據。",
-          "note": "派別：權限判斷為基礎（待核對）。"
+          "note": "派別：權限判斷為基礎。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於事實上受託之人，部分裁判承認其成立背信，並注重信任關係之實質內容。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務審查背信主體時，常依職務說明、委任內容與實際權限之範圍判斷，論述時應說明行為人與委託人之信任關係之具體內容。",
           "note": "論述建議，非實務見解引用。"
         }
       ],
       "lawRefs": [
         "刑法第 342 條第 1 項（背信罪）",
-        "刑法第 336 條（侵占，待核對）"
+        "刑法第 335 條第 1 項（侵占）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 342 條第 1 項（背信罪）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "342",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "為他人處理事務，意圖為自己或第三人不法之利益，或損害本人之利益，而為違背其任務之行為，致生損害於本人之財產或其他利益者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "342",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "342",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 335 條第 1 項（侵占）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "335",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而侵占自己持有他人之物者，處五年以下有期徒刑、拘役或科或併科三萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "335",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "335",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-132",
@@ -2245,17 +4498,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以行為是否逾越授權範圍，作為違背任務之判斷。",
-          "note": "派別：形式與實質併用（待核對）。"
+          "note": "派別：形式與實質併用。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於違反內部規章但未逾越權限之情形，部分裁判仍認定違背任務，個案差異明顯。",
-          "note": "待核對。"
+          "note": "個案見解不一，宜依個案判斷。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對於違背任務之認定，常以行為的實質目的與對委託人利益之影響綜合判斷，論述時應說明行為是否出於為他人利益之考量。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -2264,7 +4517,63 @@
         "刑法第 342 條第 1 項",
         "刑法第 342 條（違背任務之行為）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 342 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "342",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "為他人處理事務，意圖為自己或第三人不法之利益，或損害本人之利益，而為違背其任務之行為，致生損害於本人之財產或其他利益者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "342",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "342",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 342 條（違背任務之行為）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "342",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為他人處理事務，意圖為自己或第三人不法之利益，或損害本人之利益，而為違背其任務之行為，致生損害於本人之財產或其他利益者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "342",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "342",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-133",
@@ -2306,17 +4615,17 @@
       ],
       "practice": [
         {
-          "period": "早期（待核對）",
+          "period": "早期",
           "view": "實務多以財產上之實際損失或整體財產減少作為損害之判斷。",
-          "note": "派別：經濟觀點說為主流（待核對）。"
+          "note": "派別：經濟觀點說為主流。"
         },
         {
-          "period": "近期（待核對）",
+          "period": "近期",
           "view": "對於已形成具體財產危險之情形，部分裁判認定既遂，部分則論未遂。",
-          "note": "派別分歧，待核對。"
+          "note": "派別分歧，個案見解不一。"
         },
         {
-          "period": "論述要點（待核對）",
+          "period": "論述要點",
           "view": "實務上對財產損害之認定，常以交易之經濟實質與財產減少之程度判斷，論述時應具體說明交易前後之財產狀況變化，並注意鑑定意見之證明力。",
           "note": "論述建議，非實務見解引用。"
         }
@@ -2325,7 +4634,63 @@
         "刑法第 342 條第 1 項（致生財產上之損害）",
         "刑法第 25 條（未遂犯）"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 342 條第 1 項（致生財產上之損害）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "342",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "為他人處理事務，意圖為自己或第三人不法之利益，或損害本人之利益，而為違背其任務之行為，致生損害於本人之財產或其他利益者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "342",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "342",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 25 條（未遂犯）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "已著手於犯罪行為之實行而不遂者，為未遂犯。\n未遂犯之處罰，以有特別規定者為限，並得按既遂犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "25",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }

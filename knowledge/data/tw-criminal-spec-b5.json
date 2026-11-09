@@ -63,15 +63,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第10條（文書、公文書、私文書之定義，項次待核對）",
+          "ref": "刑法第10條第3項",
           "status": "verified",
           "checks": [
             {
               "article": "10",
-              "paragraph": null,
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
+              "currentText": "稱公文書者，謂公務員職務上製作之文書。"
             }
           ],
           "latestAmendmentDate": "2023-01-07",
@@ -623,7 +623,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第217條（條次與內容待核對）",
+          "ref": "刑法第217條",
           "status": "verified",
           "checks": [
             {
@@ -645,7 +645,7 @@
           "note": null
         },
         {
-          "ref": "刑法第218條（條次與內容待核對）",
+          "ref": "刑法第218條",
           "status": "verified",
           "checks": [
             {
@@ -898,15 +898,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第220條（項次待核對）",
+          "ref": "刑法第220條第2項",
           "status": "verified",
           "checks": [
             {
               "article": "220",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "在紙上或物品上之文字、符號、圖畫、照像，依習慣或特約，足以為表示其用意之證明者，關於本章及本章以外各罪，以文書論。\n錄音、錄影或電磁紀錄，藉機器或電腦之處理所顯示之聲音、影像或符號，足以為表示其用意之證明者，亦同。"
+              "currentText": "錄音、錄影或電磁紀錄，藉機器或電腦之處理所顯示之聲音、影像或符號，足以為表示其用意之證明者，亦同。"
             }
           ],
           "latestAmendmentDate": "2005-01-07",
@@ -1007,15 +1007,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第10條（公文書定義，項次待核對）",
+          "ref": "刑法第10條第3項",
           "status": "verified",
           "checks": [
             {
               "article": "10",
-              "paragraph": null,
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
+              "currentText": "稱公文書者，謂公務員職務上製作之文書。"
             }
           ],
           "latestAmendmentDate": "2023-01-07",
@@ -1293,15 +1293,15 @@
           "note": null
         },
         {
-          "ref": "刑法第13條（故意之規定，項次待核對）",
+          "ref": "刑法第13條第1項",
           "status": "verified",
           "checks": [
             {
               "article": "13",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。"
             }
           ],
           "latestAmendmentDate": "1934-10-31",
@@ -1370,7 +1370,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第55條（牽連犯，待核對）",
+          "ref": "刑法第55條",
           "status": "verified",
           "checks": [
             {
@@ -1541,7 +1541,7 @@
           "note": null
         },
         {
-          "ref": "刑法第164條（待核對）",
+          "ref": "刑法第164條",
           "status": "verified",
           "checks": [
             {
@@ -1624,7 +1624,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第28條（共同正犯，待核對）",
+          "ref": "刑法第28條",
           "status": "verified",
           "checks": [
             {
@@ -2080,14 +2080,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "票據法（授權補充之相關規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -2334,7 +2326,7 @@
           "note": null
         },
         {
-          "ref": "刑法第174條（待核對）",
+          "ref": "刑法第174條",
           "status": "verified",
           "checks": [
             {
@@ -2443,42 +2435,42 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第26條（未遂犯，待核對）",
+          "ref": "刑法第173條第3項",
           "status": "verified",
           "checks": [
             {
-              "article": "26",
-              "paragraph": null,
+              "article": "173",
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "行為不能發生犯罪之結果，又無危險者，不罰。"
+              "currentText": "第一項之未遂犯罰之。"
             }
           ],
-          "latestAmendmentDate": "2005-01-07",
+          "latestAmendmentDate": "2019-12-03",
           "amendments": [
             {
-              "article": "26",
+              "article": "173",
               "date": "1934-10-31",
               "kind": "制定"
             },
             {
-              "article": "26",
-              "date": "2005-01-07",
+              "article": "173",
+              "date": "2019-12-03",
               "kind": "修正"
             }
           ],
           "note": null
         },
         {
-          "ref": "刑法第173條",
+          "ref": "刑法第173條第4項",
           "status": "verified",
           "checks": [
             {
               "article": "173",
-              "paragraph": null,
+              "paragraph": 4,
               "item": null,
               "ok": true,
-              "currentText": "放火燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處無期徒刑或七年以上有期徒刑。\n失火燒燬前項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n第一項之未遂犯罰之。\n預備犯第一"
+              "currentText": "預備犯第一項之罪者，處一年以下有期徒刑、拘役或九千元以下罰金。"
             }
           ],
           "latestAmendmentDate": "2019-12-03",
@@ -2579,15 +2571,15 @@
           "note": null
         },
         {
-          "ref": "刑法第173條",
+          "ref": "刑法第173條第3項",
           "status": "verified",
           "checks": [
             {
               "article": "173",
-              "paragraph": null,
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "放火燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處無期徒刑或七年以上有期徒刑。\n失火燒燬前項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n第一項之未遂犯罰之。\n預備犯第一"
+              "currentText": "第一項之未遂犯罰之。"
             }
           ],
           "latestAmendmentDate": "2019-12-03",
@@ -2688,7 +2680,7 @@
           "note": null
         },
         {
-          "ref": "刑法第175條（待核對）",
+          "ref": "刑法第175條",
           "status": "verified",
           "checks": [
             {
@@ -2715,15 +2707,15 @@
           "note": null
         },
         {
-          "ref": "刑法第13條（故意與過失，待核對）",
+          "ref": "刑法第13條第2項",
           "status": "verified",
           "checks": [
             {
               "article": "13",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+              "currentText": "行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
             }
           ],
           "latestAmendmentDate": "1934-10-31",
@@ -2790,7 +2782,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第185條之3（待核對）",
+          "ref": "刑法第185條之3",
           "status": "verified",
           "checks": [
             {
@@ -2840,14 +2832,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "道路交通管理處罰條例（相關規定，待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -2904,7 +2888,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第185條之4（待核對）",
+          "ref": "刑法第185條之4",
           "status": "verified",
           "checks": [
             {
@@ -2934,14 +2918,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "道路交通安全規則（救護與報案義務，待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -2999,7 +2975,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第185條（待核對）",
+          "ref": "刑法第185條",
           "status": "verified",
           "checks": [
             {
@@ -3026,7 +3002,7 @@
           "note": null
         },
         {
-          "ref": "刑法第190條（待核對）",
+          "ref": "刑法第190條",
           "status": "verified",
           "checks": [
             {
@@ -3108,29 +3084,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第166條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "166",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "犯前條之罪，於他人刑事被告案件裁判確定前自白者，減輕或免除其刑。"
-            }
-          ],
-          "latestAmendmentDate": "1934-10-31",
-          "amendments": [
-            {
-              "article": "166",
-              "date": "1934-10-31",
-              "kind": "制定"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第168條（待核對）",
+          "ref": "刑法第168條",
           "status": "verified",
           "checks": [
             {
@@ -3206,21 +3160,21 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第166條（待核對）",
+          "ref": "刑法第168條",
           "status": "verified",
           "checks": [
             {
-              "article": "166",
+              "article": "168",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "犯前條之罪，於他人刑事被告案件裁判確定前自白者，減輕或免除其刑。"
+              "currentText": "於執行審判職務之公署審判時或於檢察官偵查時，證人、鑑定人、通譯於案情有重要關係之事項，供前或供後具結，而為虛偽陳述者，處七年以下有期徒刑。"
             }
           ],
           "latestAmendmentDate": "1934-10-31",
           "amendments": [
             {
-              "article": "166",
+              "article": "168",
               "date": "1934-10-31",
               "kind": "制定"
             }
@@ -3228,15 +3182,15 @@
           "note": null
         },
         {
-          "ref": "刑法第13條（故意，待核對）",
+          "ref": "刑法第13條第1項",
           "status": "verified",
           "checks": [
             {
               "article": "13",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。"
             }
           ],
           "latestAmendmentDate": "1934-10-31",
@@ -3305,7 +3259,29 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第168條（待核對）",
+          "ref": "刑法第172條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "172",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第一百六十八條至第一百七十一條之罪，於所虛偽陳述或所誣告之案件，裁判或懲戒處分確定前自白者，減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "172",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第168條",
           "status": "verified",
           "checks": [
             {
@@ -3327,7 +3303,7 @@
           "note": null
         },
         {
-          "ref": "刑法第62條（自首，待核對）",
+          "ref": "刑法第62條",
           "status": "verified",
           "checks": [
             {
@@ -3410,7 +3386,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第164條（待核對）",
+          "ref": "刑法第164條",
           "status": "verified",
           "checks": [
             {
@@ -3432,6 +3408,55 @@
               "article": "164",
               "date": "2019-12-03",
               "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第165條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "165",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造、湮滅或隱匿關係他人刑事被告案件之證據，或使用偽造、變造之證據者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "165",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "165",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第167條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "167",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "配偶、五親等內之血親或三親等內之姻親圖利犯人或依法逮捕拘禁之脫逃人，而犯第一百六十四條或第一百六十五條之罪者，減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "167",
+              "date": "1934-10-31",
+              "kind": "制定"
             }
           ],
           "note": null
@@ -3491,7 +3516,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第135條（待核對）",
+          "ref": "刑法第135條",
           "status": "verified",
           "checks": [
             {
@@ -3523,7 +3548,7 @@
           "note": null
         },
         {
-          "ref": "刑法第21條（正當防衛與緊急避難，待核對）",
+          "ref": "刑法第21條",
           "status": "verified",
           "checks": [
             {
@@ -3599,7 +3624,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第135條（待核對）",
+          "ref": "刑法第135條",
           "status": "verified",
           "checks": [
             {
@@ -3687,7 +3712,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第135條（待核對）",
+          "ref": "刑法第135條",
           "status": "verified",
           "checks": [
             {
@@ -3719,7 +3744,7 @@
           "note": null
         },
         {
-          "ref": "刑法第309條（待核對）",
+          "ref": "刑法第309條",
           "status": "verified",
           "checks": [
             {
@@ -3746,7 +3771,7 @@
           "note": null
         },
         {
-          "ref": "刑法第277條（待核對）",
+          "ref": "刑法第277條",
           "status": "verified",
           "checks": [
             {
@@ -3773,7 +3798,7 @@
           "note": null
         },
         {
-          "ref": "刑法第55條（待核對）",
+          "ref": "刑法第55條",
           "status": "verified",
           "checks": [
             {
@@ -3855,7 +3880,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第136條（待核對）",
+          "ref": "刑法第136條",
           "status": "verified",
           "checks": [
             {
@@ -3887,7 +3912,7 @@
           "note": null
         },
         {
-          "ref": "刑法第28條（共同正犯，待核對）",
+          "ref": "刑法第28條",
           "status": "verified",
           "checks": [
             {
@@ -3914,7 +3939,7 @@
           "note": null
         },
         {
-          "ref": "刑法第30條（幫助犯，待核對）",
+          "ref": "刑法第30條",
           "status": "verified",
           "checks": [
             {
@@ -3994,7 +4019,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第10條第2項（公務員定義，項次待核對）",
+          "ref": "刑法第10條第2項",
           "status": "verified",
           "checks": [
             {
@@ -4091,7 +4116,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第121條（待核對）",
+          "ref": "刑法第121條",
           "status": "verified",
           "checks": [
             {
@@ -4118,7 +4143,7 @@
           "note": null
         },
         {
-          "ref": "刑法第122條（準受賄，待核對）",
+          "ref": "刑法第122條",
           "status": "verified",
           "checks": [
             {
@@ -4199,7 +4224,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第121條（待核對）",
+          "ref": "刑法第121條",
           "status": "verified",
           "checks": [
             {
@@ -4219,6 +4244,33 @@
             },
             {
               "article": "121",
+              "date": "2018-05-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第122條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "122",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公務員或仲裁人對於違背職務之行為，要求、期約或收受賄賂或其他不正利益者，處三年以上十年以下有期徒刑，得併科二百萬元以下罰金。\n因而為違背職務之行為者，處無期徒刑或五年以上有期徒刑，得併科四百萬元以下罰金。\n對於公務員或仲裁人關於違背職務之行"
+            }
+          ],
+          "latestAmendmentDate": "2018-05-08",
+          "amendments": [
+            {
+              "article": "122",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "122",
               "date": "2018-05-08",
               "kind": "修正"
             }
@@ -4280,7 +4332,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第131條（待核對）",
+          "ref": "刑法第131條",
           "status": "verified",
           "checks": [
             {

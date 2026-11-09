@@ -54,7 +54,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 2 條（待核對）",
+          "ref": "刑法第 2 條",
           "status": "verified",
           "checks": [
             {
@@ -113,7 +113,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -191,7 +191,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 2 條（待核對）",
+          "ref": "刑法第 2 條",
           "status": "verified",
           "checks": [
             {
@@ -323,7 +323,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -400,7 +400,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -477,7 +477,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -554,7 +554,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -632,7 +632,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -659,7 +659,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 98 條（待核對）",
+          "ref": "刑法第 98 條",
           "status": "verified",
           "checks": [
             {
@@ -746,7 +746,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -869,7 +869,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -946,33 +946,6 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 91 條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "91",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2019-05-10",
-          "amendments": [
-            {
-              "article": "91",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "91",
-              "date": "2019-05-10",
-              "kind": "刪除"
-            }
-          ],
-          "note": null
-        },
-        {
           "ref": "刑法第 19 條",
           "status": "verified",
           "checks": [
@@ -1046,43 +1019,7 @@
       ],
       "lawRefs": [],
       "reviewStatus": "ai-draft-unverified",
-      "lawVerification": [
-        {
-          "ref": "精神衛生法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "刑法第 91 條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "91",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2019-05-10",
-          "amendments": [
-            {
-              "article": "91",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "91",
-              "date": "2019-05-10",
-              "kind": "刪除"
-            }
-          ],
-          "note": null
-        }
-      ]
+      "lawVerification": []
     },
     {
       "id": "tw-crim-sanc-145",
@@ -1133,7 +1070,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 91 條之 1（待核對）",
+          "ref": "刑法第 91 條之 1",
           "status": "verified",
           "checks": [
             {
@@ -1163,14 +1100,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "性侵害犯罪防治法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -1223,28 +1152,33 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 91 條（待核對）",
+          "ref": "刑法第 91 條之 1",
           "status": "verified",
           "checks": [
             {
-              "article": "91",
+              "article": "91-1",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "（刪除）"
+              "currentText": "犯第二百二十一條至第二百二十七條、第二百二十八條、第二百二十九條、第二百三十條、第二百三十四條、第三百三十二條第二項第二款、第三百三十四條第二項第二款、第三百四十八條第二項第一款及其特別法之罪，而有下列情形之一者，得令入相當處所，施以強制治"
             }
           ],
-          "latestAmendmentDate": "2019-05-10",
+          "latestAmendmentDate": "2023-01-07",
           "amendments": [
             {
-              "article": "91",
-              "date": "1934-10-31",
-              "kind": "制定"
+              "article": "91-1",
+              "date": "1999-03-30",
+              "kind": "增訂"
             },
             {
-              "article": "91",
-              "date": "2019-05-10",
-              "kind": "刪除"
+              "article": "91-1",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "91-1",
+              "date": "2023-01-07",
+              "kind": "修正"
             }
           ],
           "note": null
@@ -1296,43 +1230,7 @@
       ],
       "lawRefs": [],
       "reviewStatus": "ai-draft-unverified",
-      "lawVerification": [
-        {
-          "ref": "刑法第 91 條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "91",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2019-05-10",
-          "amendments": [
-            {
-              "article": "91",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "91",
-              "date": "2019-05-10",
-              "kind": "刪除"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑事訴訟法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        }
-      ]
+      "lawVerification": []
     },
     {
       "id": "tw-crim-sanc-148",
@@ -1379,35 +1277,7 @@
       ],
       "lawRefs": [],
       "reviewStatus": "ai-draft-unverified",
-      "lawVerification": [
-        {
-          "ref": "刑法第 91 條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "91",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2019-05-10",
-          "amendments": [
-            {
-              "article": "91",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "91",
-              "date": "2019-05-10",
-              "kind": "刪除"
-            }
-          ],
-          "note": null
-        }
-      ]
+      "lawVerification": []
     },
     {
       "id": "tw-crim-sanc-149",
@@ -1486,7 +1356,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 87 條（待核對）",
+          "ref": "刑法第 87 條",
           "status": "verified",
           "checks": [
             {
@@ -1596,7 +1466,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 87 條（待核對）",
+          "ref": "刑法第 87 條",
           "status": "verified",
           "checks": [
             {
@@ -1679,7 +1549,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 87 條（待核對）",
+          "ref": "刑法第 87 條",
           "status": "verified",
           "checks": [
             {
@@ -1711,7 +1581,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 88 條（待核對）",
+          "ref": "刑法第 88 條",
           "status": "verified",
           "checks": [
             {
@@ -1788,15 +1658,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "精神衛生法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "刑法第 87 條（待核對）",
+          "ref": "刑法第 87 條",
           "status": "verified",
           "checks": [
             {
@@ -1877,7 +1739,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "少年事件處理法第 42 條（待核對）",
+          "ref": "少年事件處理法第 42 條",
           "status": "verified",
           "checks": [
             {
@@ -1983,7 +1845,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "少年事件處理法第 42 條（待核對）",
+          "ref": "少年事件處理法第 42 條",
           "status": "verified",
           "checks": [
             {
@@ -2089,15 +1951,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "少年事件處理法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "少年事件處理法第 42 條（待核對）",
+          "ref": "少年事件處理法第 42 條",
           "status": "verified",
           "checks": [
             {
@@ -2203,12 +2057,61 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "少年事件處理法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "少年事件處理法第 42 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "42",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "少年法院審理事件，除為前二條處置者外，應對少年以裁定諭知下列之保護處分：\n一、訓誡，並得予以假日生活輔導。\n二、交付保護管束並得命為勞動服務。\n三、交付安置於適當之福利、教養機構、醫療機構、執行過渡性教育措施或其他適當措施之處所輔導。\n四、"
+            }
+          ],
+          "latestAmendmentDate": "2023-05-30",
+          "amendments": [
+            {
+              "article": "42",
+              "date": "1962-01-19",
+              "kind": "制定"
+            },
+            {
+              "article": "42",
+              "date": "1967-07-08",
+              "kind": "修正"
+            },
+            {
+              "article": "42",
+              "date": "1971-04-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "42",
+              "date": "1976-01-20",
+              "kind": "修正"
+            },
+            {
+              "article": "42",
+              "date": "1997-10-02",
+              "kind": "全文修正"
+            },
+            {
+              "article": "42",
+              "date": "2005-04-29",
+              "kind": "修正"
+            },
+            {
+              "article": "42",
+              "date": "2019-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "42",
+              "date": "2023-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -2262,7 +2165,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 98 條（待核對）",
+          "ref": "刑法第 98 條",
           "status": "verified",
           "checks": [
             {
@@ -2299,7 +2202,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 99 條（待核對）",
+          "ref": "刑法第 99 條",
           "status": "verified",
           "checks": [
             {
@@ -2376,7 +2279,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 98 條（待核對）",
+          "ref": "刑法第 98 條",
           "status": "verified",
           "checks": [
             {
@@ -2463,7 +2366,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 98 條（待核對）",
+          "ref": "刑法第 98 條",
           "status": "verified",
           "checks": [
             {
@@ -2551,7 +2454,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 77 條（待核對）",
+          "ref": "刑法第 77 條",
           "status": "verified",
           "checks": [
             {
@@ -2598,7 +2501,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 98 條（待核對）",
+          "ref": "刑法第 98 條",
           "status": "verified",
           "checks": [
             {
@@ -2686,7 +2589,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 50 條（待核對）",
+          "ref": "刑法第 50 條",
           "status": "verified",
           "checks": [
             {
@@ -2713,7 +2616,7 @@
           "note": null
         },
         {
-          "ref": "刑法第 51 條（待核對）",
+          "ref": "刑法第 51 條",
           "status": "verified",
           "checks": [
             {
@@ -2795,15 +2698,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -2876,16 +2771,7 @@
       ],
       "lawRefs": [],
       "reviewStatus": "ai-draft-unverified",
-      "lawVerification": [
-        {
-          "ref": "刑事訴訟法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        }
-      ]
+      "lawVerification": []
     },
     {
       "id": "tw-crim-sanc-164",
@@ -2937,7 +2823,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 80 條（待核對）",
+          "ref": "刑法第 80 條",
           "status": "verified",
           "checks": [
             {
@@ -2974,12 +2860,31 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑法第 99 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "99",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "保安處分自應執行之日起逾三年未開始或繼續執行者，非經法院認為原宣告保安處分之原因仍繼續存在時，不得許可執行；逾七年未開始或繼續執行者，不得執行。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "99",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "99",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -3032,7 +2937,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 99 條（待核對）",
+          "ref": "刑法第 99 條",
           "status": "verified",
           "checks": [
             {
@@ -3109,7 +3014,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 99 條（待核對）",
+          "ref": "刑法第 99 條",
           "status": "verified",
           "checks": [
             {
@@ -3186,7 +3091,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -3208,33 +3113,6 @@
               "article": "90",
               "date": "2005-01-07",
               "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第 91 條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "91",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2019-05-10",
-          "amendments": [
-            {
-              "article": "91",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "91",
-              "date": "2019-05-10",
-              "kind": "刪除"
             }
           ],
           "note": null
@@ -3286,16 +3164,7 @@
       ],
       "lawRefs": [],
       "reviewStatus": "ai-draft-unverified",
-      "lawVerification": [
-        {
-          "ref": "刑事訴訟法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        }
-      ]
+      "lawVerification": []
     },
     {
       "id": "tw-crim-sanc-169",
@@ -3346,7 +3215,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -3423,7 +3292,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {
@@ -3448,14 +3317,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "刑事訴訟法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -3508,15 +3369,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法（待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "刑法第 90 條（待核對）",
+          "ref": "刑法第 90 條",
           "status": "verified",
           "checks": [
             {

@@ -304,15 +304,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之1（間接取得、變得之物與孳息規定，項次待核對）",
+          "ref": "刑法第38條之1第4項（犯罪所得包括變得之物、財產上利益及其孳息）",
           "status": "verified",
           "checks": [
             {
               "article": "38-1",
-              "paragraph": null,
+              "paragraph": 4,
               "item": null,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "第一項及第二項之犯罪所得，包括違法行為所得、其變得之物或財產上利益及其孳息。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -377,15 +377,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之1（第三人取得規定，項次待核對）",
+          "ref": "刑法第38條之1第2項（犯罪行為人以外之人取得犯罪所得）",
           "status": "verified",
           "checks": [
             {
               "article": "38-1",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為他人實行違法行為，他人因而取得。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -450,15 +450,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之1（相當對價與善意之要件，項次待核對）",
+          "ref": "刑法第38條之1第2項第2款（無償或顯不相當之對價取得）",
           "status": "verified",
           "checks": [
             {
               "article": "38-1",
-              "paragraph": null,
-              "item": null,
+              "paragraph": 2,
+              "item": 2,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "二、因他人違法行為而無償或以顯不相當之對價取得。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -525,15 +525,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條（供犯罪所用之物沒收規定，項次待核對）",
+          "ref": "刑法第38條第2項（供犯罪所用、犯罪預備之物）",
           "status": "verified",
           "checks": [
             {
               "article": "38",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "違禁物，不問屬於犯罪行為人與否，沒收之。\n供犯罪所用、犯罪預備之物或犯罪所生之物，屬於犯罪行為人者，得沒收之。但有特別規定者，依其規定。\n前項之物屬於犯罪行為人以外之自然人、法人或非法人團體，而無正當理由提供或取得者，得沒收之。但有特別規定"
+              "currentText": "供犯罪所用、犯罪預備之物或犯罪所生之物，屬於犯罪行為人者，得沒收之。但有特別規定者，依其規定。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -557,15 +557,47 @@
           "note": null
         },
         {
-          "ref": "刑法第38條之2",
+          "ref": "刑法第38條第3項（第三人無正當理由提供或取得者，得沒收之）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "38",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "前項之物屬於犯罪行為人以外之自然人、法人或非法人團體，而無正當理由提供或取得者，得沒收之。但有特別規定者，依其規定。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "38",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "38",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "38",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第38條之2第2項（過苛之虞得不宣告或酌減）",
           "status": "verified",
           "checks": [
             {
               "article": "38-2",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "前條犯罪所得及追徵之範圍與價額，認定顯有困難時，得以估算認定之。第三十八條之追徵，亦同。\n宣告前二條之沒收或追徵，有過苛之虞、欠缺刑法上之重要性、犯罪所得價值低微，或為維持受宣告人生活條件之必要者，得不宣告或酌減之。"
+              "currentText": "宣告前二條之沒收或追徵，有過苛之虞、欠缺刑法上之重要性、犯罪所得價值低微，或為維持受宣告人生活條件之必要者，得不宣告或酌減之。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -631,15 +663,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條（違禁物與專科沒收之物，項次待核對）",
+          "ref": "刑法第38條第1項（違禁物不問屬於犯罪行為人與否，沒收之）",
           "status": "verified",
           "checks": [
             {
               "article": "38",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "違禁物，不問屬於犯罪行為人與否，沒收之。\n供犯罪所用、犯罪預備之物或犯罪所生之物，屬於犯罪行為人者，得沒收之。但有特別規定者，依其規定。\n前項之物屬於犯罪行為人以外之自然人、法人或非法人團體，而無正當理由提供或取得者，得沒收之。但有特別規定"
+              "currentText": "違禁物，不問屬於犯罪行為人與否，沒收之。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -663,15 +695,15 @@
           "note": null
         },
         {
-          "ref": "刑法第38條之2",
+          "ref": "刑法第38條之2第2項（過苛之虞得不宣告或酌減）",
           "status": "verified",
           "checks": [
             {
               "article": "38-2",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "前條犯罪所得及追徵之範圍與價額，認定顯有困難時，得以估算認定之。第三十八條之追徵，亦同。\n宣告前二條之沒收或追徵，有過苛之虞、欠缺刑法上之重要性、犯罪所得價值低微，或為維持受宣告人生活條件之必要者，得不宣告或酌減之。"
+              "currentText": "宣告前二條之沒收或追徵，有過苛之虞、欠缺刑法上之重要性、犯罪所得價值低微，或為維持受宣告人生活條件之必要者，得不宣告或酌減之。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -736,15 +768,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之2",
+          "ref": "刑法第38條之2第2項（過苛之虞得不宣告或酌減）",
           "status": "verified",
           "checks": [
             {
               "article": "38-2",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "前條犯罪所得及追徵之範圍與價額，認定顯有困難時，得以估算認定之。第三十八條之追徵，亦同。\n宣告前二條之沒收或追徵，有過苛之虞、欠缺刑法上之重要性、犯罪所得價值低微，或為維持受宣告人生活條件之必要者，得不宣告或酌減之。"
+              "currentText": "宣告前二條之沒收或追徵，有過苛之虞、欠缺刑法上之重要性、犯罪所得價值低微，或為維持受宣告人生活條件之必要者，得不宣告或酌減之。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -809,15 +841,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之1（被害人優先規定，項次待核對）",
+          "ref": "刑法第38條之1第5項（犯罪所得已實際合法發還被害人者，不予宣告沒收或追徵）",
           "status": "verified",
           "checks": [
             {
               "article": "38-1",
-              "paragraph": null,
+              "paragraph": 5,
               "item": null,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "犯罪所得已實際合法發還被害人者，不予宣告沒收或追徵。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -1004,23 +1036,49 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法有關沒收獨立程序之規定（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑事訴訟法第455-34條至第455-37條（單獨宣告沒收程序）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "455-34",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "單獨宣告沒收由檢察官聲請違法行為地、沒收財產所在地或其財產所有人之住所、居所或所在地之法院裁定之。"
+            },
+            {
+              "article": "455-37",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "本編關於第三人參與沒收程序之規定，於單獨宣告沒收程序準用之。"
+            }
+          ],
+          "latestAmendmentDate": "2016-05-27",
+          "amendments": [
+            {
+              "article": "455-34",
+              "date": "2016-05-27",
+              "kind": "增訂"
+            },
+            {
+              "article": "455-37",
+              "date": "2016-05-27",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
         },
         {
-          "ref": "刑法第38條之1",
+          "ref": "刑法第38條之1第1項",
           "status": "verified",
           "checks": [
             {
               "article": "38-1",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -1088,15 +1146,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之1（但書）",
+          "ref": "刑法第38條之1第1項但書（有特別規定者，依其規定）",
           "status": "verified",
           "checks": [
             {
               "article": "38-1",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -1110,28 +1168,115 @@
           "note": null
         },
         {
-          "ref": "洗錢防制法（沒收規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "洗錢防制法第25條（洗錢之財物，不問屬於犯罪行為人與否，沒收之）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第十九條、第二十條之罪，洗錢之財物或財產上利益，不問屬於犯罪行為人與否，沒收之。\n犯第十九條或第二十條之罪，有事實足以證明行為人所得支配之前項規定以外之財物或財產上利益，係取自其他違法行為所得者，沒收之。\n對於外國政府、機構或國際組織依第"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
         },
         {
-          "ref": "貪污治罪條例（沒收規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "貪污治罪條例第10條（來源可疑財產視為犯罪所得）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第四條至第六條之罪，本人及其配偶、未成年子女自犯罪時及其後三年內取得之來源可疑財產，經檢察官或法院於偵查、審判程序中命本人證明來源合法而未能證明者，視為其犯罪所得。"
+            }
+          ],
+          "latestAmendmentDate": "2016-05-27",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1963-07-05",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1973-08-07",
+              "kind": "全文修正"
+            },
+            {
+              "article": "10",
+              "date": "1992-06-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "10",
+              "date": "1996-10-03",
+              "kind": "全文修正"
+            },
+            {
+              "article": "10",
+              "date": "2009-04-03",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2016-05-27",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         },
         {
-          "ref": "毒品危害防制條例（沒收規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "毒品危害防制條例第18條（第一、二級毒品及專供製造或施用之器具，不問屬於犯罪行為人與否，均沒收銷燬）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "18",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "查獲之第一級、第二級毒品及專供製造或施用第一級、第二級毒品之器具，不問屬於犯罪行為人與否，均沒收銷燬之；查獲之第三級、第四級毒品及製造或施用第三級、第四級毒品之器具，無正當理由而擅自持有者，均沒入銷燬之。但合於醫藥、研究或訓練之用者，得不予"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-17",
+          "amendments": [
+            {
+              "article": "18",
+              "date": "1955-05-27",
+              "kind": "制定"
+            },
+            {
+              "article": "18",
+              "date": "1997-10-30",
+              "kind": "全文修正"
+            },
+            {
+              "article": "18",
+              "date": "2003-06-06",
+              "kind": "全文修正"
+            },
+            {
+              "article": "18",
+              "date": "2016-05-27",
+              "kind": "修正"
+            },
+            {
+              "article": "18",
+              "date": "2019-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -1187,12 +1332,78 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法有關扣押之規定（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑事訴訟法第133條（可為證據或得沒收之物得扣押之）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "133",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "可為證據或得沒收之物，得扣押之。\n為保全追徵，必要時得酌量扣押犯罪嫌疑人、被告或第三人之財產。\n對於應扣押物之所有人、持有人或保管人，得命其提出或交付。\n扣押不動產、船舶、航空器，得以通知主管機關為扣押登記之方法為之。\n扣押債權得以發扣押命"
+            }
+          ],
+          "latestAmendmentDate": "2016-05-27",
+          "amendments": [
+            {
+              "article": "133",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "133",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "133",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "133",
+              "date": "2016-05-27",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑事訴訟法第142條（扣押物之發還）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "142",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "扣押物若無留存之必要者，不待案件終結，應以法院之裁定或檢察官命令發還之；其係贓物而無第三人主張權利者，應發還被害人。\n扣押物因所有人、持有人或保管人之請求，得命其負保管之責，暫行發還。\n扣押物之所有人、持有人或保管人，有正當理由者，於審判中"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-17",
+          "amendments": [
+            {
+              "article": "142",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "142",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "142",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "142",
+              "date": "2019-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         },
         {
           "ref": "刑法第38條",
@@ -1279,15 +1490,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第74條（緩刑）",
+          "ref": "刑法第74條第5項（緩刑之效力不及於從刑、保安處分及沒收之宣告）",
           "status": "verified",
           "checks": [
             {
               "article": "74",
-              "paragraph": null,
+              "paragraph": 5,
               "item": null,
               "ok": true,
-              "currentText": "受二年以下有期徒刑、拘役或罰金之宣告，而有下列情形之一，認以暫不執行為適當者，得宣告二年以上五年以下之緩刑，其期間自裁判確定之日起算：\n一、未曾因故意犯罪受有期徒刑以上刑之宣告者。\n二、前因故意犯罪受有期徒刑以上刑之宣告，執行完畢或赦免後，"
+              "currentText": "緩刑之效力不及於從刑、保安處分及沒收之宣告。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -1491,21 +1702,21 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之1",
+          "ref": "刑法第38條之2第1項（犯罪所得認定顯有困難時，得以估算認定之）",
           "status": "verified",
           "checks": [
             {
-              "article": "38-1",
-              "paragraph": null,
+              "article": "38-2",
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "前條犯罪所得及追徵之範圍與價額，認定顯有困難時，得以估算認定之。第三十八條之追徵，亦同。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
           "amendments": [
             {
-              "article": "38-1",
+              "article": "38-2",
               "date": "2015-12-17",
               "kind": "增訂"
             }
@@ -1513,7 +1724,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第154條（證明責任）",
+          "ref": "刑事訴訟法第154條（無罪推定與依證據認定犯罪事實）",
           "status": "verified",
           "checks": [
             {
@@ -1602,12 +1813,26 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "洗錢防制法（沒收規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "洗錢防制法第25條（洗錢之財物，不問屬於犯罪行為人與否，沒收之）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "25",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯第十九條、第二十條之罪，洗錢之財物或財產上利益，不問屬於犯罪行為人與否，沒收之。\n犯第十九條或第二十條之罪，有事實足以證明行為人所得支配之前項規定以外之財物或財產上利益，係取自其他違法行為所得者，沒收之。\n對於外國政府、機構或國際組織依第"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "25",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
         },
         {
           "ref": "刑法第38條之1",
@@ -1795,15 +2020,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條（不能沒收時追徵其價額）",
+          "ref": "刑法第38條第4項（全部或一部不能沒收或不宜執行沒收時，追徵其價額）",
           "status": "verified",
           "checks": [
             {
               "article": "38",
-              "paragraph": null,
+              "paragraph": 4,
               "item": null,
               "ok": true,
-              "currentText": "違禁物，不問屬於犯罪行為人與否，沒收之。\n供犯罪所用、犯罪預備之物或犯罪所生之物，屬於犯罪行為人者，得沒收之。但有特別規定者，依其規定。\n前項之物屬於犯罪行為人以外之自然人、法人或非法人團體，而無正當理由提供或取得者，得沒收之。但有特別規定"
+              "currentText": "前二項之沒收，於全部或一部不能沒收或不宜執行沒收時，追徵其價額。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -1827,28 +2052,23 @@
           "note": null
         },
         {
-          "ref": "刑法第38條之3（追徵價額）",
+          "ref": "刑法第38條之1第3項（追徵其價額）",
           "status": "verified",
           "checks": [
             {
-              "article": "38-3",
-              "paragraph": null,
+              "article": "38-1",
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "第三十八條之物及第三十八條之一之犯罪所得之所有權或其他權利，於沒收裁判確定時移轉為國家所有。\n前項情形，第三人對沒收標的之權利或因犯罪而得行使之債權均不受影響。\n第一項之沒收裁判，於確定前，具有禁止處分之效力。"
+              "currentText": "前二項之沒收，於全部或一部不能沒收或不宜執行沒收時，追徵其價額。"
             }
           ],
-          "latestAmendmentDate": "2016-05-27",
+          "latestAmendmentDate": "2015-12-17",
           "amendments": [
             {
-              "article": "38-3",
+              "article": "38-1",
               "date": "2015-12-17",
               "kind": "增訂"
-            },
-            {
-              "article": "38-3",
-              "date": "2016-05-27",
-              "kind": "修正"
             }
           ],
           "note": null
@@ -1906,42 +2126,47 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之3（追徵價額，待核對）",
+          "ref": "刑法第38條第4項（追徵其價額）",
           "status": "verified",
           "checks": [
             {
-              "article": "38-3",
-              "paragraph": null,
+              "article": "38",
+              "paragraph": 4,
               "item": null,
               "ok": true,
-              "currentText": "第三十八條之物及第三十八條之一之犯罪所得之所有權或其他權利，於沒收裁判確定時移轉為國家所有。\n前項情形，第三人對沒收標的之權利或因犯罪而得行使之債權均不受影響。\n第一項之沒收裁判，於確定前，具有禁止處分之效力。"
+              "currentText": "前二項之沒收，於全部或一部不能沒收或不宜執行沒收時，追徵其價額。"
             }
           ],
-          "latestAmendmentDate": "2016-05-27",
+          "latestAmendmentDate": "2015-12-17",
           "amendments": [
             {
-              "article": "38-3",
-              "date": "2015-12-17",
-              "kind": "增訂"
+              "article": "38",
+              "date": "1934-10-31",
+              "kind": "制定"
             },
             {
-              "article": "38-3",
-              "date": "2016-05-27",
+              "article": "38",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "38",
+              "date": "2015-12-17",
               "kind": "修正"
             }
           ],
           "note": null
         },
         {
-          "ref": "刑法第38條之1",
+          "ref": "刑法第38條之1第3項（追徵其價額）",
           "status": "verified",
           "checks": [
             {
               "article": "38-1",
-              "paragraph": null,
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "前二項之沒收，於全部或一部不能沒收或不宜執行沒收時，追徵其價額。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -2007,15 +2232,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條",
+          "ref": "刑法第38條第4項（不能沒收或不宜執行沒收時，追徵其價額）",
           "status": "verified",
           "checks": [
             {
               "article": "38",
-              "paragraph": null,
+              "paragraph": 4,
               "item": null,
               "ok": true,
-              "currentText": "違禁物，不問屬於犯罪行為人與否，沒收之。\n供犯罪所用、犯罪預備之物或犯罪所生之物，屬於犯罪行為人者，得沒收之。但有特別規定者，依其規定。\n前項之物屬於犯罪行為人以外之自然人、法人或非法人團體，而無正當理由提供或取得者，得沒收之。但有特別規定"
+              "currentText": "前二項之沒收，於全部或一部不能沒收或不宜執行沒收時，追徵其價額。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -2039,28 +2264,23 @@
           "note": null
         },
         {
-          "ref": "刑法第38條之3（待核對）",
+          "ref": "刑法第38條之1第3項（追徵其價額）",
           "status": "verified",
           "checks": [
             {
-              "article": "38-3",
-              "paragraph": null,
+              "article": "38-1",
+              "paragraph": 3,
               "item": null,
               "ok": true,
-              "currentText": "第三十八條之物及第三十八條之一之犯罪所得之所有權或其他權利，於沒收裁判確定時移轉為國家所有。\n前項情形，第三人對沒收標的之權利或因犯罪而得行使之債權均不受影響。\n第一項之沒收裁判，於確定前，具有禁止處分之效力。"
+              "currentText": "前二項之沒收，於全部或一部不能沒收或不宜執行沒收時，追徵其價額。"
             }
           ],
-          "latestAmendmentDate": "2016-05-27",
+          "latestAmendmentDate": "2015-12-17",
           "amendments": [
             {
-              "article": "38-3",
+              "article": "38-1",
               "date": "2015-12-17",
               "kind": "增訂"
-            },
-            {
-              "article": "38-3",
-              "date": "2016-05-27",
-              "kind": "修正"
             }
           ],
           "note": null
@@ -2117,15 +2337,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之2",
+          "ref": "刑法第38條之2第2項（宣告前二條之沒收或追徵，有過苛之虞得不宣告或酌減）",
           "status": "verified",
           "checks": [
             {
               "article": "38-2",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "前條犯罪所得及追徵之範圍與價額，認定顯有困難時，得以估算認定之。第三十八條之追徵，亦同。\n宣告前二條之沒收或追徵，有過苛之虞、欠缺刑法上之重要性、犯罪所得價值低微，或為維持受宣告人生活條件之必要者，得不宣告或酌減之。"
+              "currentText": "宣告前二條之沒收或追徵，有過苛之虞、欠缺刑法上之重要性、犯罪所得價值低微，或為維持受宣告人生活條件之必要者，得不宣告或酌減之。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -2134,33 +2354,6 @@
               "article": "38-2",
               "date": "2015-12-17",
               "kind": "增訂"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第38條之3（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "38-3",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "第三十八條之物及第三十八條之一之犯罪所得之所有權或其他權利，於沒收裁判確定時移轉為國家所有。\n前項情形，第三人對沒收標的之權利或因犯罪而得行使之債權均不受影響。\n第一項之沒收裁判，於確定前，具有禁止處分之效力。"
-            }
-          ],
-          "latestAmendmentDate": "2016-05-27",
-          "amendments": [
-            {
-              "article": "38-3",
-              "date": "2015-12-17",
-              "kind": "增訂"
-            },
-            {
-              "article": "38-3",
-              "date": "2016-05-27",
-              "kind": "修正"
             }
           ],
           "note": null
@@ -2219,15 +2412,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之1",
+          "ref": "刑法第38條之1第2項（第三人取得犯罪所得）",
           "status": "verified",
           "checks": [
             {
               "article": "38-1",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "犯罪所得，屬於犯罪行為人者，沒收之。但有特別規定者，依其規定。\n犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為"
+              "currentText": "犯罪行為人以外之自然人、法人或非法人團體，因下列情形之一取得犯罪所得者，亦同：\n一、明知他人違法行為而取得。\n二、因他人違法行為而無償或以顯不相當之對價取得。\n三、犯罪行為人為他人實行違法行為，他人因而取得。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -2241,15 +2434,37 @@
           "note": null
         },
         {
-          "ref": "刑法第38條之3（待核對）",
+          "ref": "刑法第38條之1第3項（追徵其價額）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "38-1",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "前二項之沒收，於全部或一部不能沒收或不宜執行沒收時，追徵其價額。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "38-1",
+              "date": "2015-12-17",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第38條之3第2項（第三人之權利及因犯罪而得行使之債權不受影響）",
           "status": "verified",
           "checks": [
             {
               "article": "38-3",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "第三十八條之物及第三十八條之一之犯罪所得之所有權或其他權利，於沒收裁判確定時移轉為國家所有。\n前項情形，第三人對沒收標的之權利或因犯罪而得行使之債權均不受影響。\n第一項之沒收裁判，於確定前，具有禁止處分之效力。"
+              "currentText": "前項情形，第三人對沒收標的之權利或因犯罪而得行使之債權均不受影響。"
             }
           ],
           "latestAmendmentDate": "2016-05-27",
@@ -2319,12 +2534,12 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第80條（追訴權時效期間，待核對）",
+          "ref": "刑法第80條第1項（追訴權期間依最重本刑區分）",
           "status": "verified",
           "checks": [
             {
               "article": "80",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
               "currentText": "追訴權，因下列期間內未起訴而消滅：\n一、犯最重本刑為死刑、無期徒刑或十年以上有期徒刑之罪者，三十年。但發生死亡結果者，不在此限。\n二、犯最重本刑為三年以上十年未滿有期徒刑之罪者，二十年。\n三、犯最重本刑為一年以上三年未滿有期徒刑之罪者，十年"
@@ -2407,15 +2622,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第80條（起算規定，條次待核對）",
+          "ref": "刑法第80條第2項（追訴權期間自犯罪成立之日起算；犯罪行為有繼續之狀態者，自行為終了之日起算）",
           "status": "verified",
           "checks": [
             {
               "article": "80",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "追訴權，因下列期間內未起訴而消滅：\n一、犯最重本刑為死刑、無期徒刑或十年以上有期徒刑之罪者，三十年。但發生死亡結果者，不在此限。\n二、犯最重本刑為三年以上十年未滿有期徒刑之罪者，二十年。\n三、犯最重本刑為一年以上三年未滿有期徒刑之罪者，十年"
+              "currentText": "前項期間自犯罪成立之日起算。但犯罪行為有繼續之狀態者，自行為終了之日起算。"
             }
           ],
           "latestAmendmentDate": "2026-07-07",
@@ -2439,33 +2654,6 @@
               "article": "80",
               "date": "2026-07-07",
               "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第81條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "81",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "（刪除）"
-            }
-          ],
-          "latestAmendmentDate": "2005-01-07",
-          "amendments": [
-            {
-              "article": "81",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "81",
-              "date": "2005-01-07",
-              "kind": "刪除"
             }
           ],
           "note": null
@@ -2523,46 +2711,51 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第80條至第83條（時效停止相關規定，條次待核對）",
+          "ref": "刑法第83條第1項（起訴、依法停止偵查或因犯罪行為人逃匿而通緝之停止效力）",
           "status": "verified",
           "checks": [
             {
-              "article": "80",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "追訴權，因下列期間內未起訴而消滅：\n一、犯最重本刑為死刑、無期徒刑或十年以上有期徒刑之罪者，三十年。但發生死亡結果者，不在此限。\n二、犯最重本刑為三年以上十年未滿有期徒刑之罪者，二十年。\n三、犯最重本刑為一年以上三年未滿有期徒刑之罪者，十年"
-            },
-            {
               "article": "83",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "追訴權之時效，因起訴而停止進行。依法應停止偵查或因犯罪行為人逃匿而通緝者，亦同。\n前項時效之停止進行，有下列情形之一者，其停止原因視為消滅：\n一、諭知公訴不受理判決確定，或因程序上理由終結自訴確定者。\n二、審判程序依法律之規定或因被告逃匿而"
+              "currentText": "追訴權之時效，因起訴而停止進行。依法應停止偵查或因犯罪行為人逃匿而通緝者，亦同。"
             }
           ],
-          "latestAmendmentDate": "2026-07-07",
+          "latestAmendmentDate": "2019-12-06",
           "amendments": [
             {
-              "article": "80",
+              "article": "83",
               "date": "1934-10-31",
               "kind": "制定"
             },
             {
-              "article": "80",
+              "article": "83",
               "date": "2005-01-07",
               "kind": "修正"
             },
             {
-              "article": "80",
-              "date": "2019-05-10",
+              "article": "83",
+              "date": "2019-12-06",
               "kind": "修正"
-            },
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第83條第2項（停止原因視為消滅之情形）",
+          "status": "verified",
+          "checks": [
             {
-              "article": "80",
-              "date": "2026-07-07",
-              "kind": "修正"
-            },
+              "article": "83",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "前項時效之停止進行，有下列情形之一者，其停止原因視為消滅：\n一、諭知公訴不受理判決確定，或因程序上理由終結自訴確定者。\n二、審判程序依法律之規定或因被告逃匿而通緝，不能開始或繼續，而其期間已達第八十條第一項各款所定期間三分之一者。\n三、依第"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-06",
+          "amendments": [
             {
               "article": "83",
               "date": "1934-10-31",
@@ -2634,12 +2827,12 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第80條（待核對）",
+          "ref": "刑法第80條第1項（期間依最重本刑區分）",
           "status": "verified",
           "checks": [
             {
               "article": "80",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
               "currentText": "追訴權，因下列期間內未起訴而消滅：\n一、犯最重本刑為死刑、無期徒刑或十年以上有期徒刑之罪者，三十年。但發生死亡結果者，不在此限。\n二、犯最重本刑為三年以上十年未滿有期徒刑之罪者，二十年。\n三、犯最重本刑為一年以上三年未滿有期徒刑之罪者，十年"
@@ -2671,15 +2864,15 @@
           "note": null
         },
         {
-          "ref": "刑法第83條（待核對）",
+          "ref": "刑法第83條第1項（起訴之停止效力）",
           "status": "verified",
           "checks": [
             {
               "article": "83",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "追訴權之時效，因起訴而停止進行。依法應停止偵查或因犯罪行為人逃匿而通緝者，亦同。\n前項時效之停止進行，有下列情形之一者，其停止原因視為消滅：\n一、諭知公訴不受理判決確定，或因程序上理由終結自訴確定者。\n二、審判程序依法律之規定或因被告逃匿而"
+              "currentText": "追訴權之時效，因起訴而停止進行。依法應停止偵查或因犯罪行為人逃匿而通緝者，亦同。"
             }
           ],
           "latestAmendmentDate": "2019-12-06",
@@ -2698,38 +2891,6 @@
               "article": "83",
               "date": "2019-12-06",
               "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑事訴訟法第237條（共同被告之追訴，待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "237",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "告訴乃論之罪，其告訴應自得為告訴之人知悉犯人之時起，於六個月內為之。\n得為告訴之人有數人，其一人遲誤期間者，其效力不及於他人。"
-            }
-          ],
-          "latestAmendmentDate": "1967-01-13",
-          "amendments": [
-            {
-              "article": "237",
-              "date": "1928-07-28",
-              "kind": "制定"
-            },
-            {
-              "article": "237",
-              "date": "1934-11-29",
-              "kind": "制定"
-            },
-            {
-              "article": "237",
-              "date": "1967-01-13",
-              "kind": "全文修正"
             }
           ],
           "note": null
@@ -2787,47 +2948,47 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第83條（待核對）",
+          "ref": "刑法第84條第1項（行刑權期間依宣告刑區分）",
           "status": "verified",
           "checks": [
             {
-              "article": "83",
-              "paragraph": null,
+              "article": "84",
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "追訴權之時效，因起訴而停止進行。依法應停止偵查或因犯罪行為人逃匿而通緝者，亦同。\n前項時效之停止進行，有下列情形之一者，其停止原因視為消滅：\n一、諭知公訴不受理判決確定，或因程序上理由終結自訴確定者。\n二、審判程序依法律之規定或因被告逃匿而"
+              "currentText": "行刑權因下列期間內未執行而消滅：\n一、宣告死刑、無期徒刑或十年以上有期徒刑者，四十年。\n二、宣告三年以上十年未滿有期徒刑者，三十年。\n三、宣告一年以上三年未滿有期徒刑者，十五年。\n四、宣告一年未滿有期徒刑、拘役或罰金者，七年。"
             }
           ],
-          "latestAmendmentDate": "2019-12-06",
+          "latestAmendmentDate": "2015-12-17",
           "amendments": [
             {
-              "article": "83",
+              "article": "84",
               "date": "1934-10-31",
               "kind": "制定"
             },
             {
-              "article": "83",
+              "article": "84",
               "date": "2005-01-07",
               "kind": "修正"
             },
             {
-              "article": "83",
-              "date": "2019-12-06",
+              "article": "84",
+              "date": "2015-12-17",
               "kind": "修正"
             }
           ],
           "note": null
         },
         {
-          "ref": "刑法第84條（待核對）",
+          "ref": "刑法第84條第2項（自裁判確定之日起算）",
           "status": "verified",
           "checks": [
             {
               "article": "84",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "行刑權因下列期間內未執行而消滅：\n一、宣告死刑、無期徒刑或十年以上有期徒刑者，四十年。\n二、宣告三年以上十年未滿有期徒刑者，三十年。\n三、宣告一年以上三年未滿有期徒刑者，十五年。\n四、宣告一年未滿有期徒刑、拘役或罰金者，七年。\n前項期間，自"
+              "currentText": "前項期間，自裁判確定之日起算。但因保安處分先於刑罰執行者，自保安處分執行完畢之日起算。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -2903,47 +3064,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第83條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "83",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "追訴權之時效，因起訴而停止進行。依法應停止偵查或因犯罪行為人逃匿而通緝者，亦同。\n前項時效之停止進行，有下列情形之一者，其停止原因視為消滅：\n一、諭知公訴不受理判決確定，或因程序上理由終結自訴確定者。\n二、審判程序依法律之規定或因被告逃匿而"
-            }
-          ],
-          "latestAmendmentDate": "2019-12-06",
-          "amendments": [
-            {
-              "article": "83",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "83",
-              "date": "2005-01-07",
-              "kind": "修正"
-            },
-            {
-              "article": "83",
-              "date": "2019-12-06",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第84條（待核對）",
+          "ref": "刑法第84條第2項（自裁判確定之日起算；保安處分先於刑罰執行者，自保安處分執行完畢之日起算）",
           "status": "verified",
           "checks": [
             {
               "article": "84",
-              "paragraph": null,
+              "paragraph": 2,
               "item": null,
               "ok": true,
-              "currentText": "行刑權因下列期間內未執行而消滅：\n一、宣告死刑、無期徒刑或十年以上有期徒刑者，四十年。\n二、宣告三年以上十年未滿有期徒刑者，三十年。\n三、宣告一年以上三年未滿有期徒刑者，十五年。\n四、宣告一年未滿有期徒刑、拘役或罰金者，七年。\n前項期間，自"
+              "currentText": "前項期間，自裁判確定之日起算。但因保安處分先於刑罰執行者，自保安處分執行完畢之日起算。"
             }
           ],
           "latestAmendmentDate": "2015-12-17",
@@ -2961,6 +3090,38 @@
             {
               "article": "84",
               "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第85條第1項（行刑權時效因刑之執行而停止進行）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "85",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行刑權之時效，因刑之執行而停止進行。有下列情形之一而不能開始或繼續執行時，亦同：\n一、依法應停止執行者。\n二、因受刑人逃匿而通緝或執行期間脫逃未能繼續執行者。\n三、受刑人依法另受拘束自由者。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-06",
+          "amendments": [
+            {
+              "article": "85",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "85",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "85",
+              "date": "2019-12-06",
               "kind": "修正"
             }
           ],
@@ -3019,41 +3180,51 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第83條至第85條（執行時效停止相關規定，條次待核對）",
+          "ref": "刑法第85條第1項（行刑權時效因刑之執行而停止；受刑人逃匿而通緝、脫逃未能繼續執行或另受拘束自由等情形，亦同）",
           "status": "verified",
           "checks": [
             {
-              "article": "83",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "追訴權之時效，因起訴而停止進行。依法應停止偵查或因犯罪行為人逃匿而通緝者，亦同。\n前項時效之停止進行，有下列情形之一者，其停止原因視為消滅：\n一、諭知公訴不受理判決確定，或因程序上理由終結自訴確定者。\n二、審判程序依法律之規定或因被告逃匿而"
-            },
-            {
               "article": "85",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "行刑權之時效，因刑之執行而停止進行。有下列情形之一而不能開始或繼續執行時，亦同：\n一、依法應停止執行者。\n二、因受刑人逃匿而通緝或執行期間脫逃未能繼續執行者。\n三、受刑人依法另受拘束自由者。\n停止原因繼續存在之期間，如達於第八十四條第一項各"
+              "currentText": "行刑權之時效，因刑之執行而停止進行。有下列情形之一而不能開始或繼續執行時，亦同：\n一、依法應停止執行者。\n二、因受刑人逃匿而通緝或執行期間脫逃未能繼續執行者。\n三、受刑人依法另受拘束自由者。"
             }
           ],
           "latestAmendmentDate": "2019-12-06",
           "amendments": [
             {
-              "article": "83",
+              "article": "85",
               "date": "1934-10-31",
               "kind": "制定"
             },
             {
-              "article": "83",
+              "article": "85",
               "date": "2005-01-07",
               "kind": "修正"
             },
             {
-              "article": "83",
+              "article": "85",
               "date": "2019-12-06",
               "kind": "修正"
-            },
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第85條第3項（停止原因消滅後併計已經過期間）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "85",
+              "paragraph": 3,
+              "item": null,
+              "ok": true,
+              "currentText": "第一項之時效，自停止原因消滅之日起，與停止前已經過之期間，一併計算。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-06",
+          "amendments": [
             {
               "article": "85",
               "date": "1934-10-31",
@@ -3126,7 +3297,51 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "憲法第40條（赦免權）",
+          "ref": "赦免法第2條（大赦之效力）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "大赦之效力如左：\n一、已受罪刑之宣告者，其宣告為無效。\n二、未受罪刑之宣告者，其追訴權消滅。"
+            }
+          ],
+          "latestAmendmentDate": "1953-02-20",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1953-02-20",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "赦免法第3條（特赦之效力）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受罪刑宣告之人經特赦者，免除其刑之執行；其情節特殊者，得以其罪刑之宣告為無效。"
+            }
+          ],
+          "latestAmendmentDate": "1953-02-20",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1953-02-20",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "憲法第40條（總統行使大赦、特赦、減刑及復權之權）",
           "status": "verified",
           "checks": [
             {
@@ -3143,41 +3358,6 @@
               "article": "40",
               "date": "1946-12-25",
               "kind": "制定"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "赦免法（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "刑法第76條（待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "76",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "緩刑期滿，而緩刑之宣告未經撤銷者，其刑之宣告失其效力。但依第七十五條第二項、第七十五條之一第二項撤銷緩刑宣告者，不在此限。"
-            }
-          ],
-          "latestAmendmentDate": "2005-01-07",
-          "amendments": [
-            {
-              "article": "76",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "76",
-              "date": "2005-01-07",
-              "kind": "修正"
             }
           ],
           "note": null
@@ -3235,15 +3415,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第47條（累犯）",
+          "ref": "刑法第47條第1項（受徒刑執行完畢或一部執行而赦免後，五年內故意再犯者為累犯）",
           "status": "verified",
           "checks": [
             {
               "article": "47",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。"
             }
           ],
           "latestAmendmentDate": "2005-01-07",
@@ -3262,12 +3442,26 @@
           "note": null
         },
         {
-          "ref": "赦免法（減刑相關規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "赦免法第4條（減刑，減輕其所宣告之刑）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受罪刑宣告之人經減刑者，減輕其所宣告之刑。"
+            }
+          ],
+          "latestAmendmentDate": "1953-02-20",
+          "amendments": [
+            {
+              "article": "4",
+              "date": "1953-02-20",
+              "kind": "制定"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -3322,15 +3516,41 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "赦免法（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "赦免法第2條與第3條（大赦與特赦之效力）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "大赦之效力如左：\n一、已受罪刑之宣告者，其宣告為無效。\n二、未受罪刑之宣告者，其追訴權消滅。"
+            },
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受罪刑宣告之人經特赦者，免除其刑之執行；其情節特殊者，得以其罪刑之宣告為無效。"
+            }
+          ],
+          "latestAmendmentDate": "1953-02-20",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1953-02-20",
+              "kind": "制定"
+            },
+            {
+              "article": "3",
+              "date": "1953-02-20",
+              "kind": "制定"
+            }
+          ],
+          "note": null
         },
         {
-          "ref": "刑法第38條",
+          "ref": "刑法第38條（沒收）",
           "status": "verified",
           "checks": [
             {
@@ -3415,23 +3635,59 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "赦免法（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "赦免法第3條（特赦免除刑之執行；情節特殊者得宣告無效）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受罪刑宣告之人經特赦者，免除其刑之執行；其情節特殊者，得以其罪刑之宣告為無效。"
+            }
+          ],
+          "latestAmendmentDate": "1953-02-20",
+          "amendments": [
+            {
+              "article": "3",
+              "date": "1953-02-20",
+              "kind": "制定"
+            }
+          ],
+          "note": null
         },
         {
-          "ref": "刑法第47條（累犯）",
+          "ref": "赦免法第5條（復權回復所褫奪之公權）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "5",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受褫奪公權宣告之人經復權者，回復其所褫奪之公權。"
+            }
+          ],
+          "latestAmendmentDate": "1953-02-20",
+          "amendments": [
+            {
+              "article": "5",
+              "date": "1953-02-20",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第47條第1項（赦免後五年內再犯為累犯）",
           "status": "verified",
           "checks": [
             {
               "article": "47",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。\n第九十八條第二項關於因強制工作而免其刑之執行者，於受強制工作處分之執行完畢或一部之執行而免除後，五年以內故意再犯有期徒刑以上之罪者，以"
+              "currentText": "受徒刑之執行完畢，或一部之執行而赦免後，五年以內故意再犯有期徒刑以上之罪者，為累犯，加重本刑至二分之一。"
             }
           ],
           "latestAmendmentDate": "2005-01-07",
@@ -3502,15 +3758,15 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第77條（假釋，條次待核對）",
+          "ref": "刑法第77條第1項（有期徒刑逾二分之一、累犯逾三分之二，得許假釋）",
           "status": "verified",
           "checks": [
             {
               "article": "77",
-              "paragraph": null,
+              "paragraph": 1,
               "item": null,
               "ok": true,
-              "currentText": "受徒刑之執行而有悛悔實據者，無期徒刑逾二十五年，有期徒刑逾二分之一、累犯逾三分之二，由監獄報請法務部，得許假釋出獄。\n前項關於有期徒刑假釋之規定，於下列情形，不適用之：\n一、有期徒刑執行未滿六個月者。\n二、犯最輕本刑五年以上有期徒刑之罪之累"
+              "currentText": "受徒刑之執行而有悛悔實據者，無期徒刑逾二十五年，有期徒刑逾二分之一、累犯逾三分之二，由監獄報請法務部，得許假釋出獄。"
             }
           ],
           "latestAmendmentDate": "2005-01-07",
@@ -3549,12 +3805,26 @@
           "note": null
         },
         {
-          "ref": "赦免法（減刑相關規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "赦免法第4條（減刑，減輕其所宣告之刑）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受罪刑宣告之人經減刑者，減輕其所宣告之刑。"
+            }
+          ],
+          "latestAmendmentDate": "1953-02-20",
+          "amendments": [
+            {
+              "article": "4",
+              "date": "1953-02-20",
+              "kind": "制定"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -3737,7 +4007,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第41條第3項（易服社會勞動，項次待核對）",
+          "ref": "刑法第41條第3項（不符易科罰金者得易服社會勞動）",
           "status": "verified",
           "checks": [
             {
@@ -3746,6 +4016,48 @@
               "item": null,
               "ok": true,
               "currentText": "受六月以下有期徒刑或拘役之宣告，不符第一項易科罰金之規定者，得依前項折算規定，易服社會勞動。"
+            }
+          ],
+          "latestAmendmentDate": "2009-12-15",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "2001-01-04",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2008-12-30",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2009-12-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第41條第6項（無正當理由不履行社會勞動之效果）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": 6,
+              "item": null,
+              "ok": true,
+              "currentText": "無正當理由不履行社會勞動，情節重大，或履行期間屆滿仍未履行完畢者，於第二項之情形應執行原宣告刑或易科罰金；於第三項之情形應執行原宣告刑。"
             }
           ],
           "latestAmendmentDate": "2009-12-15",
@@ -3811,7 +4123,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第484條（待核對）",
+          "ref": "刑事訴訟法第484條（聲明異議）",
           "status": "verified",
           "checks": [
             {
@@ -3927,7 +4239,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第405條（抗告，待核對）",
+          "ref": "刑事訴訟法第405條（第二審裁定不得抗告之限制）",
           "status": "verified",
           "checks": [
             {

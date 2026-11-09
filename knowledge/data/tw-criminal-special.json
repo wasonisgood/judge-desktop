@@ -74,7 +74,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "貪污治罪條例第4條第1項第5款（違背職務收受賄賂，款次待核對）",
+          "ref": "貪污治罪條例第4條第1項第5款（違背職務收受賄賂）",
           "status": "verified",
           "checks": [
             {
@@ -111,7 +111,7 @@
           "note": null
         },
         {
-          "ref": "貪污治罪條例第5條第1項第3款（不違背職務收受賄賂，款次待核對）",
+          "ref": "貪污治罪條例第5條第1項第3款（不違背職務收受賄賂）",
           "status": "verified",
           "checks": [
             {
@@ -273,7 +273,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "洗錢防制法第2條（洗錢行為之定義，現行條文待核對）",
+          "ref": "洗錢防制法第2條（洗錢行為之定義）",
           "status": "verified",
           "checks": [
             {
@@ -315,7 +315,7 @@
           "note": null
         },
         {
-          "ref": "洗錢防制法第3條（特定犯罪之範圍，現行條文待核對）",
+          "ref": "洗錢防制法第3條（特定犯罪之範圍）",
           "status": "verified",
           "checks": [
             {
@@ -377,7 +377,7 @@
           "note": null
         },
         {
-          "ref": "洗錢防制法第19條（洗錢罪之刑度，金額門檻待核對）",
+          "ref": "洗錢防制法第19條（洗錢罪之刑度）",
           "status": "verified",
           "checks": [
             {
@@ -399,28 +399,6 @@
               "article": "19",
               "date": "2024-07-16",
               "kind": "全文修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "洗錢防制法第15條之2（無正當理由交付、提供帳戶，條次待核對）",
-          "status": "failed",
-          "checks": [
-            {
-              "article": "15-2",
-              "paragraph": null,
-              "item": null,
-              "ok": false,
-              "currentText": null
-            }
-          ],
-          "latestAmendmentDate": "2023-05-19",
-          "amendments": [
-            {
-              "article": "15-2",
-              "date": "2023-05-19",
-              "kind": "增訂"
             }
           ],
           "note": null
@@ -532,7 +510,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "毒品危害防制條例第4條（製造、運輸、販賣毒品，款項待核對）",
+          "ref": "毒品危害防制條例第4條（製造、運輸、販賣毒品）",
           "status": "verified",
           "checks": [
             {
@@ -589,64 +567,44 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第4條（轉讓毒品之相關規定，條次款次待核對）",
+          "ref": "毒品危害防制條例第8條（轉讓毒品）",
           "status": "verified",
           "checks": [
             {
-              "article": "4",
+              "article": "8",
               "paragraph": null,
               "item": null,
               "ok": true,
-              "currentText": "製造、運輸、販賣第一級毒品者，處死刑或無期徒刑；處無期徒刑者，得併科新臺幣三千萬元以下罰金。\n製造、運輸、販賣第二級毒品者，處無期徒刑或十年以上有期徒刑，得併科新臺幣一千五百萬元以下罰金。\n製造、運輸、販賣第三級毒品者，處七年以上有期徒刑，"
+              "currentText": "轉讓第一級毒品者，處一年以上七年以下有期徒刑，得併科新臺幣一百萬元以下罰金。\n轉讓第二級毒品者，處六月以上五年以下有期徒刑，得併科新臺幣七十萬元以下罰金。\n轉讓第三級毒品者，處三年以下有期徒刑，得併科新臺幣三十萬元以下罰金。\n轉讓第四級毒品"
             }
           ],
-          "latestAmendmentDate": "2019-12-17",
+          "latestAmendmentDate": "2003-06-06",
           "amendments": [
             {
-              "article": "4",
+              "article": "8",
               "date": "1955-05-27",
               "kind": "制定"
             },
             {
-              "article": "4",
-              "date": "1973-06-12",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
+              "article": "8",
               "date": "1992-07-03",
               "kind": "修正"
             },
             {
-              "article": "4",
+              "article": "8",
               "date": "1997-10-30",
               "kind": "全文修正"
             },
             {
-              "article": "4",
+              "article": "8",
               "date": "2003-06-06",
               "kind": "全文修正"
-            },
-            {
-              "article": "4",
-              "date": "2009-05-05",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
-              "date": "2015-01-23",
-              "kind": "修正"
-            },
-            {
-              "article": "4",
-              "date": "2019-12-17",
-              "kind": "修正"
             }
           ],
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第10條（施用毒品，條次待核對）",
+          "ref": "毒品危害防制條例第10條（施用毒品）",
           "status": "verified",
           "checks": [
             {
@@ -683,7 +641,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第11條（持有毒品，條次待核對）",
+          "ref": "毒品危害防制條例第11條（持有毒品）",
           "status": "verified",
           "checks": [
             {
@@ -730,7 +688,7 @@
           "note": null
         },
         {
-          "ref": "毒品危害防制條例第20條（觀察、勒戒與強制戒癮程序，條次待核對）",
+          "ref": "毒品危害防制條例第20條（觀察、勒戒與強制戒癮程序）",
           "status": "verified",
           "checks": [
             {

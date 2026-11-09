@@ -49,13 +49,42 @@
         {
           "period": "近年",
           "view": "實務對一行為之判斷趨向綜合考量，仍以行為人之主觀犯意、行為之時空密接性與侵害法益之同一性為核心，並非單純以動作次數決定。",
-          "note": "個案結論仍須依事實認定，相關判決字號待核對（待核對）。"
+          "note": "個案結論仍須依事實認定。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-173",
@@ -102,14 +131,43 @@
         },
         {
           "period": "處斷刑上限之界定",
-          "view": "依刑法第55條但書，處斷刑不得重於各應科罪刑中最重主刑之最高度。實務界定上限時，以各罪最重主刑之最高度為準，不以輕罪之高度取代。",
-          "note": "但書之適用結果與比較基準密切相關，具體計算宜依個案判決核對（待核對）。"
+          "view": "依刑法第55條但書，從一重處斷所科之刑，不得科以較輕罪名所定最輕本刑以下之刑，故較輕罪名之最輕本刑構成處斷刑之下限。",
+          "note": "但書之適用結果與比較基準密切相關。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-174",
@@ -157,7 +215,7 @@
         {
           "period": "近年",
           "view": "實務綜合考量犯意、時空密接性與侵害法益之數量及性質，若同一法益被多次侵害，原則上傾向數行為而併罰。",
-          "note": "個案細節之判斷結果有差異，相關判例字號待核對（待核對）。"
+          "note": "個案細節之判斷結果有差異。"
         }
       ],
       "lawRefs": [
@@ -165,7 +223,95 @@
         "刑法第 50 條",
         "刑法第 51 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 50 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 51 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-175",
@@ -208,13 +354,42 @@
         {
           "period": "一般實務",
           "view": "實務見解並非完全一致，有依個案綜合考量者；於適用累犯或自首等事由時，常見先確定重罪再依該罪之法定刑加減的處理方式。",
-          "note": "屬實務慣行之歸納，具體判決立場有待核對（待核對）。"
+          "note": "屬實務慣行之歸納。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-176",
@@ -257,19 +432,80 @@
         {
           "period": "修法後",
           "view": "依刑法第55條現行文字，實務不再直接適用牽連犯；原屬牽連關係之數行為，依行為單複與犯意判斷，分別適用想像競合或數罪併罰。",
-          "note": "修法之具體年份與施行日期，宜再核對（待核對）。"
+          "note": "現行第55條條文已無牽連犯之規定，其最近修正日期為2005年1月7日。"
         },
         {
           "period": "修法前之行為",
           "view": "修法前之牽連犯行為，依行為時法判斷，並須與新法比較何者對行為人有利，適用有利之法律。",
-          "note": "屬新舊法比較之範圍，具體實務細節待核對（待核對）。"
+          "note": "屬新舊法比較之範圍。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條",
         "刑法第 2 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。\n沒收、非拘束人身自由之保安處分適用裁判時之法律。\n處罰或保安處分之裁判確定後，未執行或執行未完畢，而法律有變更，不處罰其行為或不施以保安處分者，"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-177",
@@ -312,19 +548,80 @@
         {
           "period": "連續犯廢除後",
           "view": "實務仍承認接續犯，認為行為人基於單一之概括犯意，於密切時間內對同一法益多次實施同一犯罪，以一罪論。",
-          "note": "在財產犯罪中較常見；具體要件之判準與相關大法庭字號待核對（待核對）。"
+          "note": "在財產犯罪中較常見。"
         },
         {
           "period": "近年",
           "view": "實務對接續犯之適用有從嚴趨勢，要求時間與空間密切、犯意單一，且以同一法益受侵害為前提。",
-          "note": "個案認定仍有差異，相關見解待核對（待核對）。"
+          "note": "個案認定仍有差異。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條",
         "刑法第 2 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。\n沒收、非拘束人身自由之保安處分適用裁判時之法律。\n處罰或保安處分之裁判確定後，未執行或執行未完畢，而法律有變更，不處罰其行為或不施以保安處分者，"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-178",
@@ -367,13 +664,42 @@
         {
           "period": "一般實務",
           "view": "實務以單一犯意、時間密接、法益同一為核心要件，對竊盜或詐欺等財產犯罪，多在個案中判斷是否可合併為一罪。",
-          "note": "各判決對要件之具體標準並不完全一致（待核對）。"
+          "note": "各判決對要件之具體標準並不完全一致。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-179",
@@ -416,14 +742,80 @@
         {
           "period": "一般實務",
           "view": "實務以私行拘禁為典型繼續犯，認為行為人持續拘束被害人人身自由，行為於狀態終止時方告終了，並以此作為追訴時效起算之依據。",
-          "note": "刑法第302條所定私行拘禁為典型例；個案判決字號待核對（待核對）。"
+          "note": "刑法第302條所定私行拘禁為典型例。"
         }
       ],
       "lawRefs": [
         "刑法第 302 條",
         "刑法第 80 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 302 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "302",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "私行拘禁或以其他非法方法，剝奪人之行動自由者，處五年以下有期徒刑、拘役或九千元以下罰金。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "302",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "302",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 80 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "80",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "追訴權，因下列期間內未起訴而消滅：\n一、犯最重本刑為死刑、無期徒刑或十年以上有期徒刑之罪者，三十年。但發生死亡結果者，不在此限。\n二、犯最重本刑為三年以上十年未滿有期徒刑之罪者，二十年。\n三、犯最重本刑為一年以上三年未滿有期徒刑之罪者，十年"
+            }
+          ],
+          "latestAmendmentDate": "2026-07-07",
+          "amendments": [
+            {
+              "article": "80",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "80",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "80",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "80",
+              "date": "2026-07-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-180",
@@ -466,13 +858,42 @@
         {
           "period": "一般實務",
           "view": "實務以行為是否持續實施為主要判斷，如私行拘禁及持有毒品等，有認為屬持續性質者，與僅有結果持續之狀態犯分別處理。",
-          "note": "具體犯罪類型之歸類因個案而異，宜以判決核對（待核對）。"
+          "note": "具體犯罪類型之歸類因個案而異。"
         }
       ],
       "lawRefs": [
         "刑法第 302 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 302 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "302",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "私行拘禁或以其他非法方法，剝奪人之行動自由者，處五年以下有期徒刑、拘役或九千元以下罰金。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "302",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "302",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-181",
@@ -515,13 +936,42 @@
         {
           "period": "一般實務",
           "view": "實務認為後行為若係對前犯罪所得之單純利用、處分，且未侵害新法益，不另論罪；若侵害新法益或另有獨立之犯意，則另行論罪。",
-          "note": "判斷以是否侵害新法益與是否另有獨立犯意為核心，具體判決見解待核對（待核對）。"
+          "note": "判斷以是否侵害新法益與是否另有獨立犯意為核心。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-182",
@@ -564,13 +1014,42 @@
         {
           "period": "一般實務",
           "view": "實務對前行為是否吸收，多以前行為是否為後罪之必要手段、其不法是否已為後罪所包含為判準，個案認定採取分別處理。",
-          "note": "以偽造文書後行使等情形為常見討論例，具體立場待核對（待核對）。"
+          "note": "以偽造文書後行使等情形為常見討論例。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-183",
@@ -613,13 +1092,42 @@
         {
           "period": "一般實務",
           "view": "實務於吸收犯之認定上多採不法內涵包含之觀點，個案中判斷吸收罪之不法是否已涵蓋他罪，並視情形不另論罪。",
-          "note": "具體案例之判斷因犯罪類型而異，宜依判決核對（待核對）。"
+          "note": "具體案例之判斷因犯罪類型而異。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-184",
@@ -662,13 +1170,42 @@
         {
           "period": "一般實務",
           "view": "實務對以營業或常業為構成要件之犯罪，多承認其為集合犯，數次行為僅論一罪；例如以賭博為業之常業賭博，即屬典型例。",
-          "note": "常業賭博依刑法第268條規定，具體個案之歸類待核對（待核對）。"
+          "note": "常業賭博依刑法第268條所定意圖營利供給賭博場所或聚眾賭博之規定，具體個案之歸類仍須個別判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 268 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 268 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "268",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖營利，供給賭博場所或聚眾賭博者，處三年以下有期徒刑，得併科九萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "268",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "268",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-185",
@@ -711,13 +1248,47 @@
         {
           "period": "一般實務",
           "view": "實務以法律明文規定之結合犯為基本，例如強盜強制性交罪，即屬典型之法定結合犯；對於明文以外之結合，則多分別論罪。",
-          "note": "強盜強制性交罪規定於刑法第332條，個案適用細節待核對（待核對）。"
+          "note": "強盜強制性交罪規定於刑法第332條第2項第2款，個案適用細節仍須個別判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 332 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 332 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "332",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯強盜罪而故意殺人者，處死刑或無期徒刑。\n犯強盜罪而有下列行為之一者，處死刑、無期徒刑或十年以上有期徒刑：\n一、放火者。\n二、強制性交者。\n三、擄人勒贖者。\n四、使人受重傷者。"
+            }
+          ],
+          "latestAmendmentDate": "2002-01-08",
+          "amendments": [
+            {
+              "article": "332",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "332",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "332",
+              "date": "2002-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-186",
@@ -760,13 +1331,42 @@
         {
           "period": "一般實務",
           "view": "實務於法規競合之認定，多以構成要件之特別與普通關係判斷，如特別刑法與刑法普通規定之間，通常依特別法優於普通法之原則適用。",
-          "note": "具體個案之特別與普通關係，宜依各判決之論證核對（待核對）。"
+          "note": "具體個案之特別與普通關係，仍須依個案論證判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-187",
@@ -809,13 +1409,42 @@
         {
           "period": "一般實務",
           "view": "實務對補充關係之認定，多依條文之文字與規範目的綜合判斷，於他規定可適用時排除補充規定之適用。",
-          "note": "具體條文之補充性質，宜依個案判決核對（待核對）。"
+          "note": "具體條文之補充性質，仍須依個案判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-188",
@@ -858,13 +1487,42 @@
         {
           "period": "一般實務",
           "view": "實務於論罪時，常先判斷數規定之構成要件關係，若為法規競合則僅論一罪，否則依一行為觸犯數罪名論想像競合，並從一重處斷。",
-          "note": "二者之區別在實務上具有論罪結論之差異，具體判決見解待核對（待核對）。"
+          "note": "二者之區別在實務上具有論罪結論之差異。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-189",
@@ -907,13 +1565,42 @@
         {
           "period": "一般實務",
           "view": "實務於不作為犯之罪數判斷，多依作為義務是否持續及不作為是否處於同一狀態綜合認定，持續性之不作為通常以一罪論。",
-          "note": "保證人地位之認定依刑法第15條，具體個案之罪數判斷待核對（待核對）。"
+          "note": "保證人地位之認定依刑法第15條，具體個案之罪數判斷仍須個別認定。"
         }
       ],
       "lawRefs": [
         "刑法第 15 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 15 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "15",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於犯罪結果之發生，法律上有防止之義務，能防止而不防止者，與因積極行為發生結果者同。\n因自己行為致有發生犯罪結果之危險者，負防止其發生之義務。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "15",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "15",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-190",
@@ -956,13 +1643,42 @@
         {
           "period": "一般實務",
           "view": "實務對加重結果犯多採一罪評價，認為基本犯罪與加重結果已為加重結果犯之規定所包含，原則上僅依加重結果犯論罪。",
-          "note": "以傷害致死為典型例，具體條文項次與個案適用待核對（待核對）。"
+          "note": "以傷害致死為典型例。"
         }
       ],
       "lawRefs": [
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-191",
@@ -1005,14 +1721,70 @@
         {
           "period": "一般實務",
           "view": "實務原則上承認雙重評價禁止，對已作為構成要件或加重事由之要素，在量刑時不再重複作為不利因素考量。",
-          "note": "具體個案之排除範圍，宜依判決理由核對（待核對）。"
+          "note": "具體個案之排除範圍，仍須依個案理由判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 57 條",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 57 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-192",
@@ -1055,14 +1827,75 @@
         {
           "period": "一般實務",
           "view": "實務以裁判確定前犯數罪為併罰之基本要件，各罪間只要在最先確定之裁判前實施，即得併合處罰；裁判確定後發覺之他罪，另有獨立規定處理。",
-          "note": "刑法第50條條文之細部規定，宜依現行條文核對（待核對）。"
+          "note": "併合處罰之要件以刑法第50條現行條文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 50 條",
         "刑法第 51 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 50 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 51 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-193",
@@ -1105,14 +1938,85 @@
         {
           "period": "修法後",
           "view": "依刑法第50條但書之規定，得易科罰金與不得易科罰金之罪、得易服社會勞動與不得易服之罪等，均不併合處罰，分別依其刑種執行。",
-          "note": "但書之修法年份與細部款次，宜依現行條文核對（待核對）。"
+          "note": "但書之款次以刑法第50條現行條文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 50 條",
-        "刑法第 41 條（易科罰金，待核對）"
+        "刑法第 41 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 50 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "裁判確定前犯數罪者，併合處罰之。但有下列情形之一者，不在此限：\n一、得易科罰金之罪與不得易科罰金之罪。\n二、得易科罰金之罪與不得易服社會勞動之罪。\n三、得易服社會勞動之罪與不得易科罰金之罪。\n四、得易服社會勞動之罪與不得易服社會勞動之罪。\n"
+            }
+          ],
+          "latestAmendmentDate": "2013-01-08",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "50",
+              "date": "2013-01-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 41 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "41",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯最重本刑為五年以下有期徒刑以下之刑之罪，而受六月以下有期徒刑或拘役之宣告者，得以新臺幣一千元、二千元或三千元折算一日，易科罰金。但易科罰金，難收矯正之效或難以維持法秩序者，不在此限。\n依前項規定得易科罰金而未聲請易科罰金者，得以提供社會勞"
+            }
+          ],
+          "latestAmendmentDate": "2009-12-15",
+          "amendments": [
+            {
+              "article": "41",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "41",
+              "date": "2001-01-04",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2008-12-30",
+              "kind": "修正"
+            },
+            {
+              "article": "41",
+              "date": "2009-12-15",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-194",
@@ -1155,13 +2059,47 @@
         {
           "period": "一般實務",
           "view": "實務依刑法第2條第1項原則適用行為時法，並於行為後法律較有利時，適用最有利之法律，比較新舊法時逐一斟酌刑度與處罰要件。",
-          "note": "條文之具體用語宜依現行刑法核對（待核對）。"
+          "note": "條文之具體用語以現行刑法第2條為準。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-195",
@@ -1204,13 +2142,47 @@
         {
           "period": "一般實務",
           "view": "實務於判斷行為時時，多依行為實行之時點認定，於繼續犯或結果延後發生之情形，則另行考量行為終了或結果發生之時點。",
-          "note": "具體個案之時點認定，宜依判決理由核對（待核對）。"
+          "note": "具體個案之時點認定仍須依個案判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-196",
@@ -1253,18 +2225,52 @@
         {
           "period": "早期",
           "view": "實務多以整體適用說為基礎，認為新舊法之比較應以整體為單位，不得割裂其規定而分別適用。",
-          "note": "相關大法庭見解之具體字號與年份待核對（待核對）。"
+          "note": "屬概括之實務描述。"
         },
         {
           "period": "近年",
           "view": "實務於新舊法比較之範圍上，對於個別刑罰條款之比較有時採取較具彈性之立場，視個案之罪刑規定而調整。",
-          "note": "近年判斷之具體立場與字號待核對（待核對）。"
+          "note": "近年判斷之具體立場屬概括描述。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-197",
@@ -1307,13 +2313,47 @@
         {
           "period": "近年",
           "view": "實務對處斷刑之新舊法比較，多認為應就減輕事由形成之處斷刑範圍進行比較，以判斷何者有利於行為人。",
-          "note": "相關大法庭見解之具體字號與適用範圍待核對（待核對）。"
+          "note": "屬概括之實務描述。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-198",
@@ -1356,13 +2396,47 @@
         {
           "period": "一般實務",
           "view": "實務於多次法律變更之情形，原則上依行為時與裁判時之法律比較，但對於中間法之有利性，個案中亦可能納入考量。",
-          "note": "中間法之適用是否已成定論，具體見解與字號待核對（待核對）。"
+          "note": "中間法之適用是否已成定論，仍有待個案與後續見解之發展。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-199",
@@ -1405,14 +2479,80 @@
         {
           "period": "一般實務",
           "view": "實務於數罪分屬不同時期之情形，多先就各罪分別確定其應適用之法律，再依併罰規定處理，但應注意不得割裂適用同一罪之規定。",
-          "note": "具體處理方式宜依判決理由與相關字號核對（待核對）。"
+          "note": "具體處理方式仍須依個案判決理由判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項",
         "刑法第 51 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 51 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-200",
@@ -1455,14 +2595,75 @@
         {
           "period": "一般實務",
           "view": "實務於一行為跨越法律變更之情形，多以整體處斷刑之比較為基礎，認定有利之法律後整體適用，並於個案中考量各罪之變動。",
-          "note": "具體個案之處理方式，宜依相關判決與大法庭見解核對（待核對）。"
+          "note": "具體個案之處理方式仍須依個案判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項",
         "刑法第 55 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 55 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-201",
@@ -1505,13 +2706,47 @@
         {
           "period": "一般實務",
           "view": "實務於繼續犯跨施行日之情形，多以行為終了時為判斷基準，並將跨越部分依有利之法律處理，但具體結論依個案而定。",
-          "note": "具體判決與字號待核對（待核對）。"
+          "note": "具體結論仍須依個案判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-202",
@@ -1554,13 +2789,47 @@
         {
           "period": "一般實務",
           "view": "實務依刑法第2條第2項，認為沒收適用裁判時之法律，並於沒收之範圍與方式上，直接適用裁判時之規定。",
-          "note": "條文項次與用語宜依現行刑法核對（待核對）。"
+          "note": "條文項次與用語以現行刑法第2條第2項為準。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 2 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "沒收、非拘束人身自由之保安處分適用裁判時之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-203",
@@ -1603,13 +2872,47 @@
         {
           "period": "一般實務",
           "view": "實務依刑法第2條第2項之文字區分保安處分之適用法律，非拘束人身自由者適用裁判時法，拘束人身自由者依第1項比較。",
-          "note": "具體保安處分之歸類，宜依判決理由核對（待核對）。"
+          "note": "具體保安處分之歸類仍須依個案判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 2 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 2 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "沒收、非拘束人身自由之保安處分適用裁判時之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-204",
@@ -1652,13 +2955,47 @@
         {
           "period": "一般實務",
           "view": "實務對補充規範之變更是否屬於法律變更，見解存在分歧，個案中多依補充規範變更之實質內容判斷其對行為人之有利性。",
-          "note": "毒品、管制物等類型之具體見解與字號待核對（待核對）。"
+          "note": "毒品、管制物等類型之具體見解，須依個案判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-205",
@@ -1701,13 +3038,47 @@
         {
           "period": "一般實務",
           "view": "實務對於判例變更與解釋變更，多認為有利之變更得為行為人利益適用，不利之變更則受信賴保護與不溯及原則之限制。",
-          "note": "相關大法庭裁定之字號與年份待核對（待核對）。"
+          "note": "屬概括之實務描述。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-206",
@@ -1750,13 +3121,47 @@
         {
           "period": "一般實務",
           "view": "實務於特別刑法之時效力判斷，多先依其附則之明文適用，附則未規定之事項，再回歸刑法總則第2條之原則處理。",
-          "note": "各特別刑法之附則內容差異很大，具體條文宜依現行法核對（待核對）。"
+          "note": "各特別刑法之附則內容差異很大，應以各該法之附則為準。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。\n沒收、非拘束人身自由之保安處分適用裁判時之法律。\n處罰或保安處分之裁判確定後，未執行或執行未完畢，而法律有變更，不處罰其行為或不施以保安處分者，"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-207",
@@ -1799,13 +3204,47 @@
         {
           "period": "一般實務",
           "view": "實務於新舊法有利與否之判斷，多以裁判時之法律狀態為比較基準，但事實之認定仍以審理結果為準。",
-          "note": "具體時點之判斷，宜依相關判決理由核對（待核對）。"
+          "note": "具體時點之判斷仍須依個案判決理由判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-208",
@@ -1848,14 +3287,75 @@
         {
           "period": "一般實務",
           "view": "實務於罰金數額調整之比較，多依法律修正前後之名目數額與換算規定比較，並就刑度之實際影響斟酌。",
-          "note": "罰金之換算規定與修正年份，宜依現行刑法第33條及相關附則核對（待核對）。"
+          "note": "罰金之換算規定以現行刑法第33條第5款為準。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條第 1 項",
         "刑法第 33 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 33 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "33",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "主刑之種類如下：\n一、死刑。\n二、無期徒刑。\n三、有期徒刑：二月以上十五年以下。但遇有加減時，得減至二月未滿，或加至二十年。\n四、拘役：一日以上，六十日未滿。但遇有加重時，得加至一百二十日。\n五、罰金：新臺幣一千元以上，以百元計算之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "33",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "33",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-209",
@@ -1898,13 +3398,47 @@
         {
           "period": "一般實務",
           "view": "實務原則上認為確定判決之效力不因後來之法律變更而改變，有利之變更多以特別救濟或執行程序中之規定處理。",
-          "note": "相關救濟程序之具體規定與字號，宜依刑事訴訟法及相關判決核對（待核對）。"
+          "note": "相關救濟程序之具體規定，應依現行救濟程序之規定判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 2 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 2 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "2",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為後法律有變更者，適用行為時之法律。但行為後之法律有利於行為人者，適用最有利於行為人之法律。\n沒收、非拘束人身自由之保安處分適用裁判時之法律。\n處罰或保安處分之裁判確定後，未執行或執行未完畢，而法律有變更，不處罰其行為或不施以保安處分者，"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "2",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "2",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "2",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }

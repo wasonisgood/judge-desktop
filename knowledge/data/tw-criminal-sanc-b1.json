@@ -89,7 +89,7 @@
           "note": null
         },
         {
-          "ref": "刑法第63條（未滿十八歲人不得處死刑，條次待核對）",
+          "ref": "刑法第63條（未滿十八歲人或滿八十歲人不得處死刑或無期徒刑）",
           "status": "verified",
           "checks": [
             {
@@ -224,7 +224,7 @@
           "note": null
         },
         {
-          "ref": "刑法第77條（假釋）",
+          "ref": "刑法第77條（無期徒刑逾二十五年得假釋）",
           "status": "verified",
           "checks": [
             {
@@ -271,7 +271,7 @@
           "note": null
         },
         {
-          "ref": "憲法第22條（人性尊嚴之保障意旨）",
+          "ref": "憲法第22條",
           "status": "verified",
           "checks": [
             {
@@ -380,12 +380,53 @@
           "note": null
         },
         {
-          "ref": "刑法總則加減例（第64條以下，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑法第67條（有期徒刑加減時，其最高度及最低度同加減之）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "67",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有期徒刑或罰金加減者，其最高度及最低度同加減之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "67",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "67",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第71條（刑有加重及減輕者，先加後減）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "71",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "刑有加重及減輕者，先加後減。\n有二種以上之減輕者，先依較少之數減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "71",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -634,7 +675,7 @@
           "note": null
         },
         {
-          "ref": "刑法第34條（從刑）",
+          "ref": "刑法第34條（2015年12月17日刪除）",
           "status": "verified",
           "checks": [
             {
@@ -666,7 +707,7 @@
           "note": null
         },
         {
-          "ref": "刑法第38條（沒收，條次待核對）",
+          "ref": "刑法第38條（沒收）",
           "status": "verified",
           "checks": [
             {
@@ -783,7 +824,7 @@
           "note": null
         },
         {
-          "ref": "刑法第58條（罰金多寡之審酌，條次待核對）",
+          "ref": "刑法第58條（罰金多寡之審酌）",
           "status": "verified",
           "checks": [
             {
@@ -870,7 +911,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第308條（判決書應記載事項，條次待核對）",
+          "ref": "刑事訴訟法第308條（判決書應記載事項）",
           "status": "verified",
           "checks": [
             {
@@ -1109,12 +1150,26 @@
           "note": null
         },
         {
-          "ref": "行政罰法（相關條文待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "行政罰法第1條（行政罰之適用範圍）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "1",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "違反行政法上義務而受罰鍰、沒入或其他種類行政罰之處罰時，適用本法。但其他法律有特別規定者，從其規定。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-14",
+          "amendments": [
+            {
+              "article": "1",
+              "date": "2005-01-14",
+              "kind": "制定"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -1176,7 +1231,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第58條（罰金多寡之審酌，條次待核對）",
+          "ref": "刑法第58條（罰金多寡之審酌）",
           "status": "verified",
           "checks": [
             {
@@ -1342,14 +1397,6 @@
           "note": null
         },
         {
-          "ref": "刑法施行法（罰金倍數修正之相關條文，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
           "ref": "刑法第33條第5款",
           "status": "verified",
           "checks": [
@@ -1462,12 +1509,31 @@
           "note": null
         },
         {
-          "ref": "刑法總則加減例（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑法第67條（罰金加減之最高度及最低度）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "67",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有期徒刑或罰金加減者，其最高度及最低度同加減之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "67",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "67",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -1528,7 +1594,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第42條（易服勞役與易服社會勞動，條次待核對）",
+          "ref": "刑法第42條（易服勞役）",
           "status": "verified",
           "checks": [
             {
@@ -1776,7 +1842,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法第303條（不受理，款次待核對）",
+          "ref": "刑事訴訟法第303條（不受理）",
           "status": "verified",
           "checks": [
             {
@@ -1845,7 +1911,7 @@
           "note": null
         },
         {
-          "ref": "民法第1148條（繼承範圍，待核對）",
+          "ref": "民法第1148條（繼承）",
           "status": "verified",
           "checks": [
             {
@@ -1920,7 +1986,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第58條（罰金多寡之審酌，條次待核對）",
+          "ref": "刑法第58條（罰金多寡之審酌）",
           "status": "verified",
           "checks": [
             {
@@ -1974,7 +2040,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第308條（判決理由記載，條次待核對）",
+          "ref": "刑事訴訟法第308條（判決書應記載事項）",
           "status": "verified",
           "checks": [
             {
@@ -2248,7 +2314,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第308條（判決理由，條次待核對）",
+          "ref": "刑事訴訟法第308條（判決理由）",
           "status": "verified",
           "checks": [
             {
@@ -2392,14 +2458,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "刑事訴訟法（執行相關條文，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -2635,7 +2693,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第308條（判決理由，條次待核對）",
+          "ref": "刑事訴訟法第308條（判決理由）",
           "status": "verified",
           "checks": [
             {
@@ -2769,14 +2827,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "社會勞動條例（相關條文待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -2971,7 +3021,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第42條（易服社會勞動之折算，條次待核對）",
+          "ref": "刑法第42條（易服社會勞動之折算）",
           "status": "verified",
           "checks": [
             {
@@ -3001,14 +3051,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "社會勞動條例（相關條文待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -3098,14 +3140,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "刑事訴訟法（執行相關條文，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -3169,7 +3203,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第36條（褫奪公權之內容，條次待核對）",
+          "ref": "刑法第36條（褫奪公權之內容）",
           "status": "verified",
           "checks": [
             {
@@ -3201,7 +3235,7 @@
           "note": null
         },
         {
-          "ref": "刑法第34條第1款（褫奪公權為從刑）",
+          "ref": "刑法第34條第1款（2015年12月17日刪除）",
           "status": "verified",
           "checks": [
             {
@@ -3313,7 +3347,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第37條（褫奪公權之宣告與期間，條次待核對）",
+          "ref": "刑法第37條（褫奪公權之宣告）",
           "status": "verified",
           "checks": [
             {
@@ -3340,7 +3374,7 @@
           "note": null
         },
         {
-          "ref": "刑法第34條第1款",
+          "ref": "刑法第34條第1款（2015年12月17日刪除）",
           "status": "verified",
           "checks": [
             {
@@ -3430,7 +3464,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第37條（褫奪公權期間，條次待核對）",
+          "ref": "刑法第37條（褫奪公權之期間）",
           "status": "verified",
           "checks": [
             {
@@ -3457,7 +3491,7 @@
           "note": null
         },
         {
-          "ref": "刑法第34條第1款",
+          "ref": "刑法第34條第1款（2015年12月17日刪除）",
           "status": "verified",
           "checks": [
             {
@@ -3548,7 +3582,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第74條（緩刑，條次待核對）",
+          "ref": "刑法第74條（緩刑）",
           "status": "verified",
           "checks": [
             {
@@ -3585,7 +3619,7 @@
           "note": null
         },
         {
-          "ref": "刑法第34條第1款（褫奪公權）",
+          "ref": "刑法第34條第1款（2015年12月17日刪除）",
           "status": "verified",
           "checks": [
             {
@@ -3617,7 +3651,7 @@
           "note": null
         },
         {
-          "ref": "刑法第37條（褫奪公權之宣告與期間，條次待核對）",
+          "ref": "刑法第37條（褫奪公權之宣告）",
           "status": "verified",
           "checks": [
             {
@@ -3747,7 +3781,7 @@
           "note": null
         },
         {
-          "ref": "刑法第36條、第37條（褫奪公權，條次待核對）",
+          "ref": "刑法第36條、第37條（褫奪公權）",
           "status": "verified",
           "checks": [
             {
@@ -3853,7 +3887,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第36條（褫奪公權之內容，條次待核對）",
+          "ref": "刑法第36條（褫奪公權之內容）",
           "status": "verified",
           "checks": [
             {
@@ -3883,22 +3917,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "公務員懲戒法（相關條文待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
-          "ref": "公務人員任用法（相關條文待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -3961,7 +3979,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第34條（從刑）",
+          "ref": "刑法第34條（2015年12月17日刪除）",
           "status": "verified",
           "checks": [
             {
@@ -3993,7 +4011,7 @@
           "note": null
         },
         {
-          "ref": "刑法第38條（沒收，條次待核對）",
+          "ref": "刑法第38條（沒收）",
           "status": "verified",
           "checks": [
             {
@@ -4170,14 +4188,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "刑事訴訟法（沒收相關條文，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -4363,7 +4373,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第38條之1（犯罪所得沒收，第三人規定待核對）",
+          "ref": "刑法第38條之1（犯罪所得沒收）",
           "status": "verified",
           "checks": [
             {
@@ -4405,14 +4415,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "民法（善意取得相關條文，待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -4501,7 +4503,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第379條第14款（判決不備理由，款次待核對）",
+          "ref": "刑事訴訟法第379條第14款（判決不備理由）",
           "status": "verified",
           "checks": [
             {
@@ -4671,7 +4673,7 @@
           "note": null
         },
         {
-          "ref": "刑法第1條（罪刑法定與刑罰目的，待核對）",
+          "ref": "刑法第1條（罪刑法定）",
           "status": "verified",
           "checks": [
             {
@@ -4826,7 +4828,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第379條第14款（判決不備理由，款次待核對）",
+          "ref": "刑事訴訟法第379條第14款（判決不備理由）",
           "status": "verified",
           "checks": [
             {
@@ -4976,7 +4978,7 @@
           "note": null
         },
         {
-          "ref": "刑法第47條（累犯，雙重評價之典型討論，條次待核對）",
+          "ref": "刑法第47條（累犯）",
           "status": "verified",
           "checks": [
             {
@@ -5003,7 +5005,7 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法第379條第14款（判決不備理由，款次待核對）",
+          "ref": "刑事訴訟法第379條第14款（判決不備理由）",
           "status": "verified",
           "checks": [
             {

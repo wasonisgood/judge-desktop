@@ -512,12 +512,36 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "詐欺犯罪危害防制條例（交付、提供帳戶相關條文，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "洗錢防制法第 22 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "22",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "任何人不得將自己或他人向金融機構申請開立之帳戶、向提供虛擬資產服務或第三方支付服務之事業或人員申請之帳號交付、提供予他人使用。但符合一般商業、金融交易習慣，或基於親友間信賴關係或其他正當理由者，不在此限。\n違反前項規定者，由直轄市、縣（市）"
+            }
+          ],
+          "latestAmendmentDate": "2024-07-16",
+          "amendments": [
+            {
+              "article": "22",
+              "date": "2016-12-09",
+              "kind": "全文修正"
+            },
+            {
+              "article": "22",
+              "date": "2018-11-02",
+              "kind": "修正"
+            },
+            {
+              "article": "22",
+              "date": "2024-07-16",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
         },
         {
           "ref": "刑法第 30 條",
@@ -1549,12 +1573,26 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "個人資料保護法罰則之兩罰規定（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "個人資料保護法第 50 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "50",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "非公務機關之代表人、管理人或其他有代表權人，因該非公務機關依前三條規定受罰鍰處罰時，除能證明已盡防止義務者外，應並受同一額度罰鍰之處罰。"
+            }
+          ],
+          "latestAmendmentDate": "2010-04-27",
+          "amendments": [
+            {
+              "article": "50",
+              "date": "2010-04-27",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
         },
         {
           "ref": "刑法第 14 條",
@@ -2058,7 +2096,7 @@
           "note": null
         },
         {
-          "ref": "證券交易法第 157 條之 1 第 5 項（條次待核對）",
+          "ref": "證券交易法第 157 條之 1 第 5 項",
           "status": "verified",
           "checks": [
             {
@@ -2633,14 +2671,6 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "公司法特別背信條文（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
-        },
-        {
           "ref": "刑法第 342 條",
           "status": "verified",
           "checks": [
@@ -2805,12 +2835,51 @@
           "note": null
         },
         {
-          "ref": "公司法財務報告不實之罰則（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "證券交易法第 174 條第 1 項第 5 款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "174",
+              "paragraph": 1,
+              "item": 5,
+              "ok": true,
+              "currentText": "五、發行人、公開收購人、證券商、證券商同業公會、證券交易所或第十八條所定之事業，於依法或主管機關基於法律所發布之命令規定之帳簿、表冊、傳票、財務報告或其他有關業務文件之內容有虛偽之記載。"
+            }
+          ],
+          "latestAmendmentDate": "2011-12-12",
+          "amendments": [
+            {
+              "article": "174",
+              "date": "1968-04-16",
+              "kind": "制定"
+            },
+            {
+              "article": "174",
+              "date": "1988-01-12",
+              "kind": "修正"
+            },
+            {
+              "article": "174",
+              "date": "2000-06-30",
+              "kind": "修正"
+            },
+            {
+              "article": "174",
+              "date": "2002-01-15",
+              "kind": "修正"
+            },
+            {
+              "article": "174",
+              "date": "2004-01-13",
+              "kind": "修正"
+            },
+            {
+              "article": "174",
+              "date": "2011-12-12",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -2920,14 +2989,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "公司法特別背信條文（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     },
@@ -3033,7 +3094,7 @@
           "note": null
         },
         {
-          "ref": "公司法第 23 條（董事責任，條次待核對）",
+          "ref": "公司法第 23 條",
           "status": "verified",
           "checks": [
             {
@@ -3189,7 +3250,7 @@
           "note": null
         },
         {
-          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "ref": "槍砲彈藥刀械管制條例第 7 條",
           "status": "verified",
           "checks": [
             {
@@ -3323,7 +3384,7 @@
           "note": null
         },
         {
-          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "ref": "槍砲彈藥刀械管制條例第 7 條",
           "status": "verified",
           "checks": [
             {
@@ -3425,7 +3486,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "ref": "槍砲彈藥刀械管制條例第 7 條",
           "status": "verified",
           "checks": [
             {
@@ -3601,7 +3662,7 @@
           "note": null
         },
         {
-          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "ref": "槍砲彈藥刀械管制條例第 7 條",
           "status": "verified",
           "checks": [
             {
@@ -3735,7 +3796,7 @@
           "note": null
         },
         {
-          "ref": "槍砲彈藥刀械管制條例第 7 條（條次待核對）",
+          "ref": "槍砲彈藥刀械管制條例第 7 條",
           "status": "verified",
           "checks": [
             {
@@ -3835,33 +3896,6 @@
       ],
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
-        {
-          "ref": "槍砲彈藥刀械管制條例第 18 條（加重條次待核對）",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "18",
-              "paragraph": null,
-              "item": null,
-              "ok": true,
-              "currentText": "犯本條例之罪自首，並報繳其持有之全部槍砲、彈藥、刀械者，得減輕或免除其刑；其已移轉持有而據實供述全部槍砲、彈藥、刀械之來源或去向，因而查獲者，亦同。\n前項情形，於中央主管機關報經行政院核定辦理公告期間自首者，免除其刑。\n前二項情形，其報繳不"
-            }
-          ],
-          "latestAmendmentDate": "2023-12-18",
-          "amendments": [
-            {
-              "article": "18",
-              "date": "1997-11-11",
-              "kind": "全文修正"
-            },
-            {
-              "article": "18",
-              "date": "2023-12-18",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
         {
           "ref": "槍砲彈藥刀械管制條例第 3 條",
           "status": "verified",
@@ -4154,7 +4188,7 @@
           "note": null
         },
         {
-          "ref": "著作權法第 87 條（權利之定義，條次待核對）",
+          "ref": "著作權法第 87 條",
           "status": "verified",
           "checks": [
             {
@@ -4470,12 +4504,26 @@
           "note": null
         },
         {
-          "ref": "著作權法網路服務提供者責任條文（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "著作權法第 90 條之 4",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "90-4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "符合下列規定之網路服務提供者，適用第九十條之五至第九十條之八之規定：\n一、以契約、電子傳輸、自動偵測系統或其他方式，告知使用者其著作權或製版權保護措施，並確實履行該保護措施。\n二、以契約、電子傳輸、自動偵測系統或其他方式，告知使用者若有三次"
+            }
+          ],
+          "latestAmendmentDate": "2009-04-21",
+          "amendments": [
+            {
+              "article": "90-4",
+              "date": "2009-04-21",
+              "kind": "增訂"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -4561,7 +4609,7 @@
           "note": null
         },
         {
-          "ref": "商標法第 5 條（商標使用定義，條次待核對）",
+          "ref": "商標法第 5 條",
           "status": "verified",
           "checks": [
             {
@@ -4743,7 +4791,7 @@
           "note": null
         },
         {
-          "ref": "商標法第 5 條（條次待核對）",
+          "ref": "商標法第 5 條",
           "status": "verified",
           "checks": [
             {
@@ -5007,7 +5055,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "著作權法第 100 條（告訴乃論，條次待核對）",
+          "ref": "著作權法第 100 條",
           "status": "verified",
           "checks": [
             {
@@ -5047,14 +5095,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "商標法告訴乃論條文（條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         },
         {
           "ref": "刑事訴訟法第 237 條",

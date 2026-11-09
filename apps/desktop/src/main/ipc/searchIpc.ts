@@ -12,6 +12,7 @@ import { lawContextForStatute } from '../services/lawContext';
 import { withJob } from '../services/jobRegistry';
 import { safeSend } from '../services/safeSend';
 import { saveToLibrary } from '../services/savedResult';
+import { knowledgeContextFor } from '../services/knowledgeService';
 import { toUserError } from '../services/userError';
 
 const SMART_MAX_ROUNDS = 3;
@@ -127,6 +128,14 @@ export function registerSearchIpc(): void {
           output: lc.text ? '已讀入' : '未取得', decision: 'pass', reason: lc.notes.length ? lc.notes.join('；') : '法規內容已交給 AI 提議關鍵字',
         });
       }
+      // 爭點知識庫（issue #5）：依查詢挑出相關爭點，與法規上下文一併交給 AI。
+      const kc = knowledgeContextFor(`${request} ${statute}`.trim());
+      if (kc.text) lawContext = [lawContext, kc.text].filter(Boolean).join('\n\n');
+      addStep(trace, {
+        stage: '讀入爭點知識庫', module: 'rule', input: request,
+        output: kc.usedIds.length ? `${kc.usedIds.length} 個爭點` : '未取得', decision: 'pass',
+        reason: kc.notes.length ? kc.notes.join('；') : '相關爭點已交給 AI 參考',
+      });
       const result = await runQueryRounds<JudgmentSummary>({
         feature: '判決搜尋',
         trace,

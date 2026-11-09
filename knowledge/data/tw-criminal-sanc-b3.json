@@ -500,7 +500,7 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第56條（已刪除）",
+          "ref": "刑法第56條",
           "status": "verified",
           "checks": [
             {
@@ -1112,13 +1112,13 @@
           "note": null
         },
         {
-          "ref": "刑法第51條第2款",
+          "ref": "刑法第51條第3款",
           "status": "verified",
           "checks": [
             {
               "article": "51",
               "paragraph": null,
-              "item": 2,
+              "item": 3,
               "ok": true,
               "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
             }
@@ -1224,70 +1224,6 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第51條第3款",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "51",
-              "paragraph": null,
-              "item": 3,
-              "ok": true,
-              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
-            }
-          ],
-          "latestAmendmentDate": "2015-12-17",
-          "amendments": [
-            {
-              "article": "51",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "51",
-              "date": "2005-01-07",
-              "kind": "修正"
-            },
-            {
-              "article": "51",
-              "date": "2015-12-17",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
-          "ref": "刑法第51條第4款",
-          "status": "verified",
-          "checks": [
-            {
-              "article": "51",
-              "paragraph": null,
-              "item": 4,
-              "ok": true,
-              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
-            }
-          ],
-          "latestAmendmentDate": "2015-12-17",
-          "amendments": [
-            {
-              "article": "51",
-              "date": "1934-10-31",
-              "kind": "制定"
-            },
-            {
-              "article": "51",
-              "date": "2005-01-07",
-              "kind": "修正"
-            },
-            {
-              "article": "51",
-              "date": "2015-12-17",
-              "kind": "修正"
-            }
-          ],
-          "note": null
-        },
-        {
           "ref": "刑法第51條第5款",
           "status": "verified",
           "checks": [
@@ -1295,6 +1231,38 @@
               "article": "51",
               "paragraph": null,
               "item": 5,
+              "ok": true,
+              "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
+            }
+          ],
+          "latestAmendmentDate": "2015-12-17",
+          "amendments": [
+            {
+              "article": "51",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "51",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "51",
+              "date": "2015-12-17",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第51條第7款",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "51",
+              "paragraph": null,
+              "item": 7,
               "ok": true,
               "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
             }
@@ -1374,13 +1342,13 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第51條",
+          "ref": "刑法第51條第6款",
           "status": "verified",
           "checks": [
             {
               "article": "51",
               "paragraph": null,
-              "item": null,
+              "item": 6,
               "ok": true,
               "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
             }
@@ -1513,13 +1481,13 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第51條第4款",
+          "ref": "刑法第51條第7款",
           "status": "verified",
           "checks": [
             {
               "article": "51",
               "paragraph": null,
-              "item": 4,
+              "item": 7,
               "ok": true,
               "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
             }
@@ -1973,13 +1941,13 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第51條第3款",
+          "ref": "刑法第51條第5款",
           "status": "verified",
           "checks": [
             {
               "article": "51",
               "paragraph": null,
-              "item": 3,
+              "item": 5,
               "ok": true,
               "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
             }
@@ -2085,13 +2053,13 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑法第51條第3款",
+          "ref": "刑法第51條第5款",
           "status": "verified",
           "checks": [
             {
               "article": "51",
               "paragraph": null,
-              "item": 3,
+              "item": 5,
               "ok": true,
               "currentText": "數罪併罰，分別宣告其罪之刑，依下列各款定其應執行者：\n一、宣告多數死刑者，執行其一。\n二、宣告之最重刑為死刑者，不執行他刑。但罰金及從刑不在此限。\n三、宣告多數無期徒刑者，執行其一。\n四、宣告之最重刑為無期徒刑者，不執行他刑。但罰金及從刑不"
             }
@@ -2768,12 +2736,41 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法（抗告相關規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑事訴訟法第415條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "415",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於抗告法院之裁定，不得再行抗告。但對於其就左列抗告所為之裁定，得提起再抗告：\n一、對於駁回上訴之裁定抗告者。\n二、對於因上訴逾期聲請回復原狀之裁定抗告者。\n三、對於聲請再審之裁定抗告者。\n四、對於第四百七十七條定刑之裁定抗告者。\n五、對於"
+            }
+          ],
+          "latestAmendmentDate": "1967-01-13",
+          "amendments": [
+            {
+              "article": "415",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "415",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "415",
+              "date": "1945-11-30",
+              "kind": "修正"
+            },
+            {
+              "article": "415",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -3049,12 +3046,46 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法（再審相關規定）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑事訴訟法第420條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "420",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有罪之判決確定後，有下列情形之一者，為受判決人之利益，得聲請再審：\n一、原判決所憑之證物已證明其為偽造或變造者。\n二、原判決所憑之證言、鑑定或通譯已證明其為虛偽者。\n三、受有罪判決之人，已證明其係被誣告者。\n四、原判決所憑之通常法院或特別法"
+            }
+          ],
+          "latestAmendmentDate": "2015-01-23",
+          "amendments": [
+            {
+              "article": "420",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "420",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "420",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "420",
+              "date": "1997-12-19",
+              "kind": "修正"
+            },
+            {
+              "article": "420",
+              "date": "2015-01-23",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -3509,12 +3540,41 @@
       "reviewStatus": "ai-draft-unverified",
       "lawVerification": [
         {
-          "ref": "刑事訴訟法（再抗告相關規定）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑事訴訟法第415條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "415",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於抗告法院之裁定，不得再行抗告。但對於其就左列抗告所為之裁定，得提起再抗告：\n一、對於駁回上訴之裁定抗告者。\n二、對於因上訴逾期聲請回復原狀之裁定抗告者。\n三、對於聲請再審之裁定抗告者。\n四、對於第四百七十七條定刑之裁定抗告者。\n五、對於"
+            }
+          ],
+          "latestAmendmentDate": "1967-01-13",
+          "amendments": [
+            {
+              "article": "415",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "415",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "415",
+              "date": "1945-11-30",
+              "kind": "修正"
+            },
+            {
+              "article": "415",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
         },
         {
           "ref": "刑法第51條",
@@ -4072,7 +4132,7 @@
           "note": null
         },
         {
-          "ref": "憲法第23條（比例原則）",
+          "ref": "憲法第23條",
           "status": "verified",
           "checks": [
             {
@@ -4251,6 +4311,33 @@
             }
           ],
           "note": null
+        },
+        {
+          "ref": "刑法第57條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "57",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "科刑時應以行為人之責任為基礎，並審酌一切情狀，尤應注意下列事項，為科刑輕重之標準：\n一、犯罪之動機、目的。\n二、犯罪時所受之刺激。\n三、犯罪之手段。\n四、犯罪行為人之生活狀況。\n五、犯罪行為人之品行。\n六、犯罪行為人之智識程度。\n七、犯罪行"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "57",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "57",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -4333,12 +4420,41 @@
           "note": null
         },
         {
-          "ref": "刑事訴訟法（判決理由記載相關規定）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
+          "ref": "刑事訴訟法第310條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "310",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "有罪之判決書，應於理由內分別情形記載下列事項：\n一、認定犯罪事實所憑之證據及其認定之理由。\n二、對於被告有利之證據不採納者，其理由。\n三、科刑時就刑法第五十七條或第五十八條規定事項所審酌之情形。\n四、刑罰有加重、減輕或免除者，其理由。\n五、"
+            }
+          ],
+          "latestAmendmentDate": "2016-05-27",
+          "amendments": [
+            {
+              "article": "310",
+              "date": "1928-07-28",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "1934-11-29",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "1967-01-13",
+              "kind": "全文修正"
+            },
+            {
+              "article": "310",
+              "date": "2016-05-27",
+              "kind": "修正"
+            }
+          ],
+          "note": null
         }
       ]
     },
@@ -4690,14 +4806,6 @@
             }
           ],
           "note": null
-        },
-        {
-          "ref": "毒品危害防制條例（累犯規定，條次待核對）",
-          "status": "no-article",
-          "checks": [],
-          "latestAmendmentDate": null,
-          "amendments": [],
-          "note": "引用字串沒有可辨識的條號"
         }
       ]
     }

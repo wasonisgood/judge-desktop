@@ -44,15 +44,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
+          "period": "現行實務",
           "view": "實務多數見解以刑法第24條作為違法性判斷之依據，強調緊急危難、不得已與利益衡量三項要件，並將避難行為視為阻卻違法事由。",
-          "note": "通說與實務多數採阻卻違法說，惟仍有論者主張責任說；各時期判決之具體立場待核對。"
+          "note": "通說與實務多數採阻卻違法說，惟仍有論者主張責任說。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-059",
@@ -95,20 +119,44 @@
       ],
       "practice": [
         {
-          "period": "早期（年代區間待核對）",
-          "view": "實務強調危險須為緊急、現在且不可避免，對於危險來源之類型未作嚴格限制，認為自然力、動物或人之行為均可能構成緊急危難（待核對）。",
+          "period": "早期",
+          "view": "實務強調危險須為緊急、現在且不可避免，對於危險來源之類型未作嚴格限制，認為自然力、動物或人之行為均可能構成緊急危難。",
           "note": "此時期對危險之迫切性多以事後客觀情狀判斷。"
         },
         {
-          "period": "近年（年代區間待核對）",
-          "view": "實務亦承認危難來源包括人之行為，惟當危難由人之不法行為引起時，應同時檢討是否構成不法侵害而應適用正當防衛（待核對）。",
+          "period": "近年",
+          "view": "實務亦承認危難來源包括人之行為，惟當危難由人之不法行為引起時，應同時檢討是否構成不法侵害而應適用正當防衛。",
           "note": "此一見解使緊急避難與正當防衛之界限受到更細緻之審查。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-060",
@@ -151,13 +199,13 @@
       ],
       "practice": [
         {
-          "period": "早期（年代區間待核對）",
-          "view": "實務通常以侵害人之行為是否具有不法性，作為區分正當防衛與緊急避難之基本標準（待核對）。",
+          "period": "早期",
+          "view": "實務通常以侵害人之行為是否具有不法性，作為區分正當防衛與緊急避難之基本標準。",
           "note": "此一標準簡明，但對於無責任能力人之情形較難適用。"
         },
         {
-          "period": "近年（年代區間待核對）",
-          "view": "實務對侵害人為無責任能力人之情形，傾向認定仍可對其實施防衛，不應逕以緊急避難處理（待核對）。",
+          "period": "近年",
+          "view": "實務對侵害人為無責任能力人之情形，傾向認定仍可對其實施防衛，不應逕以緊急避難處理。",
           "note": "此見解強調行為之客觀不法，而非行為人之責任狀態。"
         }
       ],
@@ -165,7 +213,53 @@
         "刑法第 23 條",
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-061",
@@ -208,20 +302,44 @@
       ],
       "practice": [
         {
-          "period": "早期（年代區間待核對）",
-          "view": "實務將不得已解為無其他方法可避免危難，並強調手段之必要性與相當性，對於手段之選擇有一定之審查（待核對）。",
+          "period": "早期",
+          "view": "實務將不得已解為無其他方法可避免危難，並強調手段之必要性與相當性，對於手段之選擇有一定之審查。",
           "note": "此一時期的審查多以結果為中心，對行為人於當時之判斷情況著墨較少。"
         },
         {
-          "period": "近年（年代區間待核對）",
-          "view": "實務在個案中具體審查有無其他較輕微之手段可供選擇，並兼顧行為人於當時所處之急迫情況（待核對）。",
-          "note": "此一見解兼採補充性與合理期待之思考，各判決之具體標準待核對。"
+          "period": "近年",
+          "view": "實務在個案中具體審查有無其他較輕微之手段可供選擇，並兼顧行為人於當時所處之急迫情況。",
+          "note": "此一見解兼採補充性與合理期待之思考。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-062",
@@ -264,20 +382,44 @@
       ],
       "practice": [
         {
-          "period": "早期（年代區間待核對）",
-          "view": "實務多依法益價值比較作為判斷基礎，對於生命與生命之間是否能比較，傾向認為不宜以避難阻卻違法（待核對）。",
+          "period": "早期",
+          "view": "實務多依法益價值比較作為判斷基礎，對於生命與生命之間是否能比較，傾向認為不宜以避難阻卻違法。",
           "note": "此一見解多半在責任或其他層面另行考量行為人之處境。"
         },
         {
-          "period": "近年（年代區間待核對）",
-          "view": "實務仍強調生命法益不得以他人之生命為代價，惟在個案中可能於責任評價上予以減輕或免除（待核對）。",
-          "note": "各判決對於生命法益之具體處理方式，待逐案核對。"
+          "period": "近年",
+          "view": "實務仍強調生命法益不得以他人之生命為代價，惟在個案中可能於責任評價上予以減輕或免除。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-063",
@@ -320,15 +462,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多數以行為人主觀上認識危難並有避免危難之意思，作為緊急避難之要件；對於僅有其他動機之情形，多不認為可主張阻卻違法（待核對）。",
+          "period": "現行實務",
+          "view": "實務多數以行為人主觀上認識危難並有避免危難之意思，作為緊急避難之要件；對於僅有其他動機之情形，多不認為可主張阻卻違法。",
           "note": "實務上對避難意思之認定，多依行為時之客觀情況與行為人之陳述綜合判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-064",
@@ -371,15 +537,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為自招危難者不得主張緊急避難而阻卻違法，或僅將自招危難作為責任判斷之因素加以考量（待核對）。",
-          "note": "各判決對於自招危難之具體範圍與法律效果，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多認為自招危難者不得主張緊急避難而阻卻違法，或僅將自招危難作為責任判斷之因素加以考量。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-065",
@@ -422,20 +612,44 @@
       ],
       "practice": [
         {
-          "period": "早期（年代區間待核對）",
-          "view": "實務對於避難行為之損害多採利益衡量判斷，較少特別區分攻擊性與防禦性之類型（待核對）。",
+          "period": "早期",
+          "view": "實務對於避難行為之損害多採利益衡量判斷，較少特別區分攻擊性與防禦性之類型。",
           "note": "此時期之審查多以結果之比較為中心。"
         },
         {
-          "period": "近年（年代區間待核對）",
-          "view": "實務對無辜第三人之損害採較審慎之態度，並重視被犧牲者之法益與其所處之地位（待核對）。",
-          "note": "各判決之具體立場待核對。"
+          "period": "近年",
+          "view": "實務對無辜第三人之損害採較審慎之態度，並重視被犧牲者之法益與其所處之地位。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-066",
@@ -478,16 +692,62 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多以防衛行為是否指向侵害人為判斷基準，對附隨損害所涉之第三人則另行審查其是否符合緊急避難之要件（待核對）。",
-          "note": "此一判斷方式與分離評價說之精神較為接近，各判決之細節待核對。"
+          "period": "現行實務",
+          "view": "實務多以防衛行為是否指向侵害人為判斷基準，對附隨損害所涉之第三人則另行審查其是否符合緊急避難之要件。",
+          "note": "此一判斷方式與分離評價說之精神較為接近。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條",
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-067",
@@ -530,15 +790,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為義務衝突須在客觀上確實無法同時履行，且行為人所選擇履行之義務應具有相當之價值，方能主張阻卻違法（待核對）。",
-          "note": "實務上對於何謂「無法同時履行」之認定，個案差異頗大，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多認為義務衝突須在客觀上確實無法同時履行，且行為人所選擇履行之義務應具有相當之價值，方能主張阻卻違法。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 21 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 21 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-068",
@@ -587,15 +871,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多數見解承認義務衝突得作為阻卻違法或免責之事由，對於其法律性質之明確界定，各判決之立場待核對。",
-          "note": "實務上較常見的情形為職務義務與其他法律義務之衝突，具體類型待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多數見解承認義務衝突得作為阻卻違法或免責之事由。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 21 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 21 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-069",
@@ -638,15 +946,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務在判斷不作為之義務衝突與緊急避難時，常一併考量行為人是否負有特定義務，並以個案之實質情境作為判斷依據（待核對）。",
-          "note": "此一判斷方式較接近實質區分說，各判決之具體界線待核對。"
+          "period": "現行實務",
+          "view": "實務在判斷不作為之義務衝突與緊急避難時，常一併考量行為人是否負有特定義務，並以個案之實質情境作為判斷依據。",
+          "note": "此一判斷方式較接近實質區分說。"
         }
       ],
       "lawRefs": [
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-070",
@@ -689,15 +1021,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務對於同價值義務衝突之處理，多依個案判斷行為人是否已盡合理之努力，並未一律承認選擇自由（待核對）。",
-          "note": "各判決之具體結論待逐案核對。"
+          "period": "現行實務",
+          "view": "實務對於同價值義務衝突之處理，多依個案判斷行為人是否已盡合理之努力，並未一律承認選擇自由。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 21 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 21 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-071",
@@ -740,15 +1096,44 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為被害人之承諾得作為阻卻違法之事由，並以承諾之自願性、承諾人之能力及承諾之範圍作為判斷要件（待核對）。",
-          "note": "實務對於承諾在不同犯罪類型中之效力，尚需依個案核對。"
+          "period": "現行實務",
+          "view": "實務多認為被害人之承諾得作為阻卻違法之事由，並以承諾之自願性、承諾人之能力及承諾之範圍作為判斷要件。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 275 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 275 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "275",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受他人囑託或得其承諾而殺之者，處一年以上七年以下有期徒刑。\n教唆或幫助他人使之自殺者，處五年以下有期徒刑。\n前二項之未遂犯罰之。\n謀為同死而犯前三項之罪者，得免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "275",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "275",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-072",
@@ -791,16 +1176,61 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務對承諾能力之認定，通常綜合承諾人之年齡、心智狀態與承諾內容之複雜程度判斷，並未採單一之形式標準（待核對）。",
-          "note": "各判決對於何謂足以承諾之判斷能力，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務對承諾能力之認定，通常綜合承諾人之年齡、心智狀態與承諾內容之複雜程度判斷，並未採單一之形式標準。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "民法第 13 條",
         "刑法第 275 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "民法第 13 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "未滿七歲之未成年人，無行為能力。\n滿七歲以上之未成年人，有限制行為能力。"
+            }
+          ],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "沿革抓取失敗：立法院資料庫查無完全相同的法名：民法"
+        },
+        {
+          "ref": "刑法第 275 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "275",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受他人囑託或得其承諾而殺之者，處一年以上七年以下有期徒刑。\n教唆或幫助他人使之自殺者，處五年以下有期徒刑。\n前二項之未遂犯罰之。\n謀為同死而犯前三項之罪者，得免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "275",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "275",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-073",
@@ -843,15 +1273,44 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多數認為承諾之效力以被害人之承諾範圍為限，超出範圍之部分不因承諾而阻卻違法（待核對）。",
-          "note": "撤回承諾之具體要件，各判決之標準待核對。"
+          "period": "現行實務",
+          "view": "實務多數認為承諾之效力以被害人之承諾範圍為限，超出範圍之部分不因承諾而阻卻違法。",
+          "note": "撤回承諾之要件，可參照前述甲、乙兩說之爭點理解。"
         }
       ],
       "lawRefs": [
         "刑法第 275 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 275 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "275",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受他人囑託或得其承諾而殺之者，處一年以上七年以下有期徒刑。\n教唆或幫助他人使之自殺者，處五年以下有期徒刑。\n前二項之未遂犯罰之。\n謀為同死而犯前三項之罪者，得免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "275",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "275",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-074",
@@ -894,16 +1353,44 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務依刑法第275條規範受囑託殺人之情形，認定行為人雖因被害人之囑託或承諾而殺人，仍以較輕之刑處罰，未承認生命得以承諾阻卻違法（待核對）。",
-          "note": "病人自主權利法等相關規定對於末期病患之醫療決定有所規範，其與刑法之適用關係待核對。"
+          "period": "現行實務",
+          "view": "實務依刑法第275條規範受囑託殺人之情形，認定行為人雖因被害人之囑託或承諾而殺人，仍以較輕之刑處罰，未承認生命得以承諾阻卻違法。",
+          "note": "末期病患之醫療決定另有醫療相關法規之規範，其與刑法之適用關係應另行討論。"
         }
       ],
       "lawRefs": [
-        "刑法第 275 條",
-        "病人自主權利法"
+        "刑法第 275 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 275 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "275",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受他人囑託或得其承諾而殺之者，處一年以上七年以下有期徒刑。\n教唆或幫助他人使之自殺者，處五年以下有期徒刑。\n前二項之未遂犯罰之。\n謀為同死而犯前三項之罪者，得免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "275",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "275",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-075",
@@ -946,15 +1433,44 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為承諾若係基於重大事項之欺罔而為，其效力應予否定，但對於欺罔之範圍與程度，各判決之標準待核對。",
+          "period": "現行實務",
+          "view": "實務多認為承諾若係基於重大事項之欺罔而為，其效力應予否定。",
           "note": "欺罔是否使承諾失效，常與詐欺罪之成立一併考量。"
         }
       ],
       "lawRefs": [
         "刑法第 339 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 339 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "339",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，以詐術使人將本人或第三人之物交付者，處五年以下有期徒刑、拘役或科或併科五十萬元以下罰金。\n以前項方法得財產上不法之利益或使第三人得之者，亦同。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2014-05-30",
+          "amendments": [
+            {
+              "article": "339",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "339",
+              "date": "2014-05-30",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-076",
@@ -997,15 +1513,44 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務於緊急醫療等情形，多承認依客觀情況可推定被害人之同意，而認行為不具違法性，但對推定之要件仍逐案審查（待核對）。",
-          "note": "此一見解常與醫療行為之阻卻違法一併討論，待核對。"
+          "period": "現行實務",
+          "view": "實務於緊急醫療等情形，多承認依客觀情況可推定被害人之同意，而認行為不具違法性，但對推定之要件仍逐案審查。",
+          "note": "此一見解常與醫療行為之阻卻違法一併討論。"
         }
       ],
       "lawRefs": [
         "刑法第 275 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 275 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "275",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "受他人囑託或得其承諾而殺之者，處一年以上七年以下有期徒刑。\n教唆或幫助他人使之自殺者，處五年以下有期徒刑。\n前二項之未遂犯罰之。\n謀為同死而犯前三項之罪者，得免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "275",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "275",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-077",
@@ -1048,15 +1593,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務對業務行為之阻卻違法，通常一方面要求有法令或業務之正當依據，另一方面審查手段之相當性與目的之正當性，兩者兼採（待核對）。",
-          "note": "各判決對於業務範圍與相當性之具體判斷，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務對業務行為之阻卻違法，通常一方面要求有法令或業務之正當依據，另一方面審查手段之相當性與目的之正當性，兩者兼採。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 21 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 21 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-078",
@@ -1099,16 +1668,67 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為醫療行為須具備醫療上之必要性、依醫療常規實施，並以病患之同意或推定同意作為阻卻違法之要件（待核對）。",
-          "note": "醫療過失之評價，另涉刑法過失傷害與業務過失之規定，待核對。"
+          "period": "現行實務",
+          "view": "實務多認為醫療行為須具備醫療上之必要性、依醫療常規實施，並以病患之同意或推定同意作為阻卻違法之要件。",
+          "note": "醫療過失之評價，另涉過失傷害與業務過失之規定。"
         }
       ],
       "lawRefs": [
         "刑法第 21 條",
-        "醫療法"
+        "醫療法第 63 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 21 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "醫療法第 63 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "63",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "醫療機構實施手術，應向病人或其法定代理人、配偶、親屬或關係人說明手術原因、手術成功率或可能發生之併發症及危險，並經其同意，簽具手術同意書及麻醉同意書，始得為之。但情況緊急者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "2004-04-09",
+          "amendments": [
+            {
+              "article": "63",
+              "date": "1986-11-11",
+              "kind": "制定"
+            },
+            {
+              "article": "63",
+              "date": "2004-04-09",
+              "kind": "全文修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-079",
@@ -1151,15 +1771,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多數認為競技中依規則所生之傷害，若在競技通常可能範圍內，得阻卻違法；但違反規則且顯然逾越競技範圍之行為，仍應負刑責（待核對）。",
-          "note": "各判決就具體運動之規則與傷害程度之認定，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多數認為競技中依規則所生之傷害，若在競技通常可能範圍內，得阻卻違法；但違反規則且顯然逾越競技範圍之行為，仍應負刑責。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 21 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 21 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-080",
@@ -1202,16 +1846,67 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務於誹謗案件中，多依刑法第310條與第311條之規定，審查言論之真實性、公益性與行為人是否有相當理由相信其為真實，並將此作為阻卻違法之判斷（待核對）。",
-          "note": "新聞採訪之手段是否逾越必要範圍，另有個案判斷，待核對。"
+          "period": "現行實務",
+          "view": "實務於誹謗案件中，多依刑法第310條與第311條之規定，審查言論之真實性、公益性與行為人是否有相當理由相信其為真實，並將此作為阻卻違法之判斷。",
+          "note": "新聞採訪之手段是否逾越必要範圍，另有個案判斷。"
         }
       ],
       "lawRefs": [
         "刑法第 310 條",
         "刑法第 311 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 310 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "310",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖散布於眾，而指摘或傳述足以毀損他人名譽之事者，為誹謗罪，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n散布文字、圖畫犯前項之罪者，處二年以下有期徒刑、拘役或三萬元以下罰金。\n對於所誹謗之事，能證明其為真實者，不罰。但涉於私德而與公共利"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "310",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "310",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 311 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "311",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以善意發表言論，而有左列情形之一者，不罰：\n一、因自衛、自辯或保護合法之利益者。\n二、公務員因職務而報告者。\n三、對於可受公評之事，而為適當之評論者。\n四、對於中央及地方之會議或法院或公眾集會之記事，而為適當之載述者。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "311",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-081",
@@ -1254,15 +1949,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務於職權行使之逾越案件中，多審查行為是否在職權或業務目的之範圍內，並以手段之必要性與相當性作為判斷之重點（待核對）。",
-          "note": "各判決對於逾越之程度與部分阻卻之認定，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務於職權行使之逾越案件中，多審查行為是否在職權或業務目的之範圍內，並以手段之必要性與相當性作為判斷之重點。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 21 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 21 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-082",
@@ -1305,16 +2024,61 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務對於權利人以自力取回其物或實現其權利之行為，多數情況下認為應嚴格審查其是否符合急迫性與必要性，並不輕易承認其阻卻違法（待核對）。",
-          "note": "各判決之具體立場與要件，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務對於權利人以自力取回其物或實現其權利之行為，多數情況下認為應嚴格審查其是否符合急迫性與必要性，並不輕易承認其阻卻違法。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "民法第 151 條",
         "刑法第 304 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "民法第 151 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "151",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為保護自己權利，對於他人之自由或財產施以拘束、押收或毀損者，不負損害賠償之責。但以不及受法院或其他有關機關援助，並非於其時為之，則請求權不得實行或其實行顯有困難者為限。"
+            }
+          ],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "沿革抓取失敗：立法院資料庫查無完全相同的法名：民法"
+        },
+        {
+          "ref": "刑法第 304 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "304",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以強暴、脅迫使人行無義務之事或妨害人行使權利者，處三年以下有期徒刑、拘役或九千元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "304",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "304",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-083",
@@ -1357,15 +2121,33 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務於自救行為之案件中，多要求權利之保全具有急迫性，且公權力之救濟在當時確實有所不及，始考慮阻卻違法（待核對）。",
-          "note": "各判決對於急迫性之判斷標準，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務於自救行為之案件中，多要求權利之保全具有急迫性，且公權力之救濟在當時確實有所不及，始考慮阻卻違法。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "民法第 151 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "民法第 151 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "151",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為保護自己權利，對於他人之自由或財產施以拘束、押收或毀損者，不負損害賠償之責。但以不及受法院或其他有關機關援助，並非於其時為之，則請求權不得實行或其實行顯有困難者為限。"
+            }
+          ],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "沿革抓取失敗：立法院資料庫查無完全相同的法名：民法"
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-084",
@@ -1408,16 +2190,56 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為自救行為之手段應與權利保全之需要相當，若超過必要之範圍，即不得主張阻卻違法，並可能依過當之規定減輕其刑（待核對）。",
-          "note": "過當之具體認定，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多認為自救行為之手段應與權利保全之需要相當，若超過必要之範圍，即不得主張阻卻違法，並可能依過當之規定減輕其刑。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "民法第 151 條",
         "刑法第 23 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "民法第 151 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "151",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "為保護自己權利，對於他人之自由或財產施以拘束、押收或毀損者，不負損害賠償之責。但以不及受法院或其他有關機關援助，並非於其時為之，則請求權不得實行或其實行顯有困難者為限。"
+            }
+          ],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "沿革抓取失敗：立法院資料庫查無完全相同的法名：民法"
+        },
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-085",
@@ -1460,16 +2282,72 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為權利人若確有合法請求權，且以和平或必要之方式取回，得阻卻竊盜之不法；若以強暴脅迫為之，則可能成立強制罪（待核對）。",
-          "note": "各判決對於權利存在與手段相當性之判斷，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多認為權利人若確有合法請求權，且以和平或必要之方式取回，得阻卻竊盜之不法；若以強暴脅迫為之，則可能成立強制罪。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 304 條",
         "刑法第 320 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 304 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "304",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "以強暴、脅迫使人行無義務之事或妨害人行使權利者，處三年以下有期徒刑、拘役或九千元以下罰金。\n前項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "304",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "304",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 320 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "320",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖為自己或第三人不法之所有，而竊取他人之動產者，為竊盜罪，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n意圖為自己或第三人不法之利益，而竊佔他人之不動產者，依前項之規定處斷。\n前二項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "320",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "320",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-086",
@@ -1512,15 +2390,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多數見解認為正當防衛須行為人具有防衛之意思，若行為純係基於攻擊或報復之意思，則不成立正當防衛（待核對）。",
-          "note": "防衛意思與攻擊意思併存之情形，實務多以主要意思為判斷依據，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多數見解認為正當防衛須行為人具有防衛之意思，若行為純係基於攻擊或報復之意思，則不成立正當防衛。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-087",
@@ -1563,15 +2465,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務強調防衛行為須為排除侵害所必要之程度，並於個案中審查防衛者是否可採取較輕之手段，但也兼顧急迫情況之判斷（待核對）。",
-          "note": "各判決之具體審查方式，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務強調防衛行為須為排除侵害所必要之程度，並於個案中審查防衛者是否可採取較輕之手段，但也兼顧急迫情況之判斷。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-088",
@@ -1614,15 +2540,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多以防衛行為是否必要為主要判斷，對於法益權衡之要求，通常作為防衛是否過當之考量因素，而非直接排除正當防衛（待核對）。",
-          "note": "各判決對於法益均衡之具體審查，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多以防衛行為是否必要為主要判斷，對於法益權衡之要求，通常作為防衛是否過當之考量因素，而非直接排除正當防衛。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-089",
@@ -1665,15 +2615,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為挑撥者若有故意挑撥之情形，其防衛權應受限制，但對於挑撥之範圍與防衛之程度，各判決之標準待核對。",
-          "note": "防衛挑撥之理論多於學說中發展，實務上之明確見解待核對。"
+          "period": "現行實務",
+          "view": "實務多認為挑撥者若有故意挑撥之情形，其防衛權應受限制。",
+          "note": "防衛挑撥之理論多於學說中發展。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-090",
@@ -1716,16 +2690,62 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為正當防衛之對象限於人之不法侵害，對動物之反擊通常依緊急避難或其他阻卻違法事由個別判斷（待核對）。",
-          "note": "各判決之具體處理方式，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多認為正當防衛之對象限於人之不法侵害，對動物之反擊通常依緊急避難或其他阻卻違法事由個別判斷。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條",
         "刑法第 24 條第 1 項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-091",
@@ -1768,15 +2788,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為為他人防衛原則上得阻卻違法，但須符合現在不法侵害與防衛必要性之要件，並審查被防衛人之意願（待核對）。",
-          "note": "各判決對被防衛人意願之考量程度，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多認為為他人防衛原則上得阻卻違法，但須符合現在不法侵害與防衛必要性之要件，並審查被防衛人之意願。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-092",
@@ -1825,16 +2869,62 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務對誤想防衛之處理，多數依行為人是否有過失、錯誤是否可避免，分別論以故意、過失或免除其刑責，具體之理論歸屬待核對。",
-          "note": "各判決對於誤想防衛所採之理論基礎並不一致，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務對誤想防衛之處理，多數依行為人是否有過失、錯誤是否可避免，分別論以故意、過失或免除其刑責。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條",
         "刑法第 14 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 14 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "14",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人雖非故意，但按其情節應注意，並能注意，而不注意者，為過失。\n行為人對於構成犯罪之事實，雖預見其能發生而確信其不發生者，以過失論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "14",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-093",
@@ -1878,15 +2968,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為互毆中雙方均具攻擊之意思時，不得主張正當防衛；但若一方之攻擊已明顯升高，他方之反擊可能例外成立防衛，具體判斷待核對。",
-          "note": "各判決對互毆過程之階段劃分與轉換時點，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多認為互毆中雙方均具攻擊之意思時，不得主張正當防衛；但若一方之攻擊已明顯升高，他方之反擊可能例外成立防衛。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-094",
@@ -1929,9 +3043,9 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多認為無責任能力人之行為仍可構成不法侵害，被侵害人得主張正當防衛，但防衛之程度應依個案之必要性審查（待核對）。",
-          "note": "此一見解與客觀不法說較為接近，各判決之細節待核對。"
+          "period": "現行實務",
+          "view": "實務多認為無責任能力人之行為仍可構成不法侵害，被侵害人得主張正當防衛，但防衛之程度應依個案之必要性審查。",
+          "note": "此一見解與客觀不法說較為接近。"
         }
       ],
       "lawRefs": [
@@ -1939,7 +3053,80 @@
         "刑法第 24 條第 1 項",
         "刑法第 19 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 24 條第 1 項",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "24",
+              "paragraph": 1,
+              "item": null,
+              "ok": true,
+              "currentText": "因避免自己或他人生命、身體、自由、財產之緊急危難而出於不得已之行為，不罰。但避難行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "24",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第 19 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "19",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為時因精神障礙或其他心智缺陷，致不能辨識其行為違法或欠缺依其辨識而行為之能力者，不罰。\n行為時因前項之原因，致其辨識行為違法或依其辨識而行為之能力，顯著減低者，得減輕其刑。\n前二項規定，於因故意或過失自行招致者，不適用之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "19",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "19",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-gen-095",
@@ -1982,15 +3169,39 @@
       ],
       "practice": [
         {
-          "period": "現行實務（年代區間待核對）",
-          "view": "實務多以個案之具體情況判斷防衛行為是否必要，對於親屬關係，通常作為必要性與相當性之考量因素，而非一律限制防衛權（待核對）。",
-          "note": "各判決對於人際關係之考量程度，待逐案核對。"
+          "period": "現行實務",
+          "view": "實務多以個案之具體情況判斷防衛行為是否必要，對於親屬關係，通常作為必要性與相當性之考量因素，而非一律限制防衛權。",
+          "note": "具體見解須以個案判決原文為準。"
         }
       ],
       "lawRefs": [
         "刑法第 23 條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第 23 條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "23",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於現在不法之侵害，而出於防衛自己或他人權利之行為，不罰。但防衛行為過當者，得減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "23",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }
