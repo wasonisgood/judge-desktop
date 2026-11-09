@@ -5,6 +5,97 @@
   var api = window.api;
   var state = JR.state;
 
+  // ---- 智慧搜尋（issue #4）：有上限的重試；語意不清時顯示選項，最後一項可自行輸入更正 ----
+  function hideClarify() {
+    var box = $('listClarify');
+    box.innerHTML = '';
+    box.hidden = true;
+  }
+
+  function showManualInput() {
+    var box = $('listClarify');
+    box.innerHTML = '';
+    var label = document.createElement('label');
+    label.className = 'field';
+    var span = document.createElement('span');
+    span.textContent = '請輸入更正後的需求描述';
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.autocomplete = 'off';
+    label.appendChild(span);
+    label.appendChild(input);
+    var go = document.createElement('button');
+    go.type = 'button';
+    go.className = 'btn primary';
+    go.textContent = '以此重試';
+    go.addEventListener('click', function () {
+      var text = input.value.trim();
+      if (text) smartRun(text);
+    });
+    box.appendChild(label);
+    box.appendChild(go);
+    input.focus();
+  }
+
+  function showClarify(r) {
+    var box = $('listClarify');
+    box.innerHTML = '';
+    box.hidden = false;
+    var q = document.createElement('p');
+    q.textContent = r.question;
+    box.appendChild(q);
+    r.options.forEach(function (opt) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'btn';
+      b.textContent = opt.label;
+      b.title = opt.description || '';
+      b.addEventListener('click', function () {
+        if (opt.id === 'manual') showManualInput();
+        else smartRun(opt.label);
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function smartRun(request) {
+    var status = $('listStatus');
+    $('listRun').disabled = true;
+    $('listExport').disabled = true;
+    hideClarify();
+    JR.setStatus(status, '智慧搜尋中…（依結果自動調整關鍵字，最多 3 輪）');
+    return api.search.smart({
+      request: request,
+      jurisdiction: $('listJurisdiction').value,
+      maxItems: Number($('listMax').value) || 20,
+      ai: $('listAi').value
+    }).then(function (r) {
+      state.listExplanation = r.explanation;
+      $('listExplain').disabled = false;
+      if (r.items.length) {
+        state.listItems = r.items;
+        state.listDetails = {};
+        state.listKeyword = request;
+        state.listVerdicts = null;
+        $('listScreen').disabled = false;
+        $('listExport').disabled = false;
+        JR.views.renderList(r.items);
+      }
+      if (r.status === 'ask') {
+        showClarify(r);
+        JR.setStatus(status, r.question);
+        return;
+      }
+      var tail = r.status === 'capped' ? ' ' + r.advice : '';
+      var head = r.items.length ? '找到 ' + r.items.length + ' 筆，已存入「檔案」。' : '沒有找到符合的判決。';
+      JR.setStatus(status, head + tail, r.items.length && r.status !== 'capped' ? 'ok' : (r.status === 'capped' ? 'error' : ''));
+    }).catch(function (err) {
+      JR.setStatus(status, '智慧搜尋失敗：' + JR.errText(err), 'error');
+    }).finally(function () {
+      $('listRun').disabled = false;
+    });
+  }
+
   JR.controllers.list = {
     bind: function () {
       $('listShowAll').addEventListener('change', function () { if (state.listItems) JR.views.renderList(state.listItems); });
@@ -34,6 +125,7 @@
       $('listForm').addEventListener('submit', async function (ev) {
         ev.preventDefault();
         var keyword = $('listKeyword').value.trim();
+        if ($('listSmart').checked) return smartRun(keyword);
         var full = $('listFull').checked;
         var progress = $('listProgress');
         $('listRun').disabled = true;
@@ -91,6 +183,10 @@
       });
       api.search.onProgress(function (p) {
         $('listProgress').querySelector('.bar').style.width = Math.round((p.done / p.total) * 100) + '%';
+      });
+
+      $('listExplain').addEventListener('click', function () {
+        if (state.listExplanation) JR.components.explainDialog(state.listExplanation);
       });
 
       $('listExport').addEventListener('click', async function () {

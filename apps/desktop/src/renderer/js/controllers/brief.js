@@ -92,6 +92,8 @@
           state.assistHistory.push({ role: 'user', text: '[系統通知] 精讀已完成：' + (r.doc.title || '') + '。段落：' + r.doc.sections.map(function (sec) { return sec.heading + '：' + sec.paragraphs.join(' '); }).join(' ').slice(0, 3000) });
           var an = r.annotated || {};
           JR.setStatus($('briefStatus'), '已完成 AI 整理，已存入「檔案」。' + annotationText(an), an.error ? 'error' : 'ok');
+          state.briefExplanation = r.explanation;
+          $('briefExplain').disabled = !r.explanation;
           $('briefExport').disabled = false;
         } catch (err) {
           JR.setStatus($('briefStatus'), '讀取失敗：' + JR.errText(err), 'error');
@@ -100,6 +102,9 @@
         }
       });
 
+      $('briefExplain').addEventListener('click', function () {
+        if (state.briefExplanation) JR.components.explainDialog(state.briefExplanation);
+      });
       $('briefExport').addEventListener('click', async function () {
         if (!state.brief) return;
         try {

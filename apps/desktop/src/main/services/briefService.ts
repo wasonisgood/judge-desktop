@@ -1,7 +1,7 @@
 // 單一判決精讀服務：AI 整理成文書、存入檔案管理，並（若有原版 PDF）產生螢光標示的 Word 版。
 import {
   briefJudgment, normalizeBriefFields, CourtClient, openPdf, pagesNeedingOcr, renderPageWithHighlights,
-  type BriefField, type BriefDocument, type JudgmentDetail, type AiComplete,
+  newTrace, addStep, explainTrace, type BriefField, type BriefDocument, type JudgmentDetail, type AiComplete,
 } from '@judge/core';
 import { shell } from 'electron';
 import * as fs from 'node:fs/promises';
@@ -54,15 +54,29 @@ export async function runBrief(
   args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[]; jurisdiction?: string },
   ai: AiComplete,
 ) {
+  const trace = newTrace('精讀');
   const d = await cachedDetail(args.judgmentId, undefined, args.jurisdiction);
+  addStep(trace, { stage: '取得判決內頁', module: 'rule', input: args.judgmentId, output: `${d.fullText.length} 字`, decision: 'pass', reason: '判決原文已取得' });
   const fields = normalizeBriefFields(args.fields ?? []);
   const doc: BriefDocument = await briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined });
+  addStep(trace, { stage: 'AI 整理文書', module: 'cloud', input: `${fields.length || '預設'} 個欄位；重點：${args.focus || '（未指定）'}`, output: `${doc.sections.length} 段`, decision: 'pass', reason: '只根據判決原文整理' });
+  const dropped = doc.droppedQuotes ?? 0;
+  addStep(trace, {
+    stage: '引文驗證', module: 'rule', input: '各段引文與判決原文逐字比對',
+    output: dropped ? `移除 ${dropped} 則無法在原文中找到的引文` : '全部引文都在原文中',
+    decision: 'pass', reason: dropped ? '找不到原文依據的引文不保留（不猜）' : '引文皆可驗證',
+  });
   await library().add({
     kind: 'brief',
     title: `精讀：${d.meta.title || args.judgmentId}`,
     summary: d.meta.court ?? '',
-    payload: { detail: d, doc },
+    payload: { detail: d, doc, trace },
   });
   const annotated = await annotateOriginalPdf(d, doc).catch((err) => ({ error: err instanceof Error ? err.message : String(err), files: [] as string[] }));
-  return { detail: d, doc, annotated };
+  addStep(trace, {
+    stage: '原版 PDF 標示', module: 'rule', input: d.pdfUrl ? '原版 PDF' : '無原版 PDF 連結',
+    output: annotated.error ? `未完成：${annotated.error}` : `${annotated.files.length} 份 Word，標示 ${"quotes" in annotated ? annotated.quotes : 0} 則引文`,
+    decision: annotated.error ? 'skip' : 'pass', reason: annotated.error ? '標示失敗不影響精讀文書' : '原版標示完成',
+  });
+  return { detail: d, doc, annotated, trace, explanation: explainTrace(trace) };
 }

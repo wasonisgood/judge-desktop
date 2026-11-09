@@ -2,7 +2,10 @@
 import { ipcMain } from 'electron';
 import {
   screenRelevance, judgmentQueries, parseManualJudgmentIds, DEFAULT_JURISDICTION_ID, type RelevanceItem, type JudgmentDetail, type JudgmentSummary,
+  runQueryRounds, proposeQueries, newTrace, addStep, explainTrace, type AiComplete,
 } from '@judge/core';
+
+const SMART_MAX_ROUNDS = 3;
 import { buildListWorkbook } from '../exporters';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
@@ -69,6 +72,46 @@ export function registerSearchIpc(): void {
       payload: { keyword: '手動輸入', items, details },
     });
     return { items, details, notes };
+  });
+  // 智慧搜尋（issue #4）：有上限的查詢輪次。未設定 AI 時退回傳統搜尋（只查一次）。
+  // 語意不清時回傳選項；使用者選擇後，畫面以選項文字重新呼叫。流程紀錄隨結果回傳，供說明視窗使用。
+  ipcMain.handle('search:smart', async (_e, args: { request: string; jurisdiction?: string; maxItems?: number; ai?: string }) => {
+    const request = String(args.request ?? '').trim();
+    const trace = newTrace('判決列表');
+    if (!request) return { status: 'done', items: [], tried: [], explanation: explainTrace(trace) };
+    let ai: AiComplete | null = null;
+    try {
+      ai = await requireAi(normalizeAiMode(args.ai));
+    } catch (err) {
+      addStep(trace, { stage: 'AI 設定', module: 'rule', input: request, output: '未使用 AI', decision: 'skip', reason: err instanceof Error ? err.message : String(err) });
+    }
+    const maxItems = args.maxItems ?? 20;
+    const result = await runQueryRounds<JudgmentSummary>({
+      feature: '判決搜尋',
+      trace,
+      module: ai ? 'ai' : 'rule',
+      initialQueries: [request],
+      maxRounds: SMART_MAX_ROUNDS,
+      search: (q) => cachedSearch(q, maxItems, undefined, args.jurisdiction),
+      keyOf: (it) => it.id,
+      onError: () => { /* 單一關鍵字失敗已記錄在流程中，其餘關鍵字照常 */ },
+      propose: async ({ tried, kept, round }) => {
+        if (!ai) return { unclear: false, queries: [], reason: '未設定 AI，無法自動調整關鍵字' };
+        return proposeQueries(ai, { request, tried, keptCount: kept.length, round });
+      },
+    });
+    if (result.items.length) {
+      await library().add({
+        kind: 'list',
+        title: `判決列表：${request}`,
+        summary: `${result.items.length} 筆（智慧搜尋）`,
+        payload: { keyword: request, items: result.items, details: {} },
+      });
+    }
+    const explanation = explainTrace(trace);
+    if (result.status === 'ask') return { status: 'ask', items: result.items, tried: result.tried, question: result.question, options: result.options, explanation };
+    if (result.status === 'capped') return { status: 'capped', items: result.items, tried: result.tried, advice: result.advice, explanation };
+    return { status: 'done', items: result.items, tried: result.tried, explanation };
   });
   // 單一判決：先搜尋、列出候選，再由使用者指定一則（鎖定單一判決）
   ipcMain.handle('judgment:find', async (_e, args: { query: string; jurisdiction?: string }) => {

@@ -115,6 +115,8 @@ export interface BriefSection {
 export interface BriefDocument {
   title: string;
   sections: BriefSection[];
+  /** 未能在判決原文中找到而被移除的引文數量（不猜、不保留）。 */
+  droppedQuotes?: number;
 }
 
 /** 精讀的欄位：名稱必填；說明選填，AI 會依說明整理該欄位。 */
@@ -177,8 +179,14 @@ export async function briefJudgment(
   const r = await askJson<BriefDocument>(ai, system, user, 4500);
   if (!Array.isArray(r.sections) || r.sections.length === 0) throw new Error('AI 沒有產生任何段落');
   // 只保留真的在原文中出現的引文
-  const sections = r.sections.map((sec) => ({ ...sec, evidence: keepVerifiedQuotes(d.fullText, (sec as { evidence?: unknown }).evidence) }));
-  return { title: r.title || d.meta.title, sections };
+  let dropped = 0;
+  const sections = r.sections.map((sec) => {
+    const raw = Array.isArray((sec as { evidence?: unknown }).evidence) ? ((sec as { evidence?: unknown[] }).evidence ?? []).length : 0;
+    const evidence = keepVerifiedQuotes(d.fullText, (sec as { evidence?: unknown }).evidence);
+    dropped += Math.max(0, raw - evidence.length);
+    return { ...sec, evidence };
+  });
+  return { title: r.title || d.meta.title, sections, droppedQuotes: dropped };
 }
 
 // ---------------------------------------------------------------------------

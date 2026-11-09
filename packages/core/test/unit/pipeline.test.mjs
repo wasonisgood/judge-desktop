@@ -123,3 +123,15 @@ test('analyzeCase：提供現行條文時會放進提示詞', async () => {
   assert.match(seen, /因故意或過失/);
   assert.equal(out.issue, 'i');
 });
+
+test('currentTextForCitations：依引用條項從現行條文取出段落，找不到的條不猜', async () => {
+  const { currentTextForCitations } = await import('../../dist/index.js');
+  const law = {
+    pcode: 'B0000001',
+    name: '民法',
+    articles: [{ article: '184', noText: '第 184 條', paragraphs: [{ no: 1, text: '因故意或過失，不法侵害他人之權利者，負損害賠償責任。', items: [] }] }],
+  };
+  const hit = currentTextForCitations(law, ['民法第184條第1項']);
+  assert.ok(hit && hit.includes('因故意或過失'));
+  assert.equal(currentTextForCitations(law, ['民法第999條']), undefined);
+});

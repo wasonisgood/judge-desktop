@@ -2,7 +2,7 @@
 // 頁面結構：div.law-reg-content 內，每條是 div.row；條號在 .col-no a（name 屬性為條號，例如 "191-3"）；
 // 條文每一行是 .law-article 下的 div（class 為 line-XXXX）。
 import * as cheerio from 'cheerio';
-import { normalizeArticleNo } from './citation';
+import { normalizeArticleNo, parseCitations } from './citation';
 import { buildStructure, flattenStructure, selectSegment, type ParagraphNode } from './structure';
 
 export interface CurrentArticle {
@@ -56,4 +56,14 @@ export function currentArticleText(law: CurrentLaw, article: string, paragraph?:
 /** 條文的平面文字行（項與款各一行）。 */
 export function currentArticleLines(a: CurrentArticle): string[] {
   return flattenStructure(a.paragraphs);
+}
+
+/** 依判決引用的條文（例如「民法第184條第1項」），從現行條文取出對應段落；找不到時回傳 undefined（不猜）。 */
+export function currentTextForCitations(law: CurrentLaw, cited: string[]): string | undefined {
+  const parts: string[] = [];
+  for (const ref of parseCitations(cited.join('；'))) {
+    const text = currentArticleText(law, ref.article, ref.paragraph, ref.item);
+    if (text) parts.push(`${ref.raw}：${text}`);
+  }
+  return parts.length ? parts.join('\n') : undefined;
 }

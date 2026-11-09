@@ -57,6 +57,7 @@
             </select>
             <button class="btn primary" type="submit" id="briefRun" disabled>整理這則判決</button>
             <button class="btn" type="button" id="briefExport" disabled>匯出 Word</button>
+            <button class="btn" type="button" id="briefExplain" disabled>查看處理流程</button>
           </div>
           <p class="status" id="briefStatus" role="status"></p>
         </form>

@@ -50,6 +50,8 @@
         try {
           var r = await api.scope.run({ statutes: statutes, yearFrom: from, yearTo: to, maxItems: max, jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value });
           JR.controllers.scope.showResult(r.sheets, from, to);
+          state.scopeExplanation = r.explanation;
+          $('scopeExplain').disabled = !r.explanation;
           var total = r.sheets.reduce(function (n, s) { return n + s.rows.length; }, 0);
           // 把結果摘要交給助理，讓它能接著討論（助理只看得到對話紀錄，看不到畫面）。
           state.assistHistory.push({ role: 'user', text: '[系統通知] 範圍整理已完成。' + r.sheets.map(function (sh) {
@@ -73,6 +75,9 @@
         if (!state.scopeRunning) return;
         $('scopeProgress').querySelector('.bar').style.width = Math.round((p.done / Math.max(p.total, 1)) * 100) + '%';
         JR.setStatus($('scopeStatus'), '「' + p.statute + '」' + p.phase + '：' + p.done + ' / ' + p.total);
+      });
+      $('scopeExplain').addEventListener('click', function () {
+        if (state.scopeExplanation) JR.components.explainDialog(state.scopeExplanation);
       });
       $('scopeXlsx').addEventListener('click', function () { exportScope('xlsx'); });
       $('scopeDocx').addEventListener('click', function () { exportScope('docx'); });

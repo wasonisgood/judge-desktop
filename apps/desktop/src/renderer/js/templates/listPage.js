@@ -27,6 +27,10 @@
             <input type="checkbox" id="listFull">
             <span>逐筆讀取全文（較慢，匯出時會附上主文）</span>
           </label>
+          <label class="check">
+            <input type="checkbox" id="listSmart">
+            <span>智慧搜尋：用一句話描述範圍，AI 會自動調整關鍵字（最多 3 輪，未設定 AI 時只查一次）</span>
+          </label>
           <div class="actions">
             <button class="btn primary" type="submit" id="listRun">搜尋</button>
             <button class="btn" type="button" id="listExport" disabled>匯出 Excel</button>
@@ -36,9 +40,11 @@
               <option value="cloud">AI：雲端</option>
             </select>
             <button class="btn" type="button" id="listScreen" disabled>AI 篩選相關判決</button>
+            <button class="btn" type="button" id="listExplain" disabled>查看處理流程</button>
           </div>
           <div class="progress" id="listProgress" hidden><div class="bar"></div></div>
           <p class="status" id="listStatus" role="status"></p>
+          <div class="clarify" id="listClarify" hidden></div>
         </form>
         <label class="check" id="listShowAllWrap" hidden><input type="checkbox" id="listShowAll"><span>顯示不相關的判決</span></label>
         <p class="status" id="listScreenStatus" role="status"></p>
