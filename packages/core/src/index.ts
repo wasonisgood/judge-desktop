@@ -85,3 +85,4 @@ export * from './chart/stats';
 export * from './chart/data';
 export * from './chart/svg';
 export * from './chart/tiles';
+export * from './pipeline/criteria';
