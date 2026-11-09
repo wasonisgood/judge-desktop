@@ -6,6 +6,10 @@
         <h1>判決列表</h1>
         <form class="form" id="listForm">
           <label class="field">
+            <span>管轄區</span>
+            <select id="listJurisdiction"></select>
+          </label>
+          <label class="field">
             <span>關鍵字</span>
             <input id="listKeyword" required placeholder="例如：戒嚴、回復原狀" autocomplete="off">
           </label>

@@ -48,7 +48,7 @@
         state.scopeRunning = true;
         JR.setStatus($('scopeStatus'), '確認法名中…（每則判決都會交由 AI 分析）');
         try {
-          var r = await api.scope.run({ statutes: statutes, yearFrom: from, yearTo: to, maxItems: max });
+          var r = await api.scope.run({ statutes: statutes, yearFrom: from, yearTo: to, maxItems: max, jurisdiction: $('scopeJurisdiction').value });
           JR.controllers.scope.showResult(r.sheets, from, to);
           var total = r.sheets.reduce(function (n, s) { return n + s.rows.length; }, 0);
           // 把結果摘要交給助理，讓它能接著討論（助理只看得到對話紀錄，看不到畫面）。

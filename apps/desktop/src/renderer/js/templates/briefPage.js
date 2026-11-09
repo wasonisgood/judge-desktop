@@ -7,6 +7,10 @@
         <p class="lead">可以輸入判決名稱、關鍵字或縮寫（例如「高院 戒嚴」）。先列出候選，再選定一則，系統只精讀這一則。</p>
         <form class="form" id="briefFindForm">
           <label class="field">
+            <span>管轄區</span>
+            <select id="briefJurisdiction"></select>
+          </label>
+          <label class="field">
             <span>判決名稱、關鍵字或縮寫</span>
             <input id="briefQuery" required placeholder="例如：高院 戒嚴、回復原狀" autocomplete="off">
           </label>

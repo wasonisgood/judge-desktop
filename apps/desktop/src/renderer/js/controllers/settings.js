@@ -1,11 +1,28 @@
-// 控制器：設定頁（AI 服務、金鑰、快取、檢查更新）。金鑰只以加密形式保存，畫面只顯示「是否已設定」。
+// 控制器：設定頁。AI 服務以「儲存」送出；本地模型與預設管轄區的開關會立即保存。金鑰只以加密形式保存。
 (function (JR) {
   'use strict';
   var $ = JR.$;
   var api = window.api;
+  var jurisdictions = [];
+  var defaultJurisdiction = null;
+
+  function renderAuthSummary() {
+    return api.auth.status().then(function (s) {
+      $('authSummary').textContent = s.signedIn
+        ? '已登入' + (s.expiresAt ? '（權杖到 ' + new Date(s.expiresAt).toLocaleDateString('zh-TW') + '）' : '')
+        : (s.message || '尚未登入');
+    }).catch(function () { $('authSummary').textContent = '無法讀取登入狀態'; });
+  }
 
   function load() {
-    return api.settings.get().then(JR.views.fillSettings);
+    return Promise.all([api.settings.get(), api.jurisdictions.list()]).then(function (res) {
+      var s = res[0];
+      jurisdictions = res[1] || [];
+      defaultJurisdiction = s.defaultJurisdiction;
+      JR.views.fillSettings(s);
+      JR.views.fillJurisdictions(jurisdictions, defaultJurisdiction);
+      renderAuthSummary();
+    });
   }
 
   JR.controllers.settings = {
@@ -28,6 +45,30 @@
           JR.setStatus($('setStatus'), '儲存失敗：' + JR.errText(err), 'error');
         }
       });
+
+      $('setLocalAi').addEventListener('change', async function () {
+        var on = $('setLocalAi').checked;
+        try {
+          await api.settings.set({ localAiEnabled: on });
+          JR.components.notice(on ? '已開啟本地模型（已安裝時優先使用）。' : '已關閉本地模型，所有 AI 功能改用雲端。');
+        } catch (err) {
+          $('setLocalAi').checked = !on;
+          JR.components.notice('設定沒有保存：' + JR.errText(err));
+        }
+      });
+
+      $('setJurisdiction').addEventListener('change', async function () {
+        var id = $('setJurisdiction').value;
+        try {
+          await api.settings.set({ defaultJurisdiction: id });
+          defaultJurisdiction = id;
+          JR.views.fillJurisdictions(jurisdictions, id);
+          JR.components.notice('已將預設管轄區設為「' + (jurisdictions.filter(function (j) { return j.id === id; })[0] || { name: id }).name + '」。');
+        } catch (err) {
+          JR.components.notice('設定沒有保存：' + JR.errText(err));
+        }
+      });
+
       $('setTest').addEventListener('click', async function () {
         JR.setStatus($('setStatus'), '測試中…');
         try {
@@ -51,6 +92,7 @@
         // 應用程式內更新只存在於 Windows 安裝版；開發版與 macOS、Linux 版請到 GitHub Releases 下載。
         JR.components.notice(ok ? '已開啟更新程式。' : '此版本無法在應用程式內檢查更新（開發版，或 macOS／Linux 版）。請到 GitHub Releases 下載最新版。');
       });
+      $('openCrawl').addEventListener('click', function () { api.localAi.openWizard({ view: 'diag' }); });
       $('briefFieldAdd').addEventListener('click', function () {
         $('briefFieldList').appendChild(JR.components.briefFieldRow({ name: '', description: '', enabled: true }));
         $('briefFieldList').lastChild.querySelector('.brief-field-name').focus();

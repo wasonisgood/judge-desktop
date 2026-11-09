@@ -47,7 +47,7 @@
         $('briefFind').disabled = true;
         JR.setStatus($('briefFindStatus'), '搜尋中…');
         try {
-          var r = await api.judgment.find({ query: $('briefQuery').value.trim() });
+          var r = await api.judgment.find({ query: $('briefQuery').value.trim(), jurisdiction: $('briefJurisdiction').value });
           JR.views.renderCandidates(r.items, function (it, tr) {
             setPick(it);
             document.querySelectorAll('#briefCandidateBody tr').forEach(function (x) { x.classList.toggle('row-picked', x === tr); });
@@ -82,6 +82,7 @@
             judgmentId: state.briefPick.id,
             focus: $('briefFocus').value.trim(),
             lengthHint: $('briefLength').value,
+            jurisdiction: $('briefJurisdiction').value,
             fields: fields
           });
           state.brief = r;

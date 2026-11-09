@@ -43,6 +43,7 @@
         try {
           var r = await api.search.run({
             keyword: keyword,
+            jurisdiction: $('listJurisdiction').value,
             courtCode: $('listCourt').value.trim(),
             maxItems: Number($('listMax').value) || 20,
             includeFullText: full

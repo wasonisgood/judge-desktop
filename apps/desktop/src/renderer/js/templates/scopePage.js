@@ -7,6 +7,10 @@
         <p class="lead">輸入法規，每行一部。可以只寫法名，也可以寫到條、項、款，例如「民法第184條第1項」。法名需與全國法規資料庫的正式名稱相同。需要先在「設定」輸入 AI 金鑰。</p>
         <form class="form" id="scopeForm">
           <label class="field">
+            <span>管轄區</span>
+            <select id="scopeJurisdiction"></select>
+          </label>
+          <label class="field">
             <span>法規（每行一部）</span>
             <textarea id="scopeLines" rows="4" placeholder="例如：&#10;國家賠償法&#10;民法第184條第1項"></textarea>
           </label>
