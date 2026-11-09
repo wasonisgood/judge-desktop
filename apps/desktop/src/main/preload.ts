@@ -97,6 +97,7 @@ contextBridge.exposeInMainWorld('api', {
     fetch: (args: unknown) => invoke('criteria:fetch', args),
     plan: (args: unknown) => invoke('criteria:plan', args),
     run: (args: unknown) => invoke('criteria:run', args),
+    review: (args: unknown) => invoke('criteria:review', args),
     runs: () => invoke('criteria:runs'),
     compare: (args: unknown) => invoke('criteria:compare', args),
     export: (args: unknown) => invoke('export:criteria', args),

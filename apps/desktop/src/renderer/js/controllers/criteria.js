@@ -98,9 +98,9 @@
     if (p.hasAi) {
       lines.push('程式判斷已確定排除（不呼叫 AI）' + plan.skippedByProgram + ' 筆；需要 AI 判斷的案件 ' + plan.aiCases + ' 筆，共 ' + plan.aiCalls + ' 次 AI 呼叫。');
       if (p.costUsd !== null && p.costUsd !== undefined) {
-        lines.push('估計費用約 US$ ' + p.costUsd.toFixed(4) + '（依「設定」的單價 US$ ' + p.usdPerMillion + ' / 百萬 token，以字數粗估，實際費用以服務商帳單為準）。');
+        lines.push('依你在「設定」自行填寫的 AI 單價（US$ ' + p.usdPerMillion + ' / 百萬 token）粗估費用約 US$ ' + p.costUsd.toFixed(4) + '，以字數估算，實際費用以服務商帳單為準。');
       } else {
-        lines.push('尚未在「設定」填入 AI 單價，因此只顯示呼叫次數，不估計費用。');
+        lines.push('AI 單價未填寫（本工具沒有內建定價），因此只顯示 AI 呼叫次數，不估計費用。');
       }
     } else {
       lines.push('全部以程式判斷完成，不呼叫 AI。');
@@ -132,10 +132,40 @@
 
   function showRunByNo(no) {
     var r = cur.runs.filter(function (x) { return x.runNo === Number(no); })[0];
-    if (!r) { cur.run = null; JR.views.clearRun(); JR.views.renderSuggestion(null); return; }
+    if (!r) {
+      cur.run = null;
+      JR.views.clearRun();
+      JR.views.renderReview(null);
+      $('critExport').disabled = true;
+      $('critReview').disabled = true;
+      return;
+    }
     cur.run = r;
     JR.views.renderRun(r);
+    JR.views.renderReview(r.review || null);
     $('critExport').disabled = false;
+    $('critReview').disabled = false;
+  }
+
+  /** AI 檢閱（只在研究者按下時呼叫）。服務錯誤直接告知，不做任何自動決定。 */
+  function review() {
+    if (!cur.run) return;
+    if (JR.jobs.isBusy(PAGE)) { busyNotice(); return; }
+    var runNo = cur.run.runNo;
+    var runId = JR.jobs.start(PAGE, 'critCancel');
+    $('critReview').disabled = true;
+    JR.setStatus($('critResultStatus'), 'AI 檢閱中…（只傳送結果摘要）');
+    return api.criteria.review({ runId: runId, runNo: runNo, ai: $('critAi').value }).then(function (r) {
+      var stored = cur.runs.filter(function (x) { return x.runNo === runNo; })[0];
+      if (stored) stored.review = r.review;
+      if (cur.run && cur.run.runNo === runNo) JR.views.renderReview(r.review);
+      JR.setStatus($('critResultStatus'), r.review.verdict === 'unclear' ? 'AI 檢閱沒有得出結論。' : 'AI 檢閱完成。', r.review.verdict === 'unclear' ? 'error' : 'ok');
+    }).catch(function (err) {
+      JR.setStatus($('critResultStatus'), 'AI 檢閱失敗：' + JR.errText(err) + '。未做任何重新檢索的決定，請稍後再試。', 'error');
+    }).finally(function () {
+      JR.jobs.finish(PAGE);
+      $('critReview').disabled = !cur.run;
+    });
   }
 
   function loadRuns(selectNo) {
@@ -168,7 +198,6 @@
       var msg = '核查完成，已保存為第 ' + r.run.runNo + ' 次。';
       if (r.saveError) msg += ' ' + r.saveError;
       JR.setStatus($('critRunStatus'), msg, r.saveError ? 'error' : 'ok');
-      JR.views.renderSuggestion(r.suggestion);
       loadRuns(r.run.runNo);
     }).catch(function (err) {
       JR.setStatus($('critRunStatus'), '核查失敗：' + JR.errText(err), 'error');
@@ -222,6 +251,7 @@
       $('critRun').addEventListener('click', doRun);
       $('critRunSel').addEventListener('change', function () { showRunByNo($('critRunSel').value); });
       $('critCompare').addEventListener('click', compare);
+      $('critReview').addEventListener('click', review);
       $('critExport').addEventListener('click', async function () {
         if (!cur.run) return;
         try {

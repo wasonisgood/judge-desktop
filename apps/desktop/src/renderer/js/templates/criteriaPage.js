@@ -40,7 +40,9 @@
         </details>
 
         <h2>二、標準</h2>
-        <p class="hint">每條標準選「程式判斷」（關鍵字）或「AI 判斷」。納入標準不成立、或排除標準成立，該案即排除；有無法判斷的，列為需人工檢視。</p>
+        <p class="hint"><strong>程式判斷</strong>：只看判決原文是否出現你指定的關鍵字（任一或全部），不呼叫 AI。</p>
+        <p class="hint"><strong>AI 判斷（標準查核 AI）</strong>：AI 依你定義的納入或排除標準，逐案判斷判決是否符合，回覆「符合、不符合、無法判斷」。每個判斷都必須附上判決原文中逐字存在的依據；找不到逐字依據的判斷會標示為「依據無效」並改為無法判斷。</p>
+        <p class="hint">納入標準不成立、或排除標準成立，該案即排除；有無法判斷的，列為需人工檢視。</p>
         <div class="crit-rows" id="critRows"></div>
         <div class="actions">
           <button class="btn" type="button" id="critAdd">新增標準</button>
@@ -55,6 +57,7 @@
             <option value="cloud">AI：雲端</option>
           </select>
           <button class="btn primary" type="button" id="critRun" disabled>確認執行</button>
+          <p class="hint">只有含「AI 判斷」的標準會呼叫 AI；全部是程式判斷時不呼叫 AI。</p>
         </div>
         <div class="crit-plan" id="critPlanBox" hidden></div>
         <p class="status" id="critRunStatus" role="status"></p>
@@ -70,8 +73,10 @@
             <select id="critCompareSel"></select>
           </label>
           <button class="btn" type="button" id="critCompare" disabled>比較</button>
+          <button class="btn" type="button" id="critReview" disabled>AI 檢閱是否需要重新檢索</button>
           <button class="btn" type="button" id="critExport" disabled>匯出 Excel</button>
         </div>
+        <p class="hint">AI 檢閱只把結果摘要（候選數、各標準的判定次數）交給 AI，不會傳送判決全文；按下才會呼叫 AI。</p>
         <div class="crit-suggest" id="critSuggest" role="status" hidden></div>
         <div class="crit-compare" id="critCompareBox" hidden></div>
         <div class="table-wrap" id="critResult" hidden>

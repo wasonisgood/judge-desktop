@@ -27,7 +27,8 @@
 
     var method = el('select', 'crit-method');
     method.setAttribute('aria-label', '判斷方式');
-    option(method, 'ai', 'AI 判斷');
+    option(method, 'ai', 'AI 判斷（標準查核）');
+    method.title = 'AI 依此標準逐案判斷符合、不符合或無法判斷，依據必須逐字存在於判決原文';
     option(method, 'program', '程式判斷（關鍵字）');
     method.value = c.method === 'program' ? 'program' : 'ai';
 

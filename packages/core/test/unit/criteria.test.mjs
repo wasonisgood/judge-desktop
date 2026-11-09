@@ -2,9 +2,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  validateCriteria, evaluateProgram, evaluateByAi, decide, summarizeRun, rerunSuggestion, planRun, estimateCostUsd,
+  validateCriteria, evaluateProgram, evaluateByAi, decide, summarizeRun, planRun, estimateCostUsd,
   runCriteria, appendRun, compareRuns, toCriteriaTable,
 } from '../../dist/index.js';
+import * as core from '../../dist/index.js';
 
 const TEXT = '原告為消費者，於民國一百一十年向被告購買商品。被告未就此提起救濟，本案已確定。';
 
@@ -64,16 +65,46 @@ test('決定：排除條件成立或納入條件不成立即排除；有無法�
   assert.equal(decide(crit, [res('inc', 'unknown'), res('exc', 'met')]), 'exclude', '已確定排除時不需人工檢視');
 });
 
-test('重新檢索建議：納入率過低或無法判斷過多時建議；分開列出原因', () => {
-  const base = { total: 10, include: 1, exclude: 8, review: 1, matchRate: 0.1, reviewRate: 0.1, invalidEvidenceCount: 0 };
-  const low = rerunSuggestion(base);
-  assert.equal(low.suggest, true);
-  assert.match(low.reasons[0], /納入率/);
-  const ok = rerunSuggestion({ ...base, include: 5, exclude: 4, review: 1, matchRate: 0.5, reviewRate: 0.1 });
-  assert.equal(ok.suggest, false);
-  const many = rerunSuggestion({ ...base, include: 5, exclude: 0, review: 5, matchRate: 0.5, reviewRate: 0.5 + 0.01 });
-  assert.match(many.reasons.join(), /無法判斷/);
-  assert.equal(rerunSuggestion({ ...base, total: 0, include: 0, matchRate: 0 }).suggest, true);
+const REVIEW_RUN = {
+  query: '消費者 買賣',
+  criteria: [{ id: 'c1', kind: 'include', text: '原告為消費者', method: 'ai' }],
+  outcomes: [
+    { id: '1', caseNo: '案1', dateIso: null, decision: 'review', results: [{ criterionId: 'c1', verdict: 'unknown', method: 'ai', basis: 'x', quotes: [], invalidEvidence: true }] },
+    { id: '2', caseNo: '案2', dateIso: null, decision: 'include', results: [{ criterionId: 'c1', verdict: 'met', method: 'ai', basis: 'y', quotes: ['原告為消費者'], invalidEvidence: false }] },
+  ],
+  summary: { total: 2, include: 1, exclude: 0, review: 1, matchRate: 0.5, reviewRate: 0.5, invalidEvidenceCount: 1 },
+};
+
+test('重新檢索檢閱：沒有固定門檻；AI 看摘要後回覆 ok、或提出新查詢詞；無法判讀時明確回報 unclear', async () => {
+  // 摘要內容會進入提示（候選數、各標準判定次數、無效依據），但不含判決全文。
+  let seenUser = '';
+  const ai = async (_s, user) => { seenUser = user; return '{"ok":true}'; };
+  const okReview = await core.reviewRerun(ai, REVIEW_RUN, new Date('2026-01-01T00:00:00Z'));
+  assert.equal(okReview.verdict, 'ok');
+  assert.equal(okReview.reviewedAt, '2026-01-01T00:00:00.000Z');
+  assert.match(seenUser, /候選 2 筆/);
+  assert.match(seenUser, /無效依據 1/);
+  assert.match(seenUser, /符合 1、不符合 0、無法判斷 1/);
+
+  const rerun = await core.reviewRerun(async () => '{"ok":false,"query":"網購 退貨 消費者保護法","reason":"多數與標準無關"}', REVIEW_RUN);
+  assert.deepEqual([rerun.verdict, rerun.query, rerun.reason], ['rerun', '網購 退貨 消費者保護法', '多數與標準無關']);
+
+  const noQuery = await core.reviewRerun(async () => '{"ok":false}', REVIEW_RUN);
+  assert.equal(noQuery.verdict, 'rerun');
+  assert.equal(noQuery.query, undefined);
+
+  const garbled = await core.reviewRerun(async () => '不是 JSON', REVIEW_RUN);
+  assert.equal(garbled.verdict, 'unclear');
+  assert.match(garbled.reason, /無法判讀/);
+});
+
+test('重新檢索檢閱：AI 服務錯誤原樣拋出，不靜默決定', async () => {
+  await assert.rejects(core.reviewRerun(async () => { throw new Error('額度不足'); }, REVIEW_RUN), /額度不足/);
+});
+
+test('重新檢索檢閱：沒有固定門檻（舊的納入率／無法判斷率門檻已移除）', () => {
+  assert.equal(core.rerunSuggestion, undefined);
+  assert.equal(core.DEFAULT_RERUN_THRESHOLDS, undefined);
 });
 
 const CASES = [

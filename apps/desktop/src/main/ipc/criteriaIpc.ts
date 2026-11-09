@@ -2,7 +2,7 @@
 // 執行前先規劃（AI 案件數、呼叫次數、估計費用），確認後才執行。每次執行是獨立的一筆 run，保存在 criteria-runs.json，不覆蓋。
 import { ipcMain } from 'electron';
 import {
-  CourtClient, runCriteria, planRun, estimateCostUsd, rerunSuggestion, appendRun, compareRuns,
+  CourtClient, runCriteria, planRun, estimateCostUsd, reviewRerun, appendRun, compareRuns,
   type CaseInput, type CriteriaRun,
 } from '@judge/core';
 import { readJson, writeJson } from '../data/local/jsonFile';
@@ -132,7 +132,7 @@ export function registerCriteriaIpc(): void {
           { ai, signal, onProgress: (done, total) => safeSend(e.sender, 'criteria:progress', { phase: 'run', done, total }) },
         );
       } catch (err) {
-        if (signal.aborted) return { cancelled: true, run: null, suggestion: null, saveError: null };
+        if (signal.aborted) return { cancelled: true, run: null, saveError: null };
         throw toUserError(err);
       }
       const { runNo: _assignedLater, ...unsaved } = result;
@@ -145,7 +145,25 @@ export function registerCriteriaIpc(): void {
       } catch (err) {
         saveError = `未能保存這次核查（${err instanceof Error ? err.message : String(err)}），結果仍顯示於畫面，請及時匯出。`;
       }
-      return { cancelled: false, run: saved, suggestion: rerunSuggestion(saved.summary), saveError };
+      return { cancelled: false, run: saved, saveError };
+    }));
+
+  // AI 檢閱是否需要重新檢索：只看結果摘要；由研究者按下才呼叫 AI。服務錯誤直接告知；結果保存在該次核查上。
+  ipcMain.handle('criteria:review', (_e, args: { runId: string; runNo: number; ai?: string }) =>
+    withJob(args.runId, 'criteria', '納入排除核查：AI 檢閱', async (signal) => {
+      const runs = await readRuns();
+      const idx = runs.findIndex((r) => r.runNo === args.runNo);
+      if (idx < 0) throw new Error('找不到這次核查的紀錄。');
+      let review;
+      try {
+        const ai = await requireAi(normalizeAiMode(args.ai), signal);
+        review = await reviewRerun(ai, runs[idx]);
+      } catch (err) {
+        throw toUserError(err);
+      }
+      runs[idx] = { ...runs[idx], review };
+      await writeJson(runsFile(), runs);
+      return { review, runNo: args.runNo };
     }));
 
   ipcMain.handle('criteria:runs', () => readRuns());

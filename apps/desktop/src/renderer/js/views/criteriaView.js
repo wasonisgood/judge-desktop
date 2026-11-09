@@ -86,13 +86,23 @@
     JR.setStatus(JR.$('critResultStatus'), '');
   };
 
-  /** 重新檢索建議：只是提示，不會自動改動查詢。 */
-  JR.views.renderSuggestion = function (suggestion) {
+  /** AI 檢閱結果：ok、建議重新檢索（提出的查詢詞會填入「新的關鍵字」，但不會自動執行）、或無法判讀。 */
+  JR.views.renderReview = function (review) {
     var box = JR.$('critSuggest');
-    if (!suggestion || !suggestion.suggest) { box.hidden = true; box.textContent = ''; return; }
+    if (!review) { box.hidden = true; box.textContent = ''; return; }
     box.hidden = false;
-    box.textContent = '建議重新檢索：' + suggestion.reasons.join('；') + '。可展開「以新關鍵字重新檢索」另擬關鍵字，新的結果會另外保存。';
-    JR.$('critRerun').open = true;
+    var text;
+    if (review.verdict === 'ok') {
+      text = 'AI 檢閱：結果大致合理，不需要重新檢索。';
+    } else if (review.verdict === 'rerun') {
+      text = 'AI 檢閱：建議重新檢索。' + (review.reason ? '理由：' + review.reason + '。' : '') +
+        (review.query ? '建議查詢詞：「' + review.query + '」（已填入下方「以新關鍵字重新檢索」，按下才會執行；新結果另外保存）。' : 'AI 沒有提出新的查詢詞，請自行擬定。');
+      if (review.query) JR.$('critQuery').value = review.query;
+      JR.$('critRerun').open = true;
+    } else {
+      text = 'AI 檢閱：回覆無法判讀，沒有重新檢索的建議。可再按一次檢閱，或自行判斷。';
+    }
+    box.textContent = text + '（檢閱時間：' + JR.fmtTime(review.reviewedAt) + '）';
   };
 
   /** 兩次核查的比較：決定不同的案件（從 → 到）與只出現在其中一次的案件數。 */
