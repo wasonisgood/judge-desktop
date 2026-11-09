@@ -1,0 +1,142 @@
+/* 本地模組視窗（精靈）版面 */
+/* ===== 本地模組視窗（3.1）：沿用主畫面的 tokens、標題列與按鈕，只加版面用的類別 ===== */
+.wiz-frame { background: var(--paper); }
+.wiz { flex: 1; min-height: 0; display: grid; grid-template-columns: 232px minmax(0, 1fr); }
+.wiz-side {
+  background: var(--paper-2); border-right: 1px solid var(--rule);
+  padding: 22px 16px 18px; display: flex; flex-direction: column; gap: 6px; overflow: auto;
+}
+.wiz-side-title {
+  margin: 10px 0 4px; font-family: var(--serif); font-size: 0.8rem; letter-spacing: 0.12em; color: var(--ink-3);
+}
+.wiz-side-title:first-child { margin-top: 0; }
+.wiz-track, .wiz-maint { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.wiz-nav {
+  width: 100%; display: flex; align-items: center; gap: 10px; text-align: left;
+  padding: 9px 10px; background: transparent; border: 1px solid transparent; border-radius: var(--radius);
+  color: var(--ink-2); cursor: pointer; font: inherit;
+}
+.wiz-nav:hover { background: var(--paper-3); color: var(--ink); }
+.wiz-nav:focus-visible { outline: 2px solid var(--shu); outline-offset: 2px; }
+.wiz-nav.active { background: var(--paper); border-color: var(--rule); color: var(--shu-ink); box-shadow: inset 3px 0 0 var(--shu); }
+.wiz-num { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--ink-3); min-width: 1.4em; }
+.wiz-nav.active .wiz-num { color: var(--shu-ink); }
+.wiz-nav-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.wiz-nav-label { font-size: 0.95rem; }
+.wiz-state { font-size: 0.75rem; color: var(--ink-3); min-height: 1em; }
+.wiz-side-foot { margin: auto 0 0; padding-top: 14px; font-size: 0.8rem; color: var(--ink-3); border-top: 1px solid var(--rule); }
+
+.wiz-main { padding: 28px 40px 36px; overflow: auto; min-width: 0; }
+.wiz-view { max-width: 760px; }
+.wiz-view[hidden] { display: none; }
+.wiz-kicker { margin: 0 0 4px; font-size: 0.8rem; letter-spacing: 0.12em; color: var(--shu-ink); font-weight: 700; }
+.wiz-main h1 { margin: 0 0 8px; font-family: var(--serif); font-size: 1.7rem; line-height: 1.25; }
+.wiz-main .lead { margin: 0 0 22px; color: var(--ink-2); max-width: 66ch; }
+.wiz-h2 { margin: 26px 0 8px; font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+
+/* 事實列（鍵值） */
+.wiz-facts {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 0; margin: 0 0 6px;
+  border-top: 1px solid var(--rule);
+}
+.wiz-facts dt, .wiz-facts dd { margin: 0; padding: 10px 4px; border-bottom: 1px solid var(--rule); }
+.wiz-facts dt { color: var(--ink-3); font-size: 0.9rem; }
+.wiz-facts dd { color: var(--ink); overflow-wrap: anywhere; }
+
+/* 列表（檢查結果、排除項目、模組目錄） */
+.wiz-rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.wiz-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center;
+  padding: 13px 4px; border-bottom: 1px solid var(--rule);
+}
+.wiz-row-title { font-family: var(--serif); font-weight: 700; }
+.wiz-row-detail { margin-top: 3px; color: var(--ink-2); font-size: 0.92rem; overflow-wrap: anywhere; }
+.wiz-row-side { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.wiz-row.fail { box-shadow: inset 3px 0 0 var(--shu); }
+.wiz-row.warn { box-shadow: inset 3px 0 0 var(--ink-3); }
+.wiz-row.pass { box-shadow: inset 3px 0 0 var(--koke); }
+
+/* 標籤（狀態） */
+.wiz-pill {
+  display: inline-block; padding: 1px 9px; border: 1px solid var(--ink-3); border-radius: 999px;
+  font-size: 0.8rem; color: var(--ink-2); white-space: nowrap;
+}
+.wiz-pill.pass { border-color: var(--koke); color: var(--koke); }
+.wiz-pill.warn { border-color: var(--ink-3); color: var(--ink-2); }
+.wiz-pill.fail { border-color: var(--shu); color: var(--shu-ink); background: var(--shu-wash); }
+
+/* 摘要條 */
+.wiz-summary {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding: 12px 14px; margin: 0 0 14px; background: var(--paper-2); border: 1px solid var(--rule); border-left: 3px solid var(--ink-3);
+}
+.wiz-summary.ok { border-left-color: var(--koke); }
+.wiz-summary.error { border-left-color: var(--shu); }
+.wiz-summary-text { font-weight: 700; }
+.wiz-summary-count { color: var(--ink-3); font-size: 0.9rem; margin-left: auto; }
+
+/* 底部操作列 */
+.wiz-bar {
+  display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap;
+  margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--rule);
+}
+
+/* 方案卡片 */
+.wiz-options { display: grid; gap: 10px; }
+.wiz-option {
+  display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 12px; align-items: start;
+  padding: 14px 16px; background: var(--paper-2); border: 1px solid var(--rule); cursor: pointer;
+}
+.wiz-option:has(input:checked) { border-color: var(--shu); box-shadow: inset 3px 0 0 var(--shu); }
+.wiz-option input { width: 16px; height: 16px; margin-top: 3px; accent-color: var(--shu); }
+.wiz-option-head { display: flex; align-items: center; gap: 10px; }
+.wiz-option-title { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; }
+.wiz-option-desc { margin-top: 4px; color: var(--ink-2); }
+.wiz-option-reason { margin-top: 3px; color: var(--ink-3); font-size: 0.88rem; }
+
+.wiz-agree { margin-top: 18px; }
+
+/* 安裝進度 */
+.wiz-progress { margin: 0 0 16px; }
+.wiz-stages { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.wiz-stage {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 12px; align-items: center;
+  padding: 11px 4px; border-bottom: 1px solid var(--rule); color: var(--ink-3);
+}
+.wiz-stage-mark { font-size: 1.05rem; text-align: center; }
+.wiz-stage-title { color: var(--ink-2); }
+.wiz-stage-detail { margin-top: 2px; font-size: 0.88rem; color: var(--ink-3); overflow-wrap: anywhere; }
+.wiz-stage-status { font-size: 0.85rem; }
+.wiz-stage.running { color: var(--ink); }
+.wiz-stage.running .wiz-stage-mark, .wiz-stage.running .wiz-stage-status { color: var(--shu-ink); }
+.wiz-stage.done .wiz-stage-mark, .wiz-stage.done .wiz-stage-status { color: var(--koke); }
+.wiz-stage.failed .wiz-stage-mark, .wiz-stage.failed .wiz-stage-status { color: var(--shu-ink); font-weight: 700; }
+.wiz-stage.retry .wiz-stage-mark, .wiz-stage.retry .wiz-stage-status { color: var(--ink-2); }
+.wiz-stage.done .wiz-stage-title, .wiz-stage.running .wiz-stage-title, .wiz-stage.failed .wiz-stage-title { color: var(--ink); }
+
+/* 失敗區 */
+.wiz-fail { margin-top: 18px; border-left: 3px solid var(--shu); }
+.wiz-fail-title { margin: 0 0 4px; font-family: var(--serif); font-weight: 700; color: var(--shu-ink); }
+.wiz-fail-steps { margin: 8px 0 0; padding-left: 1.2em; }
+.wiz-fail-steps li { margin: 3px 0; }
+
+/* 模組卡片 */
+.wiz-mods { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 4px; }
+.wiz-mod { padding: 16px 18px; background: var(--paper-2); border: 1px solid var(--rule); }
+.wiz-mod-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.wiz-mod-head h2 { margin: 0; font-family: var(--serif); font-size: 1.05rem; }
+.wiz-mod .wiz-facts { margin-top: 10px; }
+.wiz-mod .actions { margin-top: 12px; }
+
+.wiz-group + .wiz-group { margin-top: 6px; }
+
+@media (max-width: 860px) {
+  .wiz { grid-template-columns: 1fr; }
+  .wiz-side { border-right: 0; border-bottom: 1px solid var(--rule); max-height: 42%; }
+  .wiz-main { padding: 22px 22px 28px; }
+  .wiz-facts { grid-template-columns: 110px minmax(0, 1fr); }
+}
+/* 失敗說明：技術訊息可捲動、自動換行，避免撐破版面 */
+.wiz-fail-tech { margin: 6px 0 0; padding: 8px 10px; max-height: 96px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-family: Consolas, "Courier New", monospace; font-size: 0.82rem; color: var(--ink-2); background: var(--paper); border: 1px solid var(--rule); }
+.wiz-fail-steps li { overflow-wrap: anywhere; }
+

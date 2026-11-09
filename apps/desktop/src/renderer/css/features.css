@@ -1,0 +1,54 @@
+/* 功能：身分聯合圖解、表格細節、助理進度卡、精讀欄位、助理全螢幕 */
+/* 工作負載身分聯合的圖解步驟（線條式，只用本站的墨色與朱色） */
+.wif-guide { margin: 6px 0 18px; padding: 16px 18px; background: var(--paper-2); border: 1px solid var(--rule); }
+.wif-guide h2 { margin-top: 0; }
+.wif-steps { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 12px; }
+.wif-step {
+  display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center;
+  padding: 12px; background: var(--paper); border: 1px solid var(--rule);
+}
+.wif-art { width: 150px; height: 79px; color: var(--ink-2); }
+.wif-art text { font-family: Consolas, monospace; }
+.wif-text p { margin: 0 0 4px; }
+.wif-no { font-family: var(--serif); font-size: 1.25rem; line-height: 1.2; color: var(--shu-ink); font-weight: 700; margin-bottom: 2px !important; }
+@media (max-width: 860px) {
+  .wif-step { grid-template-columns: 1fr; }
+  .wif-art { width: 120px; height: 63px; }
+}
+
+/* 表格：日期與按鈕不換行，表格可橫向捲動 */
+.table td.nowrap { white-space: nowrap; }
+.table td .btn { white-space: nowrap; }
+/* 內容區底部留白，避免懸浮助理按鈕蓋住最後一列 */
+.content { padding-bottom: 96px; }
+
+/* 候選表：已選定的那一列高亮 */
+.table tr.row-picked td { background: var(--shu-wash); }
+.table tr.row-picked td:first-child { box-shadow: inset 3px 0 0 var(--shu); }
+
+/* 範圍整理表：欄位多，表格設定最小寬度，超出時橫向捲動，避免文字被擠成一字一行 */
+.scope-block .table { min-width: 1240px; }
+.scope-block .table th, .scope-block .table td { min-width: 70px; }
+.scope-block .table td:nth-child(n+8) { min-width: 150px; }
+
+/* 助理面板的進度卡 */
+.assist-progress { margin: 0 0 12px; padding: 10px 12px; border: 1px solid var(--rule); border-left: 3px solid var(--shu); background: var(--paper-2); font-size: 0.9rem; }
+.assist-progress-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+.assist-progress-clock { margin-left: auto; color: var(--ink-3); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.assist-progress-text { margin: 0 0 6px; color: var(--ink-2); white-space: pre-wrap; }
+.assist-progress-track { margin-top: 0; }
+.assist-progress.done { border-left-color: var(--koke); }
+.assist-progress.error { border-left-color: var(--shu-ink); }
+
+/* 精讀欄位設定 */
+.brief-fields legend { margin-bottom: 6px; }
+.brief-field-row { display: grid; grid-template-columns: 24px minmax(160px, 1fr) minmax(180px, 2fr) auto; gap: 8px; align-items: center; margin-bottom: 6px; }
+.brief-field-on { width: 16px; height: 16px; accent-color: var(--shu); }
+@media (max-width: 860px) { .brief-field-row { grid-template-columns: 24px 1fr auto; } .brief-field-desc { grid-column: 2 / 3; } }
+
+/* 助理全螢幕 */
+.assist-panel.fullscreen { inset: 16px; right: 16px; bottom: 16px; width: auto; max-height: none; border-radius: var(--radius); }
+.assist-panel.fullscreen .assist-log { min-height: 0; flex: 1; }
+.assist-panel.fullscreen .assist-msg { max-width: 920px; }
+.assist-panel.fullscreen .assist-input { padding: 14px 20px; }
+

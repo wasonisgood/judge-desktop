@@ -5,7 +5,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>司法院裁判研究</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/features.css">
+<link rel="stylesheet" href="css/wizard.css">
 </head>
 <body>
 <div class="frame">
@@ -37,319 +40,12 @@
     <main class="content">
       <div id="notice" class="notice" hidden></div>
 
-      <section class="page active" id="page-home">
-        <h1>司法院裁判研究</h1>
-        <p class="lead">搜尋司法院公開的裁判書，整理成表格，或精讀單一判決。三個頁面可以接續使用：前一頁的結果會保留在檔案中。</p>
-        <ul class="entries">
-          <li>
-            <button class="entry" data-go="list">
-              <span class="entry-title">判決列表</span>
-              <span class="entry-desc">輸入關鍵字，查出相關判決，可匯出 Excel。</span>
-            </button>
-          </li>
-          <li>
-            <button class="entry" data-go="scope">
-              <span class="entry-title">範圍整理表</span>
-              <span class="entry-desc">輸入法規（可加條、項、款），列出引用該法規的判決，並標示該條文在查詢期間內是否修法。</span>
-            </button>
-          </li>
-          <li>
-            <button class="entry" data-go="brief">
-              <span class="entry-title">單一判決精讀</span>
-              <span class="entry-desc">輸入判決名稱或關鍵字，從候選中選定一則，由 AI 整理成文書，匯出 Word。</span>
-            </button>
-          </li>
-          <li>
-            <button class="entry" data-go="files">
-              <span class="entry-title">檔案</span>
-              <span class="entry-desc">保存過的結果。可加星號、封存、移入垃圾桶，或重新開啟。</span>
-            </button>
-          </li>
-          <li>
-            <button class="entry" data-go="settings">
-              <span class="entry-title">AI 設定</span>
-              <span class="entry-desc">設定 AI 服務與金鑰。金鑰只保存在這台電腦。</span>
-            </button>
-          </li>
-        </ul>
-      </section>
+      <div id="pages"></div>
 
-      <section class="page" id="page-list">
-        <h1>判決列表</h1>
-        <form class="form" id="listForm">
-          <label class="field">
-            <span>關鍵字</span>
-            <input id="listKeyword" required placeholder="例如：戒嚴、回復原狀" autocomplete="off">
-          </label>
-          <div class="row">
-            <label class="field">
-              <span>最多筆數</span>
-              <input id="listMax" type="number" min="1" max="100" value="20">
-            </label>
-            <label class="field">
-              <span>法院代碼（選填）</span>
-              <input id="listCourt" placeholder="留空表示全部法院" autocomplete="off">
-            </label>
-          </div>
-          <label class="check">
-            <input type="checkbox" id="listFull">
-            <span>逐筆讀取全文（較慢，匯出時會附上主文）</span>
-          </label>
-          <div class="actions">
-            <button class="btn primary" type="submit" id="listRun">搜尋</button>
-            <button class="btn" type="button" id="listExport" disabled>匯出 Excel</button>
-            <button class="btn" type="button" id="listScreen" disabled>AI 篩選相關判決</button>
-          </div>
-          <div class="progress" id="listProgress" hidden><div class="bar"></div></div>
-          <p class="status" id="listStatus" role="status"></p>
-        </form>
-        <label class="check" id="listShowAllWrap" hidden><input type="checkbox" id="listShowAll"><span>顯示不相關的判決</span></label>
-        <p class="status" id="listScreenStatus" role="status"></p>
-        <div class="table-wrap" id="listResult" hidden>
-          <table class="table">
-            <thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>案由</th><th>AI 判斷</th><th></th></tr></thead>
-            <tbody id="listBody"></tbody>
-          </table>
-        </div>
-      </section>
 
-      <section class="page" id="page-scope">
-        <h1>範圍整理表</h1>
-        <p class="lead">輸入法規，每行一部。可以只寫法名，也可以寫到條、項、款，例如「民法第184條第1項」。法名需與全國法規資料庫的正式名稱相同。需要先在「設定」輸入 AI 金鑰。</p>
-        <form class="form" id="scopeForm">
-          <label class="field">
-            <span>法規（每行一部）</span>
-            <textarea id="scopeLines" rows="4" placeholder="例如：&#10;國家賠償法&#10;民法第184條第1項"></textarea>
-          </label>
-          <div class="row">
-            <label class="field">
-              <span>起始年（西元，選填）</span>
-              <input id="scopeFrom" type="number" min="1945" max="2100" placeholder="例如 2000">
-            </label>
-            <label class="field">
-              <span>結束年（西元，選填）</span>
-              <input id="scopeTo" type="number" min="1945" max="2100" placeholder="例如 2026">
-            </label>
-            <label class="field">
-              <span>每部法規最多筆數</span>
-              <input id="scopeMax" type="number" min="1" max="100" value="30">
-            </label>
-          </div>
-          <div class="actions">
-            <button class="btn primary" type="submit" id="scopeRun">開始整理</button>
-            <button class="btn" type="button" id="scopeXlsx" disabled>匯出 Excel</button>
-            <button class="btn" type="button" id="scopeDocx" disabled>匯出 Word</button>
-          </div>
-          <div class="progress" id="scopeProgress" hidden><div class="bar"></div></div>
-          <p class="status" id="scopeStatus" role="status"></p>
-        </form>
-        <div id="scopeResult"></div>
-      </section>
 
-      <section class="page" id="page-brief">
-        <h1>單一判決精讀</h1>
-        <p class="lead">可以輸入判決名稱、關鍵字或縮寫（例如「高院 戒嚴」）。先列出候選，再選定一則，系統只精讀這一則。</p>
-        <form class="form" id="briefFindForm">
-          <label class="field">
-            <span>判決名稱、關鍵字或縮寫</span>
-            <input id="briefQuery" required placeholder="例如：高院 戒嚴、回復原狀" autocomplete="off">
-          </label>
-          <div class="actions">
-            <button class="btn" type="submit" id="briefFind">查找候選</button>
-          </div>
-          <p class="status" id="briefFindStatus" role="status"></p>
-        </form>
-        <p class="picked" id="briefPickedBar">已選定：<strong id="briefPicked">尚未選定</strong></p>
-        <div class="table-wrap" id="briefCandidates" hidden>
-          <table class="table">
-            <thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>案由</th><th></th></tr></thead>
-            <tbody id="briefCandidateBody"></tbody>
-          </table>
-        </div>
-        <form class="form" id="briefForm">
-          <fieldset class="field brief-fields">
-            <legend>要整理的欄位（勾選；可加入自訂欄位並寫說明）</legend>
-            <div id="briefFieldList"></div>
-            <div class="actions">
-              <button class="btn small" type="button" id="briefFieldAdd">加入自訂欄位</button>
-            </div>
-            <p class="hint">只會整理勾選的欄位，並依列表順序排列。AI 不會整理未勾選的欄位。</p>
-          </fieldset>
-          <label class="field">
-            <span>想了解的重點（選填）</span>
-            <input id="briefFocus" placeholder="例如：爭點、事實認定、回復原狀的要件" autocomplete="off">
-          </label>
-          <label class="field">
-            <span>篇幅</span>
-            <select id="briefLength">
-              <option value="半頁">半頁</option>
-              <option value="約 1 頁" selected>約 1 頁</option>
-              <option value="約 2 頁">約 2 頁</option>
-              <option value="約 3 頁">約 3 頁</option>
-            </select>
-          </label>
-          <p class="hint">精讀內容全部由 AI 整理，請先在「設定」輸入 AI 金鑰。</p>
-          <div class="actions">
-            <button class="btn primary" type="submit" id="briefRun" disabled>整理這則判決</button>
-            <button class="btn" type="button" id="briefExport" disabled>匯出 Word</button>
-          </div>
-          <p class="status" id="briefStatus" role="status"></p>
-        </form>
-        <article class="reader" id="briefView" hidden></article>
-      </section>
 
-      <section class="page" id="page-files">
-        <h1>檔案</h1>
-        <p class="lead">保存過的判決列表、範圍整理表與精讀結果。垃圾桶中的項目可以還原，或永久刪除。</p>
-        <div class="tabs" role="tablist">
-          <button class="tab active" data-tab="active" type="button">使用中</button>
-          <button class="tab" data-tab="archived" type="button">已封存</button>
-          <button class="tab" data-tab="trashed" type="button">垃圾桶</button>
-        </div>
-        <p class="status" id="filesStatus" role="status"></p>
-        <ul class="file-list" id="fileList"></ul>
-      </section>
 
-      <section class="page" id="page-settings">
-        <h1>設定</h1>
-        <section class="local-mods" aria-labelledby="localModTitle">
-          <h2 id="localModTitle">本地模組（可選）</h2>
-          <p class="hint">本地模組在獨立的「本地模組安裝精靈」視窗中安裝，包含檢查、選擇方案、同意與註冊。完成前，主畫面功能照常使用。</p>
-          <p class="status" id="localAiSummary" role="status">讀取中…</p>
-          <p class="status" id="localCrawlSummary" role="status"></p>
-          <p class="status" id="updaterSummary" role="status"></p>
-          <div class="actions"><button class="btn primary" type="button" id="openWizard">開啟本地模組安裝精靈</button><button class="btn" type="button" id="openDiag">排除問題與模組更新</button></div>
-        </section>
-        <form class="form" id="settingsForm">
-          <h2>AI 服務</h2>
-          <label class="field">
-            <span>驗證方式</span>
-            <select id="setAuthMode">
-              <option value="apiKey">使用我自己的 API 金鑰</option>
-              <option value="federation">工作負載身分聯合（由提供者代為連線）</option>
-            </select>
-          </label>
-          <label class="field">
-            <span>服務類型</span>
-            <select id="setProvider">
-              <option value="anthropic">Anthropic（Claude）</option>
-              <option value="openai-compatible">OpenAI 相容的服務</option>
-            </select>
-          </label>
-          <div id="fedFields" hidden>
-            <section class="wif-guide" aria-labelledby="wifGuideTitle">
-              <h2 id="wifGuideTitle">工作負載身分聯合：操作步驟</h2>
-              <p class="hint">由提供者代為連線時，您不需要自己申請金鑰。請依下列四步完成設定。</p>
-              <ol class="wif-steps">
-                <li class="wif-step">
-                  <svg class="wif-art" viewBox="0 0 160 84" role="img" aria-label="步驟一：取得三組代碼">
-                    <rect x="14" y="16" width="132" height="52" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                    <line x1="28" y1="32" x2="78" y2="32" stroke="currentColor" stroke-width="1.5"/>
-                    <line x1="28" y1="44" x2="110" y2="44" stroke="currentColor" stroke-width="1.5"/>
-                    <line x1="28" y1="56" x2="96" y2="56" stroke="currentColor" stroke-width="1.5"/>
-                    <circle cx="124" cy="56" r="8" fill="none" stroke="var(--shu)" stroke-width="1.5"/>
-                    <path d="M120 56 L123 59 L129 52" fill="none" stroke="var(--shu)" stroke-width="1.5"/>
-                  </svg>
-                  <div class="wif-text">
-                    <p class="wif-no">一</p>
-                    <p><strong>向提供者取得三組代碼</strong></p>
-                    <p>組織 ID、聯合規則 ID（fdrl 開頭）、服務帳號 ID（svac 開頭）。這三組代碼由提供者在 Claude Console 中建立。</p>
-                  </div>
-                </li>
-                <li class="wif-step">
-                  <svg class="wif-art" viewBox="0 0 160 84" role="img" aria-label="步驟二：準備身分憑證檔">
-                    <path d="M52 12 H96 L116 32 V72 H52 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M96 12 V32 H116" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                    <text x="66" y="54" font-size="13" fill="var(--shu-ink)">JWT</text>
-                    <line x1="66" y1="62" x2="102" y2="62" stroke="currentColor" stroke-width="1"/>
-                  </svg>
-                  <div class="wif-text">
-                    <p class="wif-no">二</p>
-                    <p><strong>準備身分憑證（JWT）檔案</strong></p>
-                    <p>由您自己的身分提供者（例如 GitHub Actions、Google 或自架的 OIDC 服務）發出身分憑證，存成一個純文字檔。每次連線時程式都會重新讀取這個檔案。</p>
-                  </div>
-                </li>
-                <li class="wif-step">
-                  <svg class="wif-art" viewBox="0 0 160 84" role="img" aria-label="步驟三：填入設定欄位">
-                    <rect x="20" y="10" width="120" height="64" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                    <rect x="32" y="20" width="96" height="12" fill="none" stroke="currentColor" stroke-width="1"/>
-                    <rect x="32" y="38" width="96" height="12" fill="none" stroke="currentColor" stroke-width="1"/>
-                    <rect x="32" y="56" width="96" height="12" fill="none" stroke="var(--shu)" stroke-width="1.5"/>
-                    <line x1="36" y1="62" x2="72" y2="62" stroke="var(--shu)" stroke-width="1.5"/>
-                  </svg>
-                  <div class="wif-text">
-                    <p class="wif-no">三</p>
-                    <p><strong>在下方填入設定</strong></p>
-                    <p>依序填入組織 ID、聯合規則 ID、服務帳號 ID，以及身分憑證檔案的完整路徑。規則涵蓋多個工作區時，才需要填工作區 ID。</p>
-                  </div>
-                </li>
-                <li class="wif-step">
-                  <svg class="wif-art" viewBox="0 0 160 84" role="img" aria-label="步驟四：測試連線">
-                    <circle cx="80" cy="42" r="26" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M68 42 L77 51 L93 33" fill="none" stroke="var(--shu)" stroke-width="2.5"/>
-                  </svg>
-                  <div class="wif-text">
-                    <p class="wif-no">四</p>
-                    <p><strong>按「儲存」，再按「測試連線」</strong></p>
-                    <p>看到「連線成功」即完成。若顯示失敗，請確認身分憑證是否過期、檔案路徑是否正確，並向提供者確認規則設定。</p>
-                  </div>
-                </li>
-              </ol>
-            </section>
-            <label class="field">
-              <span>組織 ID</span>
-              <input id="setFedOrg" autocomplete="off" placeholder="例如 xxxxxxxx-xxxx-…">
-            </label>
-            <label class="field">
-              <span>聯合規則 ID</span>
-              <input id="setFedRule" autocomplete="off" placeholder="fdrl_…">
-            </label>
-            <label class="field">
-              <span>服務帳號 ID</span>
-              <input id="setFedSvc" autocomplete="off" placeholder="svac_…">
-            </label>
-            <label class="field">
-              <span>工作區 ID（規則涵蓋多個工作區時才需要）</span>
-              <input id="setFedWorkspace" autocomplete="off" placeholder="wrkspc_…（選填）">
-            </label>
-            <label class="field">
-              <span>身分憑證檔案路徑</span>
-              <input id="setFedFile" autocomplete="off" placeholder="例如 C:\Users\你\identity.jwt">
-            </label>
-          </div>
-          <label class="field">
-            <span>服務網址</span>
-            <input id="setBaseUrl" autocomplete="off">
-          </label>
-          <label class="field">
-            <span>模型名稱</span>
-            <input id="setModel" autocomplete="off">
-          </label>
-          <label class="field" id="keyField">
-            <span>API 金鑰 <small id="keyState"></small></span>
-            <input id="setKey" type="password" autocomplete="new-password" placeholder="要更換時再輸入；不輸入則保留原金鑰">
-          </label>
-          <div class="actions">
-            <button class="btn primary" type="submit">儲存</button>
-            <button class="btn" type="button" id="setTest">測試連線</button>
-            <button class="btn danger" type="button" id="setClear">清除金鑰</button>
-          </div>
-          <p class="status" id="setStatus" role="status"></p>
-
-          <h2>一般</h2>
-          <label class="field">
-            <span>判決搜尋結果快取天數</span>
-            <input id="setCacheDays" type="number" min="1" max="90" value="7">
-          </label>
-          <p class="hint">法條沿革與法名確認會永久保存；現行法規全文保存 30 天。判決內頁永久保存。</p>
-          <div class="actions">
-            <button class="btn" type="button" id="cacheClear">清除本機快取</button>
-            <button class="btn" type="button" id="openUpdater">檢查更新</button>
-          </div>
-        </form>
-        <p class="hint">金鑰只保存在這台電腦，並以系統的加密機制保護。本程式不會把金鑰傳給其他服務。</p>
-        <p class="hint" id="versionInfo"></p>
-      </section>
     </main>
   </div>
 </div>
@@ -374,6 +70,35 @@
   <p class="hint assist-hint">助理會先確認再執行會花費 AI 額度或改動資料的操作。</p>
 </section>
 
-<script src="app.js"></script>
+<script src="js/ns.js"></script>
+<script src="js/core/dom.js"></script>
+<script src="js/components/notice.js"></script>
+<script src="js/components/progressCard.js"></script>
+<script src="js/components/briefFieldRow.js"></script>
+<script src="js/components/assistMessages.js"></script>
+<script src="js/components/fileItem.js"></script>
+<script src="js/views/listView.js"></script>
+<script src="js/views/scopeView.js"></script>
+<script src="js/views/briefView.js"></script>
+<script src="js/views/filesView.js"></script>
+<script src="js/views/settingsView.js"></script>
+<script src="js/views/localAiView.js"></script>
+<script src="js/views/pages.js"></script>
+<script src="js/templates/wifGuide.js"></script>
+<script src="js/templates/homePage.js"></script>
+<script src="js/templates/listPage.js"></script>
+<script src="js/templates/scopePage.js"></script>
+<script src="js/templates/briefPage.js"></script>
+<script src="js/templates/filesPage.js"></script>
+<script src="js/templates/settingsPage.js"></script>
+<script src="js/controllers/chrome.js"></script>
+<script src="js/controllers/settings.js"></script>
+<script src="js/controllers/list.js"></script>
+<script src="js/controllers/scope.js"></script>
+<script src="js/controllers/brief.js"></script>
+<script src="js/controllers/files.js"></script>
+<script src="js/controllers/assistant.js"></script>
+<script src="js/controllers/localAi.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

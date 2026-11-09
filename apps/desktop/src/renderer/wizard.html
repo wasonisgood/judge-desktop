@@ -5,7 +5,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>本地模組</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/features.css">
+<link rel="stylesheet" href="css/wizard.css">
 </head>
 <body>
 <div class="frame wiz-frame">
@@ -156,6 +159,24 @@
     </main>
   </div>
 </div>
-<script src="wizard.js"></script>
+<script src="wizard/core/ns.js"></script>
+<script src="wizard/core/dom.js"></script>
+<script src="wizard/core/constants.js"></script>
+<script src="wizard/model/flow.js"></script>
+<script src="wizard/components/checkRow.js"></script>
+<script src="wizard/views/navView.js"></script>
+<script src="wizard/views/checkView.js"></script>
+<script src="wizard/views/chooseView.js"></script>
+<script src="wizard/views/installView.js"></script>
+<script src="wizard/views/doneView.js"></script>
+<script src="wizard/views/diagView.js"></script>
+<script src="wizard/views/modulesView.js"></script>
+<script src="wizard/controllers/nav.js"></script>
+<script src="wizard/controllers/check.js"></script>
+<script src="wizard/controllers/choose.js"></script>
+<script src="wizard/controllers/install.js"></script>
+<script src="wizard/controllers/diag.js"></script>
+<script src="wizard/controllers/modules.js"></script>
+<script src="wizard/main.js"></script>
 </body>
 </html>

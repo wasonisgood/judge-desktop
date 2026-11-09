@@ -1,0 +1,170 @@
+/* 基礎：色彩 tokens、重設、標題列、導覽列、表單、按鈕、表格、精讀閱讀區（與 layout.css、features.css、wizard.css 依序載入，順序不可調換） */
+/* 版面與色彩沿用 debate-companion-desk 的 tokens.css 與 desk-shell.css 結構（紙色底、墨色字、單一朱色強調）。
+   用語與介面文字採一般台灣用語；不使用 emoji、漸層或裝飾圖。 */
+:root {
+  --paper: #F1ECE2;
+  --paper-2: #E7E0D2;
+  --paper-3: #DDD4C3;
+  --ink: #1D1B17;
+  --ink-2: #4C4840;
+  --ink-3: #857F73;
+  --rule: #CFC6B4;
+  --shu: #B9472B;
+  --shu-ink: #8E3320;
+  --shu-wash: #EBD3C4;
+  --koke: #5F6B3A;
+  --serif: "Noto Serif TC", "Source Han Serif TC", "Songti TC", "Microsoft JhengHei", serif;
+  --sans: "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+  --step-0: 15px;
+  --radius: 3px;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --paper: #171612;
+  --paper-2: #201E19;
+  --paper-3: #2A2721;
+  --ink: #E9E3D6;
+  --ink-2: #BCB4A5;
+  --ink-3: #8A8274;
+  --rule: #38342C;
+  --shu: #E06A4B;
+  --shu-ink: #F08A6E;
+  --shu-wash: #3A2219;
+  --koke: #9AA66E;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: var(--step-0)/1.7 var(--sans);
+  overflow: hidden;
+  user-select: none;
+}
+input, select, textarea, button { font: inherit; color: inherit; }
+input, select, textarea { user-select: text; }
+h1 { font-family: var(--serif); font-size: 1.55rem; margin: 0 0 6px; font-weight: 700; }
+h2 { font-family: var(--serif); font-size: 1.05rem; margin: 22px 0 8px; color: var(--ink-2); font-weight: 700; }
+.lead { color: var(--ink-2); margin: 0 0 18px; }
+.hint { color: var(--ink-3); font-size: 0.85rem; margin-top: 14px; }
+small { color: var(--ink-3); font-weight: normal; }
+
+/* 自訂標題列（無系統選單，可拖曳） */
+.frame { height: 100%; display: flex; flex-direction: column; }
+.titlebar {
+  height: 40px; display: flex; align-items: center; gap: 12px; padding-left: 16px;
+  background: var(--paper-2); border-bottom: 1px solid var(--rule);
+  -webkit-app-region: drag;
+}
+.app-name { font-family: var(--serif); font-weight: 700; letter-spacing: 0.04em; }
+.spacer { flex: 1; }
+.titlebar button, .titlebar label { -webkit-app-region: no-drag; }
+.theme { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--ink-2); cursor: pointer; }
+.theme input { position: absolute; opacity: 0; pointer-events: none; }
+.switch {
+  position: relative; display: inline-block; width: 36px; height: 20px; border-radius: 999px;
+  background: var(--paper-3); border: 1px solid var(--rule);
+}
+.switch .knob {
+  position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--ink-2); transition: transform .2s var(--ease);
+}
+.theme input:checked + .switch { background: var(--shu-wash); border-color: var(--shu); }
+.theme input:checked + .switch .knob { transform: translateX(16px); background: var(--shu); }
+.theme input:focus-visible + .switch { outline: 2px solid var(--shu); outline-offset: 2px; }
+.win-controls { display: flex; height: 100%; }
+.win-controls button {
+  -webkit-app-region: no-drag; width: 46px; height: 40px; border: 0; background: transparent; cursor: pointer;
+}
+.win-controls button:hover { background: var(--paper-3); }
+.win-controls .close:hover { background: var(--shu); color: #fff; }
+
+/* 版面：左側細欄＋工作區（窄視窗時改為底部列） */
+.shell { flex: 1; min-height: 0; display: grid; grid-template-columns: 96px minmax(0, 1fr); }
+.rail {
+  background: var(--paper-2); border-right: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 4px; padding: 10px 8px; overflow: auto;
+}
+.rail-item {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  min-height: 60px; padding: 6px 4px; background: transparent; border: 1px solid transparent;
+  border-radius: var(--radius); color: var(--ink-2); cursor: pointer; transition: background .18s var(--ease);
+}
+.rail-item:hover { background: var(--paper-3); color: var(--ink); }
+.rail-item:focus-visible { outline: 2px solid var(--shu); outline-offset: 2px; }
+.rail-item.active { background: var(--paper); border-color: var(--rule); color: var(--shu-ink); box-shadow: inset 3px 0 0 var(--shu); }
+.glyph {
+  display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid currentColor;
+  border-radius: 50%; font-family: var(--serif); font-size: 0.95rem;
+}
+.label { font-size: 0.75rem; line-height: 1.2; text-align: center; white-space: nowrap; }
+
+.content { overflow: auto; padding: 22px 28px 40px; }
+.page { display: none; max-width: 980px; margin: 0 auto; }
+.page.active { display: block; }
+.notice {
+  padding: 10px 14px; margin-bottom: 14px; border: 1px solid var(--rule); border-left: 3px solid var(--shu);
+  background: var(--paper-2); font-size: 0.92rem;
+}
+
+/* 首頁入口 */
+.entries { list-style: none; padding: 0; margin: 18px 0 0; border-top: 1px solid var(--rule); }
+.entries li { border-bottom: 1px solid var(--rule); }
+.entry {
+  width: 100%; display: grid; grid-template-columns: 200px 1fr; gap: 12px; align-items: baseline;
+  padding: 16px 4px; background: transparent; border: 0; text-align: left; cursor: pointer;
+}
+.entry:hover .entry-title { color: var(--shu-ink); }
+.entry-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; }
+.entry-desc { color: var(--ink-2); }
+
+/* 表單 */
+.form { max-width: 760px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin: 0 0 14px; flex: 1; min-width: 0; border: 0; padding: 0; }
+.field > span, .field legend { font-size: 0.88rem; color: var(--ink-2); }
+.row { display: flex; gap: 16px; flex-wrap: wrap; }
+input[type="text"], input:not([type]), input[type="number"], input[type="password"], select, textarea {
+  width: 100%; padding: 9px 11px; border: 1px solid var(--rule); border-radius: var(--radius);
+  background: var(--paper-2); outline: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow: 0 0 0 2px var(--shu-wash); }
+.check { display: flex; align-items: center; gap: 8px; margin: 6px 0 12px; cursor: pointer; color: var(--ink-2); }
+.check input { width: 16px; height: 16px; accent-color: var(--shu); }
+.checks { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 10px; }
+.checks label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.checks input { accent-color: var(--shu); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 4px; }
+.btn {
+  white-space: nowrap;
+  padding: 8px 16px; border: 1px solid var(--ink-3); border-radius: var(--radius);
+  background: transparent; cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: var(--paper-3); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.primary { background: var(--shu); border-color: var(--shu); color: #fff; }
+.btn.primary:hover:not(:disabled) { background: var(--shu-ink); }
+.btn.danger { color: var(--shu-ink); border-color: var(--shu-ink); }
+.status { min-height: 1.6em; margin: 10px 0 0; font-size: 0.9rem; color: var(--ink-2); white-space: pre-wrap; }
+.status.error { color: var(--shu-ink); }
+.status.ok { color: var(--koke); }
+.progress { height: 4px; background: var(--paper-3); margin-top: 12px; overflow: hidden; }
+.progress .bar { height: 100%; width: 0; background: var(--shu); transition: width .2s var(--ease); }
+
+/* 表格 */
+.table-wrap { margin-top: 16px; overflow-x: auto; border-top: 1px solid var(--ink-3); }
+.table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.table th, .table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.table th { color: var(--ink-2); font-weight: 700; background: var(--paper-2); }
+.table td.num { color: var(--ink-3); width: 56px; }
+.scope-block { margin-top: 26px; }
+.scope-block h2 { margin-top: 0; }
+
+/* 精讀閱讀區 */
+.reader { margin-top: 18px; padding: 18px 22px; background: var(--paper-2); border: 1px solid var(--rule); line-height: 1.95; }
+.reader h3 { font-family: var(--serif); margin: 18px 0 4px; font-size: 1rem; color: var(--ink-2); }
+.reader p { margin: 0 0 6px; }
+.reader mark { background: var(--shu-wash); color: var(--ink); padding: 0 2px; }
+
