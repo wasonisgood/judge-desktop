@@ -113,7 +113,9 @@ export function planLocalAI(hw: HardwareInfo, rules: EngineRules = BUILTIN_RULES
 
   const m = rules.tiers[tier];
   // 雙模型只有在 NVIDIA／AMD 獨立顯卡且顯存足夠時才啟用（Ollama 在 Windows 上只用這類顯卡加速）。
-  const accelerated = (hw.gpuVendor === 'nvidia' || hw.gpuVendor === 'amd') && hw.vramGB >= rules.dualModelMinVramGB;
+  // Apple Silicon 以統一記憶體運作（Metal 加速），可用於模型的記憶體即為系統記憶體。
+  const effectiveVramGB = hw.gpuVendor === 'apple' ? hw.ramGB : hw.vramGB;
+  const accelerated = (hw.gpuVendor === 'nvidia' || hw.gpuVendor === 'amd' || hw.gpuVendor === 'apple') && effectiveVramGB >= rules.dualModelMinVramGB;
   const installBoth = tier === 'heavy' && accelerated;
   if (tier === 'heavy' && !installBoth) {
     const gpu = hw.gpuName ? `（偵測到 ${hw.gpuName}）` : '';

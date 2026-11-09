@@ -31,7 +31,7 @@ export type EnginePlatform = 'win32' | 'darwin' | 'linux';
  * - Linux：tar.zst（需要系統的 zstd），分 arm64 與 amd64。
  * ARM32 與未知架構不支援。
  */
-export function ollamaAssetFor(arch: NativeArch, platform: EnginePlatform = 'win32'): string | null {
+export function ollamaAssetFor(arch: NativeArch, platform: EnginePlatform = 'win32', gpuVendor: string = 'none'): string | null {
   if (platform === 'win32') {
     if (arch === 'arm64') return 'ollama-windows-arm64.zip';
     if (arch === 'x64') return 'ollama-windows-amd64.zip';
@@ -40,8 +40,9 @@ export function ollamaAssetFor(arch: NativeArch, platform: EnginePlatform = 'win
   if (platform === 'darwin') {
     return arch === 'arm64' || arch === 'x64' ? 'ollama-darwin.tgz' : null;
   }
+  // Linux：AMD 獨立顯卡需要 ROCm 版本的執行環境；NVIDIA 與其餘情況使用基本版（內含 CUDA 函式庫）。
+  if (arch === 'x64') return gpuVendor === 'amd' ? 'ollama-linux-amd64-rocm.tar.zst' : 'ollama-linux-amd64.tar.zst';
   if (arch === 'arm64') return 'ollama-linux-arm64.tar.zst';
-  if (arch === 'x64') return 'ollama-linux-amd64.tar.zst';
   return null;
 }
 
