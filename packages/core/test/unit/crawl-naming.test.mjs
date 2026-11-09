@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {
   uniqueName, stepTwoFileName, stepFourFileName, buildCsv, parseCsv, buildCrawlLogCsv, CRAWL_LOG_HEADER,
   parseListImport, planListPages, parseTotalCount, listPageUrl, matchHistoryRowToItems, buildHistoryTable,
-  LIST_MAX_PAGES, LIST_MAX_ITEMS, safeFileName,
+  LIST_MAX_PAGES, LIST_MAX_ITEMS, safeFileName, isoDay,
 } from '../../dist/index.js';
 
 test('uniqueName：不存在則原名；同名加 _2、_3，不覆蓋', () => {
@@ -110,6 +110,10 @@ test('Step 1：讀取「共 N 筆」與翻頁網址（&page=N，取代既有 pag
   const base = 'https://judgment.judicial.gov.tw/FJUD/qryresultlst.aspx?ty=JUDBOOK&q=abc';
   assert.equal(listPageUrl(base, 2), `${base}&page=2`);
   assert.equal(listPageUrl(`${base}&page=5`, 3), `${base}&page=3`);
+});
+
+test('isoDay：本地日期格式 YYYY-MM-DD', () => {
+  assert.equal(isoDay(new Date(2026, 0, 5)), '2026-01-05');
 });
 
 test('Step 4 比對：歷審列以字號、法院、日期對應搜尋結果；唯一才算對上', () => {

@@ -1,7 +1,7 @@
 // Step 5 確定判決判斷：五種結果、上訴期間邊界（第 120／121 天）、同案其他被告的上訴不計入、定應執行刑標示。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { judgeFinality, DEFAULT_APPEAL_DAYS, FINALITY_LABEL, appealedFrom } from '../../dist/index.js';
+import { judgeFinality, DEFAULT_APPEAL_DAYS, FINALITY_LABEL, appealedFrom, extractDefendants } from '../../dist/index.js';
 
 const TITLE_1 = '臺灣臺北地方法院 112 年度訴字第 100 號 判決';
 const CAUSE_1 = { court: '臺灣臺北地方法院', caseNo: '112 年度 訴 字第 100 號判決', dateDisplay: '115.01.01', dateIso: '2026-01-01' };
@@ -138,4 +138,10 @@ test('定應執行刑：確定判決未定應執行刑時標示另查「聲」�
 
   const pending = judgeFinality({ target: T, defendant: '甲○○', history: [HIST_T], today: '2026-02-01' });
   assert.equal(pending.aggregate.status, 'not_applicable');
+});
+
+test('extractDefendants：從判決開頭取出多位被告姓名，遇「犯」等字即止', () => {
+  assert.deepEqual(extractDefendants('被告 甲○○、乙○○\n主文\n甲○○犯詐欺罪'), ['甲○○', '乙○○']);
+  assert.deepEqual(extractDefendants('上訴人即被告王小明 因詐欺案件'), ['王小明']);
+  assert.deepEqual(extractDefendants('本文沒有當事人欄位'), []);
 });

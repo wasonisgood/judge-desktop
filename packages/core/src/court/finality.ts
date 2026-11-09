@@ -75,6 +75,23 @@ export function namedInHeader(fullText: string, name: string): boolean {
   return squash(fullText.slice(0, 600)).includes(key);
 }
 
+/**
+ * 從判決開頭抽出被告姓名（「被告甲○○、乙○○」「上訴人即被告甲○○」等）。
+ * 姓名以遇到「犯、因、於、上列」等字或標點為止；去除重複。找不到回傳空陣列。
+ */
+export function extractDefendants(fullText: string): string[] {
+  const head = fullText.slice(0, 600);
+  const names: string[] = [];
+  const re = /被告\s*([^\s、，,。；;（(:：犯因於上列經即與及]{1,10}(?:\s*[、，,]\s*[^\s、，,。；;（(:：犯因於上列經即與及]{1,10})*)/g;
+  for (const m of head.matchAll(re)) {
+    for (const part of m[1].split(/[、，,]/)) {
+      const name = part.trim();
+      if (name && !names.includes(name)) names.push(name);
+    }
+  }
+  return names;
+}
+
 /** 上訴審判決是否以 ref 為原審，且載明被告姓名。 */
 function isAppealOf(childText: string, ref: FinalityJudgmentRef, defendant: string): boolean {
   if (!namedInHeader(childText, defendant)) return false;

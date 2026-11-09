@@ -175,6 +175,12 @@ function findColumn(header: string[], names: readonly string[]): number {
   return norm.findIndex((h) => (names as readonly string[]).includes(h));
 }
 
+/** 本地日期的 YYYY-MM-DD（Step 5 計算上訴期間用）。 */
+export function isoDay(d: Date): string {
+  const p = (n: number) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
 /** 字號去重用的鍵：去除所有空白。 */
 export function titleKey(title: string): string {
   return title.replace(/\s+/g, '');
@@ -304,7 +310,7 @@ export function buildHistoryTable(entries: HistoryTableEntry[]): (string | numbe
   const out: (string | number)[][] = [HISTORY_TABLE_HEADER];
   for (const e of entries) {
     if (e.historyRows.length === 0) {
-      out.push([e.index, '歷審_1', '', e.title, '', '', '自身（無歷審）']);
+      out.push([e.index, '歷審_1', '', e.title, '', e.urls?.[0] ?? '', '自身（無歷審）']);
       continue;
     }
     const single = e.historyRows.length === 1;
