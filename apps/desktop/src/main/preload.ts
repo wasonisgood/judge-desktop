@@ -57,6 +57,17 @@ contextBridge.exposeInMainWorld('api', {
     run: (args: unknown) => invoke('brief:run', args),
     export: (args: unknown) => invoke('export:brief', args),
   },
+  chart: {
+    pickFile: () => invoke('chart:pickFile'),
+    inspect: (args: unknown) => invoke('chart:inspect', args),
+    render: (args: unknown) => invoke('chart:render', args),
+    exportSvg: (args: unknown) => invoke('export:chartSvg', args),
+    exportPng: (args: unknown) => invoke('export:chartPng', args),
+    exportDocx: (args: unknown) => invoke('export:chartDocx', args),
+    install: () => invoke('chart:install'),
+    disable: () => invoke('chart:disable'),
+    remove: () => invoke('chart:remove'),
+  },
   update: { openUpdater: () => invoke('update:openUpdater') },
   auth: {
     status: () => invoke('auth:status'),

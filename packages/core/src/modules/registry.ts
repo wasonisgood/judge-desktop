@@ -2,9 +2,9 @@
 // 關鍵規則：更新或失敗某一個模組時，不會改動另一個模組的狀態。
 import { planUpdate, type FileManifest, type UpdatePlan } from '../local/updateDiff';
 
-export type ModuleId = 'ai-engine' | 'crawler';
+export type ModuleId = 'ai-engine' | 'crawler' | 'chart';
 
-export const MODULE_IDS: ModuleId[] = ['ai-engine', 'crawler'];
+export const MODULE_IDS: ModuleId[] = ['ai-engine', 'crawler', 'chart'];
 
 export type ModuleStatus = 'not-installed' | 'installing' | 'ready' | 'failed' | 'disabled';
 
@@ -38,6 +38,7 @@ export class ModuleRegistry {
     this.states = {
       'ai-engine': { ...emptyModuleState('ai-engine'), ...(initial?.['ai-engine'] ?? {}) },
       crawler: { ...emptyModuleState('crawler'), ...(initial?.crawler ?? {}) },
+      chart: { ...emptyModuleState('chart'), ...(initial?.chart ?? {}) },
     };
   }
 
@@ -52,8 +53,13 @@ export class ModuleRegistry {
   }
 
   toJSON(): Record<ModuleId, ModuleState> {
-    return { 'ai-engine': { ...this.states['ai-engine'] }, crawler: { ...this.states.crawler } };
+    return { 'ai-engine': { ...this.states['ai-engine'] }, crawler: { ...this.states.crawler }, chart: { ...this.states.chart } };
   }
+}
+
+/** 模組是否可供功能使用：只有 ready 才可用；未安裝、停用、安裝中、失敗都視為不可用（主程式照常運作）。 */
+export function isModuleReady(state: ModuleState | undefined | null): boolean {
+  return state?.status === 'ready';
 }
 
 /** 計算單一模組的更新計畫。核心檔案變動（fullRequired）時由呼叫端整包下載該模組。 */

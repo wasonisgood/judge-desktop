@@ -13,6 +13,7 @@ import { registerJobsIpc } from './jobsIpc';
 import { registerKnowledgeIpc } from './knowledgeIpc';
 import { registerDesignIpc } from './designIpc';
 import { registerCriteriaIpc } from './criteriaIpc';
+import { registerChartIpc } from './chartIpc';
 
 export function registerIpc(): void {
   registerAuthIpc();
@@ -29,4 +30,5 @@ export function registerIpc(): void {
   registerKnowledgeIpc();
   registerDesignIpc();
   registerCriteriaIpc();
+  registerChartIpc();
 }
