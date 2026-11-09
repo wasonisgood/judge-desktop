@@ -8,7 +8,7 @@
   "minimumVersion": "1.0.0",
   "mandatory": false,
   "notes": {
-    "zh": "・本地模組改為獨立的「本地模組安裝精靈」視窗：檢查、選擇方案、同意、安裝與註冊，完成後才回到主畫面。\n・新增「排除問題」：逐項檢查引擎、服務、模型、磁碟與網路，失敗項目附修復按鈕，可匯出診斷報告。\n・引擎改用 Ollama 官方 zip 並以 GitHub 提供的 SHA-256 校驗；支援 ARM64 與 x64。\n・既有的 Ollama 版本太舊時不沿用，改用本程式自己的新版引擎，原服務不受影響。\n・模組（分級規則與端點設定）可獨立更新，只下載變動檔案，驗證失敗自動回滾。\n・包含 3.0 的全部功能。",
-    "en": "・The local module now uses its own setup wizard window: check, choose, agree, install and register. The main window returns only after registration.\n・New troubleshooting: checks engine, service, models, disk and network step by step, with repair buttons; diagnostic reports can be exported.\n・The engine now uses the official Ollama zip, verified against the SHA-256 from GitHub; ARM64 and x64 are supported.\n・An outdated existing Ollama is not reused; the app installs its own newer engine, leaving the original service untouched.\n・Modules (tier rules and endpoints) update independently, downloading only changed files and rolling back on verification failure.\n・Includes all 3.0 features."
+    "zh": "・安裝程式與更新程式的文字已更正，完成頁可直接啟動應用程式，檔案被占用時會等待並說明原因。\n・模組精靈：可依序返回；安裝開始後不再回退；安裝在背景進行，關閉視窗不會中斷；可還原進度。\n・下載優先使用 Firebase Storage 鏡像，失敗時自動改用 GitHub，每個來源都必須通過 SHA-256 校驗。\n・設定頁顯示更新程式的狀態（執行中、閒置、上次檢查、最新版本）。\n・引擎已存在且相同時不重複下載或解壓。\n・包含 3.1 的全部功能。",
+    "en": "・Installer and updater text corrected; the finish page can launch the app directly, and files held by another program are retried with a clear explanation.\n・Module wizard: steps can be revisited until installation starts; installation runs in the background and survives closing the window; progress is restored on reopen.\n・Downloads prefer the Firebase Storage mirror and fall back to GitHub; every source must pass SHA-256 verification.\n・Settings shows the updater status (running, idle, last check, latest version).\n・An identical engine already on disk is not downloaded or extracted again.\n・Includes all 3.1 features."
   }
 }
