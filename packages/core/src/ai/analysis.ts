@@ -3,16 +3,30 @@
 import type { JudgmentDetail } from '../court/parse';
 import type { ScopeRow } from '../court/scope';
 import { DEFAULT_CODING_FIELDS, normalizeCodingFields, verifyCodedValues, type CodedValue, type CodingFieldInput } from '../pipeline/coding';
+import type { CodingReviewPolicy } from '../pipeline/coding-review';
 
 /** 呼叫 AI 的函式由呼叫端提供（桌面端、遠端 MCP 各自帶入自己的金鑰與服務）。 */
 export type AiComplete = (system: string, user: string, maxTokens: number) => Promise<string>;
 
 const MAX_BODY = 14000;
 
-function bodyOf(d: JudgmentDetail): string {
+/**
+ * 判決原文的顯示文字（依段落組成，未截斷）。依據驗證與「跳至原文」都以此為準：
+ * AI 看到的是它的前 MAX_BODY 字，依據必須取自那一段；畫面定位依據時使用同一份文字。
+ */
+export function judgmentBodyText(d: JudgmentDetail): string {
   const parts = Object.entries(d.sections).map(([k, v]) => `【${k}】\n${v}`);
-  const text = parts.length ? parts.join('\n\n') : d.fullText;
-  return text.slice(0, MAX_BODY);
+  return parts.length ? parts.join('\n\n') : d.fullText;
+}
+
+/** 判決內頁是否真的有原文（段落內容或全文至少一項有字）；空頁面（例如判決編號不存在）回傳 false。 */
+export function judgmentHasBody(d: JudgmentDetail): boolean {
+  return Object.values(d.sections ?? {}).some((v) => typeof v === 'string' && v.trim().length > 0)
+    || (typeof d.fullText === 'string' && d.fullText.trim().length > 0);
+}
+
+function bodyOf(d: JudgmentDetail): string {
+  return judgmentBodyText(d).slice(0, MAX_BODY);
 }
 
 /** 從 AI 回覆取出 JSON；允許前後有說明文字或 ``` 圍欄。 */
@@ -60,6 +74,8 @@ export interface AnalyzeCaseOptions {
   currentText?: string;
   /** 分析欄位（預設集或使用者自訂）；未提供時使用預設欄位。 */
   fields?: CodingFieldInput[];
+  /** 覆核規則的門檻（來自設定）；未提供時使用預設值。 */
+  reviewPolicy?: CodingReviewPolicy;
 }
 
 const LEGACY_KEYS = ['issue', 'holding', 'statuteApplication', 'outcome', 'group'] as const;
@@ -95,7 +111,7 @@ export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow
   const hasValues = reply && typeof reply === 'object' && Array.isArray((reply as { values?: unknown }).values);
   const normalized = hasValues ? reply : { values: fields.map((f) => ({ id: f.id, value: (reply as Record<string, unknown> | null)?.[f.id] })) };
   // 依據只能取自 AI 實際看過的原文（bodyOf 的上限內）：驗證範圍與提示詞一致，不會出現 AI 沒看過卻被採信的依據。
-  const values = verifyCodedValues(bodyOf(d), fields, normalized);
+  const values = verifyCodedValues(bodyOf(d), fields, normalized, opts.reviewPolicy);
   const byField = new Map(values.map((v) => [v.fieldId, v.value]));
   const legacy = Object.fromEntries(LEGACY_KEYS.map((k) => [k, byField.get(k) ?? '']));
   return { id: row.id, ...legacy, group: legacy.group || '未分類', values } as CaseAnalysis;

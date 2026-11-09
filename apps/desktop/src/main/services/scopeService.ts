@@ -9,7 +9,7 @@ import {
   currentTextForCitations, settleEach, newTrace, addStep, explainTrace, runQueryRounds, buildLawContext, buildClarifyOptions,
   raceAbort, isCancelError, normalizeCodingFields, DEFAULT_CODING_FIELDS, countPendingReview,
   scopeFlowNodes, explainScopeTrace,
-  type CitationRef, type CodingField, type CodingFieldInput, type ScopeFlowInput, type ScopeFlowNode,
+  type CitationRef, type CodingField, type CodingFieldInput, type CodingReviewPolicy, type ScopeFlowInput, type ScopeFlowNode,
   type CaseAnalysis, type CaseTypeStatus, type ClarifyOption, type CurrentLaw, type HistoryArticle, type PipelineTrace, type ScopeRow, type ScopeSynthesis, type AiComplete,
   type TraceExplanation,
 } from '@judge/core';
@@ -49,6 +49,8 @@ export interface ScopeRunArgs {
   ai?: string;
   /** 是否進行 AI 分析（逐案編碼與綜合）。關閉時只做傳統篩選。預設開啟。 */
   aiAnalysis?: boolean;
+  /** 覆核規則的門檻（由主程序從設定讀入，不由畫面傳入）；未提供時使用預設值。 */
+  reviewPolicy?: CodingReviewPolicy;
 }
 
 export interface ScopeProgress {
@@ -83,6 +85,8 @@ export interface ScopeRunDone {
   cancelled: boolean;
   /** 存入檔案管理失敗時的說明；結果仍在 sheets 中。 */
   saveError: string | null;
+  /** 存入檔案管理的項目 id：覆核狀態寫回時使用；存檔失敗時為 null。 */
+  libraryId: string | null;
   trace: PipelineTrace;
   explanation: TraceExplanation;
 }
@@ -224,7 +228,7 @@ export async function runScope(
     summary: `${sheets.length} 部，共 ${total} 筆${cancelled ? '（已取消，部分結果）' : ''}`,
     payload: { sheets, yearFrom: args.yearFrom, yearTo: args.yearTo, caseType: ct.caseType ?? null, trace: plainTrace(trace), flow, explanation },
   });
-  return { status: 'done', flow, sheets, notes, cancelled, saveError: save.saveError, trace: plainTrace(trace), explanation };
+  return { status: 'done', flow, sheets, notes, cancelled, saveError: save.saveError, libraryId: save.libraryId, trace: plainTrace(trace), explanation };
 }
 
 type OneStatuteOutcome = { kind: 'sheet'; sheet: ScopeSheet } | { kind: 'ask'; question: string; options: ClarifyOption[] };
@@ -331,7 +335,7 @@ async function analyzeRows(ctx: RunCtx, label: string, rows: ScopeRow[], current
     async (row) => {
       const d = await cachedDetail(row.id, client, args.jurisdiction);
       const currentText = currentLaw ? currentTextForCitations(currentLaw, row.citedArticles) : undefined;
-      return analyzeCase(ai, label, row, d, { currentText, fields });
+      return analyzeCase(ai, label, row, d, { currentText, fields, reviewPolicy: args.reviewPolicy });
     },
     (done, total) => onProgress({ statute: label, done, total, phase: 'AI 逐案編碼' }),
     signal,

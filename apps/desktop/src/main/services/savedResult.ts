@@ -1,16 +1,19 @@
 // 結果存檔（v3.6.0）：存入檔案管理失敗（磁碟滿、權限）時，結果仍要交給畫面，並回報存檔錯誤，不能讓已花費的 AI 額度白費。
+// 回傳存入的項目 id（之後覆核狀態寫回時使用）；存檔失敗時 id 為 null。
 import { library } from '../data/local/libraryAccess';
 
 export interface SaveOutcome {
   /** null 表示已存入檔案管理；否則為中文說明。 */
   saveError: string | null;
+  /** 存入的檔案項目 id；存檔失敗時為 null。 */
+  libraryId: string | null;
 }
 
 export async function saveToLibrary(entry: Parameters<ReturnType<typeof library>['add']>[0]): Promise<SaveOutcome> {
   try {
-    await library().add(entry);
-    return { saveError: null };
+    const item = await library().add(entry);
+    return { saveError: null, libraryId: item.id };
   } catch (err) {
-    return { saveError: `未能存入「檔案」（${err instanceof Error ? err.message : String(err)}），結果仍顯示於畫面，請及時匯出。` };
+    return { saveError: `未能存入「檔案」（${err instanceof Error ? err.message : String(err)}），結果仍顯示於畫面，請及時匯出。`, libraryId: null };
   }
 }

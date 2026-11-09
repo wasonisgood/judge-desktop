@@ -40,6 +40,9 @@
     $('setCacheDays').value = s.cacheDays;
     $('setCrawlInterval').value = s.crawlIntervalSec || 3;
     $('setMaxItems').value = s.defaultMaxItems;
+    var rp = s.scopeReviewPolicy || {};
+    $('setReviewMinEvidence').value = rp.minEvidence !== undefined ? rp.minEvidence : 1;
+    $('setReviewMaxDropped').value = rp.maxDroppedEvidence !== undefined ? rp.maxDroppedEvidence : 0;
     $('listMax').value = s.defaultMaxItems;
     $('setLocalAi').checked = s.localAiEnabled !== false;
   };

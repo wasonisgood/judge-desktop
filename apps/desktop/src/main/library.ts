@@ -38,6 +38,18 @@ export function updateItem(items: LibraryItem[], id: string, patch: LibraryPatch
   return items.map((it) => (it.id === id ? { ...it, ...patch } : it));
 }
 
+/**
+ * 更新已保存項目的結果內容（例如範圍整理表的覆核狀態）：只合併 payload 的指定欄位，其餘（如處理流程紀錄）保留。
+ * 找不到 id 時原樣回傳（不新增）。
+ */
+export function mergePayloadItem(items: LibraryItem[], id: string, patch: Record<string, unknown>): LibraryItem[] {
+  return items.map((it) => {
+    if (it.id !== id) return it;
+    const base = it.payload && typeof it.payload === "object" ? (it.payload as Record<string, unknown>) : {};
+    return { ...it, payload: { ...base, ...patch } };
+  });
+}
+
 /** 只有已在垃圾桶中的項目可以永久刪除（不做 I/O）。 */
 export function removeTrashed(items: LibraryItem[], id: string): { items: LibraryItem[]; removed: boolean } {
   const target = items.find((it) => it.id === id);
@@ -89,6 +101,15 @@ export class LibraryStore {
     await this.load();
     this.items = updateItem(this.items, id, patch);
     await this.save();
+  }
+
+  /** 合併更新已保存項目的結果內容；回傳是否找到該項目。 */
+  async mergePayload(id: string, patch: Record<string, unknown>): Promise<boolean> {
+    await this.load();
+    if (!this.items.some((it) => it.id === id)) return false;
+    this.items = mergePayloadItem(this.items, id, patch);
+    await this.save();
+    return true;
   }
 
   async removePermanently(id: string): Promise<boolean> {

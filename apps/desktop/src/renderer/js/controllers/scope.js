@@ -7,11 +7,8 @@
   var api = window.api;
   var state = JR.state;
   var PAGE = 'scope';
-  // 尚未接入的功能：等對應分支合併後才會出現在流程中，這裡只說明，不產生任何處理步驟。
-  var PENDING_NOTES = [
-    '案件類型篩選：尚未接入，等案件類型分支（feat/case-type-handoff）合併後接入。',
-    '覆核：尚未接入，等覆核 UI 分支（feat/coding-review）合併後接入。'
-  ];
+  // 尚未接入的功能說明（v4.0.0：案件類型篩選與覆核皆已接入，目前沒有待接入項目）。
+  var PENDING_NOTES = [];
 
   function statuteLines() {
     return $('scopeLines').value.split(/\n/).map(function (s) { return s.trim(); }).filter(Boolean);
@@ -153,26 +150,149 @@
     }
   }
 
+  // ---- 覆核（v4）：每個操作送到主程序套用（核心純函式），並寫回「檔案」中的這筆結果。
+  // 畫面只保存「還原上一步」需要的格子清單（會話內）；每個格子的操作紀錄保存在結果資料中，可隨時還原。
+  var review = { busy: false };
+
+  function canRunReview() {
+    if (!review.busy) return true;
+    JR.setStatus($('scopeStatus'), '覆核處理中，請稍候。', 'error');
+    return false;
+  }
+
+  function reviewUi() {
+    return {
+      summaries: state.scopeSummaries || [],
+      openPanels: state.scopeOpenPanels || {},
+      editing: state.scopeEditing || null,
+      filters: state.scopeFilters || {},
+      canUndo: (state.scopeUndo || []).length > 0,
+      actions: reviewActions
+    };
+  }
+
+  function renderResult() { JR.views.renderScope(state.scopeSheets, reviewUi()); }
+
+  function reviewMessage(op, n) {
+    if (op.kind === 'accept') return '已接受 1 格。';
+    if (op.kind === 'edit') return '已修改並接受（AI 原文保留，可還原）。';
+    if (op.kind === 'reject') return '已駁回 1 格（內容保留，標示為已駁回）。';
+    if (op.kind === 'batch-accept') return '已批次接受 ' + n + ' 格高信心結果（可用「還原上一步」撤銷）。';
+    return '已還原 ' + n + ' 格。';
+  }
+
+  function sameCell(a, b) { return a.sheetIndex === b.sheetIndex && a.caseId === b.caseId && a.fieldId === b.fieldId; }
+
+  /** 還原單一格時，從會話的還原清單中移除最近一筆該格的紀錄，避免之後的「還原上一步」重複撤銷。 */
+  function removeOneFromStack(cell) {
+    var stack = state.scopeUndo || [];
+    for (var i = stack.length - 1; i >= 0; i--) {
+      var idx = stack[i].findIndex(function (c) { return sameCell(c, cell); });
+      if (idx >= 0) {
+        stack[i].splice(idx, 1);
+        if (stack[i].length === 0) stack.splice(i, 1);
+        return;
+      }
+    }
+  }
+
+  function runReview(op, onFail) {
+    if (!canRunReview()) { if (onFail) onFail(); return; }
+    review.busy = true;
+    var status = $('scopeStatus');
+    var sheetsBefore = state.scopeSheets;
+    api.scope.review({ libraryId: state.scopeLibraryId || null, sheets: sheetsBefore, op: op }).then(function (r) {
+      // 執行中若已載入另一份結果，就不套用舊結果。
+      if (state.scopeSheets !== sheetsBefore) return;
+      state.scopeSheets = r.sheets;
+      state.scopeSummaries = r.summaries;
+      if (op.kind !== 'undo' && r.changed.length) state.scopeUndo.push(r.changed);
+      renderResult();
+      var msg = reviewMessage(op, r.changed.length);
+      if (r.saveError) JR.setStatus(status, msg + '　' + r.saveError, 'error');
+      else JR.setStatus(status, msg, 'ok');
+    }).catch(function (err) {
+      if (onFail) onFail();
+      JR.setStatus(status, '覆核失敗：' + JR.errText(err), 'error');
+    }).then(function () { review.busy = false; });
+  }
+
+  var reviewActions = {
+    accept: function (cell) { runReview({ kind: 'accept', cell: cell }); },
+    reject: function (cell) { runReview({ kind: 'reject', cell: cell }); },
+    edit: function (cell, value) {
+      if (!String(value || '').trim()) {
+        JR.setStatus($('scopeStatus'), '修改後的內容不可為空白。', 'error');
+        return;
+      }
+      state.scopeEditing = null;
+      runReview({ kind: 'edit', cell: cell, value: value });
+    },
+    batch: function (si) { runReview({ kind: 'batch-accept', sheetIndex: si }); },
+    undoLast: function () {
+      if (!canRunReview()) return;
+      var stack = state.scopeUndo || [];
+      var cells = stack.pop();
+      if (!cells) return;
+      runReview({ kind: 'undo', cells: cells }, function () { stack.push(cells); });
+    },
+    undo: function (cells) {
+      if (!canRunReview()) return;
+      removeOneFromStack(cells[0]);
+      runReview({ kind: 'undo', cells: cells });
+    },
+    startEdit: function (key) { state.scopeEditing = key; renderResult(); },
+    cancelEdit: function () { state.scopeEditing = null; renderResult(); },
+    togglePanel: function (key) {
+      state.scopeOpenPanels[key] = !state.scopeOpenPanels[key];
+      renderResult();
+    },
+    setFilter: function (si, value) { state.scopeFilters[si] = value; renderResult(); },
+    /** 跳至原文（應用程式內）：取得判決全文（快取優先）並在視窗中定位依據；取得失敗或找不到時說明原因。 */
+    openSource: function (judgmentId, quote) {
+      var status = $('scopeStatus');
+      JR.setStatus(status, '正在取得判決原文…');
+      api.scope.judgmentText({ id: judgmentId, quote: quote }).then(function (view) {
+        JR.components.judgmentDialog(view, quote);
+        JR.setStatus(status, view && view.ok ? (view.message || '') : (view && view.error) || '', view && view.ok && view.span ? 'ok' : 'error');
+      }).catch(function (err) {
+        JR.setStatus(status, '無法開啟原文：' + JR.errText(err), 'error');
+      });
+    }
+  };
+
   JR.controllers.scope = {
     /**
      * 從「檔案」開啟已保存的結果：流程與說明隨結果保存。舊結果沒有流程紀錄時，明確說明它產生於紀錄功能加入之前。
      * 先設定流程狀態，再顯示結果（按鈕前置條件會讀取這些狀態）。
      */
-    showSaved: function (p) {
+    showSaved: function (p, libraryId) {
       state.scopeExplanation = p.explanation || {
         title: '標編碼標注工序：處理流程說明',
         paragraphs: ['此結果產生於紀錄功能加入之前，沒有處理流程紀錄。']
       };
       state.scopeFlow = p.flow || [];
-      JR.controllers.scope.showResult(p.sheets || [], p.yearFrom, p.yearTo);
+      JR.controllers.scope.showResult(p.sheets || [], p.yearFrom, p.yearTo, libraryId);
     },
-    /** 供助理與「檔案」頁面重新開啟結果。 */
-    showResult: function (sheets, from, to) {
+    /** 供助理與「檔案」頁面重新開啟結果；libraryId 為「檔案」中的項目 id（覆核狀態寫回用）。 */
+    showResult: function (sheets, from, to, libraryId) {
       state.scopeSheets = sheets;
       state.scopeFrom = from;
       state.scopeTo = to;
-      JR.views.renderScope(sheets);
+      state.scopeLibraryId = libraryId || null;
+      state.scopeUndo = [];
+      state.scopeOpenPanels = {};
+      state.scopeEditing = null;
+      state.scopeFilters = {};
+      state.scopeSummaries = null;
+      renderResult();
       refreshControls();
+      // 取得覆核摘要（待覆核數、高信心數）；不改動結果。
+      api.scope.review({ sheets: sheets }).then(function (r) {
+        if (state.scopeSheets !== sheets) return;
+        state.scopeSummaries = r.summaries;
+        renderResult();
+      }).catch(function () { /* 沒有摘要時仍可瀏覽結果 */ });
     },
     bind: function () {
       // 分析欄位設定：從設定讀入（預設集與自訂欄位、順序、勾選）。讀取失敗時使用預設欄位。
@@ -247,7 +367,7 @@
             JR.setStatus($('scopeStatus'), r.question);
             return;
           }
-          JR.controllers.scope.showResult(r.sheets, from, to);
+          JR.controllers.scope.showResult(r.sheets, from, to, r.libraryId);
           var total = r.sheets.reduce(function (n, s) { return n + s.rows.length; }, 0);
           // 把結果摘要交給助理，讓它能接著討論（助理只看得到對話紀錄，看不到畫面）。
           state.assistHistory.push({ role: 'user', text: '[系統通知] 標編碼標注工序已完成。' + r.sheets.map(function (sh) {
