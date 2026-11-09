@@ -1,5 +1,6 @@
 // 引擎檔案：下載 Ollama 官方發佈檔（可續傳、SHA-256 校驗）、安全解壓到 engine/bin、找出執行檔。
-// Windows 用 zip（adm-zip）；macOS 用 tgz、Linux 用 tar.zst，皆以系統的 tar 解壓（先列出內容檢查路徑）。
+// Windows 用 zip（adm-zip）；macOS 用 tgz；Linux 用 tar.zst（純 JavaScript 解壓成 tar，不需要系統的 zstd）。
+// tgz 與 tar 皆以系統的 tar 解開，解開前先列出內容檢查路徑。
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
 import * as fsSync from 'node:fs';
@@ -11,6 +12,7 @@ import { engineRoot } from '../data/local/localPaths';
 import { readEngine } from '../data/local/engineStore';
 import { fetchLatestAsset } from '../data/cloud/releaseSource';
 import { runCommand } from '../data/local/system';
+import { decompressZstdFile } from './zstdArchive';
 import type { StageEvent } from './jobBus';
 
 // adm-zip 是既有依賴，以 CommonJS 方式載入。
@@ -33,19 +35,24 @@ export async function findExe(dir: string, exeName: string = ollamaExeName(platf
 
 const EXTRACT_TIMEOUT_MS = 15 * 60_000;
 
-/** 解壓 tgz 或 tar.zst（系統的 tar）。先列出內容，任何不安全的路徑都會拒絕。 */
+/**
+ * 解壓 tgz 或 tar.zst。tar.zst 先以純 JavaScript 串流解成 .tar（不需要系統安裝 zstd），
+ * 再以系統的 tar 解開。兩者都先列出內容，任何不安全的路徑都會拒絕。
+ */
 async function extractWithTar(kind: 'tgz' | 'tar.zst', file: string, dest: string): Promise<void> {
-  const zst = kind === 'tar.zst';
-  const zstArgs = zst ? ['--zstd'] : [];
+  let tarFile = file;
+  if (kind === 'tar.zst') {
+    tarFile = file.replace(/\.zst$/, '');
+    await decompressZstdFile(file, tarFile);
+  }
   try {
-    const listing = await runCommand('tar', [...zstArgs, '-tf', file], EXTRACT_TIMEOUT_MS);
+    const listing = await runCommand('tar', ['-tf', tarFile], EXTRACT_TIMEOUT_MS);
     for (const name of listing.split(/\r?\n/)) {
       if (name && !isSafeZipEntry(name)) throw new Error(`引擎壓縮檔含不安全的路徑：${name}`);
     }
-    await runCommand('tar', [...zstArgs, '-xf', file, '-C', dest], EXTRACT_TIMEOUT_MS);
-  } catch (err) {
-    if (zst) throw new Error('解壓 Linux 引擎需要系統安裝 zstd（例如 Debian／Ubuntu 執行 sudo apt install zstd）', { cause: err });
-    throw err;
+    await runCommand('tar', ['-xf', tarFile, '-C', dest], EXTRACT_TIMEOUT_MS);
+  } finally {
+    if (kind === 'tar.zst') await fs.rm(tarFile, { force: true });
   }
 }
 
@@ -58,9 +65,12 @@ function extractZip(file: string, dest: string): void {
   zip.extractAllTo(dest, true);
 }
 
-/** 下載官方發佈檔（可續傳、SHA-256 校驗）並解壓到 engine/bin。回傳執行檔路徑與發佈檔摘要。 */
-export async function installEngineFiles(arch: NativeArch, send: (ev: StageEvent) => void): Promise<{ exe: string; zipSha256: string; asset: string }> {
-  const assetName = ollamaAssetFor(arch, platform());
+/**
+ * 下載官方發佈檔（可續傳、SHA-256 校驗）並解壓到 engine/bin。回傳執行檔路徑與發佈檔摘要。
+ * gpuVendor 為 'amd' 且顯存足以加速時，Linux 會改用 ROCm 版本（其餘情況傳 'none'）。
+ */
+export async function installEngineFiles(arch: NativeArch, send: (ev: StageEvent) => void, gpuVendor: string = 'none'): Promise<{ exe: string; zipSha256: string; asset: string }> {
+  const assetName = ollamaAssetFor(arch, platform(), gpuVendor);
   if (!assetName) throw new Error(`不支援的 CPU 架構 ${arch}，無法安裝本地引擎`);
   const asset = await fetchLatestAsset(assetName);
   const archiveFile = path.join(engineRoot(), 'download', assetName);

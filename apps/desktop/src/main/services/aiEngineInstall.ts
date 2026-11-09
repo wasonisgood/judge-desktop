@@ -87,7 +87,9 @@ async function installAiEngineModuleCore(plan: LocalPlan, send: (ev: StageEvent)
     stage = 'installEngine';
     if (mode === 'own' && !(await getOllamaVersion({ baseUrl: OWN_BASE })) || opts.forceOwnEngine) {
       await ev(stage, 'start');
-      const installed = await installEngineFiles(arch, (e) => send({ ...e, module: AI_ENGINE_MODULE_ID }));
+      // AMD 獨立顯卡且顯存足夠時才使用 ROCm 版本，與方案的加速判斷一致。
+      const accelVendor = hw.gpuVendor === 'amd' && hw.vramGB >= rules.dualModelMinVramGB ? 'amd' : 'none';
+      const installed = await installEngineFiles(arch, (e) => send({ ...e, module: AI_ENGINE_MODULE_ID }), accelVendor);
       const exeSha = await sha256File(installed.exe);
       engine = { ...EMPTY_ENGINE, mode: 'own', baseUrl: OWN_BASE, asset: installed.asset, arch, zipSha256: installed.zipSha256, exePath: installed.exe, exeSha256: exeSha, installedAt: new Date().toISOString() };
       await writeEngine(engine);

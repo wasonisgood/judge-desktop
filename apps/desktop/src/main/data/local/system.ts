@@ -6,7 +6,8 @@ import * as fs from 'node:fs/promises';
 import * as os from 'node:os';
 import {
   nativeArchFromWmi, parseHardware, parseSignatureJson, archFromNodeArch, archFromUname,
-  type HardwareInfo, type NativeArch,
+  parseLspciGpus, parseNvidiaSmi, parseSystemProfilerGpus,
+  type HardwareInfo, type NativeArch, type GpuEntry,
 } from '@judge/core';
 
 export function runPowerShell(script: string, timeoutMs = 30_000): Promise<string> {
@@ -90,15 +91,66 @@ export async function detectHardware(): Promise<HardwareInfo> {
   }
   if (process.platform === 'darwin') {
     const totalMemoryBytes = Number(await runCommand('sysctl', ['-n', 'hw.memsize']));
-    // macOS 的 Metal 顯卡為系統共用記憶體；Ollama 會以 Metal 加速，此處不另外偵測，以 CPU 方案計算（保守）。
-    return parseHardware({ totalMemoryBytes, freeDiskBytes: await freeDiskBytes(), gpus: [] });
+    return parseHardware({ totalMemoryBytes, freeDiskBytes: await freeDiskBytes(), gpus: await macGpus() });
   }
   if (process.platform === 'linux') {
     const totalMemoryBytes = parseMemTotalBytes(await fs.readFile('/proc/meminfo', 'utf8'));
-    // 未偵測獨立顯卡：以 CPU 方案計算（保守）。
-    return parseHardware({ totalMemoryBytes, freeDiskBytes: await freeDiskBytes(), gpus: [] });
+    return parseHardware({ totalMemoryBytes, freeDiskBytes: await freeDiskBytes(), gpus: await linuxGpus() });
   }
   throw new Error('本地 AI 不支援此作業系統');
+}
+
+/**
+ * macOS 顯卡：system_profiler 取得名稱；Apple Silicon 的 GPU 以統一記憶體運作（Metal 加速），
+ * 即使 system_profiler 失敗，也以原生架構為 arm64 時補上 Apple GPU。查詢失敗不會中斷偵測。
+ */
+async function macGpus(): Promise<GpuEntry[]> {
+  let gpus: GpuEntry[] = [];
+  try {
+    gpus = parseSystemProfilerGpus(await runCommand('system_profiler', ['SPDisplaysDataType', '-json'], 30_000));
+  } catch { /* 查詢失敗：改用架構判斷 */ }
+  if (gpus.length === 0 && (await detectNativeArch()) === 'arm64') {
+    gpus = [{ name: 'Apple GPU', adapterRamBytes: 0 }];
+  }
+  return gpus;
+}
+
+/**
+ * Linux 顯卡：lspci 取得廠商與型號；NVIDIA 另以 nvidia-smi 取得顯存；AMD 以 amdgpu 的 sysfs 取得顯存。
+ * 任一工具不存在都只是少了資訊，不會中斷偵測。
+ */
+async function linuxGpus(): Promise<GpuEntry[]> {
+  const gpus: GpuEntry[] = [];
+  try {
+    gpus.push(...parseNvidiaSmi(await runCommand('nvidia-smi', ['--query-gpu=name,memory.total', '--format=csv,noheader,nounits'])));
+  } catch { /* 沒有 NVIDIA 驅動 */ }
+  let lspci: GpuEntry[] = [];
+  try {
+    lspci = parseLspciGpus(await runCommand('lspci', ['-mm']));
+  } catch { /* 沒有 pciutils */ }
+  const hasNvidia = gpus.length > 0;
+  const amdVram = await amdgpuVramBytes();
+  for (const g of lspci) {
+    if (/nvidia/i.test(g.name) && hasNvidia) continue; // 已由 nvidia-smi 取得
+    if (/amd|ati|radeon/i.test(g.name) && amdVram > 0) g.adapterRamBytes = amdVram;
+    gpus.push(g);
+  }
+  return gpus;
+}
+
+/** amdgpu 驅動的顯存（sysfs），取所有 AMD 顯卡中最大的一個；讀不到回傳 0。 */
+async function amdgpuVramBytes(): Promise<number> {
+  let best = 0;
+  try {
+    for (const card of await fs.readdir('/sys/class/drm')) {
+      if (!/^card\d+$/.test(card)) continue;
+      try {
+        const v = Number((await fs.readFile(`/sys/class/drm/${card}/device/mem_info_vram_total`, 'utf8')).trim());
+        if (Number.isFinite(v) && v > best) best = v;
+      } catch { /* 非 amdgpu */ }
+    }
+  } catch { /* 沒有 drm */ }
+  return best;
 }
 
 /** Windows 的 Authenticode 簽章狀態；其他作業系統不檢查（回傳 null）。 */
