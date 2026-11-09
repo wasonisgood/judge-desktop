@@ -86,3 +86,6 @@ export * from './chart/data';
 export * from './chart/svg';
 export * from './chart/tiles';
 export * from './pipeline/criteria';
+export * from './court/passages';
+export * from './ai/semanticRank';
+export * from './ai/scopedQa';
