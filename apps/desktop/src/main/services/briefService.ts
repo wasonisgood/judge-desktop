@@ -13,6 +13,7 @@ import { cachedDetail } from '../data/cloud/courtRepo';
 import { exportDir } from './exportService';
 import { lawContextForCitations } from './lawContext';
 import { knowledgeContextWithReview } from './knowledgeService';
+import { resolveCaseTypeArg, briefCaseTypeCheck } from './caseTypeArgs';
 
 export interface AnnotateResult {
   files: string[];
@@ -55,7 +56,7 @@ export async function annotateOriginalPdf(d: JudgmentDetail, doc: BriefDocument)
 
 /** 精讀（v3.6.0）：取消時不產生文書（丟出「已取消」）；AI 完成後的存檔失敗只回報，不丟失結果。 */
 export async function runBrief(
-  args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[]; jurisdiction?: string },
+  args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[]; jurisdiction?: string; caseType?: string },
   ai: AiComplete,
   signal?: AbortSignal,
 ) {
@@ -63,6 +64,19 @@ export async function runBrief(
   const d = await cachedDetail(args.judgmentId, undefined, args.jurisdiction);
   if (signal?.aborted) throw new JobCancelledError();
   addStep(trace, { stage: '取得判決內頁', module: 'rule', input: args.judgmentId, output: `${d.fullText.length} 字`, decision: 'pass', reason: '判決原文已取得' });
+  // 案件類型：精讀沒有篩選，指定的類型作為重點提示交給 AI，並依字號檢查是否相符（只提醒，不阻擋）。
+  const ct = resolveCaseTypeArg(args.caseType);
+  const typeCheck = briefCaseTypeCheck(d.meta.title || '', ct.caseType);
+  const caseTypeNote = [ct.note, typeCheck.note].filter(Boolean).join('；') || null;
+  if (typeCheck.status !== 'none') {
+    addStep(trace, {
+      stage: '案件類型檢查', module: 'rule', input: ct.caseType ?? '未指定',
+      output: typeCheck.judged ? `字號判定為${typeCheck.judged}` : '字號無法判定',
+      decision: typeCheck.status === 'match' ? 'pass' : 'skip',
+      reason: typeCheck.note ?? '',
+    });
+  }
+  const aiFocus = [args.focus ?? '', typeCheck.focusHint].filter(Boolean).join('；');
   const fields = normalizeBriefFields(args.fields ?? []);
   // 法規上下文（issue #4 第 4 點）：判決引用的法條現行內容與沿革交給 AI 判讀。
   const lc = await lawContextForCitations(d.relatedLaws ?? []);
@@ -81,7 +95,7 @@ export async function runBrief(
   });
   let doc: BriefDocument;
   try {
-    doc = await raceAbort(briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined, lawContext: lawText || undefined }), signal);
+    doc = await raceAbort(briefJudgment(ai, d, { focus: aiFocus, length: args.lengthHint, fields: fields.length ? fields : undefined, lawContext: lawText || undefined }), signal);
   } catch (err) {
     if (signal?.aborted) throw new JobCancelledError();
     throw toUserError(err);
@@ -108,5 +122,5 @@ export async function runBrief(
     output: annotated.error ? `未完成：${annotated.error}` : `${annotated.files.length} 份 Word，標示 ${"quotes" in annotated ? annotated.quotes : 0} 則引文`,
     decision: annotated.error ? 'skip' : 'pass', reason: annotated.error ? '標示失敗不影響精讀文書' : '原版標示完成',
   });
-  return { detail: d, doc, annotated, saveError: save.saveError, lawNotes: lc.notes, trace, explanation: explainTrace(trace) };
+  return { detail: d, doc, annotated, saveError: save.saveError, lawNotes: lc.notes, caseTypeNote, trace, explanation: explainTrace(trace) };
 }

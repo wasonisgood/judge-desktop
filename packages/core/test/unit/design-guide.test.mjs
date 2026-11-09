@@ -76,17 +76,46 @@ test('摘要：缺漏會寫進限制；人工篩選條件獨立列出；每步�
   s = answerSlot(s, 'caseType', '民事', NOW);
   const sum = buildDesignSummary(s);
   assert.ok(sum.limitations.some((l) => l.includes('尚未決定：研究對象')));
-  assert.deepEqual(sum.manualFilters, ['案件類型：民事']);
+  assert.equal(sum.caseType, '民事');
+  assert.deepEqual(sum.manualFilters, [], '案件類型已可自動套用，不再列為人工篩選（法院層級仍需人工）');
   assert.equal(sum.rationales.length, 1);
   const text = designSummaryText(sum);
   assert.match(text, /研究問題：消費者訴訟中律師代理的效果如何？/);
-  assert.match(text, /需人工篩選：案件類型：民事/);
+  assert.match(text, /案件類型：民事/);
+  assert.doesNotMatch(text, /需人工篩選：案件類型/, '案件類型已可自動套用，不應列為人工篩選');
+});
+
+test('案件類型建議：三個互斥選項，各自帶明確 caseType；未接受前不改動欄位', () => {
+  let s = newSession('問題', NOW);
+  s = answerSlot(s, 'question', '消費者訴訟中律師代理的效果如何？', NOW);
+  s = answerSlot(s, 'statute', '消費者保護法', NOW);
+  const ct = suggestNarrowing(s.slots).filter((x) => x.dimension === 'caseType');
+  assert.deepEqual(ct.map((x) => x.patch.caseType), ['民事', '刑事', '行政'], '三個選項都必須有明確的 caseType，不再是空 patch');
+  for (const x of ct) {
+    assert.ok(x.rationale.length > 10, '每個選項都要附理由');
+    assert.ok(x.tradeoff.length > 5, '每個選項都要寫代價');
+    assert.match(x.text, /擇一/);
+  }
+  assert.equal(s.slots.caseType, undefined, '未接受前不得改動案件類型');
+  const applied = acceptSuggestion(s, ct[0], NOW);
+  assert.equal(applied.slots.caseType, '民事');
+  assert.equal(suggestNarrowing(applied.slots).some((x) => x.dimension === 'caseType'), false, '已有案件類型後不再建議');
+});
+
+test('摘要帶入範圍整理：案件類型帶入 caseType；無法對應的字串不帶入', () => {
+  const ok = summaryToScopeOptions({ problem: 'x', statute: '消費者保護法', caseType: '刑事案件' });
+  assert.equal(ok.caseType, '刑事');
+  const bad = summaryToScopeOptions({ problem: 'x', statute: '消費者保護法', caseType: '民事或刑事' });
+  assert.equal(bad.caseType, undefined);
+  assert.equal('caseType' in bad, false);
+  const sum = buildDesignSummary({ ...newSession('x', NOW), slots: { problem: 'x', caseType: '民事或刑事' } });
+  assert.match(sum.caseType, /無法對應/);
 });
 
 test('摘要帶入範圍整理：需要法規才能帶入；只帶可自動套用的條件', () => {
   assert.equal(summaryToScopeOptions({ problem: 'x' }), null);
   const opts = summaryToScopeOptions({ problem: 'x', question: '律師代理的效果？', statute: '消費者保護法', yearFrom: 2018, yearTo: 2023, caseType: '民事' });
-  assert.deepEqual(opts, { statute: '消費者保護法', yearFrom: 2018, yearTo: 2023, searchQuery: '律師代理的效果？' });
+  assert.deepEqual(opts, { statute: '消費者保護法', yearFrom: 2018, yearTo: 2023, searchQuery: '律師代理的效果？', caseType: '民事' });
 });
 
 test('助理不會自動改動篩選條件：建議的 patch 只在 acceptSuggestion 時寫入', () => {

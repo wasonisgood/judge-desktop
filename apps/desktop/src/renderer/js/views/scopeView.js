@@ -25,9 +25,12 @@
         });
         block.appendChild(syn);
       }
+      if (sh.caseType) {
+        block.appendChild(el('p', 'hint', '案件類型：' + sh.caseType.type + '（依判決字號篩選，排除 ' + sh.caseType.excluded + ' 筆；「重疊」「未知」的字號不會被納入）'));
+      }
       var wrap = el('div', 'table-wrap');
       var table = el('table', 'table');
-      table.innerHTML = '<thead><tr><th>序號</th><th>裁判字號</th><th>裁判日期</th><th>類型</th><th>爭點</th><th>法院見解</th><th>結論</th><th>引用條文</th><th>法條異動</th><th>歷審位置</th><th>操作</th></tr></thead>';
+      table.innerHTML = '<thead><tr><th>序號</th><th>裁判字號</th><th>字號類型</th><th>裁判日期</th><th>類型</th><th>爭點</th><th>法院見解</th><th>結論</th><th>引用條文</th><th>法條異動</th><th>歷審位置</th><th>操作</th></tr></thead>';
       var tbody = el('tbody');
       var byId = {};
       (sh.analyses || []).forEach(function (a) { byId[a.id] = a; });
@@ -35,7 +38,7 @@
         var a = byId[r.id] || {};
         var notes = (r.lawNotes || []).map(function (n) { return n.summary; }).join('\n');
         var tr = el('tr');
-        [String(i + 1), r.title, r.dateIso || '', a.group || '', a.issue || '', a.holding || '', a.outcome || '', r.citedArticles.join('；'), notes, r.historyPosition || ''].forEach(function (text, j) {
+        [String(i + 1), r.title, r.caseTypeLabel || '', r.dateIso || '', a.group || '', a.issue || '', a.holding || '', a.outcome || '', r.citedArticles.join('；'), notes, r.historyPosition || ''].forEach(function (text, j) {
           tr.appendChild(el('td', j === 0 ? 'num' : '', text));
         });
         var bt = el('td');

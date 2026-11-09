@@ -71,7 +71,8 @@
           JR.components.clarifyHide($('scopeClarify'));
           var r = await api.scope.run({
             runId: runId, statutes: statutes, yearFrom: from, yearTo: to, maxItems: max,
-            jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value, aiAnalysis: $('scopeAiOn').checked
+            jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value, aiAnalysis: $('scopeAiOn').checked,
+            caseType: $('scopeCaseType').value
           });
           state.scopeExplanation = r.explanation;
           $('scopeExplain').disabled = !r.explanation;
