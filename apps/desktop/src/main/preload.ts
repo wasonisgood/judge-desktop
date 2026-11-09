@@ -49,6 +49,28 @@ contextBridge.exposeInMainWorld('api', {
     run: (args: unknown) => invoke('brief:run', args),
     export: (args: unknown) => invoke('export:brief', args),
   },
+  worker: {
+    list: () => invoke('worker:list'),
+    enqueue: (args: unknown) => invoke('worker:enqueue', args),
+    resume: (args: { id: string }) => invoke('worker:resume', args),
+    discard: (args: { id: string }) => invoke('worker:discard', args),
+    cancel: (args: { id: string }) => invoke('worker:cancel', args),
+    settingsGet: () => invoke('worker:settings:get'),
+    settingsSet: (patch: unknown) => invoke('worker:settings:set', patch),
+    test: () => invoke('worker:test'),
+    onChanged: (cb: (list: unknown) => void) => {
+      ipcRenderer.on('worker:changed', (_e, list) => cb(list));
+    },
+    onOpen: (cb: (p: { page: string }) => void) => {
+      ipcRenderer.on('worker:open', (_e, p) => cb(p));
+    },
+    notice: {
+      click: (page: string) => invoke('worker:notice:click', { page }),
+      dismiss: () => invoke('worker:notice:dismiss'),
+      hold: () => invoke('worker:notice:hold'),
+      leave: () => invoke('worker:notice:leave'),
+    },
+  },
   update: { openUpdater: () => invoke('update:openUpdater') },
   auth: {
     status: () => invoke('auth:status'),

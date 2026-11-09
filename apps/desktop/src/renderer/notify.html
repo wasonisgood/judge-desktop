@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>背景工作通知</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/notify.css">
+</head>
+<body class="notify-body">
+<article class="toast" id="toast" data-kind="done" tabindex="0" role="status" aria-live="polite">
+  <header class="toast-head">
+    <span class="toast-app">司法院裁判研究</span>
+    <span class="toast-status" id="toastStatus"></span>
+    <button class="toast-x" id="toastClose" type="button" aria-label="關閉通知">×</button>
+  </header>
+  <h2 class="toast-title" id="toastTitle"></h2>
+  <p class="toast-body" id="toastBody"></p>
+  <footer class="toast-foot">點擊開啟對應頁面</footer>
+</article>
+<script src="js/notify.js"></script>
+</body>
+</html>

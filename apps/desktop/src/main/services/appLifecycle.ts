@@ -8,12 +8,11 @@ import { setJobListeners, runningCount, type JobInfo } from './jobRegistry';
 import { readModuleStatus } from '../data/local/registryStore';
 import { setModule } from './moduleState';
 import type { ModuleId } from '@judge/core';
+import { isWorkerManagedJob, getWorkerSettings } from './workerService';
+import { buildNotice, chooseChannel, pageForJobKind, shouldNotify } from './workerNotify';
+import { deliverNotice } from './workerNotifier';
 
 let quitAfterJobs = false;
-
-const STATUS_TEXT: Record<JobInfo['status'], string> = {
-  running: '執行中', done: '已完成', cancelled: '已取消', failed: '失敗',
-};
 
 export function initLifecycle(): void {
   setJobListeners(
@@ -28,11 +27,21 @@ export function initLifecycle(): void {
   );
 }
 
+/** 工作結束時的通知（v3.9.0 起走背景工人的通道選擇：自訂視窗或系統通知，點擊開啟對應頁面）。 */
 function notifyIfHidden(info: JobInfo): void {
+  // 背景工人管理的工作由工人自行通知（含結果摘要），這裡不重複通知。
+  if (isWorkerManagedJob(info.id)) return;
   const win = BrowserWindow.getAllWindows().find((w) => !w.isDestroyed());
-  if (win && win.isVisible()) return;
-  if (!Notification.isSupported()) return;
-  new Notification({ title: '司法院裁判研究', body: `${info.label}：${STATUS_TEXT[info.status]}` }).show();
+  if (!shouldNotify({ windowVisible: !!win && win.isVisible() })) return;
+  const settings = getWorkerSettings();
+  const decision = chooseChannel({
+    platform: process.platform,
+    enabled: settings.enabled,
+    style: settings.style,
+    systemSupported: Notification.isSupported(),
+  });
+  if (decision.channel === 'none') return;
+  deliverNotice(buildNotice({ label: info.label, page: pageForJobKind(info.kind), status: info.status, summary: '', error: null, attention: false }), decision.channel);
 }
 
 /** 主視窗要求關閉時呼叫：有工作執行中就隱藏視窗並延後結束，回傳 true 表示已攔下關閉。 */
