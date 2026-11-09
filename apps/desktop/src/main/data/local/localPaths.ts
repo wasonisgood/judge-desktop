@@ -6,7 +6,7 @@ import * as path from 'node:path';
 import { OLLAMA_DEFAULT_URL, type ModuleId } from '@judge/core';
 
 export const AI_ENGINE_MODULE_ID: ModuleId = 'ai-engine';
-export const MODULE_IDS: ModuleId[] = ['ai-engine', 'crawler'];
+export const MODULE_IDS: ModuleId[] = ['ai-engine', 'crawler', 'chart'];
 /** 使用者既有的 Ollama 服務。 */
 export const EXTERNAL_BASE = OLLAMA_DEFAULT_URL;
 /** 本程式自己的服務，避免與既有服務衝突。 */

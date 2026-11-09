@@ -1,7 +1,8 @@
 // 匯出：列表 Excel（沿用轉型正義判決表的欄位順序）與單一判決精讀 Word（全部段落由 AI 整理，原判決主文以螢光標示）。
 import ExcelJS from 'exceljs';
-import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ShadingType } from 'docx';
-import type { JudgmentDetail, JudgmentSummary, BriefDocument } from '@judge/core';
+import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ShadingType, BorderStyle } from 'docx';
+import type { JudgmentDetail, JudgmentSummary, BriefDocument, Annotation, HighlightColor } from '@judge/core';
+import { segmentText, DEFAULT_COLOR_LABELS } from '@judge/core';
 
 interface ListArgs {
   keyword: string;
@@ -102,4 +103,129 @@ export async function buildBriefDocx(d: JudgmentDetail, doc: BriefDocument): Pro
   main.split(/\n+/).filter(Boolean).forEach((line) => children.push(para(line, { highlight: true })));
   const document = new Document({ sections: [{ children }] });
   return Buffer.from(await Packer.toBuffer(document));
+}
+
+/** 螢光底色（與畫面一致）。Word 以字元底色（w:shd）保留。 */
+export const HIGHLIGHT_FILL: Record<HighlightColor, string> = { yellow: 'FFF176', green: 'A5D6A7', pink: 'F8BBD0', blue: '90CAF9' };
+
+export interface AnnotatedCase {
+  meta: { title: string; caseNo?: string | null; court?: string | null; dateIso?: string | null; dateMinguo?: string; cause?: string; sourceUrl?: string };
+  fullText: string;
+  /** 對位狀態為 ok 的標注（會在原文中標示）。 */
+  annotations: Annotation[];
+  /** 需重新對位的標注（不在原文中標示，另列於該案最後）。 */
+  stale?: Annotation[];
+}
+
+export type ColorLabelMap = Record<HighlightColor, string>;
+
+const EXCERPT_CHARS = 60;
+const excerpt = (s: string) => (s.length > EXCERPT_CHARS ? `${s.slice(0, EXCERPT_CHARS)}…` : s);
+
+/** 單一案件的段落區塊。multi 為 true 時以案件標題開頭，並在區塊前分頁。 */
+function caseBlocks(c: AnnotatedCase, labels: ColorLabelMap, multi: boolean): Paragraph[] {
+  const m = c.meta;
+  const children: Paragraph[] = [
+    new Paragraph({
+      heading: HeadingLevel.HEADING_1,
+      alignment: AlignmentType.CENTER,
+      pageBreakBefore: multi,
+      children: [new TextRun({ text: m.title || '判決筆記', bold: true, size: 32, font })],
+    }),
+    para(`法院：${m.court ?? '—'}　日期：${m.dateIso ?? m.dateMinguo ?? '—'}　字號：${m.caseNo ?? '—'}`),
+    para(`案由：${m.cause || '—'}`),
+    para(`來源：${m.sourceUrl ?? '—'}`, { size: 20 }),
+  ];
+  // 顏色說明：每色一個示範色塊（使用本案使用的顏色名稱）。
+  children.push(new Paragraph({
+    spacing: { after: 200 },
+    children: [new TextRun({ text: '螢光顏色：', size: 20, font })].concat(
+      (Object.keys(HIGHLIGHT_FILL) as HighlightColor[]).flatMap((col) => [
+        new TextRun({ text: `　${labels[col]}　`, size: 20, font, shading: { type: ShadingType.CLEAR, fill: HIGHLIGHT_FILL[col], color: 'auto' } }),
+        new TextRun({ text: ' ', size: 20, font }),
+      ]),
+    ),
+  }));
+  children.push(new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: '判決全文', bold: true, font })] }));
+
+  // 全文依換行切段；標注片段以字元底色輸出，段落後附該段內的註解。
+  const text = c.fullText;
+  const annotations = c.annotations;
+  const lines: { start: number; end: number }[] = [];
+  let cursor = 0;
+  for (const raw of text.split('\n')) {
+    lines.push({ start: cursor, end: cursor + raw.length });
+    cursor += raw.length + 1;
+  }
+  const lineOf = (pos: number): number => {
+    let lo = 0, hi = lines.length - 1;
+    while (lo < hi) {
+      const mid = (lo + hi + 1) >> 1;
+      if (lines[mid].start <= pos) lo = mid; else hi = mid - 1;
+    }
+    return lo;
+  };
+  const notesByLine = new Map<number, Annotation[]>();
+  for (const a of annotations.filter((x) => x.mode === 'highlight_note' && x.note.trim())) {
+    const li = lineOf(a.end - 1);
+    notesByLine.set(li, [...(notesByLine.get(li) ?? []), a]);
+  }
+  const segments = segmentText(text, annotations);
+  lines.forEach((ln, i) => {
+    if (ln.end > ln.start) {
+      const runs: TextRun[] = [];
+      for (const seg of segments) {
+        if (seg.end <= ln.start || seg.start >= ln.end) continue;
+        const s = Math.max(seg.start, ln.start), e = Math.min(seg.end, ln.end);
+        runs.push(new TextRun({
+          text: text.slice(s, e),
+          size: 24,
+          font,
+          ...(seg.color ? { shading: { type: ShadingType.CLEAR, fill: HIGHLIGHT_FILL[seg.color], color: 'auto' } } : {}),
+        }));
+      }
+      if (runs.length === 0) runs.push(new TextRun({ text: text.slice(ln.start, ln.end), size: 24, font }));
+      children.push(new Paragraph({ spacing: { after: 120, line: 360 }, children: runs }));
+    }
+    for (const a of notesByLine.get(i) ?? []) children.push(noteParagraph(a, labels));
+  });
+
+  const stale = c.stale ?? [];
+  if (stale.length) {
+    children.push(new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: '需重新對位的註解', bold: true, font })] }));
+    children.push(para('以下標注所在的全文已變動，無法確定位置，未套用於上方原文。', { size: 20 }));
+    for (const a of stale) children.push(noteParagraph(a, labels));
+  }
+  return children;
+}
+
+/**
+ * 個案研究筆記（單案）Word：案件資訊、顏色說明、判決全文（螢光以字元底色保留），
+ * 註解附在其標注所在段落之後；全文已變動而無法對位的註解另列於最後。
+ */
+export async function buildAnnotatedDocx(c: AnnotatedCase, labels: ColorLabelMap = DEFAULT_COLOR_LABELS): Promise<Buffer> {
+  const document = new Document({ sections: [{ children: caseBlocks(c, labels, false) }] });
+  return Buffer.from(await Packer.toBuffer(document));
+}
+
+/** 多案合併 Word：每案獨立一個區塊（分頁），各自保留螢光、註解與需重新對位的註解。 */
+export async function buildAnnotatedCasesDocx(cases: AnnotatedCase[], labels: ColorLabelMap = DEFAULT_COLOR_LABELS): Promise<Buffer> {
+  if (cases.length === 0) throw new Error('沒有可匯出的案件');
+  const children = cases.flatMap((c, i) => caseBlocks(c, labels, i > 0));
+  const document = new Document({ sections: [{ children }] });
+  return Buffer.from(await Packer.toBuffer(document));
+}
+
+function noteParagraph(a: Annotation, labels: ColorLabelMap): Paragraph {
+  const label = labels[a.color];
+  return new Paragraph({
+    indent: { left: 480 },
+    spacing: { after: 160 },
+    border: { left: { style: BorderStyle.SINGLE, size: 12, color: HIGHLIGHT_FILL[a.color], space: 6 } },
+    children: [
+      new TextRun({ text: `註解（${label}）：`, bold: true, size: 20, font }),
+      new TextRun({ text: a.note, size: 20, font }),
+      new TextRun({ text: `　標注文字：「${excerpt(a.quote)}」`, size: 18, font, color: '666666' }),
+    ],
+  });
 }

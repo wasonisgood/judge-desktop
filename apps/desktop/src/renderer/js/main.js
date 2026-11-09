@@ -8,13 +8,20 @@
   JR.controllers.settings.bind();
   JR.controllers.federation.bind();
   JR.controllers.list.bind();
+  JR.controllers.semantic.bind();
+  JR.controllers.criteria.bind();
   JR.controllers.scope.bind();
   JR.controllers.brief.bind();
+  JR.controllers.design.bind();
+  JR.controllers.annotation.bind();
   JR.controllers.files.bind();
+  JR.controllers.crawl.bind();
   JR.controllers.assistant.bind();
   JR.controllers.localAi.bind();
+  JR.controllers.chart.bind();
   JR.controllers.auth.bind();
   JR.jobs.init();
+  JR.controllers.worker.bind();
 
   api.appInfo().then(function (info) {
     JR.$('versionInfo').textContent = '版本 ' + info.version + (info.packaged ? '' : '（開發版）');

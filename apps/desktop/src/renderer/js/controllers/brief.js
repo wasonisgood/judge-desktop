@@ -10,6 +10,8 @@
   function setPick(item) {
     state.briefPick = item;
     JR.views.renderPick(item);
+    // 個案研究筆記：選定案件後，全文標注區塊可直接使用（不需先精讀）。
+    JR.controllers.annotation.prepare(item ? { id: item.id, title: item.title, jurisdiction: $('briefJurisdiction').value } : null);
   }
 
   function collectBriefFields() {
@@ -31,16 +33,24 @@
 
   JR.controllers.brief = {
     /** 從列表或範圍整理表帶入一則判決，並切換到精讀頁。 */
-    openFromList: function (item) {
+    /** queueItems：同一批結果（列表或範圍整理的該表），用於逐案閱讀的上一案／下一案。 */
+    openFromList: function (item, queueItems) {
       setPick({ id: item.id, title: item.title, dateIso: item.dateIso || item.dateDisplay || '' });
+      var jur = $('briefJurisdiction').value;
+      var queue = (queueItems || []).map(function (q) { return { id: q.id, title: q.title || q.id, dateIso: q.dateIso || q.dateDisplay || '', jurisdiction: jur }; });
+      var idx = -1;
+      queue.forEach(function (q, i) { if (q.id === item.id) idx = i; });
+      JR.controllers.annotation.setQueue(queue, idx, jur);
       JR.setStatus($('briefStatus'), '已從上一頁帶入這則判決，可以直接整理。', 'ok');
       JR.nav.showPage('brief');
     },
-    /** 從「檔案」開啟已保存的精讀結果。 */
+    /** 從「檔案」開啟已保存的精讀結果。管轄區以結果中記錄的為準（舊結果沒有記錄時才沿用表單的值）。 */
     showResult: function (view) {
       state.brief = view;
       JR.views.renderBrief(view);
       $('briefExport').disabled = false;
+      var jur = view.jurisdiction != null ? view.jurisdiction : $('briefJurisdiction').value;
+      JR.controllers.annotation.open(view.detail.meta.id, jur, view.detail.meta.title);
     },
     setPick: setPick,
     bind: function () {
@@ -94,12 +104,14 @@
             focus: $('briefFocus').value.trim(),
             lengthHint: $('briefLength').value,
             jurisdiction: $('briefJurisdiction').value,
+            caseType: $('briefCaseType').value,
             ai: $('briefAi').value,
             fields: fields
           });
           state.brief = r;
           if (r.detail && r.detail.meta && r.detail.meta.title) $('briefPicked').textContent = r.detail.meta.title;
           JR.views.renderBrief(r);
+          JR.controllers.annotation.open(state.briefPick.id, r.jurisdiction != null ? r.jurisdiction : $('briefJurisdiction').value, r.detail.meta.title);
           state.assistHistory.push({ role: 'user', text: '[系統通知] 精讀已完成：' + (r.doc.title || '') + '。段落：' + r.doc.sections.map(function (sec) { return sec.heading + '：' + sec.paragraphs.join(' '); }).join(' ').slice(0, 3000) });
           var an = r.annotated || {};
           var parts = ['已完成 AI 整理' + (r.saveError ? '。' : '，已存入「檔案」。')];
@@ -107,6 +119,7 @@
           parts.push(annotationText(an));
           if (r.doc.droppedQuotes) parts.push('已移除 ' + r.doc.droppedQuotes + ' 則無法在判決原文中找到的引文。');
           if ((r.lawNotes || []).length) parts.push('法規內容未完整取得：' + r.lawNotes.join('；'));
+          if (r.caseTypeNote) parts.push(r.caseTypeNote);
           JR.setStatus($('briefStatus'), parts.join('　'), (an.error || r.saveError) ? 'error' : 'ok');
           state.briefExplanation = r.explanation;
           $('briefExplain').disabled = !r.explanation;

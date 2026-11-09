@@ -26,7 +26,7 @@
   };
   WZ.TONE = { pass: '通過', warn: '警告', fail: '失敗' };
 
-  WZ.MOD_NAMES = { 'ai-engine': 'AI 引擎模組', crawler: '爬取模組' };
+  WZ.MOD_NAMES = { 'ai-engine': 'AI 引擎模組', crawler: '爬取模組', chart: '量化圖表模組' };
   WZ.MOD_STATUS = {
     'not-installed': ['尚未安裝', ''], installing: ['安裝中', 'warn'], ready: ['已啟用', 'pass'],
     failed: ['安裝失敗', 'fail'], disabled: ['不安裝', 'warn']

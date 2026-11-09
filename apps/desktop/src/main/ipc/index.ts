@@ -3,6 +3,7 @@ import { registerWindowIpc } from './windowIpc';
 import { registerLocalIpc } from './localIpc';
 import { registerSettingsIpc } from './settingsIpc';
 import { registerSearchIpc } from './searchIpc';
+import { registerSemanticIpc } from './semanticIpc';
 import { registerScopeIpc } from './scopeIpc';
 import { registerLibraryIpc } from './libraryIpc';
 import { registerAssistantIpc } from './assistantIpc';
@@ -10,6 +11,12 @@ import { registerBriefIpc } from './briefIpc';
 import { registerAuthIpc } from './authIpc';
 import { registerJobsIpc } from './jobsIpc';
 import { registerKnowledgeIpc } from './knowledgeIpc';
+import { registerDesignIpc } from './designIpc';
+import { registerCriteriaIpc } from './criteriaIpc';
+import { registerChartIpc } from './chartIpc';
+import { registerAnnotationIpc } from './annotationIpc';
+import { registerWorkerIpc } from './workerIpc';
+import { registerCrawlIpc } from './crawlIpc';
 
 export function registerIpc(): void {
   registerAuthIpc();
@@ -17,10 +24,17 @@ export function registerIpc(): void {
   registerLocalIpc();
   registerSettingsIpc();
   registerSearchIpc();
+  registerSemanticIpc();
   registerScopeIpc();
   registerLibraryIpc();
   registerAssistantIpc();
   registerBriefIpc();
   registerJobsIpc();
   registerKnowledgeIpc();
+  registerDesignIpc();
+  registerCriteriaIpc();
+  registerChartIpc();
+  registerAnnotationIpc();
+  registerWorkerIpc();
+  registerCrawlIpc();
 }

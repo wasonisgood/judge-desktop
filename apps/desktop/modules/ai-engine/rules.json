@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 1,
+  "rulesVersion": 2,
   "minDiskGB": 10,
   "minEngineVersion": "0.40.0",
   "dualModelMinVramGB": 8,
   "tiers": {
     "light": {
-      "judgment": "qwen2.5:3b",
-      "chat": "qwen2.5:3b",
-      "diskGB": 3,
+      "judgment": "qwen3.5:4b",
+      "chat": "qwen3.5:4b",
+      "diskGB": 5,
       "minRamGB": 8
     },
     "standard": {
-      "judgment": "qwen2.5:7b",
-      "chat": "qwen2.5:7b",
-      "diskGB": 6,
+      "judgment": "qwen3.5:9b",
+      "chat": "qwen3.5:9b",
+      "diskGB": 9,
       "minRamGB": 16
     },
     "heavy": {
-      "judgment": "qwen2.5:14b",
-      "chat": "qwen2.5:7b",
-      "diskGB": 14,
+      "judgment": "qwen3.8:27b",
+      "chat": "qwen3.5:9b",
+      "diskGB": 20,
       "minRamGB": 32
     }
   }
