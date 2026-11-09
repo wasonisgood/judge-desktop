@@ -10,7 +10,7 @@
 | 匯出 Excel／Word | 完整 | 完整（字型見第 4 節） | 完整（字型見第 4 節） |
 | 金鑰加密保存（safeStorage） | 完整 | 使用鑰匙圈 | 需要系統的 secret service（如 GNOME Keyring、KWallet）；沒有時無法保存金鑰，程式會說明原因 |
 | 應用程式內自動更新 | 有（C# 更新程式） | 無，請到 Releases 下載 | 無，請到 Releases 下載 |
-| 本地 AI（Ollama 引擎與模型） | 完整 | **未實作**：偵測與引擎安裝只寫了 Windows 版 | **未實作**（同上） |
+| 本地 AI（Ollama 引擎與模型） | 完整（zip） | 完整（`ollama-darwin.tgz`，Apple Silicon 與 Intel 共用；硬體以 sysctl 偵測） | 完整（amd64、arm64 的 `tar.zst`，需要系統的 zstd；硬體以 /proc/meminfo 偵測） |
 | 爬取模組（司法院） | 完整 | 與 Windows 共用程式碼，未實機驗證 | 同左 |
 | 法規資料（立法院） | 以系統 curl 連線 | 以系統 curl 連線，**未驗證** | 以系統 curl 連線，**未驗證** |
 | 安裝程式 | C# 安裝器（JudgeResearchSetup.exe） | dmg／zip | AppImage／deb／rpm |
@@ -30,14 +30,12 @@
 
 ## 3. 已知限制（尚未實作）
 
-1. **本地 AI 只支援 Windows。** `apps/desktop/src/main/data/local/system.ts` 的硬體偵測與 CPU 架構判讀只有 PowerShell 版本。在 macOS、Linux 會回報「本地 AI 目前只支援 Windows」，程式其餘功能改走雲端。要支援需要：
-   - 硬體：macOS 用 `sysctl`，Linux 用 `/proc/meminfo` 與 `df`；
-   - 引擎資產：Ollama 在 macOS 與 Linux 的發佈檔格式與 Windows 的 zip 不同（Linux 為 tgz），`packages/core` 的資產選擇與 `engineInstaller.ts` 的解壓都要改；
-   - 執行檔名稱（`ollama`，非 `ollama.exe`）與數位簽章檢查（macOS 用 `codesign`，Linux 無等價檢查）。
-   建議先在 macOS 實機上確認 Ollama 的資產名稱與權限行為，再實作。
+1. **Linux 的 GPU 加速未偵測。** Linux 與 macOS 的本地 AI 目前以 CPU 方案計算（保守），不會自動使用 NVIDIA、AMD 顯卡或 Apple Metal 加速。要支援需要另外偵測顯卡（例如 `nvidia-smi`、`rocm-smi`）。
+2. **Linux 需要 zstd。** Ollama 的 Linux 發佈檔是 `tar.zst`，安裝時以系統的 `tar --zstd` 解壓；若未安裝 zstd，安裝會失敗並提示安裝方式。
+3. **macOS 的執行檔簽章不另外檢查。** 官方的 macOS 檔案已由 Ollama 簽章，程式不另外驗證（Windows 的 Authenticode 檢查只適用於 Windows）。
 2. **應用程式內更新只有 Windows。** 非 Windows 版本需要使用者到 Releases 手動下載。
 3. **macOS 未簽章、未公證。** 目前以 ad-hoc 簽章（`identity: "-"`）產出，Gatekeeper 會阻擋，使用者需在 Finder 中右鍵點「打開」。正式發布前需要 Apple 開發者憑證（Developer ID Application）與公證（notarization）。這需要維護者設定 secrets（例如 `APPLE_ID`、`APPLE_APP_SPECIFIC_PASSWORD`、`APPLE_TEAM_ID`、憑證），流程不能由程式碼單獨完成。
-4. **應用程式圖示解析度。** `apps/desktop/build/icon.png` 為 256×256。macOS 的 icns 建議至少 512×512（最好 1024×1024）。目前可以產出，但圖示在 Retina 螢幕上可能模糊。
+4. **應用程式圖示是放大的。** `apps/desktop/build/icon.png` 已由原本 256 像素的圖示放大為 1024×1024，供 macOS icns 與 Linux 使用。放大的圖示邊緣可能不如原生設計清楚；若有向量原稿，建議重新輸出。
 5. **法規資料的 TLS 行為未在 macOS、Linux 驗證。** 立法院站不支援 Node 預設的安全重新協商，因此程式改用系統的 curl（`packages/core/src/law/curlFetch.ts`）。Windows 內建 curl 使用 Schannel 可以連線；macOS 的 curl 與 Linux 的 OpenSSL 版本是否能連線，需要實機確認。若不能，會以「無法連線」的方式呈現，不會默默失敗。
 6. **Word 字型。** 匯出 Word 指定字型為「Microsoft JhengHei」。Windows 的 Office 有此字型；macOS 的 Office 與 Linux 上的 LibreOffice 可能改用其他字型，文字內容不受影響，版面可能略有差異。
 
@@ -71,7 +69,6 @@ shared (ubuntu)  ──┬──> windows (windows-latest) ──┐
 ## 6. 維護者需要處理的事項
 
 - [ ] 設定 Apple 簽章與公證的 secrets，並在 `macos` 工作加入簽章與公證步驟。
-- [ ] 提供 512×512 以上的圖示（`icon.png`，並可產生 `icon.icns`）。
 - [ ] 補上 `apps/desktop/electron-builder.yml` 的 `linux.maintainer` 可聯絡的 Email（目前只有名稱；deb、rpm 的維護者欄位需要）。
 - [ ] 在 macOS 與 Linux 實機測試：啟動、匯出、金鑰保存、法規資料連線。
-- [ ] 決定是否支援 macOS／Linux 的本地 AI（見第 3 節第 1 點），並排入後續版本。
+- [ ] 視需要加入 Linux 與 macOS 的顯卡加速偵測（見第 3 節第 1 點）。
