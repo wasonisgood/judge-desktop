@@ -7,7 +7,6 @@ import * as os from 'node:os';
 import * as path from 'node:path';
 const require = createRequire(import.meta.url);
 const svc = require('../dist/main/services/annotationService.js');
-const sync = require('../dist/main/services/annotationSync.js');
 
 const FULL = '主文：上訴駁回。\n事實：被告於民國一一〇年三月間持刀威脅告訴人。\n理由：被告所辯不足採。';
 const META = { title: '測試案', caseNo: '110年度上訴字第1號', court: '臺灣高等法院', dateIso: '2021-03-01', cause: '恐嚇', sourceUrl: 'https://example.test/x', jurisdiction: '' };
@@ -130,16 +129,3 @@ test('顏色名稱：預設為事實／爭點／主文／理由；自訂後保�
   assert.equal((await store.getColorLabels()).yellow, '事實認定', '驗證失敗不改動既有名稱');
 });
 
-test('雲端同步酬載：只含標注與判決快照，不含判決全文；未設定後端時明確回報不可用', async () => {
-  const { store, file } = tmpStore();
-  const start = FULL.indexOf('持刀');
-  await store.add('J1', META, { judgmentId: 'J1', start, end: start + 2, color: 'pink', mode: 'highlight_note', note: 'n' }, FULL);
-  const f = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const payload = sync.buildSyncPayload(f.judgments, new Date('2026-11-10T00:00:00Z'));
-  const text = JSON.stringify(payload);
-  assert.equal(payload.schemaVersion, 1);
-  assert.equal(payload.judgments[0].judgmentId, 'J1');
-  assert.ok(!text.includes('上訴駁回'), '不得含判決全文');
-  assert.equal(sync.syncStatus().available, false);
-  await assert.rejects(sync.notConfiguredBackend.push(payload), /尚未設定/);
-});

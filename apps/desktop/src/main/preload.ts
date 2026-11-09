@@ -109,5 +109,6 @@ contextBridge.exposeInMainWorld('api', {
     },
     syncStatus: () => invoke('annotation:syncStatus'),
     syncPreview: () => invoke('annotation:syncPreview'),
+    syncNow: () => invoke('annotation:syncNow'),
   },
 });

@@ -80,6 +80,29 @@ export async function authStatus(): Promise<AuthState> {
   }
 }
 
+/**
+ * 取得可用的存取權杖（給雲端同步使用）。沒有工作階段或無法更新時回傳 null，不拋錯。
+ * 與 authStatus 不同：這裡不做伺服器確認，只在權杖過期時以 refresh_token 更新。
+ */
+export async function currentAccessToken(): Promise<string | null> {
+  if (bypassed()) return null;
+  let s = await readSession();
+  if (!s) return null;
+  if (!isAccessValid(s.expiresAt)) {
+    if (!s.refreshToken) return null;
+    const clientId = await readClientId();
+    if (!clientId) return null;
+    try {
+      s = toSession(await refreshTokens(s.refreshToken, clientId), s.refreshToken);
+      await writeSession(s);
+    } catch (err) {
+      if (err instanceof AuthHttpError) await clearSession();
+      return null;
+    }
+  }
+  return s.accessToken;
+}
+
 function escapeHtml(s: string): string {
   return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' } as Record<string, string>)[c]);
 }

@@ -8,7 +8,9 @@ import { autoSaveExport, stamp } from '../services/exportService';
 import { cachedDetail } from '../data/cloud/courtRepo';
 import { annotations } from '../data/local/annotationAccess';
 import { withStatus, type JudgmentNoteMeta, type AnnotationView } from '../services/annotationService';
-import { syncStatus, buildSyncPayload } from '../services/annotationSync';
+import { syncStatus, buildSyncPayload, runSync, HttpSyncTransport } from '../services/annotationSync';
+import { currentAccessToken } from '../services/authService';
+import { AUTH_BASE } from '../data/cloud/authRepo';
 import { toUserError } from '../services/userError';
 
 interface Target {
@@ -142,10 +144,13 @@ export function registerAnnotationIpc(): void {
   ipcMain.handle('annotation:labels:get', async () => annotations().getColorLabels());
   ipcMain.handle('annotation:labels:set', async (_e, args: { labels: unknown }) => annotations().setColorLabels(args.labels));
 
-  ipcMain.handle('annotation:syncStatus', async () => syncStatus());
-  /** 同步酬載預覽（不送出）：只含標注、註解與判決快照，不含全文。 */
-  ipcMain.handle('annotation:syncPreview', async () => {
-    const f = await annotations().read();
-    return buildSyncPayload(f.judgments, new Date(), await annotations().getColorLabels());
+  /** 同步狀態：有登入權杖即可同步（應用程式本身需登入後才能使用）。 */
+  ipcMain.handle('annotation:syncStatus', async () => syncStatus(Boolean(await currentAccessToken())));
+  /** 同步酬載預覽（不送出）：只含標注、註解、判決快照與四色名稱，不含全文。 */
+  ipcMain.handle('annotation:syncPreview', async () => buildSyncPayload(await annotations().read()));
+  /** 立即同步（使用者主動觸發）：以現有登入權杖呼叫 /api/annotations，衝突時自動合併。 */
+  ipcMain.handle('annotation:syncNow', async () => {
+    const transport = new HttpSyncTransport({ url: `${AUTH_BASE}/api/annotations`, getToken: currentAccessToken });
+    return runSync(annotations(), transport);
   });
 }

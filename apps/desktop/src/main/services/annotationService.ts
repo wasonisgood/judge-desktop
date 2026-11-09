@@ -62,6 +62,10 @@ export interface AnnotationFile {
   judgments: Record<string, JudgmentAnnotations>;
   /** 使用者自訂的顏色名稱（可省略；省略時用預設）。 */
   colorLabels?: Partial<ColorLabels>;
+  /** 同步用：本機刪除過的標注（id → 所屬判決與刪除時間），避免同步時被舊版本帶回。 */
+  tombstones?: Record<string, { judgmentId: string; deletedAt: string }>;
+  /** 最近一次同步成功時伺服器的版本號（尚未同步過時省略）。 */
+  syncRevision?: number;
 }
 
 export type AnnotationView = Annotation & { status: AnchorStatus };
@@ -86,7 +90,15 @@ export function parseAnnotationFile(text: string): AnnotationFile {
     throw new Error('標注檔案來自較新的版本，請更新應用程式後再開啟。');
   }
   const colorLabels = f.colorLabels && typeof f.colorLabels === 'object' ? f.colorLabels : undefined;
-  return { schemaVersion: ANNOTATION_SCHEMA_VERSION, judgments: f.judgments as Record<string, JudgmentAnnotations>, ...(colorLabels ? { colorLabels } : {}) };
+  const tombstones = f.tombstones && typeof f.tombstones === 'object' ? f.tombstones : undefined;
+  const syncRevision = typeof f.syncRevision === 'number' && f.syncRevision >= 0 ? f.syncRevision : undefined;
+  return {
+    schemaVersion: ANNOTATION_SCHEMA_VERSION,
+    judgments: f.judgments as Record<string, JudgmentAnnotations>,
+    ...(colorLabels ? { colorLabels } : {}),
+    ...(tombstones ? { tombstones } : {}),
+    ...(syncRevision !== undefined ? { syncRevision } : {}),
+  };
 }
 
 /** 為每筆標注加上對位狀態（不改變資料本身）。 */
@@ -119,12 +131,13 @@ export function patchInFile(
   };
 }
 
-/** 純函式：刪除一筆標注。 */
-export function removeFromFile(file: AnnotationFile, judgmentId: string, id: string): { file: AnnotationFile; removed: boolean } {
+/** 純函式：刪除一筆標注，並留下墓碑（同步時避免被其他裝置的舊版本帶回）。 */
+export function removeFromFile(file: AnnotationFile, judgmentId: string, id: string, now: Date = new Date()): { file: AnnotationFile; removed: boolean } {
   const entry = file.judgments[judgmentId];
   if (!entry || !entry.annotations.some((a) => a.id === id)) return { file, removed: false };
   const annotations = removeAnnotation(entry.annotations, id);
-  return { file: { ...file, judgments: { ...file.judgments, [judgmentId]: { ...entry, annotations } } }, removed: true };
+  const tombstones = { ...(file.tombstones ?? {}), [id]: { judgmentId, deletedAt: now.toISOString() } };
+  return { file: { ...file, judgments: { ...file.judgments, [judgmentId]: { ...entry, annotations } }, tombstones }, removed: true };
 }
 
 /** 檔案式儲存（讀寫 JSON；寫入採「先寫暫存檔再改名」，避免寫到一半毀損）。 */
@@ -201,6 +214,11 @@ export class AnnotationStore {
     const r = removeFromFile(await this.read(), judgmentId, id);
     if (r.removed) await this.write(r.file);
     return r.removed;
+  }
+
+  /** 以整個檔案內容取代（僅供同步套用合併結果）。 */
+  async replace(f: AnnotationFile): Promise<void> {
+    await this.write({ ...f, schemaVersion: ANNOTATION_SCHEMA_VERSION });
   }
 
   /** 嘗試重新對位；只有引用文字在新全文中恰好出現一次才會成功。 */
