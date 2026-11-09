@@ -63,7 +63,7 @@ $refs = @(
     "$netDir\Microsoft.CSharp.dll"
 )
 $refArgs = $refs | ForEach-Object { "/r:`"$_`"" }
-$common = @("$scriptDir\UpdateCommon.cs", "$scriptDir\BuildInfo.g.cs")
+$common = @("$scriptDir\UpdateCommon.cs", "$scriptDir\UpdateModels.cs", "$scriptDir\BuildInfo.g.cs")
 
 function Compile($out, $sources, $extra) {
     Write-Host "Compiling $out..."
@@ -75,7 +75,8 @@ function Compile($out, $sources, $extra) {
 Compile "$scriptDir\uninstall.exe" (@("$scriptDir\UninstallerApp.cs") + $common) @()
 
 # 5. Compile Updater
-Compile "$scriptDir\JudgeResearchUpdater.exe" (@("$scriptDir\UpdaterApp.cs") + $common) @()
+$updaterSources = @("$scriptDir\UpdaterApp.cs", "$scriptDir\UpdaterWindow.UI.cs", "$scriptDir\UpdaterWindow.Render.cs", "$scriptDir\UpdaterWindow.Download.cs", "$scriptDir\UpdaterWindow.Helpers.cs", "$scriptDir\UpdaterEntry.cs")
+Compile "$scriptDir\JudgeResearchUpdater.exe" ($updaterSources + $common) @()
 
 # 6. Compile Setup Installer with embedded resources
 $resList = @()
@@ -86,7 +87,8 @@ $resList += "/resource:`"$scriptDir\uninstall.exe`",uninstall.exe"
 $resList += "/resource:`"$scriptDir\JudgeResearchUpdater.exe`",JudgeResearchUpdater.exe"
 
 $installerOut = "$rootDir\$($release.installerFileName)"
-Compile $installerOut (@("$scriptDir\InstallerApp.cs") + $common) $resList
+$installerSources = @("$scriptDir\InstallerApp.cs", "$scriptDir\InstallerWindow.Setup.cs", "$scriptDir\InstallerWindow.UI.Frame.cs", "$scriptDir\InstallerWindow.UI.Cards.cs", "$scriptDir\InstallerWindow.UI.Helpers.cs", "$scriptDir\InstallerWindow.Install.cs", "$scriptDir\InstallerWindow.Shell.cs", "$scriptDir\InstallerEntry.cs")
+Compile $installerOut ($installerSources + $common) $resList
 Copy-Item $installerOut "$scriptDir\$($release.installerFileName)" -Force
 
 # 7. Generate publish manifest (latest.json)
