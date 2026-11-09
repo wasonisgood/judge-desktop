@@ -81,3 +81,7 @@ export {
   buildReviewPrompt, parseReviewReply, type ReviewPrompt, type ReviewReply,
 } from './knowledge/review';
 export * from './annotation/anchor';
+export * from './chart/stats';
+export * from './chart/data';
+export * from './chart/svg';
+export * from './chart/tiles';
