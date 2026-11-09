@@ -19,6 +19,10 @@
             <input id="scopeRelated" placeholder="例如：國家賠償法" autocomplete="off">
           </label>
           <label class="check">
+            <input type="checkbox" id="scopeRelatedOnly">
+            <span>只保留引用相關法規的判決（預設關閉，與判決列表相同；開啟後關鍵字結果會以相關法規篩選）</span>
+          </label>
+          <label class="check">
             <input type="checkbox" id="scopeSmart">
             <span>智慧搜尋：AI 會自動調整關鍵字（最多 3 輪，未設定 AI 時只查一次）</span>
           </label>

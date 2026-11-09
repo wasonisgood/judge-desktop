@@ -34,6 +34,12 @@
     $('scopeForm').dispatchEvent(new Event('submit', { cancelable: true }));
   }
 
+  // 關鍵字語意不清時：使用者選定後替換關鍵字欄位並重新執行（與法名相同的流程）。
+  function replaceKeyword(text) {
+    $('scopeKeyword').value = String(text || '').trim();
+    $('scopeForm').dispatchEvent(new Event('submit', { cancelable: true }));
+  }
+
   function setRunning(on) {
     $('scopeRun').disabled = on;
     $('scopeXlsx').disabled = on;
@@ -118,19 +124,20 @@
         try {
           JR.components.clarifyHide($('scopeClarify'));
           var r = await api.scope.run({
-            runId: runId, statutes: statutes, keyword: keyword, relatedStatute: related, smart: $('scopeSmart').checked,
+            runId: runId, statutes: statutes, keyword: keyword, relatedStatute: related, relatedOnly: $('scopeRelatedOnly').checked, smart: $('scopeSmart').checked,
             fields: fields, yearFrom: from, yearTo: to, maxItems: max,
             jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value, aiAnalysis: aiOn
           });
           state.scopeExplanation = r.explanation;
           $('scopeExplain').disabled = !r.explanation;
           if (r.status === 'ask') {
+            var isKeyword = r.target === 'keyword';
             JR.components.clarifyBox($('scopeClarify'), {
               question: r.question,
               options: r.options,
-              onPick: function (o) { replaceStatuteLine(r.statuteLine, o.label); },
-              onManual: function (text) { replaceStatuteLine(r.statuteLine, text); },
-              onCancel: function () { JR.setStatus($('scopeStatus'), '已取消法名選擇，沒有執行整理。'); }
+              onPick: function (o) { if (isKeyword) replaceKeyword(o.label); else replaceStatuteLine(r.statuteLine, o.label); },
+              onManual: function (text) { if (isKeyword) replaceKeyword(text); else replaceStatuteLine(r.statuteLine, text); },
+              onCancel: function () { JR.setStatus($('scopeStatus'), isKeyword ? '已取消關鍵字選擇，沒有執行整理。' : '已取消法名選擇，沒有執行整理。'); }
             });
             JR.setStatus($('scopeStatus'), r.question);
             return;

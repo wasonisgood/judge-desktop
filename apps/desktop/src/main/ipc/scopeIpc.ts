@@ -21,7 +21,7 @@ export function registerScopeIpc(): void {
     return currentLawFor(args.pcode);
   });
   ipcMain.handle('scope:run', (e, args: ScopeRunArgs & { runId: string }) =>
-    withJob(args.runId, 'scope', `範圍整理：${scopeTitle(args)}`, async (signal) => {
+    withJob(args.runId, 'scope', `標編碼標注工序：${scopeTitle(args)}`, async (signal) => {
       // AI 分析關閉時不需要金鑰；開啟但沒有可用的 AI 時改為傳統篩選，並在結果的說明中記錄。
       let ai = null;
       if (args.aiAnalysis !== false) {

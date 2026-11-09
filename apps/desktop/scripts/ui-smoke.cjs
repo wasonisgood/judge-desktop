@@ -48,7 +48,7 @@ app.whenReady().then(async () => {
     await js(w, "document.getElementById('scopeLines').value = ''; document.getElementById('scopeForm').dispatchEvent(new Event('submit',{cancelable:true}))");
     await wait(150);
     const scopeMsg = await js(w, "document.getElementById('scopeStatus').textContent");
-    check('範圍整理空白時提示輸入法規', /請至少輸入一部法規/.test(scopeMsg), scopeMsg);
+    check('標編碼標注工序空白時提示輸入關鍵字或法規', /請輸入關鍵字，或至少一部法規/.test(scopeMsg), scopeMsg);
 
     // 4. 單一判決：未選定就不能整理
     await js(w, "document.querySelector('.rail-item[data-page=\"brief\"]').click()");

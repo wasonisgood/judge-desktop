@@ -94,15 +94,18 @@ export const ASSISTANT_TOOLS: ToolDef[] = [
   },
   {
     name: 'propose_scope',
-    description: '提議執行範圍整理表（會呼叫 AI，需使用者確認）。statutes 每行一部法規，可含條項款，例如「民法第184條第1項」。',
+    description: '提議執行標編碼標注工序（範圍整理，會呼叫 AI，需使用者確認）。可用兩種輸入，至少給一種：keyword 為自然語言關鍵字（可搭配 smart 智慧搜尋、relatedStatute 相關法規、relatedOnly 只保留引用相關法規的判決）；statutes 每行一部法規，可含條項款，例如「民法第184條第1項」。',
     parameters: {
       type: 'object',
       properties: {
+        keyword: { type: 'string' },
+        smart: { type: 'boolean' },
+        relatedStatute: { type: 'string' },
+        relatedOnly: { type: 'boolean' },
         statutes: { type: 'array', items: { type: 'string' } },
         yearFrom: { type: 'integer' },
         yearTo: { type: 'integer' },
       },
-      required: ['statutes'],
     },
   },
   {
@@ -120,6 +123,7 @@ const SYSTEM_PROMPT_BASE = [
   '你是「司法院裁判研究」桌面應用程式的助理。使用繁體中文（台灣用語），語氣簡潔平實，不使用表情符號。',
   '你可以用工具查詢判決與法規，也可以提議操作應用程式的功能。',
   '會呼叫 AI 或改動資料的操作，只能用 propose_ 開頭的工具提議，由使用者確認後才會執行。',
+  '提議標編碼標注工序（propose_scope）時，關鍵字與法規清單可以單獨使用，也可以併用；使用者只說一句話描述範圍時請用 keyword。',
   '搜尋判決時，請把同義詞、案由、法名拆成 2 到 4 組關鍵字一起搜尋（用 queries），不要只用一個詞。',
   `每一輪對話最多搜尋 ${ASSISTANT_SEARCH_MAX} 次。工具回傳的「剩餘次數」與「目前保留筆數」會告訴你狀況：結果不足就換不同的關鍵字補搜；已達上限就停止搜尋，依目前保留的結果回答，說明狀況與解方，並詢問使用者是否同意新方向。`,
   '若使用者的需求語意不清（例如同一個詞可能指兩種法律領域），不要猜：請列出 2 到 3 個候選解讀，並把「自行輸入更正後再試」放在最後一項，請使用者選擇。',

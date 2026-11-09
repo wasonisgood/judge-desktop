@@ -20,7 +20,7 @@
     b.textContent = state === 'cancelling' ? '取消中…' : '取消';
   }
 
-  var BANNER_LABEL = { search: '判決搜尋', scope: '範圍整理', brief: '精讀', assistant: '助理對話', install: '模組安裝', repair: '模組修復' };
+  var BANNER_LABEL = { search: '判決搜尋', scope: '標編碼標注工序', brief: '精讀', assistant: '助理對話', install: '模組安裝', repair: '模組修復' };
 
   function renderBanner(list) {
     var banner = document.getElementById('jobBanner');

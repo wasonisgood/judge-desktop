@@ -30,6 +30,8 @@ export interface ScopeRunArgs {
   keyword?: string;
   /** 相關法規（選填）：與判決列表相同，智慧搜尋時 AI 會先讀入其現行條文與沿革。 */
   relatedStatute?: string;
+  /** 只保留引用相關法規的判決（預設關閉，與判決列表一致；開啟時關鍵字結果以相關法規篩選）。 */
+  relatedOnly?: boolean;
   /** 智慧搜尋：AI 依結果調整關鍵字，最多 SCOPE_MAX_ROUNDS 輪（未設定 AI 時只查一次）。只作用於關鍵字。 */
   smart?: boolean;
   /** 分析欄位：勾選的欄位（含自訂），順序即欄位順序；未提供時使用預設欄位。 */
@@ -67,7 +69,9 @@ export interface ScopeRunDone {
 /** 法名有多個候選：回傳選項，畫面讓使用者選；選定後以選項文字重新執行（issue #4 第 3 點）。 */
 export interface ScopeRunAsk {
   status: 'ask';
-  /** 需要使用者選擇的那一行（原始輸入）。 */
+  /** 要更正的輸入欄位：statute 為法規清單的那一行，keyword 為關鍵字欄位。 */
+  target: 'statute' | 'keyword';
+  /** 需要使用者選擇的那一行（法規）或關鍵字（原始輸入）。 */
   statuteLine: string;
   question: string;
   options: ClarifyOption[];
@@ -131,7 +135,7 @@ export async function runScope(
     try {
       const outcome = await runOneStatute(ctx, { line, name, citation });
       if (outcome.kind === 'ask') {
-        return { status: 'ask', statuteLine: line, question: outcome.question, options: outcome.options, notes, trace, explanation: explainTrace(trace) };
+        return { status: 'ask', target: 'statute', statuteLine: line, question: outcome.question, options: outcome.options, notes, trace, explanation: explainTrace(trace) };
       }
       sheets.push(outcome.sheet);
     } catch (err) {
@@ -145,7 +149,11 @@ export async function runScope(
 
   if (keyword && !signal?.aborted) {
     try {
-      sheets.push(await runKeywordSheet(ctx, keyword, relatedStatute));
+      const kw = await runKeywordSheet(ctx, keyword, relatedStatute);
+      if (kw.kind === 'ask') {
+        return { status: 'ask', target: 'keyword', statuteLine: keyword, question: kw.question, options: kw.options, notes, trace, explanation: explainTrace(trace) };
+      }
+      sheets.push(kw.sheet);
     } catch (err) {
       if (signal?.aborted) throw err;
       const msg = toUserError(err).message;
@@ -353,7 +361,9 @@ async function runOneStatute(ctx: RunCtx, p: { line: string; name: string; citat
  * 關鍵字整理（與判決列表相同的入口）：自然語言關鍵字、可選的智慧搜尋與相關法規。
  * 相關法規只作為 AI 的上下文（現行條文與沿革）；搜尋結果不以它篩選。語意不清或達上限時，以目前找到的結果整理並說明。
  */
-async function runKeywordSheet(ctx: RunCtx, keyword: string, relatedStatute: string): Promise<ScopeSheet> {
+type KeywordOutcome = { kind: 'sheet'; sheet: ScopeSheet } | { kind: 'ask'; question: string; options: ClarifyOption[] };
+
+async function runKeywordSheet(ctx: RunCtx, keyword: string, relatedStatute: string): Promise<KeywordOutcome> {
   const { args, ai, notes, trace, onProgress, signal } = ctx;
   const label = relatedStatute ? `關鍵字：${keyword}（相關法規：${relatedStatute}）` : `關鍵字：${keyword}`;
   onProgress({ statute: label, done: 0, total: 1, phase: '讀入相關法規與爭點' });
@@ -377,24 +387,27 @@ async function runKeywordSheet(ctx: RunCtx, keyword: string, relatedStatute: str
     reason: kc.notes.length ? kc.notes.join('；') : '相關爭點已交給 AI 參考',
   });
 
+  // 只保留引用相關法規的判決（需使用者開啟）；否則不做法規篩選，與判決列表一致。
+  const relatedOnly = !!(relatedStatute && args.relatedOnly);
   const found = await searchRows(ctx, {
     label,
     request: relatedStatute ? `${keyword}（相關法規：${relatedStatute}）` : keyword,
     initialQuery: keyword,
-    statute: '',
-    keywordMode: true,
+    statute: relatedOnly ? relatedStatute : '',
+    keywordMode: !relatedOnly,
     citation: null,
     lawHistory: [],
     lawContext,
     maxRounds: args.smart ? SCOPE_MAX_ROUNDS : 1,
   });
-  if (found.ask) notes.push(`「${label}」AI 認為需求語意不清（${found.ask.question}），已以目前找到的結果整理；可以改寫關鍵字再試。`);
+  // 語意不清：與法名相同，提供候選讓使用者選定後重新執行（關鍵字欄位會被替換）。
+  if (found.ask) return { kind: 'ask', question: found.ask.question, options: found.ask.options };
   if (found.advice) notes.push(`「${label}」${found.advice}`);
   if (signal?.aborted) {
-    return { statute: label, rows: [], analyses: [], synthesis: null, fields: ctx.fields };
+    return { kind: 'sheet', sheet: { statute: label, rows: [], analyses: [], synthesis: null, fields: ctx.fields } };
   }
   const rows = filterYears(found.rows, args);
-  addStep(trace, { stage: '整理篩選結果', module: 'rule', input: label, output: `${rows.length} 筆`, decision: 'pass', reason: '關鍵字搜尋結果全部列出（不以法規篩選）' });
+  addStep(trace, { stage: '整理篩選結果', module: 'rule', input: label, output: `${rows.length} 筆`, decision: 'pass', reason: relatedOnly ? `只保留引用「${relatedStatute}」的判決` : '關鍵字搜尋結果全部列出（不以法規篩選）' });
   const { analyses, synthesis } = await analyzeRows(ctx, label, rows, null);
-  return { statute: label, rows, analyses, synthesis, fields: ctx.fields };
+  return { kind: 'sheet', sheet: { statute: label, rows, analyses, synthesis, fields: ctx.fields } };
 }

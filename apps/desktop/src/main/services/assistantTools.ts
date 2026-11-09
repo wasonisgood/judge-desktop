@@ -53,14 +53,24 @@ export async function executeAssistantTool(call: ToolCall, ctx?: AssistantTurnCo
       }
       case 'propose_scope': {
         const statutes = Array.isArray(input.statutes) ? input.statutes.map(String) : [];
-        if (statutes.length === 0) return { content: '沒有提供法規名稱。' };
+        const keyword = String(input.keyword ?? '').trim();
+        if (statutes.length === 0 && !keyword) return { content: '沒有提供關鍵字或法規名稱。' };
+        const args = {
+          statutes,
+          keyword,
+          relatedStatute: String(input.relatedStatute ?? '').trim(),
+          relatedOnly: input.relatedOnly === true,
+          smart: input.smart === true,
+          yearFrom: input.yearFrom,
+          yearTo: input.yearTo,
+        };
         return {
           content: '已提議，等待使用者按同意後執行。',
           pending: {
             id: newId(),
             kind: 'run_scope',
-            label: `範圍整理：${statutes.join('、')}`,
-            args: { statutes, yearFrom: input.yearFrom, yearTo: input.yearTo },
+            label: `標編碼標注工序：${[...statutes, ...(keyword ? [`關鍵字：${keyword}`] : [])].join('、')}`,
+            args,
           },
         };
       }
