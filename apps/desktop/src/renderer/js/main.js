@@ -8,6 +8,7 @@
   JR.controllers.settings.bind();
   JR.controllers.federation.bind();
   JR.controllers.list.bind();
+  JR.controllers.semantic.bind();
   JR.controllers.scope.bind();
   JR.controllers.brief.bind();
   JR.controllers.files.bind();

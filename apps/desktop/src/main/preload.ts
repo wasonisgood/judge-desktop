@@ -31,6 +31,14 @@ contextBridge.exposeInMainWorld('api', {
     },
   },
   exportList: (args: unknown) => invoke('export:list', args),
+  semantic: {
+    run: (args: unknown) => invoke('semantic:run', args),
+    fullText: (args: unknown) => invoke('semantic:fullText', args),
+    ask: (args: unknown) => invoke('semantic:ask', args),
+    onProgress: (cb: (p: { done: number; total: number; phase: string }) => void) => {
+      ipcRenderer.on('semantic:progress', (_e, p) => cb(p));
+    },
+  },
   jobs: {
     list: () => invoke('jobs:list'),
     cancel: (args: unknown) => invoke('jobs:cancel', args),
