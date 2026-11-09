@@ -2,7 +2,7 @@
 // 對應 R2（各條例的 Word 判決整理表）。流程：搜尋法規名稱 → 逐筆取得內頁 → 確認確實引用該法規 → 篩選期間 → 整理欄位。
 import { CourtClient } from './client';
 import { jurisdictionRegistry, type JurisdictionId } from '../jurisdiction/registry';
-import type { JudgmentDetail } from './parse';
+import type { JudgmentDetail, JudgmentSummary } from './parse';
 import { parseCitations } from '../law/citation';
 import type { HistoryArticle } from '../law/history';
 import { citationLawNotes, type CitationLawNote } from '../law/citationNotes';
@@ -23,6 +23,10 @@ export interface ScopeOptions {
   onProgress?: (done: number, total: number) => void;
   /** 法條沿革（來自立法院）；提供後，每列會標示引用條文在查詢期間內是否修法。 */
   lawHistory?: HistoryArticle[];
+  /** 搜尋來源（v3.6.1）：未提供時直接呼叫司法院；桌面端提供快取版本，讓前一階段已取得的資料直接繼承。 */
+  searchSource?: (query: string, maxItems: number) => Promise<JudgmentSummary[]>;
+  /** 內頁來源（v3.6.1）：同上，未提供時直接抓取；桌面端提供快取版本。 */
+  detailSource?: (id: string) => Promise<JudgmentDetail>;
   /** 單筆內頁失敗時呼叫（v3.6.0）：該筆跳過，其餘照常；不再讓整輪搜尋失敗。 */
   onItemError?: (id: string, title: string, err: unknown) => void;
   /** 取消訊號：取消後停止取得內頁，回傳取消前已完成的列。 */
@@ -86,7 +90,10 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
   const jurisdiction = jurisdictionRegistry.get(opts.jurisdiction);
   const client = opts.client ?? new CourtClient();
   const max = Math.min(Math.max(opts.maxItems ?? 30, 1), 200);
-  const candidates = await jurisdiction.search(opts.searchQuery?.trim() || opts.statute, { maxItems: max * 2, client });
+  const query = opts.searchQuery?.trim() || opts.statute;
+  const candidates = opts.searchSource
+    ? await opts.searchSource(query, max * 2)
+    : await jurisdiction.search(query, { maxItems: max * 2, client });
   const rows: ScopeRow[] = [];
   let done = 0;
   for (const it of candidates) {
@@ -98,7 +105,7 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
     if (opts.yearTo && year && year > opts.yearTo) continue;
     let d;
     try {
-      d = await jurisdiction.getDetail(it.id, { client });
+      d = opts.detailSource ? await opts.detailSource(it.id) : await jurisdiction.getDetail(it.id, { client });
     } catch (err) {
       if (opts.signal?.aborted) break;
       opts.onItemError?.(it.id, it.title, err);

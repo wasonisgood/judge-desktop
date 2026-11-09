@@ -66,3 +66,23 @@ test('friendlyError：逾時、額度、金鑰、頻繁、網路各有中文說�
   assert.match(friendlyError(Object.assign(new Error('fetch failed'), { code: 'ENOTFOUND' })).message, /網路/);
   assert.equal(friendlyError(new Error('其他錯誤')).message, '其他錯誤');
 });
+
+// v3.6.1：範圍整理繼承快取（搜尋與內頁走注入的來源，不直接連司法院）
+test('buildScopeTable：搜尋與內頁走注入的來源（可繼承快取），不呼叫司法院', async () => {
+  const { buildScopeTable } = await import('../../dist/index.js');
+  const searched = [];
+  const fetched = [];
+  const detail = (id) => ({
+    id, meta: { title: `判決${id}`, court: '臺灣高等法院', dateIso: '2020-01-01', cause: '損害賠償', sourceUrl: 'x' },
+    sections: { 主文: '駁回。' }, fullText: '依民法第184條規定，請求損害賠償。', relatedLaws: ['民法第184條'], historyPosition: null,
+  });
+  const rows = await buildScopeTable({
+    statute: '民法', maxItems: 5,
+    searchSource: async (q, max) => { searched.push([q, max]); return [{ id: 'A1', title: '判決A1', dateIso: '2020-01-01', cause: '' }]; },
+    detailSource: async (id) => { fetched.push(id); return detail(id); },
+  });
+  assert.deepEqual(searched, [['民法', 10]]);
+  assert.deepEqual(fetched, ['A1']);
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].id, 'A1');
+});

@@ -11,7 +11,7 @@ import {
 } from '@judge/core';
 import type { ScopeSheet } from '../scopeExporters';
 import { resolveStatuteOrCandidates, lawHistoryFor, currentLawFor } from '../data/cloud/lawRepo';
-import { cachedDetail } from '../data/cloud/courtRepo';
+import { cachedDetail, cachedSearch } from '../data/cloud/courtRepo';
 import { splitStatuteLine, rowCites } from './statuteInput';
 import { saveToLibrary } from './savedResult';
 import { toUserError } from './userError';
@@ -175,6 +175,9 @@ async function runOneStatute(p: {
       jurisdiction: args.jurisdiction,
       lawHistory,
       signal,
+      // 繼承快取（v3.6.1）：列表或前一階段已取得的搜尋與內頁直接使用，不重複爬取。
+      searchSource: (query, max) => cachedSearch(query, max, undefined, args.jurisdiction),
+      detailSource: (id) => cachedDetail(id, client, args.jurisdiction),
       onItemError: (id, title, err) => notes.push(`「${title || id}」內頁取得失敗，已略過：${toUserError(err).message}`),
       onProgress: (done, total) => onProgress({ statute: statute.name, done, total, phase: '篩選判決' }),
     });
