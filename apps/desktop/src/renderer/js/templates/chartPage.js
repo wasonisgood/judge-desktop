@@ -93,6 +93,7 @@
                 <button class="btn primary" type="button" id="chartRun" disabled>繪製</button>
                 <button class="btn" type="button" id="chartPng" disabled>匯出 PNG</button>
                 <button class="btn" type="button" id="chartSvg" disabled>匯出 SVG</button>
+                <button class="btn" type="button" id="chartDocx" disabled>匯出 Word</button>
               </div>
               <p class="status" id="chartStatus" role="status"></p>
               <ul class="hint" id="chartWarnings" hidden></ul>

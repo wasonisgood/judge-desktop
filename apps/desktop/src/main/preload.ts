@@ -55,6 +55,10 @@ contextBridge.exposeInMainWorld('api', {
     render: (args: unknown) => invoke('chart:render', args),
     exportSvg: (args: unknown) => invoke('export:chartSvg', args),
     exportPng: (args: unknown) => invoke('export:chartPng', args),
+    exportDocx: (args: unknown) => invoke('export:chartDocx', args),
+    install: () => invoke('chart:install'),
+    disable: () => invoke('chart:disable'),
+    remove: () => invoke('chart:remove'),
   },
   update: { openUpdater: () => invoke('update:openUpdater') },
   auth: {

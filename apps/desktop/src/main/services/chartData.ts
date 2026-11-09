@@ -81,6 +81,12 @@ export interface ChartResult {
   rowCount: number;
   judgmentCount: number | null;
   warnings: string[];
+  /** 不含來源說明的 SVG（Word 內嵌圖片用，避免與文字說明重複）。 */
+  svgBare: string;
+  /** 計數單位的說明文字（Word 匯出用）。 */
+  unitLabel: string;
+  /** 交叉表的計數資料（Word 匯出以原生表格輸出）；其他圖表為 null。 */
+  crosstab: (Crosstab & { rowTitle: string; colTitle: string }) | null;
 }
 
 // ---------- 純函式 ----------
@@ -266,6 +272,7 @@ export function buildChartResult(input: { sheet: ChartSheet; fileName: string; c
   const uLabel = unitLabel(cfg.unit);
   let svg: string;
   let html: string | null = null;
+  let crosstabOut: (Crosstab & { rowTitle: string; colTitle: string }) | null = null;
 
   if (cfg.type === 'bar') {
     const cat = need(cfg.category, '類別欄');
@@ -336,6 +343,7 @@ export function buildChartResult(input: { sheet: ChartSheet; fileName: string; c
     const ct0 = crosstab(work, rowCol, colCol, opts);
     const ct = cfg.amount ? orderCrosstabRows(ct0, AMOUNT_BRACKETS.map((b) => b.label)) : ct0;
     html = crosstabHtml(ct, { rowTitle: rowCol, colTitle: colCol, percentByRow: true });
+    crosstabOut = { ...ct, rowTitle: rowCol, colTitle: colCol };
     svg = crosstabSvg(ct, { title, rowTitle: rowCol, colTitle: colCol, unitLabel: uLabel });
   } else {
     const court = need(cfg.category, '法院欄');
@@ -362,7 +370,10 @@ export function buildChartResult(input: { sheet: ChartSheet; fileName: string; c
   }
 
   const note = sourceNote({ fileName, filters: cfg.filters, rowCount: rows.length, judgmentCount, unit: cfg.unit });
-  return { title, svg: withSourceNote(svg, note), html, note, rowCount: rows.length, judgmentCount, warnings };
+  return {
+    title, svg: withSourceNote(svg, note), html, note, rowCount: rows.length, judgmentCount, warnings,
+    svgBare: svg, unitLabel: uLabel, crosstab: crosstabOut,
+  };
 }
 
 const str = (v: unknown): string | null => (typeof v === 'string' && v.trim() ? v : null);

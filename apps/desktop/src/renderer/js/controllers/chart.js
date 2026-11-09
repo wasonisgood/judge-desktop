@@ -12,6 +12,7 @@
   function setResultReady(on) {
     $('chartPng').disabled = !on;
     $('chartSvg').disabled = !on;
+    $('chartDocx').disabled = !on;
   }
 
   function currentSummary() {
@@ -168,20 +169,54 @@
         });
       });
 
-      // 設定頁的模組開關：開啟即「安裝並啟用」，關閉即移除（頁面隱藏）。
+      $('chartDocx').addEventListener('click', function () {
+        if (!st.result) return;
+        var r = st.result;
+        // 交叉表以原生表格輸出；其他圖表以 PNG 嵌入（不含重複的來源文字，來源與單位寫在圖下）。
+        var pngP = r.crosstab ? Promise.resolve(null) : svgToPngBase64(r.svgBare);
+        setStatus('產生 Word…');
+        pngP.then(function (png) {
+          return api.chart.exportDocx({
+            name: exportName(), title: r.title, note: r.note, unitLabel: r.unitLabel, png: png, table: r.crosstab
+          });
+        }).then(function (res) {
+          if (res && res.filePath) setStatus('已匯出 Word：' + res.filePath, 'ok');
+        }).catch(function (err) {
+          setStatus('匯出失敗：' + JR.errText(err), 'error');
+        });
+      });
+
+      // 模組開關：開啟即安裝（或重新啟用），關閉即停用（頁面隱藏、保留安裝內容）。
       $('setChartModule').addEventListener('change', function () {
         var on = $('setChartModule').checked;
-        api.settings.set({ chartModuleEnabled: on }).then(function () {
+        var p = on ? api.chart.install() : api.chart.disable();
+        p.then(function (state) {
+          var ready = !!state && state.status === 'ready';
+          if (on && !ready) {
+            JR.views.setChartInstalled(false);
+            JR.components.notice('量化圖表模組安裝失敗：' + ((state && state.lastError) || '未知原因'));
+            return;
+          }
           JR.controllers.chart.setInstalled(on);
-          JR.components.notice(on ? '已安裝並啟用量化圖表模組。' : '已移除量化圖表模組（頁面已隱藏，其他功能不受影響）。');
+          JR.components.notice(on ? '已安裝並啟用量化圖表模組。' : '已停用量化圖表模組（頁面已隱藏，其他功能不受影響）。');
         }).catch(function (err) {
-          $('setChartModule').checked = !on;
+          JR.views.setChartInstalled(!on);
           JR.components.notice('設定沒有保存：' + JR.errText(err));
         });
       });
 
-      api.settings.get().then(function (s) {
-        JR.views.setChartInstalled(s.chartModuleEnabled === true);
+      $('chartRemove').addEventListener('click', function () {
+        api.chart.remove().then(function () {
+          JR.controllers.chart.setInstalled(false);
+          JR.components.notice('已移除量化圖表模組（安裝內容已刪除；其他功能不受影響）。');
+        }).catch(function (err) {
+          JR.components.notice('移除失敗：' + JR.errText(err));
+        });
+      });
+
+      // 初始狀態取自模組登錄（chart）：只有 ready 才顯示頁面。
+      api.localAi.modules().then(function (reg) {
+        JR.views.setChartInstalled(!!reg && !!reg.chart && reg.chart.status === 'ready');
       }).catch(function () {
         JR.views.setChartInstalled(false);
       });

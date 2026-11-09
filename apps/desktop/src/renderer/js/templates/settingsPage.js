@@ -84,6 +84,7 @@
                 <span class="switch"><span class="knob"></span></span>
                 <span class="set-switch-text">安裝並啟用</span>
               </label>
+              <button class="btn small" type="button" id="chartRemove">移除模組</button>
             </div>
           </div>
           <div class="set-row">

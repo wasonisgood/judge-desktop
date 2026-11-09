@@ -30,8 +30,6 @@ export interface StoredSettings {
   localAiEnabled: boolean;
   /** 預設管轄區識別碼（見 jurisdictionRegistry）。 */
   defaultJurisdiction: string;
-  /** 量化圖表模組：開啟即「安裝並啟用」，關閉即移除（頁面隱藏；不影響其他功能）。 */
-  chartModuleEnabled: boolean;
 }
 
 export const EMPTY_FEDERATION: FederationSettings = {
@@ -50,7 +48,6 @@ export const DEFAULTS: StoredSettings = {
   briefFields: DEFAULT_BRIEF_FIELDS.map((f) => ({ ...f, enabled: true })),
   localAiEnabled: true,
   defaultJurisdiction: DEFAULT_JURISDICTION_ID,
-  chartModuleEnabled: false,
 };
 
 export async function readSettings(): Promise<StoredSettings> {
