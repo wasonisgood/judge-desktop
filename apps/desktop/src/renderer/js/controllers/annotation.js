@@ -12,8 +12,58 @@
     mode: 'highlight',  // 工具列目前模式
     pending: null,      // 選取範圍（全文位置）
     editing: null,      // 正在編輯的標注 id
-    judgments: []
+    judgments: [],      // 過去筆記（annotation:judgments）
+    checked: {},        // 合併匯出勾選：judgmentId -> boolean
+    queue: [],          // 逐案閱讀的案件（同一批列表或範圍結果）
+    qIndex: -1
   };
+
+  function updateManyButton() {
+    var n = Object.keys(st.checked).filter(function (k) { return st.checked[k]; }).length;
+    $('annExportMany').disabled = n === 0;
+    $('annExportMany').textContent = '合併匯出勾選案件（' + n + ' 案）';
+  }
+
+  function renderNav() {
+    if (st.qIndex < 0 || !st.queue.length) { JR.views.renderAnnNav(null); return; }
+    JR.views.renderAnnNav({ index: st.qIndex, total: st.queue.length, title: st.queue[st.qIndex].title });
+  }
+
+  /** 上一案／下一案：切換案件並自動載入全文與該案既有標注。 */
+  function goQueue(delta) {
+    var idx = st.qIndex + delta;
+    if (idx < 0 || idx >= st.queue.length) return;
+    st.qIndex = idx;
+    var item = st.queue[idx];
+    prepare({ id: item.id, title: item.title, jurisdiction: item.jurisdiction });
+    renderNav();
+    load().then(clearStatus).catch(fail);
+  }
+
+  function pickPast(id) {
+    var rec = st.judgments.filter(function (r) { return r.judgmentId === id; })[0];
+    if (!rec) return;
+    prepare({ id: rec.judgmentId, title: rec.meta.title, jurisdiction: rec.meta.jurisdiction });
+    load().then(clearStatus).catch(fail);
+  }
+
+  function saveLabels(labels) {
+    api.annotation.labels.set({ labels: labels })
+      .then(function () { return load(); })
+      .then(function () { JR.setStatus($('annStatus'), '已儲存顏色名稱。', 'ok'); })
+      .catch(fail);
+  }
+
+  function exportMany() {
+    var targets = st.judgments
+      .filter(function (r) { return st.checked[r.judgmentId]; })
+      .map(function (r) { return { judgmentId: r.judgmentId, jurisdiction: r.meta.jurisdiction }; });
+    if (!targets.length) { JR.setStatus($('annStatus'), '請先勾選要合併匯出的案件。', 'error'); return; }
+    JR.setStatus($('annStatus'), '正在合併匯出 ' + targets.length + ' 案…');
+    api.annotation.exportMany({ targets: targets })
+      .then(function (r) { if (!r.canceled) JR.setStatus($('annStatus'), '已合併匯出：' + r.filePath, 'ok'); })
+      .catch(fail);
+  }
 
   function clearStatus() { JR.setStatus($('annStatus'), '', ''); }
   function fail(err) { JR.setStatus($('annStatus'), JR.errText(err), 'error'); }
@@ -144,16 +194,12 @@
   function refreshJudgments() {
     return api.annotation.judgments().then(function (list) {
       st.judgments = list;
-      var sel = $('annJudgment');
-      sel.innerHTML = '';
-      sel.appendChild(JR.el('option', '', list.length ? '過去筆記（' + list.length + ' 案）' : '尚無筆記的案件'));
-      sel.firstChild.value = '';
-      list.forEach(function (r) {
-        var o = JR.el('option', '', r.meta.title + '（' + r.count + ' 筆）');
-        o.value = r.judgmentId;
-        sel.appendChild(o);
+      list.forEach(function (r) { if (st.checked[r.judgmentId] === undefined) st.checked[r.judgmentId] = true; });
+      JR.views.renderAnnPast(list, st.target ? st.target.id : '', st.checked, pickPast, function (id, on) {
+        st.checked[id] = on;
+        updateManyButton();
       });
-      sel.value = st.target && list.some(function (r) { return r.judgmentId === st.target.id; }) ? st.target.id : '';
+      updateManyButton();
     }).catch(function () { /* 列表失敗不影響標注本身 */ });
   }
 
@@ -164,12 +210,14 @@
         r.includeAi = st.includeAi;
         st.view = r;
         var labels = r.colorLabels || {};
+        st.labels = labels;
         Array.prototype.forEach.call($('annToolbar').querySelectorAll('[data-color]'), function (b) {
           b.textContent = labels[b.getAttribute('data-color')] || b.textContent;
         });
         JR.views.renderAnnReader(r);
         JR.views.renderAnnNotes(r, pickNote);
         JR.views.renderAnnReanchor(r, reanchor, removeAnn);
+        JR.views.renderAnnLabels(labels);
         renderEditor();
         $('annExport').disabled = false;
         $('annImportAi').disabled = false;
@@ -189,6 +237,10 @@
       renderEditor();
     }
     st.target = { id: item.id, title: item.title || item.id, jurisdiction: item.jurisdiction || '' };
+    // 導覽列跟著目前案件：不在批次中的案件會隱藏導覽列。
+    st.qIndex = -1;
+    st.queue.forEach(function (q, i) { if (q.id === item.id) st.qIndex = i; });
+    renderNav();
     $('annSection').hidden = false;
     $('annLoad').disabled = false;
     $('annExport').disabled = true;
@@ -205,6 +257,14 @@
       load().then(function () { clearStatus(); }).catch(fail);
     },
     prepare: prepare,
+    /** 設定逐案閱讀的案件批次；index 為目前案件（-1 表示不在批次中，隱藏導覽列）。 */
+    setQueue: function (items, index, jurisdiction) {
+      st.queue = (items || []).map(function (q) {
+        return { id: q.id, title: q.title || q.id, jurisdiction: q.jurisdiction != null ? q.jurisdiction : (jurisdiction || '') };
+      });
+      st.qIndex = index;
+      renderNav();
+    },
     bind: function () {
       var rd = $('annReader');
       rd.addEventListener('mouseup', onMouseUp);
@@ -228,12 +288,19 @@
         st.includeAi = $('annShowAi').checked;
         load().catch(fail);
       });
-      $('annJudgment').addEventListener('change', function () {
-        var id = $('annJudgment').value;
-        var rec = st.judgments.filter(function (r) { return r.judgmentId === id; })[0];
-        if (!rec) return;
-        prepare({ id: rec.judgmentId, title: rec.meta.title, jurisdiction: rec.meta.jurisdiction });
-        load().then(clearStatus).catch(fail);
+      $('annPrev').addEventListener('click', function () { goQueue(-1); });
+      $('annNext').addEventListener('click', function () { goQueue(1); });
+      $('annExportMany').addEventListener('click', exportMany);
+      $('annLabelsSave').addEventListener('click', function () {
+        saveLabels({
+          yellow: $('annLabel-yellow').value,
+          green: $('annLabel-green').value,
+          pink: $('annLabel-pink').value,
+          blue: $('annLabel-blue').value
+        });
+      });
+      $('annLabelsReset').addEventListener('click', function () {
+        saveLabels({ yellow: '事實', green: '爭點', pink: '主文', blue: '理由' });
       });
       $('annImportAi').addEventListener('click', function () {
         var brief = JR.state.brief;

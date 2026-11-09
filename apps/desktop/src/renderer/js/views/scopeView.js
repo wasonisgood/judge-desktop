@@ -41,7 +41,7 @@
         var bt = el('td');
         var b = el('button', 'btn small', '精讀這則');
         b.type = 'button';
-        b.addEventListener('click', function () { JR.controllers.brief.openFromList(r); });
+        b.addEventListener('click', function () { JR.controllers.brief.openFromList(r, sh.rows); });
         bt.appendChild(b);
         tr.appendChild(bt);
         tbody.appendChild(tr);

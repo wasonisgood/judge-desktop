@@ -143,6 +143,45 @@
     if (currentMode === 'highlight_note') setTimeout(function () { ta.focus(); }, 0);
   };
 
+  /** 過去筆記列表：點選切換案件；勾選者用於合併匯出。 */
+  JR.views.renderAnnPast = function (list, targetId, checked, onPick, onToggle) {
+    var ul = JR.$('annPastList');
+    ul.innerHTML = '';
+    JR.$('annPastCount').textContent = list.length ? '（' + list.length + ' 案）' : '';
+    if (!list.length) ul.appendChild(JR.el('li', 'hint', '尚無筆記的案件。'));
+    list.forEach(function (r) {
+      var li = JR.el('li', 'ann-past-item' + (r.judgmentId === targetId ? ' is-current' : ''));
+      var cb = JR.el('input');
+      cb.type = 'checkbox';
+      cb.checked = !!checked[r.judgmentId];
+      cb.setAttribute('aria-label', '納入合併匯出');
+      cb.addEventListener('change', function () { onToggle(r.judgmentId, cb.checked); });
+      var btn = JR.el('button', 'ann-note-btn');
+      btn.type = 'button';
+      btn.appendChild(JR.el('span', 'ann-quote', r.meta.title));
+      btn.appendChild(JR.el('span', 'ann-tag', r.count + ' 筆標注'));
+      btn.addEventListener('click', function () { onPick(r.judgmentId); });
+      li.appendChild(cb);
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+  };
+
+  /** 逐案閱讀導覽列：nav 為 null 時隱藏。 */
+  JR.views.renderAnnNav = function (nav) {
+    var box = JR.$('annNav');
+    box.hidden = !nav;
+    if (!nav) return;
+    JR.$('annNavText').textContent = '逐案閱讀：第 ' + (nav.index + 1) + ' / ' + nav.total + ' 案　' + nav.title;
+    JR.$('annPrev').disabled = nav.index <= 0;
+    JR.$('annNext').disabled = nav.index >= nav.total - 1;
+  };
+
+  /** 顏色名稱編輯欄位。 */
+  JR.views.renderAnnLabels = function (labels) {
+    ['yellow', 'green', 'pink', 'blue'].forEach(function (c) { JR.$('annLabel-' + c).value = labels[c] || ''; });
+  };
+
   /** 浮動工具列：定位在選取範圍上方（相對於標注區塊）。 */
   JR.views.showAnnToolbar = function (rect, containerRect, mode) {
     var tb = JR.$('annToolbar');
