@@ -10,6 +10,8 @@ export interface ClientOptions {
   minIntervalMs?: number;
   timeoutMs?: number;
   fetchImpl?: typeof fetch;
+  /** 取消訊號（v3.6.0）：取消時進行中的請求立即中止。 */
+  signal?: AbortSignal;
 }
 
 /** 極簡 cookie jar：只保存 name=value，足夠 WebForms 會話使用。 */
@@ -33,23 +35,32 @@ export class CourtClient {
   private readonly minInterval: number;
   private readonly timeout: number;
   private readonly fetchImpl: typeof fetch;
+  private readonly signal?: AbortSignal;
 
   constructor(opts: ClientOptions = {}) {
     this.minInterval = opts.minIntervalMs ?? 800;
     this.timeout = opts.timeoutMs ?? 25_000;
     this.fetchImpl = opts.fetchImpl ?? fetch;
+    this.signal = opts.signal;
+  }
+
+  /** 逾時與取消訊號合併：任一觸發即中止。 */
+  private requestSignal(): AbortSignal {
+    const timeout = AbortSignal.timeout(this.timeout);
+    return this.signal ? AbortSignal.any([this.signal, timeout]) : timeout;
   }
 
   /** 所有對外請求的唯一入口：強制限速、帶 cookie、設定逾時。 */
   async request(url: string, init: RequestInit = {}): Promise<string> {
     const wait = this.lastAt + this.minInterval - Date.now();
     if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+    if (this.signal?.aborted) throw new Error('已取消');
     this.lastAt = Date.now();
 
     const headers = new Headers(init.headers);
     headers.set('user-agent', USER_AGENT);
     if (this.jar.header()) headers.set('cookie', this.jar.header());
-    const res = await this.fetchImpl(url, { ...init, headers, signal: AbortSignal.timeout(this.timeout) });
+    const res = await this.fetchImpl(url, { ...init, headers, signal: this.requestSignal() });
     this.jar.absorb(res);
     if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
     return res.text();
@@ -59,11 +70,12 @@ export class CourtClient {
   async requestBytes(url: string, init: RequestInit = {}): Promise<Buffer> {
     const wait = this.lastAt + this.minInterval - Date.now();
     if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+    if (this.signal?.aborted) throw new Error('已取消');
     this.lastAt = Date.now();
     const headers = new Headers(init.headers);
     headers.set('user-agent', USER_AGENT);
     if (this.jar.header()) headers.set('cookie', this.jar.header());
-    const res = await this.fetchImpl(url, { ...init, headers, signal: AbortSignal.timeout(this.timeout) });
+    const res = await this.fetchImpl(url, { ...init, headers, signal: this.requestSignal() });
     this.jar.absorb(res);
     if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
     return Buffer.from(await res.arrayBuffer());

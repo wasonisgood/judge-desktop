@@ -4,6 +4,8 @@
 // - 語意不清（propose 回報 unclear）時停下來，提供選項，最後一個選項是自行更正後再試；
 // - 達到上限時輸出目前已找到的結果，並說明狀況與建議。
 import { addStep, type PipelineTrace, type TraceModule } from './trace';
+import { isCancelled } from './cancel';
+import { friendlyError } from './errorMessage';
 
 export interface ClarifyOption {
   id: string;
@@ -53,9 +55,14 @@ export interface QueryRoundsOptions<T> {
   propose: (state: { tried: string[]; kept: T[]; round: number }) => Promise<QueryProposal>;
   /** 搜尋失敗時要不要中止整個流程（預設：記錄為略過並繼續）。 */
   onError?: (query: string, err: unknown) => void;
+  /** 取消訊號：取消時回傳 cancelled 狀態與目前保留的結果。 */
+  signal?: AbortSignal;
+  /** AI 提議失敗（額度、網路）時呼叫；流程改為不再換關鍵字，並保留已找到的結果。 */
+  onProposeError?: (err: unknown) => void;
 }
 
 export type QueryRoundsResult<T> =
+  | { status: 'cancelled'; items: T[]; tried: string[] }
   | { status: 'done'; items: T[]; tried: string[] }
   | { status: 'capped'; items: T[]; tried: string[]; advice: string }
   | { status: 'ask'; items: T[]; tried: string[]; question: string; options: ClarifyOption[] };
@@ -69,6 +76,7 @@ export async function runQueryRounds<T>(opts: QueryRoundsOptions<T>): Promise<Qu
   for (let round = 1; round <= opts.maxRounds; round++) {
     const hitsThisRound: string[] = [];
     for (const q of queries) {
+      if (isCancelled(opts.signal)) return { status: 'cancelled', items: [...kept.values()], tried };
       tried.push(q);
       try {
         const hits = await opts.search(q);
@@ -92,7 +100,19 @@ export async function runQueryRounds<T>(opts: QueryRoundsOptions<T>): Promise<Qu
     if (enough) return { status: 'done', items, tried };
     if (round === opts.maxRounds) break;
 
-    const proposal = await opts.propose({ tried: [...tried], kept: items, round });
+    if (isCancelled(opts.signal)) return { status: 'cancelled', items, tried };
+    let proposal: QueryProposal;
+    try {
+      proposal = await opts.propose({ tried: [...tried], kept: items, round });
+    } catch (err) {
+      // 提議失敗不應讓已找到的結果消失：記錄後結束換關鍵字，改為輸出目前結果。
+      opts.onProposeError?.(err);
+      addStep(opts.trace, {
+        stage: '提議新關鍵字', module: opts.module, input: `已嘗試：${tried.join('、')}`,
+        output: '失敗', decision: 'capped', reason: friendlyError(err).message,
+      });
+      break;
+    }
     if (proposal.unclear) {
       addStep(opts.trace, {
         stage: '語意確認',

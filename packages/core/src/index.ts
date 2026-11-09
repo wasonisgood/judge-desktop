@@ -56,3 +56,5 @@ export * from './pipeline/settle';
 export * from './pipeline/proposeQueries';
 export * from './pipeline/searchBudget';
 export * from './pipeline/lawContext';
+export * from './pipeline/cancel';
+export * from './pipeline/errorMessage';

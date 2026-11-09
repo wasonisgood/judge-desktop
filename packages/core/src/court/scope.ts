@@ -23,6 +23,10 @@ export interface ScopeOptions {
   onProgress?: (done: number, total: number) => void;
   /** 法條沿革（來自立法院）；提供後，每列會標示引用條文在查詢期間內是否修法。 */
   lawHistory?: HistoryArticle[];
+  /** 單筆內頁失敗時呼叫（v3.6.0）：該筆跳過，其餘照常；不再讓整輪搜尋失敗。 */
+  onItemError?: (id: string, title: string, err: unknown) => void;
+  /** 取消訊號：取消後停止取得內頁，回傳取消前已完成的列。 */
+  signal?: AbortSignal;
 }
 
 export interface ScopeRow {
@@ -86,13 +90,20 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
   const rows: ScopeRow[] = [];
   let done = 0;
   for (const it of candidates) {
-    if (rows.length >= max) break;
+    if (rows.length >= max || opts.signal?.aborted) break;
     done++;
     opts.onProgress?.(done, candidates.length);
     const year = it.dateIso ? Number(it.dateIso.slice(0, 4)) : null;
     if (opts.yearFrom && year && year < opts.yearFrom) continue;
     if (opts.yearTo && year && year > opts.yearTo) continue;
-    const d = await jurisdiction.getDetail(it.id, { client });
+    let d;
+    try {
+      d = await jurisdiction.getDetail(it.id, { client });
+    } catch (err) {
+      if (opts.signal?.aborted) break;
+      opts.onItemError?.(it.id, it.title, err);
+      continue;
+    }
     const cited = articlesCiting(d, opts.statute);
     if (cited.length === 0) continue; // 只保留真的引用該法規的判決
     rows.push({
