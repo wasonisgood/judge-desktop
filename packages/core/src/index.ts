@@ -50,3 +50,7 @@ export * from './local/gpuProbe';
 export * from './local/prerequisites';
 export * from './modules/bundleSync';
 export * from './court/manualIds';
+export * from './pipeline/trace';
+export * from './pipeline/queryRounds';
+export * from './pipeline/settle';
+export * from './pipeline/proposeQueries';

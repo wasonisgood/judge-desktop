@@ -51,7 +51,12 @@ export interface CaseAnalysis {
   group: string;        // AI 歸類的類型名稱（例如：財產損害、政治案件、程序駁回）
 }
 
-export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow, d: JudgmentDetail): Promise<CaseAnalysis> {
+export interface AnalyzeCaseOptions {
+  /** 法規現行條文（已由呼叫端取得、只含本案引用的條文）；提供後 AI 會依現行條文判讀。 */
+  currentText?: string;
+}
+
+export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow, d: JudgmentDetail, opts: AnalyzeCaseOptions = {}): Promise<CaseAnalysis> {
   const system = '你是台灣法律研究助理。只根據提供的判決原文作答，不得編造。以繁體中文回答，並且只輸出一個 JSON 物件。';
   const user = [
     `研究的法規：${statute}`,
@@ -59,6 +64,7 @@ export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow
     `歷審位置：${d.historyPosition?.summary ?? '未取得歷審資料'}`,
     `引用條文：${row.citedArticles.join('；') || '（僅提及法規名稱）'}`,
     ...((row.lawNotes ?? []).length ? ["法條異動提示（由法條沿革比對，請在分析中一併考慮）：", ...(row.lawNotes ?? []).map((n) => `- ${n.summary}`)] : []),
+    ...(opts.currentText ? ['法規現行條文（引用條文的現行內容，判讀時請對照）：', opts.currentText.slice(0, 2000)] : []),
     '',
     '請輸出 JSON，欄位如下。每個欄位限 120 字以內的繁體中文，不要換行，不要加說明文字：',
     '{"issue":"本案爭點","holding":"法院見解（核心論證）","statuteApplication":"該法規如何被適用或排除","outcome":"結論（駁回、廢棄發回、准許等）","group":"依案件性質歸類的類型名稱（四字到十字）"}',
