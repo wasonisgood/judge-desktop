@@ -3,6 +3,7 @@ import { registerWindowIpc } from './windowIpc';
 import { registerLocalIpc } from './localIpc';
 import { registerSettingsIpc } from './settingsIpc';
 import { registerSearchIpc } from './searchIpc';
+import { registerSemanticIpc } from './semanticIpc';
 import { registerScopeIpc } from './scopeIpc';
 import { registerLibraryIpc } from './libraryIpc';
 import { registerAssistantIpc } from './assistantIpc';
@@ -17,6 +18,7 @@ export function registerIpc(): void {
   registerLocalIpc();
   registerSettingsIpc();
   registerSearchIpc();
+  registerSemanticIpc();
   registerScopeIpc();
   registerLibraryIpc();
   registerAssistantIpc();
