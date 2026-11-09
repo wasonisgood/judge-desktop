@@ -12,6 +12,8 @@ import type { CatalogModule, InstalledModule } from './catalog';
 import type { ModuleId } from './registry';
 
 export interface ApplyOptions {
+  /** 取消訊號（v3.6.0）：取消時停在目前檔案，已完成的檔案保留，下次可沿用。 */
+  signal?: AbortSignal;
   moduleId: ModuleId;
   /** 模組目前所在資料夾（例如 userData/modules/ai-engine/current）。 */
   moduleDir: string;
@@ -83,10 +85,11 @@ export async function applyModuleUpdate(opts: ApplyOptions): Promise<ApplyResult
         reused.push(rel);
         continue;
       }
+      if (opts.signal?.aborted) throw new Error('已取消');
       opts.onProgress?.(`下載 ${rel}`);
       // 先鏡像、後主要來源；每個來源都必須通過 SHA-256 校驗。
       await downloadFromFirstAvailable({
-        urls: [f.mirror, f.url].filter((u): u is string => !!u), file: dest, expectedSha256: f.sha256, fetchImpl: opts.fetchImpl,
+        urls: [f.mirror, f.url].filter((u): u is string => !!u), file: dest, expectedSha256: f.sha256, fetchImpl: opts.fetchImpl, signal: opts.signal,
       });
       downloaded.push(rel);
     }

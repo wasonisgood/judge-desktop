@@ -8,6 +8,8 @@ export const OLLAMA_DEFAULT_URL = 'http://127.0.0.1:11434';
 export interface OllamaOptions {
   baseUrl?: string;
   fetchImpl?: typeof fetch;
+  /** 取消訊號（v3.6.0）。 */
+  signal?: AbortSignal;
 }
 
 /** 解析 NDJSON（每行一個 JSON）。忽略空行；遇到壞行會拋錯並指出行號。 */
@@ -67,6 +69,7 @@ export async function pullModel(
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ model, stream: true }),
+    signal: opts.signal,
   });
   if (!res.ok) throw new Error(`拉取模型失敗（HTTP ${res.status}）`);
   let sawSuccess = false;

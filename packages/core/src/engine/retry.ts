@@ -8,6 +8,8 @@ export interface RetryOptions {
   sleep?: (ms: number) => Promise<void>;
   /** 每次失敗後呼叫（給畫面顯示「第 N 次重試」）。 */
   onRetry?: (attempt: number, delayMs: number, err: unknown) => void;
+  /** 取消訊號（v3.6.0）：取消後不再重試。 */
+  signal?: AbortSignal;
 }
 
 const defaultSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -24,7 +26,7 @@ export async function withRetry<T>(fn: (attempt: number) => Promise<T>, opts: Re
     } catch (err) {
       lastErr = err;
       const retryable = classifyError(err).retryable;
-      if (!retryable || i === attempts) throw err;
+      if (!retryable || i === attempts || opts.signal?.aborted) throw err;
       const delay = Math.min(max, base * 2 ** (i - 1));
       opts.onRetry?.(i, delay, err);
       await sleep(delay);

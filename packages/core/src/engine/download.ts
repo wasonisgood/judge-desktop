@@ -14,6 +14,8 @@ export interface DownloadOptions {
   fetchImpl?: typeof fetch;
   onProgress?: (downloaded: number, total: number | null) => void;
   timeoutMs?: number;
+  /** 取消訊號（v3.6.0）：取消時中止下載，已下載的部分檔保留，可續傳。 */
+  signal?: AbortSignal;
 }
 
 export interface DownloadResult {
@@ -47,7 +49,8 @@ export async function downloadWithResume(opts: DownloadOptions): Promise<Downloa
 
   const headers: Record<string, string> = {};
   if (offset > 0) headers.range = `bytes=${offset}-`;
-  const res = await f(opts.url, { headers, signal: AbortSignal.timeout(opts.timeoutMs ?? 30 * 60_000) });
+  const timeout = AbortSignal.timeout(opts.timeoutMs ?? 30 * 60_000);
+  const res = await f(opts.url, { headers, signal: opts.signal ? AbortSignal.any([opts.signal, timeout]) : timeout });
   if (!res.ok && res.status !== 206) throw new Error(`下載失敗（HTTP ${res.status}）`);
   if (!res.body) throw new Error('下載失敗：回應沒有內容');
 
