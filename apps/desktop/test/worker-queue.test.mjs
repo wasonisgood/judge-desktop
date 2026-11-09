@@ -129,3 +129,12 @@ test('pruneFinished：超過上限時只移除最舊的已結束工作，執行�
   assert.deepEqual(ids.filter((x) => x !== 'live'), ['p3', 'p4']);
   assert.equal(q.pruneFinished(items, 10), items);
 });
+
+test('進度：只在執行中可更新，中斷後保留，讀回也保留', () => {
+  let items = q.enqueueItem([], input('m'), 1);
+  assert.throws(() => q.setProgress(items, 'm', '1/3'), q.InvalidTransition);
+  items = q.setProgress(q.startItem(items, 'm', 2), 'm', '2/12 件');
+  assert.equal(items[0].progress, '2/12 件');
+  items = q.interruptAllRunning(items, 3);
+  assert.equal(q.parseQueue(q.serializeQueue(items))[0].progress, '2/12 件');
+});

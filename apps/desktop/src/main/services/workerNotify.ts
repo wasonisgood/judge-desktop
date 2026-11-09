@@ -120,3 +120,23 @@ export function chooseChannel(input: ChannelInput): ChannelDecision {
 export function shouldNotify(state: { windowVisible: boolean }): boolean {
   return !state.windowVisible;
 }
+
+/** 既有工作種類對應的畫面頁面（點擊通知時開啟）。未知種類開啟主視窗的首頁。 */
+export function pageForJobKind(kind: string): string {
+  switch (kind) {
+    case 'search': return 'list';
+    case 'scope': return 'scope';
+    case 'brief': return 'brief';
+    case 'assistant': return 'list';
+    case 'install':
+    case 'repair': return 'settings';
+    default: return 'home';
+  }
+}
+
+/** 頁面名稱白名單：通知點擊只會開啟這些頁面。 */
+export const KNOWN_PAGES: readonly string[] = ['home', 'list', 'scope', 'brief', 'files', 'settings'];
+
+export function safePage(page: string): string {
+  return KNOWN_PAGES.includes(page) ? page : 'home';
+}

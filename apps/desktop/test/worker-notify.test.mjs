@@ -80,3 +80,13 @@ test('是否通知：主視窗可見時不另外通知，隱藏時才通知', ()
   assert.equal(n.shouldNotify({ windowVisible: true }), false);
   assert.equal(n.shouldNotify({ windowVisible: false }), true);
 });
+
+test('點擊通知的頁面：既有工作種類對應到正確頁面，未知頁面一律回到首頁', () => {
+  assert.equal(n.pageForJobKind('scope'), 'scope');
+  assert.equal(n.pageForJobKind('search'), 'list');
+  assert.equal(n.pageForJobKind('brief'), 'brief');
+  assert.equal(n.pageForJobKind('install'), 'settings');
+  assert.equal(n.pageForJobKind('unknown-kind'), 'home');
+  assert.equal(n.safePage('files'), 'files');
+  assert.equal(n.safePage('javascript:alert(1)'), 'home');
+});

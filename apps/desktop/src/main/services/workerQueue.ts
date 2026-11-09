@@ -17,6 +17,8 @@ export interface WorkerItem {
   page: string;
   /** 完成時的結果摘要（給通知與橫幅使用）。 */
   summary: string;
+  /** 執行中的最近進度（例如「3/12 件」）；中斷時保留，續跑提示會顯示。 */
+  progress: string;
   /** 失敗或中斷時的說明。 */
   error: string | null;
   /** 完成但需要使用者回來確認（例如法名有多個候選）。 */
@@ -72,6 +74,7 @@ export function enqueueItem(items: WorkerItem[], input: EnqueueInput, now: numbe
     status: 'queued',
     page: input.page,
     summary: '',
+    progress: '',
     error: null,
     attention: false,
     createdAt: now,
@@ -86,6 +89,13 @@ export function startItem(items: WorkerItem[], id: string, now: number): WorkerI
   const it = find(items, id);
   if (it.status !== 'queued') throw new InvalidTransition(id, it.status, '開始執行');
   return replaceItem(items, id, { ...it, status: 'running', startedAt: now, error: null });
+}
+
+/** 執行中更新進度文字（只在執行中有效）。 */
+export function setProgress(items: WorkerItem[], id: string, text: string): WorkerItem[] {
+  const it = find(items, id);
+  if (it.status !== 'running') throw new InvalidTransition(id, it.status, '更新進度');
+  return replaceItem(items, id, { ...it, progress: text });
 }
 
 /** 執行中 → 完成。 */
@@ -198,6 +208,7 @@ export function parseQueue(text: string): WorkerItem[] {
       status: o.status as WorkerStatus,
       page: typeof o.page === 'string' ? o.page : '',
       summary: typeof o.summary === 'string' ? o.summary : '',
+      progress: typeof o.progress === 'string' ? o.progress : '',
       error: typeof o.error === 'string' ? o.error : null,
       attention: o.attention === true,
       createdAt: typeof o.createdAt === 'number' ? o.createdAt : 0,
