@@ -1,7 +1,7 @@
 // 範圍整理表：依「條例／法規」為範圍，列出引用該法規的判決，並整理成一張表。
 // 對應 R2（各條例的 Word 判決整理表）。流程：搜尋法規名稱 → 逐筆取得內頁 → 確認確實引用該法規 → 篩選期間 → 整理欄位。
 import { CourtClient } from './client';
-import { searchJudgments, getJudgmentDetail } from './search';
+import { jurisdictionRegistry, type JurisdictionId } from '../jurisdiction/registry';
 import type { JudgmentDetail } from './parse';
 import { parseCitations } from '../law/citation';
 import type { HistoryArticle } from '../law/history';
@@ -9,6 +9,8 @@ import { citationLawNotes, type CitationLawNote } from '../law/citationNotes';
 
 export interface ScopeOptions {
   statute: string;
+  /** 法院管轄區識別碼；未指定則使用預設管轄區（台灣司法院）。 */
+  jurisdiction?: JurisdictionId;
   /** 西元年；未設定則不限制。 */
   yearFrom?: number;
   yearTo?: number;
@@ -75,9 +77,10 @@ export function citingExcerpt(fullText: string, statute: string): string {
 }
 
 export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
+  const jurisdiction = jurisdictionRegistry.get(opts.jurisdiction);
   const client = opts.client ?? new CourtClient();
   const max = Math.min(Math.max(opts.maxItems ?? 30, 1), 200);
-  const candidates = await searchJudgments(opts.statute, { maxItems: max * 2, client });
+  const candidates = await jurisdiction.search(opts.statute, { maxItems: max * 2, client });
   const rows: ScopeRow[] = [];
   let done = 0;
   for (const it of candidates) {
@@ -87,7 +90,7 @@ export async function buildScopeTable(opts: ScopeOptions): Promise<ScopeRow[]> {
     const year = it.dateIso ? Number(it.dateIso.slice(0, 4)) : null;
     if (opts.yearFrom && year && year < opts.yearFrom) continue;
     if (opts.yearTo && year && year > opts.yearTo) continue;
-    const d = await getJudgmentDetail(it.id, client);
+    const d = await jurisdiction.getDetail(it.id, { client });
     const cited = articlesCiting(d, opts.statute);
     if (cited.length === 0) continue; // 只保留真的引用該法規的判決
     rows.push({
