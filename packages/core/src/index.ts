@@ -86,6 +86,8 @@ export * from './chart/stats';
 export * from './chart/data';
 export * from './chart/svg';
 export * from './chart/tiles';
+export * from './chart/courtMap';
+export * from './chart/map';
 export * from './pipeline/criteria';
 export * from './court/passages';
 export * from './ai/semanticRank';
