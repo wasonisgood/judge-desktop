@@ -123,7 +123,7 @@
 .review-toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 8px 0; }
 .review-filter { min-width: 7em; }
 .review-row > td { background: var(--paper-2); }
-.review-panel { padding: 6px 4px; }
+.review-panel { padding: 6px 4px; position: sticky; left: 0; width: min(100%, 900px); box-sizing: border-box; }
 .review-field { border-top: 1px solid var(--rule); padding: 8px 0; }
 .review-field.pending-cell { padding-left: 8px; border-left: 3px solid var(--shu); }
 .review-field-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
