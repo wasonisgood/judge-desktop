@@ -10,6 +10,8 @@ const fs = require('node:fs');
 const os = require('node:os');
 const { createHash } = require('node:crypto');
 const { execFileSync } = require('node:child_process');
+const { wait, waitFor, js, findWizard, findMain } = require('./lib/realEnv.cjs');
+const { openWizard, runDiagnoseUi, clickFixFor, installFromWizard } = require('./lib/wizardDriver.cjs');
 
 const outDir = process.env.LOCAL_REAL_DIR || path.join(__dirname, '..', '..', '..', 'docs', 'testing', 'local-ai-real');
 fs.mkdirSync(outDir, { recursive: true });
@@ -22,25 +24,13 @@ const check = (name, ok, detail = '') => {
   results.push({ name, ok: !!ok, detail: String(detail) });
   console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${detail ? '  [' + String(detail).slice(0, 300) + ']' : ''}`);
 };
-const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const save = () => fs.writeFileSync(path.join(outDir, 'results.json'), JSON.stringify({ at: new Date().toISOString(), results }, null, 2));
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 
-async function waitFor(w, expr, timeoutMs) {
-  const t0 = Date.now();
-  while (Date.now() - t0 < timeoutMs) {
-    try { if (await w.webContents.executeJavaScript(expr)) return true; } catch { /* 切換中 */ }
-    await wait(500);
-  }
-  return false;
-}
 async function shot(w, name) {
   await wait(400);
   fs.writeFileSync(path.join(outDir, name), (await w.webContents.capturePage()).toPNG());
 }
-const findWizard = () => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().includes('wizard.html'));
-const findMain = () => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().endsWith('index.html'));
-const js = (w, code) => w.webContents.executeJavaScript(code);
 
 const OWN = 'http://127.0.0.1:11435';
 function ownOllamaPids() {
@@ -75,43 +65,6 @@ function serveFiles(map) {
   return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve({ server, base: `http://127.0.0.1:${server.address().port}` })));
 }
 
-async function openWizard(main) {
-  await js(main, `document.getElementById('openWizard').click()`);
-  for (let i = 0; i < 60; i++) {
-    const wz = findWizard();
-    if (wz && !wz.webContents.isLoading()) { await wait(500); return wz; }
-    await wait(250);
-  }
-  throw new Error('精靈視窗沒有開啟');
-}
-
-/** 在排除問題頁執行檢查，等待「這一次」的結果（先清空，避免讀到舊結果）。 */
-async function runDiagnoseUi(wz) {
-  await js(wz, `document.querySelector('.wiz-nav[data-view="diag"]').click()`);
-  await waitFor(wz, `(() => { const t = document.getElementById('diagSummary').textContent; return t && !/檢查中/.test(t); })()`, 180_000);
-  await wait(300);
-  return js(wz, `({ summary: document.getElementById('diagSummary').textContent, items: [...document.querySelectorAll('#diagGroups .wiz-row')].map(li => ({ title: li.querySelector('.wiz-row-title').textContent, status: li.querySelector('.wiz-pill').textContent, detail: li.querySelector('.wiz-row-detail').textContent, fix: li.querySelector('.wiz-row-side button') ? li.querySelector('.wiz-row-side button').textContent : null })) })`);
-}
-
-/** 點擊排除問題中某一項的修復按鈕（真的 UI 操作），等待修復與重新檢查結束。 */
-async function clickFixFor(wz, title) {
-  const found = await js(wz, `(() => { const li = [...document.querySelectorAll('#diagGroups .wiz-row')].find(x => x.querySelector('.wiz-row-title').textContent === ${JSON.stringify(title)}); const b = li && li.querySelector('.wiz-row-side button'); if (!b) return false; b.click(); return true; })()`);
-  if (!found) return false;
-  await wait(300);
-  await waitFor(wz, `!/執行修復|檢查中/.test(document.getElementById('diagSummary').textContent)`, 60 * 60_000);
-  return true;
-}
-
-async function installFromWizard(wz) {
-  await js(wz, `document.getElementById('btnCheck').click()`);
-  await waitFor(wz, `!document.querySelector('.wiz-view[data-view="choose"]').hidden`, 180_000);
-  await js(wz, `(() => { const i = [...document.querySelectorAll('input[name="aiChoice"]')].find(x => x.value === 'recommended') || document.querySelector('input[name="aiChoice"]'); i.click(); })()`);
-  await js(wz, `document.getElementById('btnToAgree').click()`);
-  await waitFor(wz, `!document.querySelector('.wiz-view[data-view="agree"]').hidden`, 5000);
-  await js(wz, `document.getElementById('agreeBox').click()`);
-  await js(wz, `document.getElementById('btnInstall').click()`);
-  return waitFor(wz, `!document.getElementById('btnToDone').disabled || !document.getElementById('failBox').hidden`, 60 * 60_000);
-}
 
 async function main() {
   require('../dist/main/main.js');
