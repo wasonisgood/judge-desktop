@@ -93,4 +93,15 @@ contextBridge.exposeInMainWorld('api', {
     update: (args: unknown) => invoke('library:update', args),
     remove: (args: unknown) => invoke('library:remove', args),
   },
+  criteria: {
+    fetch: (args: unknown) => invoke('criteria:fetch', args),
+    plan: (args: unknown) => invoke('criteria:plan', args),
+    run: (args: unknown) => invoke('criteria:run', args),
+    runs: () => invoke('criteria:runs'),
+    compare: (args: unknown) => invoke('criteria:compare', args),
+    export: (args: unknown) => invoke('export:criteria', args),
+    onProgress: (cb: (p: { phase: 'fetch' | 'run'; done: number; total: number }) => void) => {
+      ipcRenderer.on('criteria:progress', (_e, p) => cb(p));
+    },
+  },
 });
