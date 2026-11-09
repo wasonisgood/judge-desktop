@@ -26,6 +26,11 @@
 .table tr.row-picked td { background: var(--shu-wash); }
 .table tr.row-picked td:first-child { box-shadow: inset 3px 0 0 var(--shu); }
 
+/* 標編碼標注工序：欄位設定的上移／下移／移除按鈕併成一格；待覆核標記 */
+.coding-field-actions { display: flex; gap: 4px; }
+.pending-tag { display: inline-block; margin-left: 6px; padding: 0 6px; font-style: normal; font-size: 0.75rem; color: var(--shu); border: 1px solid var(--shu); border-radius: 3px; }
+.pending-cell { background: var(--shu-wash); }
+
 /* 範圍整理表：欄位多，表格設定最小寬度，超出時橫向捲動，避免文字被擠成一字一行 */
 .scope-block .table { min-width: 1240px; }
 .scope-block .table th, .scope-block .table td { min-width: 70px; }
