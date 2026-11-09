@@ -135,5 +135,22 @@ contextBridge.exposeInMainWorld('api', {
     onProgress: (cb: (p: { phase: 'fetch' | 'run'; done: number; total: number }) => void) => {
       ipcRenderer.on('criteria:progress', (_e, p) => cb(p));
     },
+  annotation: {
+    load: (args: unknown) => invoke('annotation:load', args),
+    add: (args: unknown) => invoke('annotation:add', args),
+    update: (args: unknown) => invoke('annotation:update', args),
+    remove: (args: unknown) => invoke('annotation:remove', args),
+    reanchor: (args: unknown) => invoke('annotation:reanchor', args),
+    importAi: (args: unknown) => invoke('annotation:importAi', args),
+    judgments: () => invoke('annotation:judgments'),
+    export: (args: unknown) => invoke('annotation:export', args),
+    exportMany: (args: unknown) => invoke('annotation:exportMany', args),
+    labels: {
+      get: () => invoke('annotation:labels:get'),
+      set: (args: unknown) => invoke('annotation:labels:set', args),
+    },
+    syncStatus: () => invoke('annotation:syncStatus'),
+    syncPreview: () => invoke('annotation:syncPreview'),
+    syncNow: () => invoke('annotation:syncNow'),
   },
 });

@@ -14,6 +14,7 @@ import { registerKnowledgeIpc } from './knowledgeIpc';
 import { registerDesignIpc } from './designIpc';
 import { registerCriteriaIpc } from './criteriaIpc';
 import { registerChartIpc } from './chartIpc';
+import { registerAnnotationIpc } from './annotationIpc';
 
 export function registerIpc(): void {
   registerAuthIpc();
@@ -31,4 +32,5 @@ export function registerIpc(): void {
   registerDesignIpc();
   registerCriteriaIpc();
   registerChartIpc();
+  registerAnnotationIpc();
 }

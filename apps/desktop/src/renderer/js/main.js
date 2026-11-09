@@ -13,6 +13,7 @@
   JR.controllers.scope.bind();
   JR.controllers.brief.bind();
   JR.controllers.design.bind();
+  JR.controllers.annotation.bind();
   JR.controllers.files.bind();
   JR.controllers.assistant.bind();
   JR.controllers.localAi.bind();

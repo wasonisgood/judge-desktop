@@ -111,7 +111,7 @@ export async function runBrief(
     kind: 'brief',
     title: `精讀：${d.meta.title || args.judgmentId}`,
     summary: d.meta.court ?? '',
-    payload: { detail: d, doc, trace },
+    payload: { detail: d, doc, trace, jurisdiction: args.jurisdiction ?? '' },
   });
   if (save.saveError) addStep(trace, { stage: '存入檔案', module: 'rule', input: '精讀文書', output: '失敗', decision: 'skip', reason: save.saveError });
   const annotated = signal?.aborted
@@ -122,5 +122,5 @@ export async function runBrief(
     output: annotated.error ? `未完成：${annotated.error}` : `${annotated.files.length} 份 Word，標示 ${"quotes" in annotated ? annotated.quotes : 0} 則引文`,
     decision: annotated.error ? 'skip' : 'pass', reason: annotated.error ? '標示失敗不影響精讀文書' : '原版標示完成',
   });
-  return { detail: d, doc, annotated, saveError: save.saveError, lawNotes: lc.notes, caseTypeNote, trace, explanation: explainTrace(trace) };
+  return { detail: d, doc, annotated, saveError: save.saveError, lawNotes: lc.notes, caseTypeNote, trace, explanation: explainTrace(trace), jurisdiction: args.jurisdiction ?? '' };
 }
