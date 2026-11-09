@@ -251,7 +251,24 @@ jobs:
 
       - name: 打包 macOS 安裝包（dmg、zip；x64 與 arm64）
         working-directory: apps/desktop
-        run: npx electron-builder --mac --publish never
+        # 有 Developer ID 憑證與 Apple 公證帳號時簽章並公證；只有憑證時簽章不公證；沒有憑證時 ad-hoc 簽章、不公證。
+        env:
+          CSC_LINK: ${{ secrets.MAC_CERT_P12_BASE64 }}
+          CSC_KEY_PASSWORD: ${{ secrets.MAC_CERT_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          if [ -n "$CSC_LINK" ] && [ -n "$APPLE_ID" ]; then
+            echo "使用 Developer ID 簽章並公證"
+            npx electron-builder --mac --publish never
+          elif [ -n "$CSC_LINK" ]; then
+            echo "有憑證但沒有公證帳號：簽章、不公證"
+            npx electron-builder --mac --publish never --config.mac.notarize=false
+          else
+            echo "沒有 Apple 憑證：ad-hoc 簽章、不公證"
+            npx electron-builder --mac --publish never --config.mac.identity=- --config.mac.notarize=false
+          fi
 
       - name: 上傳 macOS 產物
         uses: actions/upload-artifact@v4

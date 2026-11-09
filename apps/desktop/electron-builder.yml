@@ -16,11 +16,11 @@ win:
       arch:
         - x64
 # macOS 與 Linux 版：產出可直接安裝的格式（不含應用程式內自動更新）。
-# 未取得 Apple 開發者憑證前以 ad-hoc 簽章（identity "-"）；正式公證流程見 docs/PLATFORMS.md。
+# 簽章與公證由建置環境決定（見 .github/workflows/release.yml）：
+# 有 Developer ID 憑證與 Apple 公證帳號 → 簽章並公證；否則 ad-hoc 簽章（identity "-"，未公證）。
 mac:
   category: public.app-category.productivity
   icon: build/icon.png
-  identity: "-"
   target:
     - target: dmg
       arch:
