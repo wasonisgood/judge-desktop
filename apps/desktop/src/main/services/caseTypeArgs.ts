@@ -1,6 +1,6 @@
 // 案件類型參數的純函式（不做 I/O，不依賴 electron，可直接測試）：
 // 範圍整理（篩選）與單一判決精讀（提示＋字號檢查）共用。
-import { caseTypeOf, matchCaseType, parseCaseTypeInput, type CaseType, type CaseTypeStatus } from '@judge/core';
+import { caseTypeOf, caseTypeLabel, matchCaseType, parseCaseTypeInput, type CaseType, type CaseTypeStatus } from '@judge/core';
 
 export interface CaseTypeArg {
   /** 解析後的案件類型；未指定或無法辨識時為 undefined（不套用）。 */
@@ -18,22 +18,22 @@ export function resolveCaseTypeArg(raw: unknown): CaseTypeArg {
   return { caseType: t, note: null };
 }
 
-/** 字號判定為明確類型（by-suffix／by-zi）而與指定不符，才算「確定不符」；其餘為無法判定。 */
+/** 字號判定為明確類型（字號明載、法院名稱或字別唯一對應）而與指定不符，才算「確定不符」；其餘為無法判定。 */
 function isDeterminate(status: CaseTypeStatus): boolean {
-  return status === 'by-suffix' || status === 'by-zi';
+  return status === 'by-suffix' || status === 'by-court' || status === 'by-zi';
 }
 
 /**
- * 範圍整理因案件類型被排除的判決，寫成一則說明。沒有排除時回傳 null。
- * skipped 的 status 來自 core 的 onCaseTypeSkip。
+ * 範圍整理因案件類型被排除的判決，寫成一則說明（列出排除的字號與其類型標籤）。沒有排除時回傳 null。
+ * skipped 的 title、status 來自 core 的 onCaseTypeSkip。
  */
-export function caseTypeSkipNote(statute: string, caseType: CaseType, skipped: { status: CaseTypeStatus }[]): string | null {
+export function caseTypeSkipNote(statute: string, caseType: CaseType, skipped: { title: string; status: CaseTypeStatus }[]): string | null {
   if (!skipped.length) return null;
-  const mismatch = skipped.filter((x) => isDeterminate(x.status)).length;
-  const undecided = skipped.length - mismatch;
-  const parts = [`「${statute}」依案件類型「${caseType}」篩選：排除 ${mismatch} 筆字號明載其他類型的判決`];
-  if (undecided) parts.push(`另 ${undecided} 筆字別同時見於多種類型或不在字別表中，字號未寫明類型，依「不猜」原則排除（可於判決列表中人工確認）`);
-  return parts.join('；') + '。';
+  const determinate = skipped.filter((x) => isDeterminate(x.status)).length;
+  const undecided = skipped.length - determinate;
+  const shown = skipped.slice(0, 10).map((x) => `${x.title}（${caseTypeLabel(x.title)}）`).join('；');
+  const more = skipped.length > 10 ? `；另有 ${skipped.length - 10} 筆` : '';
+  return `「${statute}」依案件類型「${caseType}」篩選，排除 ${skipped.length} 筆：${determinate} 筆字號判定為其他類型，${undecided} 筆字別重疊或不在字別表中（不猜，排除）。排除的字號：${shown}${more}。`;
 }
 
 export interface BriefCaseTypeCheck {

@@ -1,7 +1,7 @@
 // 案件類型與判決字別：字號解析、字別重疊不猜、無法對應的字別標示 unknown，以及範圍整理依字號篩選。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { caseTypeOf, matchCaseType, parseCaseNo, parseCaseTypeInput, buildScopeTable, CASE_TYPES } from '../../dist/index.js';
+import { caseTypeOf, caseTypeLabel, matchCaseType, parseCaseNo, parseCaseTypeInput, buildScopeTable, CASE_TYPES } from '../../dist/index.js';
 
 test('字號解析：標準化年度、字別與字號', () => {
   const p = parseCaseNo('臺灣高等法院 112 年上易字第 123 號刑事判決');
@@ -24,7 +24,8 @@ test('字號寫明類型用語時以它為準（by-suffix）', () => {
 });
 
 test('字別只對應一種類型時採用（by-zi）', () => {
-  assert.equal(caseTypeOf('113 年度重訴字第 5 號').type, '民事');
+  assert.equal(caseTypeOf('113 年度消債更字第 5 號').type, '民事');
+  assert.equal(caseTypeOf('113 年度重訴字第 5 號').status, 'ambiguous', '重訴 實際字號中見於刑事，不得單獨定為民事');
   assert.equal(caseTypeOf('113 年度易字第 1 號').type, '刑事');
   assert.equal(caseTypeOf('113 年度交易字第 1 號').type, '刑事');
   assert.equal(caseTypeOf('113 年度勞訴字第 1 號').status, 'by-zi');
@@ -56,6 +57,45 @@ test('matchCaseType：符合、不符合、無法判定三種結果分開', () =
   assert.equal(matchCaseType('113 年度易字第 1 號', '刑事'), 'match');
   assert.equal(matchCaseType('113 年度易字第 1 號', '民事'), 'mismatch');
   assert.equal(matchCaseType('113 年度訴字第 1 號', '民事'), 'unknown');
+});
+
+// 以下字號取自 2026-11 司法院裁判書查詢的實際搜尋結果（標題原樣，含「年度 字 字第」之間的空白）。
+test('實際字號：民事判決／裁定皆由類型用語判定（含字別與類型用語之間有空白）', () => {
+  assert.equal(caseTypeOf('臺灣南投地方法院 115 年度 訴 字第 238 號民事裁定').type, '民事');
+  assert.equal(caseTypeOf('臺灣臺中地方法院 115 年度 消債更 字第 643 號民事裁定').type, '民事');
+  assert.equal(caseTypeOf('臺灣臺東地方法院 115 年度 護 字第 111 號民事裁定').type, '民事');
+  assert.equal(caseTypeOf('臺灣臺北地方法院 115 年度 抗 字第 556 號民事裁定').type, '民事', '抗 單獨為重疊，但字號寫明民事');
+  assert.equal(caseTypeOf('臺灣高等法院 115 年度 再易 字第 60 號民事判決').type, '民事');
+  assert.equal(caseTypeOf('臺灣嘉義地方法院 114 年度 勞訴 字第 5 號民事判決').type, '民事');
+});
+
+test('實際字號：字號寫明刑事（含聲保、交簡、毒抗）', () => {
+  assert.equal(caseTypeOf('臺灣桃園地方法院 115 年度 原交簡 字第 106 號刑事判決').type, '刑事');
+  assert.equal(caseTypeOf('臺灣桃園地方法院 115 年度 聲保 字第 9 號刑事裁定').type, '刑事');
+  assert.equal(caseTypeOf('福建高等法院金門分院 115 年度 毒抗 字第 6 號刑事裁定').type, '刑事');
+});
+
+test('實際字號：「上易」同時見於刑事與民事，字號寫明類型時以類型為準', () => {
+  const c = caseTypeOf('臺灣高等法院 高雄分院 114 年度 上易 字第 291 號民事判決');
+  assert.equal(c.type, '民事');
+  assert.equal(c.status, 'by-suffix');
+  assert.equal(caseTypeOf('臺灣高等法院 114 年度 上易 字第 9 號').status, 'ambiguous', '沒有類型用語時不得猜');
+});
+
+test('實際字號：行政法院的判決／裁定不寫類型用語，以法院名稱判定為行政（不是重疊）', () => {
+  const c = caseTypeOf('臺中高等行政法院 高等庭 113 年度 訴 字第 102 號判決');
+  assert.equal(c.type, '行政');
+  assert.equal(c.status, 'by-court');
+  assert.equal(caseTypeOf('臺北高等行政法院 高等庭 115 年度 高抗 字第 10 號裁定').type, '行政');
+  assert.equal(caseTypeOf('臺中高等行政法院 地方庭 115 年度 交 字第 33 號判決').type, '行政', '交 在刑事與行政都見過，法院名稱為準');
+});
+
+test('結果表標籤：民事／刑事／行政／重疊／未知，與判定結果一致', () => {
+  assert.equal(caseTypeLabel('臺灣臺東地方法院 115 年度 護 字第 111 號民事裁定'), '民事');
+  assert.equal(caseTypeLabel('臺中高等行政法院 高等庭 113 年度 訴 字第 102 號判決'), '行政');
+  assert.equal(caseTypeLabel('臺灣臺北地方法院 113 年度訴字第 2 號'), '重疊');
+  assert.equal(caseTypeLabel('臺灣臺北地方法院 113 年度特字第 2 號'), '未知');
+  assert.equal(caseTypeLabel('無字號'), '未知');
 });
 
 test('使用者輸入的案件類型：只接受唯一的類型用語', () => {
@@ -103,6 +143,7 @@ test('範圍整理：指定民事時，只保留字號判定為民事的判決�
     onCaseTypeSkip: (title, status) => skipped.push(status),
   });
   assert.deepEqual(rows.map((r) => r.id), ['A']);
+  assert.equal(rows[0].caseTypeLabel, '民事', '納入的列要標示字號類型');
   // B 在列表字號即可判定為刑事（by-suffix，字號寫明刑事判決），不應取得內頁；C、D 無法判定，排除並回報。
   assert.deepEqual(detailCalls.sort(), ['A', 'C', 'D']);
   // B 於列表階段排除（by-suffix）；C 取得內頁後因字別重疊排除（ambiguous）；D 字別未知（unknown）。

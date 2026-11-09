@@ -217,7 +217,7 @@ async function runOneStatute(p: {
   if (rounds.status === 'capped') notes.push(`「${statute.name}」${rounds.advice}`);
   const activeType = resolveCaseTypeArg(args.caseType).caseType;
   if (activeType) {
-    const typeNote = caseTypeSkipNote(statute.name, activeType, [...typeSkipped.values()].map((status) => ({ status })));
+    const typeNote = caseTypeSkipNote(statute.name, activeType, [...typeSkipped.entries()].map(([title, status]) => ({ title, status })));
     if (typeNote) notes.push(typeNote);
     addStep(trace, { stage: '案件類型篩選', module: 'rule', input: `${statute.name}（${activeType}）`, output: `排除 ${typeSkipped.size} 筆`, decision: 'pass', reason: '依判決字號判定類型，不猜' });
   }
@@ -270,6 +270,9 @@ async function runOneStatute(p: {
   }
   return {
     kind: 'sheet',
-    sheet: { statute: citation ? `${statute.name}${line.trim().slice(name.length)}` : statute.name, rows, analyses, synthesis },
+    sheet: {
+      statute: citation ? `${statute.name}${line.trim().slice(name.length)}` : statute.name, rows, analyses, synthesis,
+      caseType: activeType ? { type: activeType, excluded: typeSkipped.size } : undefined,
+    },
   };
 }

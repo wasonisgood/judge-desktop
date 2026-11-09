@@ -10,15 +10,26 @@ export interface ScopeSheet {
   rows: ScopeRow[];
   analyses: CaseAnalysis[];
   synthesis: ScopeSynthesis | null;
+  /** 案件類型篩選（有指定時）：類型與因字號而排除的筆數。 */
+  caseType?: { type: string; excluded: number };
 }
 
 const byId = (analyses: CaseAnalysis[]) => new Map(analyses.map((a) => [a.id, a]));
 
+/** 案件類型篩選的說明文字（匯出用）。 */
+function caseTypeLine(sh: ScopeSheet): string | null {
+  return sh.caseType ? `案件類型：${sh.caseType.type}（依判決字號篩選，排除 ${sh.caseType.excluded} 筆）` : null;
+}
+
 /** 逐案表的欄位（Excel 與 Word 共用順序）。 */
-const CASE_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由', '類型（AI）', '爭點（AI）', '法院見解（AI）', '法規適用（AI）', '結論（AI）', '引用條文', '法條異動（依沿革比對）', '歷審位置（司法院清單）', '判決連結'];
+// 字號類型放在最後一欄：既有欄位的位置不變（其他匯出與測試以欄位位置讀取）。
+const CASE_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由', '類型（AI）', '爭點（AI）', '法院見解（AI）', '法規適用（AI）', '結論（AI）', '引用條文', '法條異動（依沿革比對）', '歷審位置（司法院清單）', '判決連結', '字號類型'];
+
+/** 判決連結所在欄（Excel 以超連結呈現）。 */
+const HREF_COL = CASE_HEADERS.indexOf('判決連結');
 
 /** Excel 欄寬（字元單位），與 CASE_HEADERS 一一對應。 */
-const CASE_WIDTHS = [6, 40, 16, 13, 28, 14, 36, 50, 40, 30, 30, 46, 40, 30];
+const CASE_WIDTHS = [6, 40, 16, 13, 28, 14, 36, 50, 40, 30, 30, 46, 40, 30, 10];
 
 /** Excel 工作表名稱：不得含 : \ / ? * [ ]，最長 31 字；同名時加上序號。 */
 function uniqueSheetName(raw: string, used: Set<string>): string {
@@ -47,6 +58,7 @@ function caseValues(i: number, r: ScopeRow, a: CaseAnalysis | undefined): string
     (r.lawNotes ?? []).map((n) => n.summary).join('\n'),
     r.historyPosition ?? '',
     r.href,
+    r.caseTypeLabel ?? '',
   ];
 }
 
@@ -66,7 +78,7 @@ export async function buildScopeWorkbook(sheets: ScopeSheet[], meta: { yearFrom?
     head.height = 24;
     sh.rows.forEach((r, i) => {
       const values = caseValues(i, r, map.get(r.id));
-      const row = ws.addRow(Object.fromEntries(values.map((v, j) => ['c' + j, j === values.length - 1 ? { text: v, hyperlink: v } : v])));
+      const row = ws.addRow(Object.fromEntries(values.map((v, j) => ['c' + j, j === HREF_COL ? { text: v, hyperlink: v } : v])));
       row.alignment = { vertical: 'top', wrapText: true };
     });
     ws.views = [{ state: 'frozen', ySplit: 1 }];
@@ -92,6 +104,10 @@ export async function buildScopeWorkbook(sheets: ScopeSheet[], meta: { yearFrom?
   const info = wb.addWorksheet('說明');
   info.addRow(['範圍', sheets.map((s) => s.statute).join('、')]);
   info.addRow(['期間', `${meta.yearFrom ?? '不限'} 至 ${meta.yearTo ?? '不限'}`]);
+  for (const sh of sheets) {
+    const line = caseTypeLine(sh);
+    if (line) info.addRow([sh.statute, line]);
+  }
   info.addRow(['產生時間', new Date().toLocaleString('zh-TW')]);
   info.addRow(['資料來源', '司法院裁判書查詢系統（公開資料）。逐案分析與綜合分析由 AI 產生，請對照原判決確認。']);
   info.getColumn(1).width = 12;
@@ -142,6 +158,8 @@ export async function buildScopeDocx(sheets: ScopeSheet[], meta: { yearFrom?: nu
       heading: HeadingLevel.HEADING_2,
       children: [new TextRun({ text: `${sh.statute}（${sh.rows.length} 筆）`, bold: true, font })],
     }));
+    const typeLine = caseTypeLine(sh);
+    if (typeLine) children.push(para(typeLine, 20));
     const s = sh.synthesis;
     if (s) {
       children.push(para('綜合分析', 22, true));

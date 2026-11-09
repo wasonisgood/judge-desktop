@@ -22,12 +22,37 @@ test('解析介面傳入的案件類型：空值為不限；唯一類型用語�
 test('範圍整理的排除說明：區分字號明載不符與無法判定，數字正確', () => {
   assert.equal(caseTypeSkipNote('消費者保護法', '民事', []), null);
   const note = caseTypeSkipNote('消費者保護法', '民事', [
-    { status: 'by-suffix' }, { status: 'by-zi' }, { status: 'ambiguous' }, { status: 'unknown' },
+    { title: '臺灣高等法院 115 年度 易 字第 1 號刑事判決', status: 'by-suffix' },
+    { title: '臺中高等行政法院 高等庭 115 年度 訴 字第 102 號判決', status: 'by-court' },
+    { title: '臺灣臺北地方法院 113 年度訴字第 2 號', status: 'ambiguous' },
+    { title: '臺灣臺北地方法院 113 年度特字第 4 號', status: 'unknown' },
   ]);
-  assert.match(note, /消費者保護法/);
-  assert.match(note, /排除 2 筆字號明載其他類型/);
-  assert.match(note, /另 2 筆/);
+  assert.match(note, /排除 4 筆/);
+  assert.match(note, /2 筆字號判定為其他類型/);
+  assert.match(note, /2 筆字別重疊或不在字別表中/);
+  assert.match(note, /臺灣高等法院 115 年度 易 字第 1 號刑事判決（刑事）/, '排除的字號要列出並標示類型');
+  assert.match(note, /臺灣臺北地方法院 113 年度訴字第 2 號（重疊）/);
+  assert.match(note, /臺灣臺北地方法院 113 年度特字第 4 號（未知）/);
   assert.match(note, /不猜/);
+});
+
+test('匯出：Excel 逐案表有「字號類型」欄，說明工作表標示案件類型與排除筆數', async () => {
+  const { createRequire: cr } = await import('node:module');
+  const r = cr(import.meta.url);
+  const ExcelJS = r('exceljs');
+  const { buildScopeWorkbook } = r('../dist/main/scopeExporters.js');
+  const row = { id: 'A', title: '臺灣臺北地方法院 115 年度 護 字第 111 號民事裁定', court: '臺灣臺北地方法院', dateIso: '2026-01-01', cause: '', result: '', citedArticles: ['某法第1條'], href: 'https://example.test/A', caseTypeLabel: '民事' };
+  const buf = await buildScopeWorkbook([{ statute: '某法', rows: [row], analyses: [], synthesis: null, caseType: { type: '民事', excluded: 3 } }], {});
+  const wb = new ExcelJS.Workbook();
+  await wb.xlsx.load(buf);
+  const ws = wb.getWorksheet('某法');
+  assert.equal(ws.getRow(1).getCell(15).value, '字號類型', '新欄位在最後，既有欄位位置不變');
+  assert.equal(ws.getRow(2).getCell(15).value, '民事');
+  assert.equal(ws.getRow(2).getCell(14).value?.text ?? ws.getRow(2).getCell(14).value, row.href, '判決連結仍在原欄位');
+  const info = wb.getWorksheet('說明');
+  const texts = [];
+  info.eachRow((rw) => texts.push(rw.values.slice(1).join(' ')));
+  assert.ok(texts.some((t) => t.includes('案件類型：民事') && t.includes('排除 3 筆')), '說明工作表要寫出案件類型與排除筆數');
 });
 
 test('精讀：指定類型作為重點提示，並依字號檢查相符／不符／無法判定（只提醒不阻擋）', () => {
