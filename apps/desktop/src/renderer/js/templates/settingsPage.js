@@ -105,6 +105,10 @@
             <div class="set-ctl"><input id="setMaxItems" type="number" min="1" max="100" value="20"></div>
           </div>
           <div class="set-row">
+            <div class="set-label"><strong>AI 單價（美元／百萬 token）</strong><span class="set-desc">選填。只用來估計「納入排除核查」的費用；未填寫時只顯示 AI 呼叫次數。</span></div>
+            <div class="set-ctl"><input id="setUsdPerMillion" type="number" min="0" step="0.0001" placeholder="未設定" aria-label="AI 單價（美元每百萬 token）"></div>
+          </div>
+          <div class="set-row">
             <div class="set-label"><strong>搜尋結果快取天數</strong><span class="set-desc">法條沿革與法名確認永久保存；判決內頁永久保存</span></div>
             <div class="set-ctl">
               <input id="setCacheDays" type="number" min="1" max="90" value="7">

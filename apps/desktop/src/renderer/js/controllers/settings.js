@@ -69,6 +69,19 @@
         }
       });
 
+      // AI 單價（選填）：立即保存；清空即回到「未設定」（核查只顯示次數）。
+      $('setUsdPerMillion').addEventListener('change', async function () {
+        var raw = $('setUsdPerMillion').value.trim();
+        var v = raw === '' ? null : Number(raw);
+        try {
+          await api.settings.set({ aiUsdPerMillion: v });
+          JR.components.notice(v === null ? '已清除 AI 單價，核查只顯示呼叫次數。' : '已保存 AI 單價（US$ ' + v + ' / 百萬 token）。');
+        } catch (err) {
+          JR.components.notice('設定沒有保存：' + JR.errText(err));
+          load();
+        }
+      });
+
       $('setTest').addEventListener('click', async function () {
         JR.setStatus($('setStatus'), '測試中…');
         try {
