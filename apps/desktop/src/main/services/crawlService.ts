@@ -10,11 +10,12 @@ import {
   BASE, CourtClient, FINALITY_LABEL, buildCrawlLogCsv, buildHistoryTable, extractDefendants, getJudgmentDetail,
   isoDay, judgeFinality, listPageUrl, matchHistoryRowToItems, parseCsv, parseDetailHtml, parseListHtml,
   parseListImport, parseTotalCount, planListPages, safeFileName, searchJudgments, stepFourFileName,
-  stepTwoFileName, uniqueName,
+  stepTwoFileName, uniqueName, normalizeCrawlIntervalSec,
   type CrawlListItem, type CrawlLogEntry, type FinalityHistoryItem, type HistoryRow, type HistoryTableEntry,
   type JudgmentSummary, type ListImportIssue,
 } from '@judge/core';
 import { exportDir } from './exportService';
+import { readSettings } from '../data/local/settingsStore';
 import {
   CRAWL_INTERVAL_MS, historySeqOf, isCancelled, isHistoryHeader, outputBase, reasonOf, runItems,
 } from './crawlRunner';
@@ -25,6 +26,10 @@ export interface CrawlRunArgs {
   input: string;
   /** Step 5：上訴期間（天），未提供時為 120。 */
   appealDays?: number;
+  /** 診斷用上限（煙霧測試）：Step 1 最多抓幾頁；畫面不提供，正式流程不設定。 */
+  limitPages?: number;
+  /** 診斷用上限（煙霧測試）：Step 2 最多處理幾筆；畫面不提供，正式流程不設定。 */
+  limitItems?: number;
 }
 
 export interface CrawlProgress {
@@ -50,8 +55,11 @@ const idOf = (url: string) => {
   try { return new URL(url, BASE).searchParams.get('id') ?? ''; } catch { return ''; }
 };
 
-function newClient(signal: AbortSignal): CourtClient {
-  return new CourtClient({ minIntervalMs: CRAWL_INTERVAL_MS, signal });
+/** 依設定的連線間隔（秒，最小 3）建立客戶端；每次執行開始時讀取一次。 */
+async function newClient(signal: AbortSignal): Promise<CourtClient> {
+  const s = await readSettings();
+  const sec = normalizeCrawlIntervalSec(s.crawlIntervalSec);
+  return new CourtClient({ minIntervalMs: sec * 1000 || CRAWL_INTERVAL_MS, signal });
 }
 
 /** 讀取清單（.xlsx 或 .csv；CSV 自動判斷 UTF-8／Big5）。 */
@@ -101,8 +109,8 @@ async function writeXlsx(file: string, rows: (string | number)[][]): Promise<voi
   await fsp.writeFile(file, Buffer.from(buf));
 }
 
-const uniqueIn = (dir: string, name: string) =>
-  uniqueName(name, (n) => fs.existsSync(path.join(dir, n)));
+const uniqueIn = (dir: string, name: string): string =>
+  path.join(dir, uniqueName(name, (n) => fs.existsSync(path.join(dir, n))));
 
 async function makeDir(dir: string): Promise<void> {
   await fsp.mkdir(dir, { recursive: true });
@@ -140,10 +148,10 @@ async function resolveHistoryUrl(client: CourtClient, row: HistoryRow, cache: Ma
 }
 
 // ───── Step 1 ─────
-async function step1(input: string, signal: AbortSignal, progress: ProgressFn): Promise<CrawlRunResult> {
+async function step1(input: string, signal: AbortSignal, progress: ProgressFn, limitPages?: number): Promise<CrawlRunResult> {
   const q = input.trim();
   if (!q) throw new Error('請輸入查詢關鍵字，或貼上司法院查詢結果網址');
-  const client = newClient(signal);
+  const client = await newClient(signal);
   const isUrl = /qryresultlst\.aspx/.test(q);
   const listUrl = isUrl ? absUrl(q) : `${BASE}qryresultlst.aspx?ty=JUDBOOK&q=${await client.postKeyword(q)}`;
 
@@ -154,7 +162,8 @@ async function step1(input: string, signal: AbortSignal, progress: ProgressFn): 
 
   const found: JudgmentSummary[] = [];
   const seen = new Set<string>();
-  for (const p of plan.pageNumbers) {
+  const pageNumbers = limitPages ? plan.pageNumbers.slice(0, limitPages) : plan.pageNumbers;
+  for (const p of pageNumbers) {
     if (signal.aborted) break;
     let html: string;
     try {
@@ -184,14 +193,16 @@ async function step1(input: string, signal: AbortSignal, progress: ProgressFn): 
 }
 
 // ───── Step 2 ─────
-async function step2(input: string, signal: AbortSignal, progress: ProgressFn): Promise<CrawlRunResult> {
+async function step2(input: string, signal: AbortSignal, progress: ProgressFn, limitItems?: number): Promise<CrawlRunResult> {
   const dir = path.dirname(input);
   const base = outputBase(input);
-  const { items, duplicates, errors } = parseListImport(await readTable(input));
+  const parsed = parseListImport(await readTable(input));
+  const { duplicates, errors } = parsed;
+  const items = limitItems ? parsed.items.slice(0, limitItems) : parsed.items;
   if (items.length === 0) throw new Error(errors[0] ? `清單無法讀取：${errors[0].message}` : '清單中沒有可擷取的列');
   const txtDir = await uniqueIn(dir, `${base}_文本`);
-  await makeDir(path.join(dir, txtDir));
-  const client = newClient(signal);
+  await makeDir(txtDir);
+  const client = await newClient(signal);
   const logs = await runItems<CrawlListItem>(items, {
     step: 'Step 2', signal,
     describe: (it) => ({ index: it.index, title: it.title, url: absUrl(it.url) }),
@@ -200,7 +211,7 @@ async function step2(input: string, signal: AbortSignal, progress: ProgressFn): 
       const d = parseDetailHtml(await client.request(url), it.id, url);
       if (!d.fullText) throw new Error('裁判書全文為空（網站可能改版，或該筆已無法開啟）');
       const name = stepTwoFileName(it.index);
-      await fsp.writeFile(path.join(dir, txtDir, name), bom(d.fullText), 'utf8');
+      await fsp.writeFile(path.join(txtDir, name), bom(d.fullText), 'utf8');
       return { file: name };
     },
     onProgress: (done, total) => progress({ step: 2, done, total, label: '擷取全文' }),
@@ -208,7 +219,7 @@ async function step2(input: string, signal: AbortSignal, progress: ProgressFn): 
   const logFile = await writeLog(dir, `${base}_擷取紀錄.csv`, [...importLog(duplicates, errors), ...logs]);
   const c = countOf(logs);
   return {
-    step: 2, outputs: [path.join(dir, txtDir), logFile], ...c,
+    step: 2, outputs: [txtDir, logFile], ...c,
     message: `已擷取 ${c.ok} 筆全文，失敗 ${c.failed} 筆（原因見擷取紀錄）`,
   };
 }
@@ -219,7 +230,7 @@ async function step3(input: string, signal: AbortSignal, progress: ProgressFn): 
   const base = outputBase(input);
   const { items, duplicates, errors } = parseListImport(await readTable(input));
   if (items.length === 0) throw new Error(errors[0] ? `清單無法讀取：${errors[0].message}` : '清單中沒有可處理的列');
-  const client = newClient(signal);
+  const client = await newClient(signal);
   const cache = new Map<string, JudgmentSummary[]>();
   const entries: HistoryTableEntry[] = [];
   const logs = await runItems<CrawlListItem>(items, {
@@ -277,8 +288,8 @@ async function step4(input: string, signal: AbortSignal, progress: ProgressFn): 
     rowsIn.push({ index, seq, url: url ? absUrl(url) : '', id: url ? idOf(url) : '', title: `${cells[cCourt] ?? ''} ${cells[cCase] ?? ''}`.trim() });
   });
   const txtDir = await uniqueIn(dir, `${base}_歷審_文本`);
-  await makeDir(path.join(dir, txtDir));
-  const client = newClient(signal);
+  await makeDir(txtDir);
+  const client = await newClient(signal);
   const logs = await runItems(rowsIn, {
     step: 'Step 4', signal,
     describe: (r) => ({ index: r.index, title: `${r.title}（歷審_${r.seq}）`, url: r.url }),
@@ -287,14 +298,14 @@ async function step4(input: string, signal: AbortSignal, progress: ProgressFn): 
       const d = parseDetailHtml(await client.request(r.url), r.id, r.url);
       if (!d.fullText) throw new Error('裁判書全文為空');
       const name = stepFourFileName(r.index, r.seq);
-      await fsp.writeFile(path.join(dir, txtDir, name), bom(d.fullText), 'utf8');
+      await fsp.writeFile(path.join(txtDir, name), bom(d.fullText), 'utf8');
       return { file: name };
     },
     onProgress: (done, total) => progress({ step: 4, done, total, label: '歷審文本' }),
   });
   const logFile = await writeLog(dir, `${base}_歷審文本_擷取紀錄.csv`, [...importLog([], issues), ...logs]);
   const c = countOf(logs);
-  return { step: 4, outputs: [path.join(dir, txtDir), logFile], ...c, message: `已擷取 ${c.ok} 份歷審文本，失敗 ${c.failed} 份` };
+  return { step: 4, outputs: [txtDir, logFile], ...c, message: `已擷取 ${c.ok} 份歷審文本，失敗 ${c.failed} 份` };
 }
 
 // ───── Step 5 ─────
@@ -332,8 +343,8 @@ async function step5(input: string, appealDays: number | undefined, signal: Abor
   if (targets.length === 0) throw new Error('清單中沒有可判斷的判決');
 
   const txtDir = await uniqueIn(dir, `${base}_確定判決_文本`);
-  await makeDir(path.join(dir, txtDir));
-  const client = newClient(signal);
+  await makeDir(txtDir);
+  const client = await newClient(signal);
   const cache = new Map<string, JudgmentSummary[]>();
   const today = isoDay(new Date());
   const out: (string | number)[][] = [[
@@ -361,7 +372,7 @@ async function step5(input: string, appealDays: number | undefined, signal: Abor
       }
       const defendants = extractDefendants(d.fullText);
       if (defendants.length === 0) throw new Error('無法從判決開頭抽出被告姓名');
-      await fsp.writeFile(path.join(dir, txtDir, `${t.index}.txt`), bom(d.fullText), 'utf8');
+      await fsp.writeFile(path.join(txtDir, `${t.index}.txt`), bom(d.fullText), 'utf8');
       for (const def of defendants) {
         const r = judgeFinality({
           target: { title: d.meta.title, dateIso: d.meta.dateIso, fullText: d.fullText },
@@ -383,7 +394,7 @@ async function step5(input: string, appealDays: number | undefined, signal: Abor
   const logFile = await writeLog(dir, `${base}_確定判決_擷取紀錄.csv`, [...pre, ...logs]);
   const c = countOf(logs);
   return {
-    step: 5, outputs: [xlsx, path.join(dir, txtDir), logFile], ...c,
+    step: 5, outputs: [xlsx, txtDir, logFile], ...c,
     message: `已判斷 ${out.length - 1} 位被告（${c.ok} 案成功，${c.failed} 案失敗）`,
   };
 }
@@ -392,8 +403,8 @@ async function step5(input: string, appealDays: number | undefined, signal: Abor
 export async function runCrawlStep(args: CrawlRunArgs, signal: AbortSignal, progress: ProgressFn): Promise<CrawlRunResult> {
   try {
     switch (args.step) {
-      case 1: return await step1(args.input, signal, progress);
-      case 2: return await step2(args.input, signal, progress);
+      case 1: return await step1(args.input, signal, progress, args.limitPages);
+      case 2: return await step2(args.input, signal, progress, args.limitItems);
       case 3: return await step3(args.input, signal, progress);
       case 4: return await step4(args.input, signal, progress);
       case 5: return await step5(args.input, args.appealDays, signal, progress);
