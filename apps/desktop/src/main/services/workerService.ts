@@ -110,6 +110,8 @@ export function loadWorkerState(): void {
   }
   persist();
   notifyChanged();
+  // 上次留下的排隊工作（使用者已要求執行）接著處理；中斷的工作仍等使用者按「續跑」。
+  void pump();
 }
 
 /** 寫入磁碟（同步：程式結束前也要能完成）。先寫暫存檔再改名，避免寫到一半損毀。 */
@@ -202,11 +204,14 @@ export function updateWorkerSettings(patch: Partial<WorkerSettings>): WorkerSett
   return { ...settings };
 }
 
-/** 依目前設定與視窗狀態決定是否通知，並選擇通道。 */
+/**
+ * 依目前設定與視窗狀態決定是否通知，並選擇通道。
+ * 需要使用者注意的完成結果（例如法名要選擇）一律通知；其餘只在視窗隱藏時通知。
+ */
 function maybeNotify(item: WorkerItem): void {
   if (!isNotifiableStatus(item.status)) return;
-  const windowVisible = appWindowVisible();
-  if (!shouldNotify({ windowVisible })) return;
+  const attention = item.status === 'done' && item.attention;
+  if (!attention && !shouldNotify({ windowVisible: appWindowVisible() })) return;
   const decision = chooseChannel({
     platform: process.platform,
     enabled: settings.enabled,
