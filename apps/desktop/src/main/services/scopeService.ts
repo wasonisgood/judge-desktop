@@ -1,6 +1,6 @@
 // 範圍整理服務：依法規逐一確認法名、取得法條沿革、篩選判決、逐案 AI 分析、綜合分析，最後存入檔案管理。
 import {
-  buildScopeTable, CourtClient, analyzeCase, synthesizeScope,
+  jurisdictionRegistry, buildScopeTable, CourtClient, analyzeCase, synthesizeScope,
   type CaseAnalysis, type ScopeRow, type ScopeSynthesis, type AiComplete,
 } from '@judge/core';
 import type { ScopeSheet } from '../scopeExporters';
@@ -36,9 +36,11 @@ export async function runScope(
   for (const line of args.statutes) {
     const { name, citation } = splitStatuteLine(line);
     onProgress({ statute: name, done: 0, total: 1, phase: '確認法名與法條沿革' });
-    const statute = await resolveStatute(name);
+    // 只有支援法規查詢的管轄區（台灣）才做法名確認與法條沿革；其他管轄區以輸入的名稱直接搜尋。
+    const lookup = jurisdictionRegistry.get(args.jurisdiction).statuteLookup;
+    const statute = lookup ? await resolveStatute(name) : { name, pcode: '', note: undefined as string | undefined };
     if (statute.note) notes.push(statute.note);
-    const lawHistory = await lawHistoryFor(statute.name);
+    const lawHistory = lookup ? await lawHistoryFor(statute.name) : [];
     let rows: ScopeRow[] = await buildScopeTable({
       statute: statute.name,
       yearFrom: args.yearFrom,

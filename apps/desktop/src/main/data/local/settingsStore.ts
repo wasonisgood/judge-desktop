@@ -1,7 +1,7 @@
 // 本地資料層：設定檔（settings.json）。金鑰以 safeStorage 加密後才寫入。
 import { app, safeStorage } from 'electron';
 import * as fs from 'node:fs/promises';
-import { DEFAULT_BRIEF_FIELDS, type BriefField } from '@judge/core';
+import { DEFAULT_BRIEF_FIELDS, DEFAULT_JURISDICTION_ID, type BriefField } from '@judge/core';
 import { userPath } from './paths';
 
 export interface FederationSettings {
@@ -24,6 +24,10 @@ export interface StoredSettings {
   cacheDays: number;
   /** 精讀欄位設定：enabled 表示是否勾選；自訂欄位也保存在這裡。 */
   briefFields: (BriefField & { enabled: boolean })[];
+  /** 本地 AI 模組開關：關閉時即使已安裝，也一律使用雲端。 */
+  localAiEnabled: boolean;
+  /** 預設管轄區識別碼（見 jurisdictionRegistry）。 */
+  defaultJurisdiction: string;
 }
 
 export const EMPTY_FEDERATION: FederationSettings = {
@@ -40,6 +44,8 @@ export const DEFAULTS: StoredSettings = {
   defaultMaxItems: 20,
   cacheDays: 7,
   briefFields: DEFAULT_BRIEF_FIELDS.map((f) => ({ ...f, enabled: true })),
+  localAiEnabled: true,
+  defaultJurisdiction: DEFAULT_JURISDICTION_ID,
 };
 
 export async function readSettings(): Promise<StoredSettings> {

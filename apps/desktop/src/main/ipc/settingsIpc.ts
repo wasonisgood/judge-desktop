@@ -4,6 +4,7 @@ import { callAi } from '../ai';
 import { readSettings, writeSettings, decryptKey, encryptKey, EMPTY_FEDERATION, type StoredSettings } from '../data/local/settingsStore';
 import { cacheClear } from '../data/local/cacheStore';
 import { aiConfigOrThrow } from '../data/cloud/aiRepo';
+import { jurisdictionRegistry } from '@judge/core';
 
 export function registerSettingsIpc(): void {
   ipcMain.handle('settings:get', async () => {
@@ -18,12 +19,20 @@ export function registerSettingsIpc(): void {
       defaultMaxItems: s.defaultMaxItems,
       cacheDays: s.cacheDays,
       briefFields: s.briefFields,
+      localAiEnabled: s.localAiEnabled,
+      defaultJurisdiction: s.defaultJurisdiction,
     };
   });
+  ipcMain.handle('jurisdictions:list', () => jurisdictionRegistry.list().map((j) => ({
+    id: j.id, name: j.name, country: j.country, statuteLookup: j.statuteLookup,
+  })));
   ipcMain.handle('settings:set', async (_e, patch: Partial<StoredSettings> & { apiKey?: string; clearKey?: boolean }) => {
     const next: StoredSettings = { ...(await readSettings()) };
-    for (const k of ['aiProvider', 'aiAuthMode', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays'] as const) {
+    for (const k of ['aiProvider', 'aiAuthMode', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays', 'localAiEnabled', 'defaultJurisdiction'] as const) {
       if (patch[k] !== undefined) (next as any)[k] = patch[k];
+    }
+    if (patch.defaultJurisdiction && !jurisdictionRegistry.has(patch.defaultJurisdiction)) {
+      throw new Error(`未知的管轄區：${patch.defaultJurisdiction}`);
     }
     if (patch.briefFields) {
       next.briefFields = (patch.briefFields as StoredSettings['briefFields']).filter((f) => f && typeof f.name === 'string');

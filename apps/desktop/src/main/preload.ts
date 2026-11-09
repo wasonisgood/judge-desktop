@@ -17,6 +17,7 @@ contextBridge.exposeInMainWorld('api', {
     test: () => invoke('ai:test'),
   },
   cache: { clear: () => invoke('cache:clear') },
+  jurisdictions: { list: () => invoke('jurisdictions:list') },
   search: {
     run: (args: unknown) => invoke('search:run', args),
     screen: (args: unknown) => invoke('search:screen', args),

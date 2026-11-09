@@ -51,10 +51,10 @@ export async function annotateOriginalPdf(d: JudgmentDetail, doc: BriefDocument)
 }
 
 export async function runBrief(
-  args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[] },
+  args: { judgmentId: string; focus: string; lengthHint: string; fields?: BriefField[]; jurisdiction?: string },
   ai: AiComplete,
 ) {
-  const d = await cachedDetail(args.judgmentId);
+  const d = await cachedDetail(args.judgmentId, undefined, args.jurisdiction);
   const fields = normalizeBriefFields(args.fields ?? []);
   const doc: BriefDocument = await briefJudgment(ai, d, { focus: args.focus, length: args.lengthHint, fields: fields.length ? fields : undefined });
   await library().add({

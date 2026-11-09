@@ -29,6 +29,11 @@ export interface Jurisdiction {
   readonly country: string;
   /** 所屬超國家組織（例如 'ECHR'、'ICC'），沒有則省略。 */
   readonly supranational?: string;
+  /**
+   * 是否支援法規名稱確認與法條沿革（台灣的法規資料庫）。
+   * 不支援時，範圍整理只能以關鍵字搜尋，不做法條比對。
+   */
+  readonly statuteLookup: boolean;
   search(keyword: string, opts?: JurisdictionSearchOptions): Promise<JudgmentSummary[]>;
   getDetail(id: string, opts?: { client?: unknown }): Promise<JudgmentDetail>;
 }
@@ -40,6 +45,7 @@ export const taiwanJudicialYuan: Jurisdiction = {
   id: DEFAULT_JURISDICTION_ID,
   name: '司法院裁判書查詢系統',
   country: 'TW',
+  statuteLookup: true,
   async search(keyword, opts = {}) {
     const client = (opts.client as CourtClient | undefined) ?? new CourtClient();
     return searchJudgments(keyword, { maxItems: opts.maxItems, client });

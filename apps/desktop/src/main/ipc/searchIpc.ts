@@ -1,6 +1,8 @@
 // IPC：判決列表（檢索、AI 相關性篩選、匯出）與單一判決的候選查找。
 import { ipcMain } from 'electron';
-import { screenRelevance, judgmentQueries, type RelevanceItem, type JudgmentDetail, type JudgmentSummary } from '@judge/core';
+import {
+  screenRelevance, judgmentQueries, DEFAULT_JURISDICTION_ID, type RelevanceItem, type JudgmentDetail, type JudgmentSummary,
+} from '@judge/core';
 import { buildListWorkbook } from '../exporters';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { requireAi } from '../data/cloud/aiRepo';
@@ -12,15 +14,15 @@ export function registerSearchIpc(): void {
     const ai = await requireAi();
     return screenRelevance(ai, args.topic, args.items.slice(0, 40));
   });
-  ipcMain.handle('search:run', async (e, args: { keyword: string; courtCode?: string; maxItems: number; includeFullText: boolean }) => {
-    const items = await cachedSearch(args.keyword, args.maxItems, args.courtCode);
+  ipcMain.handle('search:run', async (e, args: { keyword: string; courtCode?: string; maxItems: number; includeFullText: boolean; jurisdiction?: string }) => {
+    const items = await cachedSearch(args.keyword, args.maxItems, args.courtCode, args.jurisdiction);
     const details: Record<string, Pick<JudgmentDetail, 'meta' | 'sections' | 'fullText'> & { historyPosition: string }> = {};
     if (args.includeFullText) {
       let i = 0;
       for (const it of items) {
         i++;
         e.sender.send('search:progress', { done: i, total: items.length, id: it.id });
-        const d = await cachedDetail(it.id);
+        const d = await cachedDetail(it.id, undefined, args.jurisdiction);
         details[it.id] = { meta: d.meta, sections: d.sections, fullText: d.fullText, historyPosition: d.historyPosition?.summary ?? '' };
       }
     }
@@ -36,12 +38,15 @@ export function registerSearchIpc(): void {
     return autoSaveExport(`判決列表_${args.keyword}_${stamp()}.xlsx`, await buildListWorkbook({ keyword: args.keyword, items: args.items, details: args.details }));
   });
   // 單一判決：先搜尋、列出候選，再由使用者指定一則（鎖定單一判決）
-  ipcMain.handle('judgment:find', async (_e, args: { query: string }) => {
+  ipcMain.handle('judgment:find', async (_e, args: { query: string; jurisdiction?: string }) => {
     const seen = new Map<string, JudgmentSummary>();
     let note = '';
-    for (const q of judgmentQueries(args.query)) {
+    // 縮寫展開（例如「高院」→「臺灣高等法院」）只適用於台灣司法院；其他管轄區照原字串查詢。
+    const isTw = !args.jurisdiction || args.jurisdiction === DEFAULT_JURISDICTION_ID;
+    const queries = isTw ? judgmentQueries(args.query) : [args.query.trim()];
+    for (const q of queries) {
       try {
-        for (const it of await cachedSearch(q, 20)) if (!seen.has(it.id)) seen.set(it.id, it);
+        for (const it of await cachedSearch(q, 20, undefined, args.jurisdiction)) if (!seen.has(it.id)) seen.set(it.id, it);
       } catch (err) {
         // 查無結果或暫時被限制查詢：不中斷，回報說明即可
         const msg = err instanceof Error ? err.message : String(err);
