@@ -142,6 +142,12 @@
               <button class="btn small" type="button" id="cacheClear">清除快取</button>
             </div>
           </div>
+          <div class="set-row">
+            <div class="set-label"><strong>文本擷取連線間隔（秒）</strong><span class="set-desc">每次連線之間的間隔；司法院要求最少 3 秒，低於 3 會自動調整為 3</span></div>
+            <div class="set-ctl">
+              <input id="setCrawlInterval" type="number" min="3" max="60" step="1" value="3">
+            </div>
+          </div>
         </section>
 
         <p class="hint">金鑰只保存在這台電腦，並以系統的加密機制保護。本程式不會把金鑰傳給其他服務。</p>

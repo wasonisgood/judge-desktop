@@ -139,6 +139,12 @@ contextBridge.exposeInMainWorld('api', {
     skip: (args: unknown) => invoke('design:skip', args),
     remove: (args: unknown) => invoke('design:remove', args),
     export: (args: unknown) => invoke('design:export', args),
+  crawl: {
+    pickFile: () => invoke('crawl:pickFile'),
+    run: (args: unknown) => invoke('crawl:run', args),
+    onProgress: (cb: (p: unknown) => void) => {
+      ipcRenderer.on('crawl:progress', (_e, p) => cb(p));
+    },
   },
   library: {
     list: (args: unknown) => invoke('library:list', args),

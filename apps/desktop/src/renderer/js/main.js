@@ -15,6 +15,7 @@
   JR.controllers.design.bind();
   JR.controllers.annotation.bind();
   JR.controllers.files.bind();
+  JR.controllers.crawl.bind();
   JR.controllers.assistant.bind();
   JR.controllers.localAi.bind();
   JR.controllers.chart.bind();

@@ -20,7 +20,7 @@
     b.textContent = state === 'cancelling' ? '取消中…' : '取消';
   }
 
-  var BANNER_LABEL = { search: '判決搜尋', scope: '範圍整理', brief: '精讀', assistant: '助理對話', install: '模組安裝', repair: '模組修復', criteria: '納入排除核查' };
+  var BANNER_LABEL = { search: '判決搜尋', scope: '範圍整理', brief: '精讀', assistant: '助理對話', install: '模組安裝', repair: '模組修復', criteria: '納入排除核查', crawl: '文本擷取' };
 
   function renderBanner(list) {
     var banner = document.getElementById('jobBanner');
@@ -68,7 +68,7 @@
     },
     /** 初始化：綁定取消按鈕、建立背景工作橫幅並監聽變化。 */
     init: function () {
-      var map = { listCancel: 'list', scopeCancel: 'scope', briefCancel: 'brief', assistCancel: 'assistant', critCancel: 'criteria' };
+      var map = { listCancel: 'list', scopeCancel: 'scope', briefCancel: 'brief', assistCancel: 'assistant', critCancel: 'criteria', crawlCancel: 'crawl' };
       Object.keys(map).forEach(function (btnId) {
         var b = document.getElementById(btnId);
         if (b) b.addEventListener('click', function () { JR.jobs.cancel(map[btnId]); });
