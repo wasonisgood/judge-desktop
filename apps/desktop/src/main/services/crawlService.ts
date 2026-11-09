@@ -30,6 +30,9 @@ export interface CrawlRunArgs {
   limitPages?: number;
   /** 診斷用上限（煙霧測試）：Step 2 最多處理幾筆；畫面不提供，正式流程不設定。 */
   limitItems?: number;
+  /** 診斷用上限：Step 4 最多處理幾列歷審；Step 5 最多每位被告的判斷數量（defendants）。畫面不提供。 */
+  limitRows?: number;
+  limitDefendants?: number;
 }
 
 export interface CrawlProgress {
@@ -225,10 +228,12 @@ async function step2(input: string, signal: AbortSignal, progress: ProgressFn, l
 }
 
 // ───── Step 3 ─────
-async function step3(input: string, signal: AbortSignal, progress: ProgressFn): Promise<CrawlRunResult> {
+async function step3(input: string, signal: AbortSignal, progress: ProgressFn, limitItems?: number): Promise<CrawlRunResult> {
   const dir = path.dirname(input);
   const base = outputBase(input);
-  const { items, duplicates, errors } = parseListImport(await readTable(input));
+  const parsed3 = parseListImport(await readTable(input));
+  const { duplicates, errors } = parsed3;
+  const items = limitItems ? parsed3.items.slice(0, limitItems) : parsed3.items;
   if (items.length === 0) throw new Error(errors[0] ? `清單無法讀取：${errors[0].message}` : '清單中沒有可處理的列');
   const client = await newClient(signal);
   const cache = new Map<string, JudgmentSummary[]>();
@@ -264,7 +269,7 @@ async function step3(input: string, signal: AbortSignal, progress: ProgressFn): 
 }
 
 // ───── Step 4 ─────
-async function step4(input: string, signal: AbortSignal, progress: ProgressFn): Promise<CrawlRunResult> {
+async function step4(input: string, signal: AbortSignal, progress: ProgressFn, limitRows?: number): Promise<CrawlRunResult> {
   const dir = path.dirname(input);
   const base = outputBase(input, { stripHistorySuffix: true });
   const table = await readTable(input);
@@ -290,7 +295,7 @@ async function step4(input: string, signal: AbortSignal, progress: ProgressFn): 
   const txtDir = await uniqueIn(dir, `${base}_歷審_文本`);
   await makeDir(txtDir);
   const client = await newClient(signal);
-  const logs = await runItems(rowsIn, {
+  const logs = await runItems(limitRows ? rowsIn.slice(0, limitRows) : rowsIn, {
     step: 'Step 4', signal,
     describe: (r) => ({ index: r.index, title: `${r.title}（歷審_${r.seq}）`, url: r.url }),
     run: async (r) => {
@@ -311,7 +316,7 @@ async function step4(input: string, signal: AbortSignal, progress: ProgressFn): 
 // ───── Step 5 ─────
 const AGG_LABEL = { set: '已定應執行刑', not_set: '未定應執行刑（另查「聲」字裁定）', not_applicable: '' } as const;
 
-async function step5(input: string, appealDays: number | undefined, signal: AbortSignal, progress: ProgressFn): Promise<CrawlRunResult> {
+async function step5(input: string, appealDays: number | undefined, signal: AbortSignal, progress: ProgressFn, limits: { items?: number; defendants?: number } = {}): Promise<CrawlRunResult> {
   const dir = path.dirname(input);
   const base = outputBase(input, { stripHistorySuffix: true });
   const table = await readTable(input);
@@ -340,6 +345,7 @@ async function step5(input: string, appealDays: number | undefined, signal: Abor
     targets = imported.items;
     pre = importLog(imported.duplicates, imported.errors);
   }
+  if (limits.items) targets = targets.slice(0, limits.items);
   if (targets.length === 0) throw new Error('清單中沒有可判斷的判決');
 
   const txtDir = await uniqueIn(dir, `${base}_確定判決_文本`);
@@ -370,7 +376,7 @@ async function step5(input: string, appealDays: number | undefined, signal: Abor
         }
         history.push({ row, fullText: text });
       }
-      const defendants = extractDefendants(d.fullText);
+      const defendants = extractDefendants(d.fullText).slice(0, limits.defendants ?? undefined);
       if (defendants.length === 0) throw new Error('無法從判決開頭抽出被告姓名');
       await fsp.writeFile(path.join(txtDir, `${t.index}.txt`), bom(d.fullText), 'utf8');
       for (const def of defendants) {
@@ -405,9 +411,9 @@ export async function runCrawlStep(args: CrawlRunArgs, signal: AbortSignal, prog
     switch (args.step) {
       case 1: return await step1(args.input, signal, progress, args.limitPages);
       case 2: return await step2(args.input, signal, progress, args.limitItems);
-      case 3: return await step3(args.input, signal, progress);
-      case 4: return await step4(args.input, signal, progress);
-      case 5: return await step5(args.input, args.appealDays, signal, progress);
+      case 3: return await step3(args.input, signal, progress, args.limitItems);
+      case 4: return await step4(args.input, signal, progress, args.limitRows);
+      case 5: return await step5(args.input, args.appealDays, signal, progress, { items: args.limitItems, defendants: args.limitDefendants });
       default: throw new Error('未知的步驟');
     }
   } catch (err) {
