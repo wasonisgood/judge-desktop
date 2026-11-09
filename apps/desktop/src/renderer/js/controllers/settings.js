@@ -48,7 +48,8 @@
       });
       $('openUpdater').addEventListener('click', async function () {
         var ok = await api.update.openUpdater();
-        JR.components.notice(ok ? '已開啟更新程式。' : '此為開發版本，無法檢查更新。');
+        // 應用程式內更新只存在於 Windows 安裝版；開發版與 macOS、Linux 版請到 GitHub Releases 下載。
+        JR.components.notice(ok ? '已開啟更新程式。' : '此版本無法在應用程式內檢查更新（開發版，或 macOS／Linux 版）。請到 GitHub Releases 下載最新版。');
       });
       $('briefFieldAdd').addEventListener('click', function () {
         $('briefFieldList').appendChild(JR.components.briefFieldRow({ name: '', description: '', enabled: true }));

@@ -4,6 +4,18 @@ import * as path from 'node:path';
 import { isDev } from '../data/local/paths';
 import { getMainWindow, setMainWindow } from './windowState';
 
+/**
+ * 應用程式選單：Windows 與 Linux 維持無選單（自訂標題列）。
+ * macOS 不同：沒有編輯選單就沒有「複製／貼上／全選」等快捷鍵，因此保留最小的應用程式選單與編輯選單。
+ */
+function applyAppMenu(): void {
+  if (process.platform !== 'darwin') {
+    Menu.setApplicationMenu(null);
+    return;
+  }
+  Menu.setApplicationMenu(Menu.buildFromTemplate([{ role: 'appMenu' }, { role: 'editMenu' }, { role: 'windowMenu' }]));
+}
+
 export function createMainWindow(): void {
   const win = new BrowserWindow({
     width: 1180,
@@ -22,7 +34,7 @@ export function createMainWindow(): void {
     },
   });
   setMainWindow(win);
-  Menu.setApplicationMenu(null);
+  applyAppMenu();
   win.once('ready-to-show', () => win.show());
   void win.loadFile(path.join(__dirname, '..', '..', 'renderer', 'index.html'));
   win.webContents.setWindowOpenHandler(({ url }) => {

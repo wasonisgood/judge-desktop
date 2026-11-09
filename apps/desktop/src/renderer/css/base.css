@@ -14,7 +14,7 @@
   --shu-wash: #EBD3C4;
   --koke: #5F6B3A;
   --serif: "Noto Serif TC", "Source Han Serif TC", "Songti TC", "Microsoft JhengHei", serif;
-  --sans: "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+  --sans: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
   --step-0: 15px;
   --radius: 3px;
   --ease: cubic-bezier(.2, .7, .1, 1);
