@@ -54,6 +54,29 @@
       .catch(fail);
   }
 
+  /** 同步狀態與按鈕：有登入權杖才可同步。 */
+  function syncRefresh() {
+    return api.annotation.syncStatus().then(function (s) {
+      $('annSyncNow').disabled = !s.available;
+      JR.setStatus($('annSyncStatus'), s.available ? '已登入，可以同步。' : s.reason, s.available ? '' : 'error');
+    }).catch(function (err) {
+      $('annSyncNow').disabled = true;
+      JR.setStatus($('annSyncStatus'), '無法確認同步狀態：' + JR.errText(err), 'error');
+    });
+  }
+
+  function syncNow() {
+    $('annSyncNow').disabled = true;
+    JR.setStatus($('annSyncStatus'), '同步中…');
+    api.annotation.syncNow()
+      .then(function (r) {
+        JR.setStatus($('annSyncStatus'), (r.merged ? '伺服器有較新的內容，已合併後同步' : '已同步') + '（版本 ' + r.revision + '，共 ' + r.annotations + ' 則標注）。', 'ok');
+        return load();
+      })
+      .catch(function (err) { JR.setStatus($('annSyncStatus'), JR.errText(err), 'error'); })
+      .then(function () { $('annSyncNow').disabled = false; });
+  }
+
   function exportMany() {
     var targets = st.judgments
       .filter(function (r) { return st.checked[r.judgmentId]; })
@@ -291,6 +314,8 @@
       $('annPrev').addEventListener('click', function () { goQueue(-1); });
       $('annNext').addEventListener('click', function () { goQueue(1); });
       $('annExportMany').addEventListener('click', exportMany);
+      $('annSyncNow').addEventListener('click', syncNow);
+      syncRefresh();
       $('annLabelsSave').addEventListener('click', function () {
         saveLabels({
           yellow: $('annLabel-yellow').value,

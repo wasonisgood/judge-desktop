@@ -94,6 +94,12 @@
               <div class="ann-reader" id="annReader"></div>
             </div>
             <aside class="ann-side">
+              <div class="ann-sync">
+                <h3>雲端同步</h3>
+                <p class="hint">只同步標注、註解、四色名稱與判決的案號／標題等顯示資訊，不含判決全文與 AI 金鑰。</p>
+                <p class="status" id="annSyncStatus" role="status"></p>
+                <div class="actions"><button class="btn small primary" type="button" id="annSyncNow" disabled>立即同步</button></div>
+              </div>
               <div class="ann-past">
                 <h3>過去筆記 <span id="annPastCount"></span></h3>
                 <ul class="ann-notes" id="annPastList"></ul>
