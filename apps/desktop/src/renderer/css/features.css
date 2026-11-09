@@ -26,6 +26,19 @@
 .table tr.row-picked td { background: var(--shu-wash); }
 .table tr.row-picked td:first-child { box-shadow: inset 3px 0 0 var(--shu); }
 
+/* 標編碼標注工序的版面：頁首、固定位置的操作列、編號區塊；空的狀態行不佔版面 */
+.scope-head { margin-bottom: 4px; }
+.scope-form { max-width: 980px; }
+.scope-bar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 10px 0; margin-bottom: 4px; background: var(--paper-2, #efe8da); border-bottom: 1px solid var(--rule); }
+.scope-bar-main, .scope-bar-export { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.scope-reason { margin: 6px 0 0; }
+.scope-reason:empty { display: none; }
+.scope-sec { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.scope-sec > h2 { margin: 0 0 10px; font-family: var(--serif); font-size: 1rem; color: var(--ink-2); }
+.scope-msg { display: block; min-height: 0; margin: -4px 0 8px 26px; }
+.scope-msg:empty { display: none; }
+.scope-sec .row { margin-top: 4px; }
+
 /* 標編碼標注工序的流程面板：沿用工作負載身分聯盟引導面板（fed-steps）的步驟樣式，只補狀態顏色 */
 .scope-steps { grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); }
 .scope-step-btn { min-height: 0; }
