@@ -96,11 +96,13 @@
     });
     var rows = document.querySelectorAll('#scopeFieldList .coding-field-row');
     rows.forEach(function (row, idx) {
-      var btns = row.querySelectorAll('.coding-field-actions button');
       var editable = g.fieldEdit.enabled;
-      btns[0].disabled = !editable || idx === 0;
-      btns[1].disabled = !editable || idx === rows.length - 1;
-      btns[2].disabled = !editable;
+      var act = function (name) { return row.querySelector('[data-action="' + name + '"]'); };
+      act('up').disabled = !editable || idx === 0;
+      act('down').disabled = !editable || idx === rows.length - 1;
+      act('rename').disabled = !editable;
+      act('remove').disabled = !editable;
+      row.querySelector('.scope-order').textContent = String(idx + 1);
       row.querySelectorAll('input').forEach(function (i) { i.disabled = !editable; });
     });
     // 一句話說明：列出停用中的按鈕原因（不重複）。

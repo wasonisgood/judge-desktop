@@ -38,6 +38,30 @@
 .scope-msg { display: block; min-height: 0; margin: -4px 0 8px 26px; }
 .scope-msg:empty { display: none; }
 .scope-sec .row { margin-top: 4px; }
+/* 搜尋範圍與執行條件：標籤欄與數值欄分開的定義列 */
+.scope-deflist { display: grid; grid-template-columns: minmax(150px, 200px) minmax(0, 1fr); margin: 0; border-top: 1px solid var(--rule); }
+.scope-def { display: contents; }
+.scope-deflist dt, .scope-deflist dd { margin: 0; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
+.scope-deflist dt { font-weight: 700; color: var(--ink-2); align-self: start; }
+.scope-deflist dd { padding-left: 12px; display: flex; flex-direction: column; gap: 6px; }
+.scope-deflist dd input, .scope-deflist dd select, .scope-deflist dd textarea { width: 100%; }
+.scope-deflist dd .hint { margin: 0; }
+.scope-deflist .check { display: flex; align-items: flex-start; justify-content: flex-start; gap: 8px; margin: 0; }
+.scope-deflist .check input { flex: 0 0 auto; margin-top: 3px; }
+.scope-deflist .scope-msg { margin: 0; }
+/* 分析欄位表：標頭列、欄寬固定，操作欄在最右側 */
+.scope-fields { table-layout: fixed; }
+.scope-fields th, .scope-fields td { vertical-align: middle; }
+.scope-fields input.brief-field-name, .scope-fields input.brief-field-desc { width: 100%; }
+.scope-col-on, .scope-col-order { width: 64px; text-align: center; }
+.scope-col-ops { width: 260px; }
+.scope-fields .coding-field-actions { display: flex; flex-wrap: wrap; gap: 4px; }
+.scope-fields .coding-field-actions button { min-width: 0; padding: 4px 8px; }
+@media (max-width: 720px) {
+  .scope-deflist { grid-template-columns: 1fr; }
+  .scope-deflist dt { border-bottom: 0; padding-bottom: 0; }
+  .scope-col-ops { width: auto; }
+}
 
 /* 標編碼標注工序的流程面板：沿用工作負載身分聯盟引導面板（fed-steps）的步驟樣式，只補狀態顏色 */
 .scope-steps { grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); }
