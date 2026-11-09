@@ -121,7 +121,7 @@ test('關鍵字模式：列出所有搜尋結果（不做法規引用比對）�
 });
 
 test('逐案編碼：一次 AI 呼叫產生勾選欄位，依據經驗證，舊欄位同步填入', async () => {
-  const d = fakeDetail('a', '案A', TEXT);
+  const d = { ...fakeDetail('a', '案A', TEXT), sections: { 理由: TEXT } };
   const row = { id: 'a', title: '案A', court: null, dateIso: null, cause: '', result: '', citedArticles: ['國家賠償法第2條'], lawNotes: [], historyPosition: '', excerpts: { main: '', citing: '' }, href: '' };
   let calls = 0;
   const ai = async (_system, user) => {
@@ -146,4 +146,16 @@ test('逐案編碼：一次 AI 呼叫產生勾選欄位，依據經驗證，舊�
   assert.equal(out.outcome, '駁回');
   assert.equal(out.issue, '');
   assert.equal(JSON.parse(JSON.stringify(out)).values.length, 2, '結果可序列化');
+});
+
+test('依據驗證範圍與 AI 看到的原文一致：原文上限之後的句子即使存在於判決中也不採信', async () => {
+  const head = '前文。'.repeat(5000); // 15000 字，超過 AI 原文上限（14000 字）
+  const tail = '法院認為該請求應予駁回的理由於此詳述。';
+  const d = { ...fakeDetail('long', '長判決', head + tail), sections: {} };
+  const row = { id: 'long', title: '長判決', court: null, dateIso: null, cause: '', result: '', citedArticles: [], lawNotes: [], historyPosition: '', excerpts: { main: '', citing: '' }, href: '' };
+  const ai = async () => JSON.stringify({ values: [{ id: 'outcome', value: '駁回', evidence: [tail.slice(0, 20), '前文。前文。前文。前文。'] }] });
+  const out = await analyzeCase(ai, '國家賠償法', row, d, { fields: [{ id: 'outcome', name: '結論' }] });
+  assert.deepEqual(out.values[0].evidence, ['前文。前文。前文。前文。'], 'AI 看過的前段依據保留，AI 沒看過的尾段依據丟掉');
+  assert.equal(out.values[0].droppedEvidence, 1);
+  assert.equal(out.values[0].reviewStatus, 'pending');
 });

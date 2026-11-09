@@ -94,7 +94,8 @@ export async function analyzeCase(ai: AiComplete, statute: string, row: ScopeRow
   // 相容舊格式（欄位直接放在物件頂層）：沒有依據，因此會標示為待覆核。
   const hasValues = reply && typeof reply === 'object' && Array.isArray((reply as { values?: unknown }).values);
   const normalized = hasValues ? reply : { values: fields.map((f) => ({ id: f.id, value: (reply as Record<string, unknown> | null)?.[f.id] })) };
-  const values = verifyCodedValues(d.fullText, fields, normalized);
+  // 依據只能取自 AI 實際看過的原文（bodyOf 的上限內）：驗證範圍與提示詞一致，不會出現 AI 沒看過卻被採信的依據。
+  const values = verifyCodedValues(bodyOf(d), fields, normalized);
   const byField = new Map(values.map((v) => [v.fieldId, v.value]));
   const legacy = Object.fromEntries(LEGACY_KEYS.map((k) => [k, byField.get(k) ?? '']));
   return { id: row.id, ...legacy, group: legacy.group || '未分類', values } as CaseAnalysis;
