@@ -77,6 +77,16 @@
             </div>
           </div>
           <div class="set-row">
+            <div class="set-label"><strong>量化圖表</strong><span class="set-desc">小提琴圖、堆疊圖、交叉表與示意格狀地圖，讀取 Excel 結果檔</span></div>
+            <div class="set-ctl">
+              <label class="set-switch" title="開啟即安裝並啟用；關閉即移除（頁面隱藏）">
+                <input type="checkbox" id="setChartModule">
+                <span class="switch"><span class="knob"></span></span>
+                <span class="set-switch-text">安裝並啟用</span>
+              </label>
+            </div>
+          </div>
+          <div class="set-row">
             <div class="set-label"><strong>爬取模組</strong><span class="set-desc" id="localCrawlSummary" role="status"></span></div>
             <div class="set-ctl"><button class="btn small" type="button" id="openCrawl">管理</button></div>
           </div>

@@ -13,6 +13,7 @@
   JR.controllers.files.bind();
   JR.controllers.assistant.bind();
   JR.controllers.localAi.bind();
+  JR.controllers.chart.bind();
   JR.controllers.auth.bind();
   JR.jobs.init();
 
