@@ -45,22 +45,110 @@
       ],
       "practice": [
         {
-          "period": "早期至近期（判決多見）",
-          "view": "實務多以文書須表示一定意思、且具有相當之證明功能作為基本要件，並以「足以生損害於公眾或他人」作為限縮手段（待核對）。",
-          "note": "與甲說接近，但並未嚴格要求文書具有法律上之證明力。"
+          "period": "條文依據",
+          "view": "刑法第210條與第211條以「偽造、變造」文書且「足以生損害於公眾或他人」為構成要件，第10條第3項僅就公文書定義為「公務員職務上製作之文書」，條文本身未就「文書」設一般定義；文書之範圍因此須由解釋決定，學說上即有甲、乙兩說之對立。",
+          "note": "文書概念之具體界定仍依解釋，見甲、乙兩說。"
         },
         {
           "period": "公務員身分之認定",
-          "view": "公文書係指公務員職務上製作之文書；公務員以私人身分製作之文書，仍屬私文書（待核對）。",
+          "view": "依第10條第3項，公文書係指公務員職務上製作之文書；非以公務員身分於職務上製作之文書，依條文不屬公文書，而屬私文書之範疇。",
           "note": "以職務關聯性為判斷核心，身分與文書之職務關聯需同時具備。"
         }
       ],
       "lawRefs": [
-        "刑法第10條（文書、公文書、私文書之定義，項次待核對）",
+        "刑法第10條第3項",
         "刑法第210條",
         "刑法第211條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第10條（文書、公文書、私文書之定義，項次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
+            }
+          ],
+          "latestAmendmentDate": "2023-01-07",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2023-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第211條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "211",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造公文書，足以生損害於公眾或他人者，處一年以上七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "211",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-173",
@@ -104,13 +192,13 @@
       ],
       "practice": [
         {
-          "period": "通說與實務主流",
-          "view": "實務多採名義人說為基礎，認為以他人名義製作文書即屬偽造，不因內容是否真實而異（待核對）。",
-          "note": "與刑法保護文書信用之立場一致。"
+          "period": "名義人說之立場",
+          "view": "依甲說（名義人說），以他人名義製作文書即屬偽造，名義人為文書表面所示表達意思之人，不因文書內容真實而異；此與刑法保護文書信用之立場一致，並符合第210條「偽造」之文義。",
+          "note": "甲說之理論基礎見上。"
         },
         {
           "period": "代簽之情形",
-          "view": "經名義人同意而代為簽名者，原則上不構成偽造；逾越授權範圍者，則依未經授權之製作論處（待核對）。",
+          "view": "經名義人同意而代為簽名者，其是否構成偽造，取決於所採立場：依甲說，逾越授權範圍者即屬未經授權之製作；依乙說，則以代為製作之人是否有權製作判斷。",
           "note": "代簽之界限，見本批次另一爭點「代簽與逾越授權之偽造」。"
         }
       ],
@@ -118,7 +206,53 @@
         "刑法第210條",
         "刑法第211條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第211條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "211",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造公文書，足以生損害於公眾或他人者，處一年以上七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "211",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-174",
@@ -163,21 +297,67 @@
       ],
       "practice": [
         {
-          "period": "早期見解",
-          "view": "實務多以「變更既存文書之內容」認定為變造，「以他人名義另行製作」認定為偽造（待核對）。",
+          "period": "同一性之分界",
+          "view": "依甲說（同一性說），變更既存之真正文書內容，使原製作人之意思表示與文書同一性遭破壞者屬變造；以他人名義另行新作者屬偽造。二者依第210條及第211條處罰，法定刑相同。",
           "note": "以文書是否為既存之真正文書作為主要分界。"
         },
         {
-          "period": "近期見解",
-          "view": "對於在既存文書上增添文字或更改數字之情形，實務傾向認定為變造（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "中間形態",
+          "view": "在既存文書上增添文字或更改數字，依同一性說之分界屬對既存真正文書之變更，應歸入變造；惟是否已破壞同一性，仍須依個案判斷，此為乙說（實質說）與甲說分歧之所在。",
+          "note": "中間形態之判斷，依個案而定。"
         }
       ],
       "lawRefs": [
         "刑法第210條",
         "刑法第211條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第211條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "211",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造公文書，足以生損害於公眾或他人者，處一年以上七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "211",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-175",
@@ -222,21 +402,67 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為經名義人授權代為簽名，而逾越範圍製作文書者，原則上成立偽造（待核對）。",
+          "period": "授權範圍說",
+          "view": "依甲說，代簽人於授權範圍內所為之製作不構成偽造；逾越授權範圍製作之文書，對名義人而言屬無製作權之製作，依第210條及第211條可能構成偽造。",
           "note": "以授權範圍為判斷界線。"
         },
         {
           "period": "事後追認",
-          "view": "名義人事後追認是否影響偽造之成立，實務見解不一，需依個案判斷（待核對）。",
-          "note": "具體派別待核對。"
+          "view": "名義人事後追認是否影響偽造之成立，依甲說與乙說會有不同結論，需依授權範圍與追認之時點及內容判斷。",
+          "note": "各說之結論差異見上述甲、乙兩說。"
         }
       ],
       "lawRefs": [
         "刑法第210條",
         "刑法第211條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第211條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "211",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造公文書，足以生損害於公眾或他人者，處一年以上七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "211",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-176",
@@ -280,21 +506,67 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多認為「足以生損害」指偽造之文書具有使人誤信之可能性，不以實際發生損害為必要（待核對）。",
-          "note": "近似抽象危險之理解。"
+          "period": "條文要件",
+          "view": "第210條以「足以生損害於公眾或他人」為偽造私文書之構成要件；依甲說（抽象危險說），偽造行為依一般情形有使他人信賴並受損之可能即符合此要件，不以實際損害為必要。",
+          "note": "近似抽象危險之理解，見甲說。"
         },
         {
-          "period": "明顯無誤信可能之情形",
-          "view": "對於偽造內容明顯荒謬、無一般人會誤信之文書，實務可能以不具足以生損害之危險而不罰（待核對）。",
-          "note": "具體派別與案例待核對。"
+          "period": "內容明顯無誤信可能之情形",
+          "view": "若偽造內容明顯荒謬、一般人不致誤信，依乙說（具體危險說），其文書於具體情況下未必有誤信之危險，可能不成立既遂。",
+          "note": "各說之結論差異見上述甲、乙兩說。"
         }
       ],
       "lawRefs": [
         "刑法第210條",
         "刑法第211條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第211條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "211",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造公文書，足以生損害於公眾或他人者，處一年以上七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "211",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-177",
@@ -338,17 +610,85 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為偽造印章、印文或署押本身即可成立獨立犯罪；偽造後再用以偽造文書者，依想像競合或牽連關係處斷（待核對）。",
-          "note": "條次待核對（刑法第217條、第218條之適用範圍）。"
+          "period": "條文依據",
+          "view": "依第217條，偽造或盜用印章、印文或署押，足以生損害於公眾或他人者，設有獨立之處罰規定；依第218條，偽造公印或公印文者，亦設有獨立之處罰規定，盜用公印或公印文則同樣須足以生損害於公眾或他人。",
+          "note": "條文之適用範圍，依第217條及第218條文字判斷。"
         }
       ],
       "lawRefs": [
-        "刑法第217條（條次與內容待核對）",
-        "刑法第218條（條次與內容待核對）",
+        "刑法第217條",
+        "刑法第218條",
         "刑法第210條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第217條（條次與內容待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "217",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造印章、印文或署押，足以生損害於公眾或他人者，處三年以下有期徒刑。\n盜用印章、印文或署押，足以生損害於公眾或他人者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "217",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第218條（條次與內容待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "218",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造公印或公印文者，處五年以下有期徒刑。\n盜用公印或公印文足以生損害於公眾或他人者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "218",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-178",
@@ -391,8 +731,8 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多採製作權限之區分思維：公務員或業務人員於職權範圍內登載不實內容者，依第214條或第215條處斷；以他人名義或無權限製作者，則論為偽造（待核對）。",
+          "period": "製作權限之區分",
+          "view": "依甲說（製作權限說），公務員或業務人員於職權範圍內登載不實內容者，依第214條或第215條處斷；以他人名義或無權限製作者，則屬偽造，依第210條或第211條處斷。",
           "note": "以權限歸屬為核心判斷。"
         }
       ],
@@ -402,7 +742,107 @@
         "刑法第214條",
         "刑法第215條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第211條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "211",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造公文書，足以生損害於公眾或他人者，處一年以上七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "211",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第214條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "214",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "明知為不實之事項，而使公務員登載於職務上所掌之公文書，足以生損害於公眾或他人者，處三年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "214",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "214",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第215條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "215",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "從事業務之人，明知為不實之事項，而登載於其業務上作成之文書，足以生損害於公眾或他人者，處三年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "215",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "215",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-179",
@@ -446,16 +886,72 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務依刑法第220條將特定圖畫、照片及電磁紀錄準用文書罪之規定，並另以電腦相關特別法規範部分數位犯罪（項次與適用範圍待核對）。",
-          "note": "具體案型之適用需依條文原文核對。"
+          "period": "條文依據",
+          "view": "依第220條第2項，錄音、錄影或電磁紀錄，藉機器或電腦之處理所顯示之聲音、影像或符號，足以為表示其用意之證明者，關於本章及本章以外各罪，以文書論，此為準文書之明文依據。",
+          "note": "具體案型之適用，依條文文字判斷。"
         }
       ],
       "lawRefs": [
-        "刑法第220條（項次待核對）",
+        "刑法第220條第2項",
         "刑法第210條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第220條（項次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "220",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "在紙上或物品上之文字、符號、圖畫、照像，依習慣或特約，足以為表示其用意之證明者，關於本章及本章以外各罪，以文書論。\n錄音、錄影或電磁紀錄，藉機器或電腦之處理所顯示之聲音、影像或符號，足以為表示其用意之證明者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "220",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "220",
+              "date": "1997-09-25",
+              "kind": "修正"
+            },
+            {
+              "article": "220",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-180",
@@ -481,7 +977,7 @@
         "公務機關名義"
       ],
       "proposition": "偽造公文書之成立，是否要求行為人具有公務員身分，或僅需以公務機關或公務員之名義製作？",
-      "distinction": "偽造公文書之法定刑重於偽造私文書。若行為人非公務員但冒用公務機關名義製作，應依公文書或私文書論處，區分結果影響刑度與罪名之選擇。",
+      "distinction": "偽造公文書之法定刑重於偽造私文書。若行為人非公務員但冒用公務機關名義製作，依甲說應依私文書論處，依乙說則可能成立公文書之偽造，區分結果影響刑度與罪名之選擇。",
       "doctrines": [
         {
           "label": "甲說",
@@ -498,17 +994,105 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務對於非公務員冒用公務機關名義製作文書之情形，需依文書之公務性質與行為人之身分分別判斷，具體派別待核對。",
+          "period": "條文依據",
+          "view": "依第10條第3項，公文書係指公務員職務上製作之文書；依甲說（身分要件說），非公務員製作之文書不屬公文書之製作，其處罰應回歸第210條之私文書規定。依乙說（名義說），則以文書表面所示之公務名義判斷。",
           "note": "以公文書之定義為出發點。"
         }
       ],
       "lawRefs": [
-        "刑法第10條（公文書定義，項次待核對）",
+        "刑法第10條第3項",
         "刑法第211條",
         "刑法第210條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第10條（公文書定義，項次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "稱以上、以下、以內者，俱連本數或本刑計算。\n稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機"
+            }
+          ],
+          "latestAmendmentDate": "2023-01-07",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2023-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第211條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "211",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造公文書，足以生損害於公眾或他人者，處一年以上七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "211",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-181",
@@ -552,16 +1136,62 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務原則上以提出或交付文書即屬行使，不要求他人確實誤信（待核對）。",
-          "note": "行使之著手，通常以將文書置於他人可得閱覽之狀態為準（待核對）。"
+          "period": "條文依據",
+          "view": "依第216條，行使第210條至第215條之文書者，依偽造、變造文書或登載不實事項之規定處斷。依甲說（閱覽說），只要將偽造文書提出或交付，使他人得以閱覽其內容，即屬行使，不以他人實際相信為必要。",
+          "note": "依甲說，著手之判斷以將文書置於他人可得閱覽之狀態為準。"
         }
       ],
       "lawRefs": [
         "刑法第216條",
         "刑法第210條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第216條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "216",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行使第二百一十條至第二百一十五條之文書者，依偽造、變造文書或登載不實事項或使登載不實事項之規定處斷。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "216",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-182",
@@ -606,17 +1236,85 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務原則上要求行使者具有行使偽造文書之故意，即明知文書為偽造而仍行使（待核對）。",
-          "note": "不知情而行使之人，通常不成立本罪（待核對）。"
+          "period": "條文依據",
+          "view": "依第13條第1項，故意須行為人對構成犯罪之事實明知並有意使其發生；行使偽造文書者，依甲說（故意說），須對文書為偽造有所認識，並具行使之意思。",
+          "note": "依甲說，不知情而行使之人不成立本罪。"
         }
       ],
       "lawRefs": [
         "刑法第216條",
         "刑法第210條",
-        "刑法第13條（故意之規定，項次待核對）"
+        "刑法第13條第1項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第216條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "216",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行使第二百一十條至第二百一十五條之文書者，依偽造、變造文書或登載不實事項或使登載不實事項之規定處斷。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "216",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第13條（故意之規定，項次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-183",
@@ -646,7 +1344,7 @@
       "doctrines": [
         {
           "label": "甲說",
-          "view": "數罪說：偽造與行使為兩個獨立之法益侵害，偽造者自行行使即另成立行使偽造罪，兩罪應依想像競合或牽連關係處理。",
+          "view": "數罪說：偽造與行使為兩個獨立之法益侵害，偽造者自行行使即另成立行使偽造罪，兩罪應依想像競合處理。",
           "pros": "各罪保護之法益不同，符合數罪之法理。",
           "cons": "同一行為人之偽造與行使常為一連串行為，數罪評價可能過度。"
         },
@@ -659,17 +1357,90 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多認偽造者自行行使者，原則上論偽造與行使之想像競合或牽連關係（待核對）；具體罪數依行使次數與對象而定（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文依據",
+          "view": "依第55條，一行為而觸犯數罪名者，從一重處斷。偽造者自行行使，若視為一行為觸犯偽造與行使二罪，依第55條從一重處斷；依甲說（數罪說），則偽造與行使分別評價，依想像競合處理。",
+          "note": "具體罪數依行使次數與對象而定，依個案判斷。"
         }
       ],
       "lawRefs": [
-        "刑法第55條（牽連犯，待核對）",
+        "刑法第55條",
         "刑法第216條",
         "刑法第210條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第55條（牽連犯，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第216條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "216",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行使第二百一十條至第二百一十五條之文書者，依偽造、變造文書或登載不實事項或使登載不實事項之規定處斷。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "216",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-184",
@@ -713,17 +1484,90 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務原則上認為提出偽造文書於訴訟即屬行使；對於刑事被告自行製作並提出之情形，實務派別不一，需依個案判斷（待核對）。",
-          "note": "具體判決與派別待核對。"
+          "period": "條文與學說",
+          "view": "依第216條與第210條，將偽造之私文書提出於法院作為證據，使法官得以閱覽，屬行使偽造文書之行為；甲說（行使說）即採此立場。刑事被告自行製作並提出之情形，甲說與乙說（訴訟防禦說）之結論不同，需依個案判斷。",
+          "note": "甲、乙兩說之結論差異，見上述說明。"
         }
       ],
       "lawRefs": [
         "刑法第216條",
         "刑法第210條",
-        "刑法第164條（待核對）"
+        "刑法第164條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第216條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "216",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行使第二百一十條至第二百一十五條之文書者，依偽造、變造文書或登載不實事項或使登載不實事項之規定處斷。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "216",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第164條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "164",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "藏匿犯人或依法逮捕、拘禁之脫逃人或使之隱避者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。\n意圖犯前項之罪而頂替者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "164",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "164",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-185",
@@ -767,17 +1611,90 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "偽造與行使之間若有犯意聯絡並分擔行為，實務傾向成立共同正犯（待核對）。",
-          "note": "行使者若僅於偽造完成後事後行使而無共謀，通常不論偽造之共犯（待核對）。"
+          "period": "條文依據",
+          "view": "依第28條，二人以上共同實行犯罪之行為者皆為正犯。偽造與行使若有犯意聯絡並分擔行為，依甲說（共同正犯說）得成立共同正犯。",
+          "note": "依甲說，若無犯意聯絡，事後行使者不成立偽造之共同正犯。"
         }
       ],
       "lawRefs": [
-        "刑法第28條（共同正犯，待核對）",
+        "刑法第28條",
         "刑法第216條",
         "刑法第210條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第28條（共同正犯，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第216條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "216",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行使第二百一十條至第二百一十五條之文書者，依偽造、變造文書或登載不實事項或使登載不實事項之規定處斷。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "216",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-186",
@@ -820,16 +1737,62 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為偽造私文書罪以偽造完成為既遂，未行使仍可處罰（待核對）。",
-          "note": "若偽造之文書僅在內部使用且無足以生損害之可能，可能不構成本罪（待核對）。"
+          "period": "條文依據",
+          "view": "第210條之構成要件為偽造、變造私文書，且足以生損害於公眾或他人，條文未以行使為成立要件；依甲說（獨立既遂說），偽造完成即既遂，行使屬另一獨立犯罪。",
+          "note": "依乙說（準備行為說），內部使用而無足以生損害可能之偽造，不應處罰。"
         }
       ],
       "lawRefs": [
         "刑法第210條",
         "刑法第216條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第216條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "216",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行使第二百一十條至第二百一十五條之文書者，依偽造、變造文書或登載不實事項或使登載不實事項之規定處斷。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "216",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-187",
@@ -873,16 +1836,67 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為有價證券須表彰財產權，且具有流通性（待核對）；票據、股票、債券為典型有價證券（待核對）。",
-          "note": "具體案例之界線待核對。"
+          "period": "條文與學說",
+          "view": "第201條所列「公債票、公司股票或其他有價證券」即為有價證券之典型。依甲說（形式說），有價證券係指以證券形式表彰財產權，並可交付或背書流通之文件，如票據、股票、債券。",
+          "note": "具體案例之界線，見甲、乙兩說之對照。"
         }
       ],
       "lawRefs": [
         "刑法第201條",
         "刑法第210條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第201條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "201",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖供行使之用，而偽造、變造公債票、公司股票或其他有價證券者，處三年以上十年以下有期徒刑，得併科九萬元以下罰金。\n行使偽造、變造之公債票、公司股票或其他有價證券，或意圖供行使之用而收集或交付於人者，處一年以上七年以下有期徒刑，得併科九萬元以"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "201",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "201",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-188",
@@ -926,16 +1940,67 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多以偽造有價證券罪為特別規定，優先適用第201條（待核對）；具體案件中仍需注意有價證券與一般文書之區別（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文依據",
+          "view": "第201條規定偽造、變造有價證券之罪，第210條規定偽造私文書之罪。依甲說（法條競合說，特別關係），偽造有價證券屬第201條之特別規定，應優先適用第201條，不另論第210條。",
+          "note": "依乙說（想像競合說），二罪保護法益不同，應依想像競合論處。"
         }
       ],
       "lawRefs": [
         "刑法第201條",
         "刑法第210條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第201條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "201",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖供行使之用，而偽造、變造公債票、公司股票或其他有價證券者，處三年以上十年以下有期徒刑，得併科九萬元以下罰金。\n行使偽造、變造之公債票、公司股票或其他有價證券，或意圖供行使之用而收集或交付於人者，處一年以上七年以下有期徒刑，得併科九萬元以"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "201",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "201",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第210條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "210",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "偽造、變造私文書，足以生損害於公眾或他人者，處五年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "210",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-189",
@@ -967,28 +2032,64 @@
         {
           "label": "甲說",
           "view": "授權範圍說：空白票據經授權補充填載，於授權範圍內所為之補充為有效，逾越授權而補充者構成偽造有價證券。",
-          "pros": "與票據法承認之授權補充概念一致，判斷明確。",
+          "pros": "與空白票據授權補充之法律關係相符，判斷明確。",
           "cons": "授權範圍之舉證困難，易生爭議。"
         },
         {
           "label": "乙說",
           "view": "未完成文書說：空白票據在填載完成前不屬完整之有價證券，補充填載之行為即構成製作，不論是否有授權，均可能為偽造。",
           "pros": "保護票據之完整性與流通信用。",
-          "cons": "與票據法承認空白授權之實務不合，可能過度擴張處罰。"
+          "cons": "與允許空白授權補充之交易情形不合，可能過度擴張處罰。"
         }
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為空白票據經授權補充者屬有效票據，逾越授權補充者構成偽造（待核對）。",
-          "note": "交付空白票據者之刑事責任，視其有無知情與共謀而定（待核對）。"
+          "period": "條文與學說",
+          "view": "依第201條，偽造有價證券須有意圖供行使之用。依甲說（授權範圍說），空白票據經授權補充填載者，於授權範圍內所為之補充為有效；逾越授權而補充者構成偽造。",
+          "note": "交付空白票據者之刑事責任，視其有無知情與共謀而定。"
         }
       ],
       "lawRefs": [
-        "刑法第201條",
-        "票據法（授權補充之相關規定，條次待核對）"
+        "刑法第201條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第201條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "201",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "意圖供行使之用，而偽造、變造公債票、公司股票或其他有價證券者，處三年以上十年以下有期徒刑，得併科九萬元以下罰金。\n行使偽造、變造之公債票、公司股票或其他有價證券，或意圖供行使之用而收集或交付於人者，處一年以上七年以下有期徒刑，得併科九萬元以"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "201",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "201",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "票據法（授權補充之相關規定，條次待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-190",
@@ -1031,8 +2132,8 @@
       ],
       "practice": [
         {
-          "period": "個別條文判斷",
-          "view": "實務依條文個別判斷：放火、決水等罪多以燒燬、決溢等結果或具體危險為要件；不能安全駕駛等罪則以抽象危險之方式認定（待核對）。",
+          "period": "條文個別判斷",
+          "view": "依第173條第1項，放火燒燬現供人使用之住宅或現有人所在之建築物等，須有燒燬之結果始成立既遂；依第185條之3，不能安全駕駛係以吐氣或血液酒精濃度達一定數值，或其他足認不能安全駕駛之情事為構成要件。",
           "note": "各條文之危險程度應分別檢視，不宜一概而論。"
         }
       ],
@@ -1041,7 +2142,115 @@
         "刑法第185條",
         "刑法第185條之3"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第173條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "173",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "放火燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處無期徒刑或七年以上有期徒刑。\n失火燒燬前項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n第一項之未遂犯罰之。\n預備犯第一"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "173",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "173",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第185條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "185",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "損壞或壅塞陸路、水路、橋樑或其他公眾往來之設備或以他法致生往來之危險者，處五年以下有期徒刑、拘役或一萬五千元以下罰金。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "185",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "185",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第185條之3",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "185-3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "駕駛動力交通工具而有下列情形之一者，處三年以下有期徒刑，得併科三十萬元以下罰金：\n一、吐氣所含酒精濃度達每公升零點二五毫克或血液中酒精濃度達百分之零點零五以上。\n二、有前款以外之其他情事足認服用酒類或其他相類之物，致不能安全駕駛。\n三、尿液"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-08",
+          "amendments": [
+            {
+              "article": "185-3",
+              "date": "1999-03-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "185-3",
+              "date": "2007-12-18",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2013-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2019-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2022-01-24",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2023-12-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-191",
@@ -1085,17 +2294,100 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多以標的物已達獨立燃燒作為燒燬之標準（待核對）；若火勢未能獨立持續而自行熄滅，則依未遂論（待核對）。",
-          "note": "具體判決之字號與年度，待核對後方可引用。"
+          "period": "條文與學說",
+          "view": "依第173條，放火罪以燒燬為既遂之要件，第173條第3項規定第1項之未遂犯罰之，故燒燬是否既遂直接影響刑責。依甲說（獨立燃燒說），標的物已開始獨立燃燒，燃燒作用脫離點火物而可自行持續，即為燒燬。",
+          "note": "具體案件之燒燬程度，仍依個案事實認定。"
         }
       ],
       "lawRefs": [
         "刑法第173條",
-        "刑法第174條（待核對）",
+        "刑法第174條",
         "刑法第26條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第173條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "173",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "放火燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處無期徒刑或七年以上有期徒刑。\n失火燒燬前項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n第一項之未遂犯罰之。\n預備犯第一"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "173",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "173",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第174條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "174",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "放火燒燬現非供人使用之他人所有住宅或現未有人所在之他人所有建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處三年以上十年以下有期徒刑。\n放火燒燬前項之自己所有物，致生公共危險者，處六月以上五年以下有期徒刑。\n失火燒燬第"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "174",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "174",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第26條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "26",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為不能發生犯罪之結果，又無危險者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "26",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "26",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-192",
@@ -1122,7 +2414,7 @@
         "易燃物"
       ],
       "proposition": "放火罪之實行行為於何時著手？準備引火物、搬運易燃物是否已為著手？",
-      "distinction": "著手之時點決定放火未遂之成立與否，進而影響可罰性與刑度。若認為準備行為即已著手，則預備階段之行為亦可罰，範圍較寬；若以點火為著手，則較為限縮。",
+      "distinction": "著手之時點決定放火行為應論未遂（第173條第3項）或預備（第173條第4項）。二者均予處罰，但刑度不同；若認為準備行為即已著手，則依未遂論處，適用第173條第1項之法定刑，刑度明顯較重。",
       "doctrines": [
         {
           "label": "甲說",
@@ -1139,16 +2431,72 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務原則上以點火或其他引火行為開始作為著手之時點（待核對）；單純準備易燃物或搬運工具，多認為仍屬預備（待核對）。",
-          "note": "具體案件之著手時點仍需依個案事實認定。"
+          "period": "條文依據",
+          "view": "依第173條第3項，放火燒燬之未遂犯罰之；依第173條第4項，預備犯第1項之罪者亦處罰，但刑度明顯較輕。依甲說（形式客觀說），以開始實行點火或使火勢發生之行為為著手；準備引火物、搬運易燃物仍屬預備。",
+          "note": "依乙說（危險接近說），對放火法益已造成緊迫危險即為著手，不以點火為要件。"
         }
       ],
       "lawRefs": [
-        "刑法第26條（未遂犯，待核對）",
-        "刑法第173條"
+        "刑法第173條第3項",
+        "刑法第173條第4項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第26條（未遂犯，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "26",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為不能發生犯罪之結果，又無危險者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "26",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "26",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第173條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "173",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "放火燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處無期徒刑或七年以上有期徒刑。\n失火燒燬前項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n第一項之未遂犯罰之。\n預備犯第一"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "173",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "173",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-193",
@@ -1175,7 +2523,7 @@
         "迷信犯"
       ],
       "proposition": "以客觀上不能引燃之物或方法放火，是否成立放火未遂，或屬不能犯而不罰？",
-      "distinction": "若認屬不能未遂，則依刑法第26條但書，得減輕或免除其刑；若認屬不能犯，則不罰。區分結果影響行為人之刑事責任，尤其於使用不能燃燒之物或錯誤工具之案型。",
+      "distinction": "依第26條，行為不能發生犯罪之結果且無危險者不罰；有危險者不在此不罰規定之列，應依未遂犯之規定（第173條第3項）處罰。區分結果影響行為人之刑事責任，尤其於使用不能燃燒之物或錯誤工具之案型。",
       "doctrines": [
         {
           "label": "甲說",
@@ -1192,16 +2540,72 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多依危險性之有無區分不能未遂與不能犯（待核對）；使用不能引燃之物而行為人具有放火之意思者，通常依不能未遂論，並得減免其刑（待核對）。",
+          "period": "條文依據",
+          "view": "依第26條，行為不能發生犯罪之結果，又無危險者，不罰；依甲說（危險性說），以行為當時一般人所認識之情事及行為人所認識之事實判斷有無危險。",
           "note": "具體案型需依個案判斷。"
         }
       ],
       "lawRefs": [
         "刑法第26條",
-        "刑法第173條"
+        "刑法第173條第3項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第26條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "26",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為不能發生犯罪之結果，又無危險者，不罰。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "26",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "26",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第173條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "173",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "放火燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處無期徒刑或七年以上有期徒刑。\n失火燒燬前項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n第一項之未遂犯罰之。\n預備犯第一"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "173",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "173",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-194",
@@ -1244,17 +2648,95 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務原則上承認放火罪得以間接故意成立（待核對）；失火則以過失為要件，依客觀注意義務判斷（待核對）。",
-          "note": "具體判斷仍需依個案中之行為情狀與火源控制情形認定。"
+          "period": "條文依據",
+          "view": "依第173條第2項，失火燒燬第1項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金；依第175條，失火燒燬前二條以外之物致生公共危險者，處拘役或九千元以下罰金。依第13條第2項，預見其發生而其發生並不違背其本意者以故意論，此為乙說（容認說）間接故意之條文依據。",
+          "note": "依甲說（意欲說），放火罪須有直接故意，間接故意不足；具體判斷仍依個案中之行為情狀與火源控制情形認定。"
         }
       ],
       "lawRefs": [
         "刑法第173條",
-        "刑法第175條（待核對）",
-        "刑法第13條（故意與過失，待核對）"
+        "刑法第175條",
+        "刑法第13條第2項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第173條",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "173",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "放火燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車或其他供水、陸、空公眾運輸之舟、車、航空機者，處無期徒刑或七年以上有期徒刑。\n失火燒燬前項之物者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。\n第一項之未遂犯罰之。\n預備犯第一"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "173",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "173",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第175條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "175",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "放火燒燬前二條以外之他人所有物，致生公共危險者，處一年以上七年以下有期徒刑。\n放火燒燬前二條以外之自己所有物，致生公共危險者，處三年以下有期徒刑。\n失火燒燬前二條以外之物，致生公共危險者，處拘役或九千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "175",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "175",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第13條（故意與過失，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-195",
@@ -1297,16 +2779,77 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多依酒測數值認定本罪是否成立，以法定酒精濃度為客觀要件（待核對）；酒測值未達標準者，通常不以本罪論處（待核對）。",
-          "note": "法定數值與條文用語須以現行條文為準，待核對。"
+          "period": "條文依據",
+          "view": "依第185條之3第1款，吐氣所含酒精濃度達每公升0.25毫克或血液中酒精濃度達百分之0.05以上，即符合法定數值要件；第2款另規定其他足認服用酒類致不能安全駕駛之情事。依甲說（抽象危險說），達法定數值即成立本罪。",
+          "note": "法定數值以現行條文為準。"
         }
       ],
       "lawRefs": [
-        "刑法第185條之3（待核對）",
-        "道路交通管理處罰條例（相關規定，待核對）"
+        "刑法第185條之3"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第185條之3（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "185-3",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "駕駛動力交通工具而有下列情形之一者，處三年以下有期徒刑，得併科三十萬元以下罰金：\n一、吐氣所含酒精濃度達每公升零點二五毫克或血液中酒精濃度達百分之零點零五以上。\n二、有前款以外之其他情事足認服用酒類或其他相類之物，致不能安全駕駛。\n三、尿液"
+            }
+          ],
+          "latestAmendmentDate": "2023-12-08",
+          "amendments": [
+            {
+              "article": "185-3",
+              "date": "1999-03-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "185-3",
+              "date": "2007-12-18",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2011-11-08",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2013-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2019-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2022-01-24",
+              "kind": "修正"
+            },
+            {
+              "article": "185-3",
+              "date": "2023-12-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "道路交通管理處罰條例（相關規定，待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-196",
@@ -1350,16 +2893,57 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為駕駛人負有停留、報案及救護之義務，未履行而離去者成立本罪（待核對）；因他人已救護或其救護不可能而離去之情形，是否阻卻本罪，須依個案判斷（待核對）。",
-          "note": "具體判決與派別待核對。"
+          "period": "條文依據",
+          "view": "依第185條之4，駕駛動力交通工具發生交通事故，致人傷害而逃逸者，依傷亡結果分別處罰；犯前項之罪而駕駛人於事故中係無過失者，減輕或免除其刑。依甲說（形式說），逃逸指未依規定停留、救護或報案而離去；依乙說（實質說），則須審酌駕駛人是否負有救護義務及其可能性。",
+          "note": "具體判斷依個案事實認定。"
         }
       ],
       "lawRefs": [
-        "刑法第185條之4（待核對）",
-        "道路交通安全規則（救護與報案義務，待核對）"
+        "刑法第185條之4"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第185條之4（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "185-4",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "駕駛動力交通工具發生交通事故，致人傷害而逃逸者，處六月以上五年以下有期徒刑；致人於死或重傷而逃逸者，處一年以上七年以下有期徒刑。\n犯前項之罪，駕駛人於發生交通事故致人死傷係無過失者，減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "2021-05-21",
+          "amendments": [
+            {
+              "article": "185-4",
+              "date": "1999-03-30",
+              "kind": "增訂"
+            },
+            {
+              "article": "185-4",
+              "date": "2013-05-31",
+              "kind": "修正"
+            },
+            {
+              "article": "185-4",
+              "date": "2021-05-21",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "道路交通安全規則（救護與報案義務，待核對）",
+          "status": "no-article",
+          "checks": [],
+          "latestAmendmentDate": null,
+          "amendments": [],
+          "note": "引用字串沒有可辨識的條號"
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-197",
@@ -1403,16 +2987,72 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多以行為是否足以致生往來危險為判斷基礎（待核對）；若未實際造成車輛避讓或事故，是否成立本罪須依個案判斷（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文依據",
+          "view": "依第185條，損壞或壅塞公眾往來之設備，或以他法致生往來之危險者，處五年以下有期徒刑、拘役或罰金；第1項之未遂犯罰之。依條文「致生往來之危險」之文義，本罪須有危險結果；依甲說（具體危險說），須個案中確實造成往來之危險。",
+          "note": "乙說（抽象危險說）之見解見上述甲、乙兩說。"
         }
       ],
       "lawRefs": [
-        "刑法第185條（待核對）",
-        "刑法第190條（待核對）"
+        "刑法第185條",
+        "刑法第190條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第185條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "185",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "損壞或壅塞陸路、水路、橋樑或其他公眾往來之設備或以他法致生往來之危險者，處五年以下有期徒刑、拘役或一萬五千元以下罰金。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n第一項之未遂犯罰之。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "185",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "185",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第190條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "190",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "投放毒物或混入妨害衛生物品於供公眾所飲之水源、水道或自來水池者，處一年以上七年以下有期徒刑。\n因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。\n因過失犯第一項之罪者，處六月以下有期徒刑、拘役或九千元以下罰"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "190",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "190",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-198",
@@ -1457,16 +3097,61 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為偽證罪以證人、鑑定人、通譯為主體（待核對）；被告之陳述不構成偽證罪（待核對）。",
-          "note": "具體判決之字號與年度待核對後方可引用。"
+          "period": "條文依據",
+          "view": "依第168條，偽證罪之行為主體為證人、鑑定人、通譯，且須於執行審判職務之公署審判時或檢察官偵查時，就案情有重要關係之事項，供前或供後具結而為虛偽陳述。依甲說（身分限定說），偽證罪為身分犯，行為主體限於上述人員。",
+          "note": "被告於程序中之陳述不屬第168條所列主體，此為甲說之立場。"
         }
       ],
       "lawRefs": [
-        "刑法第166條（待核對）",
-        "刑法第168條（待核對）"
+        "刑法第168條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第166條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "166",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯前條之罪，於他人刑事被告案件裁判確定前自白者，減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "166",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第168條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "168",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "於執行審判職務之公署審判時或於檢察官偵查時，證人、鑑定人、通譯於案情有重要關係之事項，供前或供後具結，而為虛偽陳述者，處七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "168",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-199",
@@ -1509,16 +3194,62 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務對偽證罪之虛偽陳述，通常要求與案件有關之事項；記憶錯誤而非故意者不成立（待核對）。",
-          "note": "重要性之具體判斷依個案而定（待核對）。"
+          "period": "條文依據",
+          "view": "依第168條，虛偽陳述須就案情有重要關係之事項為之，此與甲說（重要性說）之立場相符。依第13條第1項，故意須明知並有意使其發生；記憶錯誤或誤信而為之陳述不具故意，依乙說（故意說），則須明知其陳述與事實不符而仍為之。",
+          "note": "重要性之具體判斷依個案而定。"
         }
       ],
       "lawRefs": [
-        "刑法第166條（待核對）",
-        "刑法第13條（故意，待核對）"
+        "刑法第168條",
+        "刑法第13條第1項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第166條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "166",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "犯前條之罪，於他人刑事被告案件裁判確定前自白者，減輕或免除其刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "166",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第13條（故意，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "13",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "行為人對於構成犯罪之事實，明知並有意使其發生者，為故意。\n行為人對於構成犯罪之事實，預見其發生而其發生並不違背其本意者，以故意論。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "13",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-200",
@@ -1561,16 +3292,68 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為自白減免之要件須依條文判斷，自白須於裁判確定前為之，且內容須包含偽證之事實（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文依據",
+          "view": "依第172條，犯第168條至第171條之罪，於所虛偽陳述之案件裁判或懲戒處分確定前自白者，減輕或免除其刑。依第62條但書，有特別規定者依其規定，故偽證之自白減免優先適用第172條。",
+          "note": "依甲說（獨立減免說），偽證之自白減免為獨立於自首之特別規定；依乙說（類推自首說），則以自首之要件為準。"
         }
       ],
       "lawRefs": [
-        "刑法第168條（待核對）",
-        "刑法第62條（自首，待核對）"
+        "刑法第172條",
+        "刑法第168條",
+        "刑法第62條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第168條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "168",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "於執行審判職務之公署審判時或於檢察官偵查時，證人、鑑定人、通譯於案情有重要關係之事項，供前或供後具結，而為虛偽陳述者，處七年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "168",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第62條（自首，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "62",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於未發覺之罪自首而受裁判者，得減輕其刑。但有特別規定者，依其規定。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "62",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "62",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-201",
@@ -1614,15 +3397,46 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為犯人本人湮滅自己之證據，原則上不成立本罪（待核對）；親屬為隱匿或湮滅者之情形，依條文之親屬身分規定得免除其刑（待核對）。",
-          "note": "條文之親屬範圍與免刑要件，待核對原條文。"
+          "period": "條文依據",
+          "view": "依第165條，客體為「他人刑事被告案件之證據」，犯人湮滅自己案件之證據，文義上不在本條範圍內。依第167條，配偶、五親等內之血親或三親等內之姻親圖利犯人，而犯第164條或第165條之罪者，減輕或免除其刑。",
+          "note": "犯人本人湮滅自身證據是否可罰，依甲說（期待可能性說）為不罰，依乙說（法益侵害說）為可罰。"
         }
       ],
       "lawRefs": [
-        "刑法第164條（待核對）"
+        "刑法第164條",
+        "刑法第165條",
+        "刑法第167條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第164條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "164",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "藏匿犯人或依法逮捕、拘禁之脫逃人或使之隱避者，處二年以下有期徒刑、拘役或一萬五千元以下罰金。\n意圖犯前項之罪而頂替者，亦同。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "164",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "164",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-202",
@@ -1665,16 +3479,72 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為公務員執行職務須具合法性（待核對）；執行違法而相對人抗拒之情形是否構成本罪，依違法之程度與性質判斷（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文與學說",
+          "view": "依第135條，妨害公務須針對「依法執行職務」之公務員施強暴脅迫。依第21條，依法令之行為不罰；依所屬上級公務員命令之職務上行為，除明知命令違法者外，亦不罰。依甲說（合法性要件說），公務員執行違法時，相對人之妨害不構成本罪。",
+          "note": "執行違法之程度與性質，依個案判斷。"
         }
       ],
       "lawRefs": [
-        "刑法第135條（待核對）",
-        "刑法第21條（正當防衛與緊急避難，待核對）"
+        "刑法第135條",
+        "刑法第21條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第135條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "135",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於公務員依法執行職務時，施強暴脅迫者，處三年以下有期徒刑、拘役或三十萬元以下罰金。\n意圖使公務員執行一定之職務或妨害其依法執行一定之職務或使公務員辭職，而施強暴脅迫者，亦同。\n犯前二項之罪而有下列情形之一者，處六月以上五年以下有期徒刑：\n"
+            }
+          ],
+          "latestAmendmentDate": "2020-12-31",
+          "amendments": [
+            {
+              "article": "135",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "135",
+              "date": "2019-12-03",
+              "kind": "修正"
+            },
+            {
+              "article": "135",
+              "date": "2020-12-31",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第21條（正當防衛與緊急避難，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "21",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "依法令之行為，不罰。\n依所屬上級公務員命令之職務上行為，不罰。但明知命令違法者，不在此限。"
+            }
+          ],
+          "latestAmendmentDate": "1934-10-31",
+          "amendments": [
+            {
+              "article": "21",
+              "date": "1934-10-31",
+              "kind": "制定"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-203",
@@ -1718,15 +3588,49 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務多以足以妨害執行為判斷基準，對推擠、阻擋等行為認為成立（待核對）；單純言語辱罵而未妨害執行者，通常不以本罪論（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文與學說",
+          "view": "依第135條，妨害公務之手段須為強暴或脅迫。依甲說（足以妨害說），強暴脅迫只要足以使公務員無法或難以執行職務即可，不要求達到壓制程度。",
+          "note": "依乙說（壓制程度說），單純言語或輕微肢體接觸不成立本罪。"
         }
       ],
       "lawRefs": [
-        "刑法第135條（待核對）"
+        "刑法第135條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第135條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "135",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於公務員依法執行職務時，施強暴脅迫者，處三年以下有期徒刑、拘役或三十萬元以下罰金。\n意圖使公務員執行一定之職務或妨害其依法執行一定之職務或使公務員辭職，而施強暴脅迫者，亦同。\n犯前二項之罪而有下列情形之一者，處六月以上五年以下有期徒刑：\n"
+            }
+          ],
+          "latestAmendmentDate": "2020-12-31",
+          "amendments": [
+            {
+              "article": "135",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "135",
+              "date": "2019-12-03",
+              "kind": "修正"
+            },
+            {
+              "article": "135",
+              "date": "2020-12-31",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-204",
@@ -1769,18 +3673,133 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務原則上依行為之單一性判斷罪數；同一強暴行為同時妨害公務並傷害公務員者，多認為想像競合（待核對）；分別行為者則數罪併罰（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文依據",
+          "view": "依第55條，一行為觸犯數罪名者從一重處斷。依甲說（想像競合說），同一強暴行為同時妨害公務並傷害或公然侮辱者，依想像競合從一重處斷；依乙說（實質競合說），分別評價之行為應數罪併罰。",
+          "note": "第277條（傷害）與第309條（公然侮辱）之法定刑，見條文本文。"
         }
       ],
       "lawRefs": [
-        "刑法第135條（待核對）",
-        "刑法第309條（待核對）",
-        "刑法第277條（待核對）",
-        "刑法第55條（待核對）"
+        "刑法第135條",
+        "刑法第309條",
+        "刑法第277條",
+        "刑法第55條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第135條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "135",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "對於公務員依法執行職務時，施強暴脅迫者，處三年以下有期徒刑、拘役或三十萬元以下罰金。\n意圖使公務員執行一定之職務或妨害其依法執行一定之職務或使公務員辭職，而施強暴脅迫者，亦同。\n犯前二項之罪而有下列情形之一者，處六月以上五年以下有期徒刑：\n"
+            }
+          ],
+          "latestAmendmentDate": "2020-12-31",
+          "amendments": [
+            {
+              "article": "135",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "135",
+              "date": "2019-12-03",
+              "kind": "修正"
+            },
+            {
+              "article": "135",
+              "date": "2020-12-31",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第309條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "309",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公然侮辱人者，處拘役或九千元以下罰金。\n以強暴犯前項之罪者，處一年以下有期徒刑、拘役或一萬五千元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2019-12-03",
+          "amendments": [
+            {
+              "article": "309",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "309",
+              "date": "2019-12-03",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第277條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "277",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "傷害人之身體或健康者，處五年以下有期徒刑、拘役或五十萬元以下罰金。\n犯前項之罪，因而致人於死者，處無期徒刑或七年以上有期徒刑；致重傷者，處三年以上十年以下有期徒刑。"
+            }
+          ],
+          "latestAmendmentDate": "2019-05-10",
+          "amendments": [
+            {
+              "article": "277",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "277",
+              "date": "2019-05-10",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第55條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "55",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "一行為而觸犯數罪名者，從一重處斷。但不得科以較輕罪名所定最輕本刑以下之刑。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "55",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "55",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-205",
@@ -1823,17 +3842,105 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務原則上依行為人之實際參與程度與犯意聯絡認定正犯或共犯；在場助勢而無實際行為者，多以幫助犯論（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文依據",
+          "view": "依第136條，在公共場所或公眾得出入之場所聚集三人以上犯第135條之罪者，在場助勢之人與首謀及下手實施強暴脅迫者，法定刑不同，條文已區分在場助勢與首謀、下手之責任。依甲說（共同正犯說），凡與他人有犯意聯絡並參與者，均為共同正犯；依乙說（角色區分說），在場助勢者得依第30條以幫助犯論。",
+          "note": "具體派別見甲、乙兩說之對照。"
         }
       ],
       "lawRefs": [
-        "刑法第136條（待核對）",
-        "刑法第28條（共同正犯，待核對）",
-        "刑法第30條（幫助犯，待核對）"
+        "刑法第136條",
+        "刑法第28條",
+        "刑法第30條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第136條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "136",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "在公共場所或公眾得出入之場所，聚集三人以上犯前條之罪者，在場助勢之人，處一年以下有期徒刑、拘役或十萬元以下罰金；首謀及下手實施強暴、脅迫者，處一年以上七年以下有期徒刑。\n因而致公務員於死或重傷者，首謀及下手實施強暴脅迫之人，依前條第四項之規"
+            }
+          ],
+          "latestAmendmentDate": "2020-12-31",
+          "amendments": [
+            {
+              "article": "136",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "136",
+              "date": "2019-12-03",
+              "kind": "修正"
+            },
+            {
+              "article": "136",
+              "date": "2020-12-31",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第28條（共同正犯，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "28",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "二人以上共同實行犯罪之行為者，皆為正犯。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "28",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "28",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第30條（幫助犯，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "30",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "幫助他人實行犯罪行為者，為幫助犯。雖他人不知幫助之情者，亦同。\n幫助犯之處罰，得按正犯之刑減輕之。"
+            }
+          ],
+          "latestAmendmentDate": "2005-01-07",
+          "amendments": [
+            {
+              "article": "30",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "30",
+              "date": "2005-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-206",
@@ -1876,15 +3983,59 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為刑法第10條之公務員，係指依法令服務於國家或地方自治團體所屬機關，具有法定職務權限並依法從事公務者（待核對）；受委託之私人依委託內容執行公務時，得認具公務員身分（待核對）。",
-          "note": "具體派別與判決待核對。"
+          "period": "條文依據",
+          "view": "依第10條第2項，公務員係指依法令服務於國家、地方自治團體所屬機關而具有法定職務權限者，以及依法令從事公共事務而具有法定職務權限者；受國家、地方自治團體所屬機關依法委託，從事與委託機關權限有關之公共事務者，亦屬公務員。",
+          "note": "身分之判斷以條文所列要件為準。"
         }
       ],
       "lawRefs": [
-        "刑法第10條第2項（公務員定義，項次待核對）"
+        "刑法第10條第2項"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第10條第2項（公務員定義，項次待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "10",
+              "paragraph": 2,
+              "item": null,
+              "ok": true,
+              "currentText": "稱公務員者，謂下列人員：\n一、依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者。\n二、受國家、地方自治團體所屬機關依法委託，從事與委託機關權限有關之公共事務者。"
+            }
+          ],
+          "latestAmendmentDate": "2023-01-07",
+          "amendments": [
+            {
+              "article": "10",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "10",
+              "date": "1999-03-30",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2005-01-07",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2019-05-10",
+              "kind": "修正"
+            },
+            {
+              "article": "10",
+              "date": "2023-01-07",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-207",
@@ -1928,16 +4079,72 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務原則上要求賄賂與職務行為之間具有一定之關聯，並以具有對價性作為判斷之重要因素（待核對）。",
-          "note": "具體派別依個案判斷（待核對）。"
+          "period": "條文依據",
+          "view": "依第121條，公務員對於職務上之行為，要求、期約或收受賄賂或其他不正利益者，成立受賄罪。條文以「職務上之行為」為連結，是否須具對價關係，依甲說（對價關係說）與乙說（職務關聯說）而有不同。",
+          "note": "具體派別依個案判斷。"
         }
       ],
       "lawRefs": [
-        "刑法第121條（待核對）",
-        "刑法第122條（準受賄，待核對）"
+        "刑法第121條",
+        "刑法第122條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第121條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "121",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公務員或仲裁人對於職務上之行為，要求、期約或收受賄賂或其他不正利益者，處七年以下有期徒刑，得併科七十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2018-05-08",
+          "amendments": [
+            {
+              "article": "121",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "121",
+              "date": "2018-05-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        },
+        {
+          "ref": "刑法第122條（準受賄，待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "122",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公務員或仲裁人對於違背職務之行為，要求、期約或收受賄賂或其他不正利益者，處三年以上十年以下有期徒刑，得併科二百萬元以下罰金。\n因而為違背職務之行為者，處無期徒刑或五年以上有期徒刑，得併科四百萬元以下罰金。\n對於公務員或仲裁人關於違背職務之行"
+            }
+          ],
+          "latestAmendmentDate": "2018-05-08",
+          "amendments": [
+            {
+              "article": "122",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "122",
+              "date": "2018-05-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-208",
@@ -1980,15 +4187,45 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為違背職務之判斷以行為是否違反法令或職務義務為基礎（待核對）；受賄後作出之處分是否違背職務，須依個案具體判斷（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文依據",
+          "view": "依第122條，對於違背職務之行為收受賄賂者，處三年以上十年以下有期徒刑；因而為違背職務之行為者（第2項），處無期徒刑或五年以上有期徒刑。依甲說（行為本身違背說），違背職務指行為本身違反法令或職務義務。",
+          "note": "受賄後作出之處分是否違背職務，依個案具體判斷。"
         }
       ],
       "lawRefs": [
-        "刑法第121條（待核對）"
+        "刑法第121條",
+        "刑法第122條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第121條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "121",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公務員或仲裁人對於職務上之行為，要求、期約或收受賄賂或其他不正利益者，處七年以下有期徒刑，得併科七十萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2018-05-08",
+          "amendments": [
+            {
+              "article": "121",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "121",
+              "date": "2018-05-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     },
     {
       "id": "tw-crim-spec-209",
@@ -2032,15 +4269,49 @@
       ],
       "practice": [
         {
-          "period": "一般見解",
-          "view": "實務認為違背法令須指違反明確之法令或職務義務，且行為人須明知其違法（待核對）；單純行政判斷之瑕疵或裁量不當，通常不直接等同於違背法令（待核對）。",
-          "note": "具體派別待核對。"
+          "period": "條文依據",
+          "view": "依第131條，須公務員對於主管或監督之事務，明知違背法令，直接或間接圖自己或其他私人不法利益，因而獲得利益。依甲說（明確違法說），違背法令須為明確之法令規定，且公務員明知其違反。",
+          "note": "單純行政判斷之瑕疵或裁量不當，依甲說不直接構成本罪。"
         }
       ],
       "lawRefs": [
-        "刑法第131條（待核對）"
+        "刑法第131條"
       ],
-      "reviewStatus": "ai-draft-unverified"
+      "reviewStatus": "ai-draft-unverified",
+      "lawVerification": [
+        {
+          "ref": "刑法第131條（待核對）",
+          "status": "verified",
+          "checks": [
+            {
+              "article": "131",
+              "paragraph": null,
+              "item": null,
+              "ok": true,
+              "currentText": "公務員對於主管或監督之事務，明知違背法令，直接或間接圖自己或其他私人不法利益，因而獲得利益者，處一年以上七年以下有期徒刑，得併科一百萬元以下罰金。"
+            }
+          ],
+          "latestAmendmentDate": "2018-05-08",
+          "amendments": [
+            {
+              "article": "131",
+              "date": "1934-10-31",
+              "kind": "制定"
+            },
+            {
+              "article": "131",
+              "date": "2001-10-25",
+              "kind": "修正"
+            },
+            {
+              "article": "131",
+              "date": "2018-05-08",
+              "kind": "修正"
+            }
+          ],
+          "note": null
+        }
+      ]
     }
   ]
 }
