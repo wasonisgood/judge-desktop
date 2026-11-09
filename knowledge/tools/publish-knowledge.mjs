@@ -8,7 +8,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import * as core from '../../packages/core/dist/index.js';
 
 const BUCKET = 'judge-remote-mcp-2026.firebasestorage.app';
@@ -66,10 +66,12 @@ if (dryRun) {
 
 // 3. 上傳（版本目錄 + latest.json）
 const gs = (obj) => `gs://${BUCKET}/${obj}`;
+// gcloud 在 Windows 為 .cmd 批次檔，需透過 shell 執行，路徑加引號。
+const gcp = (src, dst) => execSync(`"${GCLOUD}" storage cp "${src}" "${dst}" --project=${PROJECT}`, { stdio: 'inherit' });
 for (const f of manifest.files) {
-  execFileSync(GCLOUD, ['storage', 'cp', path.join(dataDir, f.name), gs(f.object), `--project=${PROJECT}`], { stdio: 'inherit' });
+  gcp(path.join(dataDir, f.name), gs(f.object));
 }
 const latestLocal = path.join(outDir, 'latest.json');
 fs.writeFileSync(latestLocal, JSON.stringify(manifest, null, 2), 'utf8');
-execFileSync(GCLOUD, ['storage', 'cp', latestLocal, gs('judge-desktop/knowledge/latest.json'), `--project=${PROJECT}`], { stdio: 'inherit' });
+gcp(latestLocal, gs('judge-desktop/knowledge/latest.json'));
 console.log(`已上傳 ${manifest.files.length} 個檔案與 latest.json 到 ${prefix}/`);
