@@ -93,4 +93,15 @@ contextBridge.exposeInMainWorld('api', {
     update: (args: unknown) => invoke('library:update', args),
     remove: (args: unknown) => invoke('library:remove', args),
   },
+  annotation: {
+    load: (args: unknown) => invoke('annotation:load', args),
+    add: (args: unknown) => invoke('annotation:add', args),
+    update: (args: unknown) => invoke('annotation:update', args),
+    remove: (args: unknown) => invoke('annotation:remove', args),
+    reanchor: (args: unknown) => invoke('annotation:reanchor', args),
+    importAi: (args: unknown) => invoke('annotation:importAi', args),
+    judgments: () => invoke('annotation:judgments'),
+    export: (args: unknown) => invoke('annotation:export', args),
+    syncStatus: () => invoke('annotation:syncStatus'),
+  },
 });
