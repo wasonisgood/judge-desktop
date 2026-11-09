@@ -9,8 +9,10 @@ export interface FederationSettings {
   federationRuleId: string;
   serviceAccountId: string;
   workspaceId: string;
-  /** 使用者提供的身分憑證（OIDC JWT）檔案路徑；每次換取時重新讀取。 */
+  /** 使用者提供的身分憑證（OIDC JWT）檔案路徑；每次換取時重新讀取（僅 identitySource 為 file 時使用）。 */
   identityTokenFile: string;
+  /** 身分權杖來源：provider＝本工具（judge-remote-mcp）簽發（預設）；file＝自備檔案。 */
+  identitySource: 'provider' | 'file';
 }
 
 export interface StoredSettings {
@@ -31,7 +33,7 @@ export interface StoredSettings {
 }
 
 export const EMPTY_FEDERATION: FederationSettings = {
-  organizationId: '', federationRuleId: '', serviceAccountId: '', workspaceId: '', identityTokenFile: '',
+  organizationId: '', federationRuleId: '', serviceAccountId: '', workspaceId: '', identityTokenFile: '', identitySource: 'provider',
 };
 
 export const DEFAULTS: StoredSettings = {

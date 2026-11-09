@@ -86,3 +86,18 @@ test('buildScopeTable：搜尋與內頁走注入的來源（可繼承快取）�
   assert.equal(rows.length, 1);
   assert.equal(rows[0].id, 'A1');
 });
+
+// v3.7.0：聯盟設定格式檢查
+test('checkFederationFields：完整且格式正確時沒有問題；缺漏或格式錯誤會逐項指出', async () => {
+  const { checkFederationFields } = await import('../../dist/index.js');
+  const ok = { organizationId: '8c5aaae2-1c0c-4f73-94f8-a8b8d4b6a015', federationRuleId: 'fdrl_01ANPAQtu52UgHvcadQJYGe7', serviceAccountId: 'svac_01CjPwckkun6xbYvckPh2e91', workspaceId: '', identitySource: 'provider', identityTokenFile: '' };
+  assert.deepEqual(checkFederationFields(ok), []);
+  const bad = checkFederationFields({ ...ok, organizationId: 'abc', federationRuleId: 'rule1', serviceAccountId: '', workspaceId: 'x' });
+  assert.deepEqual(bad.map((p) => p.field).sort(), ['federationRuleId', 'organizationId', 'serviceAccountId', 'workspaceId'].sort());
+});
+
+test('checkFederationFields：自備檔案模式必須有檔案路徑', async () => {
+  const { checkFederationFields } = await import('../../dist/index.js');
+  const f = { organizationId: '8c5aaae2-1c0c-4f73-94f8-a8b8d4b6a015', federationRuleId: 'fdrl_a', serviceAccountId: 'svac_a', workspaceId: '', identitySource: 'file', identityTokenFile: '' };
+  assert.deepEqual(checkFederationFields(f).map((p) => p.field), ['identityTokenFile']);
+});

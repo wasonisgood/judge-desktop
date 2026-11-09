@@ -11,12 +11,13 @@
   JR.views.applyAuthMode = function () {
     var $ = JR.$;
     var fed = $('setAuthMode').value === 'federation';
-    $('fedFields').hidden = !fed;
+    $('fedPanel').hidden = !fed;
     $('keyField').hidden = fed;
     $('setProvider').disabled = fed;
     if (fed) $('setProvider').value = 'anthropic';
     // 身分聯合的欄位在進階區內；切換到聯合時自動展開，讓使用者看得到要填的內容。
-    if (fed) $('fedFields').closest('details').open = true;
+    if (fed) JR.controllers.federation.refresh();
+    else $('setTest').disabled = false;
   };
 
   /** 把主程序回傳的設定填入表單。 */
@@ -30,6 +31,7 @@
     $('setFedSvc').value = f.serviceAccountId || '';
     $('setFedWorkspace').value = f.workspaceId || '';
     $('setFedFile').value = f.identityTokenFile || '';
+    $(f.identitySource === 'file' ? 'fedSourceFile' : 'fedSourceProvider').checked = true;
     JR.views.applyAuthMode();
     $('setProvider').value = s.aiProvider;
     $('setBaseUrl').value = s.aiBaseUrl;
@@ -94,7 +96,8 @@
         federationRuleId: $('setFedRule').value.trim(),
         serviceAccountId: $('setFedSvc').value.trim(),
         workspaceId: $('setFedWorkspace').value.trim(),
-        identityTokenFile: $('setFedFile').value.trim()
+        identityTokenFile: $('setFedFile').value.trim(),
+        identitySource: $('fedSourceFile').checked ? 'file' : 'provider'
       },
       aiBaseUrl: $('setBaseUrl').value.trim(),
       aiModel: $('setModel').value.trim(),

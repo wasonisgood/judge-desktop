@@ -3,9 +3,11 @@
 import * as fs from 'node:fs/promises';
 import { raceAbort } from '@judge/core';
 import {
-  FederatedTokenProvider, type FederationConfig, LocalCloudRouter, type AiComplete,
+  FederatedTokenProvider, type FederationConfig, LocalCloudRouter, type AiComplete, checkFederationFields,
 } from '@judge/core';
 import { callAi, type AiConfig } from '../../ai';
+import { fetchIdentityToken } from './authRepo';
+import { readSession } from '../local/authStore';
 import { readSettings, decryptKey } from '../local/settingsStore';
 import { localBackendIfReady } from '../../localAi';
 
@@ -16,9 +18,9 @@ export async function aiConfigOrThrow(): Promise<AiConfig> {
   if (s.aiAuthMode === 'federation') {
     const f = s.federation;
     if (s.aiProvider !== 'anthropic') throw new Error('工作負載身分聯合目前只支援 Anthropic 服務，請到「設定」改用 API 金鑰。');
-    if (!f.organizationId || !f.federationRuleId || !f.serviceAccountId || !f.identityTokenFile) {
-      throw new Error('尚未完成工作負載身分聯合設定（組織 ID、聯合規則 ID、服務帳號 ID、身分憑證檔）。');
-    }
+    const problems = checkFederationFields({ ...f, identitySource: f.identitySource ?? 'provider' });
+    if (problems.length) throw new Error('工作負載身分聯盟設定尚未完成：' + problems.map((p) => p.message).join(' '));
+    const source = f.identitySource ?? 'provider';
     const cacheKey = JSON.stringify([s.aiBaseUrl, f]);
     let provider = federationProviders.get(cacheKey);
     if (!provider) {
@@ -29,7 +31,13 @@ export async function aiConfigOrThrow(): Promise<AiConfig> {
         serviceAccountId: f.serviceAccountId,
         workspaceId: f.workspaceId || undefined,
       };
-      provider = new FederatedTokenProvider(cfg, async () => (await fs.readFile(f.identityTokenFile, 'utf8')).trim());
+      provider = new FederatedTokenProvider(cfg, async () => {
+        if (source === 'file') return (await fs.readFile(f.identityTokenFile, 'utf8')).trim();
+        // 本工具簽發：以目前登入的授權權杖申請身分權杖（每次換取前重新申請，權杖短效且一次性）。
+        const session = await readSession();
+        if (!session) throw new Error('尚未登入：請先登入本工具，才能使用工作負載身分聯盟。');
+        return (await fetchIdentityToken(session.accessToken)).identityToken;
+      });
       federationProviders.set(cacheKey, provider);
     }
     const token = await provider.get();

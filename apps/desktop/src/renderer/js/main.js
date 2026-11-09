@@ -6,6 +6,7 @@
   JR.views.mountPages();
   JR.controllers.chrome.bind();
   JR.controllers.settings.bind();
+  JR.controllers.federation.bind();
   JR.controllers.list.bind();
   JR.controllers.scope.bind();
   JR.controllers.brief.bind();

@@ -7,8 +7,8 @@
 
   JR.views.mountPages = function () {
     var html = ORDER.map(function (n) { return JR.templates[n + 'Page']; }).join('\n');
-    // 設定頁引用「身分聯合步驟說明」元件，以佔位符標示插入位置。
-    html = html.replace('@@WIF_GUIDE@@', function () { return JR.templates.wifGuide; });
+    // 設定頁的工作負載身分聯盟引導面板（v3.7.0），以佔位符標示插入位置。
+    html = html.replace('@@FED_PANEL@@', function () { return JR.templates.fedPanel; });
     JR.$('pages').innerHTML = html;
   };
 })(window.JR);

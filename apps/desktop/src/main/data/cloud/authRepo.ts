@@ -84,6 +84,18 @@ export async function refreshTokens(refreshToken: string, clientId: string): Pro
  * 向伺服器確認權杖仍有效（GET /oauth/session）。
  * 401 代表權杖已撤銷、過期或不存在；其他失敗（網路、5xx）由呼叫端視為「無法確認」。
  */
+/** 以目前的授權權杖向本工具（身分提供者）申請工作負載身分權杖（v3.7.0）。權杖只用於本次換取，不保存。 */
+export async function fetchIdentityToken(accessToken: string): Promise<{ identityToken: string; expiresIn: number }> {
+  const res = await fetch(`${AUTH_BASE}/oauth/identity-token`, {
+    method: 'POST',
+    headers: { authorization: `Bearer ${accessToken}`, accept: 'application/json' },
+    signal: AbortSignal.timeout(20_000),
+  });
+  const json: any = await res.json().catch(() => ({}));
+  if (!res.ok || typeof json.identity_token !== 'string') throw failure(res, json, '申請身分權杖失敗');
+  return { identityToken: json.identity_token, expiresIn: Number(json.expires_in) || 600 };
+}
+
 export async function checkSession(accessToken: string): Promise<{ expiresAt: number | null }> {
   const res = await fetch(new URL('/oauth/session', AUTH_BASE), {
     headers: { authorization: `Bearer ${accessToken}`, accept: 'application/json' },

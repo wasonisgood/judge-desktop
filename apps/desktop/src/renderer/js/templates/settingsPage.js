@@ -43,6 +43,7 @@
                 <button class="btn danger small" type="button" id="setClear">清除</button>
               </div>
             </div>
+            @@FED_PANEL@@
             <details class="set-adv">
               <summary>進階設定</summary>
               <div class="set-row">
@@ -52,14 +53,6 @@
               <div class="set-row">
                 <div class="set-label"><strong>模型名稱</strong></div>
                 <div class="set-ctl set-ctl-wide"><input id="setModel" autocomplete="off"></div>
-              </div>
-              <div id="fedFields" hidden>
-@@WIF_GUIDE@@
-                <div class="set-row"><div class="set-label"><strong>組織 ID</strong></div><div class="set-ctl set-ctl-wide"><input id="setFedOrg" autocomplete="off" placeholder="例如 xxxxxxxx-xxxx-…"></div></div>
-                <div class="set-row"><div class="set-label"><strong>聯合規則 ID</strong></div><div class="set-ctl set-ctl-wide"><input id="setFedRule" autocomplete="off" placeholder="fdrl_…"></div></div>
-                <div class="set-row"><div class="set-label"><strong>服務帳號 ID</strong></div><div class="set-ctl set-ctl-wide"><input id="setFedSvc" autocomplete="off" placeholder="svac_…"></div></div>
-                <div class="set-row"><div class="set-label"><strong>工作區 ID</strong><span class="set-desc">規則涵蓋多個工作區時才需要</span></div><div class="set-ctl set-ctl-wide"><input id="setFedWorkspace" autocomplete="off" placeholder="wrkspc_…（選填）"></div></div>
-                <div class="set-row"><div class="set-label"><strong>身分憑證檔案</strong></div><div class="set-ctl set-ctl-wide"><input id="setFedFile" autocomplete="off" placeholder="例如 C:\\Users\\你\\identity.jwt"></div></div>
               </div>
             </details>
             <div class="actions">
