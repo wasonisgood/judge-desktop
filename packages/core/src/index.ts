@@ -91,3 +91,5 @@ export * from './ai/semanticRank';
 export * from './ai/scopedQa';
 export * from './pipeline/designGuide';
 export * from './pipeline/coding';
+export * from './pipeline/scopeTrace';
+export * from './pipeline/scopeFlow';
