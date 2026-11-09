@@ -25,6 +25,7 @@ export function registerSettingsIpc(): void {
       briefFields: s.briefFields,
       localAiEnabled: s.localAiEnabled,
       defaultJurisdiction: s.defaultJurisdiction,
+      chartModuleEnabled: s.chartModuleEnabled === true,
     };
   });
   // 聯盟設定狀態（v3.7.0）：即時檢查欄位與登入狀態，給畫面逐步引導用。
@@ -66,7 +67,7 @@ export function registerSettingsIpc(): void {
   })));
   ipcMain.handle('settings:set', async (_e, patch: Partial<StoredSettings> & { apiKey?: string; clearKey?: boolean }) => {
     const next: StoredSettings = { ...(await readSettings()) };
-    for (const k of ['aiProvider', 'aiAuthMode', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays', 'localAiEnabled', 'defaultJurisdiction'] as const) {
+    for (const k of ['aiProvider', 'aiAuthMode', 'aiBaseUrl', 'aiModel', 'defaultMaxItems', 'cacheDays', 'localAiEnabled', 'defaultJurisdiction', 'chartModuleEnabled'] as const) {
       if (patch[k] !== undefined) (next as any)[k] = patch[k];
     }
     if (patch.defaultJurisdiction && !jurisdictionRegistry.has(patch.defaultJurisdiction)) {
