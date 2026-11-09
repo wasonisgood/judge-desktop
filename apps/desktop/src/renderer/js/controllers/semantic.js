@@ -21,6 +21,11 @@
     };
   }
 
+  function candidateLimit() {
+    var n = Math.floor(Number($('semMax').value));
+    return Math.min(MAX_CANDIDATES, Math.max(1, n || 200));
+  }
+
   function setRunning(on) {
     $('semRun').disabled = on;
   }
@@ -88,7 +93,7 @@
         try {
           var r = await api.semantic.run({
             runId: runId, keyword: keyword, query: query, kind: kind,
-            filter: filterOptions(), maxCandidates: MAX_CANDIDATES, ai: $('semAi').value
+            filter: filterOptions(), maxCandidates: candidateLimit(), ai: $('semAi').value
           });
           current = { run: r, kind: kind, query: query, keyword: keyword };
           if (r.cancelled) {

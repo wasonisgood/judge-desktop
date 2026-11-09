@@ -44,6 +44,10 @@
               </select>
             </label>
             <label class="field">
+              <span>候選上限（最多 500，每筆都要讀取內文）</span>
+              <input id="semMax" type="number" min="1" max="500" value="200">
+            </label>
+            <label class="field">
               <span>起始年（西元，選填）</span>
               <input id="semFrom" type="number" min="1945" max="2100" placeholder="例如 2015">
             </label>

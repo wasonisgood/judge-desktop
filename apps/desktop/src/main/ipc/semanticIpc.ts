@@ -1,6 +1,6 @@
 // IPC：事實見解檢索（issue #10）：段落重排、展開全文、結果內小助手。通道獨立於既有的 search:* 與 scope:*，不改動它們的行為。
 import { ipcMain } from 'electron';
-import { askScopedQuestion, type AiComplete, type ScopedCase, type PassageKind } from '@judge/core';
+import { askScopedQuestion, CourtClient, type AiComplete, type ScopedCase, type PassageKind } from '@judge/core';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
 import { withJob } from '../services/jobRegistry';
@@ -28,12 +28,14 @@ export function registerSemanticIpc(): void {
       } catch (err) {
         aiError = toUserError(err).message;
       }
+      // 同一次檢索共用一個客戶端：司法院請求間隔（0.8 秒）與取消訊號都由它負責；每筆內頁都要經過限速。
+      const client = new CourtClient({ signal });
       try {
         return await runSemanticSearch(
           { keyword, query, kind, filter: normalizeFilter(args.filter), maxCandidates: args.maxCandidates ?? SEMANTIC_MAX_CANDIDATES },
           {
             search: (kw, max) => cachedSearch(kw, max),
-            detail: (id) => cachedDetail(id),
+            detail: (id) => cachedDetail(id, client),
             ai,
             aiError,
             signal,
