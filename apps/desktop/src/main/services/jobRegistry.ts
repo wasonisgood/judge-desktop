@@ -50,7 +50,7 @@ export function runningCount(): number {
 
 /** 登記一個工作並回傳它的取消訊號。同一 id 已在執行、或互斥類別已有工作時拋出錯誤。 */
 export function beginJob(id: string, kind: JobKind, label: string): AbortSignal {
-  if (!id) throw new Error('工作缺少識別碼');
+  if (!id) id = newRunId();
   const existing = jobs.get(id);
   if (existing?.info.status === 'running') throw new Error('這項工作已在執行中，請等候完成。');
   if (EXCLUSIVE.has(kind)) {
@@ -79,6 +79,11 @@ export function signalOfRunning(kinds: JobKind[]): AbortSignal | undefined {
   return undefined;
 }
 
+/** 產生工作識別碼（畫面未提供時使用）。 */
+export function newRunId(): string {
+  return `run-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
 export function finishJob(id: string, status: Exclude<JobStatus, 'running'>): void {
   const e = jobs.get(id);
   if (!e) return;
@@ -94,13 +99,14 @@ export function finishJob(id: string, status: Exclude<JobStatus, 'running'>): vo
 
 /** 以登記包住一段工作：正常結束為 done；取消訊號觸發為 cancelled；其餘例外為 failed 並重新拋出。 */
 export async function withJob<T>(id: string, kind: JobKind, label: string, work: (signal: AbortSignal) => Promise<T>): Promise<T> {
-  const signal = beginJob(id, kind, label);
+  const runId = id || newRunId();
+  const signal = beginJob(runId, kind, label);
   try {
     const result = await work(signal);
-    finishJob(id, signal.aborted ? 'cancelled' : 'done');
+    finishJob(runId, signal.aborted ? 'cancelled' : 'done');
     return result;
   } catch (err) {
-    finishJob(id, signal.aborted ? 'cancelled' : 'failed');
+    finishJob(runId, signal.aborted ? 'cancelled' : 'failed');
     throw err;
   }
 }

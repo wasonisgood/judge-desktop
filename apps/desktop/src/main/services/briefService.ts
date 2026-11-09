@@ -99,5 +99,5 @@ export async function runBrief(
     output: annotated.error ? `未完成：${annotated.error}` : `${annotated.files.length} 份 Word，標示 ${"quotes" in annotated ? annotated.quotes : 0} 則引文`,
     decision: annotated.error ? 'skip' : 'pass', reason: annotated.error ? '標示失敗不影響精讀文書' : '原版標示完成',
   });
-  return { detail: d, doc, annotated, saveError: save.saveError, trace, explanation: explainTrace(trace) };
+  return { detail: d, doc, annotated, saveError: save.saveError, lawNotes: lc.notes, trace, explanation: explainTrace(trace) };
 }
