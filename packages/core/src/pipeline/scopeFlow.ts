@@ -62,10 +62,10 @@ const ROUND_STAGE = /^第 \d+ 輪篩選判決$/;
 
 /** 流程紀錄的階段名稱 → 流程節點（沒有對應的回傳 null）。 */
 export function scopeNodeForStage(stage: string): FlowNodeId | null {
-  if (stage === 'AI 分析設定') return 'input';
+  if (stage === 'AI 分析設定' || stage === '案件類型設定') return 'input';
   if (stage === '確認法名' || stage === '讀入法規現行條文') return 'lookup';
   if (stage === '讀入法規現行條文與沿革' || stage === '讀入爭點知識庫' || stage === '提議新關鍵字' || stage === '語意確認' || stage === '整理此法規' || stage === '整理關鍵字' || ROUND_STAGE.test(stage)) return 'search';
-  if (stage === '相關法規篩選' || stage === '整理篩選結果') return 'filter';
+  if (stage === '相關法規篩選' || stage === '整理篩選結果' || stage === '案件類型篩選') return 'filter';
   if (stage === 'AI 逐案編碼' || stage === 'AI 逐案與綜合分析') return 'coding';
   if (stage === '依據逐字驗證' || stage === '待覆核標示') return 'verify';
   if (stage === 'AI 綜合分析') return 'synthesis';

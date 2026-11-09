@@ -1,7 +1,15 @@
 // 本地資料層：設定檔（settings.json）。金鑰以 safeStorage 加密後才寫入。
 import { app, safeStorage } from 'electron';
 import * as fs from 'node:fs/promises';
-import { DEFAULT_BRIEF_FIELDS, DEFAULT_CODING_FIELDS, DEFAULT_JURISDICTION_ID, type BriefField, type CodingField } from '@judge/core';
+import {
+  CRAWL_DEFAULT_INTERVAL_SEC,
+  DEFAULT_BRIEF_FIELDS,
+  DEFAULT_CODING_FIELDS,
+  DEFAULT_JURISDICTION_ID,
+  normalizeCrawlIntervalSec,
+  type BriefField,
+  type CodingField,
+} from '@judge/core';
 import { userPath } from './paths';
 
 export interface FederationSettings {
@@ -32,6 +40,8 @@ export interface StoredSettings {
   localAiEnabled: boolean;
   /** 預設管轄區識別碼（見 jurisdictionRegistry）。 */
   defaultJurisdiction: string;
+  /** 文本擷取：每次連線之間的間隔（秒），預設 3，最小 3。 */
+  crawlIntervalSec: number;
 }
 
 export const EMPTY_FEDERATION: FederationSettings = {
@@ -51,11 +61,13 @@ export const DEFAULTS: StoredSettings = {
   scopeFields: DEFAULT_CODING_FIELDS.map((f) => ({ ...f, enabled: true })),
   localAiEnabled: true,
   defaultJurisdiction: DEFAULT_JURISDICTION_ID,
+  crawlIntervalSec: CRAWL_DEFAULT_INTERVAL_SEC,
 };
 
 export async function readSettings(): Promise<StoredSettings> {
   try {
-    return { ...DEFAULTS, ...JSON.parse(await fs.readFile(userPath('settings.json'), 'utf8')) };
+    const s = { ...DEFAULTS, ...JSON.parse(await fs.readFile(userPath('settings.json'), 'utf8')) };
+    return { ...s, crawlIntervalSec: normalizeCrawlIntervalSec(s.crawlIntervalSec) };
   } catch {
     return { ...DEFAULTS };
   }

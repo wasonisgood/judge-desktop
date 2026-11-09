@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="css/wizard.css">
 <link rel="stylesheet" href="css/auth.css">
 <link rel="stylesheet" href="css/settings.css">
+<link rel="stylesheet" href="css/design.css">
+<link rel="stylesheet" href="css/chart.css">
+<link rel="stylesheet" href="css/annotation.css">
+<link rel="stylesheet" href="css/worker.css">
+<link rel="stylesheet" href="css/crawl.css">
 </head>
 <body>
 <div class="frame">
@@ -33,9 +38,14 @@
     <nav class="rail" aria-label="主要功能">
       <button class="rail-item active" data-page="home"><span class="glyph">首</span><span class="label">首頁</span></button>
       <button class="rail-item" data-page="list"><span class="glyph">列</span><span class="label">判決列表</span></button>
+      <button class="rail-item" data-page="semantic"><span class="glyph">段</span><span class="label">段落檢索</span></button>
       <button class="rail-item" data-page="scope"><span class="glyph">範</span><span class="label">標編碼標注工序</span></button>
       <button class="rail-item" data-page="brief"><span class="glyph">判</span><span class="label">單一判決</span></button>
+      <button class="rail-item" data-page="design"><span class="glyph">研</span><span class="label">研究設計</span></button>
+      <button class="rail-item" data-page="criteria"><span class="glyph">核</span><span class="label">納入排除</span></button>
+      <button class="rail-item" data-page="chart" hidden><span class="glyph">圖</span><span class="label">量化圖表</span></button>
       <button class="rail-item" data-page="files"><span class="glyph">檔</span><span class="label">檔案</span></button>
+      <button class="rail-item" data-page="crawl"><span class="glyph">擷</span><span class="label">文本擷取</span></button>
       <button class="rail-item" data-page="settings"><span class="glyph">設</span><span class="label">設定</span></button>
     </nav>
 
@@ -89,32 +99,50 @@
 <script src="js/components/codingFieldRow.js"></script>
 <script src="js/components/assistMessages.js"></script>
 <script src="js/components/fileItem.js"></script>
+<script src="js/components/criteriaRow.js"></script>
 <script src="js/views/listView.js"></script>
 <script src="js/views/scopeView.js"></script>
+<script src="js/views/semanticView.js"></script>
 <script src="js/views/briefView.js"></script>
+<script src="js/views/designView.js"></script>
+<script src="js/views/annotationView.js"></script>
 <script src="js/views/filesView.js"></script>
 <script src="js/views/settingsView.js"></script>
 <script src="js/views/localAiView.js"></script>
 <script src="js/views/authView.js"></script>
+<script src="js/views/criteriaView.js"></script>
+<script src="js/views/chartView.js"></script>
 <script src="js/views/pages.js"></script>
 <script src="js/templates/fedPanel.js"></script>
 <script src="js/templates/homePage.js"></script>
 <script src="js/templates/listPage.js"></script>
 <script src="js/templates/scopePage.js"></script>
+<script src="js/templates/semanticPage.js"></script>
 <script src="js/templates/briefPage.js"></script>
+<script src="js/templates/designPage.js"></script>
 <script src="js/templates/filesPage.js"></script>
+<script src="js/templates/crawlPage.js"></script>
 <script src="js/templates/settingsPage.js"></script>
+<script src="js/templates/chartPage.js"></script>
 <script src="js/templates/authGatePage.js"></script>
+<script src="js/templates/criteriaPage.js"></script>
 <script src="js/controllers/chrome.js"></script>
 <script src="js/controllers/settings.js"></script>
 <script src="js/controllers/federation.js"></script>
 <script src="js/controllers/list.js"></script>
 <script src="js/controllers/scope.js"></script>
+<script src="js/controllers/semantic.js"></script>
 <script src="js/controllers/brief.js"></script>
+<script src="js/controllers/design.js"></script>
+<script src="js/controllers/annotation.js"></script>
 <script src="js/controllers/files.js"></script>
+<script src="js/controllers/crawl.js"></script>
 <script src="js/controllers/assistant.js"></script>
 <script src="js/controllers/auth.js"></script>
 <script src="js/controllers/localAi.js"></script>
+<script src="js/controllers/criteria.js"></script>
+<script src="js/controllers/chart.js"></script>
+<script src="js/controllers/worker.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

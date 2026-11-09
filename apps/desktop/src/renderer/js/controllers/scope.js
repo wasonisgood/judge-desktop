@@ -87,7 +87,7 @@
     setMsg('scopeSmartMsg', g.smart);
     $('scopeRelatedOnly').disabled = !g.relatedOnly.enabled;
     setMsg('scopeRelatedOnlyMsg', g.relatedOnly);
-    ['scopeJurisdiction', 'scopeKeyword', 'scopeLines', 'scopeRelated', 'scopeFrom', 'scopeTo', 'scopeMax', 'scopeAiOn', 'scopeAi', 'scopeFieldAdd'].forEach(function (id) {
+    ['scopeJurisdiction', 'scopeCaseType', 'scopeKeyword', 'scopeLines', 'scopeRelated', 'scopeFrom', 'scopeTo', 'scopeMax', 'scopeAiOn', 'scopeAi', 'scopeFieldAdd'].forEach(function (id) {
       $(id).disabled = !g.input.enabled;
     });
     document.querySelectorAll('#scopeResult .scope-block button').forEach(function (b) {
@@ -229,7 +229,8 @@
           var r = await api.scope.run({
             runId: runId, statutes: statutes, keyword: keyword, relatedStatute: related, relatedOnly: $('scopeRelatedOnly').checked, smart: $('scopeSmart').checked,
             fields: fields, yearFrom: from, yearTo: to, maxItems: max,
-            jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value, aiAnalysis: aiOn
+            jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value, aiAnalysis: aiOn,
+            caseType: $('scopeCaseType').value
           });
           state.scopeExplanation = r.explanation;
           state.scopeFlow = r.flow;

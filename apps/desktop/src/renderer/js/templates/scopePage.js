@@ -41,6 +41,18 @@
                 <dd><select id="scopeJurisdiction"></select></dd>
               </div>
               <div class="scope-def">
+                <dt><label for="scopeCaseType">案件類型</label></dt>
+                <dd>
+                  <select id="scopeCaseType">
+                    <option value="">不限</option>
+                    <option value="民事">民事</option>
+                    <option value="刑事">刑事</option>
+                    <option value="行政">行政</option>
+                  </select>
+                  <small class="hint">選填，依判決字號篩選。</small>
+                </dd>
+              </div>
+              <div class="scope-def">
                 <dt><label for="scopeKeyword">關鍵字</label></dt>
                 <dd>
                   <input id="scopeKeyword" placeholder="例如：國家賠償 戒嚴 回復原狀" autocomplete="off">

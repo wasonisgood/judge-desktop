@@ -9,10 +9,15 @@ import { isDev } from './data/local/paths';
 import { syncBundledModules } from './services/moduleState';
 import { installKnowledgeModule } from './services/knowledgeService';
 import { initLifecycle, reconcileStaleInstalls, shouldQuitOnAllClosed, revealMainWindow } from './services/appLifecycle';
+import { loadWorkerState, interruptWorkerOnQuit } from './services/workerService';
+import { setReopenMainWindow, closeAllNotices } from './services/workerNotifier';
 
 app.whenReady().then(() => {
   registerIpc();
   initLifecycle();
+  // 背景工人：讀取上次的佇列（執行中殘留的工作改為中斷，畫面會提示可續跑）。
+  loadWorkerState();
+  setReopenMainWindow(createMainWindow);
   reconcileStaleInstalls().catch((err) => console.error('清理安裝狀態失敗：', err));
   // 模組隨應用程式版本同步：啟動時只複製有變動的內建檔案。
   syncBundledModules().catch((err) => console.error('模組同步失敗：', err));
@@ -25,6 +30,12 @@ app.whenReady().then(() => {
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createMainWindow();
   });
+});
+
+// 程式即將結束：執行中的背景工作保存為中斷（下次開啟可續跑），並關閉自訂通知視窗。
+app.on('before-quit', () => {
+  interruptWorkerOnQuit();
+  closeAllNotices();
 });
 
 app.on('window-all-closed', () => {
