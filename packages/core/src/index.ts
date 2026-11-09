@@ -45,3 +45,4 @@ export * from './modules/apply';
 export * from './engine/mirror';
 export * from './modules/mirrorUrls';
 export * from './jurisdiction/registry';
+export * from './auth/pkce';
