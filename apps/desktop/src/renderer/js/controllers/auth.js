@@ -34,7 +34,7 @@
     bind: function () {
       $('authStart').addEventListener('click', startLogin);
       $('authCancel').addEventListener('click', function () {
-        api.auth.cancel().then(function (s) { JR.views.showAuthGate(s.message); });
+        api.auth.cancel().then(function (s) { JR.views.showAuthGate(s.message); }).catch(function (err) { JR.views.showAuthGate('取消登入失敗：' + JR.errText(err)); });
       });
       $('authSignOut').addEventListener('click', function () {
         api.auth.signOut().then(function () {

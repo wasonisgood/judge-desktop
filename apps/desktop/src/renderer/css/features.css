@@ -66,3 +66,7 @@
 .explain-steps li { margin-bottom: 8px; }
 .clarify { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; }
 .clarify p { width: 100%; margin: 0; }
+
+/* 背景工作橫幅（v3.6.0） */
+.job-banner { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 14px; padding: 10px 14px; border-radius: 6px; background: var(--paper-2, #efe8da); color: var(--ink, #222); font-size: 0.9rem; }
+.job-banner .btn { margin-left: auto; }

@@ -47,7 +47,11 @@
   var handlers = {
     open: openItem,
     patch: patch,
-    remove: function (it) { api.library.remove({ id: it.id }).then(load); }
+    remove: function (it) {
+      api.library.remove({ id: it.id }).then(load).catch(function (err) {
+        JR.setStatus($('filesStatus'), '刪除失敗：' + JR.errText(err), 'error');
+      });
+    }
   };
 
   JR.controllers.files = {

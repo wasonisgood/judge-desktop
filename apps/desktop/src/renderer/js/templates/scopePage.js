@@ -39,6 +39,7 @@
               <option value="cloud">AI：雲端</option>
             </select>
             <button class="btn primary" type="submit" id="scopeRun">開始整理</button>
+            <button class="btn" type="button" id="scopeCancel" hidden>取消</button>
             <button class="btn" type="button" id="scopeXlsx" disabled>匯出 Excel</button>
             <button class="btn" type="button" id="scopeDocx" disabled>匯出 Word</button>
             <button class="btn" type="button" id="scopeExplain" disabled>查看處理流程</button>

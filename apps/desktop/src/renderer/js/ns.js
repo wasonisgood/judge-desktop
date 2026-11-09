@@ -12,6 +12,7 @@ window.JR = {
     scopeSheets: null, scopeFrom: null, scopeTo: null,
     fileTab: 'active',
     scopeRunning: false,
+    listSeq: 0,
     assistHistory: []
   }
 };

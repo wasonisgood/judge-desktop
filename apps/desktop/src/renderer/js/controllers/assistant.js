@@ -1,9 +1,13 @@
-// 控制器：懸浮 AI 助理（面板開關、全螢幕、對話、待確認操作的執行與進度卡）。
+// 控制器：懸浮 AI 助理（面板開關、全螢幕、對話、可取消、待確認操作的執行與進度卡）。
+// v3.6.0：同一時間只處理一則對話；失敗或取消時保留對話紀錄與原文（可重試）；待確認的操作在對應頁忙碌時不重複執行。
 (function (JR) {
   'use strict';
   var $ = JR.$;
   var api = window.api;
   var state = JR.state;
+  var PAGE = 'assistant';
+
+  var PAGE_LABEL = { scope: '範圍整理', brief: '精讀' };
 
   function setPanel(open) {
     $('assistPanel').hidden = !open;
@@ -20,6 +24,12 @@
   }
 
   function runPending(p) {
+    // 目標頁正在執行時不重複啟動，避免併行（v3.6.0）。
+    var target = p.kind === 'run_scope' ? 'scope' : (p.kind === 'run_brief' ? 'brief' : null);
+    if (target && JR.jobs.isBusy(target)) {
+      JR.components.addMsg('assistant', PAGE_LABEL[target] + '正在執行，請等它完成或取消後，再同意這項操作。');
+      return;
+    }
     if (p.kind === 'run_scope') {
       JR.components.progressCard('範圍整理進行中', 'scopeStatus', '#scopeProgress .bar');
       JR.nav.showPage('scope');
@@ -45,29 +55,44 @@
         if (ev.key === 'Escape' && $('assistPanel').classList.contains('fullscreen')) setFullscreen(false);
       });
       $('assistClear').addEventListener('click', function () {
+        if (JR.jobs.isBusy(PAGE)) return;
         state.assistHistory = [];
         $('assistLog').innerHTML = '';
       });
+      $('assistCancel').addEventListener('click', function () { JR.jobs.cancel(PAGE); });
 
       $('assistForm').addEventListener('submit', async function (ev) {
         ev.preventDefault();
         var text = $('assistText').value.trim();
         if (!text) return;
+        // 上一則還在處理：不送出（Enter 鍵也會經過這裡）。
+        if (JR.jobs.isBusy(PAGE)) {
+          JR.components.addMsg('assistant', '上一則還在處理中，請等候或按「取消」。');
+          return;
+        }
         $('assistText').value = '';
         JR.components.addMsg('user', text);
         var thinking = JR.components.addMsg('assistant', '思考中…');
         $('assistSend').disabled = true;
+        var runId = JR.jobs.start(PAGE, 'assistCancel');
         try {
-          var turn = await api.assistant.chat({ history: state.assistHistory, text: text, searchMode: $('assistMode').value });
+          var turn = await api.assistant.chat({ runId: runId, history: state.assistHistory, text: text, searchMode: $('assistMode').value });
           thinking.querySelector('.assist-text').textContent = turn.reply;
           state.assistHistory.push({ role: 'user', text: text });
           state.assistHistory.push({ role: 'assistant', text: turn.reply });
           if (turn.navigate) JR.nav.showPage(turn.navigate);
           (turn.pending || []).forEach(function (p) { JR.components.addPending(p, runPending); });
         } catch (err) {
-          thinking.querySelector('.assist-text').textContent = '無法回應：' + JR.errText(err);
-          thinking.classList.add('error');
+          var msg = JR.errText(err);
+          var cancelled = /已取消/.test(msg);
+          thinking.querySelector('.assist-text').textContent = cancelled ? '已取消這一則回覆。' : '無法回應：' + msg + '（你的問題已保留，可修改後再送出。）';
+          thinking.classList.toggle('error', !cancelled);
+          // 失敗或取消也保留對話紀錄，之後的上下文才會與畫面一致。
+          state.assistHistory.push({ role: 'user', text: text });
+          state.assistHistory.push({ role: 'assistant', text: cancelled ? '（已取消）' : '（無法回應：' + msg + '）' });
+          if (!cancelled) $('assistText').value = text;
         } finally {
+          JR.jobs.finish(PAGE);
           $('assistSend').disabled = false;
         }
       });

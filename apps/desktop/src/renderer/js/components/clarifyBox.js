@@ -1,7 +1,8 @@
 // 元件：語意不清時的選項區（issue #4 第 3 點）。最後一項 id 為 manual 時，會改為文字輸入框讓使用者自行更正。
+// v3.6.0：可加上「取消」，取消後不執行、保留畫面其餘內容。
 (function (JR) {
   'use strict';
-  /** opts: { question, options: [{id,label,description}], onPick(option), onManual(text) } */
+  /** opts: { question, options: [{id,label,description}], onPick(option), onManual(text), onCancel?() } */
   JR.components.clarifyBox = function (container, opts) {
     container.innerHTML = '';
     container.hidden = false;
@@ -19,6 +20,17 @@
       });
       container.appendChild(b);
     });
+    if (opts.onCancel) {
+      var cancelBtn = document.createElement('button');
+      cancelBtn.type = 'button';
+      cancelBtn.className = 'btn';
+      cancelBtn.textContent = '取消';
+      cancelBtn.addEventListener('click', function () {
+        JR.components.clarifyHide(container);
+        opts.onCancel();
+      });
+      container.appendChild(cancelBtn);
+    }
     function showManual() {
       container.innerHTML = '';
       var label = document.createElement('label');

@@ -17,7 +17,7 @@
       $('crawlerInstall').addEventListener('click', function () {
         var btn = $('crawlerInstall');
         btn.disabled = true;
-        api.localAi.installCrawler().then(function () { refresh(); }).catch(function (e) {
+        api.localAi.installCrawler({ runId: 'wz-crawler-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7) }).then(function () { refresh(); }).catch(function (e) {
           WZ.views.setUpdMsg('爬取模組安裝失敗：' + WZ.errMsg(e), 'error');
         }).finally(function () { btn.disabled = false; });
       });

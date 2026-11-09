@@ -13,6 +13,7 @@
   JR.controllers.assistant.bind();
   JR.controllers.localAi.bind();
   JR.controllers.auth.bind();
+  JR.jobs.init();
 
   api.appInfo().then(function (info) {
     JR.$('versionInfo').textContent = '版本 ' + info.version + (info.packaged ? '' : '（開發版）');

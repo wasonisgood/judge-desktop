@@ -1,9 +1,11 @@
-// 控制器：單一判決（找候選、選定、精讀欄位、執行、匯出）。
+// 控制器：單一判決（找候選、選定、精讀欄位、執行、可取消、匯出）。
+// v3.6.0：單頁同時只一項工作；取消不產生文書；引文移除數量與法規內容缺口會明確顯示；存檔失敗提示。
 (function (JR) {
   'use strict';
   var $ = JR.$;
   var api = window.api;
   var state = JR.state;
+  var PAGE = 'brief';
 
   function setPick(item) {
     state.briefPick = item;
@@ -53,7 +55,8 @@
             document.querySelectorAll('#briefCandidateBody tr').forEach(function (x) { x.classList.toggle('row-picked', x === tr); });
             JR.setStatus($('briefStatus'), '已選定，可以整理這則判決。', 'ok');
           });
-          JR.setStatus($('briefFindStatus'), r.items.length ? '找到 ' + r.items.length + ' 筆候選，請選定一則。' : '沒有找到符合的判決。可以換個關鍵字，或使用縮寫。', r.items.length ? 'ok' : '');
+          var msg = r.items.length ? '找到 ' + r.items.length + ' 筆候選，請選定一則。' : '沒有找到符合的判決。可以換個關鍵字，或使用縮寫。';
+          JR.setStatus($('briefFindStatus'), msg + (r.note ? '　' + r.note : ''), r.items.length ? 'ok' : '');
         } catch (err) {
           JR.setStatus($('briefFindStatus'), '搜尋失敗：' + JR.errText(err), 'error');
         } finally {
@@ -63,6 +66,10 @@
 
       $('briefForm').addEventListener('submit', async function (ev) {
         ev.preventDefault();
+        if (JR.jobs.isBusy(PAGE)) {
+          JR.setStatus($('briefStatus'), '精讀已有工作進行中，請等候完成或按「取消」。', 'error');
+          return;
+        }
         if (!state.briefPick) {
           JR.setStatus($('briefStatus'), '請先在候選中選定一則判決。', 'error');
           return;
@@ -73,12 +80,16 @@
           JR.setStatus($('briefStatus'), '請至少勾選一個要整理的欄位。', 'error');
           return;
         }
-        api.settings.set({ briefFields: fieldRows.filter(function (f) { return f.name; }) });
+        api.settings.set({ briefFields: fieldRows.filter(function (f) { return f.name; }) }).catch(function (err) {
+          JR.setStatus($('briefStatus'), '欄位設定沒有保存：' + JR.errText(err), 'error');
+        });
         $('briefRun').disabled = true;
         $('briefExport').disabled = true;
+        var runId = JR.jobs.start(PAGE, 'briefCancel');
         JR.setStatus($('briefStatus'), '讀取判決中…');
         try {
           var r = await api.brief.run({
+            runId: runId,
             judgmentId: state.briefPick.id,
             focus: $('briefFocus').value.trim(),
             lengthHint: $('briefLength').value,
@@ -91,13 +102,23 @@
           JR.views.renderBrief(r);
           state.assistHistory.push({ role: 'user', text: '[系統通知] 精讀已完成：' + (r.doc.title || '') + '。段落：' + r.doc.sections.map(function (sec) { return sec.heading + '：' + sec.paragraphs.join(' '); }).join(' ').slice(0, 3000) });
           var an = r.annotated || {};
-          JR.setStatus($('briefStatus'), '已完成 AI 整理，已存入「檔案」。' + annotationText(an), an.error ? 'error' : 'ok');
+          var parts = ['已完成 AI 整理' + (r.saveError ? '。' : '，已存入「檔案」。')];
+          if (r.saveError) parts.push(r.saveError);
+          parts.push(annotationText(an));
+          if (r.doc.droppedQuotes) parts.push('已移除 ' + r.doc.droppedQuotes + ' 則無法在判決原文中找到的引文。');
+          if ((r.lawNotes || []).length) parts.push('法規內容未完整取得：' + r.lawNotes.join('；'));
+          JR.setStatus($('briefStatus'), parts.join('　'), (an.error || r.saveError) ? 'error' : 'ok');
           state.briefExplanation = r.explanation;
           $('briefExplain').disabled = !r.explanation;
           $('briefExport').disabled = false;
         } catch (err) {
-          JR.setStatus($('briefStatus'), '讀取失敗：' + JR.errText(err), 'error');
+          if (err && err.message && /已取消/.test(err.message)) {
+            JR.setStatus($('briefStatus'), '已取消，未產生文書。', 'error');
+          } else {
+            JR.setStatus($('briefStatus'), '讀取失敗：' + JR.errText(err), 'error');
+          }
         } finally {
+          JR.jobs.finish(PAGE);
           $('briefRun').disabled = !state.briefPick;
         }
       });

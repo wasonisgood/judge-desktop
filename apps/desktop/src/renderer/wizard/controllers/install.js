@@ -5,7 +5,17 @@
   var api = window.api;
   var state = WZ.state;
 
+  // v3.6.0：每次安裝/修復都有識別碼，可取消；主程序是工作狀態的唯一來源。
+  function newRunId() {
+    return 'wz-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
+  }
+
   function runInstall(fn) {
+    if (state.installStatus === 'running') return Promise.resolve();
+    state.runId = newRunId();
+    $('btnCancelInstall').hidden = false;
+    $('btnCancelInstall').disabled = false;
+    $('btnCancelInstall').textContent = '取消安裝';
     WZ.views.resetStages();
     state.installStatus = 'running';
     state.installStarted = true;
@@ -36,7 +46,10 @@
       }
     }).catch(function (e) {
       failInstall(WZ.errMsg(e), null);
-    }).finally(WZ.views.renderSideStates);
+    }).finally(function () {
+      $('btnCancelInstall').hidden = true;
+      WZ.views.renderSideStates();
+    });
   }
 
   function failInstall(lastError, failedStage) {
@@ -50,6 +63,11 @@
   function restoreFromJob(job) {
     if (!job) return false;
     if (job.running && job.kind === 'install') {
+      // 重新開啟精靈：找回執行中安裝的識別碼，讓「取消安裝」可用（v3.6.0）。
+      api.jobs.list().then(function (list) {
+        var running = (list || []).filter(function (j) { return j.status === 'running' && j.kind === 'install'; })[0];
+        if (running) { state.runId = running.id; $('btnCancelInstall').hidden = false; $('btnCancelInstall').disabled = false; }
+      });
       state.installStatus = 'running';
       state.installStarted = true;
       WZ.flow.reach('install');
@@ -100,16 +118,22 @@
         if (!state.choice) return;
         var btn = $('btnInstall');
         btn.disabled = true;
-        runInstall(function () { return api.localAi.installAi({ choice: state.choice }); })
+        runInstall(function () { return api.localAi.installAi({ runId: state.runId, choice: state.choice }); })
           .finally(function () { btn.disabled = !state.agreed; });
       });
 
       $('btnRetry').addEventListener('click', function () {
-        runInstall(function () { return api.localAi.repair({ action: 'retry' }); });
+        runInstall(function () { return api.localAi.repair({ runId: state.runId, action: 'retry' }); });
       });
       $('btnFailDiag').addEventListener('click', function () { WZ.controllers.nav.show('diag'); });
 
       $('btnFinish').addEventListener('click', function () { api.localAi.wizardDone(); });
+      $('btnCancelInstall').addEventListener('click', function () {
+        if (!state.runId) return;
+        $('btnCancelInstall').disabled = true;
+        $('btnCancelInstall').textContent = '取消中…';
+        api.jobs.cancel({ id: state.runId });
+      });
     }
   };
 })(window.WZ);

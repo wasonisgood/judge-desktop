@@ -37,6 +37,7 @@
           </label>
           <div class="actions">
             <button class="btn primary" type="submit" id="listRun">搜尋</button>
+            <button class="btn" type="button" id="listCancel" hidden>取消</button>
             <button class="btn" type="button" id="listExport" disabled>匯出 Excel</button>
             <select id="listAi" class="ai-source" title="AI 來源">
               <option value="auto">AI：自動（本地優先）</option>

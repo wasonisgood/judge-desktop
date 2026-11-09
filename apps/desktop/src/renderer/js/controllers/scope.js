@@ -1,9 +1,11 @@
-// 控制器：範圍整理表（執行、進度、匯出）。結果交給助理作為上下文（助理看不到畫面）。
+// 控制器：範圍整理表（執行、可取消、進度、匯出）。結果交給助理作為上下文（助理看不到畫面）。
+// v3.6.0：單頁同時只一項工作；取消保留已完成部分；存檔失敗明確提示；法名選項可取消。
 (function (JR) {
   'use strict';
   var $ = JR.$;
   var api = window.api;
   var state = JR.state;
+  var PAGE = 'scope';
 
   function statuteLines() {
     return $('scopeLines').value.split(/\n/).map(function (s) { return s.trim(); }).filter(Boolean);
@@ -16,6 +18,12 @@
     if (idx < 0) lines.push(newLine); else lines[idx] = newLine;
     $('scopeLines').value = lines.filter(Boolean).join('\n');
     $('scopeForm').dispatchEvent(new Event('submit', { cancelable: true }));
+  }
+
+  function setRunning(on) {
+    $('scopeRun').disabled = on;
+    $('scopeXlsx').disabled = on;
+    $('scopeDocx').disabled = on;
   }
 
   async function exportScope(format) {
@@ -41,6 +49,10 @@
     bind: function () {
       $('scopeForm').addEventListener('submit', async function (ev) {
         ev.preventDefault();
+        if (JR.jobs.isBusy(PAGE)) {
+          JR.setStatus($('scopeStatus'), '範圍整理已有工作進行中，請等候完成或按「取消」。', 'error');
+          return;
+        }
         var statutes = statuteLines();
         if (statutes.length === 0) {
           JR.setStatus($('scopeStatus'), '請至少輸入一部法規。', 'error');
@@ -49,16 +61,18 @@
         var from = Number($('scopeFrom').value) || undefined;
         var to = Number($('scopeTo').value) || undefined;
         var max = Number($('scopeMax').value) || 30;
-        $('scopeRun').disabled = true;
-        $('scopeXlsx').disabled = true;
-        $('scopeDocx').disabled = true;
+        setRunning(true);
         $('scopeResult').innerHTML = '';
         $('scopeProgress').hidden = false;
         state.scopeRunning = true;
-        JR.setStatus($('scopeStatus'), '確認法名中…（每則判決都會交由 AI 分析）');
+        var runId = JR.jobs.start(PAGE, 'scopeCancel');
+        JR.setStatus($('scopeStatus'), $('scopeAiOn').checked ? '確認法名中…（每則判決都會交由 AI 分析）' : '確認法名中…（傳統篩選，不做 AI 分析）');
         try {
           JR.components.clarifyHide($('scopeClarify'));
-          var r = await api.scope.run({ statutes: statutes, yearFrom: from, yearTo: to, maxItems: max, jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value, aiAnalysis: $('scopeAiOn').checked });
+          var r = await api.scope.run({
+            runId: runId, statutes: statutes, yearFrom: from, yearTo: to, maxItems: max,
+            jurisdiction: $('scopeJurisdiction').value, ai: $('scopeAi').value, aiAnalysis: $('scopeAiOn').checked
+          });
           state.scopeExplanation = r.explanation;
           $('scopeExplain').disabled = !r.explanation;
           if (r.status === 'ask') {
@@ -66,7 +80,8 @@
               question: r.question,
               options: r.options,
               onPick: function (o) { replaceStatuteLine(r.statuteLine, o.label); },
-              onManual: function (text) { replaceStatuteLine(r.statuteLine, text); }
+              onManual: function (text) { replaceStatuteLine(r.statuteLine, text); },
+              onCancel: function () { JR.setStatus($('scopeStatus'), '已取消法名選擇，沒有執行整理。'); }
             });
             JR.setStatus($('scopeStatus'), r.question);
             return;
@@ -80,13 +95,18 @@
               return (i + 1) + '. ' + x.title + '（' + (x.dateIso || '') + '）爭點：' + (a.issue || '') + '；引用：' + x.citedArticles.join('、');
             }).join(' ');
           }).join(' ') });
-          var noteText = (r.notes && r.notes.length) ? ' ' + r.notes.join(' ') : '';
-          JR.setStatus($('scopeStatus'), '完成，共 ' + total + ' 筆，已存入「檔案」。' + noteText, 'ok');
+          var parts = [];
+          parts.push(r.cancelled ? '已取消，保留已完成的 ' + total + ' 筆。' : '完成，共 ' + total + ' 筆。');
+          if (r.saveError) parts.push(r.saveError);
+          else if (!r.cancelled) parts.push('已存入「檔案」。');
+          if ((r.notes || []).length) parts.push('注意：' + r.notes.join('；'));
+          JR.setStatus($('scopeStatus'), parts.join('　'), (r.cancelled || r.saveError) ? 'error' : 'ok');
         } catch (err) {
           JR.setStatus($('scopeStatus'), '整理失敗：' + JR.errText(err), 'error');
         } finally {
+          JR.jobs.finish(PAGE);
           state.scopeRunning = false;
-          $('scopeRun').disabled = false;
+          setRunning(false);
           $('scopeProgress').hidden = true;
         }
       });

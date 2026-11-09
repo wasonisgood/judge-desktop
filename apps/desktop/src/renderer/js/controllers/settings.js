@@ -79,13 +79,21 @@
         }
       });
       $('setClear').addEventListener('click', async function () {
-        await api.settings.set({ clearKey: true });
-        JR.setStatus($('setStatus'), '已清除金鑰。', 'ok');
-        load();
+        try {
+          await api.settings.set({ clearKey: true });
+          JR.setStatus($('setStatus'), '已清除金鑰。', 'ok');
+          load();
+        } catch (err) {
+          JR.setStatus($('setStatus'), '清除金鑰失敗：' + JR.errText(err), 'error');
+        }
       });
       $('cacheClear').addEventListener('click', async function () {
-        await api.cache.clear();
-        JR.components.notice('本機快取已清除。');
+        try {
+          await api.cache.clear();
+          JR.components.notice('本機快取已清除。');
+        } catch (err) {
+          JR.components.notice('清除快取失敗：' + JR.errText(err));
+        }
       });
       $('openUpdater').addEventListener('click', async function () {
         var ok = await api.update.openUpdater();

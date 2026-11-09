@@ -4,7 +4,9 @@
   var $ = JR.$;
 
   function refresh() {
-    window.api.localAi.modules().then(JR.views.renderModuleSummary);
+    window.api.localAi.modules().then(JR.views.renderModuleSummary).catch(function (err) {
+      JR.components.notice('讀取本地 AI 狀態失敗：' + JR.errText(err));
+    });
   }
 
   function refreshUpdater() {

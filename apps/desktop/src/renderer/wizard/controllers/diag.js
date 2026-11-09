@@ -14,7 +14,7 @@
   function fixFromDiag(action, btn) {
     btn.disabled = true;
     WZ.views.setDiagMsg('執行修復：' + (WZ.FIX_NAMES[action] || action) + '…');
-    api.localAi.repair({ action: action }).then(function () {
+    api.localAi.repair({ runId: 'wz-diag-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7), action: action }).then(function () {
       WZ.views.setDiagMsg('修復完成，重新檢查中。', 'ok');
       runDiagnose();
     }).catch(function (e) {

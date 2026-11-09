@@ -41,6 +41,7 @@
 
     <main class="content">
       <div id="notice" class="notice" hidden></div>
+      <div id="jobBanner" class="job-banner" role="status" hidden></div>
 
       <div id="pages"></div>
 
@@ -72,12 +73,14 @@
   <form class="assist-input" id="assistForm">
     <textarea id="assistText" rows="2" placeholder="例如：幫我找戒嚴時期補償的判決，並整理國家賠償法第2條" autocomplete="off"></textarea>
     <button class="btn primary" type="submit" id="assistSend">送出</button>
+    <button class="btn" type="button" id="assistCancel" hidden>取消</button>
   </form>
   <p class="hint assist-hint">助理會先確認再執行會花費 AI 額度或改動資料的操作。</p>
 </section>
 
 <script src="js/ns.js"></script>
 <script src="js/core/dom.js"></script>
+<script src="js/core/jobs.js"></script>
 <script src="js/components/notice.js"></script>
 <script src="js/components/explainDialog.js"></script>
 <script src="js/components/clarifyBox.js"></script>

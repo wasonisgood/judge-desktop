@@ -84,6 +84,23 @@ app.whenReady().then(async () => {
     check('澄清元件可隱藏', await js(w, `document.getElementById('scopeClarify').hidden === true`));
     await w.webContents.capturePage().then((img) => fs.writeFileSync(path.join(shotDir, 'pipeline-scope-page.png'), img.toPNG()));
 
+    // v3.6.0：工作管理、取消按鈕、背景橫幅、澄清取消、忙碌防護
+    check('工作模組已載入（JR.jobs）', await js(w, `!!(window.JR && window.JR.jobs && window.JR.jobs.isBusy)`));
+    check('背景工作橫幅初始隱藏', await js(w, `(function(){var b=document.getElementById('jobBanner');return !!b&&b.hidden;})()`));
+    for (const id of ['listCancel', 'scopeCancel', 'briefCancel', 'assistCancel']) {
+      check(`取消按鈕 ${id} 初始隱藏`, await js(w, `(function(){var b=document.getElementById('${id}');return !!b&&b.hidden;})()`));
+    }
+    check('初始沒有進行中的工作', await js(w, `!window.JR.jobs.isBusy('list') && !window.JR.jobs.isBusy('scope') && !window.JR.jobs.isBusy('brief') && !window.JR.jobs.isBusy('assistant')`));
+    const cancelOk = await js(w, `(function(){
+      var box=document.getElementById('listClarify'); var called=0;
+      window.JR.components.clarifyBox(box,{question:'請選擇',options:[{id:'c1',label:'民事',description:''}],onPick:function(){},onManual:function(){},onCancel:function(){called++;}});
+      var bs=box.querySelectorAll('button'); var cancelBtn=bs[bs.length-1];
+      cancelBtn.click();
+      return cancelBtn.textContent==='取消' && called===1 && box.hidden===true;
+    })()`);
+    check('澄清選項的「取消」會隱藏選項並通知', cancelOk);
+    await w.webContents.capturePage().then((img) => fs.writeFileSync(path.join(shotDir, 'v360-smoke.png'), img.toPNG()));
+
   } catch (err) {
     check('執行過程沒有例外', false, err instanceof Error ? err.stack : String(err));
   } finally {

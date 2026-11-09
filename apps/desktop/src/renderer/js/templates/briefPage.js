@@ -56,6 +56,7 @@
               <option value="cloud">AI：雲端</option>
             </select>
             <button class="btn primary" type="submit" id="briefRun" disabled>整理這則判決</button>
+            <button class="btn" type="button" id="briefCancel" hidden>取消</button>
             <button class="btn" type="button" id="briefExport" disabled>匯出 Word</button>
             <button class="btn" type="button" id="briefExplain" disabled>查看處理流程</button>
           </div>
