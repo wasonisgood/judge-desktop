@@ -1,7 +1,15 @@
 // 本地資料層：設定檔（settings.json）。金鑰以 safeStorage 加密後才寫入。
 import { app, safeStorage } from 'electron';
 import * as fs from 'node:fs/promises';
-import { CRAWL_DEFAULT_INTERVAL_SEC, DEFAULT_BRIEF_FIELDS, DEFAULT_JURISDICTION_ID, normalizeCrawlIntervalSec, type BriefField } from '@judge/core';
+import {
+  CRAWL_DEFAULT_INTERVAL_SEC,
+  DEFAULT_BRIEF_FIELDS,
+  DEFAULT_CODING_FIELDS,
+  DEFAULT_JURISDICTION_ID,
+  normalizeCrawlIntervalSec,
+  type BriefField,
+  type CodingField,
+} from '@judge/core';
 import { userPath } from './paths';
 
 export interface FederationSettings {
@@ -26,6 +34,8 @@ export interface StoredSettings {
   cacheDays: number;
   /** 精讀欄位設定：enabled 表示是否勾選；自訂欄位也保存在這裡。 */
   briefFields: (BriefField & { enabled: boolean })[];
+  /** 標編碼工序的分析欄位設定：enabled 表示是否勾選；自訂欄位與順序也保存在這裡。 */
+  scopeFields: (CodingField & { enabled: boolean })[];
   /** 本地 AI 模組開關：關閉時即使已安裝，也一律使用雲端。 */
   localAiEnabled: boolean;
   /** 預設管轄區識別碼（見 jurisdictionRegistry）。 */
@@ -48,6 +58,7 @@ export const DEFAULTS: StoredSettings = {
   defaultMaxItems: 20,
   cacheDays: 7,
   briefFields: DEFAULT_BRIEF_FIELDS.map((f) => ({ ...f, enabled: true })),
+  scopeFields: DEFAULT_CODING_FIELDS.map((f) => ({ ...f, enabled: true })),
   localAiEnabled: true,
   defaultJurisdiction: DEFAULT_JURISDICTION_ID,
   crawlIntervalSec: CRAWL_DEFAULT_INTERVAL_SEC,

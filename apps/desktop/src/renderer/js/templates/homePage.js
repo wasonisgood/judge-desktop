@@ -14,8 +14,8 @@
           </li>
           <li>
             <button class="entry" data-go="scope">
-              <span class="entry-title">範圍整理表</span>
-              <span class="entry-desc">輸入法規（可加條、項、款），列出引用該法規的判決，並標示該條文在查詢期間內是否修法。</span>
+              <span class="entry-title">標編碼標注工序</span>
+              <span class="entry-desc">輸入關鍵字或法規（可加條、項、款），列出判決，並依勾選的分析欄位由 AI 編碼；每格附判決原文的逐字依據，對不上的標示為待覆核。</span>
             </button>
           </li>
           <li>

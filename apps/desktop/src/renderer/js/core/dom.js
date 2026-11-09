@@ -25,5 +25,5 @@
     try { return new Date(iso).toLocaleString('zh-TW', { hour12: false }); } catch (e) { return iso; }
   };
 
-  JR.KIND_LABEL = { list: '判決列表', scope: '範圍整理', brief: '單一判決' };
+  JR.KIND_LABEL = { list: '判決列表', scope: '標編碼標注工序', brief: '單一判決' };
 })(window.JR);

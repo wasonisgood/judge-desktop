@@ -3,13 +3,15 @@
 //   Word：每部法規一段，先放 AI 綜合分析，再放逐案分析表。
 import ExcelJS from 'exceljs';
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, Table, TableRow, TableCell, WidthType, BorderStyle, AlignmentType, PageOrientation, TableLayoutType } from 'docx';
-import type { ScopeRow, CaseAnalysis, ScopeSynthesis } from '@judge/core';
+import { DEFAULT_CODING_FIELDS, formatCodedCell, type ScopeRow, type CaseAnalysis, type ScopeSynthesis, type CodingField } from '@judge/core';
 
 export interface ScopeSheet {
   statute: string;
   rows: ScopeRow[];
   analyses: CaseAnalysis[];
   synthesis: ScopeSynthesis | null;
+  /** 分析欄位（勾選的欄位，順序即欄位順序）；舊結果沒有此欄位時使用預設欄位。 */
+  fields?: CodingField[];
   /** 案件類型篩選（有指定時）：類型與因字號而排除的筆數。 */
   caseType?: { type: string; excluded: number };
 }
@@ -21,15 +23,58 @@ function caseTypeLine(sh: ScopeSheet): string | null {
   return sh.caseType ? `案件類型：${sh.caseType.type}（依判決字號篩選，排除 ${sh.caseType.excluded} 筆）` : null;
 }
 
-/** 逐案表的欄位（Excel 與 Word 共用順序）。 */
-// 字號類型放在最後一欄：既有欄位的位置不變（其他匯出與測試以欄位位置讀取）。
-const CASE_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由', '類型（AI）', '爭點（AI）', '法院見解（AI）', '法規適用（AI）', '結論（AI）', '引用條文', '法條異動（依沿革比對）', '歷審位置（司法院清單）', '判決連結', '字號類型'];
+const LEAD_HEADERS = ['序號', '裁判字號', '法院', '裁判日期', '案由'];
+const LEAD_WIDTHS = [6, 40, 16, 13, 28];
+const TAIL_HEADERS = ['引用條文', '法條異動（依沿革比對）', '歷審位置（司法院清單）', '判決連結', '字號類型'];
+const TAIL_WIDTHS = [30, 46, 40, 30, 10];
+/** 預設欄位的 Excel 欄寬（字元單位）；自訂欄位使用 36。 */
+const FIELD_WIDTH: Record<string, number> = { issue: 36, holding: 50, statuteApplication: 40, outcome: 30, group: 14 };
 
-/** 判決連結所在欄（Excel 以超連結呈現）。 */
-const HREF_COL = CASE_HEADERS.indexOf('判決連結');
+/** 舊結果（沒有 values）的欄位取值：依預設欄位的舊屬性。 */
+function legacyText(a: CaseAnalysis | undefined, fieldId: string): string {
+  if (!a) return '';
+  const legacy: Record<string, string | undefined> = { issue: a.issue, holding: a.holding, statuteApplication: a.statuteApplication, outcome: a.outcome, group: a.group };
+  return legacy[fieldId] ?? '';
+}
 
-/** Excel 欄寬（字元單位），與 CASE_HEADERS 一一對應。 */
-const CASE_WIDTHS = [6, 40, 16, 13, 28, 14, 36, 50, 40, 30, 30, 46, 40, 30, 10];
+/** 單一欄位的儲存格文字：內容、逐字依據與待覆核標示在同一格。 */
+function fieldText(a: CaseAnalysis | undefined, f: CodingField): string {
+  const v = a?.values?.find((x) => x.fieldId === f.id);
+  return v ? formatCodedCell(v) : legacyText(a, f.id);
+}
+
+/** 逐案表的版面（Excel 與 Word 共用）：欄位依該部法規的分析欄位設定產生。 */
+export interface CaseLayout {
+  headers: string[];
+  widths: number[];
+  hrefCol: number;
+  cells: (i: number, r: ScopeRow, a: CaseAnalysis | undefined) => string[];
+}
+
+export function caseLayout(sh: ScopeSheet): CaseLayout {
+  const fields = sh.fields && sh.fields.length ? sh.fields : DEFAULT_CODING_FIELDS;
+  const headers = [...LEAD_HEADERS, ...fields.map((f) => `${f.name}（AI）`), ...TAIL_HEADERS];
+  const widths = [...LEAD_WIDTHS, ...fields.map((f) => FIELD_WIDTH[f.id] ?? 36), ...TAIL_WIDTHS];
+  const hrefCol = headers.indexOf('判決連結');
+  return {
+    headers,
+    widths,
+    hrefCol,
+    cells: (i, r, a) => [
+      String(i + 1),
+      r.title,
+      r.court ?? '',
+      r.dateIso ?? '',
+      r.cause,
+      ...fields.map((f) => fieldText(a, f)),
+      r.citedArticles.join('；'),
+      (r.lawNotes ?? []).map((n) => n.summary).join('\n'),
+      r.historyPosition ?? '',
+      r.href,
+      r.caseTypeLabel ?? '',
+    ],
+  };
+}
 
 /** Excel 工作表名稱：不得含 : \ / ? * [ ]，最長 31 字；同名時加上序號。 */
 function uniqueSheetName(raw: string, used: Set<string>): string {
@@ -42,47 +87,27 @@ function uniqueSheetName(raw: string, used: Set<string>): string {
   return name;
 }
 
-function caseValues(i: number, r: ScopeRow, a: CaseAnalysis | undefined): string[] {
-  return [
-    String(i + 1),
-    r.title,
-    r.court ?? '',
-    r.dateIso ?? '',
-    r.cause,
-    a?.group ?? '',
-    a?.issue ?? '',
-    a?.holding ?? '',
-    a?.statuteApplication ?? '',
-    a?.outcome ?? '',
-    r.citedArticles.join('；'),
-    (r.lawNotes ?? []).map((n) => n.summary).join('\n'),
-    r.historyPosition ?? '',
-    r.href,
-    r.caseTypeLabel ?? '',
-  ];
-}
-
 export async function buildScopeWorkbook(sheets: ScopeSheet[], meta: { yearFrom?: number; yearTo?: number }): Promise<Buffer> {
   const wb = new ExcelJS.Workbook();
   wb.creator = '司法院裁判研究';
   wb.created = new Date();
-  const widths = CASE_WIDTHS;
   const usedNames = new Set<string>();
   for (const sh of sheets) {
     const ws = wb.addWorksheet(uniqueSheetName(sh.statute, usedNames));
     const map = byId(sh.analyses);
-    ws.columns = CASE_HEADERS.map((h, i) => ({ header: h, key: 'c' + i, width: widths[i] }));
+    const layout = caseLayout(sh);
+    ws.columns = layout.headers.map((h, i) => ({ header: h, key: 'c' + i, width: layout.widths[i] }));
     const head = ws.getRow(1);
     head.font = { bold: true };
     head.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
     head.height = 24;
     sh.rows.forEach((r, i) => {
-      const values = caseValues(i, r, map.get(r.id));
-      const row = ws.addRow(Object.fromEntries(values.map((v, j) => ['c' + j, j === HREF_COL ? { text: v, hyperlink: v } : v])));
+      const values = layout.cells(i, r, map.get(r.id));
+      const row = ws.addRow(Object.fromEntries(values.map((v, j) => ['c' + j, j === layout.hrefCol ? { text: v, hyperlink: v } : v])));
       row.alignment = { vertical: 'top', wrapText: true };
     });
     ws.views = [{ state: 'frozen', ySplit: 1 }];
-    ws.autoFilter = { from: 'A1', to: { row: 1, column: CASE_HEADERS.length } };
+    ws.autoFilter = { from: 'A1', to: { row: 1, column: layout.headers.length } };
 
     // 綜合分析工作表
     const syn = wb.addWorksheet(uniqueSheetName('綜合分析_' + sh.statute, usedNames));
@@ -126,10 +151,10 @@ const LANDSCAPE_TEXT_WIDTH = 16838 - 2 * 1134;
 const DOCX_MIN_COL = 510;
 
 /** 每欄先保留最小寬度，其餘寬度依 Excel 欄寬比例分配；總和等於版面可用寬度。 */
-function docxColumnWidths(): number[] {
-  const total = CASE_WIDTHS.reduce((a, b) => a + b, 0);
-  const free = LANDSCAPE_TEXT_WIDTH - DOCX_MIN_COL * CASE_WIDTHS.length;
-  const w = CASE_WIDTHS.map((x) => DOCX_MIN_COL + Math.floor((x / total) * free));
+function docxColumnWidths(widths: number[]): number[] {
+  const total = widths.reduce((a, b) => a + b, 0);
+  const free = LANDSCAPE_TEXT_WIDTH - DOCX_MIN_COL * widths.length;
+  const w = widths.map((x) => DOCX_MIN_COL + Math.floor((x / total) * free));
   w[w.length - 1] += LANDSCAPE_TEXT_WIDTH - w.reduce((a, b) => a + b, 0);
   return w;
 }
@@ -176,11 +201,12 @@ export async function buildScopeDocx(sheets: ScopeSheet[], meta: { yearFrom?: nu
     }
     children.push(para('逐案分析', 22, true));
     const map = byId(sh.analyses);
-    const colW = docxColumnWidths();
-    const header = new TableRow({ tableHeader: true, children: CASE_HEADERS.map((c, j) => cell(c, colW[j], true)) });
+    const layout = caseLayout(sh);
+    const colW = docxColumnWidths(layout.widths);
+    const header = new TableRow({ tableHeader: true, children: layout.headers.map((c, j) => cell(c, colW[j], true)) });
     const body = sh.rows.map((r, i) => new TableRow({
       cantSplit: false,
-      children: caseValues(i, r, map.get(r.id)).map((v, j) => cell(v, colW[j])),
+      children: layout.cells(i, r, map.get(r.id)).map((v, j) => cell(v, colW[j])),
     }));
     children.push(new Table({
       width: { size: LANDSCAPE_TEXT_WIDTH, type: WidthType.DXA },

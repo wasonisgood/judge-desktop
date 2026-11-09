@@ -7,7 +7,7 @@
   var state = JR.state;
   var PAGE = 'assistant';
 
-  var PAGE_LABEL = { scope: '範圍整理', brief: '精讀' };
+  var PAGE_LABEL = { scope: '標編碼標注工序', brief: '精讀' };
 
   function setPanel(open) {
     $('assistPanel').hidden = !open;
@@ -31,9 +31,13 @@
       return;
     }
     if (p.kind === 'run_scope') {
-      JR.components.progressCard('範圍整理進行中', 'scopeStatus', '#scopeProgress .bar');
+      JR.components.progressCard('標編碼標注工序進行中', 'scopeStatus', '#scopeProgress .bar');
       JR.nav.showPage('scope');
       $('scopeLines').value = (p.args.statutes || []).join('\n');
+      $('scopeKeyword').value = p.args.keyword || '';
+      $('scopeRelated').value = p.args.relatedStatute || '';
+      $('scopeRelatedOnly').checked = !!p.args.relatedOnly;
+      $('scopeSmart').checked = !!p.args.smart;
       $('scopeFrom').value = p.args.yearFrom || '';
       $('scopeTo').value = p.args.yearTo || '';
       $('scopeForm').dispatchEvent(new Event('submit', { cancelable: true }));
