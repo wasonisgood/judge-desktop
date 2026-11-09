@@ -48,12 +48,12 @@ export interface EngineRules {
 /** 內建規則（模組規則表不存在或無效時使用）。 */
 export const BUILTIN_RULES: EngineRules = {
   schemaVersion: 1,
-  rulesVersion: 1,
+  rulesVersion: 2,
   minDiskGB: 10,
   tiers: {
-    light: { judgment: 'qwen2.5:3b', chat: 'qwen2.5:3b', diskGB: 3, minRamGB: 8 },
-    standard: { judgment: 'qwen2.5:7b', chat: 'qwen2.5:7b', diskGB: 6, minRamGB: 16 },
-    heavy: { judgment: 'qwen2.5:14b', chat: 'qwen2.5:7b', diskGB: 14, minRamGB: 32 },
+    light: { judgment: 'qwen3.5:4b', chat: 'qwen3.5:4b', diskGB: 5, minRamGB: 8 },
+    standard: { judgment: 'qwen3.5:9b', chat: 'qwen3.5:9b', diskGB: 9, minRamGB: 16 },
+    heavy: { judgment: 'qwen3.8:27b', chat: 'qwen3.5:9b', diskGB: 20, minRamGB: 32 },
   },
   dualModelMinVramGB: 8,
   minEngineVersion: '0.40.0',
