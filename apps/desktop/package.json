@@ -19,7 +19,8 @@
     "adm-zip": "^0.5.18",
     "docx": "^9",
     "exceljs": "^4",
-    "fzstd": "0.1.1"
+    "fzstd": "0.1.1",
+    "@judge/ui": "https://github.com/wasonisgood/judge-shared/releases/download/ui-v0.1.1/judge-ui-0.1.1.tgz"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.8",

@@ -1,4 +1,0 @@
-/* 背景工人（v3.9.0）：續跑提示列。沿用 .job-banner 的版面，每一項中斷工作一列。 */
-.worker-resume { display: flex; flex-direction: column; gap: 6px; }
-.worker-resume-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.worker-resume-row > span { flex: 1 1 260px; }

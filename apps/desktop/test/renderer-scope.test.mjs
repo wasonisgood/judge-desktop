@@ -6,8 +6,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer');
-const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
+// 共用畫面的來源在 @judge/ui（與桌面端的 index.html 等入口檔並存）；優先讀共用來源，找不到再讀桌面端。
+const uiSrc = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'node_modules', '@judge', 'ui', 'src');
+const deskRenderer = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer');
+const resolveRenderer = (rel) => (fs.existsSync(path.join(uiSrc, rel)) ? path.join(uiSrc, rel) : path.join(deskRenderer, rel));
+const read = (rel) => fs.readFileSync(resolveRenderer(rel), 'utf8');
 
 const template = read('js/templates/scopePage.js');
 const templateIds = new Set([...template.matchAll(/id="([^"]+)"/g)].map((m) => m[1]));
@@ -34,7 +37,8 @@ test('助理的待確認範圍整理會填入關鍵字、相關法規、只保�
 });
 
 test('分析欄位列與上下移、移除按鈕的元件存在，並在 index.html 載入', () => {
-  const index = read('index.html');
+  // 腳本現在由共用畫面的載入清單（order.txt）列出。
+  const index = fs.readFileSync(path.join(uiSrc, '..', 'order.txt'), 'utf8');
   assert.match(index, /js\/components\/codingFieldRow\.js/);
   assert.match(read('js/components/codingFieldRow.js'), /coding-field-actions/);
   assert.match(scopeController, /\.coding-field-row/);

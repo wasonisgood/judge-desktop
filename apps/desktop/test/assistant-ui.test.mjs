@@ -100,7 +100,7 @@ test('控制項 id 在所有頁面模板中不重複', async () => {
   const fs = await import('node:fs');
   const path = await import('node:path');
   const { fileURLToPath } = await import('node:url');
-  const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer', 'js', 'templates');
+  const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'node_modules', '@judge', 'ui', 'src', 'js', 'templates');
   const seen = new Map();
   const dups = [];
   for (const f of fs.readdirSync(dir)) {
@@ -166,7 +166,7 @@ test('頁面動作：主程序允許的每個動作，渲染端都有分派', as
   const fs = await import('node:fs');
   const path = await import('node:path');
   const { fileURLToPath } = await import('node:url');
-  const bridge = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer', 'js', 'core', 'aiBridge.js'), 'utf8');
+  const bridge = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'node_modules', '@judge', 'ui', 'src', 'js', 'core', 'aiBridge.js'), 'utf8');
   for (const name of ui.UI_ACTIONS) {
     assert.ok(bridge.includes(`name === '${name}'`), `aiBridge.runAction 缺少 ${name}`);
   }

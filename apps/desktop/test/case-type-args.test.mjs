@@ -6,7 +6,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const { resolveCaseTypeArg, caseTypeSkipNote, briefCaseTypeCheck } = require('../dist/main/services/caseTypeArgs.js');
 
-const root = new URL('../src/renderer/js/', import.meta.url);
+const root = new URL('../node_modules/@judge/ui/src/js/', import.meta.url);
 const read = (rel) => readFileSync(new URL(rel, root), 'utf8');
 
 test('解析介面傳入的案件類型：空值為不限；唯一類型用語才套用；無法辨識時說明且不套用', () => {

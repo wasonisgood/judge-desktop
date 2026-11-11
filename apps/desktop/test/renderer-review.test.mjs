@@ -5,8 +5,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer');
-const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
+// 共用畫面的來源在 @judge/ui（與桌面端的 index.html 等入口檔並存）；優先讀共用來源，找不到再讀桌面端。
+const uiSrc = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'node_modules', '@judge', 'ui', 'src');
+const deskRenderer = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer');
+const resolveRenderer = (rel) => (fs.existsSync(path.join(uiSrc, rel)) ? path.join(uiSrc, rel) : path.join(deskRenderer, rel));
+const read = (rel) => fs.readFileSync(resolveRenderer(rel), 'utf8');
 const ids = (src) => new Set([...src.matchAll(/id="([^"]+)"/g)].map((m) => m[1]));
 
 const scopeController = read('js/controllers/scope.js');

@@ -44,14 +44,17 @@ test('全文取得失敗：顯示「無法取得判決全文」與原因，不�
 });
 
 test('畫面接線：跳至原文走應用程式內視窗，失敗與找不到的文字都由視窗顯示', () => {
-  const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer');
-  const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
+  // 共用畫面來源在 @judge/ui；找不到的檔案再讀桌面端。
+  const uiSrc = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'node_modules', '@judge', 'ui', 'src');
+  const deskRenderer = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer');
+  const resolveRenderer = (rel) => (fs.existsSync(path.join(uiSrc, rel)) ? path.join(uiSrc, rel) : path.join(deskRenderer, rel));
+  const read = (rel) => fs.readFileSync(resolveRenderer(rel), 'utf8');
   const controller = read('js/controllers/scope.js');
   assert.match(controller, /api\.scope\.judgmentText\(/);
   assert.doesNotMatch(controller, /window\.open\(/, '不再開外部瀏覽器');
   assert.match(read('js/views/scopeView.js'), /ui\.actions\.openSource\(r\.id, q\)/);
   const dialog = read('js/components/judgmentDialog.js');
   assert.match(dialog, /judgment-hit/);
-  assert.match(read('index.html'), /js\/components\/judgmentDialog\.js/);
+  assert.match(fs.readFileSync(path.join(uiSrc, '..', 'order.txt'), 'utf8'), /js\/components\/judgmentDialog\.js/);
   assert.match(read('../main/preload.ts'), /judgmentText: \(args: unknown\) => invoke\('scope:judgmentText', args\)/);
 });
