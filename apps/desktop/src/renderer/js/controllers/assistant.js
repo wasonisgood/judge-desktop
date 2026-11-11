@@ -39,6 +39,9 @@
     if (u.type === 'set') {
       var r = JR.aiBridge.set(u.id, u.value);
       if (!r.ok) JR.components.addMsg('assistant', '無法設定：' + r.reason);
+    } else if (u.type === 'action') {
+      var a = JR.aiBridge.runAction(u.action, u.args || {});
+      if (!a.ok) JR.components.addMsg('assistant', a.reason);
     } else if (u.type === 'openSaved') {
       JR.controllers.files.openById(u.id).catch(function (err) {
         JR.components.addMsg('assistant', '無法開啟項目：' + JR.errText(err));

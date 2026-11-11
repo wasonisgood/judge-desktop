@@ -275,7 +275,29 @@
     return out;
   }
 
+  /** 助理用：新增一個分析欄位（與按下「新增欄位」相同，之後可逐欄修改）。 */
+  function addScopeField(f) {
+    $('scopeFieldList').appendChild(JR.components.codingFieldRow({ id: '', name: f.name, description: f.description || '', enabled: true }));
+    scheduleRefresh();
+    return { ok: true };
+  }
+
+  /** 助理用：依欄位名稱移除分析欄位。 */
+  function removeScopeField(name) {
+    var rows = Array.prototype.slice.call($('scopeFieldList').children);
+    var hit = rows.filter(function (row) {
+      var n = row.querySelector('.brief-field-name');
+      return n && n.value.trim() === name;
+    })[0];
+    if (!hit) return { ok: false, reason: '找不到分析欄位「' + name + '」。' };
+    hit.remove();
+    scheduleRefresh();
+    return { ok: true };
+  }
+
   JR.controllers.scope = {
+    addField: addScopeField,
+    removeField: removeScopeField,
     /**
      * 從「檔案」開啟已保存的結果：流程與說明隨結果保存。舊結果沒有流程紀錄時，明確說明它產生於紀錄功能加入之前。
      * 先設定流程狀態，再顯示結果（按鈕前置條件會讀取這些狀態）。

@@ -267,7 +267,16 @@
 
   function presetStatus(msg, kind) { JR.setStatus($('critPresetStatus'), msg, kind); }
 
+  /** 以一組標準取代目前的標準列（個人組合載入、助理設定共用）。 */
+  function setRows(criteria) {
+    $('critRows').textContent = '';
+    (criteria || []).forEach(function (c) { addRow(c); });
+    invalidatePlan();
+    return { ok: true };
+  }
+
   JR.controllers.criteria = {
+    setRows: setRows,
     load: function () {
       loadSources();
       loadRuns();
@@ -308,9 +317,7 @@
         var name = $('critPresetSel').value;
         var p = loadPresets().filter(function (x) { return x.name === name; })[0];
         if (!p) { presetStatus('請先選擇一個標準組合。', 'error'); return; }
-        $('critRows').textContent = '';
-        p.criteria.forEach(function (c) { addRow(c); });
-        invalidatePlan();
+        setRows(p.criteria);
         presetStatus('已載入「' + name + '」，共 ' + p.criteria.length + ' 條標準。', 'ok');
       });
       $('critPresetDel').addEventListener('click', function () {

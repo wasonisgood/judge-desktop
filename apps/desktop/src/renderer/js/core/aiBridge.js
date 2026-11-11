@@ -92,6 +92,20 @@
       return { ok: true };
     },
 
+    /** 頁面動作（ui_action）：由主程序驗證過的參數，分派給對應的控制器。回傳 { ok, reason }。 */
+    runAction: function (name, args) {
+      try {
+        if (name === 'pickCandidate') return JR.controllers.brief.pickById(args.id);
+        if (name === 'setCriteria') return JR.controllers.criteria.setRows(args.criteria);
+        if (name === 'addScopeField') return JR.controllers.scope.addField(args);
+        if (name === 'removeScopeField') return JR.controllers.scope.removeField(args.name);
+        if (name === 'annotateQuote') return JR.controllers.annotation.annotateQuote(args.quote, args.color, args.note);
+        return { ok: false, reason: '不支援的畫面操作：' + name };
+      } catch (err) {
+        return { ok: false, reason: '操作失敗：' + (err && err.message ? err.message : String(err)) };
+      }
+    },
+
     /** 按下按鈕。頁面正在處理（按鈕被鎖定）時拒絕，避免重複送出。 */
     click: function (id) {
       var el = document.getElementById(id);

@@ -112,3 +112,33 @@ test('控制項 id 在所有頁面模板中不重複', async () => {
   }
   assert.deepEqual(dups, []);
 });
+
+// 頁面動作（ui_action）的參數驗證：不認識的動作拒絕；標準與欄位與標注的參數被清理。
+test('頁面動作：不認識的動作拒絕；必要參數缺漏時拒絕', () => {
+  assert.equal(ui.checkUiAction('deleteEverything', {}).ok, false);
+  assert.equal(ui.checkUiAction('pickCandidate', {}).ok, false);
+  assert.equal(ui.checkUiAction('removeScopeField', { name: '  ' }).ok, false);
+  assert.equal(ui.checkUiAction('annotateQuote', { quote: '' }).ok, false);
+});
+
+test('頁面動作：標準列只保留合法的列，AI 需描述、程式需關鍵字；空陣列拒絕', () => {
+  const r = ui.checkUiAction('setCriteria', { criteria: [
+    { kind: 'exclude', method: 'program', keywords: ['和解', ''] },
+    { kind: 'include', method: 'ai', text: '原告為消費者' },
+    { kind: 'include', method: 'ai', text: '' },
+    { kind: 'weird', method: 'nope', text: '其他', keywordMode: 'all' },
+  ] });
+  assert.equal(r.ok, true);
+  assert.equal(r.args.criteria.length, 3);
+  assert.equal(r.args.criteria[0].keywords, '和解、');
+  assert.equal(r.args.criteria[2].kind, 'include');
+  assert.equal(ui.checkUiAction('setCriteria', { criteria: [{ method: 'ai', text: '' }] }).ok, false);
+});
+
+test('頁面動作：標注顏色不合法時改用黃色；候選與欄位參數正確', () => {
+  const a = ui.checkUiAction('annotateQuote', { quote: '本院認為', color: 'purple' });
+  assert.equal(a.ok, true);
+  assert.equal(a.args.color, 'yellow');
+  assert.deepEqual(ui.checkUiAction('pickCandidate', { id: 'TPSV_1' }).args, { id: 'TPSV_1' });
+  assert.deepEqual(ui.checkUiAction('addScopeField', { name: '判決結果', description: '勝訴或敗訴' }).args, { name: '判決結果', description: '勝訴或敗訴' });
+});

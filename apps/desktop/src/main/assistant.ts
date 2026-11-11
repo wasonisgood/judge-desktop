@@ -157,6 +157,18 @@ export const ASSISTANT_TOOLS: ToolDef[] = [
     parameters: { type: 'object', properties: { id: { type: 'string' } }, required: ['id'] },
   },
   {
+    name: 'ui_action',
+    description: '在畫面上執行一個動態操作（立即生效，不呼叫 AI、不保存）。action 可為：pickCandidate（精讀頁選定候選判決，args.id）；setCriteria（納入排除頁以 args.criteria 陣列取代標準列，每條含 kind、method、text 或 keywords、keywordMode）；addScopeField／removeScopeField（標編碼的分析欄位，args.name，新增另可給 description）；annotateQuote（在目前載入的判決全文標注一段原文，args.quote、args.color、args.note）。',
+    parameters: {
+      type: 'object',
+      properties: {
+        action: { type: 'string', enum: ['pickCandidate', 'setCriteria', 'addScopeField', 'removeScopeField', 'annotateQuote'] },
+        args: { type: 'object', description: '該操作的參數' },
+      },
+      required: ['action'],
+    },
+  },
+  {
     name: 'saved_action',
     description: '提議對已保存的結果做整理動作：加／取消星號、封存、移回使用中、移入垃圾桶、還原、或永久刪除。需要使用者按同意後才執行。',
     parameters: {
@@ -177,6 +189,7 @@ const SYSTEM_PROMPT_BASE = [
   '你可以操作應用程式的每一個頁面：下方「控制項目錄」列出各頁的欄位與按鈕（id、標籤、目前值、選項）。要切換頁面用 open_page；用 ui_set 設定欄位值（立即更新畫面）；用 ui_click 提議按下按鈕。需要時先切換到該頁。',
   '控制項的 id 必須來自目錄，不要猜。敏感欄位（金鑰、密碼、權杖）不能填寫，請告訴使用者自行輸入。',
   '檔案頁的項目用 list_saved 查找，open_saved 開啟；加星號、封存、移入垃圾桶、刪除等整理動作用 saved_action 提議。',
+  '列表形式的內容用 ui_action 操作：選定精讀的候選判決、以標準列取代納入排除的標準、增刪標編碼的分析欄位、在全文上標注一段原文。',
   '提議標編碼標注工序（propose_scope）時，關鍵字與法規清單可以單獨使用，也可以併用；使用者只說一句話描述範圍時請用 keyword。',
   '搜尋判決時，請把同義詞、案由、法名拆成 2 到 4 組關鍵字一起搜尋（用 queries），不要只用一個詞。',
   `每一輪對話最多搜尋 ${ASSISTANT_SEARCH_MAX} 次。工具回傳的「剩餘次數」與「目前保留筆數」會告訴你狀況：結果不足就換不同的關鍵字補搜；已達上限就停止搜尋，依目前保留的結果回答，說明狀況與解方，並詢問使用者是否同意新方向。`,

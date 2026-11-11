@@ -5,7 +5,7 @@ import { newId } from '../library';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { resolveStatute } from '../data/cloud/lawRepo';
 import { library } from '../data/local/libraryAccess';
-import { checkSetValue, SAVED_ACTIONS, type SavedAction } from '../assistantUi';
+import { checkSetValue, checkUiAction, SAVED_ACTIONS, type SavedAction } from '../assistantUi';
 
 export type AssistantPageName = AssistantPage;
 
@@ -104,6 +104,14 @@ export async function executeAssistantTool(call: ToolCall, ctx?: AssistantTurnCo
         return {
           content: '已提議按下，等待使用者按同意後執行。',
           pending: { id: newId(), kind: 'ui_click', label: `按下「${c.label}」（${c.page} 頁）`, args: { id } },
+        };
+      }
+      case 'ui_action': {
+        const checked = checkUiAction(input.action, input.args);
+        if (!checked.ok) return { content: checked.reason };
+        return {
+          content: `已在畫面上執行「${checked.name}」。`,
+          ui: { type: 'action', action: checked.name, args: checked.args },
         };
       }
       case 'list_saved': {

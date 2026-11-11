@@ -20,7 +20,8 @@ export interface UiControl {
 /** 助理回傳給畫面、立即執行（不需確認）的動作。 */
 export type UiAction =
   | { type: 'set'; id: string; value: string | number | boolean }
-  | { type: 'openSaved'; id: string };
+  | { type: 'openSaved'; id: string }
+  | { type: 'action'; action: UiActionName; args: Record<string, unknown> };
 
 const ID_RE = /^[A-Za-z][\w-]{0,79}$/;
 const KINDS: UiKind[] = ['text', 'number', 'select', 'checkbox', 'textarea', 'button'];
@@ -129,4 +130,62 @@ export function controlsPrompt(controls: UiControl[], currentPage: string): stri
   let text = lines.join('\n') + (otherLines.length ? '\n其他頁面控制項（需要時先用 open_page 切換，或直接用 id 操作）：\n' + otherLines.join('\n') : '');
   if (text.length > MAX_PROMPT_CHARS) text = text.slice(0, MAX_PROMPT_CHARS) + '\n（目錄過長已截斷）';
   return text;
+}
+
+// ---------------------------------------------------------------------------
+// 頁面動作（ui_action）：動態列的操作，例如精讀的候選選定、納入排除的標準列、標編碼的分析欄位、全文標注。
+// 每個動作都在主程序先驗證參數；畫面只執行驗證過的動作。
+// ---------------------------------------------------------------------------
+
+export const UI_ACTIONS = ['pickCandidate', 'setCriteria', 'addScopeField', 'removeScopeField', 'annotateQuote'] as const;
+export type UiActionName = (typeof UI_ACTIONS)[number];
+
+const HIGHLIGHT_COLORS = ['yellow', 'green', 'pink', 'blue'];
+
+function trimmed(v: unknown, max: number): string | null {
+  if (typeof v !== 'string') return null;
+  const t = v.trim();
+  return t && t.length <= max ? t : null;
+}
+
+export function checkUiAction(name: unknown, rawArgs: unknown): { ok: true; name: UiActionName; args: Record<string, unknown> } | { ok: false; reason: string } {
+  const a = rawArgs && typeof rawArgs === 'object' && !Array.isArray(rawArgs) ? (rawArgs as Record<string, unknown>) : {};
+  if (!UI_ACTIONS.includes(name as UiActionName)) return { ok: false, reason: `不支援的畫面操作：${String(name)}` };
+  const action = name as UiActionName;
+  switch (action) {
+    case 'pickCandidate': {
+      const id = trimmed(a.id, 200);
+      return id ? { ok: true, name: action, args: { id } } : { ok: false, reason: '選定候選判決需要判決 id。' };
+    }
+    case 'setCriteria': {
+      if (!Array.isArray(a.criteria) || a.criteria.length > 8) return { ok: false, reason: '標準列需要一個陣列（最多 8 條）。' };
+      const criteria: Record<string, unknown>[] = [];
+      for (const item of a.criteria) {
+        if (!item || typeof item !== 'object') continue;
+        const c = item as Record<string, unknown>;
+        const method = c.method === 'program' ? 'program' : 'ai';
+        const text = trimmed(c.text, 300) ?? '';
+        const keywords = (typeof c.keywords === 'string' ? c.keywords : Array.isArray(c.keywords) ? c.keywords.map(String).join('、') : '').slice(0, 300);
+        if (method === 'ai' && !text) continue;
+        if (method === 'program' && !keywords.trim()) continue;
+        criteria.push({ kind: c.kind === 'exclude' ? 'exclude' : 'include', method, text, keywords, keywordMode: c.keywordMode === 'all' ? 'all' : 'any' });
+      }
+      return criteria.length ? { ok: true, name: action, args: { criteria } } : { ok: false, reason: '沒有可用的標準（AI 判斷需要描述，程式判斷需要關鍵字）。' };
+    }
+    case 'addScopeField': {
+      const fieldName = trimmed(a.name, 40);
+      if (!fieldName) return { ok: false, reason: '新增分析欄位需要欄位名稱。' };
+      return { ok: true, name: action, args: { name: fieldName, description: (trimmed(a.description, 200) ?? '') } };
+    }
+    case 'removeScopeField': {
+      const fieldName = trimmed(a.name, 40);
+      return fieldName ? { ok: true, name: action, args: { name: fieldName } } : { ok: false, reason: '移除分析欄位需要欄位名稱。' };
+    }
+    case 'annotateQuote': {
+      const quote = trimmed(a.quote, 300);
+      const color = typeof a.color === 'string' && HIGHLIGHT_COLORS.includes(a.color) ? a.color : 'yellow';
+      if (!quote) return { ok: false, reason: '標注需要判決中的原句（不超過 300 字）。' };
+      return { ok: true, name: action, args: { quote, color, note: (trimmed(a.note, 500) ?? '') } };
+    }
+  }
 }

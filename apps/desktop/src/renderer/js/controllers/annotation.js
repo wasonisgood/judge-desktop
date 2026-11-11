@@ -272,7 +272,23 @@
     JR.setStatus($('annStatus'), '案件：' + st.target.title + '。按「載入全文」開始標注。', '');
   }
 
+  /** 助理用：在目前載入的全文中標注一段原文（顏色：yellow、green、pink、blue；有註解則為螢光並做筆記）。 */
+  function annotateQuote(quote, color, note) {
+    if (!st.target || !st.view || !st.view.fullText) return { ok: false, reason: '請先在「單一判決精讀」載入判決全文，再標注。' };
+    var idx = st.view.fullText.indexOf(quote);
+    if (idx < 0) return { ok: false, reason: '全文中找不到這段文字，請改用全文中的原句。' };
+    api.annotation.add({
+      judgmentId: st.target.id, jurisdiction: st.target.jurisdiction,
+      start: idx, end: idx + quote.length, color: color, mode: note ? 'highlight_note' : 'highlight', note: note || ''
+    }).then(function (ann) {
+      if (ann.mode === 'highlight_note') st.editing = ann.id;
+      return load();
+    }).catch(fail);
+    return { ok: true };
+  }
+
   JR.controllers.annotation = {
+    annotateQuote: annotateQuote,
     /** 精讀完成或開啟已存的精讀結果時，直接載入全文與標注。 */
     open: function (judgmentId, jurisdiction, title) {
       prepare({ id: judgmentId, title: title || judgmentId, jurisdiction: jurisdiction || '' });
