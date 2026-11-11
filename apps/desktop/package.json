@@ -11,7 +11,8 @@
     "build": "tsc -p tsconfig.json && node scripts/copy-renderer.mjs",
     "start": "npm run build && electron .",
     "dist": "npm run build && electron-builder --win --dir --publish never",
-    "installer": "powershell -ExecutionPolicy Bypass -File installer/build_installer.ps1 -RebuildPayload"
+    "installer": "powershell -ExecutionPolicy Bypass -File installer/build_installer.ps1 -RebuildPayload",
+    "test": "node scripts/run-tests.mjs"
   },
   "dependencies": {
     "@judge/core": "file:../../packages/core",
