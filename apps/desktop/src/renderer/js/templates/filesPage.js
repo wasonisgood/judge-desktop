@@ -10,6 +10,9 @@
           <button class="tab" id="fileTabArchived" data-tab="archived" type="button">已封存</button>
           <button class="tab" id="fileTabTrashed" data-tab="trashed" type="button">垃圾桶</button>
         </div>
+        <div class="actions">
+          <button class="btn" type="button" id="fileImport">匯入判決清單（任何格式，AI 判斷欄位）</button>
+        </div>
         <p class="status" id="filesStatus" role="status"></p>
         <ul class="file-list" id="fileList"></ul>
       </section>

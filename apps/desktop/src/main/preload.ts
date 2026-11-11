@@ -133,6 +133,7 @@ contextBridge.exposeInMainWorld('api', {
   assistant: {
     chat: (args: unknown) => invoke('assistant:chat', args),
   },
+  importFile: (args: unknown) => invoke('import:file', args),
   nl: {
     interpret: (args: unknown) => invoke('nl:interpret', args),
     criteria: (args: unknown) => invoke('nl:criteria', args),
