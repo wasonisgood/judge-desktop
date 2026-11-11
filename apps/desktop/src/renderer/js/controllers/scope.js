@@ -317,6 +317,22 @@
           JR.setStatus($('scopeStatus'), '標編碼標注工序已有工作進行中，請等候完成或按「取消」。', 'error');
           return;
         }
+        // 自然語言：關鍵字欄位是整句描述時，由 AI 整理成關鍵字與法規（回填後照常執行）。
+        var nlKeyword = $('scopeKeyword').value.trim();
+        if (nlKeyword && !statuteLines().length) {
+          var nl;
+          try {
+            nl = await JR.nl.interpret('scope', nlKeyword, $('scopeAi').value);
+          } catch (err) {
+            JR.setStatus($('scopeStatus'), JR.errText(err), 'error');
+            return;
+          }
+          if (nl.mode === 'natural') {
+            if (nl.fields.keyword) $('scopeKeyword').value = nl.fields.keyword;
+            if (nl.fields.statute) $('scopeLines').value = nl.fields.statute;
+            if (nl.fields.smart) $('scopeSmart').checked = true;
+          }
+        }
         var statutes = statuteLines();
         var keyword = $('scopeKeyword').value.trim();
         var related = $('scopeRelated').value.trim();
