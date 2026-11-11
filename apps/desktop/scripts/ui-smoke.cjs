@@ -94,10 +94,12 @@ app.whenReady().then(async () => {
     check('檔案頁讀取沒有錯誤', !/讀取失敗/.test(filesMsg), filesMsg);
 
     // 8. 深色模式切換
+    // 不假設起始主題（應用程式會沿用上次保存的主題）：點一次後應與點之前相反，再點回原樣。
+    const themeBefore = await js(w, "document.documentElement.getAttribute('data-theme')");
     await js(w, "document.getElementById('themeToggle').click()");
     await wait(100);
-    const dark = await js(w, "document.documentElement.getAttribute('data-theme')");
-    check('深色模式可切換', dark === 'dark', dark);
+    const themeAfter = await js(w, "document.documentElement.getAttribute('data-theme')");
+    check('深色模式可切換', themeAfter !== themeBefore && ['light', 'dark'].includes(themeAfter), `${themeBefore} → ${themeAfter}`);
     await js(w, "document.getElementById('themeToggle').click()");
 
     // 9. 設定：切到工作負載身分聯合，圖解步驟與欄位出現，金鑰欄位隱藏
@@ -105,12 +107,13 @@ app.whenReady().then(async () => {
     await wait(200);
     await js(w, "document.getElementById('setAuthMode').value='federation'; document.getElementById('setAuthMode').dispatchEvent(new Event('change'))");
     await wait(120);
-    const fedShown = await js(w, "!document.getElementById('fedFields').hidden");
-    const steps = await js(w, "document.querySelectorAll('.wif-step').length");
+    // 聯盟面板（fedPanel）在切到聯合模式時顯示，四步按鈕在 #fedSteps。
+    const fedShown = await js(w, "!document.getElementById('fedPanel').hidden");
+    const steps = await js(w, "document.querySelectorAll('#fedSteps .fed-step-btn').length");
     const keyHidden = await js(w, "document.getElementById('keyField').hidden");
     check('身分聯合：顯示欄位與四步圖解', fedShown === true && steps === 4, String(steps));
     check('身分聯合：隱藏金鑰欄位', keyHidden === true);
-    const svgCount = await js(w, "document.querySelectorAll('.wif-art').length");
+    const svgCount = await js(w, "document.querySelectorAll('#fedSteps .fed-step-btn .fed-ico').length");
     check('身分聯合：每一步都有 SVG 圖示', svgCount === 4, String(svgCount));
     await js(w, "document.getElementById('setAuthMode').value='apiKey'; document.getElementById('setAuthMode').dispatchEvent(new Event('change'))");
     await wait(80);
