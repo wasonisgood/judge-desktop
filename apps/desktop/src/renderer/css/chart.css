@@ -11,3 +11,9 @@
 .crosstab th { background: var(--paper-2); color: var(--ink-2); font-weight: 700; }
 .crosstab td { font-variant-numeric: tabular-nums; }
 #chartColumns select { min-width: 96px; }
+
+/* 結果自動出圖（列表、範圍整理）：圖表寬度跟隨版面，不撐破頁面。 */
+.result-charts { margin: 18px 0 8px; min-width: 0; }
+.result-charts-title { font-size: 1rem; margin: 0 0 8px; }
+.result-chart { margin: 0 0 14px; min-width: 0; overflow-x: auto; }
+.result-chart svg { display: block; max-width: 100%; height: auto; }

@@ -261,6 +261,20 @@
     }
   };
 
+  /** 範圍結果的列（多部法規合併去重），供自動出圖使用。 */
+  function scopeChartRows(sheets) {
+    var seen = {};
+    var out = [];
+    (sheets || []).forEach(function (sh) {
+      (sh.rows || []).forEach(function (r) {
+        if (seen[r.id]) return;
+        seen[r.id] = true;
+        out.push({ id: r.id, title: r.title || '', court: r.court || '', dateIso: r.dateIso || null, cause: r.cause || '', caseType: r.caseTypeLabel || '' });
+      });
+    });
+    return out;
+  }
+
   JR.controllers.scope = {
     /**
      * 從「檔案」開啟已保存的結果：流程與說明隨結果保存。舊結果沒有流程紀錄時，明確說明它產生於紀錄功能加入之前。
@@ -286,6 +300,7 @@
       state.scopeFilters = {};
       state.scopeSummaries = null;
       renderResult();
+      JR.controllers.resultCharts.show('scopeCharts', scopeChartRows(sheets));
       refreshControls();
       // 取得覆核摘要（待覆核數、高信心數）；不改動結果。
       api.scope.review({ sheets: sheets }).then(function (r) {

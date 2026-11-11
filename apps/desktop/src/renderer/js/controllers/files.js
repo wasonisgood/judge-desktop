@@ -19,7 +19,7 @@
       state.listItems = p.items || [];
       state.listDetails = p.details || {};
       state.listKeyword = p.keyword || '';
-      JR.views.renderList(state.listItems);
+      JR.controllers.list.showItems(state.listItems);
       $('listKeyword').value = state.listKeyword;
       $('listExport').disabled = state.listItems.length === 0;
       JR.setStatus($('listStatus'), '已從「檔案」開啟。', 'ok');

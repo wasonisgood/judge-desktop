@@ -18,6 +18,14 @@
     return parts.join('　');
   }
 
+  // 列表結果：顯示列表並自動出圖（列表沒有法院欄，由字號推出）。
+  function showListItems(items) {
+    JR.views.renderList(items);
+    JR.controllers.resultCharts.show('listCharts', (items || []).map(function (it) {
+      return { id: it.id, title: it.title || '', court: '', dateIso: it.dateIso || null, cause: it.cause || '', caseType: '' };
+    }));
+  }
+
   function setRunning(on) {
     $('listRun').disabled = on;
     $('listExport').disabled = on;
@@ -49,7 +57,7 @@
         state.listDetails = {};
         state.listKeyword = request;
         state.listVerdicts = null;
-        JR.views.renderList(r.items);
+        showListItems(r.items);
       }
       if (r.status === 'ask') {
         JR.components.clarifyBox($('listClarify'), {
@@ -76,8 +84,10 @@
   }
 
   JR.controllers.list = {
+    /** 供「檔案」頁顯示已保存的列表結果（同時出圖）。 */
+    showItems: showListItems,
     bind: function () {
-      $('listShowAll').addEventListener('change', function () { if (state.listItems) JR.views.renderList(state.listItems); });
+      $('listShowAll').addEventListener('change', function () { if (state.listItems) showListItems(state.listItems); });
 
       $('listScreen').addEventListener('click', async function () {
         if (!state.listItems || state.listItems.length === 0) return;
@@ -102,7 +112,7 @@
           }
           state.listVerdicts = verdicts;
           $('listShowAll').checked = false;
-          JR.views.renderList(state.listItems);
+          showListItems(state.listItems);
           JR.setStatus($('listScreenStatus'), 'AI 篩選完成。', 'ok');
         } catch (err) {
           JR.setStatus($('listScreenStatus'), 'AI 篩選失敗：' + JR.errText(err), 'error');
@@ -156,7 +166,7 @@
           state.listKeyword = keyword;
           state.listVerdicts = null;
           $('listScreen').disabled = r.items.length === 0;
-          JR.views.renderList(r.items);
+          showListItems(r.items);
           var extra = noteText(r);
           var msg = r.items.length ? '找到 ' + r.items.length + ' 筆，已存入「檔案」。' : '沒有找到符合的判決，請換個關鍵字再試。';
           JR.setStatus($('listStatus'), msg + (extra ? '　' + extra : ''), r.items.length && !r.cancelled && !r.saveError ? 'ok' : 'error');
@@ -187,7 +197,7 @@
           state.listKeyword = '手動輸入';
           state.listVerdicts = null;
           $('listScreen').disabled = r.items.length === 0;
-          JR.views.renderList(r.items);
+          showListItems(r.items);
           $('listExport').disabled = r.items.length === 0;
           var extra = noteText(r);
           if (r.items.length) JR.setStatus($('manualStatus'), '已產生 ' + r.items.length + ' 筆，已存入「檔案」。' + (extra ? '　' + extra : ''), r.cancelled || r.saveError ? 'error' : 'ok');
