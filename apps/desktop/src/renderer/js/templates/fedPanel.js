@@ -31,10 +31,10 @@
   </ul>
 
   <ol class="fed-steps" id="fedSteps" aria-label="設定步驟">
-    <li><button type="button" class="fed-step-btn" data-step="1" aria-current="step">${ICON.issuer}<span class="fed-step-no">一</span><span class="fed-step-name">發行者</span></button></li>
-    <li><button type="button" class="fed-step-btn" data-step="2">${ICON.rule}<span class="fed-step-no">二</span><span class="fed-step-name">聯盟規則</span></button></li>
-    <li><button type="button" class="fed-step-btn" data-step="3">${ICON.target}<span class="fed-step-no">三</span><span class="fed-step-name">服務帳戶</span></button></li>
-    <li><button type="button" class="fed-step-btn" data-step="4">${ICON.fill}<span class="fed-step-no">四</span><span class="fed-step-name">填入本工具</span></button></li>
+    <li><button type="button" class="fed-step-btn" id="fedStep1" data-step="1" aria-current="step">${ICON.issuer}<span class="fed-step-no">一</span><span class="fed-step-name">發行者</span></button></li>
+    <li><button type="button" class="fed-step-btn" id="fedStep2" data-step="2">${ICON.rule}<span class="fed-step-no">二</span><span class="fed-step-name">聯盟規則</span></button></li>
+    <li><button type="button" class="fed-step-btn" id="fedStep3" data-step="3">${ICON.target}<span class="fed-step-no">三</span><span class="fed-step-name">服務帳戶</span></button></li>
+    <li><button type="button" class="fed-step-btn" id="fedStep4" data-step="4">${ICON.fill}<span class="fed-step-no">四</span><span class="fed-step-name">填入本工具</span></button></li>
   </ol>
 
   <!-- 一、發行者：本工具 -->

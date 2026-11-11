@@ -56,7 +56,7 @@
               </div>
             </details>
             <div class="actions">
-              <button class="btn primary" type="submit">儲存</button>
+              <button class="btn primary" type="submit" id="setSave">儲存</button>
               <button class="btn" type="button" id="setTest">測試連線</button>
             </div>
             <p class="status" id="setStatus" role="status"></p>
