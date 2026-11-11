@@ -20,6 +20,31 @@
     b.textContent = state === 'cancelling' ? '取消中…' : '取消';
   }
 
+  // 處理流程的按鈕鎖定：送出後到結果生成前，該頁的按鈕不可按；結束後恢復。
+  // 只鎖按鈕（不鎖輸入框），取消按鈕保持可按。助理的範圍是送出鈕所在的表單。
+  var LOCK_SCOPE = { assistant: '#assistForm' };
+
+  function lockButtons(page, cancelBtnId) {
+    var root = document.querySelector(LOCK_SCOPE[page] || '#page-' + page);
+    if (!root) return [];
+    var locked = [];
+    // 用 inert 而非 disabled：控制器仍可依結果設定 disabled（例如沒有結果時停用匯出），解鎖時不會覆寫它。
+    root.querySelectorAll('button').forEach(function (b) {
+      if (b.id === cancelBtnId || b.inert) return;
+      locked.push(b);
+      b.inert = true;
+      b.classList.add('job-locked');
+    });
+    return locked;
+  }
+
+  function unlockButtons(locked) {
+    (locked || []).forEach(function (b) {
+      b.inert = false;
+      b.classList.remove('job-locked');
+    });
+  }
+
   var BANNER_LABEL = { search: '判決搜尋', scope: '標編碼標注工序', brief: '精讀', assistant: '助理對話', install: '模組安裝', repair: '模組修復', criteria: '納入排除核查', crawl: '文本擷取' };
 
   function renderBanner(list) {
@@ -48,7 +73,7 @@
     /** 開始一項工作：回傳識別碼（傳給主程序）；取消按鈕顯示。 */
     start: function (page, cancelBtnId) {
       var id = newRunId();
-      runs[page] = { runId: id, cancelBtn: cancelBtnId };
+      runs[page] = { runId: id, cancelBtn: cancelBtnId, locked: lockButtons(page, cancelBtnId) };
       setCancelButton(cancelBtnId, 'running');
       return id;
     },
@@ -57,6 +82,7 @@
       var r = runs[page];
       if (!r) return;
       delete runs[page];
+      unlockButtons(r.locked);
       setCancelButton(r.cancelBtn, 'hidden');
     },
     /** 要求取消這一頁的工作。 */

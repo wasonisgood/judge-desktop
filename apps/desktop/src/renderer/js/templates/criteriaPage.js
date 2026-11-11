@@ -54,7 +54,7 @@
           <select id="critAi" class="ai-source" title="AI 來源">
             <option value="auto">AI：自動（本地優先）</option>
             <option value="local">AI：本地模型</option>
-            <option value="cloud">AI：雲端</option>
+            <option value="cloud" selected>AI：雲端</option>
           </select>
           <button class="btn primary" type="button" id="critRun" disabled>確認執行</button>
           <p class="hint">只有含「AI 判斷」的標準會呼叫 AI；全部是程式判斷時不呼叫 AI。</p>

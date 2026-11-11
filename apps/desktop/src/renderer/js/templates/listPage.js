@@ -42,7 +42,7 @@
             <select id="listAi" class="ai-source" title="AI 來源">
               <option value="auto">AI：自動（本地優先）</option>
               <option value="local">AI：本地模型</option>
-              <option value="cloud">AI：雲端</option>
+              <option value="cloud" selected>AI：雲端</option>
             </select>
             <button class="btn" type="button" id="listScreen" disabled>AI 篩選相關判決</button>
             <button class="btn" type="button" id="listExplain" disabled>查看處理流程</button>
