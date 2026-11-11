@@ -37,8 +37,10 @@ test('結果頁提供待覆核篩選、批次接受、還原上一步與依據�
 });
 
 test('檔案頁開啟舊結果時會帶入項目 id，覆核狀態才能寫回', () => {
-  assert.match(read('js/controllers/files.js'), /showResult\(p\.sheets \|\| \[\], p\.yearFrom, p\.yearTo, it\.id\)/);
-  assert.match(scopeController, /showResult: function \(sheets, from, to, libraryId\)/);
+  // 呼叫鏈：檔案頁 → scope.showSaved(payload, 項目 id) → scope.showResult(…, libraryId) → 記住 scopeLibraryId（覆核寫回用）。
+  assert.match(read('js/controllers/files.js'), /showSaved\(p, it\.id\)/);
+  assert.match(scopeController, /showSaved: function \(p, libraryId\)[\s\S]*?showResult\(p\.sheets \|\| \[\], p\.yearFrom, p\.yearTo, libraryId\)/);
+  assert.match(scopeController, /showResult: function \(sheets, from, to, libraryId\)[\s\S]*?state\.scopeLibraryId = libraryId \|\| null/);
 });
 
 test('設定頁的覆核門檻欄位存在、有讀寫，且控制器用到的 id 都在模板中', () => {
