@@ -68,6 +68,7 @@ contextBridge.exposeInMainWorld('api', {
     exportPng: (args: unknown) => invoke('export:chartPng', args),
     exportDocx: (args: unknown) => invoke('export:chartDocx', args),
     forResult: (args: unknown) => invoke('chart:forResult', args),
+    forRun: (args: unknown) => invoke('chart:forRun', args),
     install: () => invoke('chart:install'),
     disable: () => invoke('chart:disable'),
     remove: () => invoke('chart:remove'),

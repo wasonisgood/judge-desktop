@@ -115,6 +115,7 @@
             <tbody id="critBody"></tbody>
           </table>
         </div>
+        <div class="result-charts" id="critCharts" hidden></div>
         <p class="status" id="critResultStatus" role="status"></p>
       </section>
 `;

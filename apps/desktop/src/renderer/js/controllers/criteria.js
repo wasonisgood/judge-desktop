@@ -138,6 +138,7 @@
     }
     cur.run = r;
     JR.views.renderRun(r);
+    JR.controllers.resultCharts.showRun('critCharts', r);
     JR.views.renderReview(r.review || null);
     $('critExport').disabled = false;
     $('critReview').disabled = false;

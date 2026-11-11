@@ -104,3 +104,83 @@ export function buildResultCharts(rows: ResultRow[]): { charts: ChartResult[]; w
   }
   return { charts, warnings };
 }
+
+// ---------------------------------------------------------------------------
+// 納入排除的執行紀錄出圖：每案的決定，以及每條標準的判定分布
+// ---------------------------------------------------------------------------
+
+export interface RunOutcome {
+  id: string;
+  decision: string;
+  dateIso: string | null;
+  /** 每條標準的名稱與判定（依標準順序）。 */
+  verdicts: { name: string; verdict: string }[];
+}
+
+const DECISION_LABEL: Record<string, string> = { include: '納入', exclude: '排除', review: '需人工檢視' };
+const VERDICT_LABEL: Record<string, string> = { met: '符合', not_met: '不符合', unknown: '無法判斷' };
+const MAX_CRITERIA_CHARTS = 8;
+
+/** 清理執行紀錄（只保留可出圖的欄位，限制筆數與長度）。 */
+export function sanitizeRunOutcomes(raw: unknown): RunOutcome[] {
+  if (!Array.isArray(raw)) return [];
+  const out: RunOutcome[] = [];
+  for (const item of raw.slice(0, MAX_ROWS)) {
+    if (!item || typeof item !== 'object') continue;
+    const o = item as Record<string, unknown>;
+    const id = str(o.id, 200);
+    if (!id) continue;
+    const verdicts: RunOutcome['verdicts'] = [];
+    if (Array.isArray(o.verdicts)) {
+      for (const v of o.verdicts.slice(0, MAX_CRITERIA_CHARTS)) {
+        if (!v || typeof v !== 'object') continue;
+        const x = v as Record<string, unknown>;
+        verdicts.push({ name: str(x.name, 40) || '標準', verdict: str(x.verdict, 20) });
+      }
+    }
+    const dateIso = str(o.dateIso, 20);
+    out.push({ id, decision: str(o.decision, 20), dateIso: dateIso || null, verdicts });
+  }
+  return out;
+}
+
+/** 執行紀錄的圖表：決定分布一張；每條標準的判定分布各一張。 */
+export function buildRunCharts(outcomes: RunOutcome[]): { charts: ChartResult[]; warnings: string[] } {
+  if (outcomes.length === 0) return { charts: [], warnings: ['本次沒有可出圖的結果'] };
+  const criteriaCount = Math.max(0, ...outcomes.map((o) => o.verdicts.length));
+  const colOf = (k: number) => `準則${k + 1}`;
+  const headers = ['判決ID', '決定', '年份', ...Array.from({ length: criteriaCount }, (_, k) => colOf(k))];
+  const sheet: ChartSheet = {
+    name: '執行結果',
+    headers,
+    rows: outcomes.map((o) => {
+      const row: Record<string, string> = {
+        '判決ID': o.id,
+        '決定': DECISION_LABEL[o.decision] ?? (o.decision || '未知'),
+        '年份': yearOf(o.dateIso),
+      };
+      for (let k = 0; k < criteriaCount; k++) {
+        const v = o.verdicts[k];
+        row[colOf(k)] = v ? VERDICT_LABEL[v.verdict] ?? '無法判斷' : '未判定';
+      }
+      return row;
+    }),
+  };
+  const inferredKinds = Object.fromEntries(headers.map((h) => [h, 'category' as const]));
+  const specs: { title: string; category: string }[] = [{ title: '納入排除結果分布', category: '決定' }];
+  for (let k = 0; k < criteriaCount; k++) {
+    const name = outcomes.find((o) => o.verdicts[k])?.verdicts[k]?.name ?? '';
+    specs.push({ title: `標準 ${k + 1}：${name}`.slice(0, 60), category: colOf(k) });
+  }
+  const charts: ChartResult[] = [];
+  const warnings: string[] = [];
+  for (const spec of specs) {
+    try {
+      const config = sanitizeChartConfig({ type: 'bar', unit: 'judgments', title: spec.title, idColumn: '判決ID', category: spec.category, series: null });
+      charts.push(buildChartResult({ sheet, fileName: '執行結果', config, inferredKinds }));
+    } catch (err) {
+      warnings.push(`${spec.title}：${err instanceof Error ? err.message : String(err)}`);
+    }
+  }
+  return { charts, warnings };
+}

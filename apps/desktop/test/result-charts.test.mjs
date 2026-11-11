@@ -46,3 +46,24 @@ test('沒有列時回傳提示而不出圖', () => {
   assert.equal(charts.length, 0);
   assert.match(warnings[0], /沒有可出圖/);
 });
+
+// ---- 納入排除的執行紀錄出圖 ----
+test('執行紀錄出圖：決定分布與每條標準各一張；標準名稱與判定正確', () => {
+  const outcomes = rc.sanitizeRunOutcomes([
+    { id: 'C1', decision: 'include', dateIso: '2025-01-01', verdicts: [{ name: '原告為消費者', verdict: 'met' }, { name: '未和解', verdict: 'not_met' }] },
+    { id: 'C2', decision: 'review', dateIso: null, verdicts: [{ name: '原告為消費者', verdict: 'unknown' }, { name: '未和解', verdict: 'met' }] },
+    { id: 'C3', decision: 'exclude', dateIso: '2024-06-01', verdicts: [{ name: '原告為消費者', verdict: 'not_met' }, { name: '未和解', verdict: 'not_met' }] },
+  ]);
+  const { charts, warnings } = rc.buildRunCharts(outcomes);
+  assert.equal(warnings.length, 0);
+  assert.equal(charts.length, 3, '1 張決定分布 + 2 條標準');
+  assert.match(charts[0].title, /^納入排除結果分布/, '圖表標題會附上計數單位');
+  assert.match(charts[1].title, /標準 1：原告為消費者/);
+  assert.match(charts[2].svg, /未和解/);
+});
+
+test('執行紀錄出圖：沒有結果時提示而不出圖', () => {
+  const { charts, warnings } = rc.buildRunCharts([]);
+  assert.equal(charts.length, 0);
+  assert.match(warnings[0], /沒有可出圖/);
+});
