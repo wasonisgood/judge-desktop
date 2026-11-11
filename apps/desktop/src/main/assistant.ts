@@ -38,7 +38,7 @@ export interface AssistantTurn {
 }
 
 /** 內部對話紀錄（與供應商無關），送出前再轉成各家的格式。 */
-type Item =
+export type Item =
   | { type: 'user'; text: string }
   | { type: 'assistant'; text: string; calls: ToolCall[] }
   | { type: 'tool'; id: string; name: string; content: string };
@@ -180,7 +180,7 @@ interface ModelReply {
   calls: ToolCall[];
 }
 
-async function askModel(cfg: AiConfig, items: Item[], system: string, cancel?: AbortSignal): Promise<ModelReply> {
+async function askModel(cfg: AiConfig, items: Item[], system: string, tools: ToolDef[], cancel?: AbortSignal): Promise<ModelReply> {
   const base = cfg.baseUrl.replace(/\/$/, '');
   const timeout = AbortSignal.timeout(120_000);
   const signal = cancel ? AbortSignal.any([cancel, timeout]) : timeout;
@@ -193,7 +193,7 @@ async function askModel(cfg: AiConfig, items: Item[], system: string, cancel?: A
         model: cfg.model,
         max_tokens: 1500,
         system,
-        tools: ASSISTANT_TOOLS.map((t) => ({ name: t.name, description: t.description, input_schema: t.parameters })),
+        tools: tools.map((t) => ({ name: t.name, description: t.description, input_schema: t.parameters })),
         messages: toAnthropic(items),
       }),
     });
@@ -213,7 +213,7 @@ async function askModel(cfg: AiConfig, items: Item[], system: string, cancel?: A
       model: cfg.model,
       max_tokens: 1500,
       messages: [{ role: 'system', content: system }, ...toOpenAi(items)],
-      tools: ASSISTANT_TOOLS.map((t) => ({ type: 'function', function: { name: t.name, description: t.description, parameters: t.parameters } })),
+      tools: tools.map((t) => ({ type: 'function', function: { name: t.name, description: t.description, parameters: t.parameters } })),
     }),
   });
   const json: any = await res.json().catch(() => ({}));
@@ -258,24 +258,39 @@ export async function runAssistantTurn(
     { type: 'user', text: userText },
   ];
   const turn: AssistantTurn = { reply: '', navigate: null, pending: [] };
+  turn.reply = await runToolLoop(cfg, system, ASSISTANT_TOOLS, items, async (call) => {
+    const out = await deps.execute(call, ctx);
+    if (out.navigate) turn.navigate = out.navigate;
+    if (out.pending) turn.pending.push(out.pending);
+    return out;
+  }, opts.signal);
+  return turn;
+}
 
-  for (let round = 0; round < 6; round++) {
-    if (opts.signal?.aborted) throw new JobCancelledError();
-    const r = await raceAbort(askModel(cfg, items, system, opts.signal), opts.signal);
+/**
+ * 通用的工具迴圈：反覆呼叫模型，執行它要求的工具，直到模型不再要求工具為止。
+ * items 會被就地補上中間紀錄（assistant 與 tool）。最多 maxRounds 輪；超過時回傳提示文字。
+ */
+export async function runToolLoop(
+  cfg: AiConfig,
+  system: string,
+  tools: ToolDef[],
+  items: Item[],
+  execute: (call: ToolCall) => Promise<ToolOutcome>,
+  signal?: AbortSignal,
+  maxRounds = 6,
+): Promise<string> {
+  for (let round = 0; round < maxRounds; round++) {
+    if (signal?.aborted) throw new JobCancelledError();
+    const r = await raceAbort(askModel(cfg, items, system, tools, signal), signal);
     items.push({ type: 'assistant', text: r.text, calls: r.calls });
-    if (r.calls.length === 0) {
-      turn.reply = r.text || '（沒有回覆）';
-      return turn;
-    }
+    if (r.calls.length === 0) return r.text || '（沒有回覆）';
     for (const call of r.calls) {
-      const out = await deps.execute(call, ctx);
-      if (out.navigate) turn.navigate = out.navigate;
-      if (out.pending) turn.pending.push(out.pending);
+      const out = await execute(call);
       items.push({ type: 'tool', id: call.id, name: call.name, content: out.content });
     }
   }
-  turn.reply = '這次對話的工具呼叫次數已達上限，請把需求說得更具體一點。';
-  return turn;
+  return '這次對話的工具呼叫次數已達上限，請把需求說得更具體一點。';
 }
 
 /** 只允許模型提議這兩種會花費 AI 額度的動作；其他名稱一律拒絕。 */

@@ -1,31 +1,15 @@
-// 控制器：研究設計引導（issue #11）。對話紀錄在本機；AI 只整理欄位草稿，不會自動儲存或改動條件。
+// 控制器：研究設計（AI 多輪對話）。對話紀錄存在本機；AI 可呼叫寫入欄位、試搜尋、帶入範圍整理等工具。
+// 使用者仍可直接在欄位表單修改並儲存。
 (function (JR) {
   'use strict';
   var $ = JR.$;
   var api = window.api;
   var V = JR.views.design;
+  var PAGE = 'design';
   var current = null;
-  var busy = false;
 
   function status(msg, kind) { JR.setStatus($('designStatus'), msg, kind); }
   function fail(err) { status(JR.errText(err), 'error'); }
-
-  function answerText() { return $('designAnswer').value.trim(); }
-
-  var handlers = {
-    accept: function (suggestionId) {
-      api.design.accept({ id: current, suggestionId: suggestionId }).then(function (view) {
-        V.renderWork(view, handlers);
-        status('已接受建議，欄位已更新。', 'ok');
-      }, fail);
-    },
-    skip: function (suggestionId) {
-      api.design.skip({ id: current, suggestionId: suggestionId }).then(function (view) {
-        V.renderWork(view, handlers);
-        status('已略過這則建議，條件未改動。');
-      }, fail);
-    }
-  };
 
   function refreshList() {
     return api.design.list().then(function (items) {
@@ -37,7 +21,7 @@
   function open(id) {
     return api.design.get({ id: id }).then(function (view) {
       current = view.id;
-      V.renderWork(view, handlers);
+      V.renderWork(view);
       return refreshList();
     });
   }
@@ -46,7 +30,7 @@
     refreshList().then(function (items) {
       if (current) return;
       if (items.length) return open(items[0].id);
-      V.showStart(true);
+      V.showEmpty();
     }).catch(fail);
   }
 
@@ -63,6 +47,31 @@
     }, fail);
   }
 
+  function send() {
+    var text = $('designAnswer').value.trim();
+    if (!text) { status('請輸入內容再送出。', 'error'); return; }
+    if (JR.jobs.isBusy(PAGE)) { status('助理正在回覆，請等候或按「取消」。', 'error'); return; }
+    var runId = JR.jobs.start(PAGE, 'designCancel');
+    $('designAnswer').value = '';
+    V.appendPending(text);
+    status('助理回覆中…');
+    api.design.chat({ runId: runId, id: current || undefined, text: text }).then(function (r) {
+      current = r.view.id;
+      V.renderWork(r.view);
+      status(r.actions.length ? '已執行：' + r.actions.join('；') : '', r.actions.length ? 'ok' : '');
+      if (r.navigate === 'scope') handOffToScope();
+      return refreshList();
+    }).catch(function (err) {
+      // 失敗或取消：把輸入還原，畫面回到已保存的紀錄。
+      $('designAnswer').value = text;
+      if (current) return open(current).then(function () { fail(err); }, fail);
+      V.showEmpty();
+      fail(err);
+    }).finally(function () {
+      JR.jobs.finish(PAGE);
+    });
+  }
+
   JR.controllers.design = {
     load: loadPage,
     bind: function () {
@@ -71,69 +80,37 @@
 
       $('designSelect').addEventListener('change', function () {
         var id = $('designSelect').value;
-        if (!id) { current = null; V.clearWork(); return; }
+        if (!id) { current = null; V.showEmpty(); return; }
         open(id).catch(fail);
       });
 
       $('designNew').addEventListener('click', function () {
         current = null;
         $('designSelect').value = '';
-        $('designProblem').value = '';
-        V.showStart(true);
+        $('designAnswer').value = '';
+        V.showEmpty();
         status('');
-        $('designProblem').focus();
-      });
-
-      $('designStartForm').addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        var problem = $('designProblem').value.trim();
-        if (!problem) { status('請先輸入問題意識（可以很模糊）。', 'error'); return; }
-        api.design.create({ problem: problem }).then(function (view) {
-          current = view.id;
-          V.renderWork(view, handlers);
-          $('designProblem').value = '';
-          status('已記下問題意識，請依序回答助理的追問。', 'ok');
-          return refreshList();
-        }).catch(fail);
+        $('designAnswer').focus();
+        refreshList().catch(fail);
       });
 
       $('designAnswerForm').addEventListener('submit', function (ev) {
         ev.preventDefault();
-        var text = answerText();
-        if (!text) { status('請輸入回答。', 'error'); return; }
-        if (busy) return;
-        busy = true;
-        api.design.answer({ id: current, text: text }).then(function (view) {
-          $('designAnswer').value = '';
-          V.renderWork(view, handlers);
-          status('已記錄回答。');
-        }, fail).then(function () { busy = false; });
+        send();
       });
 
-      // AI 整理：只把草稿填入欄位表單，必須按「儲存欄位」才會生效。
-      $('designAiFill').addEventListener('click', function () {
-        var text = answerText();
-        if (!text) { status('請先在回答框輸入想法，再按「AI 整理成欄位」。', 'error'); return; }
-        if (busy) return;
-        busy = true;
-        status('AI 整理中…');
-        api.design.aiFill({ text: text }).then(function (r) {
-          var n = Object.keys(r.fields || {}).length;
-          if (!n) { status('AI 沒有從這段話找到可填入的欄位，請直接在下方欄位填寫。', 'error'); return; }
-          V.fillFields(r.fields);
-          status('AI 已填入 ' + n + ' 個欄位草稿，請確認後按「儲存欄位」。', 'ok');
-        }, fail).then(function () { busy = false; });
-      });
-
-      $('designAnswerForm').addEventListener('keydown', function (ev) {
-        if (ev.key === 'Enter' && (ev.ctrlKey || ev.metaKey)) $('designAnswerForm').dispatchEvent(new Event('submit', { cancelable: true }));
+      $('designAnswer').addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' && (ev.ctrlKey || ev.metaKey)) {
+          ev.preventDefault();
+          send();
+        }
       });
 
       $('designFieldsForm').addEventListener('submit', function (ev) {
         ev.preventDefault();
-        if (!current) return;
+        if (!current) { status('請先開始一段對話，再儲存欄位。', 'error'); return; }
         api.design.setFields({ id: current, fields: V.readFields() }).then(function (view) {
-          V.renderWork(view, handlers);
+          V.renderWork(view);
           status('欄位已儲存。', 'ok');
         }, fail);
       });
@@ -144,7 +121,7 @@
         var id = current;
         api.design.remove({ id: id }).then(function () {
           current = null;
-          V.clearWork();
+          V.showEmpty();
           status('已刪除。');
           return refreshList();
         }).catch(fail);
