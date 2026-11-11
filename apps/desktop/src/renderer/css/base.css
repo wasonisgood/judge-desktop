@@ -136,14 +136,20 @@ input:focus, select:focus, textarea:focus { border-color: var(--shu); box-shadow
 .checks { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 10px; }
 .checks label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .checks input { accent-color: var(--shu); }
-.actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 4px; }
+/* 操作列：按鈕與下拉選單共用同一高度與垂直置中，避免各頁按鈕錯位。 */
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 8px 0 4px; }
 .btn {
-  white-space: nowrap;
-  padding: 8px 16px; border: 1px solid var(--ink-3); border-radius: var(--radius);
+  white-space: nowrap; box-sizing: border-box; min-height: 38px;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 16px; border: 1px solid var(--ink-3); border-radius: var(--radius);
   background: transparent; cursor: pointer;
 }
+.btn.small { min-height: 30px; padding: 0 10px; }
+.actions > select, .actions > .ai-source { height: 38px; padding-top: 0; padding-bottom: 0; box-sizing: border-box; }
 .btn:hover:not(:disabled) { background: var(--paper-3); }
 .btn:disabled { opacity: .45; cursor: default; }
+/* 處理流程進行中：該頁按鈕鎖定（inert），結果生成後由 jobs.js 解除。 */
+.btn.job-locked { opacity: .5; cursor: progress; }
 .btn.primary { background: var(--shu); border-color: var(--shu); color: #fff; }
 .btn.primary:hover:not(:disabled) { background: var(--shu-ink); }
 .btn.danger { color: var(--shu-ink); border-color: var(--shu-ink); }

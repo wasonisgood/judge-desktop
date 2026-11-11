@@ -7,6 +7,9 @@
 .ann-count { color: var(--ink-2); font-size: 0.9rem; }
 
 .annotate-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; margin-top: 10px; }
+/* 說明文字與 AI 分析內容可能含很長的字號、網址或無空白字串：允許任意斷行，避免撐破版面。 */
+.annotate-layout > *, .ann-side > * { min-width: 0; }
+.annotate .hint, .ann-side, .ann-side p, .ann-note-text, .ann-quote, .ann-quote-full, .ann-reader { overflow-wrap: anywhere; word-break: break-word; }
 .ann-reader { padding: 18px 22px; background: var(--paper-2); border: 1px solid var(--rule); line-height: 1.95; white-space: pre-wrap; user-select: text; }
 .ann-reader mark.ann { color: var(--ink); padding: 0 1px; cursor: pointer; border-radius: 2px; }
 .ann-reader mark.ann-yellow { background: #fff1a8; }

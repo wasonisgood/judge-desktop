@@ -60,7 +60,7 @@
             <select id="semAi" class="ai-source" title="AI 來源">
               <option value="auto">AI：自動（本地優先）</option>
               <option value="local">AI：本地模型</option>
-              <option value="cloud">AI：雲端</option>
+              <option value="cloud" selected>AI：雲端</option>
             </select>
             <button class="btn primary" type="submit" id="semRun">檢索並排序</button>
             <button class="btn" type="button" id="semCancel" hidden>取消</button>

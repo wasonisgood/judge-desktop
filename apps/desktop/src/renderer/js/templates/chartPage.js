@@ -3,6 +3,7 @@
   'use strict';
   JR.templates.chartPage = `
       <section class="page" id="page-chart">
+        <p class="back-link"><button class="btn small" type="button" data-go="tools">← 回工具</button></p>
         <h1>量化圖表</h1>
         <p class="lead">讀取本程式匯出或自備的 Excel 結果檔，繪製長條圖、堆疊條圖、小提琴圖、交叉表與示意格狀地圖。圖表只使用檔案內的資料，不連線司法院。</p>
         <p class="hint" id="chartOff" hidden>量化圖表模組尚未安裝。請到「設定」→「模組」開啟「量化圖表」。關閉後本頁會隱藏，其他功能不受影響。</p>

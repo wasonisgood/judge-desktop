@@ -5,10 +5,14 @@
   var api = window.api;
 
   // 頁面切換：進入設定或檔案頁時重新讀取資料。
+  // 工具的子頁不在導覽列上，切換時導覽列仍標示「工具」。
+  var RAIL_OF = { crawl: 'tools', chart: 'tools' };
+
   JR.nav = {
     showPage: function (name) {
+      var rail = RAIL_OF[name] || name;
       document.querySelectorAll('.page').forEach(function (p) { p.classList.toggle('active', p.id === 'page-' + name); });
-      document.querySelectorAll('.rail-item').forEach(function (n) { n.classList.toggle('active', n.dataset.page === name); });
+      document.querySelectorAll('.rail-item').forEach(function (n) { n.classList.toggle('active', n.dataset.page === rail); });
       if (name === 'settings') JR.controllers.settings.load();
       if (name === 'files') JR.controllers.files.load();
       if (name === 'criteria') JR.controllers.criteria.load();

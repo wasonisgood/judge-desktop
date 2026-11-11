@@ -220,7 +220,6 @@
   JR.controllers.criteria = {
     load: function () {
       loadSources();
-      if (!$('critRows').children.length) { addRow({ kind: 'include', method: 'ai' }); addRow({ kind: 'exclude', method: 'program' }); }
       loadRuns();
       setPlanEnabled();
     },
@@ -240,6 +239,24 @@
       });
       // 取消按鈕由 JR.jobs.init 統一綁定（critCancel → criteria）。
       $('critAdd').addEventListener('click', function () { addRow({ kind: 'include', method: 'ai' }); });
+      // 一句話描述 → 標準列（加入現有標準，之後仍可逐列修改或移除）。自然語言才呼叫 AI；關鍵字直接成為一條程式判斷標準。
+      $('critNlForm').addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var text = $('critNlText').value.trim();
+        if (!text) { JR.setStatus($('critNlStatus'), '請先輸入納入或排除的描述。', 'error'); return; }
+        if (JR.jobs.isBusy(PAGE)) { JR.setStatus($('critNlStatus'), '核查頁已有工作進行中，請稍候。', 'error'); return; }
+        // 只鎖按鈕（一次性呼叫，無可取消的主程序工作，因此不傳取消鈕）。
+        JR.jobs.start(PAGE, null);
+        JR.setStatus($('critNlStatus'), '整理標準中…');
+        api.nl.criteria({ text: text, ai: $('critAi').value }).then(function (r) {
+          r.criteria.forEach(function (c) { addRow(c); });
+          invalidatePlan();
+          $('critNlText').value = '';
+          JR.setStatus($('critNlStatus'), (r.mode === 'natural' ? '已整理為 ' : '已加入關鍵字標準：') + r.criteria.length + ' 條標準，請檢查後執行。', 'ok');
+        }).catch(function (err) {
+          JR.setStatus($('critNlStatus'), '整理失敗：' + JR.errText(err), 'error');
+        }).finally(function () { JR.jobs.finish(PAGE); });
+      });
       // 標準列的任何變動（含移除）都讓規劃失效，必須重新規劃後才能執行。
       $('critRows').addEventListener('input', invalidatePlan);
       $('critRows').addEventListener('change', invalidatePlan);

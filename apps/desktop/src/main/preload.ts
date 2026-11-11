@@ -132,15 +132,15 @@ contextBridge.exposeInMainWorld('api', {
   assistant: {
     chat: (args: unknown) => invoke('assistant:chat', args),
   },
+  nl: {
+    interpret: (args: unknown) => invoke('nl:interpret', args),
+    criteria: (args: unknown) => invoke('nl:criteria', args),
+  },
   design: {
     list: () => invoke('design:list'),
-    create: (args: unknown) => invoke('design:create', args),
+    chat: (args: unknown) => invoke('design:chat', args),
     get: (args: unknown) => invoke('design:get', args),
-    answer: (args: unknown) => invoke('design:answer', args),
     setFields: (args: unknown) => invoke('design:setFields', args),
-    aiFill: (args: unknown) => invoke('design:aiFill', args),
-    accept: (args: unknown) => invoke('design:accept', args),
-    skip: (args: unknown) => invoke('design:skip', args),
     remove: (args: unknown) => invoke('design:remove', args),
     export: (args: unknown) => invoke('design:export', args),
   },

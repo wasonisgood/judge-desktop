@@ -3,7 +3,9 @@
   'use strict';
 
   // authGate 是覆蓋畫面的登入閘門（不是頁面，但與頁面同樣以模板掛載）。
-  var ORDER = ['home', 'list', 'semantic', 'scope', 'brief', 'design', 'criteria', 'chart', 'files', 'crawl', 'settings', 'authGate'];
+  // 頁面順序依研究流程：研究設計 → 列表 → 段落檢索 → 標編碼 → 納入排除 → 單一判決 → 圖表 → 檔案（結果承接）→ 工具 → 設定。
+  // crawl 是「工具」的子頁，不在導覽列；authGate 是覆蓋畫面的登入閘門。
+  var ORDER = ['home', 'design', 'list', 'semantic', 'scope', 'criteria', 'brief', 'chart', 'files', 'tools', 'crawl', 'settings', 'authGate'];
 
   JR.views.mountPages = function () {
     var html = ORDER.map(function (n) { return JR.templates[n + 'Page']; }).join('\n');

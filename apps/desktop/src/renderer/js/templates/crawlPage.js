@@ -3,6 +3,7 @@
   'use strict';
   JR.templates.crawlPage = `
       <section class="page" id="page-crawl">
+        <p class="back-link"><button class="btn small" type="button" data-go="tools">← 回工具</button></p>
         <h1>文本擷取</h1>
         <p class="lead">依序執行五步：取得清單 → 取得文本 → 歷審 → 歷審文本 → 確定判決。每次連線間隔 3 秒（每次最多 25 頁、500 筆）。單筆失敗不中斷整批，原因寫入擷取紀錄。輸出檔案放在輸入檔所在的資料夾，同名時加 _2、_3，不覆蓋既有成果。</p>
         <p class="status" id="crawlStatus" role="status"></p>
