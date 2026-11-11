@@ -59,6 +59,7 @@
             <tbody id="listBody"></tbody>
           </table>
         </div>
+        <div class="result-charts" id="listCharts" hidden></div>
         <section class="manual-list" aria-labelledby="manualTitle">
           <h2 id="manualTitle">手動輸入判決</h2>
           <p class="hint">每行貼上一則判決的網址或判決 ID（例如司法院判決頁網址，或 TPSV_103_2434_20141119）。系統會逐則取得基本資料，產生列表；可匯出 Excel，也會存入「檔案」。</p>

@@ -261,7 +261,54 @@
     }
   };
 
+  /** 範圍結果的列（多部法規合併去重），供自動出圖使用。 */
+  function scopeChartRows(sheets) {
+    var seen = {};
+    var out = [];
+    (sheets || []).forEach(function (sh) {
+      (sh.rows || []).forEach(function (r) {
+        if (seen[r.id]) return;
+        seen[r.id] = true;
+        out.push({ id: r.id, title: r.title || '', court: r.court || '', dateIso: r.dateIso || null, cause: r.cause || '', caseType: r.caseTypeLabel || '' });
+      });
+    });
+    return out;
+  }
+
+  /** 助理用：新增一個分析欄位（與按下「新增欄位」相同，之後可逐欄修改）。 */
+  function addScopeField(f) {
+    $('scopeFieldList').appendChild(JR.components.codingFieldRow({ id: '', name: f.name, description: f.description || '', enabled: true }));
+    scheduleRefresh();
+    return { ok: true };
+  }
+
+  /** 助理用：依欄位名稱移除分析欄位。 */
+  function removeScopeField(name) {
+    var rows = Array.prototype.slice.call($('scopeFieldList').children);
+    var hit = rows.filter(function (row) {
+      var n = row.querySelector('.brief-field-name');
+      return n && n.value.trim() === name;
+    })[0];
+    if (!hit) return { ok: false, reason: '找不到分析欄位「' + name + '」。' };
+    hit.remove();
+    scheduleRefresh();
+    return { ok: true };
+  }
+
   JR.controllers.scope = {
+    /** 助理用：覆核操作（接受、駁回、修改、批次接受高信心、還原上一步）。改動資料，需使用者確認後才會呼叫。 */
+    review: function (a) {
+      var cell = { sheetIndex: a.sheetIndex, caseId: a.caseId, fieldId: a.fieldId };
+      if (a.op === 'accept') reviewActions.accept(cell);
+      else if (a.op === 'reject') reviewActions.reject(cell);
+      else if (a.op === 'edit') reviewActions.edit(cell, a.value);
+      else if (a.op === 'batchAccept') reviewActions.batch(a.sheetIndex);
+      else if (a.op === 'undoLast') reviewActions.undoLast();
+      else return { ok: false, reason: '不支援的覆核操作。' };
+      return { ok: true };
+    },
+    addField: addScopeField,
+    removeField: removeScopeField,
     /**
      * 從「檔案」開啟已保存的結果：流程與說明隨結果保存。舊結果沒有流程紀錄時，明確說明它產生於紀錄功能加入之前。
      * 先設定流程狀態，再顯示結果（按鈕前置條件會讀取這些狀態）。
@@ -286,6 +333,7 @@
       state.scopeFilters = {};
       state.scopeSummaries = null;
       renderResult();
+      JR.controllers.resultCharts.show('scopeCharts', scopeChartRows(sheets));
       refreshControls();
       // 取得覆核摘要（待覆核數、高信心數）；不改動結果。
       api.scope.review({ sheets: sheets }).then(function (r) {

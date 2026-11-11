@@ -18,7 +18,7 @@
           </div>
           <div class="crawl-step">
             <h2>Step 2 取得文本</h2>
-            <p class="hint">選擇清單檔（.xlsx 或 .csv），取得各案全文（清單序號.txt）與擷取紀錄。</p>
+            <p class="hint">選擇清單檔（Excel、CSV、Word、PDF、TXT 皆可；非標準格式會由 AI 判斷欄位，轉成標準清單後使用），取得各案全文（清單序號.txt）與擷取紀錄。</p>
             <div class="crawl-row">
               <span class="crawl-file" id="crawlFile2">尚未選擇</span>
               <button class="btn" type="button" id="crawlPick2" data-pick="2">選擇檔案</button>

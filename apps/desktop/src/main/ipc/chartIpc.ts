@@ -10,6 +10,7 @@ import { toUserError } from '../services/userError';
 import { installChartModuleForApp, disableChartModule, removeChartModule } from '../services/chartModule';
 import { buildChartResult, inspectChartWorkbook, loadChartSheet, loadGeoData, sanitizeChartConfig } from '../services/chartData';
 import { bundledModuleDir } from '../data/local/localPaths';
+import { buildResultCharts, sanitizeResultRows, buildRunCharts, sanitizeRunOutcomes } from '../services/resultCharts';
 import { buildChartDocx, pngSize, sanitizeTable } from '../chartExporters';
 
 const MAX_EXPORT_BYTES = 50 * 1024 * 1024;
@@ -36,6 +37,20 @@ export function registerChartIpc(): void {
     } catch (err) {
       throw toUserError(err);
     }
+  });
+
+  // 結果自動出圖：模組未 ready 時回傳 enabled:false，畫面只顯示提示，不出圖。
+  ipcMain.handle('chart:forResult', async (_e, args: { rows: unknown }) => {
+    const st = (await readModuleStatus()).chart;
+    if (!isModuleReady(st)) return { enabled: false, charts: [], warnings: [] };
+    return { enabled: true, ...buildResultCharts(sanitizeResultRows(args?.rows)) };
+  });
+
+  // 納入排除的執行紀錄出圖（同樣需要模組 ready）。
+  ipcMain.handle('chart:forRun', async (_e, args: { outcomes: unknown }) => {
+    const st = (await readModuleStatus()).chart;
+    if (!isModuleReady(st)) return { enabled: false, charts: [], warnings: [] };
+    return { enabled: true, ...buildRunCharts(sanitizeRunOutcomes(args?.outcomes)) };
   });
 
   ipcMain.handle('chart:disable', () => disableChartModule());

@@ -18,6 +18,7 @@ import { registerAnnotationIpc } from './annotationIpc';
 import { registerWorkerIpc } from './workerIpc';
 import { registerCrawlIpc } from './crawlIpc';
 import { registerNlIpc } from './nlIpc';
+import { registerImportIpc } from './importIpc';
 
 export function registerIpc(): void {
   registerAuthIpc();
@@ -39,4 +40,5 @@ export function registerIpc(): void {
   registerWorkerIpc();
   registerCrawlIpc();
   registerNlIpc();
+  registerImportIpc();
 }

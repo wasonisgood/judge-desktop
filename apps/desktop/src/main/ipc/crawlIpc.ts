@@ -4,16 +4,24 @@ import { runCrawlStep, type CrawlRunArgs } from '../services/crawlService';
 import { withJob } from '../services/jobRegistry';
 import { safeSend } from '../services/safeSend';
 import { toUserError } from '../services/userError';
+import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
+import { importTableFile, isStandardCrawlList, writeStandardCrawlList, IMPORT_EXTENSIONS } from '../services/tableImport';
 
 export function registerCrawlIpc(): void {
   ipcMain.handle('crawl:pickFile', async (e) => {
     const win = BrowserWindow.fromWebContents(e.sender);
     const opts = {
       properties: ['openFile' as const],
-      filters: [{ name: '清單（Excel 或 CSV）', extensions: ['xlsx', 'csv'] }],
+      filters: [{ name: '判決清單（任何常見格式）', extensions: IMPORT_EXTENSIONS }],
     };
     const r = win ? await dialog.showOpenDialog(win, opts) : await dialog.showOpenDialog(opts);
-    return r.canceled ? null : (r.filePaths[0] ?? null);
+    if (r.canceled || !r.filePaths[0]) return null;
+    const file = r.filePaths[0];
+    // 標準清單（Index／Title／URL）直接使用；其他格式由 AI 判斷欄位後，轉成標準清單（與原檔同一資料夾）。
+    if (await isStandardCrawlList(file)) return file;
+    const ai = await requireAi(normalizeAiMode('auto'));
+    const result = await importTableFile(file, ai);
+    return writeStandardCrawlList(file, result.items);
   });
 
   ipcMain.handle('crawl:run', (e, args: CrawlRunArgs & { runId: string }) =>

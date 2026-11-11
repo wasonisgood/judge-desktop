@@ -92,6 +92,34 @@
       return { ok: true };
     },
 
+    /** 頁面動作（ui_action）：由主程序驗證過的參數，分派給對應的控制器。回傳 { ok, reason }。 */
+    runAction: function (name, args) {
+      try {
+        if (name === 'pickCandidate') return JR.controllers.brief.pickById(args.id);
+        if (name === 'setCriteria') return JR.controllers.criteria.setRows(args.criteria);
+        if (name === 'addScopeField') return JR.controllers.scope.addField(args);
+        if (name === 'removeScopeField') return JR.controllers.scope.removeField(args.name);
+        if (name === 'briefFromList') {
+          var item = (JR.state.listItems || []).filter(function (x) { return x.id === args.id; })[0];
+          if (!item) return { ok: false, reason: '判決列表中沒有這則判決，請先搜尋或匯入。' };
+          JR.controllers.brief.openFromList(item, JR.state.listItems);
+          return { ok: true };
+        }
+        if (name === 'semanticExpand') {
+          var btn = document.querySelector('#page-semantic [data-expand-id="' + String(args.caseId).replace(/"/g, '\\"') + '"]');
+          if (!btn) return { ok: false, reason: '結果中找不到這則判決，請先執行段落檢索。' };
+          if (btn.getAttribute('aria-expanded') !== 'true') btn.click();
+          return { ok: true };
+        }
+        if (name === 'scopeReview') return JR.controllers.scope.review(args);
+        if (name === 'scopeOpenSource') { JR.controllers.scope.openSource(args.caseId, args.quote); return { ok: true }; }
+        if (name === 'annotateQuote') return JR.controllers.annotation.annotateQuote(args.quote, args.color, args.note);
+        return { ok: false, reason: '不支援的畫面操作：' + name };
+      } catch (err) {
+        return { ok: false, reason: '操作失敗：' + (err && err.message ? err.message : String(err)) };
+      }
+    },
+
     /** 按下按鈕。頁面正在處理（按鈕被鎖定）時拒絕，避免重複送出。 */
     click: function (id) {
       var el = document.getElementById(id);

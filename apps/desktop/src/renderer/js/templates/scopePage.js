@@ -133,6 +133,7 @@
           </section>
         </form>
         <div id="scopeResult"></div>
+        <div class="result-charts" id="scopeCharts" hidden></div>
       </section>
 `;
 })(window.JR);

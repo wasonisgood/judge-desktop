@@ -112,3 +112,62 @@ test('控制項 id 在所有頁面模板中不重複', async () => {
   }
   assert.deepEqual(dups, []);
 });
+
+// 頁面動作（ui_action）的參數驗證：不認識的動作拒絕；標準與欄位與標注的參數被清理。
+test('頁面動作：不認識的動作拒絕；必要參數缺漏時拒絕', () => {
+  assert.equal(ui.checkUiAction('deleteEverything', {}).ok, false);
+  assert.equal(ui.checkUiAction('pickCandidate', {}).ok, false);
+  assert.equal(ui.checkUiAction('removeScopeField', { name: '  ' }).ok, false);
+  assert.equal(ui.checkUiAction('annotateQuote', { quote: '' }).ok, false);
+});
+
+test('頁面動作：標準列只保留合法的列，AI 需描述、程式需關鍵字；空陣列拒絕', () => {
+  const r = ui.checkUiAction('setCriteria', { criteria: [
+    { kind: 'exclude', method: 'program', keywords: ['和解', ''] },
+    { kind: 'include', method: 'ai', text: '原告為消費者' },
+    { kind: 'include', method: 'ai', text: '' },
+    { kind: 'weird', method: 'nope', text: '其他', keywordMode: 'all' },
+  ] });
+  assert.equal(r.ok, true);
+  assert.equal(r.args.criteria.length, 3);
+  assert.equal(r.args.criteria[0].keywords, '和解、');
+  assert.equal(r.args.criteria[2].kind, 'include');
+  assert.equal(ui.checkUiAction('setCriteria', { criteria: [{ method: 'ai', text: '' }] }).ok, false);
+});
+
+test('頁面動作：標注顏色不合法時改用黃色；候選與欄位參數正確', () => {
+  const a = ui.checkUiAction('annotateQuote', { quote: '本院認為', color: 'purple' });
+  assert.equal(a.ok, true);
+  assert.equal(a.args.color, 'yellow');
+  assert.deepEqual(ui.checkUiAction('pickCandidate', { id: 'TPSV_1' }).args, { id: 'TPSV_1' });
+  assert.deepEqual(ui.checkUiAction('addScopeField', { name: '判決結果', description: '勝訴或敗訴' }).args, { name: '判決結果', description: '勝訴或敗訴' });
+});
+
+// 覆核與跳至原文、精讀列表：覆核改動資料，必須列為待確認；參數缺漏時拒絕。
+test('覆核動作：改動資料的覆核一律需要確認；參數驗證', () => {
+  assert.ok(ui.CONFIRM_UI_ACTIONS.includes('scopeReview'));
+  assert.equal(ui.checkUiAction('scopeReview', { op: 'accept' }).ok, false, '缺少工作表與案件');
+  const ok = ui.checkUiAction('scopeReview', { op: 'accept', sheetIndex: 0, caseId: 'A1', fieldId: 'f1' });
+  assert.equal(ok.ok, true);
+  assert.deepEqual(ok.args, { op: 'accept', sheetIndex: 0, caseId: 'A1', fieldId: 'f1' });
+  assert.equal(ui.checkUiAction('scopeReview', { op: 'edit', sheetIndex: 0, caseId: 'A1', fieldId: 'f1', value: '  ' }).ok, false);
+  assert.equal(ui.checkUiAction('scopeReview', { op: 'batchAccept', sheetIndex: 2 }).ok, true);
+  assert.equal(ui.checkUiAction('scopeReview', { op: 'undoLast' }).ok, true);
+});
+
+test('精讀列表與跳至原文：需要 id', () => {
+  assert.equal(ui.checkUiAction('briefFromList', {}).ok, false);
+  assert.equal(ui.checkUiAction('briefFromList', { id: 'TPSV_1' }).ok, true);
+  assert.equal(ui.checkUiAction('scopeOpenSource', { quote: '本院' }).ok, false);
+});
+
+// 主程序允許的每個頁面動作，渲染端的分派（aiBridge.runAction）都必須有對應的處理，避免兩邊漂移。
+test('頁面動作：主程序允許的每個動作，渲染端都有分派', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const { fileURLToPath } = await import('node:url');
+  const bridge = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer', 'js', 'core', 'aiBridge.js'), 'utf8');
+  for (const name of ui.UI_ACTIONS) {
+    assert.ok(bridge.includes(`name === '${name}'`), `aiBridge.runAction 缺少 ${name}`);
+  }
+});

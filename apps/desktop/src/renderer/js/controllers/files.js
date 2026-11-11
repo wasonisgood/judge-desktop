@@ -19,7 +19,7 @@
       state.listItems = p.items || [];
       state.listDetails = p.details || {};
       state.listKeyword = p.keyword || '';
-      JR.views.renderList(state.listItems);
+      JR.controllers.list.showItems(state.listItems);
       $('listKeyword').value = state.listKeyword;
       $('listExport').disabled = state.listItems.length === 0;
       JR.setStatus($('listStatus'), '已從「檔案」開啟。', 'ok');
@@ -65,6 +65,17 @@
       });
     },
     bind: function () {
+      $('fileImport').addEventListener('click', function () {
+        JR.setStatus($('filesStatus'), '請選擇檔案（Excel、CSV、Word、PDF、TXT 皆可）…');
+        api.importFile({}).then(function (r) {
+          if (r.canceled) { JR.setStatus($('filesStatus'), '已取消匯入。'); return; }
+          var msg = '已匯入 ' + r.count + ' 筆判決（' + r.fileName + '），已存入「使用中」。' + (r.saveError ? '　' + r.saveError : '');
+          JR.setStatus($('filesStatus'), msg, r.saveError ? 'error' : 'ok');
+          load();
+        }).catch(function (err) {
+          JR.setStatus($('filesStatus'), '匯入失敗：' + JR.errText(err), 'error');
+        });
+      });
       document.querySelectorAll('.tab').forEach(function (t) {
         t.addEventListener('click', function () {
           state.fileTab = t.dataset.tab;

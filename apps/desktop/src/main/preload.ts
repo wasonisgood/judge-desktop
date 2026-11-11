@@ -67,6 +67,8 @@ contextBridge.exposeInMainWorld('api', {
     exportSvg: (args: unknown) => invoke('export:chartSvg', args),
     exportPng: (args: unknown) => invoke('export:chartPng', args),
     exportDocx: (args: unknown) => invoke('export:chartDocx', args),
+    forResult: (args: unknown) => invoke('chart:forResult', args),
+    forRun: (args: unknown) => invoke('chart:forRun', args),
     install: () => invoke('chart:install'),
     disable: () => invoke('chart:disable'),
     remove: () => invoke('chart:remove'),
@@ -132,6 +134,7 @@ contextBridge.exposeInMainWorld('api', {
   assistant: {
     chat: (args: unknown) => invoke('assistant:chat', args),
   },
+  importFile: (args: unknown) => invoke('import:file', args),
   nl: {
     interpret: (args: unknown) => invoke('nl:interpret', args),
     criteria: (args: unknown) => invoke('nl:criteria', args),

@@ -7,6 +7,22 @@
   var state = JR.state;
   var PAGE = 'brief';
 
+  // 候選判決清單（最近一次查找的結果）：助理可依 id 選定其中一則。
+  var lastCandidates = [];
+  function onCandidatePicked(it, tr) {
+    setPick(it);
+    document.querySelectorAll('#briefCandidateBody tr').forEach(function (x) { x.classList.toggle('row-picked', x === tr); });
+    JR.setStatus($('briefStatus'), '已選定，可以整理這則判決。', 'ok');
+  }
+  function pickById(id) {
+    var idx = -1;
+    lastCandidates.forEach(function (it, i) { if (idx < 0 && it.id === id) idx = i; });
+    if (idx < 0) return { ok: false, reason: '候選清單中沒有判決「' + id + '」，請先查找候選。' };
+    var tr = document.querySelectorAll('#briefCandidateBody tr')[idx];
+    onCandidatePicked(lastCandidates[idx], tr);
+    return { ok: true };
+  }
+
   function setPick(item) {
     state.briefPick = item;
     JR.views.renderPick(item);
@@ -53,6 +69,7 @@
       JR.controllers.annotation.open(view.detail.meta.id, jur, view.detail.meta.title);
     },
     setPick: setPick,
+    pickById: pickById,
     bind: function () {
       $('briefFindForm').addEventListener('submit', async function (ev) {
         ev.preventDefault();
@@ -67,11 +84,8 @@
             $('briefQuery').value = query;
           }
           var r = await api.judgment.find({ query: query, jurisdiction: $('briefJurisdiction').value });
-          JR.views.renderCandidates(r.items, function (it, tr) {
-            setPick(it);
-            document.querySelectorAll('#briefCandidateBody tr').forEach(function (x) { x.classList.toggle('row-picked', x === tr); });
-            JR.setStatus($('briefStatus'), '已選定，可以整理這則判決。', 'ok');
-          });
+          lastCandidates = r.items;
+          JR.views.renderCandidates(r.items, onCandidatePicked);
           var msg = r.items.length ? '找到 ' + r.items.length + ' 筆候選，請選定一則。' : '沒有找到符合的判決。可以換個關鍵字，或使用縮寫。';
           JR.setStatus($('briefFindStatus'), msg + (r.note ? '　' + r.note : ''), r.items.length ? 'ok' : '');
         } catch (err) {
