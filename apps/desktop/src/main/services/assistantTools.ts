@@ -4,13 +4,15 @@ import { createSearchBudget, runBudgetedSearch } from '@judge/core';
 import { newId } from '../library';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { resolveStatute } from '../data/cloud/lawRepo';
+import { library } from '../data/local/libraryAccess';
+import { checkSetValue, SAVED_ACTIONS, type SavedAction } from '../assistantUi';
 
 export type AssistantPageName = AssistantPage;
 
 // 工具執行。ctx 是本輪對話的共用狀態（搜尋預算與搜尋方式）；未提供時使用單次預算。
 export async function executeAssistantTool(call: ToolCall, ctx?: AssistantTurnContext): Promise<ToolOutcome> {
   const input = call.input as Record<string, any>;
-  const turn: AssistantTurnContext = ctx ?? { budget: createSearchBudget<SearchHit>(3), searchMode: 'ai', userText: '' };
+  const turn: AssistantTurnContext = ctx ?? { budget: createSearchBudget<SearchHit>(3), searchMode: 'ai', userText: '', page: 'home', controls: new Map() };
   try {
     switch (call.name) {
       case 'search_judgments': {
@@ -80,6 +82,54 @@ export async function executeAssistantTool(call: ToolCall, ctx?: AssistantTurnCo
         return {
           content: '已提議，等待使用者按同意後執行。',
           pending: { id: newId(), kind: 'run_brief', label: `精讀判決：${id}`, args: { judgmentId: id, focus: String(input.focus ?? '') } },
+        };
+      }
+      case 'ui_set': {
+        const id = String(input.id ?? '');
+        const c = turn.controls.get(id);
+        if (!c) return { content: `找不到控制項「${id}」。請只使用控制項目錄中的 id。` };
+        const v = checkSetValue(c, input.value);
+        if (!v.ok) return { content: v.reason };
+        return {
+          content: `已設定「${c.label}」（${c.page} 頁）為 ${JSON.stringify(v.value)}，畫面已更新。`,
+          ui: { type: 'set', id, value: v.value },
+        };
+      }
+      case 'ui_click': {
+        const id = String(input.id ?? '');
+        const c = turn.controls.get(id);
+        if (!c) return { content: `找不到控制項「${id}」。請只使用控制項目錄中的 id。` };
+        if (c.kind !== 'button') return { content: `「${c.label}」不是按鈕，請用 ui_set 設定值。` };
+        if (c.disabled) return { content: `「${c.label}」目前是停用狀態，無法按下。` };
+        return {
+          content: '已提議按下，等待使用者按同意後執行。',
+          pending: { id: newId(), kind: 'ui_click', label: `按下「${c.label}」（${c.page} 頁）`, args: { id } },
+        };
+      }
+      case 'list_saved': {
+        const status = ['active', 'archived', 'trashed'].includes(String(input.status)) ? (input.status as 'active' | 'archived' | 'trashed') : undefined;
+        const limit = Math.min(Math.max(Number(input.limit) || 30, 1), 50);
+        const all = await library().list(status);
+        const rows = all.slice(0, limit).map((it) => ({
+          id: it.id, kind: it.kind, title: it.title, summary: it.summary, starred: it.starred, status: it.status,
+        }));
+        return { content: JSON.stringify({ total: all.length, items: rows }) };
+      }
+      case 'open_saved': {
+        const id = String(input.id ?? '');
+        const it = (await library().list()).find((x) => x.id === id);
+        if (!it) return { content: `找不到已保存的項目「${id}」。請先用 list_saved 查找。` };
+        return { content: `已開啟「${it.title}」。`, navigate: 'files', ui: { type: 'openSaved', id } };
+      }
+      case 'saved_action': {
+        const id = String(input.id ?? '');
+        const action = String(input.action ?? '') as SavedAction;
+        if (!(action in SAVED_ACTIONS)) return { content: `不支援的整理動作：${action}` };
+        const it = (await library().list()).find((x) => x.id === id);
+        if (!it) return { content: `找不到已保存的項目「${id}」。` };
+        return {
+          content: '已提議，等待使用者按同意後執行。',
+          pending: { id: newId(), kind: 'saved_action', label: `${SAVED_ACTIONS[action]}「${it.title}」`, args: { id, action } },
         };
       }
       default:

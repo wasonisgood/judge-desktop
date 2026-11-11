@@ -23,11 +23,50 @@
     if (on) $('assistText').focus();
   }
 
+  // 檔案整理動作（助理提議、使用者同意後執行）。
+  var SAVED_CALL = {
+    star: function (id) { return api.library.update({ id: id, patch: { starred: true } }); },
+    unstar: function (id) { return api.library.update({ id: id, patch: { starred: false } }); },
+    archive: function (id) { return api.library.update({ id: id, patch: { status: 'archived' } }); },
+    unarchive: function (id) { return api.library.update({ id: id, patch: { status: 'active' } }); },
+    trash: function (id) { return api.library.update({ id: id, patch: { status: 'trashed' } }); },
+    restore: function (id) { return api.library.update({ id: id, patch: { status: 'active' } }); },
+    delete: function (id) { return api.library.remove({ id: id }); }
+  };
+
+  // 畫面動作（ui_set 立即執行的部分）。
+  function applyUi(u) {
+    if (u.type === 'set') {
+      var r = JR.aiBridge.set(u.id, u.value);
+      if (!r.ok) JR.components.addMsg('assistant', '無法設定：' + r.reason);
+    } else if (u.type === 'openSaved') {
+      JR.controllers.files.openById(u.id).catch(function (err) {
+        JR.components.addMsg('assistant', '無法開啟項目：' + JR.errText(err));
+      });
+    }
+  }
+
   function runPending(p) {
     // 目標頁正在執行時不重複啟動，避免併行（v3.6.0）。
     var target = p.kind === 'run_scope' ? 'scope' : (p.kind === 'run_brief' ? 'brief' : null);
     if (target && JR.jobs.isBusy(target)) {
       JR.components.addMsg('assistant', PAGE_LABEL[target] + '正在執行，請等它完成或取消後，再同意這項操作。');
+      return;
+    }
+    if (p.kind === 'ui_click') {
+      var c = JR.aiBridge.click(p.args.id);
+      JR.components.addMsg('assistant', c.ok ? '已按下「' + p.args.id + '」，結果請在畫面上查看。' : c.reason);
+      return;
+    }
+    if (p.kind === 'saved_action') {
+      var call = SAVED_CALL[p.args.action];
+      if (!call) { JR.components.addMsg('assistant', '不支援的整理動作。'); return; }
+      call(p.args.id).then(function () {
+        JR.components.addMsg('assistant', '已完成：' + p.label + '。');
+        if (document.querySelector('#page-files.active')) JR.controllers.files.load();
+      }).catch(function (err) {
+        JR.components.addMsg('assistant', '操作失敗：' + JR.errText(err));
+      });
       return;
     }
     if (p.kind === 'run_scope') {
@@ -80,11 +119,14 @@
         $('assistSend').disabled = true;
         var runId = JR.jobs.start(PAGE, 'assistCancel');
         try {
-          var turn = await api.assistant.chat({ runId: runId, history: state.assistHistory, text: text, searchMode: $('assistMode').value });
+          // 目錄與目前頁面一起送出，讓助理能操作任何頁面的欄位與按鈕。
+          var catalog = JR.aiBridge.catalog();
+          var turn = await api.assistant.chat({ runId: runId, history: state.assistHistory, text: text, searchMode: $('assistMode').value, context: catalog });
           thinking.querySelector('.assist-text').textContent = turn.reply;
           state.assistHistory.push({ role: 'user', text: text });
           state.assistHistory.push({ role: 'assistant', text: turn.reply });
           if (turn.navigate) JR.nav.showPage(turn.navigate);
+          (turn.ui || []).forEach(applyUi);
           (turn.pending || []).forEach(function (p) { JR.components.addPending(p, runPending); });
         } catch (err) {
           var msg = JR.errText(err);
