@@ -45,6 +45,6 @@ test('分析欄位列與上下移、移除按鈕的元件存在，並在 index.h
 });
 
 test('導覽列與首頁使用新名稱「標編碼標注工序」', () => {
-  assert.match(read('index.html'), /標編碼標注工序/);
+  assert.match(read('js/shell.js'), /標編碼標注工序/);
   assert.match(read('js/templates/homePage.js'), /標編碼標注工序/);
 });
