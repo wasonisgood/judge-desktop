@@ -54,7 +54,23 @@
         <div class="crit-rows" id="critRows"></div>
         <div class="actions">
           <button class="btn" type="button" id="critAdd">手動新增標準</button>
+          <button class="btn" type="button" id="critAiSuggest">AI 依候選判決建議標準</button>
         </div>
+        <p class="hint">AI 建議只送出候選判決的字號與判決開頭約 150 字（通常含案由），不送整篇全文；建議的標準要你確認後才會用於核查。</p>
+        <div class="actions crit-presets">
+          <label class="field crit-pick">
+            <span>我的標準組合</span>
+            <select id="critPresetSel"></select>
+          </label>
+          <button class="btn" type="button" id="critPresetLoad">載入</button>
+          <button class="btn danger" type="button" id="critPresetDel">刪除</button>
+          <label class="field crit-pick">
+            <span>儲存目前標準為</span>
+            <input id="critPresetName" placeholder="例如：消費者買賣" autocomplete="off">
+          </label>
+          <button class="btn" type="button" id="critPresetSave">儲存</button>
+        </div>
+        <p class="status" id="critPresetStatus" role="status"></p>
         <p class="hint"><strong>AI 判斷</strong>：AI 依標準逐案判斷符合、不符合或無法判斷，每個判斷都要附上判決原文逐字依據；找不到依據的判斷會標示為無效並改為無法判斷。<strong>程式判斷</strong>：只看判決原文是否出現指定關鍵字，不呼叫 AI。</p>
 
         <h2>三、執行</h2>

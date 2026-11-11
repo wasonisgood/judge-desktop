@@ -217,10 +217,61 @@
     });
   }
 
+  // ---- AI 依候選判決建議標準：只送字號與判決開頭；建議加入標準列後由使用者確認才會用於核查 ----
+  function aiSuggest() {
+    if (!cur.prepId) { JR.setStatus($('critNlStatus'), '請先讀取候選判決，AI 才能依候選判決建議標準。', 'error'); return; }
+    if (JR.jobs.isBusy(PAGE)) { JR.setStatus($('critNlStatus'), '核查頁已有工作進行中，請稍候。', 'error'); return; }
+    JR.jobs.start(PAGE, null);
+    JR.setStatus($('critNlStatus'), 'AI 依候選判決建議標準中…');
+    api.criteria.suggest({ prepId: cur.prepId, ai: $('critAi').value }).then(function (r) {
+      r.criteria.forEach(function (c) { addRow(c); });
+      invalidatePlan();
+      JR.setStatus($('critNlStatus'), '已加入 ' + r.criteria.length + ' 條 AI 建議，請逐條檢查後再規劃執行。', 'ok');
+    }).catch(function (err) {
+      JR.setStatus($('critNlStatus'), 'AI 建議失敗：' + JR.errText(err), 'error');
+    }).finally(function () {
+      JR.jobs.finish(PAGE);
+    });
+  }
+
+  // ---- 個人標準組合：保存在這台電腦（localStorage），只影響這台電腦的畫面，不傳給 AI 或伺服器 ----
+  var PRESET_KEY = 'judge.criteriaPresets';
+
+  function loadPresets() {
+    try {
+      var v = JSON.parse(localStorage.getItem(PRESET_KEY) || '[]');
+      return Array.isArray(v) ? v : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function savePresets(list) {
+    try {
+      localStorage.setItem(PRESET_KEY, JSON.stringify(list));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function renderPresets() {
+    var sel = $('critPresetSel');
+    var list = loadPresets();
+    var keep = sel.value;
+    sel.textContent = '';
+    sel.appendChild(new Option(list.length ? '請選擇' : '尚未保存', ''));
+    list.forEach(function (p) { sel.appendChild(new Option(p.name + '（' + p.criteria.length + ' 條）', p.name)); });
+    if (list.some(function (p) { return p.name === keep; })) sel.value = keep;
+  }
+
+  function presetStatus(msg, kind) { JR.setStatus($('critPresetStatus'), msg, kind); }
+
   JR.controllers.criteria = {
     load: function () {
       loadSources();
       loadRuns();
+      renderPresets();
       setPlanEnabled();
     },
     bind: function () {
@@ -239,6 +290,37 @@
       });
       // 取消按鈕由 JR.jobs.init 統一綁定（critCancel → criteria）。
       $('critAdd').addEventListener('click', function () { addRow({ kind: 'include', method: 'ai' }); });
+      $('critAiSuggest').addEventListener('click', aiSuggest);
+      $('critPresetSave').addEventListener('click', function () {
+        var name = $('critPresetName').value.trim();
+        if (!name) { presetStatus('請先輸入標準組合的名稱。', 'error'); return; }
+        var criteria = readCriteria().filter(function (c) { return c.text || c.keywords; });
+        if (!criteria.length) { presetStatus('目前沒有可以保存的標準。', 'error'); return; }
+        var list = loadPresets().filter(function (p) { return p.name !== name; });
+        list.push({ name: name, criteria: criteria });
+        if (!savePresets(list)) { presetStatus('無法保存：這台電腦的本機儲存空間不可用。', 'error'); return; }
+        $('critPresetName').value = '';
+        renderPresets();
+        $('critPresetSel').value = name;
+        presetStatus('已保存「' + name + '」。', 'ok');
+      });
+      $('critPresetLoad').addEventListener('click', function () {
+        var name = $('critPresetSel').value;
+        var p = loadPresets().filter(function (x) { return x.name === name; })[0];
+        if (!p) { presetStatus('請先選擇一個標準組合。', 'error'); return; }
+        $('critRows').textContent = '';
+        p.criteria.forEach(function (c) { addRow(c); });
+        invalidatePlan();
+        presetStatus('已載入「' + name + '」，共 ' + p.criteria.length + ' 條標準。', 'ok');
+      });
+      $('critPresetDel').addEventListener('click', function () {
+        var name = $('critPresetSel').value;
+        if (!name) { presetStatus('請先選擇要刪除的標準組合。', 'error'); return; }
+        if (!window.confirm('刪除標準組合「' + name + '」？此操作只影響這台電腦的保存紀錄。')) return;
+        savePresets(loadPresets().filter(function (x) { return x.name !== name; }));
+        renderPresets();
+        presetStatus('已刪除「' + name + '」。', 'ok');
+      });
       // 一句話描述 → 標準列（加入現有標準，之後仍可逐列修改或移除）。自然語言才呼叫 AI；關鍵字直接成為一條程式判斷標準。
       $('critNlForm').addEventListener('submit', function (ev) {
         ev.preventDefault();

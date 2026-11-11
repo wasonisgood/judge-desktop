@@ -170,3 +170,25 @@ export async function interpretCriteria(getAi: () => Promise<AiComplete>, text: 
   if (criteria.length === 0) throw new Error('AI 沒有整理出可用的標準，請把條件說得更具體一點，或直接輸入關鍵字。');
   return { mode: 'natural', criteria };
 }
+
+// ---------------------------------------------------------------------------
+// 納入排除：AI 依候選判決建議標準（只送字號與判決開頭，不送整篇全文）
+// ---------------------------------------------------------------------------
+
+const SUGGEST_SYSTEM = [
+  '你是「納入排除核查」的標準建議助理。使用者給你一組候選判決的字號與判決開頭（約 150 字，通常含案由）。',
+  '請建議 3 到 6 條能區分「應納入」與「應排除」的標準，幫助使用者逐案核查。',
+  '輸出 JSON 物件 {"criteria":[...]}，欄位同一句話整理的格式：kind（include/exclude）、method（ai 或 program）、text（ai 的標準描述）、keywords（program 的關鍵字陣列）、keywordMode（any/all）。',
+  '只根據給定的內容提出，不得編造判決中沒有依據的事實。只輸出 JSON，不要其他說明。',
+].join('\n');
+
+/** 依候選判決建議標準。回傳的標準同樣經過清理；沒有可用建議時明確報錯。 */
+export async function suggestCriteria(ai: AiComplete, topic: string, cases: { caseNo: string | null; head: string }[]): Promise<NlCriterion[]> {
+  const lines = cases.slice(0, 40).map((c, i) => `${i + 1}. ${c.caseNo ?? '（無字號）'}｜${c.head.replace(/\s+/g, ' ').slice(0, 150)}`);
+  if (lines.length === 0) throw new Error('沒有候選判決可供建議，請先讀取候選判決。');
+  const user = [topic ? `研究主題：${topic}` : '', '候選判決：', ...lines].filter(Boolean).join('\n');
+  const raw = await ai(SUGGEST_SYSTEM, user, 900);
+  const criteria = sanitizeCriteria(parseJsonReply<unknown>(raw));
+  if (criteria.length === 0) throw new Error('AI 沒有提出可用的標準建議，可以改用一句話描述或手動新增。');
+  return criteria;
+}

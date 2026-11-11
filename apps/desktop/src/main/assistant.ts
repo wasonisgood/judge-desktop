@@ -6,6 +6,8 @@
 // 3. 金鑰只在主程序使用，不會傳給畫面。
 import { anthropicAuthHeaders, type AiConfig } from './ai';
 import { createSearchBudget, type SearchBudget, JobCancelledError, raceAbort } from '@judge/core';
+import { sanitizeControls, controlMap, controlsPrompt, type UiAction, type UiControl } from './assistantUi';
+export type { UiAction, UiControl } from './assistantUi';
 
 /** 搜尋方式（issue #4 第 5、6 點）：AI 協助（模型改寫與擴充關鍵字）或傳統（使用者原文，只搜一次）。 */
 export type AssistantSearchMode = 'ai' | 'traditional';
@@ -19,6 +21,9 @@ export interface AssistantTurnContext {
   searchMode: AssistantSearchMode;
   /** 使用者本輪的原文（傳統模式下直接拿來搜尋）。 */
   userText: string;
+  /** 目前頁面與全部頁面的控制項目錄（以 id 驗證模型要操作的控制項）。 */
+  page: string;
+  controls: Map<string, UiControl>;
 }
 
 export const ASSISTANT_PAGES = ['home', 'design', 'list', 'semantic', 'scope', 'criteria', 'brief', 'chart', 'files', 'tools', 'crawl', 'settings'] as const;
@@ -27,7 +32,7 @@ export type AssistantPage = typeof ASSISTANT_PAGES[number];
 export interface PendingAction {
   id: string;
   label: string;
-  kind: 'run_scope' | 'run_brief';
+  kind: 'run_scope' | 'run_brief' | 'ui_click' | 'saved_action';
   args: Record<string, unknown>;
 }
 
@@ -35,6 +40,8 @@ export interface AssistantTurn {
   reply: string;
   navigate: AssistantPage | null;
   pending: PendingAction[];
+  /** 立即執行的畫面動作（依順序）：設定欄位值、打開檔案項目。 */
+  ui: UiAction[];
 }
 
 /** 內部對話紀錄（與供應商無關），送出前再轉成各家的格式。 */
@@ -60,6 +67,7 @@ export interface ToolOutcome {
   content: string;
   pending?: PendingAction;
   navigate?: AssistantPage;
+  ui?: UiAction;
 }
 
 export const ASSISTANT_TOOLS: ToolDef[] = [
@@ -118,12 +126,57 @@ export const ASSISTANT_TOOLS: ToolDef[] = [
       required: ['id'],
     },
   },
+  {
+    name: 'ui_set',
+    description: '在畫面上設定一個輸入欄位、下拉選單或勾選框的值（會立即更新畫面，不會執行任何搜尋或 AI 操作）。id 必須來自「控制項目錄」；敏感欄位不能填寫；按鈕請用 ui_click。',
+    parameters: {
+      type: 'object',
+      properties: {
+        id: { type: 'string', description: '控制項 id' },
+        value: { description: '要設定的值：文字、數字、或 true／false（勾選框）' },
+      },
+      required: ['id', 'value'],
+    },
+  },
+  {
+    name: 'ui_click',
+    description: '提議按下畫面上的一個按鈕（例如搜尋、執行、儲存、清除）。按鈕可能會呼叫 AI 或改動資料，因此一律需要使用者按同意後才執行。id 必須來自「控制項目錄」的按鈕。',
+    parameters: { type: 'object', properties: { id: { type: 'string' } }, required: ['id'] },
+  },
+  {
+    name: 'list_saved',
+    description: '列出「檔案」中已保存的結果（id、類別、標題、摘要、是否加星號、狀態）。用來找出要開啟或整理的項目。',
+    parameters: {
+      type: 'object',
+      properties: { status: { type: 'string', enum: ['active', 'archived', 'trashed'] }, limit: { type: 'integer' } },
+    },
+  },
+  {
+    name: 'open_saved',
+    description: '切換到「檔案」頁並開啟指定的已保存結果（會還原該結果的畫面）。',
+    parameters: { type: 'object', properties: { id: { type: 'string' } }, required: ['id'] },
+  },
+  {
+    name: 'saved_action',
+    description: '提議對已保存的結果做整理動作：加／取消星號、封存、移回使用中、移入垃圾桶、還原、或永久刪除。需要使用者按同意後才執行。',
+    parameters: {
+      type: 'object',
+      properties: {
+        id: { type: 'string' },
+        action: { type: 'string', enum: ['star', 'unstar', 'archive', 'unarchive', 'trash', 'restore', 'delete'] },
+      },
+      required: ['id', 'action'],
+    },
+  },
 ];
 
 const SYSTEM_PROMPT_BASE = [
   '你是「司法院裁判研究」桌面應用程式的助理。使用繁體中文（台灣用語），語氣簡潔平實，不使用表情符號。',
   '你可以用工具查詢判決與法規，也可以提議操作應用程式的功能。',
-  '會呼叫 AI 或改動資料的操作，只能用 propose_ 開頭的工具提議，由使用者確認後才會執行。',
+  '會呼叫 AI 或改動資料的操作，只能用 propose_ 開頭的工具提議，由使用者確認後才會執行；按按鈕（ui_click）與檔案整理（saved_action）也一樣，需使用者同意。',
+  '你可以操作應用程式的每一個頁面：下方「控制項目錄」列出各頁的欄位與按鈕（id、標籤、目前值、選項）。要切換頁面用 open_page；用 ui_set 設定欄位值（立即更新畫面）；用 ui_click 提議按下按鈕。需要時先切換到該頁。',
+  '控制項的 id 必須來自目錄，不要猜。敏感欄位（金鑰、密碼、權杖）不能填寫，請告訴使用者自行輸入。',
+  '檔案頁的項目用 list_saved 查找，open_saved 開啟；加星號、封存、移入垃圾桶、刪除等整理動作用 saved_action 提議。',
   '提議標編碼標注工序（propose_scope）時，關鍵字與法規清單可以單獨使用，也可以併用；使用者只說一句話描述範圍時請用 keyword。',
   '搜尋判決時，請把同義詞、案由、法名拆成 2 到 4 組關鍵字一起搜尋（用 queries），不要只用一個詞。',
   `每一輪對話最多搜尋 ${ASSISTANT_SEARCH_MAX} 次。工具回傳的「剩餘次數」與「目前保留筆數」會告訴你狀況：結果不足就換不同的關鍵字補搜；已達上限就停止搜尋，依目前保留的結果回答，說明狀況與解方，並詢問使用者是否同意新方向。`,
@@ -134,8 +187,9 @@ const SYSTEM_PROMPT_BASE = [
 
 const SYSTEM_PROMPT_TRADITIONAL = '傳統搜尋模式：搜尋判決時只使用使用者的原文作為關鍵字，只搜尋一次，不要自行改寫或擴充關鍵字。';
 
-function systemPromptFor(mode: AssistantSearchMode): string {
-  return [SYSTEM_PROMPT_BASE, mode === 'traditional' ? SYSTEM_PROMPT_TRADITIONAL : ''].filter(Boolean).join('\n');
+function systemPromptFor(mode: AssistantSearchMode, page: string, controls: Map<string, UiControl>): string {
+  const catalog = controls.size ? '\n\n控制項目錄：\n' + controlsPrompt(Array.from(controls.values()), page) : '';
+  return [SYSTEM_PROMPT_BASE, mode === 'traditional' ? SYSTEM_PROMPT_TRADITIONAL : ''].filter(Boolean).join('\n') + catalog;
 }
 
 // ---------------------------------------------------------------------------
@@ -243,7 +297,7 @@ export async function runAssistantTurn(
   deps: AssistantDeps,
   history: { role: 'user' | 'assistant'; text: string }[],
   userText: string,
-  opts: { searchMode?: AssistantSearchMode; signal?: AbortSignal } = {},
+  opts: { searchMode?: AssistantSearchMode; signal?: AbortSignal; page?: string; controls?: unknown } = {},
 ): Promise<AssistantTurn> {
   const cfg = await deps.config();
   const searchMode: AssistantSearchMode = opts.searchMode === 'traditional' ? 'traditional' : 'ai';
@@ -251,17 +305,20 @@ export async function runAssistantTurn(
     budget: createSearchBudget<SearchHit>(searchMode === 'traditional' ? 1 : ASSISTANT_SEARCH_MAX),
     searchMode,
     userText,
+    page: typeof opts.page === 'string' ? opts.page : 'home',
+    controls: controlMap(sanitizeControls(opts.controls)),
   };
-  const system = systemPromptFor(searchMode);
+  const system = systemPromptFor(searchMode, ctx.page, ctx.controls);
   const items: Item[] = [
     ...history.map((h): Item => (h.role === 'user' ? { type: 'user', text: h.text } : { type: 'assistant', text: h.text, calls: [] })),
     { type: 'user', text: userText },
   ];
-  const turn: AssistantTurn = { reply: '', navigate: null, pending: [] };
+  const turn: AssistantTurn = { reply: '', navigate: null, pending: [], ui: [] };
   turn.reply = await runToolLoop(cfg, system, ASSISTANT_TOOLS, items, async (call) => {
     const out = await deps.execute(call, ctx);
     if (out.navigate) turn.navigate = out.navigate;
     if (out.pending) turn.pending.push(out.pending);
+    if (out.ui) turn.ui.push(out.ui);
     return out;
   }, opts.signal);
   return turn;

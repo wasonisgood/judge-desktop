@@ -46,9 +46,15 @@ test('匯出：Excel 逐案表有「字號類型」欄，說明工作表標示�
   const wb = new ExcelJS.Workbook();
   await wb.xlsx.load(buf);
   const ws = wb.getWorksheet('某法');
-  assert.equal(ws.getRow(1).getCell(15).value, '字號類型', '新欄位在最後，既有欄位位置不變');
-  assert.equal(ws.getRow(2).getCell(15).value, '民事');
-  assert.equal(ws.getRow(2).getCell(14).value?.text ?? ws.getRow(2).getCell(14).value, row.href, '判決連結仍在原欄位');
+  // 欄位依表頭名稱定位（欄位順序由 scopeFields 動態決定，不寫死欄號）。
+  const headers = ws.getRow(1).values;
+  const col = (name) => headers.indexOf(name);
+  const typeCol = col('字號類型');
+  assert.ok(typeCol > 0, '表頭要有「字號類型」');
+  assert.equal(typeCol, headers.length - 1, '字號類型是最後一欄');
+  assert.equal(ws.getRow(2).getCell(typeCol).value, '民事');
+  const linkVal = ws.getRow(2).getCell(col('判決連結')).value;
+  assert.equal(linkVal?.text ?? linkVal, row.href, '判決連結仍在原欄位');
   const info = wb.getWorksheet('說明');
   const texts = [];
   info.eachRow((rw) => texts.push(rw.values.slice(1).join(' ')));

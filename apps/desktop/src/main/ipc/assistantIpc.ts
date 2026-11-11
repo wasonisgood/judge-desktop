@@ -8,14 +8,15 @@ import { withJob } from '../services/jobRegistry';
 import { toUserError } from '../services/userError';
 
 export function registerAssistantIpc(): void {
-  ipcMain.handle('assistant:chat', (_e, args: { runId: string; history: { role: 'user' | 'assistant'; text: string }[]; text: string; searchMode?: 'ai' | 'traditional' }) =>
+  // context：畫面送來的目前頁面與控制項目錄（主程序會再次清理與驗證，見 assistantUi.ts）。
+  ipcMain.handle('assistant:chat', (_e, args: { runId: string; history: { role: 'user' | 'assistant'; text: string }[]; text: string; searchMode?: 'ai' | 'traditional'; context?: { page?: string; controls?: unknown } }) =>
     withJob(args.runId, 'assistant', '助理對話', async (signal): Promise<AssistantTurn> => {
       try {
         return await runAssistantTurn(
           { config: aiConfigOrThrow, execute: executeAssistantTool },
           args.history.slice(-12),
           args.text,
-          { searchMode: args.searchMode, signal },
+          { searchMode: args.searchMode, signal, page: args.context?.page, controls: args.context?.controls },
         );
       } catch (err) {
         throw toUserError(err);

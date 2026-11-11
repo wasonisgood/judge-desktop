@@ -100,6 +100,10 @@ jobs:
           for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
           npm run build
 
+      - name: 執行單元測試（失敗即中止發版）
+        working-directory: apps/desktop
+        run: npm test
+
       - name: 打包應用程式（資料夾版，供安裝器使用）
         working-directory: apps/desktop
         run: npx electron-builder --win --dir --publish never

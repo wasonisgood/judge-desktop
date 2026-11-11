@@ -56,6 +56,14 @@
 
   JR.controllers.files = {
     load: load,
+    /** 助理用：依 id 開啟已保存的項目（與在列表中按「開啟」相同）。 */
+    openById: function (id) {
+      return api.library.list({}).then(function (items) {
+        var it = (items || []).filter(function (x) { return x.id === id; })[0];
+        if (!it) throw new Error('找不到已保存的項目');
+        openItem(it);
+      });
+    },
     bind: function () {
       document.querySelectorAll('.tab').forEach(function (t) {
         t.addEventListener('click', function () {
