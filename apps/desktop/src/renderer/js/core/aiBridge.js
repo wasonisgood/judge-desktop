@@ -105,6 +105,12 @@
           JR.controllers.brief.openFromList(item, JR.state.listItems);
           return { ok: true };
         }
+        if (name === 'semanticExpand') {
+          var btn = document.querySelector('#page-semantic [data-expand-id="' + String(args.caseId).replace(/"/g, '\\"') + '"]');
+          if (!btn) return { ok: false, reason: '結果中找不到這則判決，請先執行段落檢索。' };
+          if (btn.getAttribute('aria-expanded') !== 'true') btn.click();
+          return { ok: true };
+        }
         if (name === 'scopeReview') return JR.controllers.scope.review(args);
         if (name === 'scopeOpenSource') { JR.controllers.scope.openSource(args.caseId, args.quote); return { ok: true }; }
         if (name === 'annotateQuote') return JR.controllers.annotation.annotateQuote(args.quote, args.color, args.note);

@@ -68,6 +68,7 @@
       full.hidden = true;
       var btn = el('button', 'btn small', '展開全文');
       btn.type = 'button';
+      btn.setAttribute('data-expand-id', g.caseId || '');
       btn.setAttribute('aria-expanded', 'false');
       btn.addEventListener('click', function () {
         var open = full.hidden;

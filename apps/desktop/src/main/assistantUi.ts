@@ -137,7 +137,7 @@ export function controlsPrompt(controls: UiControl[], currentPage: string): stri
 // 每個動作都在主程序先驗證參數；畫面只執行驗證過的動作。
 // ---------------------------------------------------------------------------
 
-export const UI_ACTIONS = ['pickCandidate', 'briefFromList', 'setCriteria', 'addScopeField', 'removeScopeField', 'annotateQuote', 'scopeReview', 'scopeOpenSource'] as const;
+export const UI_ACTIONS = ['pickCandidate', 'briefFromList', 'setCriteria', 'addScopeField', 'removeScopeField', 'annotateQuote', 'scopeReview', 'scopeOpenSource', 'semanticExpand'] as const;
 /** 會改動已保存資料的頁面動作：一律先列為待確認，使用者同意後才執行。 */
 export const CONFIRM_UI_ACTIONS: readonly UiActionName[] = ['scopeReview'];
 const REVIEW_OPS = ['accept', 'reject', 'edit', 'batchAccept', 'undoLast'];
@@ -163,6 +163,10 @@ export function checkUiAction(name: unknown, rawArgs: unknown): { ok: true; name
     case 'briefFromList': {
       const id = trimmed(a.id, 200);
       return id ? { ok: true, name: action, args: { id } } : { ok: false, reason: '精讀需要判決 id。' };
+    }
+    case 'semanticExpand': {
+      const caseId = trimmed(a.caseId, 200);
+      return caseId ? { ok: true, name: action, args: { caseId } } : { ok: false, reason: '展開全文需要案件 id。' };
     }
     case 'scopeOpenSource': {
       const caseId = trimmed(a.caseId, 200);

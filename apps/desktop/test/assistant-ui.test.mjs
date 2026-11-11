@@ -160,3 +160,14 @@ test('精讀列表與跳至原文：需要 id', () => {
   assert.equal(ui.checkUiAction('briefFromList', { id: 'TPSV_1' }).ok, true);
   assert.equal(ui.checkUiAction('scopeOpenSource', { quote: '本院' }).ok, false);
 });
+
+// 主程序允許的每個頁面動作，渲染端的分派（aiBridge.runAction）都必須有對應的處理，避免兩邊漂移。
+test('頁面動作：主程序允許的每個動作，渲染端都有分派', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const { fileURLToPath } = await import('node:url');
+  const bridge = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'renderer', 'js', 'core', 'aiBridge.js'), 'utf8');
+  for (const name of ui.UI_ACTIONS) {
+    assert.ok(bridge.includes(`name === '${name}'`), `aiBridge.runAction 缺少 ${name}`);
+  }
+});
