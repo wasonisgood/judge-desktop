@@ -1,5 +1,7 @@
 # 核心函數盤點（packages/core）
 
+> **注意（2026-11-11）**：`packages/core` 已搬到 `wasonisgood/judge-shared`，以 `@judge/core` 發版（tarball），桌面端與雲端都以釘住版本依賴。本文件是 2026-11-08 的盤點草稿，函數清單與位置可能已變；現行架構見 [docs/ARCHITECTURE.md](ARCHITECTURE.md)（桌面端）與 `judge-shared/docs/ARCHITECTURE.md`（全域）。
+
 狀態：草案 v0.1（2026-11-08）。桌面端與遠端 MCP 共用此套件。
 標記：**移植**＝來自既有 Python 程式；**新增**＝本專案新設計；**捨棄**＝不再需要。
 來源路徑均相對於 `C:\Users\user\code\judge_mcp\fjud_mcp\`。
