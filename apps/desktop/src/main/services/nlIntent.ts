@@ -12,7 +12,9 @@ export function looksNatural(text: string): boolean {
   const t = text.trim();
   if (!t) return false;
   if (/[?？!！]$/.test(t)) return true;
-  if (/(我想|我要|想找|想查|想了解|幫我|幫忙|請幫|請找|請列|請整理|有沒有|哪些|哪一|怎麼|如何|為什麼|的判決|的案例|相關的|找出|列出|整理一下)/.test(t)) return true;
+  if (/(我想|我要|想找|想查|想了解|幫我|幫忙|請幫|請找|請列|請整理|有沒有|哪些|哪一|怎麼|如何|為什麼|的判決|的案例|相關的|找出|列出|整理一下|排除|納入|不包括|必須)/.test(t)) return true;
+  // 含全形逗號或句號：關鍵字通常以空白或頓號分隔，有逗號句號多半是完整句子。
+  if (/[，。]/.test(t)) return true;
   // 較長、沒有空白分隔的整句（關鍵字通常是 1 到 4 個詞，以空白分隔）。
   if (t.length >= 14 && !/\s/.test(t) && /[，。、；]/.test(t)) return true;
   return false;
@@ -84,4 +86,72 @@ export async function interpretInput(getAi: () => Promise<AiComplete>, page: NlP
   const fields = sanitizeNlFields(page, parseJsonReply<unknown>(raw));
   if (Object.keys(fields).length === 0) throw new Error('AI 沒有整理出可用的欄位，請把描述說得更具體一點，或改用關鍵字。');
   return { mode: 'natural', fields };
+}
+
+// ---------------------------------------------------------------------------
+// 納入排除：一句話描述 → 核查標準列（與畫面上的標準列欄位一致）
+// ---------------------------------------------------------------------------
+
+export interface NlCriterion {
+  kind: 'include' | 'exclude';
+  /** AI 判斷的標準描述（method 為 ai 時使用）。 */
+  text: string;
+  /** ai：AI 逐案判斷；program：只看判決原文是否出現關鍵字。 */
+  method: 'ai' | 'program';
+  /** 關鍵字（頓號分隔；method 為 program 時使用）。 */
+  keywords: string;
+  keywordMode: 'any' | 'all';
+}
+
+const CRITERIA_SYSTEM = [
+  '你是「納入排除核查」的標準整理助理。使用者用一句話描述納入或排除的條件。',
+  '請輸出一個 JSON 物件 {"criteria":[...]}，每一項是一條標準，欄位如下：',
+  '- kind："include"（納入）或 "exclude"（排除）',
+  '- method："ai"（需要判斷語意，例如「原告為消費者」）或 "program"（判決原文出現特定詞即可，例如「含『戒嚴』」）',
+  '- text：method 為 ai 時的標準描述，一句話',
+  '- keywords：method 為 program 時的關鍵字陣列',
+  '- keywordMode："any"（任一出現）或 "all"（全部出現）',
+  '只整理使用者明確說過的條件，不得編造；最多 8 條。只輸出 JSON，不要其他說明。',
+].join('\n');
+
+/** 清理 AI 回傳的標準列：只保留合法欄位；ai 需要描述、program 需要關鍵字，否則捨棄。 */
+export function sanitizeCriteria(raw: unknown): NlCriterion[] {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return [];
+  const list = (raw as Record<string, unknown>).criteria;
+  if (!Array.isArray(list)) return [];
+  const out: NlCriterion[] = [];
+  for (const item of list.slice(0, 8)) {
+    if (!item || typeof item !== 'object') continue;
+    const c = item as Record<string, unknown>;
+    const kind = c.kind === 'exclude' ? 'exclude' : 'include';
+    const method = c.method === 'program' ? 'program' : 'ai';
+    const text = typeof c.text === 'string' ? c.text.trim() : '';
+    const kwRaw = Array.isArray(c.keywords) ? c.keywords.map(String) : typeof c.keywords === 'string' ? c.keywords.split(/[,，、\s]+/) : [];
+    const keywords = kwRaw.map((k) => k.trim()).filter(Boolean).join('、');
+    const keywordMode = c.keywordMode === 'all' ? 'all' : 'any';
+    if (method === 'ai' && !text) continue;
+    if (method === 'program' && !keywords) continue;
+    out.push({ kind, text, method, keywords, keywordMode });
+  }
+  return out;
+}
+
+export interface NlCriteriaResult {
+  mode: 'keyword' | 'natural';
+  criteria: NlCriterion[];
+}
+
+/** 一句話描述 → 標準列。關鍵字式輸入直接成為一條程式判斷的納入標準（不呼叫 AI）。 */
+export async function interpretCriteria(getAi: () => Promise<AiComplete>, text: string): Promise<NlCriteriaResult> {
+  const input = text.trim();
+  if (!input) throw new Error('請先輸入納入或排除的描述');
+  if (!looksNatural(input)) {
+    const keywords = input.split(/[,，、\s]+/).filter(Boolean).join('、');
+    return { mode: 'keyword', criteria: [{ kind: 'include', text: '', method: 'program', keywords, keywordMode: 'any' }] };
+  }
+  const ai = await getAi();
+  const raw = await ai(CRITERIA_SYSTEM, input, 800);
+  const criteria = sanitizeCriteria(parseJsonReply<unknown>(raw));
+  if (criteria.length === 0) throw new Error('AI 沒有整理出可用的標準，請把條件說得更具體一點，或直接輸入關鍵字。');
+  return { mode: 'natural', criteria };
 }

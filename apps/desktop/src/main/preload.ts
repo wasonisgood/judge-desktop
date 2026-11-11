@@ -134,6 +134,7 @@ contextBridge.exposeInMainWorld('api', {
   },
   nl: {
     interpret: (args: unknown) => invoke('nl:interpret', args),
+    criteria: (args: unknown) => invoke('nl:criteria', args),
   },
   design: {
     list: () => invoke('design:list'),

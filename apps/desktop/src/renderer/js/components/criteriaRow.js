@@ -36,7 +36,7 @@
     kw.type = 'text';
     kw.placeholder = '關鍵字，以頓號或逗號分隔';
     kw.setAttribute('aria-label', '關鍵字');
-    kw.value = (c.keywords || []).join('、');
+    kw.value = Array.isArray(c.keywords) ? c.keywords.join('、') : (c.keywords || '');
 
     var mode = el('select', 'crit-mode');
     mode.setAttribute('aria-label', '關鍵字比對方式');
