@@ -59,7 +59,14 @@
         $('briefFind').disabled = true;
         JR.setStatus($('briefFindStatus'), '搜尋中…');
         try {
-          var r = await api.judgment.find({ query: $('briefQuery').value.trim(), jurisdiction: $('briefJurisdiction').value });
+          // 自然語言（例如「我想找高院的戒嚴補償」）先由 AI 整理成查詢詞，回填後再搜尋。
+          var query = $('briefQuery').value.trim();
+          var nl = await JR.nl.interpret(PAGE, query, $('briefAi') ? $('briefAi').value : 'auto');
+          if (nl.mode === 'natural' && nl.fields.query) {
+            query = nl.fields.query;
+            $('briefQuery').value = query;
+          }
+          var r = await api.judgment.find({ query: query, jurisdiction: $('briefJurisdiction').value });
           JR.views.renderCandidates(r.items, function (it, tr) {
             setPick(it);
             document.querySelectorAll('#briefCandidateBody tr').forEach(function (x) { x.classList.toggle('row-picked', x === tr); });

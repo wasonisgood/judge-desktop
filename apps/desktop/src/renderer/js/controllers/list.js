@@ -114,7 +114,23 @@
 
       $('listForm').addEventListener('submit', async function (ev) {
         ev.preventDefault();
+        if (JR.jobs.isBusy(PAGE)) { busyNotice(); return; }
         var keyword = $('listKeyword').value.trim();
+        // 自然語言：由 AI 整理成關鍵字、法規與智慧搜尋開關，回填到表單後照常執行（使用者看得到轉換結果）。
+        var nl;
+        try {
+          nl = await JR.nl.interpret(PAGE, keyword, $('listAi').value);
+        } catch (err) {
+          JR.setStatus($('listStatus'), JR.errText(err), 'error');
+          return;
+        }
+        if (nl.mode === 'natural') {
+          if (nl.fields.keyword) $('listKeyword').value = nl.fields.keyword;
+          if (nl.fields.statute) $('listStatute').value = nl.fields.statute;
+          if (nl.fields.smart) $('listSmart').checked = true;
+          keyword = $('listKeyword').value.trim();
+          JR.setStatus($('listStatus'), '已將描述整理為關鍵字「' + keyword + '」' + ($('listStatute').value ? '、法規「' + $('listStatute').value + '」' : '') + '。');
+        }
         if ($('listSmart').checked) return smartRun(keyword);
         if (JR.jobs.isBusy(PAGE)) { busyNotice(); return; }
         var full = $('listFull').checked;
