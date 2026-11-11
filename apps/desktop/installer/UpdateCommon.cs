@@ -130,6 +130,11 @@ namespace JudgeResearch {
                 ReleaseDate = Str(d, "releaseDate")
             };
             long size; long.TryParse(Str(d, "size") ?? "0", out size); m.Size = size;
+            m.InstallerVersion = Str(d, "installerVersion");
+            m.PayloadUrl = Str(d, "payloadUrl");
+            m.PayloadMirrorUrl = Str(d, "payloadMirrorUrl");
+            m.PayloadSha256 = Str(d, "payloadSha256");
+            long psize; long.TryParse(Str(d, "payloadSize") ?? "0", out psize); m.PayloadSize = psize;
             object notes;
             if (d.TryGetValue("notes", out notes)) {
                 var nd = notes as Dictionary<string, object>;
@@ -210,6 +215,77 @@ namespace JudgeResearch {
 
         public static string InstallerDownloadPath(UpdateManifest m) {
             return Path.Combine(DownloadDir, "JudgeResearchSetup-" + ParseVersion(m.Version).ToString(3) + ".exe");
+        }
+
+        // ── 只更新 App（payload）所需：安裝程式快取與版本判斷 ──
+        public static string InstallerCacheDir {
+            get {
+                string d = Path.Combine(StateDir, "installer-cache");
+                try { Directory.CreateDirectory(d); } catch { }
+                return d;
+            }
+        }
+        static string CachedInstallerExe { get { return Path.Combine(InstallerCacheDir, "JudgeResearchSetup.exe"); } }
+        static string CachedInstallerMeta { get { return Path.Combine(InstallerCacheDir, "installer-cache.json"); } }
+
+        // 快取完整安裝程式（版本與 SHA-256 寫入 sidecar）；之後同版本的 App 更新直接沿用。
+        public static void SaveInstallerCache(string exePath, string installerVersion) {
+            if (string.IsNullOrEmpty(installerVersion)) return;
+            try {
+                string tmp = CachedInstallerExe + ".tmp";
+                File.Copy(exePath, tmp, true);
+                string sha = Sha256Of(tmp);
+                File.Copy(tmp, CachedInstallerExe, true);
+                File.Delete(tmp);
+                var meta = new Dictionary<string, object> { { "installerVersion", installerVersion }, { "sha256", sha } };
+                File.WriteAllText(CachedInstallerMeta, new JavaScriptSerializer().Serialize(meta), Encoding.UTF8);
+            } catch (Exception ex) { Log("Installer cache save failed: " + ex.Message); }
+        }
+
+        // 取得可用的快取安裝程式（版本相同且雜湊吻合）；否則回傳 null。
+        public static string UsableCachedInstaller(string installerVersion) {
+            try {
+                if (string.IsNullOrEmpty(installerVersion) || !File.Exists(CachedInstallerExe) || !File.Exists(CachedInstallerMeta)) return null;
+                var d = new JavaScriptSerializer().DeserializeObject(File.ReadAllText(CachedInstallerMeta, Encoding.UTF8)) as Dictionary<string, object>;
+                if (d == null) return null;
+                if (!string.Equals(Str(d, "installerVersion"), installerVersion, StringComparison.Ordinal)) return null;
+                string want = Str(d, "sha256");
+                if (string.IsNullOrEmpty(want) || !string.Equals(Sha256Of(CachedInstallerExe), want, StringComparison.OrdinalIgnoreCase)) return null;
+                return CachedInstallerExe;
+            } catch (Exception ex) {
+                Log("Installer cache check failed: " + ex.Message);
+                return null;
+            }
+        }
+
+        // 目前安裝所用的安裝程式版本（安裝時寫入 installer.version）；舊版安裝沒有此檔，回傳 null。
+        public static string InstalledInstallerVersion() {
+            try {
+                string p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "installer.version");
+                return File.Exists(p) ? File.ReadAllText(p, Encoding.UTF8).Trim() : null;
+            } catch { return null; }
+        }
+
+        // 只更新 App 的條件：非強制版、安裝程式版本與已安裝的相同、快取可用，且清單提供 payload。
+        public static bool CanUsePayloadUpdate(UpdateManifest m, bool forced) {
+            if (forced || m == null) return false;
+            if (string.IsNullOrEmpty(m.InstallerVersion) || string.IsNullOrEmpty(m.PayloadSha256)) return false;
+            if (m.PayloadUrls().Count == 0) return false;
+            if (!string.Equals(InstalledInstallerVersion(), m.InstallerVersion, StringComparison.Ordinal)) return false;
+            return UsableCachedInstaller(m.InstallerVersion) != null;
+        }
+
+        public static string PayloadDownloadPath(UpdateManifest m) {
+            return Path.Combine(DownloadDir, "JudgeResearchPayload-" + ParseVersion(m.Version).ToString(3) + ".zip");
+        }
+
+        // 校驗任意下載檔案（大小與 SHA-256）。
+        public static void VerifyFile(string path, string sha256, long size) {
+            var fi = new FileInfo(path);
+            if (!fi.Exists) throw new FileNotFoundException("Downloaded file is missing", path);
+            if (size > 0 && fi.Length != size) throw new InvalidDataException("Size mismatch");
+            if (!string.IsNullOrEmpty(sha256) && !string.Equals(Sha256Of(path), sha256.Trim(), StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException("SHA-256 mismatch");
         }
 
         public static void CleanupOldDownloads() {

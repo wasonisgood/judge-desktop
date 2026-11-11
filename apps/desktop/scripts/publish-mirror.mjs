@@ -55,6 +55,16 @@ const installer = 'JudgeResearchSetup.exe';
 const latestSrc = path.join(dl, 'latest.json');
 const latest = JSON.parse(fs.readFileSync(latestSrc, 'utf8'));
 latest.installerMirrorUrl = mirrorUrl(`judge-desktop/${tag}/${installer}`);
+// App payload（只更新 App 時下載）：有才上傳並補上鏡像網址；沒有時更新程式會改用 GitHub 或完整安裝程式。
+const payloadName = `JudgeResearchPayload-${latest.version}.zip`;
+const payloadLocal = path.join(dl, payloadName);
+if (fs.existsSync(payloadLocal) && latest.payloadSha256) {
+  if (sha256(payloadLocal) !== latest.payloadSha256) throw new Error(`${payloadName} 的 SHA-256 與 latest.json 不符，拒絕發佈`);
+  latest.payloadMirrorUrl = mirrorUrl(`judge-desktop/${tag}/${payloadName}`);
+  cp(payloadLocal, `judge-desktop/${tag}/${payloadName}`);
+} else {
+  console.warn(`找不到 ${payloadName}，只更新 App 的鏡像網址留空。`);
+}
 const latestOut = path.join(work, 'latest.json');
 fs.writeFileSync(latestOut, JSON.stringify(latest, null, 2));
 cp(path.join(dl, installer), `judge-desktop/${tag}/${installer}`);

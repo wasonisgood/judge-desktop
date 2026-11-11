@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -98,17 +99,23 @@ namespace JudgeResearchInstaller {
 
             var asm = Assembly.GetExecutingAssembly();
 
-            // 1. 解壓縮 app-payload.zip
-            using (Stream zipStream = asm.GetManifestResourceStream("app-payload.zip")) {
-                if (zipStream == null) {
+            // 1. 解壓縮 app-payload.zip：只更新 App 時由 --payload 指定外部 zip（不刪除），否則使用內嵌的 payload。
+            string externalZip = InstallerOptions.PayloadPath;
+            using (Stream zipStream = externalZip == null ? asm.GetManifestResourceStream("app-payload.zip") : null) {
+                if (externalZip == null && zipStream == null) {
                     throw new InvalidOperationException(en
                         ? "Installation payload is missing in this installer package."
                         : "安裝套件不完整：內部缺少應用程式核心組件，請下載完整發布版本。");
                 }
-                string zipTmp = Path.Combine(Path.GetTempPath(), "judge-payload-" + Guid.NewGuid().ToString("N") + ".zip");
+                if (externalZip != null && !File.Exists(externalZip)) {
+                    throw new FileNotFoundException(en ? "Update payload not found." : "找不到更新檔案（payload）。", externalZip);
+                }
+                string zipTmp = externalZip ?? Path.Combine(Path.GetTempPath(), "judge-payload-" + Guid.NewGuid().ToString("N") + ".zip");
                 try {
-                    using (FileStream fs = File.Create(zipTmp)) {
-                        zipStream.CopyTo(fs);
+                    if (externalZip == null) {
+                        using (FileStream fs = File.Create(zipTmp)) {
+                            zipStream.CopyTo(fs);
+                        }
                     }
                     report(35, en ? "Deploying files to disk…" : "正在將檔案寫入磁碟…");
 
@@ -131,7 +138,7 @@ namespace JudgeResearchInstaller {
                         }
                     }
                 } finally {
-                    try { File.Delete(zipTmp); } catch { }
+                    if (externalZip == null) { try { File.Delete(zipTmp); } catch { } }
                 }
                 TrimMemory();
             }
@@ -157,6 +164,9 @@ namespace JudgeResearchInstaller {
                     }
                 }
             }
+
+            // 記錄此安裝所用的安裝程式版本：更新程式只在版本相同時才可略過重下安裝程式。
+            try { File.WriteAllText(Path.Combine(targetDir, "installer.version"), BuildInfo.InstallerVersion ?? "", Encoding.UTF8); } catch { }
 
             report(90, en ? "Configuring system shortcuts and protocols…" : "正在註冊系統捷徑與深度連結協定…");
 
@@ -204,7 +214,7 @@ namespace JudgeResearchInstaller {
                 string uninstPath = Path.Combine(targetDir, "uninstall.exe");
                 using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\JudgeResearch")) {
                     key.SetValue("DisplayName", "司法院裁判研究");
-                    key.SetValue("DisplayVersion", BuildInfo.Version);
+                    key.SetValue("DisplayVersion", InstallerOptions.AppVersion ?? BuildInfo.Version);
                     key.SetValue("Publisher", "wasonisgood");
                     key.SetValue("InstallLocation", targetDir);
                     key.SetValue("UninstallString", "\"" + uninstPath + "\"");

@@ -23,6 +23,18 @@ namespace JudgeResearch {
         }
         public string Sha256;
         public long Size;
+        // 安裝程式本身的版本（只有安裝器／更新器程式碼改變時才遞增）；與目前安裝的版本相同時，App 更新只需下載 payload。
+        public string InstallerVersion;
+        public string PayloadUrl;
+        public string PayloadMirrorUrl;
+        public string PayloadSha256;
+        public long PayloadSize;
+        public List<string> PayloadUrls() {
+            var list = new List<string>();
+            if (!string.IsNullOrEmpty(PayloadMirrorUrl)) list.Add(PayloadMirrorUrl);
+            if (!string.IsNullOrEmpty(PayloadUrl) && !list.Contains(PayloadUrl)) list.Add(PayloadUrl);
+            return list;
+        }
         public string ReleaseDate;
         public string NotesZh;
         public string NotesEn;

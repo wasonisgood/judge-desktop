@@ -26,6 +26,7 @@ $buildInfo = @"
 namespace JudgeResearch {
     internal static class BuildInfo {
         public const string Version = $(CsStr $version);
+        public const string InstallerVersion = $(CsStr $release.installerVersion);
         public const string ManifestUrl = $(CsStr $manifestUrl);
         public const string ManifestFallbackUrl = $(CsStr $manifestFallbackUrl);
     }

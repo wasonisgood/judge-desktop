@@ -19,6 +19,9 @@ namespace JudgeResearchInstaller {
         public static string Lang = "zh";
         public static bool UpdateMode = false;
         public static bool NoSelfUpdate = false;
+        // 只更新 App 本體時，更新程式以外部 payload zip 取代內嵌的 payload；AppVersion 為新的 App 版本號。
+        public static string PayloadPath = null;
+        public static string AppVersion = null;
     }
 
     public class App : Application {
@@ -34,6 +37,10 @@ namespace JudgeResearchInstaller {
                         InstallerOptions.UpdateMode = true;
                     } else if (string.Equals(a, "--no-self-update", StringComparison.OrdinalIgnoreCase)) {
                         InstallerOptions.NoSelfUpdate = true;
+                    } else if (string.Equals(a, "--payload", StringComparison.OrdinalIgnoreCase) && i + 1 < args.Length) {
+                        InstallerOptions.PayloadPath = args[++i];
+                    } else if (string.Equals(a, "--app-version", StringComparison.OrdinalIgnoreCase) && i + 1 < args.Length) {
+                        InstallerOptions.AppVersion = args[++i];
                     } else if (string.Equals(a, "--old-pid", StringComparison.OrdinalIgnoreCase) && i + 1 < args.Length) {
                         int.TryParse(args[++i], out oldPid);
                     } else if (string.Equals(a, "--replace", StringComparison.OrdinalIgnoreCase) && i + 1 < args.Length) {

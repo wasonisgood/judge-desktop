@@ -53,8 +53,27 @@ if (foundExe) {
   console.warn(`Installer ${releaseConfig.installerFileName} not found in root or installer directory.`);
 }
 
+// App payload（只含 App 本體的 zip）：一般更新只下載它，不必重下安裝程式。
+// 與安裝程式內嵌的 app-payload.zip 為同一份檔案；發佈時以版本命名，避免與其他版本混淆。
+const payloadName = `JudgeResearchPayload-${pkg.version}.zip`;
+const payloadSrc = path.join(scriptDir, 'app-payload.zip');
+let payloadSize = 0;
+let payloadSha256 = '';
+let payloadUrl = '';
+if (fs.existsSync(payloadSrc)) {
+  const pbuf = fs.readFileSync(payloadSrc);
+  payloadSize = pbuf.length;
+  payloadSha256 = crypto.createHash('sha256').update(pbuf).digest('hex').toLowerCase();
+  fs.copyFileSync(payloadSrc, path.join(publishDir, payloadName));
+  payloadUrl = `https://github.com/${releaseConfig.githubRepo}/releases/download/v${pkg.version}/${payloadName}`;
+  console.log(`Payload ${payloadName} (${payloadSize} bytes, SHA256: ${payloadSha256})`);
+} else {
+  console.warn('app-payload.zip not found; manifest will not offer payload-only updates.');
+}
+
 const manifest = {
   version: pkg.version,
+  installerVersion: releaseConfig.installerVersion || '',
   minimumVersion: releaseConfig.minimumVersion,
   mandatory: Boolean(releaseConfig.mandatory),
   releaseDate: new Date().toISOString().split('T')[0],
@@ -62,6 +81,11 @@ const manifest = {
   installerMirrorUrl: `https://firebasestorage.googleapis.com/v0/b/judge-remote-mcp-2026.firebasestorage.app/o/${encodeURIComponent(`judge-desktop/v${pkg.version}/${releaseConfig.installerFileName}`)}?alt=media`,
   size: fileSize,
   sha256: sha256,
+  payloadUrl: payloadSha256 ? payloadUrl : '',
+  // 鏡像（Firebase Storage）優先，與安裝程式相同；publish-mirror.mjs 會上傳到同一路徑。
+  payloadMirrorUrl: payloadSha256 ? `https://firebasestorage.googleapis.com/v0/b/judge-remote-mcp-2026.firebasestorage.app/o/${encodeURIComponent(`judge-desktop/v${pkg.version}/${payloadName}`)}?alt=media` : '',
+  payloadSize: payloadSize,
+  payloadSha256: payloadSha256,
   notes: releaseConfig.notes
 };
 

@@ -134,6 +134,7 @@ jobs:
           path: |
             apps/desktop/JudgeResearchSetup.exe
             apps/desktop/installer/publish/latest.json
+            apps/desktop/installer/publish/JudgeResearchPayload-*.zip
           retention-days: 1
 
   linux:
@@ -291,6 +292,9 @@ jobs:
           # Windows 產物的 latest.json 位於 installer/publish/（上傳時保留相對路徑），這裡複製到 dist-all/ 根目錄。
           src=$(find dist-all -name latest.json | head -1)
           if [ -n "$src" ] && [ "$src" != "dist-all/latest.json" ]; then cp "$src" dist-all/latest.json; fi
+          # App payload（只更新 App 時使用）：與 latest.json 一樣攤平到根目錄，由下方 files 的 dist-all/*.zip 一併發佈。
+          p=$(find dist-all -name 'JudgeResearchPayload-*.zip' | head -1)
+          if [ -n "$p" ] && [ "$(dirname "$p")" != "dist-all" ]; then cp "$p" dist-all/; fi
 
       - name: 檢查必要檔案
         shell: bash
@@ -298,6 +302,7 @@ jobs:
           ls -la dist-all
           test -f dist-all/JudgeResearchSetup.exe || { echo "缺少 Windows 安裝器"; exit 1; }
           test -f dist-all/latest.json || { echo "缺少 latest.json"; exit 1; }
+          ls dist-all/JudgeResearchPayload-*.zip >/dev/null 2>&1 || { echo "缺少 App payload（只更新 App 用）"; exit 1; }
           ls dist-all/*.AppImage dist-all/*.deb dist-all/*.rpm >/dev/null 2>&1 || { echo "缺少 Linux 安裝包"; exit 1; }
           ls dist-all/*.dmg dist-all/*.zip >/dev/null 2>&1 || { echo "缺少 macOS 安裝包"; exit 1; }
 
