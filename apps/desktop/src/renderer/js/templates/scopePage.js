@@ -114,18 +114,20 @@
 
           <section class="scope-sec" aria-labelledby="scopeSec3">
             <h2 id="scopeSec3">三、分析欄位</h2>
-            <table class="table scope-fields" aria-describedby="scopeSec3">
-              <thead>
-                <tr>
-                  <th scope="col">欄位名稱</th>
-                  <th scope="col">說明</th>
-                  <th scope="col" class="scope-col-on">納入</th>
-                  <th scope="col" class="scope-col-order">排序</th>
-                  <th scope="col" class="scope-col-ops">操作</th>
-                </tr>
-              </thead>
-              <tbody id="scopeFieldList"></tbody>
-            </table>
+            <div class="table-wrap">
+              <table class="table scope-fields" aria-describedby="scopeSec3">
+                <thead>
+                  <tr>
+                    <th scope="col">欄位名稱</th>
+                    <th scope="col">說明</th>
+                    <th scope="col" class="scope-col-on">納入</th>
+                    <th scope="col" class="scope-col-order">排序</th>
+                    <th scope="col" class="scope-col-ops">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="scopeFieldList"></tbody>
+              </table>
+            </div>
             <div class="actions">
               <button class="btn small" type="button" id="scopeFieldAdd">加入自訂欄位</button>
             </div>

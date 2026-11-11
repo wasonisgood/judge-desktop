@@ -29,7 +29,7 @@
 /* 標編碼標注工序的版面：頁首、固定位置的操作列、編號區塊；空的狀態行不佔版面 */
 .scope-head { margin-bottom: 4px; }
 .scope-form { max-width: 980px; }
-.scope-bar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 10px 0; margin-bottom: 4px; background: var(--paper-2, #efe8da); border-bottom: 1px solid var(--rule); }
+.scope-bar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 10px 0; margin-bottom: 4px; background: var(--paper); border-bottom: 1px solid var(--rule); }
 .scope-bar-main, .scope-bar-export { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .scope-reason { margin: 6px 0 0; }
 .scope-reason:empty { display: none; }
@@ -50,13 +50,15 @@
 .scope-deflist .check input { flex: 0 0 auto; margin-top: 3px; }
 .scope-deflist .scope-msg { margin: 0; }
 /* 分析欄位表：標頭列、欄寬固定，操作欄在最右側 */
-.scope-fields { table-layout: fixed; }
+/* 表格設最小寬度並放在可橫向捲動的容器內：窄視窗時捲動，而不是把操作鈕擠壞。 */
+.scope-fields { table-layout: fixed; min-width: 620px; }
 .scope-fields th, .scope-fields td { vertical-align: middle; }
 .scope-fields input.brief-field-name, .scope-fields input.brief-field-desc { width: 100%; }
 .scope-col-on, .scope-col-order { width: 64px; text-align: center; }
-.scope-col-ops { width: 260px; }
-.scope-fields .coding-field-actions { display: flex; flex-wrap: wrap; gap: 4px; }
-.scope-fields .coding-field-actions button { min-width: 0; padding: 4px 8px; }
+.scope-col-ops { width: 252px; }
+/* 操作鈕 2×2 排列，每顆等寬，文字不換行、不超出欄寬。 */
+.scope-fields .coding-field-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+.scope-fields .coding-field-actions .btn { width: 100%; min-width: 0; min-height: 28px; padding: 0 6px; }
 @media (max-width: 720px) {
   .scope-deflist { grid-template-columns: 1fr; }
   .scope-deflist dt { border-bottom: 0; padding-bottom: 0; }
@@ -112,7 +114,7 @@
 
 /* 處理流程說明視窗（issue #4 第 7 點） */
 .explain-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.35); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px; }
-.explain-box { background: var(--paper, #fff); color: var(--ink, #222); max-width: 640px; width: 100%; max-height: 80vh; overflow: auto; border-radius: 8px; padding: 20px 22px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25); }
+.explain-box { background: var(--paper); color: var(--ink); max-width: 640px; width: 100%; max-height: 80vh; overflow: auto; border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px 22px; overflow-wrap: anywhere; }
 .explain-box h2 { margin: 0 0 12px; font-size: 1.1rem; }
 .explain-steps { padding-left: 1.4em; line-height: 1.6; font-size: 0.92rem; }
 .explain-steps li { margin-bottom: 8px; }
@@ -120,11 +122,11 @@
 .clarify p { width: 100%; margin: 0; }
 
 /* 背景工作橫幅（v3.6.0） */
-.job-banner { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 14px; padding: 10px 14px; border-radius: 6px; background: var(--paper-2, #efe8da); color: var(--ink, #222); font-size: 0.9rem; }
+.job-banner { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 14px; padding: 10px 14px; border: 1px solid var(--rule); border-left: 3px solid var(--shu); border-radius: var(--radius); background: var(--paper-2); color: var(--ink); font-size: 0.9rem; }
 .job-banner .btn { margin-left: auto; }
 
 /* 工作負載身分聯盟引導面板（v3.7.0）：紙色底、襯線標題、朱色單一強調 */
-.fed { margin: 12px 0 18px; padding: 16px 18px; background: var(--paper-2, #efe8da); border: 1px solid var(--rule); border-radius: 6px; }
+.fed { margin: 12px 0 18px; padding: 16px 18px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: var(--radius); }
 .fed h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.15rem; }
 .fed-head p { margin: 0 0 12px; }
 .fed-checks { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.88rem; }
@@ -134,7 +136,7 @@
 .fed-tick-wrap { display: inline-flex; width: 16px; height: 16px; }
 .fed-tick { width: 16px; height: 16px; }
 .fed-steps { list-style: none; margin: 0 0 14px; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
-.fed-step-btn { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 6px; background: var(--paper, #f1ece2); border: 1px solid var(--rule); border-radius: 6px; cursor: pointer; color: var(--ink-2); font: inherit; }
+.fed-step-btn { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 6px; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); cursor: pointer; color: var(--ink-2); font: inherit; }
 .fed-step-btn.active { border-color: var(--shu); color: var(--shu-ink); box-shadow: inset 0 -3px 0 var(--shu); }
 .fed-ico { width: 36px; height: 36px; }
 .fed-step-no { font-family: var(--serif); font-weight: 700; }
@@ -195,7 +197,7 @@
 .review-toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 8px 0; }
 .review-filter { min-width: 7em; }
 .review-row > td { background: var(--paper-2); }
-.review-panel { padding: 6px 4px; position: sticky; left: 0; width: min(100%, 900px); box-sizing: border-box; }
+.review-panel { padding: 6px 4px; width: 100%; max-width: 900px; box-sizing: border-box; }
 .review-field { border-top: 1px solid var(--rule); padding: 8px 0; }
 .review-field.pending-cell { padding-left: 8px; border-left: 3px solid var(--shu); }
 .review-field-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
