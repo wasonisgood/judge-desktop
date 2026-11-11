@@ -3,7 +3,7 @@
 //   node knowledge/tools/lookup.mjs <法名> <條號> [項] [款]
 //   node knowledge/tools/lookup.mjs <法名> --search <關鍵字>     列出現行條文中含關鍵字的條號
 // 法名可用簡稱（刑法→中華民國刑法、憲法→中華民國憲法）。
-import * as core from '../../packages/core/dist/index.js';
+import * as core from '../../apps/desktop/node_modules/@judge/core/dist/index.js';
 
 const ALIASES = { 刑法: '中華民國刑法', 憲法: '中華民國憲法' };
 const [aliasArg, ...rest] = process.argv.slice(2);

@@ -23,40 +23,7 @@ env:
   ELECTRON_MAJOR: 38
 
 jobs:
-  # 與平臺無關的部分只建置一次：核心套件的 JavaScript 輸出與模組目錄（規則表與端點）。
-  # 其餘各平臺工作直接下載這份輸出，不重複建置、不重複下載。
-  shared:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 取得程式碼
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 安裝 Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-          cache-dependency-path: |
-            packages/core/package-lock.json
-            apps/desktop/package-lock.json
-
-      - name: 建置共用核心（JavaScript 輸出）
-        working-directory: packages/core
-        run: |
-          npm ci
-          npm run build
-
-      - name: 上傳共用核心輸出
-        uses: actions/upload-artifact@v4
-        with:
-          name: core-dist
-          path: packages/core/dist
-          retention-days: 1
-
   windows:
-    needs: shared
     runs-on: windows-latest
     steps:
       - name: 取得程式碼
@@ -69,21 +36,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-          cache-dependency-path: |
-            packages/core/package-lock.json
-            apps/desktop/package-lock.json
-
-      - name: 取得共用核心輸出
-        uses: actions/download-artifact@v4
-        with:
-          name: core-dist
-          path: packages/core/dist
-
-      - name: 安裝核心相依套件（含本平臺的原生模組）
-        working-directory: packages/core
-        shell: bash
-        run: |
-          for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
+          cache-dependency-path: apps/desktop/package-lock.json
 
       - name: 快取 Electron 與 electron-builder 下載
         uses: actions/cache@v4
@@ -138,7 +91,6 @@ jobs:
           retention-days: 1
 
   linux:
-    needs: shared
     runs-on: ubuntu-latest
     steps:
       - name: 取得程式碼
@@ -151,20 +103,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-          cache-dependency-path: |
-            packages/core/package-lock.json
-            apps/desktop/package-lock.json
-
-      - name: 取得共用核心輸出
-        uses: actions/download-artifact@v4
-        with:
-          name: core-dist
-          path: packages/core/dist
-
-      - name: 安裝核心相依套件（含本平臺的原生模組）
-        working-directory: packages/core
-        run: |
-          for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
+          cache-dependency-path: apps/desktop/package-lock.json
 
       - name: 安裝 rpm 打包工具
         run: sudo apt-get update && sudo apt-get install -y rpm
@@ -198,7 +137,6 @@ jobs:
           retention-days: 1
 
   macos:
-    needs: shared
     runs-on: macos-latest
     steps:
       - name: 取得程式碼
@@ -211,20 +149,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-          cache-dependency-path: |
-            packages/core/package-lock.json
-            apps/desktop/package-lock.json
-
-      - name: 取得共用核心輸出
-        uses: actions/download-artifact@v4
-        with:
-          name: core-dist
-          path: packages/core/dist
-
-      - name: 安裝核心相依套件（含本平臺的原生模組）
-        working-directory: packages/core
-        run: |
-          for i in 1 2 3; do npm ci && break; echo "npm ci 第 $i 次失敗，稍後重試"; sleep 30; done
+          cache-dependency-path: apps/desktop/package-lock.json
 
       - name: 快取 Electron 與 electron-builder 下載
         uses: actions/cache@v4

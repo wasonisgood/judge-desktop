@@ -1,5 +1,5 @@
 // 匯出測試：用真實司法院資料產生範圍整理表（Excel、Word）、列表 Excel、單一判決 Word，並讀回驗證。
-// 執行前需先建置：packages/core 與 apps/desktop（npm run build）。
+// 執行前需先安裝並建置 apps/desktop（npm ci，然後 npm run build）；@judge/core 由發版的 tarball 提供。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';

@@ -15,7 +15,7 @@
     "test": "node scripts/run-tests.mjs"
   },
   "dependencies": {
-    "@judge/core": "file:../../packages/core",
+    "@judge/core": "https://github.com/wasonisgood/judge-shared/releases/download/core-v0.1.0/judge-core-0.1.0.tgz",
     "adm-zip": "^0.5.18",
     "docx": "^9",
     "exceljs": "^4",

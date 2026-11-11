@@ -1,5 +1,5 @@
 // 量化圖表（issue #8）桌面端純函式測試：Excel 讀取與欄位推斷、覆寫、計數單位切換、金額級距、小提琴統計、地圖律師代理率。
-// 執行前需先建置：packages/core 與 apps/desktop（npm run build）。
+// 執行前需先安裝並建置 apps/desktop（npm ci，然後 npm run build）；@judge/core 由發版的 tarball 提供。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';

@@ -37,7 +37,7 @@ Windows 桌面應用程式，用來檢索司法院公開的裁判書，並整理
 
 ## 目錄結構
 
-- `packages/core`：司法院檢索、解析、範圍整理、AI 分析（TypeScript）
+- `@judge/core`（共用核心）：司法院檢索、解析、範圍整理、AI 分析。原始碼在 [judge-shared](https://github.com/wasonisgood/judge-shared)，以釘住版本的 tarball 依賴（見 `apps/desktop/package.json`）
 - `apps/desktop`：Electron 桌面應用程式與介面
 - `apps/desktop/installer`：C# 原生安裝器、解除安裝程式與更新程式
 - `docs/`：規格、設計文件、程式碼簽章政策、隱私說明
@@ -77,7 +77,7 @@ The app does not collect personal data. Search results, AI keys and judgment tex
 
 ## Repository layout
 
-- `packages/core`: Judicial Yuan search, parsing, scope tables and AI analysis (TypeScript)
+- `@judge/core` (shared core): Judicial Yuan search, parsing, scope tables and AI analysis. Source lives in [judge-shared](https://github.com/wasonisgood/judge-shared), pinned as a release tarball (see `apps/desktop/package.json`)
 - `apps/desktop`: Electron desktop application and UI
 - `apps/desktop/installer`: native C# installer, uninstaller and updater
 - `docs/`: specifications, design notes, code signing policy, privacy statement

@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { execSync } from 'node:child_process';
-import * as core from '../../packages/core/dist/index.js';
+import * as core from '../../apps/desktop/node_modules/@judge/core/dist/index.js';
 
 const BUCKET = 'judge-remote-mcp-2026.firebasestorage.app';
 const PROJECT = 'judge-remote-mcp-2026';

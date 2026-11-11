@@ -6,7 +6,7 @@
 // 所有結果寫入輸出 JSON；查不到的一律記為未通過，不做推定。
 import fs from 'node:fs';
 import path from 'node:path';
-import * as core from '../../packages/core/dist/index.js';
+import * as core from '../../apps/desktop/node_modules/@judge/core/dist/index.js';
 
 const [dataDirArg, outArg] = process.argv.slice(2);
 if (!dataDirArg || !outArg) {
