@@ -1,7 +1,7 @@
 // IPC：自然語言輸入（判斷關鍵字或自然語言；自然語言才呼叫 AI 整理成欄位或標準列）。
 import { ipcMain } from 'electron';
 import { requireAi, normalizeAiMode } from '../data/cloud/aiRepo';
-import { interpretInput, interpretCriteria, type NlPage, type NlResult, type NlCriteriaResult } from '../services/nlIntent';
+import { interpretInput, interpretCriteria, type NlPage, type NlResult, type NlCriteriaResult } from '@judge/core';
 import { toUserError } from '../services/userError';
 
 export function registerNlIpc(): void {

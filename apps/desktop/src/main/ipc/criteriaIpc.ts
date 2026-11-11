@@ -16,7 +16,7 @@ import { withJob, newRunId } from '../services/jobRegistry';
 import { safeSend } from '../services/safeSend';
 import { toUserError } from '../services/userError';
 import { parseCriteriaInput, candidateIdsOf, needsFetch, toCaseInput } from '../services/criteriaLogic';
-import { suggestCriteria } from '../services/nlIntent';
+import { suggestCriteria } from '@judge/core';
 
 type FetchSource = { kind: 'library'; id: string } | { kind: 'search'; query: string; maxItems: number };
 
