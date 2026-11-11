@@ -10,7 +10,7 @@
   "_installerVersionNote": "installerVersion 只在安裝程式或更新程式的 C# 程式碼改變時才遞增（例如 1 → 2）。App 更新只下載 payload，不必重下安裝程式；遞增後的版本才會要求使用者重下完整安裝程式。強制更新版本一律重下安裝程式。",
   "installerVersion": "2",
   "notes": {
-    "zh": "・標編碼標注工序頁面版面修正：分析欄位表可橫向捲動，操作鈕 2×2 排列不再溢出。\n・標編碼標注工序的覆核面板與流程說明視窗改用本站紙色與圓角樣式。\n・一般更新只下載 App 本體（payload），不再每版重下完整安裝程式；強制更新版本仍會重下安裝程式。\n・下載來源鏡像（Firebase Storage）優先，GitHub 備援。",
-    "en": "・Fixed the layout of the Coding & Annotation Workflow page: the field table scrolls horizontally, and the action buttons sit in a 2×2 grid without overflowing.\n・Review panels and the process explanation window now follow the site's paper colors and corner style.\n・Routine updates download only the app payload instead of the full installer each version; forced-update versions still download the installer.\n・Firebase Storage mirror is tried first, with GitHub as fallback."
+    "zh": "・畫面與核心改由共用套件發版（內部架構調整，操作方式不變）。\n・網頁版與雲端 MCP 的登入頁改為本站風格；桌面版下載可從產品介紹頁直接取得最新版。",
+    "en": "・The interface and core now ship from a shared package (internal restructuring; usage is unchanged).\n・The web and cloud MCP sign-in pages now follow the site style; the product page links straight to the latest desktop download."
   }
 }
