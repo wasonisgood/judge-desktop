@@ -16,6 +16,7 @@ import { withJob, newRunId } from '../services/jobRegistry';
 import { safeSend } from '../services/safeSend';
 import { toUserError } from '../services/userError';
 import { parseCriteriaInput, candidateIdsOf, needsFetch, toCaseInput } from '../services/criteriaLogic';
+import { suggestCriteria } from '../services/nlIntent';
 
 type FetchSource = { kind: 'library'; id: string } | { kind: 'search'; query: string; maxItems: number };
 
@@ -109,6 +110,18 @@ export function registerCriteriaIpc(): void {
     }));
 
   // 執行前規劃：只計算候選數、程式已排除數、AI 判斷案件數與 AI 呼叫次數，不呼叫 AI。不估計費用（使用者自行付費）。
+  // AI 依候選判決建議標準（只送字號與判決開頭；標準由使用者確認後才加入）。
+  ipcMain.handle('criteria:suggest', async (_e, args: { prepId: string; ai?: string }) => {
+    try {
+      const p = requirePrepared(args.prepId);
+      const ai = await requireAi(normalizeAiMode(args.ai));
+      const criteria = await suggestCriteria(ai, p.query, p.cases.map((c) => ({ caseNo: c.caseNo, head: c.fullText.slice(0, 300) })));
+      return { criteria };
+    } catch (err) {
+      throw toUserError(err);
+    }
+  });
+
   ipcMain.handle('criteria:plan', (_e, args: { prepId: string; criteria: unknown }) => {
     const p = requirePrepared(args.prepId);
     const criteria = parseCriteriaInput(args.criteria);

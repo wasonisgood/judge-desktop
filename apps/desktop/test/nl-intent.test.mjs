@@ -87,3 +87,21 @@ test('納入排除：AI 沒有可用標準時明確報錯', async () => {
     /沒有整理出可用的標準/,
   );
 });
+
+// ---- 納入排除：AI 建議標準（只送字號與判決開頭） ----
+const { suggestCriteria } = require('../dist/main/services/nlIntent.js');
+
+test('AI 建議標準：只送字號與判決開頭，回傳經清理的標準', async () => {
+  let userSent = '';
+  const ai = async (_sys, user) => { userSent = user; return JSON.stringify({ criteria: [{ kind: 'include', method: 'ai', text: '原告為消費者' }, { kind: 'exclude', method: 'program', keywords: ['和解'] }] }); };
+  const longHead = '臺灣臺北地方法院 民事判決 ' + '全文'.repeat(400);
+  const out = await suggestCriteria(ai, '消費者訴訟', [{ caseNo: '113 年度消字第 1 號', head: longHead }]);
+  assert.equal(out.length, 2);
+  assert.ok(userSent.includes('113 年度消字第 1 號'));
+  assert.ok(userSent.length < 600, '不應送出整篇全文');
+});
+
+test('AI 建議標準：沒有候選或 AI 沒有建議時明確報錯', async () => {
+  await assert.rejects(suggestCriteria(async () => '{}', '主題', []), /沒有候選判決/);
+  await assert.rejects(suggestCriteria(async () => '{"criteria":[]}', '主題', [{ caseNo: '1', head: 'x' }]), /沒有提出可用的標準建議/);
+});

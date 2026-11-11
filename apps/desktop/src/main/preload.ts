@@ -158,6 +158,7 @@ contextBridge.exposeInMainWorld('api', {
   },
   criteria: {
     fetch: (args: unknown) => invoke('criteria:fetch', args),
+    suggest: (args: unknown) => invoke('criteria:suggest', args),
     plan: (args: unknown) => invoke('criteria:plan', args),
     run: (args: unknown) => invoke('criteria:run', args),
     review: (args: unknown) => invoke('criteria:review', args),
