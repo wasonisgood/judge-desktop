@@ -21,7 +21,8 @@ export interface AssistantTurnContext {
   userText: string;
 }
 
-export type AssistantPage = 'home' | 'list' | 'scope' | 'brief' | 'files' | 'settings';
+export const ASSISTANT_PAGES = ['home', 'design', 'list', 'semantic', 'scope', 'criteria', 'brief', 'chart', 'files', 'tools', 'crawl', 'settings'] as const;
+export type AssistantPage = typeof ASSISTANT_PAGES[number];
 
 export interface PendingAction {
   id: string;
@@ -88,7 +89,7 @@ export const ASSISTANT_TOOLS: ToolDef[] = [
     description: '切換到應用程式的某一頁。',
     parameters: {
       type: 'object',
-      properties: { page: { type: 'string', enum: ['home', 'list', 'scope', 'brief', 'files', 'settings'] } },
+      properties: { page: { type: 'string', enum: [...ASSISTANT_PAGES] } },
       required: ['page'],
     },
   },

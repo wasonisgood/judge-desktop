@@ -4,8 +4,14 @@
   JR.templates.homePage = `
       <section class="page active" id="page-home">
         <h1>司法院裁判研究</h1>
-        <p class="lead">搜尋司法院公開的裁判書，整理成表格，或精讀單一判決。三個頁面可以接續使用：前一頁的結果會保留在檔案中。</p>
+        <p class="lead">依研究流程由上而下使用：先設計問題，再取得判決，逐步篩選與整理。每一步的結果都會保存在「檔案」，供下一步承接。</p>
         <ul class="entries">
+          <li>
+            <button class="entry" data-go="design">
+              <span class="entry-title">研究設計</span>
+              <span class="entry-desc">用一句話描述想研究的問題，AI 會與你多輪對話，協助選定研究主體與主題。</span>
+            </button>
+          </li>
           <li>
             <button class="entry" data-go="list">
               <span class="entry-title">判決列表</span>
@@ -19,6 +25,12 @@
             </button>
           </li>
           <li>
+            <button class="entry" data-go="criteria">
+              <span class="entry-title">納入排除</span>
+              <span class="entry-desc">以已保存的候選判決為基礎，用一句話描述納入與排除標準，逐案核查。</span>
+            </button>
+          </li>
+          <li>
             <button class="entry" data-go="brief">
               <span class="entry-title">單一判決精讀</span>
               <span class="entry-desc">輸入判決名稱或關鍵字，從候選中選定一則，由 AI 整理成文書，匯出 Word。</span>
@@ -28,6 +40,12 @@
             <button class="entry" data-go="files">
               <span class="entry-title">檔案</span>
               <span class="entry-desc">保存過的結果。可加星號、封存、移入垃圾桶，或重新開啟。</span>
+            </button>
+          </li>
+          <li>
+            <button class="entry" data-go="tools">
+              <span class="entry-title">工具</span>
+              <span class="entry-desc">文本擷取、量化圖表等獨立工具，不屬於研究流程。</span>
             </button>
           </li>
           <li>
