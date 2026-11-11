@@ -5,7 +5,7 @@
 // 3. 沒有 AI 設定時，自然語言輸入會明確失敗，不會退回規則式猜測。
 import { parseJsonReply, type AiComplete } from '@judge/core';
 
-export type NlPage = 'list' | 'brief';
+export type NlPage = 'list' | 'brief' | 'semantic';
 
 /** 判斷為自然語言的依據：句末問號或語氣詞、常見的口語動詞與疑問詞。純函式，可直接測試。 */
 export function looksNatural(text: string): boolean {
@@ -33,6 +33,13 @@ const PAGE_FIELDS: Record<NlPage, { purpose: string; fields: FieldSpec[] }> = {
       { key: 'keyword', type: 'string', hint: '檢索關鍵字，1 到 4 個詞，以空白分隔（案由、法名、主題詞）。' },
       { key: 'statute', type: 'string', hint: '使用者提到的相關法規名稱（例如「國家賠償法」）；沒有提到就留空字串。' },
       { key: 'smart', type: 'boolean', hint: '描述較複雜、需要 AI 協助擴充同義詞時為 true，否則 false。' },
+    ],
+  },
+  semantic: {
+    purpose: '段落檢索：先以候選關鍵字取得判決，再依語意描述在段落層級排序。',
+    fields: [
+      { key: 'keyword', type: 'string', hint: '候選關鍵字，1 到 4 個詞，以空白分隔，用來先取得候選判決。' },
+      { key: 'query', type: 'string', hint: '使用者想找的情境或論點的完整描述（保留使用者的用語）。' },
     ],
   },
   brief: {

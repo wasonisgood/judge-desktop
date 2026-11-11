@@ -76,6 +76,22 @@
         }
         var keyword = $('semKeyword').value.trim();
         var query = $('semQuery').value.trim();
+        // 自然語言：候選關鍵字欄位若是整句描述，由 AI 整理成關鍵字與語意描述（回填後照常執行）。
+        if (keyword) {
+          var nl;
+          try {
+            nl = await JR.nl.interpret('semantic', keyword, $('semAi').value);
+          } catch (err) {
+            JR.setStatus($('semStatus'), JR.errText(err), 'error');
+            return;
+          }
+          if (nl.mode === 'natural') {
+            if (nl.fields.keyword) $('semKeyword').value = nl.fields.keyword;
+            if (nl.fields.query && !query) $('semQuery').value = nl.fields.query;
+            keyword = $('semKeyword').value.trim();
+            query = $('semQuery').value.trim();
+          }
+        }
         if (!keyword) { JR.setStatus($('semStatus'), '請輸入候選關鍵字。', 'error'); return; }
         if (!query) { JR.setStatus($('semStatus'), '請輸入研究問題，AI 會依它排序段落。', 'error'); return; }
         var kind = $('semKind').value;
