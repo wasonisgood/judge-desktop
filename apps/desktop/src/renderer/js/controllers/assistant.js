@@ -61,6 +61,11 @@
       JR.components.addMsg('assistant', c.ok ? '已按下「' + p.args.id + '」，結果請在畫面上查看。' : c.reason);
       return;
     }
+    if (p.kind === 'ui_action') {
+      var ua = JR.aiBridge.runAction(p.args.action, p.args.args || {});
+      JR.components.addMsg('assistant', ua.ok ? '已完成：' + p.label + '。' : ua.reason);
+      return;
+    }
     if (p.kind === 'saved_action') {
       var call = SAVED_CALL[p.args.action];
       if (!call) { JR.components.addMsg('assistant', '不支援的整理動作。'); return; }

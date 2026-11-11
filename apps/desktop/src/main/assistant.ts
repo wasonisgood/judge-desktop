@@ -32,7 +32,7 @@ export type AssistantPage = typeof ASSISTANT_PAGES[number];
 export interface PendingAction {
   id: string;
   label: string;
-  kind: 'run_scope' | 'run_brief' | 'ui_click' | 'saved_action';
+  kind: 'run_scope' | 'run_brief' | 'ui_click' | 'saved_action' | 'ui_action';
   args: Record<string, unknown>;
 }
 
@@ -158,7 +158,7 @@ export const ASSISTANT_TOOLS: ToolDef[] = [
   },
   {
     name: 'ui_action',
-    description: '在畫面上執行一個動態操作（立即生效，不呼叫 AI、不保存）。action 可為：pickCandidate（精讀頁選定候選判決，args.id）；setCriteria（納入排除頁以 args.criteria 陣列取代標準列，每條含 kind、method、text 或 keywords、keywordMode）；addScopeField／removeScopeField（標編碼的分析欄位，args.name，新增另可給 description）；annotateQuote（在目前載入的判決全文標注一段原文，args.quote、args.color、args.note）。',
+    description: '在畫面上執行一個動態操作（立即生效，不呼叫 AI、不保存）。action 可為：pickCandidate（精讀頁選定候選判決，args.id）；setCriteria（納入排除頁以 args.criteria 陣列取代標準列，每條含 kind、method、text 或 keywords、keywordMode）；addScopeField／removeScopeField（標編碼的分析欄位，args.name，新增另可給 description）；annotateQuote（在目前載入的判決全文標注一段原文，args.quote、args.color、args.note）；briefFromList（精讀列表中的判決，args.id）；scopeOpenSource（標編碼結果跳至原文，args.caseId、args.quote）；scopeReview（標編碼覆核，需使用者同意：args.op 為 accept、reject、edit、batchAccept 或 undoLast，另需 sheetIndex、caseId、fieldId，edit 需 value）。',
     parameters: {
       type: 'object',
       properties: {

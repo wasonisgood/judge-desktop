@@ -99,6 +99,14 @@
         if (name === 'setCriteria') return JR.controllers.criteria.setRows(args.criteria);
         if (name === 'addScopeField') return JR.controllers.scope.addField(args);
         if (name === 'removeScopeField') return JR.controllers.scope.removeField(args.name);
+        if (name === 'briefFromList') {
+          var item = (JR.state.listItems || []).filter(function (x) { return x.id === args.id; })[0];
+          if (!item) return { ok: false, reason: '判決列表中沒有這則判決，請先搜尋或匯入。' };
+          JR.controllers.brief.openFromList(item, JR.state.listItems);
+          return { ok: true };
+        }
+        if (name === 'scopeReview') return JR.controllers.scope.review(args);
+        if (name === 'scopeOpenSource') { JR.controllers.scope.openSource(args.caseId, args.quote); return { ok: true }; }
         if (name === 'annotateQuote') return JR.controllers.annotation.annotateQuote(args.quote, args.color, args.note);
         return { ok: false, reason: '不支援的畫面操作：' + name };
       } catch (err) {

@@ -5,7 +5,18 @@ import { newId } from '../library';
 import { cachedSearch, cachedDetail } from '../data/cloud/courtRepo';
 import { resolveStatute } from '../data/cloud/lawRepo';
 import { library } from '../data/local/libraryAccess';
-import { checkSetValue, checkUiAction, SAVED_ACTIONS, type SavedAction } from '../assistantUi';
+import { checkSetValue, checkUiAction, CONFIRM_UI_ACTIONS, SAVED_ACTIONS, type SavedAction, type UiActionName } from '../assistantUi';
+
+const REVIEW_LABEL: Record<string, string> = { accept: '接受', reject: '駁回', edit: '修改', batchAccept: '批次接受高信心結果', undoLast: '還原上一步' };
+
+/** 待確認卡片上顯示的說明。 */
+function uiActionLabel(name: UiActionName, args: Record<string, unknown>): string {
+  if (name === 'scopeReview') {
+    const op = REVIEW_LABEL[String(args.op)] ?? String(args.op);
+    return args.caseId ? `覆核：${op}（${String(args.caseId)} / ${String(args.fieldId ?? '')}）` : `覆核：${op}`;
+  }
+  return name;
+}
 
 export type AssistantPageName = AssistantPage;
 
@@ -109,6 +120,12 @@ export async function executeAssistantTool(call: ToolCall, ctx?: AssistantTurnCo
       case 'ui_action': {
         const checked = checkUiAction(input.action, input.args);
         if (!checked.ok) return { content: checked.reason };
+        if (CONFIRM_UI_ACTIONS.includes(checked.name)) {
+          return {
+            content: '已提議，等待使用者按同意後執行。',
+            pending: { id: newId(), kind: 'ui_action', label: uiActionLabel(checked.name, checked.args), args: { action: checked.name, args: checked.args } },
+          };
+        }
         return {
           content: `已在畫面上執行「${checked.name}」。`,
           ui: { type: 'action', action: checked.name, args: checked.args },

@@ -142,3 +142,21 @@ test('頁面動作：標注顏色不合法時改用黃色；候選與欄位參�
   assert.deepEqual(ui.checkUiAction('pickCandidate', { id: 'TPSV_1' }).args, { id: 'TPSV_1' });
   assert.deepEqual(ui.checkUiAction('addScopeField', { name: '判決結果', description: '勝訴或敗訴' }).args, { name: '判決結果', description: '勝訴或敗訴' });
 });
+
+// 覆核與跳至原文、精讀列表：覆核改動資料，必須列為待確認；參數缺漏時拒絕。
+test('覆核動作：改動資料的覆核一律需要確認；參數驗證', () => {
+  assert.ok(ui.CONFIRM_UI_ACTIONS.includes('scopeReview'));
+  assert.equal(ui.checkUiAction('scopeReview', { op: 'accept' }).ok, false, '缺少工作表與案件');
+  const ok = ui.checkUiAction('scopeReview', { op: 'accept', sheetIndex: 0, caseId: 'A1', fieldId: 'f1' });
+  assert.equal(ok.ok, true);
+  assert.deepEqual(ok.args, { op: 'accept', sheetIndex: 0, caseId: 'A1', fieldId: 'f1' });
+  assert.equal(ui.checkUiAction('scopeReview', { op: 'edit', sheetIndex: 0, caseId: 'A1', fieldId: 'f1', value: '  ' }).ok, false);
+  assert.equal(ui.checkUiAction('scopeReview', { op: 'batchAccept', sheetIndex: 2 }).ok, true);
+  assert.equal(ui.checkUiAction('scopeReview', { op: 'undoLast' }).ok, true);
+});
+
+test('精讀列表與跳至原文：需要 id', () => {
+  assert.equal(ui.checkUiAction('briefFromList', {}).ok, false);
+  assert.equal(ui.checkUiAction('briefFromList', { id: 'TPSV_1' }).ok, true);
+  assert.equal(ui.checkUiAction('scopeOpenSource', { quote: '本院' }).ok, false);
+});

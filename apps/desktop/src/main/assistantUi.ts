@@ -137,7 +137,10 @@ export function controlsPrompt(controls: UiControl[], currentPage: string): stri
 // 每個動作都在主程序先驗證參數；畫面只執行驗證過的動作。
 // ---------------------------------------------------------------------------
 
-export const UI_ACTIONS = ['pickCandidate', 'setCriteria', 'addScopeField', 'removeScopeField', 'annotateQuote'] as const;
+export const UI_ACTIONS = ['pickCandidate', 'briefFromList', 'setCriteria', 'addScopeField', 'removeScopeField', 'annotateQuote', 'scopeReview', 'scopeOpenSource'] as const;
+/** 會改動已保存資料的頁面動作：一律先列為待確認，使用者同意後才執行。 */
+export const CONFIRM_UI_ACTIONS: readonly UiActionName[] = ['scopeReview'];
+const REVIEW_OPS = ['accept', 'reject', 'edit', 'batchAccept', 'undoLast'];
 export type UiActionName = (typeof UI_ACTIONS)[number];
 
 const HIGHLIGHT_COLORS = ['yellow', 'green', 'pink', 'blue'];
@@ -156,6 +159,35 @@ export function checkUiAction(name: unknown, rawArgs: unknown): { ok: true; name
     case 'pickCandidate': {
       const id = trimmed(a.id, 200);
       return id ? { ok: true, name: action, args: { id } } : { ok: false, reason: '選定候選判決需要判決 id。' };
+    }
+    case 'briefFromList': {
+      const id = trimmed(a.id, 200);
+      return id ? { ok: true, name: action, args: { id } } : { ok: false, reason: '精讀需要判決 id。' };
+    }
+    case 'scopeOpenSource': {
+      const caseId = trimmed(a.caseId, 200);
+      const quote = trimmed(a.quote, 300) ?? '';
+      return caseId ? { ok: true, name: action, args: { caseId, quote } } : { ok: false, reason: '跳至原文需要判決 id。' };
+    }
+    case 'scopeReview': {
+      const op = typeof a.op === 'string' && REVIEW_OPS.includes(a.op) ? a.op : null;
+      if (!op) return { ok: false, reason: '覆核操作需要 op：accept、reject、edit、batchAccept 或 undoLast。' };
+      const args: Record<string, unknown> = { op };
+      if (op === 'batchAccept') {
+        if (!Number.isInteger(a.sheetIndex) || (a.sheetIndex as number) < 0) return { ok: false, reason: '批次接受需要工作表編號。' };
+        args.sheetIndex = a.sheetIndex;
+      } else if (op !== 'undoLast') {
+        const caseId = trimmed(a.caseId, 200);
+        const fieldId = trimmed(a.fieldId, 200);
+        if (!caseId || !fieldId || !Number.isInteger(a.sheetIndex) || (a.sheetIndex as number) < 0) return { ok: false, reason: '覆核需要工作表編號、案件 id 與欄位 id。' };
+        Object.assign(args, { sheetIndex: a.sheetIndex, caseId, fieldId });
+        if (op === 'edit') {
+          const value = trimmed(a.value, 2000);
+          if (!value) return { ok: false, reason: '修改需要新的內容（不可空白）。' };
+          args.value = value;
+        }
+      }
+      return { ok: true, name: action, args };
     }
     case 'setCriteria': {
       if (!Array.isArray(a.criteria) || a.criteria.length > 8) return { ok: false, reason: '標準列需要一個陣列（最多 8 條）。' };

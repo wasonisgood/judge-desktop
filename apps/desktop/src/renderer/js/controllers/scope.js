@@ -296,6 +296,17 @@
   }
 
   JR.controllers.scope = {
+    /** 助理用：覆核操作（接受、駁回、修改、批次接受高信心、還原上一步）。改動資料，需使用者確認後才會呼叫。 */
+    review: function (a) {
+      var cell = { sheetIndex: a.sheetIndex, caseId: a.caseId, fieldId: a.fieldId };
+      if (a.op === 'accept') reviewActions.accept(cell);
+      else if (a.op === 'reject') reviewActions.reject(cell);
+      else if (a.op === 'edit') reviewActions.edit(cell, a.value);
+      else if (a.op === 'batchAccept') reviewActions.batch(a.sheetIndex);
+      else if (a.op === 'undoLast') reviewActions.undoLast();
+      else return { ok: false, reason: '不支援的覆核操作。' };
+      return { ok: true };
+    },
     addField: addScopeField,
     removeField: removeScopeField,
     /**
