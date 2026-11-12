@@ -1,7 +1,7 @@
 {
   "name": "judge-desktop",
   "productName": "司法院裁判研究",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "description": "司法院裁判研究桌面端：判決列表、範圍整理表、單一判決精讀",
   "main": "dist/main/main.js",
   "private": true,
@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "@judge/core": "https://github.com/wasonisgood/judge-shared/releases/download/core-v0.1.2/judge-core-0.1.2.tgz",
+    "@judge/ui": "https://github.com/wasonisgood/judge-shared/releases/download/ui-v0.1.6/judge-ui-0.1.6.tgz",
     "adm-zip": "^0.5.18",
     "docx": "^9",
     "exceljs": "^4",
-    "fzstd": "0.1.1",
-    "@judge/ui": "https://github.com/wasonisgood/judge-shared/releases/download/ui-v0.1.4/judge-ui-0.1.4.tgz"
+    "fzstd": "0.1.1"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.8",
