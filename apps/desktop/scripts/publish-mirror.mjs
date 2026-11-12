@@ -4,7 +4,7 @@
 //  1. 從 GitHub Release 下載該版的安裝程式、latest.json、模組檔案。
 //  2. 重新產生模組目錄 modules.json（每個檔案帶 Storage 鏡像網址）。
 //  3. latest.json 補上 installerMirrorUrl；modules.json 與 latest.json 複製到 judge-desktop/latest/。
-//  4. 下載 Ollama 官方 zip（ARM64、x64），確認 SHA-256 與 GitHub 摘要相符後才上傳到 judge-desktop/engine/。
+//  （引擎檔不在這個流程中：請用 scripts/publish-engine.mjs 另外發佈到 judge-desktop/engine/。）
 // 需要：gh（已登入）、gcloud（已登入，有 Storage 寫入權限）。
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -74,17 +74,4 @@ cp(latestOut, 'judge-desktop/latest/latest.json');
 cp(path.join(modDir, 'modules.json'), 'judge-desktop/latest/modules.json');
 cp(path.join(dl, installer), `judge-desktop/latest/${installer}`);
 
-// 4. Ollama 官方 zip（先以 GitHub 摘要校驗，再上傳）
-const ollamaRel = JSON.parse(execFileSync(GH, ['release', 'view', '--repo', 'ollama/ollama', '--json', 'tagName,assets'], { encoding: 'utf8' }));
-for (const name of ['ollama-windows-arm64.zip', 'ollama-windows-amd64.zip']) {
-  const asset = ollamaRel.assets.find((a) => a.name === name);
-  if (!asset || !/^sha256:[0-9a-f]{64}$/.test(asset.digest || '')) throw new Error(`Ollama 資產 ${name} 沒有 SHA-256 摘要，拒絕上傳`);
-  const expected = asset.digest.slice('sha256:'.length);
-  const local = path.join(work, name);
-  console.log(`下載 Ollama ${name}（${asset.size} bytes）...`);
-  run(GH, ['release', 'download', ollamaRel.tagName, '-R', 'ollama/ollama', '-p', name, '-D', work, '--clobber']);
-  const actual = sha256(local);
-  if (actual !== expected) throw new Error(`${name} 的 SHA-256 不符，拒絕上傳（預期 ${expected}，實際 ${actual}）`);
-  cp(local, `judge-desktop/engine/${name}`);
-}
 console.log(`完成：${tag} 已發佈到 Firebase Storage（judge-desktop/…）。暫存資料夾：${work}`);
